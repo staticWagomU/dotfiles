@@ -1,3 +1,5 @@
+#include C:\Program Files\AutoHotkey\Lib\b.ahk
+
 ; Load script
 ; Shift+Ctrl+F5
 ^+F5::Reload
@@ -25,11 +27,6 @@ return
 #f::Run, C:\Program Files (x86)\sakura\sakura.exe
 return
 
-; Auto Input password
-#q::
-  Clipboard = ki-fj
-  Send, ^V{ENTER}
-return
 
 #n::Run, C:\Program Files (x86)\Neovim\bin\nvim-qt.exe
 return
