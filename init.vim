@@ -1,10 +1,9 @@
-"hello
 set nocompatible
 
 " ----------
-" Author: @staticWagomU
-" LastChanged: 2022-03-24
-"
+" Author:     @staticWagomU
+" Created At: 2022-01-06
+" 
 
 
 " Index:----------------------------
@@ -129,7 +128,7 @@ set title
 
 
 " ---------------------------------
-" Plug:
+" Plugin:
 "
 
 
@@ -149,6 +148,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'mattn/vim-lsp-settings'
 Plug 'skanehira/jumpcursor.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'machakann/vim-sandwich'
 
 call plug#end()
 
@@ -337,6 +337,9 @@ colorscheme gruvbox-material
 " Command:
 "
 
+" :help event
+
+
 " ターミナルモード移動時の初期モードを挿入モードにする
 autocmd TermOpen * startinsert
 
@@ -394,4 +397,3 @@ command! DenoRun silent only | botright 12 split |
 
 " nvim-qtを使用するため、初期ディレクトリDesktopに固定
 cd $home/desktop
-
