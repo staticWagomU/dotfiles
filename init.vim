@@ -1,8 +1,9 @@
+"hello
 set nocompatible
 
 " ----------
-" Author: @staticWagomu
-" LastChanged: 2022-03-23
+" Author: @staticWagomU
+" LastChanged: 2022-03-24
 "
 
 
@@ -55,16 +56,13 @@ endif
 set fileencodings=iso-2022-jp,ucs-bom,sjis,utf-8,euc-jp,cp932,default,latin1
 set fileformats=unix,dos,mac
 
-
 scriptencoding utf-8
+
 
 " ---------------------------------
 " Options:
 "
 
-
-" ターミナルモード移動時の初期モードを挿入モードにする
-autocmd TermOpen * startinsert
 
 " helpを日本語表示
 set helplang=ja
@@ -76,12 +74,15 @@ set number
 set signcolumn=yes 
 
 set guifont=Cica:h12
+
 " ---
 " search
 
-set ignorecase
+set ignorecase smartcase
 set incsearch
 set wrapscan
+set hlsearch
+
 
 " ---
 " edit
@@ -102,13 +103,7 @@ set hidden
 set autoread
 
 
-set hlsearch
-
-
 set nowrap
-
-
-set ignorecase smartcase
 
 
 set laststatus=2
@@ -129,7 +124,6 @@ set clipboard=unnamedplus
 set wildmenu
 
 set title
-
 
 
 
@@ -168,6 +162,10 @@ call plug#end()
 "
 
 
+let &g:titlestring =
+      \ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
+
+
 "" ----------
 "" lightline.vim
 let g:lightline = {
@@ -200,8 +198,6 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'gruvbox-dark'
 
 
 
-let &g:titlestring =
-      \ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
 
 
 " ---------------------------------
@@ -259,10 +255,13 @@ cmap <C-x> <C-r>=expand('%:p:h')<CR>\
 " expand file (not ext)
 cmap <C-z> <C-r>=expand('%:p:r')<CR>
 
+nnoremap <Leader>ls :<C-u>ls<CR>
+nnoremap <Leader>w :<C-u>w<CR>
+
 " buffer関連
-nnoremap <Leader>bn :bn<CR>
-nnoremap <Leader>bp :bp<CR>
-nnoremap <Leader>bd :bd<CR>
+nnoremap <Leader>bn :<C-u>bn<CR>
+nnoremap <Leader>bp :<C-u>bp<CR>
+nnoremap <Leader>bd :<C-u>bd<CR>
 
 nnoremap <Leader> <Nop>
 xnoremap <Leader> <Nop>
@@ -337,6 +336,9 @@ colorscheme gruvbox-material
 " ---------------------------------
 " Command:
 "
+
+" ターミナルモード移動時の初期モードを挿入モードにする
+autocmd TermOpen * startinsert
 
 augroup coc_ts
   autocmd!
