@@ -28,7 +28,7 @@ return
 return
 
 
-#n::Run, C:\Program Files (x86)\Neovim\bin\nvim-qt.exe
+#n::Run, C:\Program Files\Neovim\bin\nvim-qt.exe
 return
 
 ; Capture screenshot

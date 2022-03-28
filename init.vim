@@ -396,4 +396,4 @@ command! DenoRun silent only | botright 12 split |
 "
 
 " nvim-qtを使用するため、初期ディレクトリDesktopに固定
-cd $home/desktop
+cd ~/desktop
