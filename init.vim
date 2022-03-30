@@ -47,7 +47,7 @@ if has('vim_starting')
 	endif
 
 	filetype on
-	filetype plugin on
+	filetype plugin on 
 	filetype indent on
 
 endif
@@ -71,7 +71,7 @@ set number
 
 " 行番号の左を常に表示
 set signcolumn=yes 
-
+" font
 set guifont=Cica:h12
 
 " ---
@@ -149,6 +149,8 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'skanehira/jumpcursor.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-sandwich'
+Plug 'ulwlu/elly.vim'
+Plug 'hrsh7th/vim-searchx'
 
 call plug#end()
 
@@ -169,7 +171,6 @@ let &g:titlestring =
 "" ----------
 "" lightline.vim
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
       \   'component_function': {
       \     'modified_buffers': 'lightlinemodifiedbuffers()',
 			\   },
@@ -197,6 +198,25 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'gruvbox-dark'
 
 
 
+"" ----------
+"" vim-searchx
+let g:searchx = {}
+
+" Auto jump if the recent input matches to any marker.
+let g:searchx.auto_accept = v:true
+
+" The scrolloff value for moving to next/prev.
+let g:searchx.scrolloff = &scrolloff
+
+" To enable scrolling animation.
+let g:searchx.scrolltime = 500
+
+" To enable auto nohlsearch after cursor is moved
+let g:searchx.nohlsearch = {}
+let g:searchx.nohlsearch.jump = v:true
+
+" Marker characters.
+let g:searchx.markers = split('ABCDEFGHIJKLMNOPQRSTUVWXYZ', '.\zs')
 
 
 
@@ -226,6 +246,15 @@ endfunction
 
 
 
+"" ----------
+"" vim-searchx
+" Convert search pattern.
+function g:searchx.convert(input) abort
+  if a:input !~# '\k'
+    return '\V' .. a:input
+  endif
+  return a:input[0] .. substitute(a:input[1:], '\\\@<! ', '.\\{-}', 'g')
+endfunction
 
 
 " ---------------------------------
@@ -324,12 +353,31 @@ require('nvim-treesitter.configs').setup {
 }
 EOF
 
+
+
 "" ----------
-"" gruvbox
-colorscheme gruvbox-material
+"" vim-searchx
+" Overwrite / and ?.
+nnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
+nnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
+xnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
+xnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
+cnoremap ; <Cmd>call searchx#select()<CR>
 
+" Move to next/prev match.
+nnoremap N <Cmd>call searchx#prev_dir()<CR>
+nnoremap n <Cmd>call searchx#next_dir()<CR>
+xnoremap N <Cmd>call searchx#prev_dir()<CR>
+xnoremap n <Cmd>call searchx#next_dir()<CR>
+nnoremap <C-k> <Cmd>call searchx#prev()<CR>
+nnoremap <C-j> <Cmd>call searchx#next()<CR>
+xnoremap <C-k> <Cmd>call searchx#prev()<CR>
+xnoremap <C-j> <Cmd>call searchx#next()<CR>
+cnoremap <C-k> <Cmd>call searchx#prev()<CR>
+cnoremap <C-j> <Cmd>call searchx#next()<CR>
 
-
+" Clear highlights
+nnoremap <C-l> <Cmd>call searchx#clear()<CR>
 
 
 
@@ -394,6 +442,7 @@ command! DenoRun silent only | botright 12 split |
 " ---------------------------------
 " Other:
 "
+colorscheme elly
 
 " nvim-qtを使用するため、初期ディレクトリDesktopに固定
 cd ~/desktop
