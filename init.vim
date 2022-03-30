@@ -445,4 +445,4 @@ command! DenoRun silent only | botright 12 split |
 colorscheme elly
 
 " nvim-qtを使用するため、初期ディレクトリDesktopに固定
-cd ~/desktop
+cd ~
