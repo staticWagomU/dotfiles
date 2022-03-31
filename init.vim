@@ -152,6 +152,8 @@ Plug 'machakann/vim-sandwich'
 Plug 'ulwlu/elly.vim'
 Plug 'hrsh7th/vim-searchx'
 Plug 'obaland/vfiler.vim'
+Plug 'yuki-yano/fern-preview.vim'
+Plug 'lambdalisue/fern-git-status.vim'
 
 call plug#end()
 
@@ -194,8 +196,8 @@ let s:lightline_ignore_filename_ft = [
 
 "" ----------
 "" fzf-preview
-let $BAT_THEME                     = 'gruvbox-dark'
-let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'gruvbox-dark'
+let $BAT_THEME                     = 'elly'
+let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'elly'
 
 
 
@@ -219,7 +221,19 @@ let g:searchx.nohlsearch.jump = v:true
 " Marker characters.
 let g:searchx.markers = split('ABCDEFGHIJKLMNOPQRSTUVWXYZ', '.\zs')
 
+"" ----------
+"" fern-git-status
+" Disable listing ignored files/directories
+let g:fern_git_status#disable_ignored = 1
 
+" Disable listing untracked files
+let g:fern_git_status#disable_untracked = 1
+
+" Disable listing status of submodules
+let g:fern_git_status#disable_submodules = 1
+
+" Disable listing status of directories
+let g:fern_git_status#disable_directories = 1
 
 " ---------------------------------
 " Function:
@@ -430,7 +444,17 @@ if executable("typescript-language-server")
   augroup END
 endif
 
+function! s:fern_settings() abort
+  nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
+  nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
+  nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
+  nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
+endfunction
 
+augroup fern-settings
+  autocmd!
+  autocmd FileType fern call s:fern_settings()
+augroup END
 
 command! DenoRun silent only | botright 12 split |
    \ execute 'terminal deno ' .
