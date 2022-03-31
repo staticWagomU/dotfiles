@@ -151,12 +151,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'ulwlu/elly.vim'
 Plug 'hrsh7th/vim-searchx'
+Plug 'obaland/vfiler.vim'
 
 call plug#end()
 
 
-
-
+colorscheme elly
 
 
 " ---------------------------------
@@ -377,10 +377,13 @@ xnoremap <C-j> <Cmd>call searchx#next()<CR>
 cnoremap <C-k> <Cmd>call searchx#prev()<CR>
 cnoremap <C-j> <Cmd>call searchx#next()<CR>
 
-" Clear highlights
-nnoremap <C-l> <Cmd>call searchx#clear()<CR>
 
+"" ----------
+"" VFiler
 
+" フローティングスタイルで起動 (VFiler コマンドからオプション指定で起動)
+" ※フローティングスタイルの指定以外は、デフォルトオプション値で起動する
+noremap <silent><Leader>f <Cmd>VFiler -layout=floating<CR>
 
 " ---------------------------------
 " Command:
@@ -443,7 +446,8 @@ command! DenoRun silent only | botright 12 split |
 " ---------------------------------
 " Other:
 "
-colorscheme elly
 
 " nvim-qtを使用するため、初期ディレクトリDesktopに固定
 cd ~
+
+
