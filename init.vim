@@ -139,6 +139,8 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf_bin', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lambdalisue/fern.vim'
+		Plug 'yuki-yano/fern-preview.vim'
+		Plug 'lambdalisue/fern-git-status.vim'
 Plug 'lambdalisue/gina.vim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'sainnhe/gruvbox-material'
@@ -152,8 +154,6 @@ Plug 'machakann/vim-sandwich'
 Plug 'ulwlu/elly.vim'
 Plug 'hrsh7th/vim-searchx'
 Plug 'obaland/vfiler.vim'
-Plug 'yuki-yano/fern-preview.vim'
-Plug 'lambdalisue/fern-git-status.vim'
 
 call plug#end()
 
@@ -204,41 +204,38 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'elly'
 "" ----------
 "" vim-searchx
 let g:searchx = {}
-
 " Auto jump if the recent input matches to any marker.
 let g:searchx.auto_accept = v:true
-
 " The scrolloff value for moving to next/prev.
 let g:searchx.scrolloff = &scrolloff
-
 " To enable scrolling animation.
 let g:searchx.scrolltime = 100
-
 " To enable auto nohlsearch after cursor is moved
 let g:searchx.nohlsearch = {}
 let g:searchx.nohlsearch.jump = v:true
-
 " Marker characters.
 let g:searchx.markers = split('ABCDEFGHIJKLMNOPQRSTUVWXYZ', '.\zs')
+
 
 "" ----------
 "" fern-git-status
 " Disable listing ignored files/directories
 let g:fern_git_status#disable_ignored = 1
-
 " Disable listing untracked files
 let g:fern_git_status#disable_untracked = 1
-
 " Disable listing status of submodules
 let g:fern_git_status#disable_submodules = 1
-
 " Disable listing status of directories
 let g:fern_git_status#disable_directories = 1
+
+
 
 " ---------------------------------
 " Function:
 "
 
+"" ----------
+"" lightline
 function! LightlineModifiedBuffers() abort
    let modified_background_buffers = filter(range(1, bufnr('$')),
    \ { _, bufnr -> bufexists(bufnr) && buflisted(bufnr) && getbufvar(bufnr, 'buftype') ==# '' && filereadable(expand('#' . bufnr . ':p')) && bufnr != bufnr('%') && getbufvar(bufnr, '&modified') == 1 }
@@ -255,11 +252,22 @@ function! LightlineModifiedBuffers() abort
    endif
 endfunction
 
+
+"" ----------
+"" coc
 function! s:coc_typescript_settings() abort
   nnoremap <silent> <buffer> [dev]f :<C-u>CocCommand eslint.executeAutofix<CR>:CocCommand prettier.formatFile<CR>
 endfunction
 
 
+"" ----------
+"" Fern
+function! s:fern_settings() abort
+  nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
+  nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
+  nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
+  nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
+endfunction
 
 "" ----------
 "" vim-searchx
@@ -291,8 +299,6 @@ nnoremap <C-p> gT
 " 検索時に正規表現
 nnoremap / /\v
 
-" terminalモードで<ESC>でノーマルモー
-tnoremap <Esc> <C-\><C-n>
 
 " expand path
 cmap <C-x> <C-r>=expand('%:p:h')<CR>\
@@ -338,7 +344,7 @@ nmap     <silent> [dev]a  <Plug>(coc-codeaction-selected)iw
 
 nnoremap <silent> <C-P>  :<C-u>CocCommand fzf-preview.FromResources buffer project_mru project<CR>
 nnoremap <silent> [ff]s  :<C-u>CocCommand fzf-preview.GitStatus<CR>
-nnoremap <silent> [ff]gg :<C-u>CocCommand fzf-preview.GitActions<CR>
+noremap <silent> [ff]gg :<C-u>CocCommand fzf-preview.GitActions<CR>
 nnoremap <silent> [ff]b  :<C-u>CocCommand fzf-preview.Buffers<CR>
 nnoremap          [ff]f  :<C-u>CocCommand fzf-preview.ProjectGrep --add-fzf-arg=--exact --add-fzf-arg=--no-sort<Space>
 xnoremap          [ff]f  "sy:CocCommand fzf-preview.ProjectGrep --add-fzf-arg=--exact --add-fzf-arg=--no-sort<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
@@ -353,20 +359,6 @@ nnoremap <silent> [ff]o  :<C-u>CocCommand fzf-preview.CocOutline --add-fzf-arg=-
 "" fern
 nnoremap <silent> <Leader>e :<C-u>Fern . -drawer -toggle<CR>
 nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -reveal=%<CR>
-
-"" ----------
-"" treesitter
-lua <<EOF
-require('nvim-treesitter.configs').setup {
-  ensure_installed = {
-    "typescript",
-    "tsx",
-  },
-  highlight = {
-    enable = true,
-  },
-}
-EOF
 
 
 
@@ -394,9 +386,6 @@ cnoremap <C-j> <Cmd>call searchx#next()<CR>
 
 "" ----------
 "" VFiler
-
-" フローティングスタイルで起動 (VFiler コマンドからオプション指定で起動)
-" ※フローティングスタイルの指定以外は、デフォルトオプション値で起動する
 noremap <silent><Leader>f <Cmd>VFiler -layout=floating<CR>
 
 " ---------------------------------
@@ -444,12 +433,10 @@ if executable("typescript-language-server")
   augroup END
 endif
 
-function! s:fern_settings() abort
-  nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
-  nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
-  nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
-  nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
-endfunction
+
+"" ----------
+"" Fern
+
 
 augroup fern-settings
   autocmd!
@@ -475,3 +462,16 @@ command! DenoRun silent only | botright 12 split |
 cd ~
 
 
+"" ----------
+"" treesitter
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+  ensure_installed = {
+    "typescript",
+    "tsx",
+  },
+  highlight = {
+    enable = true,
+  },
+}
+EOF

@@ -24,7 +24,7 @@ return
 return
 
 ; Pressing the win + f key execute sakura editor. 
-#f::Run, C:\Program Files (x86)\sakura\sakura.exe
+#f::Run, C:\Program Files\sakura\sakura.exe
 return
 
 
