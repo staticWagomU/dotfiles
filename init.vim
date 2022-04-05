@@ -164,7 +164,7 @@ colorscheme elly
 " ---------------------------------
 " Variables:
 "
-
+let g:fern#default_hidden=1
 
 let &g:titlestring =
       \ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
