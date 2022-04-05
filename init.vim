@@ -141,7 +141,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lambdalisue/fern.vim'
 		Plug 'yuki-yano/fern-preview.vim'
 		Plug 'lambdalisue/fern-git-status.vim'
-Plug 'lambdalisue/gina.vim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'sainnhe/gruvbox-material'
 Plug 'prabirshrestha/vim-lsp'
@@ -154,6 +153,8 @@ Plug 'machakann/vim-sandwich'
 Plug 'ulwlu/elly.vim'
 Plug 'hrsh7th/vim-searchx'
 Plug 'obaland/vfiler.vim'
+Plug 'vim-denops/denops.vim'
+Plug 'lambdalisue/gin.vim'
 
 call plug#end()
 
