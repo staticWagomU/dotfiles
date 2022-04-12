@@ -147,6 +147,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'mattn/vim-lsp-settings'
+Plug 'mattn/emmet-vim'
 Plug 'skanehira/jumpcursor.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-sandwich'
@@ -268,6 +269,7 @@ function! s:fern_settings() abort
   nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
   nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
   nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
+  nmap <silent> <buffer> <C-S-d> <Plug>(fern-action-new-dir)
 endfunction
 
 "" ----------
@@ -386,8 +388,15 @@ cnoremap <C-j> <Cmd>call searchx#next()<CR>
 
 
 "" ----------
-"" VFiler
+"" vfiler
 noremap <silent><Leader>f <Cmd>VFiler -layout=floating<CR>
+
+
+
+"" ----------
+"" emmet-vim
+" noremap <C-y>, 
+
 
 " ---------------------------------
 " Command:
