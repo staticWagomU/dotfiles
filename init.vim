@@ -156,11 +156,14 @@ Plug 'hrsh7th/vim-searchx'
 Plug 'obaland/vfiler.vim'
 Plug 'vim-denops/denops.vim'
 Plug 'lambdalisue/gin.vim'
+Plug 'simeji/winresizer'
+Plug 'easymotion/vim-easymotion'
+
 
 call plug#end()
 
 
-colorscheme elly
+colorscheme gruvbox-material
 
 
 " ---------------------------------
@@ -175,7 +178,7 @@ let &g:titlestring =
 "" ----------
 "" lightline.vim
 let g:lightline = {
-		  \   'colorscheme': 'elly',
+		  \   'colorscheme': '',
       \   'component_function': {
       \     'modified_buffers': 'lightlinemodifiedbuffers()',
 			\   },
@@ -198,8 +201,9 @@ let s:lightline_ignore_filename_ft = [
 
 "" ----------
 "" fzf-preview
-let $BAT_THEME                     = 'elly'
-let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'elly'
+let $BAT_THEME                     = 'gruvbox-material'
+let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'gruvbox-material'
+
 
 
 
@@ -360,8 +364,8 @@ nnoremap <silent> [ff]o  :<C-u>CocCommand fzf-preview.CocOutline --add-fzf-arg=-
 
 "" ----------
 "" fern
-nnoremap <silent> <Leader>e :<C-u>Fern . -drawer -toggle<CR>
-nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -reveal=%<CR>
+nnoremap <silent> <Leader>e :<C-u>Fern . -drawer <CR>
+nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -toggle<CR>
 
 
 
