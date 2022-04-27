@@ -157,13 +157,14 @@ Plug 'vim-denops/denops.vim'
 Plug 'lambdalisue/gin.vim'
 Plug 'simeji/winresizer'
 Plug 'easymotion/vim-easymotion'
+Plug 'cohama/lexima.vim'
 "Plug 'numToStr/Comment.nvim'
 
 
 call plug#end()
 
 
-colorscheme gruvbox-material
+"colorscheme gruvbox-material
 
 
 " ---------------------------------
@@ -437,6 +438,17 @@ if executable("typescript-language-server")
   augroup END
 endif
 
+augroup restore-cursor
+  autocmd!
+  autocmd BufReadPost *
+        \ : if line("'\"") >= 1 && line("'\"") <= line("$")
+        \ |   exe "normal! g`\""
+        \ | endif
+  autocmd BufWinEnter *
+        \ : if empty(&buftype) && line('.') > winheight(0) / 2
+        \ |   execute 'normal! zz'
+        \ | endif
+augroup END
 
 "" ----------
 "" Fern
@@ -462,7 +474,6 @@ command! DenoRun silent only | botright 12 split |
 " Other:
 "
 
-" nvim-qtを使用するため、初期ディレクトリDesktopに固定
 cd ~
 
 
