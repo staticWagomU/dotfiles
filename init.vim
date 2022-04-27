@@ -143,22 +143,21 @@ Plug 'lambdalisue/fern.vim'
 		Plug 'lambdalisue/fern-git-status.vim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'sainnhe/gruvbox-material'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'mattn/vim-lsp-settings'
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/emmet-vim'
 Plug 'skanehira/jumpcursor.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'machakann/vim-sandwich'
-Plug 'ulwlu/elly.vim'
+"Plug 'machakann/vim-sandwich'
 Plug 'hrsh7th/vim-searchx'
 Plug 'obaland/vfiler.vim'
 Plug 'vim-denops/denops.vim'
 Plug 'lambdalisue/gin.vim'
 Plug 'simeji/winresizer'
 Plug 'easymotion/vim-easymotion'
-Plug 'numToStr/Comment.nvim'
+"Plug 'numToStr/Comment.nvim'
 
 
 call plug#end()
@@ -171,6 +170,9 @@ colorscheme gruvbox-material
 " Variables:
 "
 let g:fern#default_hidden=1
+
+let g:sandwich_no_default_key_mappings = 1
+let g:operator_sandwich_no_default_key_mappings = 1
 
 let &g:titlestring =
       \ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
@@ -476,60 +478,5 @@ require('nvim-treesitter.configs').setup {
     enable = true,
   },
 }
-EOF
-
-lua << EOF
-require("Comment").setup({
-	---Add a space b/w comment and the line
-	---@type boolean
-	padding = true,
-
-	---Line which should be ignored while comment/uncomment
-	---Example: Use '^$' to ignore empty lines
-	---@type string Lua regex
-	ignore = nil,
-
-	---Whether to create basic (operator-pending) and extra mappings for NORMAL/VISUAL mode
-	---@type table
-	mappings = {
-		---operator-pending mapping
-		---Includes `gcc`, `gcb`, `gc[count]{motion}` and `gb[count]{motion}`
-		basic = true,
-		---extended mapping
-		---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
-		extra = false,
-	},
-
-	---LHS of line and block comment toggle mapping in NORMAL/VISUAL mode
-	---@type table
-	toggler = {
-		---line-comment toggle
-		line = "gcc",
-		---block-comment toggle
-		block = "gbc",
-	},
-
-	---LHS of line and block comment operator-mode mapping in NORMAL/VISUAL mode
-	---@type table
-	opleader = {
-		---line-comment opfunc mapping
-		line = "gc",
-		---block-comment opfunc mapping
-		block = "gb",
-	},
-
-	---Pre-hook, called before commenting the line
-	---@type function|nil
-	pre_hook = function()
-		return require("ts_context_commentstring.internal").calculate_commentstring()
-	end,
-	---Post-hook, called after commenting is done
-	---@type function|nil
-	post_hook = nil,
-})
-
-vim.api.nvim_set_keymap("n", "<C-_>", "<Cmd>lua require('Comment.api').toggle_current_linewise()<CR>", {})
-vim.api.nvim_set_keymap("i", "<C-_>", "<Esc>:<C-u>lua require('Comment.api').toggle_current_linewise()<CR>\"_cc", {})
-vim.api.nvim_set_keymap("v", "<C-_>", "gc", {})
 EOF
 
