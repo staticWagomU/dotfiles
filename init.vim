@@ -292,20 +292,11 @@ endfunction
 "
 
 let g:mapleader = "\<Space>"
+nnoremap <Leader> <Nop>
+xnoremap <Leader> <Nop>
 
 
-" jjでノーマルモードへ戻る
 inoremap <silent> jj <ESC>
-
-"" tab関連
-" tab next
-nnoremap <C-n> gt
-" tab preview
-nnoremap <C-p> gT
-
-" 検索時に正規表現
-nnoremap / /\v
-
 
 " expand path
 cmap <C-x> <C-r>=expand('%:p:h')<CR>\
@@ -314,14 +305,10 @@ cmap <C-z> <C-r>=expand('%:p:r')<CR>
 
 nnoremap <Leader>ls :<C-u>ls<CR>
 nnoremap <Leader>w :<C-u>w<CR>
-
-" buffer関連
 nnoremap <Leader>bn :<C-u>bn<CR>
 nnoremap <Leader>bp :<C-u>bp<CR>
 nnoremap <Leader>bd :<C-u>bd<CR>
 
-nnoremap <Leader> <Nop>
-xnoremap <Leader> <Nop>
 nnoremap [dev]    <Nop>
 xnoremap [dev]    <Nop>
 nmap     m        [dev]
