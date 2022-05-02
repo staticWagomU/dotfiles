@@ -1,5 +1,5 @@
-let s:enable_coc = v:true
-let s:enable_ddc = v:false
+let s:enable_coc = v:false
+let s:enable_ddc = v:true
 
 
 " {{{ options
@@ -25,9 +25,11 @@ let &g:titlestring =
 call plug#begin('~/.vim/plugged')
 
 Plug 'vim-jp/vimdoc-ja'
+" {{{ fern
 Plug 'lambdalisue/fern.vim'
-	Plug 'yuki-yano/fern-preview.vim'
-	Plug 'lambdalisue/fern-git-status.vim'
+Plug 'yuki-yano/fern-preview.vim'
+Plug 'lambdalisue/fern-git-status.vim'
+" }}}
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'mattn/emmet-vim'
 Plug 'hrsh7th/vim-searchx'
@@ -37,7 +39,17 @@ Plug 'simeji/winresizer'
 Plug 'cohama/lexima.vim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+" {{{ ddc
+Plug 'Shougo/ddc.vim'
+Plug 'vim-denops/denops.vim'
+Plug 'Shougo/ddc-around' " sources
+Plug 'Shougo/ddc-matcher_head' " filters
+Plug 'Shougo/ddc-sorter_rank' " filters
+Plug 'neovim/nvim-lspconfig'
+Plug 'Shougo/ddc-nvim-lsp'
+Plug 'LumaKernel/ddc-file'
+Plug 'Shougo/ddc-converter_remove_overlap'
+" }}}
 call plug#end()
 "}}}
 
@@ -65,10 +77,10 @@ xnoremap <Leader> <Nop>
 
 inoremap <silent> jj <ESC>
 
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
+"inoremap <C-h> <Left>
+"inoremap <C-j> <Down>
+"inoremap <C-k> <Up>
+"inoremap <C-l> <Right>
 
 " expand path
 cmap <C-x> <C-r>=expand('%:p:h')<CR>\
@@ -86,6 +98,30 @@ nnoremap <Leader>bd :<C-u>bd<CR>
 
 "{{{ ddc
 if s:enable_ddc
+	call ddc#custom#patch_global('sources', ['nvim-lsp', 'around', 'file'])
+
+	" use matcher_head and sorter_rank.
+	call ddc#custom#patch_global('sourceoptions', {
+	      \ '_': {
+	      \   'matchers': ['matcher_head'],
+	      \   'sorters': ['sorter_rank']},
+	      \   'converters': ['converter_remove_overlap'],
+	      \ 'around': {'mark': 'Around'},
+	      \ 'nvim-lsp': {
+	      \   'mark': 'lsp',
+	      \   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
+	      \ 'file': {
+	      \   'mark': 'file',
+	      \   'isVolatile': v:true, 
+	      \   'forceCompletionPattern': '\S/\S*'}
+	      \ })
+
+	call ddc#custom#patch_global('sourceparams', {
+             \ 'around': {'maxsize': 500},
+             \ })
+
+	" Use ddc
+	call ddc#enable()
 endif
 "}}}
 
@@ -184,7 +220,7 @@ augroup fern-settings
 augroup END
 
 autocmd FileType vim setlocal foldmethod=marker
-"}}}
+
 
 "{{{ fern-git-status
 " Disable listing ignored files/directories
@@ -195,6 +231,8 @@ let g:fern_git_status#disable_untracked = 1
 let g:fern_git_status#disable_submodules = 1
 " Disable listing status of directories
 let g:fern_git_status#disable_directories = 1
+"}}}
+
 "}}}
 
 "{{{ vim-searchx
@@ -217,6 +255,71 @@ xnoremap <C-j> <Cmd>call searchx#next()<CR>
 cnoremap <C-k> <Cmd>call searchx#prev()<CR>
 cnoremap <C-j> <Cmd>call searchx#next()<CR>
 "}}}
+
+" {{{ lsp-config
+lua << EOF
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local opts = { noremap=true, silent=true }
+--vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = {'tsserver' }
+for _, lsp in pairs(servers) do
+  require('lspconfig')[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      -- This will be the default in neovim 0.7+
+      debounce_text_changes = 150,
+    }
+  }
+end
+lspconfig = require "lspconfig"
+util = require "lspconfig/util"
+
+lspconfig.gopls.setup {
+  cmd = {"gopls", "serve"},
+  filetypes = {"go", "gomod"},
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      --debounce_text_changes = 150,
+    },
+  },
+}
+EOF
+" }}}
 
 "}}}
 
