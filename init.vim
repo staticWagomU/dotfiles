@@ -1,6 +1,7 @@
 let s:enable_coc = v:false
-let s:enable_ddc = v:true
-
+let s:enable_ddc = v:false
+filetype off
+filetype plugin indent off
 
 " {{{ options
 
@@ -41,16 +42,26 @@ Plug 'cohama/lexima.vim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'mattn/vim-lsp-icons'
+
+" {{{ lsp
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'mattn/vim-lsp-icons'
+
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+"}}}
 
 " {{{ ddc
 Plug 'Shougo/ddc.vim'
-Plug 'vim-denops/denops.vim'
 Plug 'Shougo/ddc-around' " sources
 Plug 'Shougo/ddc-matcher_head' " filters
 Plug 'Shougo/ddc-sorter_rank' " filters
-Plug 'neovim/nvim-lspconfig'
 Plug 'Shougo/ddc-nvim-lsp'
-Plug 'LumaKernel/ddc-file'
 Plug 'Shougo/ddc-converter_remove_overlap'
 " }}}
 
@@ -100,7 +111,6 @@ nnoremap <Leader>bd :<C-u>bd<CR>
 if s:enable_ddc
 	call ddc#custom#patch_global('sources', ['nvim-lsp', 'around'])
 
-	" use matcher_head and sorter_rank.
 	call ddc#custom#patch_global('sourceoptions', {
 	      \ '_': {
 	      \   'matchers': ['matcher_head'],
@@ -117,7 +127,6 @@ if s:enable_ddc
 	     \ 'nvim-slp': {'kindLabels': {'Class': 'c'}}
              \ })
 
-	" Use ddc
 	" <TAB>: completion.
 	inoremap <silent><expr> <TAB>
 	\ ddc#map#pum_visible() ? '<C-n>' :
@@ -126,6 +135,7 @@ if s:enable_ddc
 
 	" <S-TAB>: completion back.
 	inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+
 	call ddc#enable()
 endif
 "}}}
@@ -296,33 +306,33 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = {'tsserver' }
-for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
-    }
-  }
-end
-local lspconfig = require "lspconfig"
-local util = require "lspconfig/util"
-
-lspconfig.gopls.setup {
-  cmd = {"gopls", "serve"},
-  filetypes = {"go", "gomod"},
-  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-  settings = {
-    gopls = {
-      analyses = {
-        unusedparams = true,
-      },
-      staticcheck = true,
-      --debounce_text_changes = 150,
-    },
-  },
-}
+--local servers = {'tsserver' }
+--for _, lsp in pairs(servers) do
+--  require('lspconfig')[lsp].setup {
+--    on_attach = on_attach,
+--    flags = {
+--      -- This will be the default in neovim 0.7+
+--      debounce_text_changes = 150,
+--    }
+--  }
+--end
+--local lspconfig = require "lspconfig"
+--local util = require "lspconfig/util"
+--
+--lspconfig.gopls.setup {
+--  cmd = {"gopls", "serve"},
+--  filetypes = {"go", "gomod"},
+--  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+--  settings = {
+--    gopls = {
+--      analyses = {
+--        unusedparams = true,
+--      },
+--      staticcheck = true,
+--      --debounce_text_changes = 150,
+--    },
+--  },
+--}
 EOF
 " }}}
 
@@ -335,6 +345,35 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 " }}}
+
+
+"{{{ lsp
+if empty(globpath(&rtp, 'autoload/lsp.vim'))
+  finish
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> <f2> <plug>(lsp-rename)
+  inoremap <expr> <cr> pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
+endfunction
+
+augroup lsp_install
+  au!
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
+
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_auto_completeopt = 0
+let g:asyncomplete_popup_delay = 200
+let g:lsp_text_edit_enabled = 1
+
+"}}}
 
 "}}}
 
@@ -359,4 +398,5 @@ autocmd TermOpen * startinsert
 cd ~
 
 hi FgCocErrorFloatBgCocFloating guifg=#000000
+filetype plugin indent on
 " }}}
