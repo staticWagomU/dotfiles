@@ -397,7 +397,7 @@ autocmd TermOpen * startinsert
 
 " {{{ other
 cd ~
-colorscheme default
+colorscheme desert
 hi FgCocErrorFloatBgCocFloating guifg=#000000
 filetype plugin indent on
 " }}}
