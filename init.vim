@@ -1,3 +1,7 @@
+let s:enable_coc = v:true
+let s:enable_ddc = v:false
+
+
 " {{{ options
 
 set fileencodings=iso-2022-jp,ucs-bom,sjis,utf-8,euc-jp,cp932,default,latin1
@@ -8,7 +12,6 @@ scriptencoding utf-8
 set number
 set helplang=ja
 set signcolumn=yes 
-"set guifont=Cica:h12
 set hidden
 set laststatus=2
 set mouse=a
@@ -33,26 +36,39 @@ Plug 'lambdalisue/gin.vim'
 Plug 'simeji/winresizer'
 Plug 'cohama/lexima.vim'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'Shougo/ddc.vim'
-	Plug 'Shougo/ddc-around' 
-	Plug 'Shougo/ddc-matcher_head'
-	Plug 'Shougo/ddc-sorter_rank'
-	Plug 'Shougo/ddc-nvim-lsp'
-	"Plug 'matsui54/ddc-nvvim-lsp-doc'
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'mattn/vim-lsp-settings'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 "}}}
 
 "{{{ keymaps
+
+"-------------------------------------------------------------------------------------------------+
+" Commands \ Modes | Normal | Insert | Command | Visual | Select | Operator | Terminal | Lang-Arg |
+" ================================================================================================+
+" map  / noremap   |    @   |   -    |    -    |   @    |   @    |    @     |    -     |    -     |
+" nmap / nnoremap  |    @   |   -    |    -    |   -    |   -    |    -     |    -     |    -     |
+" map! / noremap!  |    -   |   @    |    @    |   -    |   -    |    -     |    -     |    -     |
+" imap / inoremap  |    -   |   @    |    -    |   -    |   -    |    -     |    -     |    -     |
+" cmap / cnoremap  |    -   |   -    |    @    |   -    |   -    |    -     |    -     |    -     |
+" vmap / vnoremap  |    -   |   -    |    -    |   @    |   @    |    -     |    -     |    -     |
+" xmap / xnoremap  |    -   |   -    |    -    |   @    |   -    |    -     |    -     |    -     |
+" smap / snoremap  |    -   |   -    |    -    |   -    |   @    |    -     |    -     |    -     |
+" omap / onoremap  |    -   |   -    |    -    |   -    |   -    |    @     |    -     |    -     |
+" tmap / tnoremap  |    -   |   -    |    -    |   -    |   -    |    -     |    @     |    -     |
+" lmap / lnoremap  |    -   |   @    |    @    |   -    |   -    |    -     |    -     |    @     |
+"-------------------------------------------------------------------------------------------------+
+
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
 xnoremap <Leader> <Nop>
 
-
 inoremap <silent> jj <ESC>
+
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
 
 " expand path
 cmap <C-x> <C-r>=expand('%:p:h')<CR>\
@@ -69,24 +85,42 @@ nnoremap <Leader>bd :<C-u>bd<CR>
 "{{{ pluginConfig
 
 "{{{ ddc
-" Use around source.
-call ddc#custom#patch_global('sources', ['around', 'nvim-lsp'])
+if s:enable_ddc
+endif
+"}}}
 
-" Use matcher_head and sorter_rank.
-call ddc#custom#patch_global('sourceOptions', {
-      \ '_': {
-      \   'matchers': ['matcher_head'],
-      \   'sorters': ['sorter_rank'] },
-      \ 'nvim-lsp': {
-      \   'mark': 'L',
-      \   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
-      \ })
-call ddc#custom#patch_global('sourceParams', {
-      \ 'nvim-lsp': { 'kindLabels': { 'Class': 'c' } },
-      \ })" Use ddc
-"call ddc_nvim_lsp_doc#enable()
+"{{{ coc
+if s:enable_coc
+	nnoremap [dev]    <Nop>
+	xnoremap [dev]    <Nop>
+	nmap     m        [dev]
+	xmap     m        [dev]
 
-call ddc#enable()
+	let g:coc_global_extensions = ['coc-tsserver', 'coc-eslint8', 'coc-prettier', 'coc-git', 'coc-fzf-preview', 'coc-lists']
+
+	inoremap <silent> <expr> <c-space> coc#refresh()
+	nnoremap <silent> K       :<c-u>call <sid>show_documentation()<cr>
+	nmap     <silent> [dev]rn <plug>(coc-rename)
+	nmap     <silent> [dev]a  <plug>(coc-codeaction-selected)iw
+
+	function! s:coc_typescript_settings() abort
+	  nnoremap <silent> <buffer> [dev]f :<c-u>coccommand eslint.executeautofix<cr>:coccommand prettier.formatfile<cr>
+	endfunction
+
+	augroup coc_ts
+	  autocmd!
+	  autocmd filetype typescript,typescriptreact call <sid>coc_typescript_settings()
+	augroup end
+
+	function! s:show_documentation() abort
+	  if index(['vim','help'], &filetype) >= 0
+	    execute 'h ' . expand('<cword>')
+	  elseif coc#rpc#ready()
+	    call cocactionasync('dohover')
+	  endif
+	endfunction
+
+endif
 "}}}
 
 " {{{ lualine
@@ -182,50 +216,6 @@ xnoremap <C-k> <Cmd>call searchx#prev()<CR>
 xnoremap <C-j> <Cmd>call searchx#next()<CR>
 cnoremap <C-k> <Cmd>call searchx#prev()<CR>
 cnoremap <C-j> <Cmd>call searchx#next()<CR>
-"}}}
-
-"{{{ lsp
-lua << EOF
-
-local nvim_lsp = require('lspconfig')
-local on_attach = function(client, bufnr)
-local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
--- Mappings.
-local opts = { noremap=true, silent=true }
-buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
--- buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
--- Set autocommands conditional on server_capabilities
-if client.resolved_capabilities.document_highlight then
-require('lspconfig').util.nvim_multiline_command [[
-:hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-:hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-:hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-augroup lsp_document_highlight
-autocmd!
-autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-augroup END
-]]
-end
-
-nvim_lsp["gopls"].setup { on_attach = on_attach }
-end
-EOF
-
 "}}}
 
 "}}}
