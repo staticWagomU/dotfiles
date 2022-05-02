@@ -401,5 +401,7 @@ autocmd TermOpen * startinsert
 cd ~
 colorscheme desert
 hi FgCocErrorFloatBgCocFloating guifg=#000000
+hi Pmenu guibg=#ffbdff
 filetype plugin indent on
+set pumblend=30
 " }}}
