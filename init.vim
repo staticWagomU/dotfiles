@@ -1,5 +1,6 @@
 let s:enable_coc = v:false
-let s:enable_ddc = v:false
+let s:enable_ddc = v:true
+let s:enable_lsp = v:false
 filetype off
 filetype plugin indent off
 
@@ -349,6 +350,7 @@ EOF
 " }}}
 
 "{{{ lsp
+if s:enable_lsp
 if empty(globpath(&rtp, 'autoload/lsp.vim'))
   finish
 endif
@@ -373,7 +375,7 @@ let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_auto_completeopt = 0
 let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 1
-
+endif
 "}}}
 
 "}}}
