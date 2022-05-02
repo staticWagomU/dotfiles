@@ -32,7 +32,6 @@ Plug 'yuki-yano/fern-preview.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 " }}}
 
-Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'mattn/emmet-vim'
 Plug 'hrsh7th/vim-searchx'
 Plug 'vim-denops/denops.vim'
@@ -41,6 +40,7 @@ Plug 'simeji/winresizer'
 Plug 'cohama/lexima.vim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " {{{ ddc
 Plug 'Shougo/ddc.vim'
@@ -322,6 +322,16 @@ lspconfig.gopls.setup {
       --debounce_text_changes = 150,
     },
   },
+}
+EOF
+" }}}
+
+" {{{ treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+  }
 }
 EOF
 " }}}
