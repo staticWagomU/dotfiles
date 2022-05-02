@@ -98,7 +98,7 @@ nnoremap <Leader>bd :<C-u>bd<CR>
 
 "{{{ ddc
 if s:enable_ddc
-	call ddc#custom#patch_global('sources', ['nvim-lsp', 'around', 'file'])
+	call ddc#custom#patch_global('sources', ['nvim-lsp', 'around'])
 
 	" use matcher_head and sorter_rank.
 	call ddc#custom#patch_global('sourceoptions', {
@@ -110,14 +110,11 @@ if s:enable_ddc
 	      \ 'nvim-lsp': {
 	      \   'mark': 'lsp',
 	      \   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
-	      \ 'file': {
-	      \   'mark': 'file',
-	      \   'isVolatile': v:true, 
-	      \   'forceCompletionPattern': '\S/\S*'}
 	      \ })
 
 	call ddc#custom#patch_global('sourceparams', {
              \ 'around': {'maxsize': 500},
+	     \ 'nvim-slp': {'kindLabels': {'Class': 'c'}}
              \ })
 
 	" Use ddc
@@ -301,8 +298,8 @@ for _, lsp in pairs(servers) do
     }
   }
 end
-lspconfig = require "lspconfig"
-util = require "lspconfig/util"
+local lspconfig = require "lspconfig"
+local util = require "lspconfig/util"
 
 lspconfig.gopls.setup {
   cmd = {"gopls", "serve"},
