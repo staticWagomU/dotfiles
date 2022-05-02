@@ -44,6 +44,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'mattn/vim-lsp-icons'
+Plug 'mattn/vim-goimports'
+Plug 'mattn/vim-sonictemplate'
 
 " {{{ lsp
 Plug 'prabirshrestha/asyncomplete.vim'
@@ -346,7 +348,6 @@ require'nvim-treesitter.configs'.setup {
 EOF
 " }}}
 
-
 "{{{ lsp
 if empty(globpath(&rtp, 'autoload/lsp.vim'))
   finish
@@ -396,7 +397,7 @@ autocmd TermOpen * startinsert
 
 " {{{ other
 cd ~
-
+colorscheme default
 hi FgCocErrorFloatBgCocFloating guifg=#000000
 filetype plugin indent on
 " }}}
