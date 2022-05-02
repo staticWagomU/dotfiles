@@ -25,11 +25,13 @@ let &g:titlestring =
 call plug#begin('~/.vim/plugged')
 
 Plug 'vim-jp/vimdoc-ja'
+
 " {{{ fern
 Plug 'lambdalisue/fern.vim'
 Plug 'yuki-yano/fern-preview.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 " }}}
+
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'mattn/emmet-vim'
 Plug 'hrsh7th/vim-searchx'
@@ -39,6 +41,7 @@ Plug 'simeji/winresizer'
 Plug 'cohama/lexima.vim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " {{{ ddc
 Plug 'Shougo/ddc.vim'
 Plug 'vim-denops/denops.vim'
@@ -50,6 +53,7 @@ Plug 'Shougo/ddc-nvim-lsp'
 Plug 'LumaKernel/ddc-file'
 Plug 'Shougo/ddc-converter_remove_overlap'
 " }}}
+
 call plug#end()
 "}}}
 
@@ -77,10 +81,6 @@ xnoremap <Leader> <Nop>
 
 inoremap <silent> jj <ESC>
 
-"inoremap <C-h> <Left>
-"inoremap <C-j> <Down>
-"inoremap <C-k> <Up>
-"inoremap <C-l> <Right>
 
 " expand path
 cmap <C-x> <C-r>=expand('%:p:h')<CR>\
@@ -104,8 +104,8 @@ if s:enable_ddc
 	call ddc#custom#patch_global('sourceoptions', {
 	      \ '_': {
 	      \   'matchers': ['matcher_head'],
-	      \   'sorters': ['sorter_rank']},
-	      \   'converters': ['converter_remove_overlap'],
+	      \   'sorters': ['sorter_rank'],
+	      \   'converters': ['converter_remove_overlap'],},
 	      \ 'around': {'mark': 'Around'},
 	      \ 'nvim-lsp': {
 	      \   'mark': 'lsp',
@@ -118,6 +118,14 @@ if s:enable_ddc
              \ })
 
 	" Use ddc
+	" <TAB>: completion.
+	inoremap <silent><expr> <TAB>
+	\ ddc#map#pum_visible() ? '<C-n>' :
+	\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+	\ '<TAB>' : ddc#map#manual_complete()
+
+	" <S-TAB>: completion back.
+	inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 	call ddc#enable()
 endif
 "}}}
