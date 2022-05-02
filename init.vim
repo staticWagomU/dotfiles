@@ -239,4 +239,6 @@ autocmd TermOpen * startinsert
 
 " {{{ other
 cd ~
+
+hi FgCocErrorFloatBgCocFloating guifg=#000000
 " }}}
