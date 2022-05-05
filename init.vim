@@ -66,6 +66,7 @@ Plug 'Shougo/ddc-matcher_head' " filters
 Plug 'Shougo/ddc-sorter_rank' " filters
 Plug 'Shougo/ddc-nvim-lsp'
 Plug 'Shougo/ddc-converter_remove_overlap'
+
 " }}}
 
 call plug#end()
@@ -112,7 +113,7 @@ nnoremap <Leader>bd :<C-u>bd<CR>
 
 "{{{ ddc
 if s:enable_ddc
-	call ddc#custom#patch_global('sources', ['nvim-lsp', 'around'])
+	call ddc#custom#patch_global('sources', ['around', 'nvim-lsp'])
 
 	call ddc#custom#patch_global('sourceoptions', {
 	      \ '_': {
@@ -130,13 +131,11 @@ if s:enable_ddc
 	     \ 'nvim-slp': {'kindLabels': {'Class': 'c'}}
              \ })
 
-	" <TAB>: completion.
 	inoremap <silent><expr> <TAB>
 	\ ddc#map#pum_visible() ? '<C-n>' :
 	\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
 	\ '<TAB>' : ddc#map#manual_complete()
 
-	" <S-TAB>: completion back.
 	inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 
 	call ddc#enable()
@@ -401,7 +400,7 @@ autocmd TermOpen * startinsert
 cd ~
 colorscheme desert
 hi FgCocErrorFloatBgCocFloating guifg=#000000
-hi Pmenu guibg=#ffbdff
+hi NormalFloat guibg=#a3be8c
 filetype plugin indent on
-set pumblend=30
+set winblend=10
 " }}}
