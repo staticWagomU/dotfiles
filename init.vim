@@ -49,6 +49,10 @@ Plug 'mattn/vim-goimports'
 Plug 'mattn/vim-sonictemplate'
 Plug 'machakann/vim-sandwich'
 
+" {{{ colorscheme
+Plug 'arcticicestudio/nord-vim'
+" }}}
+
 " {{{ lsp
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
@@ -186,10 +190,10 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
-    component_separators = { left = 'î‚±', right = 'î‚³' },
-    section_separators = { left = 'î‚°', right = 'î‚²' },
-    --component_separators = { left = 'î‚µ', right = 'î‚·' },
-    --section_separators = { left = 'î‚´', right = 'î‚¶' },
+    component_separators = { left = 'ûž±', right = 'ûž³' },
+    section_separators = { left = 'ûž°', right = 'ûž²' },
+    --component_separators = { left = 'ûžµ', right = 'ûž·' },
+    --section_separators = { left = 'ûž´', right = 'ûž¶' },
     --component_separators = '',
     --section_separators = '',
     disabled_filetypes = {},
@@ -374,7 +378,7 @@ command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_auto_popup = 1
-let g:asyncomplete_auto_completeopt = 0
+let g:asyncomplete_auto_completeopt = 1 
 let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 1
 endif

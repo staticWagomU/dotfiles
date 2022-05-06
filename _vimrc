@@ -1,4 +1,3 @@
-" Vim with all enhancements
 filetype off
 filetype plugin indent off
 
@@ -24,6 +23,7 @@ let &g:titlestring =
 " {{{ plugins
 call plug#begin()
 
+" {{{ lsp
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
@@ -32,12 +32,28 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-lsp-icons'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'cohama/lexima.vim'
+" }}}
+
+" {{{ fern
 Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-git-status.vim'
+" }}}
+
+" {{{ golang
 Plug 'mattn/vim-goimports'
+Plug 'mattn/vim-gomod'
+" }}}
+
+Plug 'cohama/lexima.vim'
 Plug 'mattn/vim-sonictemplate'
 Plug 'machakann/vim-sandwich'
-Plug 'mattn/vim-gomod'
+Plug 'mattn/emmet-vim'
+Plug 'lambdalisue/gin.vim'
+Plug 'simeji/winresizer'
+
+" {{{ colorscheme
+Plug 'arcticicestudio/nord-vim'
+" }}}
 
 call plug#end()
 " }}}
@@ -74,7 +90,6 @@ nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -toggle<CR>
 let g:fern#default_hidden=1
 " }}}
 
-
 " {{{ lsp
 if empty(globpath(&rtp, 'autoload/lsp.vim'))
   finish
@@ -104,8 +119,6 @@ function! s:on_lsp_buffer_enabled() abort
 
     let g:lsp_format_sync_timeout = 500
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-
-    " refer to doc to add more commands
 endfunction
 
 augroup lsp_install
@@ -117,7 +130,7 @@ command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_auto_popup = 1
-let g:asyncomplete_auto_completeopt = 0
+let g:asyncomplete_auto_completeopt = 1
 let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 0
 
@@ -145,7 +158,7 @@ autocmd FileType vim setlocal foldmethod=marker
 
 " {{{ other
 
-colorscheme desert
-filetype plugin indent on
+colorscheme nord
 cd ~
+filetype plugin indent on
 " }}}
