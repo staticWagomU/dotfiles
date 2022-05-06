@@ -95,6 +95,9 @@ let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
 xnoremap <Leader> <Nop>
 
+nmap s <Nop>
+xmap s <Nop>
+
 inoremap <silent> jj <ESC>
 
 
