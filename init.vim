@@ -1,5 +1,5 @@
-let s:enable_coc = v:false
-let s:enable_ddc = v:true
+let s:enable_coc = v:true
+let s:enable_ddc = v:false
 let s:enable_lsp = v:false
 filetype off
 filetype plugin indent off
@@ -47,6 +47,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'mattn/vim-lsp-icons'
 Plug 'mattn/vim-goimports'
 Plug 'mattn/vim-sonictemplate'
+Plug 'machakann/vim-sandwich'
 
 " {{{ lsp
 Plug 'prabirshrestha/asyncomplete.vim'
