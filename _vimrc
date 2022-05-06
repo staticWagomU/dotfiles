@@ -52,6 +52,11 @@ Plug 'lambdalisue/gin.vim'
 Plug 'simeji/winresizer'
 Plug 'thaerkh/vim-workspace'
 
+" {{{ airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" }}}
+
 " {{{ colorscheme
 Plug 'arcticicestudio/nord-vim'
 " }}}
@@ -142,6 +147,11 @@ let g:lsp_text_edit_enabled = 0
 nnoremap <leader>s :ToggleWorkspace<CR>
 " }}}
 
+" {{{ airline
+let g:airline_theme = 'nord'
+let g:airline_powerline_fonts = 1
+" }}}
+
 " }}}
 
 " {{{ commands
@@ -152,7 +162,7 @@ augroup restore-cursor
         \ |   exe "normal! g`\""
         \ | endif
   autocmd BufWinEnter *
-  
+
         \ : if empty(&buftype) && line('.') > winheight(0) / 2
         \ |   execute 'normal! zz'
         \ | endif
