@@ -407,7 +407,7 @@ autocmd FileType vim setlocal foldmethod=marker
 
 " {{{ other
 cd ~
-colorscheme desert
+colorscheme nord
 hi FgCocErrorFloatBgCocFloating guifg=#000000
 hi NormalFloat guibg=#a3be8c
 filetype plugin indent on

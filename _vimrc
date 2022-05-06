@@ -50,6 +50,7 @@ Plug 'machakann/vim-sandwich'
 Plug 'mattn/emmet-vim'
 Plug 'lambdalisue/gin.vim'
 Plug 'simeji/winresizer'
+Plug 'thaerkh/vim-workspace'
 
 " {{{ colorscheme
 Plug 'arcticicestudio/nord-vim'
@@ -135,6 +136,10 @@ let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 0
 
 
+" }}}
+
+" {{{ vim-workspace
+nnoremap <leader>s :ToggleWorkspace<CR>
 " }}}
 
 " }}}
