@@ -240,7 +240,6 @@ augroup fern-settings
   autocmd FileType fern call s:fern_settings()
 augroup END
 
-autocmd FileType vim setlocal foldmethod=marker
 
 
 "{{{ fern-git-status
@@ -398,6 +397,8 @@ augroup restore-cursor
 augroup END
 
 autocmd TermOpen * startinsert
+
+autocmd FileType vim setlocal foldmethod=marker
 "}}}
 
 " {{{ other
