@@ -193,6 +193,7 @@ endif
 " {{{ translate.vim
 let g:translate_source = "en"
 let g:translate_target = "ja"
+vmap t <Plug>(VTranslate)
 " }}}
 
 "{{{ ddu
