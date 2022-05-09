@@ -23,6 +23,7 @@ let &g:titlestring =
 " {{{ plugins
 call plug#begin()
 
+Plug 'vim-jp/vimdoc-ja'
 Plug 'vim-denops/denops.vim'
 Plug 'cohama/lexima.vim'
 Plug 'mattn/vim-sonictemplate'
