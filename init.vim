@@ -186,35 +186,7 @@ endif
 
 " {{{ lualine
 lua << EOF
-require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = 'nord',
-    component_separators = { left = 'рт', right = 'рф' },
-    section_separators = { left = 'рс', right = 'ру' },
-    disabled_filetypes = {},
-    always_divide_middle = true,
-    globalstatus = false,
-  },
-  sections = {
-	lualine_a = { "mode" },
-	lualine_b = { {"filename", path = 1} },
-	lualine_c = {},
-	lualine_x = { "encoding", "fileformat", "filetype" },
-	lualine_y = { "filesize", "progress" },
-	lualine_z = { "location" },
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {'filename'},
-    lualine_c = {},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {}
-}
+require('lualine').setup {}
 EOF
 "}}}
 
