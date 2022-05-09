@@ -31,6 +31,9 @@ return
 #n::Run, C:\Program Files\Neovim\bin\nvim-qt.exe
 return
 
+#!n::Run, C:\Program Files\Vim\vim82\gvim.exe
+return
+
 ; Capture screenshot
 #b::
   Send, !{PrintScreen}
