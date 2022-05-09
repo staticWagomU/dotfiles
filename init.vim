@@ -1,5 +1,5 @@
-let s:enable_coc = v:true
-let s:enable_ddc = v:false
+let s:enable_coc = v:false
+let s:enable_ddc = v:true
 let s:enable_lsp = v:false
 filetype off
 filetype plugin indent off
@@ -136,7 +136,7 @@ if s:enable_ddc
 
 	call ddc#custom#patch_global('sourceparams', {
              \ 'around': {'maxsize': 500},
-	     \ 'nvim-slp': {'kindLabels': {'Class': 'c'}}
+	     \ 'nvim-lsp': {'kindLabels': {'Class': 'c'}}
              \ })
 
 	inoremap <silent><expr> <TAB>
@@ -189,7 +189,7 @@ lua << EOF
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'auto',
+    theme = 'nord',
     component_separators = { left = 'рт', right = 'рф' },
     section_separators = { left = 'рс', right = 'ру' },
     disabled_filetypes = {},

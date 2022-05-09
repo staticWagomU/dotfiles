@@ -1,1 +1,1 @@
-Guifont CaskaydiaCove_Nerd_Font_Mono:h12:cANSI:qDRAFT
+Guifont! CaskaydiaCove Nerd Font Mono:h12:cANSI:qDRAFT
