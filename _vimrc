@@ -29,7 +29,6 @@ Plug 'cohama/lexima.vim'
 Plug 'mattn/vim-sonictemplate'
 Plug 'machakann/vim-sandwich'
 Plug 'mattn/emmet-vim'
-Plug 'lambdalisue/gin.vim'
 Plug 'simeji/winresizer'
 Plug 'thaerkh/vim-workspace'
 Plug 'skanehira/translate.vim'
@@ -76,6 +75,11 @@ Plug 'Shougo/ddu-filter-matcher_substring'
 Plug 'Shougo/ddu-commands.vim'
 Plug 'Shougo/ddu-kind-file'
 "}}}
+
+" {{{ git
+Plug 'lambdalisue/gin.vim'
+Plug 'airblade/vim-gitgutter'
+" }}}
 
 call plug#end()
 " }}}
@@ -240,6 +244,34 @@ nnoremap <silent> <SID>[ug]n :<C-u>Ddu file -source-param-new -volatile<CR>
 nnoremap <silent> <SID>[ug]f :<C-u>Ddu file<CR>
 "}}}
 
+" {{{ git-gutter
+" By default updatetime is 4000 ms
+set updatetime=100
+
+" Use fontawesome icons as signs
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '>'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = '<'
+
+" Default key mapping off
+let g:gitgutter_map_keys = 0
+
+" Execute after loading the color schema
+" https://teratail.com/questions/29844#reply-46767
+"augroup vimrc_vim_gitgutter
+"  autocmd!
+"   sign column bg color
+"   autocmd VimEnter,ColorScheme * highlight SignColumn guibg=bg ctermbg=bg
+"
+"   sign column color
+"  autocmd VimEnter,ColorScheme * highlight GitGutterAdd guifg=#000900 ctermfg=2
+"  autocmd VimEnter,ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+"  autocmd VimEnter,ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+"augroup END
+" }}}
+
 " }}}
 
 " {{{ commands
@@ -264,4 +296,5 @@ autocmd FileType vim setlocal foldmethod=marker
 colorscheme nord
 cd ~
 filetype plugin indent on
+
 " }}}
