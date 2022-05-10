@@ -86,6 +86,20 @@ call plug#end()
 " }}}
 
 " {{{ keymaps
+"         モード  | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang | ~
+"  コマンド       +------+-----+-----+-----+-----+-----+------+------+ ~
+"  [nore]map      | yes  |  -  |  -  | yes | yes | yes |  -   |  -   |
+"  n[nore]map     | yes  |  -  |  -  |  -  |  -  |  -  |  -   |  -   |
+"  [nore]map!     |  -   | yes | yes |  -  |  -  |  -  |  -   |  -   |
+"  i[nore]map     |  -   | yes |  -  |  -  |  -  |  -  |  -   |  -   |
+"  c[nore]map     |  -   |  -  | yes |  -  |  -  |  -  |  -   |  -   |
+"  v[nore]map     |  -   |  -  |  -  | yes | yes |  -  |  -   |  -   |
+"  x[nore]map     |  -   |  -  |  -  | yes |  -  |  -  |  -   |  -   |
+"  s[nore]map     |  -   |  -  |  -  |  -  | yes |  -  |  -   |  -   |
+"  o[nore]map     |  -   |  -  |  -  |  -  |  -  | yes |  -   |  -   |
+"  t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  | yes  |  -   |
+"  l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
+
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
 xnoremap <Leader> <Nop>
@@ -107,7 +121,6 @@ nnoremap <Leader>bn :<C-u>bn<CR>
 nnoremap <Leader>bp :<C-u>bp<CR>
 nnoremap <Leader>bd :<C-u>bd<CR>
 nnoremap <silent> <Leader>cd :<C-u>cd %:p:h<CR> 
-
 " }}}
 
 " {{{ plugin config
@@ -173,8 +186,6 @@ let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_auto_completeopt = 1
 let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 0
-
-
 " }}}
 
 " {{{ vim-workspace
@@ -296,9 +307,7 @@ autocmd FileType vim setlocal foldmethod=marker
 " }}}
 
 " {{{ other
-
 colorscheme nord
 cd ~
 filetype plugin indent on
-
 " }}}
