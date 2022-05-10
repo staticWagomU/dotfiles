@@ -17,7 +17,7 @@ set backupdir=~
 set undodir=~
 set title
 let &g:titlestring =
-      \ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
+\ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
 " }}}
 
 " {{{ plugins
@@ -105,6 +105,7 @@ nnoremap <Leader>w :<C-u>w<CR>
 nnoremap <Leader>bn :<C-u>bn<CR>
 nnoremap <Leader>bp :<C-u>bp<CR>
 nnoremap <Leader>bd :<C-u>bd<CR>
+nnoremap <silent> <Leader>cd :<C-u>cd %:p:h<CR> 
 
 " }}}
 
