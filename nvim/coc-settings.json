@@ -1,0 +1,46 @@
+{
+	"languageserver": {
+		"csharp-ls": {
+			"command": "csharp-ls",
+			"filetypes": [
+				"cs"
+			],
+			"rootPatterns": [
+				"*.csproj",
+				".vim/",
+				".git/",
+				".hg/"
+			]
+		},
+		"golang": {
+			"command": "gopls",
+			"rootPatterns": [
+				"go.mod",
+				".vim/",
+				".git/",
+				".hg/"
+			],
+			"filetypes": [
+				"go"
+			]
+		}
+	},
+	"coc.preferences.formatOnSaveFiletypes": [
+		"go"
+	],
+	"deno.enable": true,
+	"deno.lint": true,
+	"deno.unstable": true,
+	"deno.suggest.imports.hosts": {
+		"https://deno.land/": true
+	},
+	"deno.config": "./deno.json",
+	"prettier.disableLanguages": [
+		"typescript",
+		"javascript",
+		"typescriptreact",
+		"javascriptreact",
+		"markdown"
+	],
+	"typescript.format.enabled": false
+}
