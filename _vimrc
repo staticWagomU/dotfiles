@@ -12,6 +12,7 @@ set hidden
 set laststatus=2
 set mouse=a
 set clipboard=unnamed,autoselect
+set belloff=all
 set directory=~
 set backupdir=~
 set undodir=~
