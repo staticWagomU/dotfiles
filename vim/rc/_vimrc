@@ -86,8 +86,8 @@ call plug#end()
 " }}}
 
 " {{{ keymaps
-"         モード  | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang | ~
-"  コマンド       +------+-----+-----+-----+-----+-----+------+------+ ~
+"           Mode  | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang | ~
+"  Command        +------+-----+-----+-----+-----+-----+------+------+ ~
 "  [nore]map      | yes  |  -  |  -  | yes | yes | yes |  -   |  -   |
 "  n[nore]map     | yes  |  -  |  -  |  -  |  -  |  -  |  -   |  -   |
 "  [nore]map!     |  -   | yes | yes |  -  |  -  |  -  |  -   |  -   |
