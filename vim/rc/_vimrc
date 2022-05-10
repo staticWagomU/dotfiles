@@ -118,6 +118,7 @@ nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -toggle<CR>
 let g:fern#default_hidden=1
 
 function! s:fern_settings() abort
+  nmap <silent> <buffer> <C-m> <Plug>(fern-action-move)
   nmap <silent> <buffer> <C-S-d> <Plug>(fern-action-new-dir)
   setlocal signcolumn=no
   setlocal nonumber
