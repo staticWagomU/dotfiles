@@ -33,6 +33,7 @@ Plug 'mattn/emmet-vim'
 Plug 'simeji/winresizer'
 Plug 'thaerkh/vim-workspace'
 Plug 'skanehira/translate.vim'
+Plug 'mhinz/vim-startify'
 
 " {{{ lsp
 Plug 'prabirshrestha/async.vim'
@@ -56,9 +57,14 @@ Plug 'mattn/vim-gomod'
 " }}}
 
 " {{{ airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 " }}}
+
+" {{{ lightline.vim
+Plug 'itchyny/lightline.vim'
+" }}}
+
 
 " {{{ colorscheme
 Plug 'arcticicestudio/nord-vim'
@@ -192,16 +198,26 @@ let g:lsp_text_edit_enabled = 0
 nnoremap <leader>s :ToggleWorkspace<CR>
 " }}}
 
-" {{{ airline
-let g:airline_theme = 'nord'
-let g:airline_powerline_fonts = 1
-set t_Co=256
-let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#branch#enabled = 1
+"" {{{ airline
+"let g:airline_theme = 'nord'
+"let g:airline_powerline_fonts = 1
+"set t_Co=256
+"let g:airline#extensions#hunks#enabled = 0
+"let g:airline#extensions#branch#enabled = 1
+"
+"if !exists('g:airline_symbols')
+"  let g:airline_symbols = {}
+"endif
+" }}}
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+" {{{ lightline.vim
+let g:lightline = {
+	\ 'colorscheme': 'nord',
+	\
+	\}
+
+let g:lightline.separator = { 'left': '', 'right': '' }
+let g:lightline.subseparator = { 'left': '|', 'right': '|' }
 " }}}
 
 " {{{ translate.vim
