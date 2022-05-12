@@ -28,27 +28,28 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'vim-jp/vimdoc-ja'
 
-" {{{ fern
-Plug 'lambdalisue/fern.vim'
-Plug 'yuki-yano/fern-preview.vim'
-Plug 'lambdalisue/fern-git-status.vim'
-" }}}
-
 Plug 'mattn/emmet-vim'
 Plug 'hrsh7th/vim-searchx'
 Plug 'vim-denops/denops.vim'
-Plug 'lambdalisue/gin.vim'
 Plug 'simeji/winresizer'
 Plug 'cohama/lexima.vim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'neovim/nvim-lspconfig'
-Plug 'mattn/vim-lsp-icons'
 Plug 'mattn/vim-goimports'
 Plug 'mattn/vim-sonictemplate'
 Plug 'machakann/vim-sandwich'
 Plug 'mhinz/vim-startify'
+
+" {{{ git
+Plug 'lambdalisue/gin.vim'
+" }}}
+
+" {{{ fern
+Plug 'lambdalisue/fern.vim'
+Plug 'yuki-yano/fern-preview.vim'
+Plug 'lambdalisue/fern-git-status.vim'
+" }}}
 
 " {{{ colorscheme
 Plug 'arcticicestudio/nord-vim'
@@ -58,6 +59,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
+Plug 'neovim/nvim-lspconfig'
 Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-lsp-icons'
 
