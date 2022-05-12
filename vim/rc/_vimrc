@@ -13,6 +13,9 @@ set laststatus=2
 set mouse=a
 set clipboard=unnamed,autoselect
 set belloff=all
+set formatoptions+=mMj
+set ambiwidth=double
+set matchpairs+=「:」,（:）
 set directory=~
 set backupdir=~
 set undodir=~
@@ -301,6 +304,10 @@ let g:gitgutter_map_keys = 0
 "  autocmd VimEnter,ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 "  autocmd VimEnter,ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 "augroup END
+" }}}
+
+" {{{ startify
+let g:startify_bookmarks = ["~/dotfiles/vim/rc/_vimrc", "~/dotfiles/vim/rc/gvimrc"]
 " }}}
 
 " }}}

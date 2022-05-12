@@ -354,20 +354,18 @@ let g:lsp_text_edit_enabled = 1
 endif
 "}}}
 
-"}}}
-
 " {{{ startify
-let s:header = [
-      \ '',
-      \ '                       __         _    _        _    _      _         _      ',
-      \ '                      / /    ___ | |_ ( ) ___  | |_ | |__  (_) _ __  | | __  ',
-      \ '                     / /    / _ \| __||/ / __| | __|| |_ \ | || |_ \ | |/ /  ',
-      \ '                    / /___ |  __/| |_    \__ \ | |_ | | | || || | | ||   <   ',
-      \ '                    \____/  \___| \__|   |___/  \__||_| |_||_||_| |_||_|\_\  ',
-      \ '                                                                             ',
-      \ '                                 [ ThinkVim   Author:taigacute ]             ',
-      \ '',
-      \ ]
+"let s:header = [
+"      \ '',
+"      \ '                       __         _    _        _    _      _         _      ',
+"      \ '                      / /    ___ | |_ ( ) ___  | |_ | |__  (_) _ __  | | __  ',
+"      \ '                     / /    / _ \| __||/ / __| | __|| |_ \ | || |_ \ | |/ /  ',
+"      \ '                    / /___ |  __/| |_    \__ \ | |_ | | | || || | | ||   <   ',
+"      \ '                    \____/  \___| \__|   |___/  \__||_| |_||_||_| |_||_|\_\  ',
+"      \ '                                                                             ',
+"      \ '                                 [ ThinkVim   Author:taigacute ]             ',
+"      \ '',
+"      \ ]
 
 
 function! s:center(lines) abort
@@ -377,9 +375,11 @@ function! s:center(lines) abort
   return centered_lines
 endfunction
 
-let g:startify_custom_header = s:center(s:header)
+"let g:startify_custom_header = s:center(s:header)
+let g:startify_bookmarks = ["~/dotfiles/nvim/rc/init.vim", "~/dotfiles/nvim/rc/ginit.vim"]
 " }}}
 
+"}}}
 
 " {{{ autocmd
 augroup restore-cursor
