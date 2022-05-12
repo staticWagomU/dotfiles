@@ -377,6 +377,10 @@ endfunction
 
 "let g:startify_custom_header = s:center(s:header)
 let g:startify_bookmarks = ["~/dotfiles/nvim/rc/init.vim", "~/dotfiles/nvim/rc/ginit.vim"]
+autocmd User Startified setlocal cursorline
+let g:startify_skiplist = [
+   \ '.*\.jax$',
+   \ ]
 " }}}
 
 "}}}

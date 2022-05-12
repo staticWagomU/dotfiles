@@ -308,6 +308,10 @@ let g:gitgutter_map_keys = 0
 
 " {{{ startify
 let g:startify_bookmarks = ["~/dotfiles/vim/rc/_vimrc", "~/dotfiles/vim/rc/gvimrc"]
+autocmd User Startified setlocal cursorline
+let g:startify_skiplist = [
+   \ '.*\.jax$',
+   \ ]
 " }}}
 
 " }}}
