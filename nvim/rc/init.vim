@@ -585,6 +585,12 @@ let g:startify_bookmarks = ["~/dotfiles/nvim/rc/init.vim", "~/dotfiles/nvim/rc/g
 autocmd User Startified setlocal cursorline
 let g:startify_skiplist = [
    \ '.*\.jax$',
+   \ 'runtime/doc/.*\.txt$',
+   \ 'bundle/.*/doc/.*\.txt$',
+   \ 'plugged/.*/doc/.*\.txt$',
+   \ '/.git/',
+   \ 'fugitiveblame$',
+   \ escape(fnamemodify(resolve($VIMRUNTIME), ':p'), '\') .'doc/.*\.txt$'
    \ ]
 " }}}
 
