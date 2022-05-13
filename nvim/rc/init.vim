@@ -179,16 +179,17 @@ cmp.setup({
 		end,
 	},
 	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
+		--completion = cmp.config.window.bordered(),
+		--documentation = cmp.config.window.bordered(),
 	},
 	formatting = {
 		--fields = {'kind', 'addr', 'menu'},
 		format = lspkind.cmp_format({
-			mode = 'symbol',
+			mode = 'symbol_text',
 			maxwidth = 50,
 			with_text = false,
 		})
+
 	},
 	mapping = cmp.mapping.preset.insert({
 		['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -242,10 +243,18 @@ cmp.setup.cmdline(':', {
 
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+local on_init = function(client)
+	client.config.flags = {}
+	if client.config.flags then
+		client.config.flags.allow_incremental_sync = true
+		client.config.flags.debounce_text_changes = 200
+	end
+end
 require'lspconfig'.gopls.setup {
 	capabilities = capabilities,
 	on_init = on_init;
-		init_options = {
+	init_options = {
 		gofumpt = true,
 		usePlaceholders = true,
 		semanticTokens = true,
@@ -265,7 +274,49 @@ require'lspconfig'.gopls.setup {
 		}
 	}
 }
+
+require'lspconfig'.vimls.setup {
+	on_init = on_init;
+	capabilities = capabilities,
+}
+
+--require'lspconfig'.tsserver.setup {
+--	on_init = on_init;
+--	capabilities = capabilities,
+--	on_attach = function(client)
+--		client.resolved_capabilities.documentFormattingProvider = false
+--	end,
+--}
+
+require'lspconfig'.denols.setup {
+	on_init = on_init;
+	capabilities = capabilities,
+	init_options = {
+		suggest = {
+			autoImports = true,
+			completeFunctionCalls = true,
+			names = true,
+			paths = true,
+			imports = {
+				autoDiscover = false,
+				hosts = {
+					['https://deno.land/'] = true,
+				},
+			},
+		},
+	}
+}
 EOF
+nnoremap <silent> gf<CR>       <Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gfv          <Cmd>vsplit<CR><Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gfs          <Cmd>split<CR><Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <Leader>i    <Cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <Leader>g    <Cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> <Leader>f    <Cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <Leader>r    <Cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> <Leader><CR> <Cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <C-k>        <Cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> <C-j>        <Cmd>lua vim.diagnostic.goto_next()<CR>
 "}}}
 endif
 
