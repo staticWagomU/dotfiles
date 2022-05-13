@@ -166,8 +166,8 @@ nnoremap <Leader>bd :<C-u>bd<CR>
 
 "{{{ pluginConfig
 
-"{{{nvim-cmp
 if s:enable_nvim_cmp
+"{{{nvim-cmp
 lua <<EOF
 local lspkind = require'lspkind'
 local cmp = require'cmp'
@@ -266,11 +266,11 @@ require'lspconfig'.gopls.setup {
 	}
 }
 EOF
-endif
 "}}}
+endif
 
-"{{{ ddc
 if s:enable_ddc
+"{{{ ddc
 call ddc#custom#patch_global('sources', ['around', 'nvim-lsp'])
 
 call ddc#custom#patch_global('sourceoptions', {
@@ -297,42 +297,41 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 
 call ddc#enable()
-endif
 "}}}
+endif
 
-"{{{ coc
 if s:enable_coc
-	nnoremap [dev]    <Nop>
-	xnoremap [dev]    <Nop>
-	nmap     m        [dev]
-	xmap     m        [dev]
+"{{{ coc
+nnoremap [dev]    <Nop>
+xnoremap [dev]    <Nop>
+nmap     m        [dev]
+xmap     m        [dev]
 
-	let g:coc_global_extensions = ['coc-tsserver', 'coc-eslint8', 'coc-prettier', 'coc-git', 'coc-fzf-preview', 'coc-lists']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-eslint8', 'coc-prettier', 'coc-git', 'coc-fzf-preview', 'coc-lists']
 
-	inoremap <silent> <expr> <c-space> coc#refresh()
-	nnoremap <silent> K       :<c-u>call <sid>show_documentation()<cr>
-	nmap     <silent> [dev]rn <plug>(coc-rename)
-	nmap     <silent> [dev]a  <plug>(coc-codeaction-selected)iw
+inoremap <silent> <expr> <c-space> coc#refresh()
+nnoremap <silent> K       :<c-u>call <sid>show_documentation()<cr>
+nmap     <silent> [dev]rn <plug>(coc-rename)
+nmap     <silent> [dev]a  <plug>(coc-codeaction-selected)iw
 
-	function! s:coc_typescript_settings() abort
-	  nnoremap <silent> <buffer> [dev]f :<c-u>coccommand eslint.executeautofix<cr>:coccommand prettier.formatfile<cr>
-	endfunction
+function! s:coc_typescript_settings() abort
+  nnoremap <silent> <buffer> [dev]f :<c-u>coccommand eslint.executeautofix<cr>:coccommand prettier.formatfile<cr>
+endfunction
 
-	augroup coc_ts
-	  autocmd!
-	  autocmd filetype typescript,typescriptreact call <sid>coc_typescript_settings()
-	augroup end
+augroup coc_ts
+  autocmd!
+  autocmd filetype typescript,typescriptreact call <sid>coc_typescript_settings()
+augroup end
 
-	function! s:show_documentation() abort
-	  if index(['vim','help'], &filetype) >= 0
-	    execute 'h ' . expand('<cword>')
-	  elseif coc#rpc#ready()
-	    call cocactionasync('dohover')
-	  endif
-	endfunction
-
-endif
+function! s:show_documentation() abort
+  if index(['vim','help'], &filetype) >= 0
+    execute 'h ' . expand('<cword>')
+  elseif coc#rpc#ready()
+    call cocactionasync('dohover')
+  endif
+endfunction
 "}}}
+endif
 
 " {{{ lualine
 lua << EOF
@@ -399,8 +398,8 @@ cnoremap <C-k> <Cmd>call searchx#prev()<CR>
 cnoremap <C-j> <Cmd>call searchx#next()<CR>
 "}}}
 
-" {{{ lsp-config
 if s:enable_lsp
+" {{{ lsp-config
 lua << EOF
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -463,8 +462,8 @@ end
 --  },
 --}
 EOF
-endif
 " }}}
+endif
 
 " {{{ treesitter
 lua <<EOF
@@ -476,8 +475,8 @@ require'nvim-treesitter.configs'.setup {
 EOF
 " }}}
 
-"{{{ lsp
 if s:enable_lsp
+"{{{ lsp
 if empty(globpath(&rtp, 'autoload/lsp.vim'))
   finish
 endif
@@ -502,8 +501,8 @@ let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_auto_completeopt = 1 
 let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 1
-endif
 "}}}
+endif
 
 " {{{ startify
 "let s:header = [
