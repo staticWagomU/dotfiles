@@ -1,3 +1,4 @@
+"{{{options
 if has('vim_starting')
   set encoding=utf-8
   set fileencodings=iso-2022-jp,ucs-bom,sjis,utf-8,euc-jp,cp932,default,latin1
@@ -28,6 +29,7 @@ set clipboard=unnamedplus
 set title
 let &g:titlestring =
       \ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
+"}}}
 
 "{{{ plugins
 call plug#begin('~/.vim/plugged')
@@ -56,6 +58,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 "}}}
 
+if s:enable_nvim_cmp
 "{{{ nvim-cmp
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
@@ -77,9 +80,11 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'onsails/lspkind.nvim'
 Plug 'petertriho/cmp-git'
 "}}}
+endif
 
 " {{{ git
 Plug 'lambdalisue/gin.vim'
+Plug 'airblade/vim-gitgutter'
 " }}}
 
 " {{{ fern
@@ -92,8 +97,8 @@ Plug 'lambdalisue/fern-git-status.vim'
 Plug 'arcticicestudio/nord-vim'
 " }}}
 
-" {{{ lsp
 if s:enable_lsp
+" {{{ lsp
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
@@ -102,19 +107,19 @@ Plug 'mattn/vim-lsp-settings'
 
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
-endif
 "}}}
+endif
 
-" {{{ ddc
 if s:enable_ddc
+" {{{ ddc
 Plug 'Shougo/ddc.vim'
 Plug 'Shougo/ddc-around' " sources
 Plug 'Shougo/ddc-matcher_head' " filters
 Plug 'Shougo/ddc-sorter_rank' " filters
 Plug 'Shougo/ddc-nvim-lsp'
 Plug 'Shougo/ddc-converter_remove_overlap'
-endif
 " }}}
+endif
 
 call plug#end()
 "}}}
@@ -533,6 +538,21 @@ let g:startify_skiplist = [
 let g:translate_source = "en"
 let g:translate_target = "ja"
 vmap t <Plug>(VTranslate)
+" }}}
+
+" {{{ git-gutter
+" By default updatetime is 4000 ms
+set updatetime=100
+
+" Use fontawesome icons as signs
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '>'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = '<'
+
+" Default key mapping off
+let g:gitgutter_map_keys = 0
 " }}}
 
 "}}}
