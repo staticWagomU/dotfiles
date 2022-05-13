@@ -37,6 +37,7 @@ Plug 'simeji/winresizer'
 Plug 'thaerkh/vim-workspace'
 Plug 'skanehira/translate.vim'
 Plug 'mhinz/vim-startify'
+Plug 'thinca/vim-fontzoom'
 
 " {{{ lsp
 Plug 'prabirshrestha/async.vim'
@@ -200,6 +201,13 @@ let g:lsp_text_edit_enabled = 0
 " {{{ vim-workspace
 nnoremap <leader>s :ToggleWorkspace<CR>
 " }}}
+
+"{{{vim-fontzoom
+nnoremap +			<Plug>(fontzoom-larger)
+nnoremap -			<Plug>(fontzoom-smaller)
+nnoremap <C-ScrollWheelUp>	<Plug>(fontzoom-larger)
+nnoremap <C-ScrollWheelDown>	<Plug>(fontzoom-smaller)
+"}}}
 
 "" {{{ airline
 "let g:airline_theme = 'nord'

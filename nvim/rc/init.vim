@@ -384,71 +384,6 @@ endfunction
 "}}}
 endif
 
-" {{{ lualine
-lua << EOF
-require('lualine').setup {}
-EOF
-"}}}
-
-"{{{ jumpcursor
-nmap [j <Plug>(jumpcursor-jump)
-"}}}
-
-"{{{ fern
-nnoremap <silent> <Leader>e :<C-u>Fern . -drawer <CR>
-nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -toggle<CR>
-let g:fern#default_hidden=1
-
-function! s:fern_settings() abort
-  nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
-  nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
-  nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
-  nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
-  nmap <silent> <buffer> <C-m> <Plug>(fern-action-move)
-  nmap <silent> <buffer> <C-S-d> <Plug>(fern-action-new-dir)
-endfunction
-
-augroup fern-settings
-  autocmd!
-  autocmd FileType fern call s:fern_settings()
-augroup END
-
-
-
-"{{{ fern-git-status
-" Disable listing ignored files/directories
-let g:fern_git_status#disable_ignored = 1
-" Disable listing untracked files
-let g:fern_git_status#disable_untracked = 1
-" Disable listing status of submodules
-let g:fern_git_status#disable_submodules = 1
-" Disable listing status of directories
-let g:fern_git_status#disable_directories = 1
-"}}}
-
-"}}}
-
-"{{{ vim-searchx
-" Overwrite / and ?.
-nnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
-nnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
-xnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
-xnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
-cnoremap ; <Cmd>call searchx#select()<CR>
-
-" Move to next/prev match.
-nnoremap N <Cmd>call searchx#prev_dir()<CR>
-nnoremap n <Cmd>call searchx#next_dir()<CR>
-xnoremap N <Cmd>call searchx#prev_dir()<CR>
-xnoremap n <Cmd>call searchx#next_dir()<CR>
-nnoremap <C-k> <Cmd>call searchx#prev()<CR>
-nnoremap <C-j> <Cmd>call searchx#next()<CR>
-xnoremap <C-k> <Cmd>call searchx#prev()<CR>
-xnoremap <C-j> <Cmd>call searchx#next()<CR>
-cnoremap <C-k> <Cmd>call searchx#prev()<CR>
-cnoremap <C-j> <Cmd>call searchx#next()<CR>
-"}}}
-
 if s:enable_lsp
 " {{{ lsp-config
 lua << EOF
@@ -516,16 +451,6 @@ EOF
 " }}}
 endif
 
-" {{{ treesitter
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-  }
-}
-EOF
-" }}}
-
 if s:enable_lsp
 "{{{ lsp
 if empty(globpath(&rtp, 'autoload/lsp.vim'))
@@ -554,6 +479,81 @@ let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 1
 "}}}
 endif
+
+" {{{ lualine
+lua << EOF
+require('lualine').setup {}
+EOF
+"}}}
+
+"{{{ jumpcursor
+nmap [j <Plug>(jumpcursor-jump)
+"}}}
+
+"{{{ fern
+nnoremap <silent> <Leader>e :<C-u>Fern . -drawer <CR>
+nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -toggle<CR>
+let g:fern#default_hidden=1
+
+function! s:fern_settings() abort
+  nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
+  nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
+  nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
+  nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
+  nmap <silent> <buffer> <C-m> <Plug>(fern-action-move)
+  nmap <silent> <buffer> <C-S-d> <Plug>(fern-action-new-dir)
+endfunction
+
+augroup fern-settings
+  autocmd!
+  autocmd FileType fern call s:fern_settings()
+augroup END
+
+
+
+"{{{ fern-git-status
+" Disable listing ignored files/directories
+let g:fern_git_status#disable_ignored = 1
+" Disable listing untracked files
+let g:fern_git_status#disable_untracked = 1
+" Disable listing status of submodules
+let g:fern_git_status#disable_submodules = 1
+" Disable listing status of directories
+let g:fern_git_status#disable_directories = 1
+"}}}
+
+"}}}
+
+"{{{ vim-searchx
+" Overwrite / and ?.
+nnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
+nnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
+xnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
+xnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
+cnoremap ; <Cmd>call searchx#select()<CR>
+
+" Move to next/prev match.
+nnoremap N <Cmd>call searchx#prev_dir()<CR>
+nnoremap n <Cmd>call searchx#next_dir()<CR>
+xnoremap N <Cmd>call searchx#prev_dir()<CR>
+xnoremap n <Cmd>call searchx#next_dir()<CR>
+nnoremap <C-k> <Cmd>call searchx#prev()<CR>
+nnoremap <C-j> <Cmd>call searchx#next()<CR>
+xnoremap <C-k> <Cmd>call searchx#prev()<CR>
+xnoremap <C-j> <Cmd>call searchx#next()<CR>
+cnoremap <C-k> <Cmd>call searchx#prev()<CR>
+cnoremap <C-j> <Cmd>call searchx#next()<CR>
+"}}}
+
+" {{{ treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+  }
+}
+EOF
+" }}}
 
 " {{{ startify
 let g:ascii = [
