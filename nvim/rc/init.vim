@@ -578,8 +578,6 @@ autocmd FileType vim setlocal foldmethod=marker
 " {{{ other
 cd ~
 colorscheme nord
-hi FgCocErrorFloatBgCocFloating guifg=#000000
-hi NormalFloat guibg=red
 filetype plugin indent on
 set winblend=10
 " }}}
