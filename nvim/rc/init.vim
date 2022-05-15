@@ -510,6 +510,11 @@ local Path = require("plenary.path")
 local action_state = require("telescope.actions.state")
 local custom_actions = {}
 
+vim.api.nvim_set_keymap("n", "[fuzzy-finder]", "<Nop>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "[fuzzy-finder]", "<Nop>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "z", "[fuzzy-finder]", {})
+vim.api.nvim_set_keymap("v", "z", "[fuzzy-finder]", {})
+
 require("telescope").setup({
 	defaults = {
 		vimgrep_arguments = {
@@ -547,16 +552,6 @@ require("telescope").setup({
 		dynamic_preview_title = true,
 		winblend = 0,
 		border = {},
---		borderchars = {
---			{ "─", "│", "─", "│", "┌", "┐", "┘", "└" },
---			prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
---			-- results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
---			-- preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
---			-- fzf-preview style
---			prompt = { "─", "│", " ", "│", "┌", "┬", "│", "│" },
---			results = { "─", "│", "─", "│", "├", "┤", "┴", "└" },
---			preview = { "─", "│", "─", " ", "─", "┐", "┘", "─" },
---		},
 		color_devicons = true,
 		use_less = true,
 		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
@@ -777,10 +772,6 @@ vim.api.nvim_set_keymap(
 	"<Cmd>lua require('telescope.builtin').git_branches()<CR>",
 	{ noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "[fuzzy-finder]", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "z", "[fuzzy-finder]", {})
-vim.api.nvim_set_keymap("v", "z", "[fuzzy-finder]", {})
 vim.api.nvim_set_keymap("n", "[fuzzy-finder].", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>,", "<Cmd>Telescope grep_prompt<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader><Leader>", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
