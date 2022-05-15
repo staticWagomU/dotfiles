@@ -512,8 +512,8 @@ local custom_actions = {}
 
 vim.api.nvim_set_keymap("n", "[fuzzy-finder]", "<Nop>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "[fuzzy-finder]", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "z", "[fuzzy-finder]", {})
-vim.api.nvim_set_keymap("v", "z", "[fuzzy-finder]", {})
+vim.api.nvim_set_keymap("n", "Z", "[fuzzy-finder]", {})
+vim.api.nvim_set_keymap("v", "Z", "[fuzzy-finder]", {})
 
 require("telescope").setup({
 	defaults = {
