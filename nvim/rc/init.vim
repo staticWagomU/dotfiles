@@ -59,10 +59,12 @@ Plug 'crispgm/telescope-heading.nvim'
 Plug 'LinArcX/telescope-changes.nvim'
 Plug 'nvim-telescope/telescope-rg.nvim'
 Plug 'nvim-telescope/telescope-smart-history.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 "}}}
 
 "{{{ startup menu
-Plug 'mhinz/vim-startify'
+Plug 'goolord/alpha-nvim'
 "}}}
 
 "{{{ coc
@@ -192,8 +194,8 @@ cmp.setup({
 		end,
 	},
 	window = {
-		--completion = cmp.config.window.bordered(),
-		--documentation = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
 	},
 	formatting = {
 		--fields = {'kind', 'addr', 'menu'},
@@ -202,7 +204,6 @@ cmp.setup({
 			maxwidth = 50,
 			with_text = false,
 		})
-
 	},
 	mapping = cmp.mapping.preset.insert({
 		['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -493,6 +494,37 @@ let g:lsp_text_edit_enabled = 1
 "}}}
 endif
 
+"{{{alpha
+lua << EOF
+local dashboard= require'alpha.themes.dashboard'
+
+local banner = {
+	"                                                    ",
+	" ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+	" ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+	" ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+	" ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+	" ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+	" ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+	"                                                    ",
+}
+
+dashboard.section.header.val = banner
+
+dashboard.section.buttons.val = {
+	dashboard.button('e', '  New file', ':enew <BAR> startinsert<CR>'),
+	dashboard.button("h", "  Recently opened files", ":Telescope my_mru<CR>"),
+	dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
+	dashboard.button('s', '  Settings', ':e ~/dotfiles/nvim/rc/init.vim<CR>'),
+	dashboard.button("p", "  Update plugins", ":PlugUpdate<CR>"),
+	dashboard.button("q", "  Exit", ":qa<CR>"),
+}
+
+require'alpha'.setup(dashboard.config)
+
+EOF
+"}}}
+
 "{{{telescope
 lua << EOF
 local actions = require("telescope.actions")
@@ -549,14 +581,42 @@ require("telescope").setup({
 			},
 		},
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
+		file_ignore_patterns = { "node_modules/*", ".git/*" },
+		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+		path_display = { "truncate" },
 		dynamic_preview_title = true,
-		winblend = 0,
+		winblend = 10,
 		border = {},
+		borderchars = {
+				{ '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+				prompt = {'─', '│', ' ', '│', '┌', '┐', '│', '│'},
+				results = {'─', '│', '─', '│', '├', '┤', '┘', '└'},
+				preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+			},
 		color_devicons = true,
 		use_less = true,
 		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+		mappings = {
+			n = { ["<C-t>"] = action_layout.toggle_preview },
+			i = {
+				["<C-t>"] = action_layout.toggle_preview,
+				["<C-x>"] = false,
+				["<C-s>"] = actions.select_horizontal,
+				["<Tab>"] = actions.toggle_selection + actions.move_selection_next,
+				["<C-q>"] = actions.send_selected_to_qflist,
+				["<CR>"] = actions.select_default + actions.center,
+				["<C-g>"] = custom_actions.multi_selection_open,
+			},
+		},
+	},
+	extensions = {
+		fzy_native = {
+			override_generic_sorter = false,
+			override_file_sorter = true,
+		}
 	}
 })
+require('telescope').load_extension('fzy_native')
 
 local function remove_duplicate_paths(tbl, cwd)
 	local res = {}
@@ -873,45 +933,6 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
-" }}}
-
-" {{{ startify
-let g:ascii = [
-    \ '                     __    __   ____   ____   ___   ___ ___  __ __ ',
-    \ '                    |  |__|  | /    | /    | /   \ |   |   ||  |  |',
-    \ '                    |  |  |  ||  o  ||   __||     || _   _ ||  |  |',
-    \ '                    |  |  |  ||     ||  |  ||  O  ||  \_/  ||  |  |',
-    \ '                    |  `  ''  ||  _  ||  |_ ||     ||   |   ||  :  |',
-    \ '                     \      / |  |  ||     ||     ||   |   ||     |',
-    \ '                      \_/\_/  |__|__||___,_| \___/ |___|___| \__,_|',
-    \ '']                                               
-
-
-let g:startify_custom_header = 'startify#center(g:ascii)'
-
-let g:startify_lists = [
-    \ { 'header': ['   MRU'],            'type': 'files' },
-    \ { 'header': ['   Sessions'],       'type': 'sessions' },
-    \ ]
-
-function! s:center(lines) abort
-  let longest_line   = max(map(copy(a:lines), 'strwidth(v:val)'))
-  let centered_lines = map(copy(a:lines),
-        \ 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
-  return centered_lines
-endfunction
-
-let g:startify_bookmarks = ["~/dotfiles/nvim/rc/init.vim", "~/dotfiles/nvim/rc/ginit.vim"]
-autocmd User Startified setlocal cursorline
-let g:startify_skiplist = [
-   \ '.*\.jax$',
-   \ 'runtime/doc/.*\.txt$',
-   \ 'bundle/.*/doc/.*\.txt$',
-   \ 'plugged/.*/doc/.*\.txt$',
-   \ '/.git/',
-   \ 'fugitiveblame$',
-   \ escape(fnamemodify(resolve($VIMRUNTIME), ':p'), '\') .'doc/.*\.txt$'
-   \ ]
 " }}}
 
 " {{{ translate.vim
