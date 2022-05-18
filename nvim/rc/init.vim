@@ -26,12 +26,13 @@ set hidden
 set laststatus=2
 set mouse=a
 set clipboard=unnamedplus
+set ambiwidth=single
 set title
 let &g:titlestring =
       \ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
 "}}}
 
-"{{{ plugins
+"{{{ plugin
 call plug#begin('~/.vim/plugged')
 
 Plug 'vim-jp/vimdoc-ja'
@@ -47,6 +48,11 @@ Plug 'mattn/vim-goimports'
 Plug 'mattn/vim-sonictemplate'
 Plug 'machakann/vim-sandwich'
 Plug 'skanehira/translate.vim'
+Plug 'petertriho/nvim-scrollbar'
+Plug 'numToStr/Comment.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-neo-tree/neo-tree.nvim'
+Plug 'akinsho/toggleterm.nvim'
 
 "{{{telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -65,6 +71,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 "{{{ startup menu
 Plug 'goolord/alpha-nvim'
+"Plug 'glepnir/dashboard-nvim'
 "}}}
 
 "{{{ coc
@@ -494,6 +501,230 @@ let g:lsp_text_edit_enabled = 1
 "}}}
 endif
 
+"{{{toggleterm
+lua << EOF
+require("toggleterm").setup{
+	open_mapping = [[<C-/>]],
+	hide_numbers = true,
+	direction = 'float',
+	close_on_exit = true,
+	shell = vim.o.shell,
+	float_opts = {
+		border = 'single',
+		width = 100,
+		height = 80,
+		winblend = 10,
+	},
+	dir= vim.fn.expand('%'),
+}
+EOF
+" set
+autocmd TermEnter term://*toggleterm#*
+      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+" By applying the mappings this way you can pass a count to your
+" mapping to open a specific window.
+" For example: 2<C-t> will open terminal 2
+nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+"}}}
+
+"{{{gopls
+lua <<EOF
+  -- …
+
+  function OrgImports(wait_ms)
+    local params = vim.lsp.util.make_range_params()
+    params.context = {only = {"source.organizeImports"}}
+    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+    for _, res in pairs(result or {}) do
+      for _, r in pairs(res.result or {}) do
+        if r.edit then
+          vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
+        else
+          vim.lsp.buf.execute_command(r.command)
+        end
+      end
+    end
+  end
+EOF
+
+autocmd BufWritePre *.go lua OrgImports(1000)
+autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 100)
+"}}}
+
+"{{{Comment.nvim
+lua << EOF
+require('Comment').setup({
+    ---Add a space b/w comment and the line
+    ---@type boolean|fun():boolean
+    padding = true,
+
+    ---Whether the cursor should stay at its position
+    ---NOTE: This only affects NORMAL mode mappings and doesn't work with dot-repeat
+    ---@type boolean
+    sticky = true,
+
+    ---Lines to be ignored while comment/uncomment.
+    ---Could be a regex string or a function that returns a regex string.
+    ---Example: Use '^$' to ignore empty lines
+    ---@type string|fun():string
+    ignore = nil,
+
+    ---LHS of toggle mappings in NORMAL + VISUAL mode
+    ---@type table
+    toggler = {
+        ---Line-comment toggle keymap
+        line = 'gcc',
+        ---Block-comment toggle keymap
+        block = 'gbc',
+    },
+
+    ---LHS of operator-pending mappings in NORMAL + VISUAL mode
+    ---@type table
+    opleader = {
+        ---Line-comment keymap
+        line = 'gc',
+        ---Block-comment keymap
+        block = 'gb',
+    },
+
+    ---LHS of extra mappings
+    ---@type table
+    extra = {
+        ---Add comment on the line above
+        above = 'gcO',
+        ---Add comment on the line below
+        below = 'gco',
+        ---Add comment at the end of line
+        eol = 'gcA',
+    },
+
+    ---Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode
+    ---NOTE: If `mappings = false` then the plugin won't create any mappings
+    ---@type boolean|table
+    mappings = {
+        ---Operator-pending mapping
+        ---Includes `gcc`, `gbc`, `gc[count]{motion}` and `gb[count]{motion}`
+        ---NOTE: These mappings can be changed individually by `opleader` and `toggler` config
+        basic = true,
+        ---Extra mapping
+        ---Includes `gco`, `gcO`, `gcA`
+        extra = true,
+        ---Extended mapping
+        ---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
+        extended = false,
+    },
+
+    ---Pre-hook, called before commenting the line
+    ---@type fun(ctx: Ctx):string
+    pre_hook = nil,
+
+    ---Post-hook, called after commenting is done
+    ---@type fun(ctx: Ctx)
+    post_hook = nil,
+})
+EOF
+"}}}
+
+"{{{nvim-scrollbar
+lua << EOF
+require("scrollbar").setup({
+    show = true,
+    show_in_active_only = false,
+    set_highlights = true,
+    folds = 1000, -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
+    max_lines = false, -- disables if no. of lines in buffer exceeds this
+    handle = {
+        text = " ",
+        color = nil,
+        cterm = nil,
+        highlight = "CursorColumn",
+        hide_if_all_visible = true, -- Hides handle if all lines are visible
+    },
+    marks = {
+        Search = {
+            text = { "-", "=" },
+            priority = 0,
+            color = nil,
+            cterm = nil,
+            highlight = "Search",
+        },
+        Error = {
+            text = { "-", "=" },
+            priority = 1,
+            color = nil,
+            cterm = nil,
+            highlight = "DiagnosticVirtualTextError",
+        },
+        Warn = {
+            text = { "-", "=" },
+            priority = 2,
+            color = nil,
+            cterm = nil,
+            highlight = "DiagnosticVirtualTextWarn",
+        },
+        Info = {
+            text = { "-", "=" },
+            priority = 3,
+            color = nil,
+            cterm = nil,
+            highlight = "DiagnosticVirtualTextInfo",
+        },
+        Hint = {
+            text = { "-", "=" },
+            priority = 4,
+            color = nil,
+            cterm = nil,
+            highlight = "DiagnosticVirtualTextHint",
+        },
+        Misc = {
+            text = { "-", "=" },
+            priority = 5,
+            color = nil,
+            cterm = nil,
+            highlight = "Normal",
+        },
+    },
+    excluded_buftypes = {
+        "terminal",
+    },
+    excluded_filetypes = {
+        "prompt",
+        "TelescopePrompt",
+    },
+    autocmd = {
+        render = {
+            "BufWinEnter",
+            "TabEnter",
+            "TermEnter",
+            "WinEnter",
+            "CmdwinLeave",
+            "TextChanged",
+            "VimResized",
+            "WinScrolled",
+        },
+        clear = {
+            "BufWinLeave",
+            "TabLeave",
+            "TermLeave",
+            "WinLeave",
+        },
+    },
+    handlers = {
+        diagnostic = true,
+        search = false, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
+    },
+})
+EOF
+"}}}
+
+"{{{dashboard-nvim
+lua << EOF
+
+EOF
+"}}}
+
 "{{{alpha
 lua << EOF
 local dashboard= require'alpha.themes.dashboard'
@@ -514,9 +745,9 @@ dashboard.section.header.val = banner
 dashboard.section.buttons.val = {
 	dashboard.button('e', '  New file', ':enew <BAR> startinsert<CR>'),
 	dashboard.button("h", "  Recently opened files", ":Telescope my_mru<CR>"),
-	dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
-	dashboard.button('s', '  Settings', ':e ~/dotfiles/nvim/rc/init.vim<CR>'),
-	dashboard.button("p", "  Update plugins", ":PlugUpdate<CR>"),
+	dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
+	dashboard.button('s', '漣 Settings', ':e ~/dotfiles/nvim/rc/init.vim<CR>'),
+	dashboard.button("p", "  Update plugins", ":PlugUpdate<CR>"),
 	dashboard.button("q", "  Exit", ":qa<CR>"),
 }
 
@@ -938,7 +1169,7 @@ EOF
 " {{{ translate.vim
 let g:translate_source = "en"
 let g:translate_target = "ja"
-vmap t <Plug>(VTranslate)
+vmap <Leader>t <Plug>(VTranslate)
 " }}}
 
 " {{{ git-gutter
