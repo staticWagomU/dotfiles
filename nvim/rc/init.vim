@@ -71,7 +71,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 "{{{ startup menu
 Plug 'goolord/alpha-nvim'
-"Plug 'glepnir/dashboard-nvim'
 "}}}
 
 "{{{ coc
@@ -483,12 +482,6 @@ EOF
 " set
 autocmd TermEnter term://*toggleterm#*
       \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
-
-" By applying the mappings this way you can pass a count to your
-" mapping to open a specific window.
-" For example: 2<C-t> will open terminal 2
-nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
-inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 "}}}
 
 "{{{gopls
@@ -755,6 +748,36 @@ EOF
 "}}}
 
 "{{{alpha
+
+function! s:print_plugins_message() abort
+  let l:packer = stdpath('data') .'/site/pack/packer/start/packer.nvim'
+  let s:footer_icon = ''
+  if exists('g:dashboard_footer_icon')
+    let s:footer_icon = get(g:,'dashboard_footer_icon','')
+  endif
+
+  if has('nvim')
+    let l:vim = 'neovim'
+  else
+    let l:vim = 'vim'
+  endif
+
+  if exists('*dein#get')
+    let l:total_plugins = len(dein#get())
+  elseif exists('*plug#begin')
+    let l:total_plugins = len(keys(g:plugs))
+  elseif isdirectory(l:packer)
+    let l:total_plugins = luaeval('#vim.tbl_keys(packer_plugins)')
+  else
+    return [s:footer_icon . ' Have fun with ' . l:vim]
+  endif
+
+  let l:footer=[]
+  let footer_string= s:footer_icon . l:vim .' loaded ' . l:total_plugins . ' plugins '
+  call insert(l:footer,footer_string)
+  return l:footer
+endfunction
+
 lua << EOF
 local dashboard= require'alpha.themes.dashboard'
 
@@ -770,6 +793,7 @@ local banner = {
 }
 
 dashboard.section.header.val = banner
+dashboard.section.footer.val = vim.fn['s:print_plugins_message']()
 
 dashboard.section.buttons.val = {
 	dashboard.button('e', '  New file', ':enew <BAR> startinsert<CR>'),
@@ -1215,8 +1239,6 @@ let g:gitgutter_sign_modified_removed = '<'
 " Default key mapping off
 let g:gitgutter_map_keys = 0
 " }}}
-
-"}}}
 
 "}}}
 
