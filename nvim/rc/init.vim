@@ -183,6 +183,8 @@ nnoremap <Leader>w :<C-u>w<CR>
 nnoremap <Leader>bn :<C-u>bn<CR>
 nnoremap <Leader>bp :<C-u>bp<CR>
 nnoremap <Leader>bd :<C-u>bd<CR>
+nnoremap <silent> <Leader>cd :<C-u>cd %:p:h<CR>
+nnoremap ^ :<C-u>so ~/dotfiles/nvim/rc/init.vim<CR>
 "}}}
 
 "{{{ pluginConfig
