@@ -74,9 +74,7 @@ Plug 'goolord/alpha-nvim'
 "}}}
 
 "{{{ coc
-if s:enable_coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
 "}}}
 
 " {{{ git
@@ -94,7 +92,6 @@ Plug 'lambdalisue/fern-git-status.vim'
 Plug 'arcticicestudio/nord-vim'
 " }}}
 
-if s:enable_nvim_cmp
 "{{{ nvim-cmp
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
@@ -116,9 +113,7 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'onsails/lspkind.nvim'
 Plug 'petertriho/cmp-git'
 "}}}
-endif
 
-if s:enable_lsp
 " {{{ lsp
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
@@ -129,9 +124,7 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 "}}}
-endif
 
-if s:enable_ddc
 " {{{ ddc
 Plug 'Shougo/ddc.vim'
 Plug 'Shougo/ddc-around' " sources
@@ -140,7 +133,6 @@ Plug 'Shougo/ddc-sorter_rank' " filters
 Plug 'Shougo/ddc-nvim-lsp'
 Plug 'Shougo/ddc-converter_remove_overlap'
 " }}}
-endif
 
 call plug#end()
 "}}}
@@ -710,80 +702,6 @@ require("scrollbar").setup({
         diagnostic = true,
         search = false, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
     },
-})
-EOF
-"}}}
-
-"{{{Comment
-lua << EOF
-require('Comment').setup({
-    ---Add a space b/w comment and the line
-    ---@type boolean|fun():boolean
-    padding = true,
-
-    ---Whether the cursor should stay at its position
-    ---NOTE: This only affects NORMAL mode mappings and doesn't work with dot-repeat
-    ---@type boolean
-    sticky = true,
-
-    ---Lines to be ignored while comment/uncomment.
-    ---Could be a regex string or a function that returns a regex string.
-    ---Example: Use '^$' to ignore empty lines
-    ---@type string|fun():string
-    ignore = nil,
-
-    ---LHS of toggle mappings in NORMAL + VISUAL mode
-    ---@type table
-    toggler = {
-        ---Line-comment toggle keymap
-        line = 'gcc',
-        ---Block-comment toggle keymap
-        block = 'gbc',
-    },
-
-    ---LHS of operator-pending mappings in NORMAL + VISUAL mode
-    ---@type table
-    opleader = {
-        ---Line-comment keymap
-        line = 'gc',
-        ---Block-comment keymap
-        block = 'gb',
-    },
-
-    ---LHS of extra mappings
-    ---@type table
-    extra = {
-        ---Add comment on the line above
-        above = 'gcO',
-        ---Add comment on the line below
-        below = 'gco',
-        ---Add comment at the end of line
-        eol = 'gcA',
-    },
-
-    ---Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode
-    ---NOTE: If `mappings = false` then the plugin won't create any mappings
-    ---@type boolean|table
-    mappings = {
-        ---Operator-pending mapping
-        ---Includes `gcc`, `gbc`, `gc[count]{motion}` and `gb[count]{motion}`
-        ---NOTE: These mappings can be changed individually by `opleader` and `toggler` config
-        basic = true,
-        ---Extra mapping
-        ---Includes `gco`, `gcO`, `gcA`
-        extra = true,
-        ---Extended mapping
-        ---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
-        extended = false,
-    },
-
-    ---Pre-hook, called before commenting the line
-    ---@type fun(ctx: Ctx):string
-    pre_hook = nil,
-
-    ---Post-hook, called after commenting is done
-    ---@type fun(ctx: Ctx)
-    post_hook = nil,
 })
 EOF
 "}}}
