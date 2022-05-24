@@ -74,9 +74,7 @@ Plug 'goolord/alpha-nvim'
 "}}}
 
 "{{{ coc
-if s:enable_coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
 "}}}
 
 " {{{ git
@@ -94,7 +92,6 @@ Plug 'lambdalisue/fern-git-status.vim'
 Plug 'arcticicestudio/nord-vim'
 " }}}
 
-if s:enable_nvim_cmp
 "{{{ nvim-cmp
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
@@ -116,9 +113,7 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'onsails/lspkind.nvim'
 Plug 'petertriho/cmp-git'
 "}}}
-endif
 
-if s:enable_lsp
 " {{{ lsp
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
@@ -129,9 +124,7 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 "}}}
-endif
 
-if s:enable_ddc
 " {{{ ddc
 Plug 'Shougo/ddc.vim'
 Plug 'Shougo/ddc-around' " sources
@@ -140,7 +133,6 @@ Plug 'Shougo/ddc-sorter_rank' " filters
 Plug 'Shougo/ddc-nvim-lsp'
 Plug 'Shougo/ddc-converter_remove_overlap'
 " }}}
-endif
 
 call plug#end()
 "}}}
