@@ -194,11 +194,11 @@ cmp.setup({
 		})
 	},
 	mapping = cmp.mapping.preset.insert({
-		['<C-b>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<C-e>'] = cmp.mapping.abort(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }), 
+--		['<C-b>'] = cmp.mapping.scroll_docs(-4),
+--		['<C-f>'] = cmp.mapping.scroll_docs(4),
+--		['<C-Space>'] = cmp.mapping.complete(),
+--		['<C-e>'] = cmp.mapping.abort(),
+--		['<CR>'] = cmp.mapping.confirm({ select = true }), 
 		-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
@@ -309,16 +309,16 @@ require'lspconfig'.denols.setup {
 	}
 }
 EOF
-nnoremap <silent> gf<CR>       <Cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gfv          <Cmd>vsplit<CR><Cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gfs          <Cmd>split<CR><Cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <Leader>i    <Cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <Leader>g    <Cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> <Leader>f    <Cmd>lua vim.lsp.buf.formatting()<CR>
-nnoremap <silent> <Leader>r    <Cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> <Leader><CR> <Cmd>lua vim.lsp.buf.code_action()<CR>
-nnoremap <silent> <C-k>        <Cmd>lua vim.diagnostic.goto_prev()<CR>
-nnoremap <silent> <C-j>        <Cmd>lua vim.diagnostic.goto_next()<CR>
+"nnoremap <silent> gf<CR>       <Cmd>lua vim.lsp.buf.definition()<CR>
+"nnoremap <silent> gfv          <Cmd>vsplit<CR><Cmd>lua vim.lsp.buf.definition()<CR>
+"nnoremap <silent> gfs          <Cmd>split<CR><Cmd>lua vim.lsp.buf.definition()<CR>
+"nnoremap <silent> <Leader>i    <Cmd>lua vim.lsp.buf.hover()<CR>
+"nnoremap <silent> <Leader>g    <Cmd>lua vim.lsp.buf.references()<CR>
+"nnoremap <silent> <Leader>f    <Cmd>lua vim.lsp.buf.formatting()<CR>
+"nnoremap <silent> <Leader>r    <Cmd>lua vim.lsp.buf.rename()<CR>
+"nnoremap <silent> <Leader><CR> <Cmd>lua vim.lsp.buf.code_action()<CR>
+"nnoremap <silent> <C-k>        <Cmd>lua vim.diagnostic.goto_prev()<CR>
+"nnoremap <silent> <C-j>        <Cmd>lua vim.diagnostic.goto_next()<CR>
 "}}}
 endif
 
@@ -342,12 +342,12 @@ call ddc#custom#patch_global('sourceparams', {
 	\ 'nvim-lsp': {'kindLabels': {'Class': 'c'}}
 	\ })
 
-inoremap <silent><expr> <TAB>
-	\ ddc#map#pum_visible() ? '<C-n>' :
-	\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-	\ '<TAB>' : ddc#map#manual_complete()
-
-inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+"inoremap <silent><expr> <TAB>
+"	\ ddc#map#pum_visible() ? '<C-n>' :
+"	\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+"	\ '<TAB>' : ddc#map#manual_complete()
+"
+"inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 
 call ddc#enable()
 "}}}
@@ -355,8 +355,8 @@ endif
 
 "{{{fzf
 command! -bar MoveBack if &buftype == 'nofile' && (winwidth(0) < &columns / 3 || winheight(0) < &lines / 3) | execute "normal! \<c-w>\<c-p>" | endif
-nnoremap <silent> <Leader>mf :MoveBack<BAR>Files<CR>
-nnoremap <silent> <Leader>mb  :MoveBack<BAR>Buffers<CR>
+"nnoremap <silent> <Leader>mf :MoveBack<BAR>Files<CR>
+"nnoremap <silent> <Leader>mb  :MoveBack<BAR>Buffers<CR>
 
 function! s:plug_help_sink(line)
 	let dir = g:plugs[a:line].dir
@@ -458,7 +458,7 @@ EOF
 " set
 autocmd TermEnter term://*toggleterm#*
 	\ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
-nnoremap <Leader>lg :<C-u>Lazygit<CR>
+"nnoremap <Leader>lg :<C-u>Lazygit<CR>
 "}}}
 
 "{{{gopls
@@ -505,29 +505,29 @@ require('Comment').setup({
 	---@type table
 	toggler = {
 		---Line-comment toggle keymap
-		line = 'gcc',
+--		line = 'gcc',
 		---Block-comment toggle keymap
-		block = 'gbc',
+--		block = 'gbc',
 	},
 
 	---LHS of operator-pending mappings in NORMAL + VISUAL mode
 	---@type table
 	opleader = {
 		---Line-comment keymap
-		line = 'gc',
+--		line = 'gc',
 		---Block-comment keymap
-		block = 'gb',
+--		block = 'gb',
 	},
 
 	---LHS of extra mappings
 	---@type table
 	extra = {
 		---Add comment on the line above
-		above = 'gcO',
+--		above = 'gcO',
 		---Add comment on the line below
-		below = 'gco',
+--		below = 'gco',
 		---Add comment at the end of line
-		eol = 'gcA',
+--		eol = 'gcA',
 	},
 
 	---Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode
@@ -729,10 +729,10 @@ local Path = require("plenary.path")
 local action_state = require("telescope.actions.state")
 local custom_actions = {}
 
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "[fuzzy-finder]", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "Z", "[fuzzy-finder]", {})
-vim.api.nvim_set_keymap("v", "Z", "[fuzzy-finder]", {})
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder]", "<Nop>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("v", "[fuzzy-finder]", "<Nop>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "Z", "[fuzzy-finder]", {})
+--vim.api.nvim_set_keymap("v", "Z", "[fuzzy-finder]", {})
 
 require("telescope").setup({
 	defaults = {
@@ -956,93 +956,93 @@ telescope_builtin.memo = function(opts)
 	})
 end
 
-vim.api.nvim_set_keymap(
-	"n",
-	"[fuzzy-finder]<Leader>",
-	"<Cmd>Telescope find_files<CR>",
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap("n", "<Leader>;", "<Cmd>Telescope git_files<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[fuzzy-finder];", "<Cmd>Telescope git_files<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap(
-	"n",
-	"<Leader>.",
-	"<Cmd>Telecwoc diagnosticsscope find_files<CR>",
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap("n", "[fuzzy-finder].", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>,", "<Cmd>Telescope grep_prompt<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[fuzzy-finder],", ":<C-u>Telescope grep_prompt<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]>", "<Cmd>Telescope my_grep_in_dir<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap(
-	"v",
-	"[fuzzy-finder],",
-	"y:Telescope my_grep search=<C-r>=escape(@\", '\\.*$^[] ')<CR>",
-	{ noremap = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<Leader>/",
-	":<C-u>Telescope my_grep search=<C-r>=expand('<cword>')<CR>",
-	{ noremap = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"[fuzzy-finder]/",
-	":<C-u>Telescope my_grep search=<C-r>=expand('<cword>')<CR>",
-	{ noremap = true }
-)
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]s", "<Cmd>Telescope live_grep<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]b", "<Cmd>Telescope buffers<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]h", "<Cmd>Telescope help_tags<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]c", "<Cmd>Telescope commands<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]t", "<Cmd>Telescope treesitter<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]q", "<Cmd>Telescope quickfix<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]l", "<Cmd>Telescope loclist<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]m", "<Cmd>Telescope marks<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]r", "<Cmd>Telescope registers<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]*", "<Cmd>Telescope grep_string<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap(
-	"n",
-	"[fuzzy-finder]f",
-	"<Cmd>Telescope file_browser file_browser<CR>",
-	{ noremap = true, silent = true }
-)
--- git
-vim.api.nvim_set_keymap(
-	"n",
-	"[fuzzy-finder]gs",
-	"<Cmd>lua require('telescope.builtin').git_status()<CR>",
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"[fuzzy-finder]gc",
-	"<Cmd>lua require('telescope.builtin').git_commits()<CR>",
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"[fuzzy-finder]gC",
-	"<Cmd>lua require('telescope.builtin').git_bcommits()<CR>",
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"[fuzzy-finder]gb",
-	"<Cmd>lua require('telescope.builtin').git_branches()<CR>",
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap("n", "[fuzzy-finder].", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader>,", "<Cmd>Telescope grep_prompt<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Leader><Leader>", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[fuzzy-finder]:", "<Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap(
+--	"n",
+--	"[fuzzy-finder]<Leader>",
+--	"<Cmd>Telescope find_files<CR>",
+--	{ noremap = true, silent = true }
+--)
+--vim.api.nvim_set_keymap("n", "<Leader>;", "<Cmd>Telescope git_files<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder];", "<Cmd>Telescope git_files<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap(
+--	"n",
+--	"<Leader>.",
+--	"<Cmd>Telecwoc diagnosticsscope find_files<CR>",
+--	{ noremap = true, silent = true }
+--)
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder].", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "<Leader>,", "<Cmd>Telescope grep_prompt<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder],", ":<C-u>Telescope grep_prompt<CR>", { noremap = true })
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder]>", "<Cmd>Telescope my_grep_in_dir<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap(
+--	"v",
+--	"[fuzzy-finder],",
+--	"y:Telescope my_grep search=<C-r>=escape(@\", '\\.*$^[] ')<CR>",
+--	{ noremap = true }
+--)
+--vim.api.nvim_set_keymap(
+--	"n",
+--	"<Leader>/",
+--	":<C-u>Telescope my_grep search=<C-r>=expand('<cword>')<CR>",
+--	{ noremap = true }
+--)
+--vim.api.nvim_set_keymap(
+--	"n",
+--	"[fuzzy-finder]/",
+--	":<C-u>Telescope my_grep search=<C-r>=expand('<cword>')<CR>",
+--	{ noremap = true }
+--)
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder]s", "<Cmd>Telescope live_grep<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder]b", "<Cmd>Telescope buffers<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder]h", "<Cmd>Telescope help_tags<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder]c", "<Cmd>Telescope commands<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder]t", "<Cmd>Telescope treesitter<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder]q", "<Cmd>Telescope quickfix<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder]l", "<Cmd>Telescope loclist<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder]m", "<Cmd>Telescope marks<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder]r", "<Cmd>Telescope registers<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder]*", "<Cmd>Telescope grep_string<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap(
+--	"n",
+--	"[fuzzy-finder]f",
+--	"<Cmd>Telescope file_browser file_browser<CR>",
+--	{ noremap = true, silent = true }
+--)
+---- git
+--vim.api.nvim_set_keymap(
+--	"n",
+--	"[fuzzy-finder]gs",
+--	"<Cmd>lua require('telescope.builtin').git_status()<CR>",
+--	{ noremap = true, silent = true }
+--)
+--vim.api.nvim_set_keymap(
+--	"n",
+--	"[fuzzy-finder]gc",
+--	"<Cmd>lua require('telescope.builtin').git_commits()<CR>",
+--	{ noremap = true, silent = true }
+--)
+--vim.api.nvim_set_keymap(
+--	"n",
+--	"[fuzzy-finder]gC",
+--	"<Cmd>lua require('telescope.builtin').git_bcommits()<CR>",
+--	{ noremap = true, silent = true }
+--)
+--vim.api.nvim_set_keymap(
+--	"n",
+--	"[fuzzy-finder]gb",
+--	"<Cmd>lua require('telescope.builtin').git_branches()<CR>",
+--	{ noremap = true, silent = true }
+--)
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder].", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "<Leader>,", "<Cmd>Telescope grep_prompt<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "<Leader><Leader>", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "[fuzzy-finder]:", "<Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
 EOF
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+" nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 "}}}
 
 "{{{lexima
@@ -1068,12 +1068,12 @@ EOF
 "}}}
 
 "{{{ jumpcursor
-nmap [j <Plug>(jumpcursor-jump)
+" nmap [j <Plug>(jumpcursor-jump)
 "}}}
 
 "{{{ fern
-nnoremap <silent> <Leader>e :<C-u>Fern . -drawer <CR>
-nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -toggle<CR>
+" nnoremap <silent> <Leader>e :<C-u>Fern . -drawer <CR>
+" nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -toggle<CR>
 let g:fern#default_hidden=1
 
 function! s:fern_settings() abort
@@ -1107,23 +1107,23 @@ let g:fern_git_status#disable_directories = 1
 
 "{{{ vim-searchx
 " Overwrite / and ?.
-nnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
-nnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
-xnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
-xnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
-cnoremap ; <Cmd>call searchx#select()<CR>
-
-" Move to next/prev match.
-nnoremap N <Cmd>call searchx#prev_dir()<CR>
-nnoremap n <Cmd>call searchx#next_dir()<CR>
-xnoremap N <Cmd>call searchx#prev_dir()<CR>
-xnoremap n <Cmd>call searchx#next_dir()<CR>
-nnoremap <C-k> <Cmd>call searchx#prev()<CR>
-nnoremap <C-j> <Cmd>call searchx#next()<CR>
-xnoremap <C-k> <Cmd>call searchx#prev()<CR>
-xnoremap <C-j> <Cmd>call searchx#next()<CR>
-cnoremap <C-k> <Cmd>call searchx#prev()<CR>
-cnoremap <C-j> <Cmd>call searchx#next()<CR>
+" nnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
+" nnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
+" xnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
+" xnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
+" cnoremap ; <Cmd>call searchx#select()<CR>
+"
+" " Move to next/prev match.
+" nnoremap N <Cmd>call searchx#prev_dir()<CR>
+" nnoremap n <Cmd>call searchx#next_dir()<CR>
+" xnoremap N <Cmd>call searchx#prev_dir()<CR>
+" xnoremap n <Cmd>call searchx#next_dir()<CR>
+" nnoremap <C-k> <Cmd>call searchx#prev()<CR>
+" nnoremap <C-j> <Cmd>call searchx#next()<CR>
+" xnoremap <C-k> <Cmd>call searchx#prev()<CR>
+" xnoremap <C-j> <Cmd>call searchx#next()<CR>
+" cnoremap <C-k> <Cmd>call searchx#prev()<CR>
+" cnoremap <C-j> <Cmd>call searchx#next()<CR>
 "}}}
 
 " {{{ treesitter
@@ -1139,7 +1139,7 @@ EOF
 " {{{ translate.vim
 let g:translate_source = "en"
 let g:translate_target = "ja"
-vmap <Leader>t <Plug>(VTranslate)
+"vmap <Leader>t <Plug>(VTranslate)
 " }}}
 
 " {{{ git-gutter
