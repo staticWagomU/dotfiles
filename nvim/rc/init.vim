@@ -77,10 +77,6 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'goolord/alpha-nvim'
 "}}}
 
-"{{{ coc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"}}}
-
 " {{{ git
 Plug 'lambdalisue/gin.vim'
 Plug 'airblade/vim-gitgutter'
@@ -367,39 +363,6 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 
 call ddc#enable()
-"}}}
-endif
-
-if s:enable_coc
-"{{{ coc
-nnoremap [dev]    <Nop>
-xnoremap [dev]    <Nop>
-nmap     m        [dev]
-xmap     m        [dev]
-
-let g:coc_global_extensions = ['coc-tsserver', 'coc-eslint8', 'coc-prettier', 'coc-git', 'coc-fzf-preview', 'coc-lists']
-
-inoremap <silent> <expr> <c-space> coc#refresh()
-nnoremap <silent> K       :<c-u>call <sid>show_documentation()<cr>
-nmap     <silent> [dev]rn <plug>(coc-rename)
-nmap     <silent> [dev]a  <plug>(coc-codeaction-selected)iw
-
-function! s:coc_typescript_settings() abort
-  nnoremap <silent> <buffer> [dev]f :<c-u>coccommand eslint.executeautofix<cr>:coccommand prettier.formatfile<cr>
-endfunction
-
-augroup coc_ts
-  autocmd!
-  autocmd filetype typescript,typescriptreact call <sid>coc_typescript_settings()
-augroup end
-
-function! s:show_documentation() abort
-  if index(['vim','help'], &filetype) >= 0
-    execute 'h ' . expand('<cword>')
-  elseif coc#rpc#ready()
-    call cocactionasync('dohover')
-  endif
-endfunction
 "}}}
 endif
 
