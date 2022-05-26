@@ -194,11 +194,11 @@ cmp.setup({
 		})
 	},
 	mapping = cmp.mapping.preset.insert({
---		['<C-b>'] = cmp.mapping.scroll_docs(-4),
---		['<C-f>'] = cmp.mapping.scroll_docs(4),
---		['<C-Space>'] = cmp.mapping.complete(),
---		['<C-e>'] = cmp.mapping.abort(),
---		['<CR>'] = cmp.mapping.confirm({ select = true }), 
+		['<C-b>'] = cmp.mapping.scroll_docs(-4),
+		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-e>'] = cmp.mapping.abort(),
+		['<CR>'] = cmp.mapping.confirm({ select = true }), 
 		-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
@@ -309,16 +309,18 @@ require'lspconfig'.denols.setup {
 	}
 }
 EOF
-"nnoremap <silent> gf<CR>       <Cmd>lua vim.lsp.buf.definition()<CR>
-"nnoremap <silent> gfv          <Cmd>vsplit<CR><Cmd>lua vim.lsp.buf.definition()<CR>
-"nnoremap <silent> gfs          <Cmd>split<CR><Cmd>lua vim.lsp.buf.definition()<CR>
-"nnoremap <silent> <Leader>i    <Cmd>lua vim.lsp.buf.hover()<CR>
-"nnoremap <silent> <Leader>g    <Cmd>lua vim.lsp.buf.references()<CR>
-"nnoremap <silent> <Leader>f    <Cmd>lua vim.lsp.buf.formatting()<CR>
-"nnoremap <silent> <Leader>r    <Cmd>lua vim.lsp.buf.rename()<CR>
-"nnoremap <silent> <Leader><CR> <Cmd>lua vim.lsp.buf.code_action()<CR>
-"nnoremap <silent> <C-k>        <Cmd>lua vim.diagnostic.goto_prev()<CR>
-"nnoremap <silent> <C-j>        <Cmd>lua vim.diagnostic.goto_next()<CR>
+nnoremap <silent> gf<CR>       <Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gfv          <Cmd>vsplit<CR><Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gfs          <Cmd>split<CR><Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <Leader>i    <Cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <Leader>g    <Cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> <Leader>f    <Cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <Leader>r    <Cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> <Leader>s    <Cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <Leader><CR> <Cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <C-k>        <Cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> <C-j>        <Cmd>lua vim.diagnostic.goto_next()<CR>
+
 "}}}
 endif
 
@@ -342,12 +344,12 @@ call ddc#custom#patch_global('sourceparams', {
 	\ 'nvim-lsp': {'kindLabels': {'Class': 'c'}}
 	\ })
 
-"inoremap <silent><expr> <TAB>
-"	\ ddc#map#pum_visible() ? '<C-n>' :
-"	\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-"	\ '<TAB>' : ddc#map#manual_complete()
-"
-"inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+inoremap <silent><expr> <TAB>
+\ ddc#map#pum_visible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#map#manual_complete()
+
+inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 
 call ddc#enable()
 "}}}
