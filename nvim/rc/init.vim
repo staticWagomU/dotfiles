@@ -271,32 +271,32 @@ if client.config.flags then
 end
 end
 require'lspconfig'.gopls.setup {
-capabilities = capabilities,
-on_init = on_init;
-init_options = {
-	gofumpt = true,
-	usePlaceholders = true,
-	semanticTokens = true,
-	staticcheck = true,
-	experimentalPostfixCompletions = true,
-	hoverKind = 'Structured',
-	analyses = {
-		nilness = true,
-		shadow = true,
-		unusedparams = true,
-		unusedwrite = true,
-		fieldalignment = true
-	},
-		codelenses = {
-		gc_details = true,
-		tidy = true
+	capabilities = capabilities,
+	on_init = on_init;
+	init_options = {
+		gofumpt = true,
+		usePlaceholders = true,
+		semanticTokens = true,
+		staticcheck = true,
+		experimentalPostfixCompletions = true,
+		hoverKind = 'Structured',
+		analyses = {
+			nilness = true,
+			shadow = true,
+			unusedparams = true,
+			unusedwrite = true,
+			fieldalignment = true
+		},
+			codelenses = {
+			gc_details = true,
+			tidy = true
+		}
 	}
-}
 }
 
 require'lspconfig'.vimls.setup {
-on_init = on_init;
-capabilities = capabilities,
+	on_init = on_init;
+	capabilities = capabilities,
 }
 
 --require'lspconfig'.tsserver.setup {
@@ -308,22 +308,22 @@ capabilities = capabilities,
 --}
 
 require'lspconfig'.denols.setup {
-on_init = on_init;
-capabilities = capabilities,
-init_options = {
-	suggest = {
-		autoImports = true,
-		completeFunctionCalls = true,
-		names = true,
-		paths = true,
-		imports = {
-			autoDiscover = false,
-			hosts = {
-				['https://deno.land/'] = true,
+	on_init = on_init;
+	capabilities = capabilities,
+	init_options = {
+		suggest = {
+			autoImports = true,
+			completeFunctionCalls = true,
+			names = true,
+			paths = true,
+			imports = {
+				autoDiscover = false,
+				hosts = {
+					['https://deno.land/'] = true,
+				},
 			},
 		},
-	},
-}
+	}
 }
 EOF
 nnoremap <silent> gf<CR>       <Cmd>lua vim.lsp.buf.definition()<CR>
