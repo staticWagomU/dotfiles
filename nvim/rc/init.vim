@@ -1,13 +1,13 @@
 "{{{options
 if has('vim_starting')
-  set encoding=utf-8
-  set fileencodings=iso-2022-jp,ucs-bom,sjis,utf-8,euc-jp,cp932,default,latin1
-  set fileformats=unix,dos,mac
+set encoding=utf-8
+set fileencodings=iso-2022-jp,ucs-bom,sjis,utf-8,euc-jp,cp932,default,latin1
+set fileformats=unix,dos,mac
 endif
 scriptencoding utf-8
 
 if &compatible
-  set nocompatible
+set nocompatible
 endif
 
 
@@ -30,7 +30,7 @@ set ambiwidth=single
 set ignorecase
 set title
 let &g:titlestring =
-      \ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
+\ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
 "}}}
 
 "{{{ plugin
@@ -193,110 +193,110 @@ local lspkind = require'lspkind'
 local cmp = require'cmp'
 
 cmp.setup({
-	snippet = {
-		expand = function(args)
-			vim.fn["vsnip#anonymous"](args.body)
-		end,
-	},
-	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
-	},
-	formatting = {
-		--fields = {'kind', 'addr', 'menu'},
-		format = lspkind.cmp_format({
-			mode = 'symbol_text',
-			maxwidth = 50,
-			with_text = false,
-		})
-	},
-	mapping = cmp.mapping.preset.insert({
-		['<C-b>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<C-e>'] = cmp.mapping.abort(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }), 
-		-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-	}),
-	sources = cmp.config.sources({
-		{ name = 'nvim_lsp_signature_help' },
-	}, {
-		{ name = 'path' },
-	}, {
-		{ name = 'nvim_lsp' },
-	}, {
-		{ name = 'calc' },
-		{ name = 'vsnip' },
-	}, {
-		{ name = 'buffer' },
+snippet = {
+	expand = function(args)
+		vim.fn["vsnip#anonymous"](args.body)
+	end,
+},
+window = {
+	completion = cmp.config.window.bordered(),
+	documentation = cmp.config.window.bordered(),
+},
+formatting = {
+	--fields = {'kind', 'addr', 'menu'},
+	format = lspkind.cmp_format({
+		mode = 'symbol_text',
+		maxwidth = 50,
+		with_text = false,
 	})
+},
+mapping = cmp.mapping.preset.insert({
+	['<C-b>'] = cmp.mapping.scroll_docs(-4),
+	['<C-f>'] = cmp.mapping.scroll_docs(4),
+	['<C-Space>'] = cmp.mapping.complete(),
+	['<C-e>'] = cmp.mapping.abort(),
+	['<CR>'] = cmp.mapping.confirm({ select = true }), 
+	-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+}),
+sources = cmp.config.sources({
+	{ name = 'nvim_lsp_signature_help' },
+}, {
+	{ name = 'path' },
+}, {
+	{ name = 'nvim_lsp' },
+}, {
+	{ name = 'calc' },
+	{ name = 'vsnip' },
+}, {
+	{ name = 'buffer' },
+})
 })
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
-	sources = cmp.config.sources({
-		{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-	}, {
-		{ name = 'buffer' },
-	})
+sources = cmp.config.sources({
+	{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+}, {
+	{ name = 'buffer' },
+})
 })
 
 require('cmp_git').setup({})
 
 cmp.setup.cmdline('/', {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = {
-		{ name = 'nvim_lsp_document_symbol' },
-		{ name = 'buffer' },
-	},
+mapping = cmp.mapping.preset.cmdline(),
+sources = {
+	{ name = 'nvim_lsp_document_symbol' },
+	{ name = 'buffer' },
+},
 })
 
 cmp.setup.cmdline(':', {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = 'path' }
-	}, {
-		{ name = 'cmdline' }
-	})
+mapping = cmp.mapping.preset.cmdline(),
+sources = cmp.config.sources({
+	{ name = 'path' }
+}, {
+	{ name = 'cmdline' }
+})
 })
 
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_init = function(client)
-	client.config.flags = {}
-	if client.config.flags then
-		client.config.flags.allow_incremental_sync = true
-		client.config.flags.debounce_text_changes = 200
-	end
+client.config.flags = {}
+if client.config.flags then
+	client.config.flags.allow_incremental_sync = true
+	client.config.flags.debounce_text_changes = 200
+end
 end
 require'lspconfig'.gopls.setup {
-	capabilities = capabilities,
-	on_init = on_init;
-	init_options = {
-		gofumpt = true,
-		usePlaceholders = true,
-		semanticTokens = true,
-		staticcheck = true,
-		experimentalPostfixCompletions = true,
-		hoverKind = 'Structured',
-		analyses = {
-			nilness = true,
-			shadow = true,
-			unusedparams = true,
-			unusedwrite = true,
-			fieldalignment = true
-		},
-			codelenses = {
-			gc_details = true,
-			tidy = true
-		}
+capabilities = capabilities,
+on_init = on_init;
+init_options = {
+	gofumpt = true,
+	usePlaceholders = true,
+	semanticTokens = true,
+	staticcheck = true,
+	experimentalPostfixCompletions = true,
+	hoverKind = 'Structured',
+	analyses = {
+		nilness = true,
+		shadow = true,
+		unusedparams = true,
+		unusedwrite = true,
+		fieldalignment = true
+	},
+		codelenses = {
+		gc_details = true,
+		tidy = true
 	}
+}
 }
 
 require'lspconfig'.vimls.setup {
-	on_init = on_init;
-	capabilities = capabilities,
+on_init = on_init;
+capabilities = capabilities,
 }
 
 --require'lspconfig'.tsserver.setup {
@@ -308,22 +308,22 @@ require'lspconfig'.vimls.setup {
 --}
 
 require'lspconfig'.denols.setup {
-	on_init = on_init;
-	capabilities = capabilities,
-	init_options = {
-		suggest = {
-			autoImports = true,
-			completeFunctionCalls = true,
-			names = true,
-			paths = true,
-			imports = {
-				autoDiscover = false,
-				hosts = {
-					['https://deno.land/'] = true,
-				},
+on_init = on_init;
+capabilities = capabilities,
+init_options = {
+	suggest = {
+		autoImports = true,
+		completeFunctionCalls = true,
+		names = true,
+		paths = true,
+		imports = {
+			autoDiscover = false,
+			hosts = {
+				['https://deno.land/'] = true,
 			},
 		},
-	}
+	},
+}
 }
 EOF
 nnoremap <silent> gf<CR>       <Cmd>lua vim.lsp.buf.definition()<CR>
@@ -344,20 +344,20 @@ if s:enable_ddc
 call ddc#custom#patch_global('sources', ['around', 'nvim-lsp'])
 
 call ddc#custom#patch_global('sourceoptions', {
-      \ '_': {
-      \   'matchers': ['matcher_head'],
-      \   'sorters': ['sorter_rank'],
-      \   'converters': ['converter_remove_overlap'],},
-      \ 'around': {'mark': 'Around'},
-      \ 'nvim-lsp': {
-      \   'mark': 'lsp',
-      \   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
-      \ })
+\ '_': {
+\   'matchers': ['matcher_head'],
+\   'sorters': ['sorter_rank'],
+\   'converters': ['converter_remove_overlap'],},
+\ 'around': {'mark': 'Around'},
+\ 'nvim-lsp': {
+\   'mark': 'lsp',
+\   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
+\ })
 
 call ddc#custom#patch_global('sourceparams', {
-     \ 'around': {'maxsize': 500},
-     \ 'nvim-lsp': {'kindLabels': {'Class': 'c'}}
-     \ })
+\ 'around': {'maxsize': 500},
+\ 'nvim-lsp': {'kindLabels': {'Class': 'c'}}
+\ })
 
 inoremap <silent><expr> <TAB>
 \ ddc#map#pum_visible() ? '<C-n>' :
