@@ -30,7 +30,7 @@ set ambiwidth=single
 set ignorecase
 set title
 let &g:titlestring =
-\ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
+	\ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
 "}}}
 
 "{{{ plugin
@@ -344,25 +344,25 @@ if s:enable_ddc
 call ddc#custom#patch_global('sources', ['around', 'nvim-lsp'])
 
 call ddc#custom#patch_global('sourceoptions', {
-\ '_': {
-\   'matchers': ['matcher_head'],
-\   'sorters': ['sorter_rank'],
-\   'converters': ['converter_remove_overlap'],},
-\ 'around': {'mark': 'Around'},
-\ 'nvim-lsp': {
-\   'mark': 'lsp',
-\   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
-\ })
+	\ '_': {
+	\   'matchers': ['matcher_head'],
+	\   'sorters': ['sorter_rank'],
+	\   'converters': ['converter_remove_overlap'],},
+	\ 'around': {'mark': 'Around'},
+	\ 'nvim-lsp': {
+	\   'mark': 'lsp',
+	\   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
+	\ })
 
 call ddc#custom#patch_global('sourceparams', {
-\ 'around': {'maxsize': 500},
-\ 'nvim-lsp': {'kindLabels': {'Class': 'c'}}
-\ })
+	\ 'around': {'maxsize': 500},
+	\ 'nvim-lsp': {'kindLabels': {'Class': 'c'}}
+	\ })
 
 inoremap <silent><expr> <TAB>
-\ ddc#map#pum_visible() ? '<C-n>' :
-\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-\ '<TAB>' : ddc#map#manual_complete()
+	\ ddc#map#pum_visible() ? '<C-n>' :
+	\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+	\ '<TAB>' : ddc#map#manual_complete()
 
 inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 
@@ -466,34 +466,34 @@ command! -bar MoveBack if &buftype == 'nofile' && (winwidth(0) < &columns / 3 ||
 nnoremap <silent> <Leader>mf :MoveBack<BAR>Files<CR>
 nnoremap <silent> <Leader>mb  :MoveBack<BAR>Buffers<CR>
 command! -nargs=? -complete=dir AF
-  \ call fzf#run(fzf#wrap(fzf#vim#with_preview({
-  \   'source': 'fd --type f --hidden --follow --exclude .git --no-ignore . '.expand(<q-args>)
-  \ })))
+	\ call fzf#run(fzf#wrap(fzf#vim#with_preview({
+	\   'source': 'fd --type f --hidden --follow --exclude .git --no-ignore . '.expand(<q-args>)
+	\ })))
 
 function! s:plug_help_sink(line)
-  let dir = g:plugs[a:line].dir
-  for pat in ['doc/*.txt', 'README.md']
-    let match = get(split(globpath(dir, pat), "\n"), 0, '')
-    if len(match)
-      execute 'tabedit' match
-      return
-    endif
-  endfor
-  tabnew
-  execute 'Explore' dir
+	let dir = g:plugs[a:line].dir
+	for pat in ['doc/*.txt', 'README.md']
+		let match = get(split(globpath(dir, pat), "\n"), 0, '')
+		if len(match)
+			execute 'tabedit' match
+			return
+		endif
+	endfor
+	tabnew
+	execute 'Explore' dir
 endfunction
 
 command! PlugHelp call fzf#run(fzf#wrap({
-  \ 'source': sort(keys(g:plugs)),
-  \ 'sink':   function('s:plug_help_sink')}))
+	\ 'source': sort(keys(g:plugs)),
+	\ 'sink':   function('s:plug_help_sink')}))
 
 function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let options = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  let options = fzf#vim#with_preview(options, 'right', 'ctrl-/')
-  call fzf#vim#grep(initial_command, 1, options, a:fullscreen)
+	let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+	let initial_command = printf(command_fmt, shellescape(a:query))
+	let reload_command = printf(command_fmt, '{q}')
+	let options = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+	let options = fzf#vim#with_preview(options, 'right', 'ctrl-/')
+	call fzf#vim#grep(initial_command, 1, options, a:fullscreen)
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>)
@@ -503,20 +503,20 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>)
 lua << EOF
 -- Default options:
 require('kanagawa').setup({
-    undercurl = true,           -- enable undercurls
-    commentStyle = "italic",
-    functionStyle = "NONE",
-    keywordStyle = "italic",
-    statementStyle = "bold",
-    typeStyle = "NONE",
-    variablebuiltinStyle = "italic",
-    specialReturn = true,       -- special highlight for the return keyword
-    specialException = true,    -- special highlight for exception handling keywords
-    transparent = false,        -- do not set background color
-    dimInactive = false,        -- dim inactive window `:h hl-NormalNC`
-    globalStatus = false,       -- adjust window separators highlight for laststatus=3
-    colors = {},
-    overrides = {},
+	undercurl = true,           -- enable undercurls
+	commentStyle = "italic",
+	functionStyle = "NONE",
+	keywordStyle = "italic",
+	statementStyle = "bold",
+	typeStyle = "NONE",
+	variablebuiltinStyle = "italic",
+	specialReturn = true,       -- special highlight for the return keyword
+	specialException = true,    -- special highlight for exception handling keywords
+	transparent = false,        -- do not set background color
+	dimInactive = false,        -- dim inactive window `:h hl-NormalNC`
+	globalStatus = false,       -- adjust window separators highlight for laststatus=3
+	colors = {},
+	overrides = {},
 })
 
 EOF
@@ -540,66 +540,65 @@ lua << EOF
 --}
 
 require('toggleterm').setup({
-open_mapping = [[<c-\>]],
-shade_filetypes = { 'none' },
-direction = 'horizontal',
-insert_mappings = false,
-start_in_insert = true,
-float_opts = { border = 'rounded', winblend = 3 },
-size = function(term)
-if term.direction == 'horizontal' then
-return 15
-elseif term.direction == 'vertical' then
-return math.floor(vim.o.columns * 0.4)
-end
-end,
+	open_mapping = [[<c-\>]],
+	shade_filetypes = { 'none' },
+	direction = 'horizontal',
+	insert_mappings = false,
+	start_in_insert = true,
+	float_opts = { border = 'rounded', winblend = 3 },
+	size = function(term)
+		if term.direction == 'horizontal' then
+			return 15
+		elseif term.direction == 'vertical' then
+			return math.floor(vim.o.columns * 0.4)
+		end
+	end,
 })
 
 local float_handler = function(term)
-if vim.fn.mapcheck('jk', 't') ~= '' then
-vim.api.nvim_buf_del_keymap(term.bufnr, 't', 'jk')
-vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<esc>')
-end
+	if vim.fn.mapcheck('jk', 't') ~= '' then
+		vim.api.nvim_buf_del_keymap(term.bufnr, 't', 'jk')
+		vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<esc>')
+	end
 end
 
 local Terminal = require('toggleterm.terminal').Terminal
 
 local lazygit = Terminal:new({
-cmd = 'lazygit',
-dir = 'git_dir',
-hidden = true,
-direction = 'float',
-on_open = float_handler,
+	cmd = 'lazygit',
+	dir = 'git_dir',
+	hidden = true,
+	direction = 'float',
+	on_open = float_handler,
 })
 
 local toggleLazegit = function()
-lazygit:toggle()
+	lazygit:toggle()
 end
 vim.api.nvim_create_user_command('Lazygit', toggleLazegit, {})
 EOF
 " set
 autocmd TermEnter term://*toggleterm#*
-      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+	\ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 nnoremap <Leader>lg :<C-u>Lazygit<CR>
 "}}}
 
 "{{{gopls
 lua <<EOF
-
-  function OrgImports(wait_ms)
-    local params = vim.lsp.util.make_range_params()
-    params.context = {only = {"source.organizeImports"}}
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
-    for _, res in pairs(result or {}) do
-      for _, r in pairs(res.result or {}) do
-        if r.edit then
-          vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
-        else
-          vim.lsp.buf.execute_command(r.command)
-        end
-      end
-    end
-  end
+function OrgImports(wait_ms)
+	local params = vim.lsp.util.make_range_params()
+	params.context = {only = {"source.organizeImports"}}
+	local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+	for _, res in pairs(result or {}) do
+		for _, r in pairs(res.result or {}) do
+			if r.edit then
+				vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
+			else
+				vim.lsp.buf.execute_command(r.command)
+			end
+		end
+	end
+end
 EOF
 
 autocmd BufWritePre *.go lua OrgImports(1000)
@@ -609,73 +608,73 @@ autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 100)
 "{{{Comment.nvim
 lua << EOF
 require('Comment').setup({
-    ---Add a space b/w comment and the line
-    ---@type boolean|fun():boolean
-    padding = true,
+	---Add a space b/w comment and the line
+	---@type boolean|fun():boolean
+	padding = true,
 
-    ---Whether the cursor should stay at its position
-    ---NOTE: This only affects NORMAL mode mappings and doesn't work with dot-repeat
-    ---@type boolean
-    sticky = true,
+	---Whether the cursor should stay at its position
+	---NOTE: This only affects NORMAL mode mappings and doesn't work with dot-repeat
+	---@type boolean
+	sticky = true,
 
-    ---Lines to be ignored while comment/uncomment.
-    ---Could be a regex string or a function that returns a regex string.
-    ---Example: Use '^$' to ignore empty lines
-    ---@type string|fun():string
-    ignore = nil,
+	---Lines to be ignored while comment/uncomment.
+	---Could be a regex string or a function that returns a regex string.
+	---Example: Use '^$' to ignore empty lines
+	---@type string|fun():string
+	ignore = nil,
 
-    ---LHS of toggle mappings in NORMAL + VISUAL mode
-    ---@type table
-    toggler = {
-        ---Line-comment toggle keymap
-        line = 'gcc',
-        ---Block-comment toggle keymap
-        block = 'gbc',
-    },
+	---LHS of toggle mappings in NORMAL + VISUAL mode
+	---@type table
+	toggler = {
+		---Line-comment toggle keymap
+		line = 'gcc',
+		---Block-comment toggle keymap
+		block = 'gbc',
+	},
 
-    ---LHS of operator-pending mappings in NORMAL + VISUAL mode
-    ---@type table
-    opleader = {
-        ---Line-comment keymap
-        line = 'gc',
-        ---Block-comment keymap
-        block = 'gb',
-    },
+	---LHS of operator-pending mappings in NORMAL + VISUAL mode
+	---@type table
+	opleader = {
+		---Line-comment keymap
+		line = 'gc',
+		---Block-comment keymap
+		block = 'gb',
+	},
 
-    ---LHS of extra mappings
-    ---@type table
-    extra = {
-        ---Add comment on the line above
-        above = 'gcO',
-        ---Add comment on the line below
-        below = 'gco',
-        ---Add comment at the end of line
-        eol = 'gcA',
-    },
+	---LHS of extra mappings
+	---@type table
+	extra = {
+		---Add comment on the line above
+		above = 'gcO',
+		---Add comment on the line below
+		below = 'gco',
+		---Add comment at the end of line
+		eol = 'gcA',
+	},
 
-    ---Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode
-    ---NOTE: If `mappings = false` then the plugin won't create any mappings
-    ---@type boolean|table
-    mappings = {
-        ---Operator-pending mapping
-        ---Includes `gcc`, `gbc`, `gc[count]{motion}` and `gb[count]{motion}`
-        ---NOTE: These mappings can be changed individually by `opleader` and `toggler` config
-        basic = true,
-        ---Extra mapping
-        ---Includes `gco`, `gcO`, `gcA`
-        extra = true,
-        ---Extended mapping
-        ---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
-        extended = false,
-    },
+	---Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode
+	---NOTE: If `mappings = false` then the plugin won't create any mappings
+	---@type boolean|table
+	mappings = {
+		---Operator-pending mapping
+		---Includes `gcc`, `gbc`, `gc[count]{motion}` and `gb[count]{motion}`
+		---NOTE: These mappings can be changed individually by `opleader` and `toggler` config
+		basic = true,
+		---Extra mapping
+		---Includes `gco`, `gcO`, `gcA`
+		extra = true,
+		---Extended mapping
+		---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
+		extended = false,
+	},
 
-    ---Pre-hook, called before commenting the line
-    ---@type fun(ctx: Ctx):string
-    pre_hook = nil,
+	---Pre-hook, called before commenting the line
+	---@type fun(ctx: Ctx):string
+	pre_hook = nil,
 
-    ---Post-hook, called after commenting is done
-    ---@type fun(ctx: Ctx)
-    post_hook = nil,
+	---Post-hook, called after commenting is done
+	---@type fun(ctx: Ctx)
+	post_hook = nil,
 })
 EOF
 "}}}
@@ -683,91 +682,91 @@ EOF
 "{{{nvim-scrollbar
 lua << EOF
 require("scrollbar").setup({
-    show = true,
-    show_in_active_only = false,
-    set_highlights = true,
-    folds = 1000, -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
-    max_lines = false, -- disables if no. of lines in buffer exceeds this
-    handle = {
-        text = " ",
-        color = nil,
-        cterm = nil,
-        highlight = "CursorColumn",
-        hide_if_all_visible = true, -- Hides handle if all lines are visible
-    },
-    marks = {
-        Search = {
-            text = { "-", "=" },
-            priority = 0,
-            color = nil,
-            cterm = nil,
-            highlight = "Search",
-        },
-        Error = {
-            text = { "-", "=" },
-            priority = 1,
-            color = nil,
-            cterm = nil,
-            highlight = "DiagnosticVirtualTextError",
-        },
-        Warn = {
-            text = { "-", "=" },
-            priority = 2,
-            color = nil,
-            cterm = nil,
-            highlight = "DiagnosticVirtualTextWarn",
-        },
-        Info = {
-            text = { "-", "=" },
-            priority = 3,
-            color = nil,
-            cterm = nil,
-            highlight = "DiagnosticVirtualTextInfo",
-        },
-        Hint = {
-            text = { "-", "=" },
-            priority = 4,
-            color = nil,
-            cterm = nil,
-            highlight = "DiagnosticVirtualTextHint",
-        },
-        Misc = {
-            text = { "-", "=" },
-            priority = 5,
-            color = nil,
-            cterm = nil,
-            highlight = "Normal",
-        },
-    },
-    excluded_buftypes = {
-        "terminal",
-    },
-    excluded_filetypes = {
-        "prompt",
-        "TelescopePrompt",
-    },
-    autocmd = {
-        render = {
-            "BufWinEnter",
-            "TabEnter",
-            "TermEnter",
-            "WinEnter",
-            "CmdwinLeave",
-            "TextChanged",
-            "VimResized",
-            "WinScrolled",
-        },
-        clear = {
-            "BufWinLeave",
-            "TabLeave",
-            "TermLeave",
-            "WinLeave",
-        },
-    },
-    handlers = {
-        diagnostic = true,
-        search = false, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
-    },
+	show = true,
+	show_in_active_only = false,
+	set_highlights = true,
+	folds = 1000, -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
+	max_lines = false, -- disables if no. of lines in buffer exceeds this
+	handle = {
+		text = " ",
+		color = nil,
+		cterm = nil,
+		highlight = "CursorColumn",
+		hide_if_all_visible = true, -- Hides handle if all lines are visible
+	},
+	marks = {
+		Search = {
+			text = { "-", "=" },
+			priority = 0,
+			color = nil,
+			cterm = nil,
+			highlight = "Search",
+		},
+		Error = {
+			text = { "-", "=" },
+			priority = 1,
+			color = nil,
+			cterm = nil,
+			highlight = "DiagnosticVirtualTextError",
+		},
+		Warn = {
+			text = { "-", "=" },
+			priority = 2,
+			color = nil,
+			cterm = nil,
+			highlight = "DiagnosticVirtualTextWarn",
+		},
+		Info = {
+			text = { "-", "=" },
+			priority = 3,
+			color = nil,
+			cterm = nil,
+			highlight = "DiagnosticVirtualTextInfo",
+		},
+		Hint = {
+			text = { "-", "=" },
+			priority = 4,
+			color = nil,
+			cterm = nil,
+			highlight = "DiagnosticVirtualTextHint",
+		},
+		Misc = {
+			text = { "-", "=" },
+			priority = 5,
+			color = nil,
+			cterm = nil,
+			highlight = "Normal",
+		},
+	},
+	excluded_buftypes = {
+		"terminal",
+	},
+	excluded_filetypes = {
+		"prompt",
+		"TelescopePrompt",
+	},
+	autocmd = {
+		render = {
+			"BufWinEnter",
+			"TabEnter",
+			"TermEnter",
+			"WinEnter",
+			"CmdwinLeave",
+			"TextChanged",
+			"VimResized",
+			"WinScrolled",
+		},
+		clear = {
+			"BufWinLeave",
+			"TabLeave",
+			"TermLeave",
+			"WinLeave",
+		},
+	},
+	handlers = {
+		diagnostic = true,
+		search = false, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
+	},
 })
 EOF
 "}}}
@@ -775,32 +774,32 @@ EOF
 "{{{alpha
 
 function! s:print_plugins_message() abort
-  let l:packer = stdpath('data') .'/site/pack/packer/start/packer.nvim'
-  let s:footer_icon = ''
-  if exists('g:dashboard_footer_icon')
-    let s:footer_icon = get(g:,'dashboard_footer_icon','')
-  endif
+	let l:packer = stdpath('data') .'/site/pack/packer/start/packer.nvim'
+	let s:footer_icon = ''
+	if exists('g:dashboard_footer_icon')
+		let s:footer_icon = get(g:,'dashboard_footer_icon','')
+	endif
 
-  if has('nvim')
-    let l:vim = 'neovim'
-  else
-    let l:vim = 'vim'
-  endif
+	if has('nvim')
+		let l:vim = 'neovim'
+	else
+		let l:vim = 'vim'
+	endif
 
-  if exists('*dein#get')
-    let l:total_plugins = len(dein#get())
-  elseif exists('*plug#begin')
-    let l:total_plugins = len(keys(g:plugs))
-  elseif isdirectory(l:packer)
-    let l:total_plugins = luaeval('#vim.tbl_keys(packer_plugins)')
-  else
-    return [s:footer_icon . ' Have fun with ' . l:vim]
-  endif
+	if exists('*dein#get')
+		let l:total_plugins = len(dein#get())
+	elseif exists('*plug#begin')
+		let l:total_plugins = len(keys(g:plugs))
+	elseif isdirectory(l:packer)
+		let l:total_plugins = luaeval('#vim.tbl_keys(packer_plugins)')
+	else
+		return [s:footer_icon . ' Have fun with ' . l:vim]
+	endif
 
-  let l:footer=[]
-  let footer_string= s:footer_icon . l:vim .' loaded ' . l:total_plugins . ' plugins '
-  call insert(l:footer,footer_string)
-  return l:footer
+	let l:footer=[]
+	let footer_string= s:footer_icon . l:vim .' loaded ' . l:total_plugins . ' plugins '
+	call insert(l:footer,footer_string)
+	return l:footer
 endfunction
 
 lua << EOF
@@ -1200,17 +1199,17 @@ nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -toggle<CR>
 let g:fern#default_hidden=1
 
 function! s:fern_settings() abort
-  nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
-  nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
-  nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
-  nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
-  nmap <silent> <buffer> <C-m> <Plug>(fern-action-move)
-  nmap <silent> <buffer> <C-S-d> <Plug>(fern-action-new-dir)
+	nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
+	nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
+	nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
+	nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
+	nmap <silent> <buffer> <C-m> <Plug>(fern-action-move)
+	nmap <silent> <buffer> <C-S-d> <Plug>(fern-action-new-dir)
 endfunction
 
 augroup fern-settings
-  autocmd!
-  autocmd FileType fern call s:fern_settings()
+	autocmd!
+	autocmd FileType fern call s:fern_settings()
 augroup END
 
 
@@ -1252,9 +1251,9 @@ cnoremap <C-j> <Cmd>call searchx#next()<CR>
 " {{{ treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-  }
+	highlight = {
+		enable = true,
+	}
 }
 EOF
 " }}}
@@ -1284,16 +1283,16 @@ let g:gitgutter_map_keys = 0
 
 " {{{ autocmd
 augroup restore-cursor
-  autocmd!
-  autocmd BufReadPost *
-        \ : if line("'\"") >= 1 && line("'\"") <= line("$")
-        \ |   exe "normal! g`\""
-        \ | endif
-  autocmd BufWinEnter *
-  
-        \ : if empty(&buftype) && line('.') > winheight(0) / 2
-        \ |   execute 'normal! zz'
-        \ | endif
+	autocmd!
+	autocmd BufReadPost *
+	\ : if line("'\"") >= 1 && line("'\"") <= line("$")
+	\ |   exe "normal! g`\""
+	\ | endif
+	autocmd BufWinEnter *
+
+	\ : if empty(&buftype) && line('.') > winheight(0) / 2
+	\ |   execute 'normal! zz'
+	\ | endif
 augroup END
 
 autocmd TermOpen * startinsert
