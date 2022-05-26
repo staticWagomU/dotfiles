@@ -193,71 +193,71 @@ local lspkind = require'lspkind'
 local cmp = require'cmp'
 
 cmp.setup({
-snippet = {
-	expand = function(args)
-		vim.fn["vsnip#anonymous"](args.body)
-	end,
-},
-window = {
-	completion = cmp.config.window.bordered(),
-	documentation = cmp.config.window.bordered(),
-},
-formatting = {
-	--fields = {'kind', 'addr', 'menu'},
-	format = lspkind.cmp_format({
-		mode = 'symbol_text',
-		maxwidth = 50,
-		with_text = false,
+	snippet = {
+		expand = function(args)
+			vim.fn["vsnip#anonymous"](args.body)
+		end,
+	},
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
+	formatting = {
+		--fields = {'kind', 'addr', 'menu'},
+		format = lspkind.cmp_format({
+			mode = 'symbol_text',
+			maxwidth = 50,
+			with_text = false,
+		})
+	},
+	mapping = cmp.mapping.preset.insert({
+		['<C-b>'] = cmp.mapping.scroll_docs(-4),
+		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-e>'] = cmp.mapping.abort(),
+		['<CR>'] = cmp.mapping.confirm({ select = true }), 
+		-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+	}),
+	sources = cmp.config.sources({
+		{ name = 'nvim_lsp_signature_help' },
+	}, {
+		{ name = 'path' },
+	}, {
+		{ name = 'nvim_lsp' },
+	}, {
+		{ name = 'calc' },
+		{ name = 'vsnip' },
+	}, {
+		{ name = 'buffer' },
 	})
-},
-mapping = cmp.mapping.preset.insert({
-	['<C-b>'] = cmp.mapping.scroll_docs(-4),
-	['<C-f>'] = cmp.mapping.scroll_docs(4),
-	['<C-Space>'] = cmp.mapping.complete(),
-	['<C-e>'] = cmp.mapping.abort(),
-	['<CR>'] = cmp.mapping.confirm({ select = true }), 
-	-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-}),
-sources = cmp.config.sources({
-	{ name = 'nvim_lsp_signature_help' },
-}, {
-	{ name = 'path' },
-}, {
-	{ name = 'nvim_lsp' },
-}, {
-	{ name = 'calc' },
-	{ name = 'vsnip' },
-}, {
-	{ name = 'buffer' },
-})
 })
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
-sources = cmp.config.sources({
-	{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-}, {
-	{ name = 'buffer' },
-})
+	sources = cmp.config.sources({
+		{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+	}, {
+		{ name = 'buffer' },
+	})
 })
 
 require('cmp_git').setup({})
 
 cmp.setup.cmdline('/', {
-mapping = cmp.mapping.preset.cmdline(),
-sources = {
-	{ name = 'nvim_lsp_document_symbol' },
-	{ name = 'buffer' },
-},
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = 'nvim_lsp_document_symbol' },
+		{ name = 'buffer' },
+	},
 })
 
 cmp.setup.cmdline(':', {
-mapping = cmp.mapping.preset.cmdline(),
-sources = cmp.config.sources({
-	{ name = 'path' }
-}, {
-	{ name = 'cmdline' }
-})
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = 'path' }
+	}, {
+		{ name = 'cmdline' }
+	})
 })
 
 
@@ -465,10 +465,6 @@ endif
 command! -bar MoveBack if &buftype == 'nofile' && (winwidth(0) < &columns / 3 || winheight(0) < &lines / 3) | execute "normal! \<c-w>\<c-p>" | endif
 nnoremap <silent> <Leader>mf :MoveBack<BAR>Files<CR>
 nnoremap <silent> <Leader>mb  :MoveBack<BAR>Buffers<CR>
-command! -nargs=? -complete=dir AF
-	\ call fzf#run(fzf#wrap(fzf#vim#with_preview({
-	\   'source': 'fd --type f --hidden --follow --exclude .git --no-ignore . '.expand(<q-args>)
-	\ })))
 
 function! s:plug_help_sink(line)
 	let dir = g:plugs[a:line].dir
@@ -487,16 +483,6 @@ command! PlugHelp call fzf#run(fzf#wrap({
 	\ 'source': sort(keys(g:plugs)),
 	\ 'sink':   function('s:plug_help_sink')}))
 
-function! RipgrepFzf(query, fullscreen)
-	let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
-	let initial_command = printf(command_fmt, shellescape(a:query))
-	let reload_command = printf(command_fmt, '{q}')
-	let options = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-	let options = fzf#vim#with_preview(options, 'right', 'ctrl-/')
-	call fzf#vim#grep(initial_command, 1, options, a:fullscreen)
-endfunction
-
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>)
 "}}}
 
 "{{{kanagawa.nvim
