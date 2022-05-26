@@ -27,6 +27,7 @@ set laststatus=2
 set mouse=a
 set clipboard=unnamedplus
 set ambiwidth=single
+set ignorecase
 set title
 let &g:titlestring =
       \ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
