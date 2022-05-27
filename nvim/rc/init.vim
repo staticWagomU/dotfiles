@@ -26,6 +26,7 @@ set mouse=a
 set clipboard=unnamedplus
 set ambiwidth=single
 set ignorecase
+set splitright
 set title
 let &g:titlestring =
 	\ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
@@ -377,6 +378,14 @@ endfunction
 command! PlugHelp call fzf#run(fzf#wrap({
 	\ 'source': sort(keys(g:plugs)),
 	\ 'sink':   function('s:plug_help_sink')}))
+
+
+let g:fzf_action = {
+	\ 'ctrl-t': 'tab split',
+	\ 'ctrl-x': 'split',
+	\ 'ctrl-v': 'vsplit' }
+
+let g:fzf_layout = { 'down': '40%' }
 
 "}}}
 
