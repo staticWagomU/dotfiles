@@ -55,6 +55,7 @@ Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'staticWagomu/wagomuColor'
 
 "{{{telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -165,7 +166,7 @@ nnoremap <Leader>bn :<C-u>bn<CR>
 nnoremap <Leader>bp :<C-u>bp<CR>
 nnoremap <Leader>bd :<C-u>bd<CR>
 nnoremap <silent> <Leader>cd :<C-u>cd %:p:h<CR>
-nnoremap ^ :<C-u>so ~/dotfiles/nvim/rc/init.vim<CR>
+nnoremap ^ :<C-u>so ~/.dotfiles/nvim/rc/init.vim<CR>
 "}}}
 
 "{{{ pluginConfig
