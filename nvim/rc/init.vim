@@ -56,11 +56,11 @@ Plug 'akinsho/toggleterm.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'staticWagomu/wagomuColor'
+Plug 'norcalli/nvim-colorizer.lua'
 
 "{{{telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'nvim-telescope/telescope-github.nvim'
 Plug 'nvim-telescope/telescope-ui-select.nvim'
 Plug 'nvim-telescope/telescope-symbols.nvim'
@@ -170,7 +170,7 @@ nnoremap ^ :<C-u>so ~/.dotfiles/nvim/rc/init.vim<CR>
 "}}}
 
 "{{{ pluginConfig
-
+lua require'colorizer'.setup()
 if s:enable_nvim_cmp
 "{{{nvim-cmp
 lua <<EOF
@@ -255,6 +255,8 @@ if client.config.flags then
 	client.config.flags.debounce_text_changes = 200
 end
 end
+
+require'nvim-lsp-installer'.setup {}
 require'lspconfig'.gopls.setup {
 	capabilities = capabilities,
 	on_init = on_init;
@@ -712,10 +714,9 @@ dashboard.section.footer.val = vim.fn['s:print_plugins_message']()
 
 dashboard.section.buttons.val = {
 	dashboard.button('e', '  New file', ':enew<CR>'),
-	--dashboard.button('e', '  New file', ':enew <BAR> startinsert<CR>'),
 	dashboard.button("h", "  Recently opened files", ":Telescope my_mru<CR>"),
 	dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
-	dashboard.button('s', '漣 Settings', ':e ~/dotfiles/nvim/rc/init.vim<CR>'),
+	dashboard.button('s', '漣 Settings', ':e ~/.dotfiles/nvim/rc/init.vim<CR>'),
 	dashboard.button("u", "  Update plugins", ":PlugUpdate<CR>"),
 	dashboard.button("q", "  Exit", ":qa<CR>"),
 }
@@ -830,7 +831,7 @@ require("telescope").setup({
 	}
 })
 require('telescope').load_extension('fzy_native')
-require("telescope").load_extension "file_browser"
+require('telescope').load_extension('file_browser')
 
 local function remove_duplicate_paths(tbl, cwd)
 	local res = {}
@@ -1160,8 +1161,13 @@ autocmd FileType vim setlocal foldmethod=marker
 "}}}
 
 " {{{ other
-cd ~
-colorscheme nord
+if has('win32')
+	cd ~
+endif
+"colorscheme nord
+"colorscheme torte
+colorscheme desert
 filetype plugin indent on
 set winblend=10
+command! VimShowHlItem echo synIDattr(synID(line("."), col("."), 1), "name")
 " }}}
