@@ -1,4 +1,4 @@
-"{{{options
+"{{{optionsz
 if has('vim_starting')
 set encoding=utf-8
 set fileencodings=iso-2022-jp,ucs-bom,sjis,utf-8,euc-jp,cp932,default,latin1
@@ -33,6 +33,9 @@ set display=uhex
 set wildmenu
 set expandtab
 set wrapscan
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set title
 let &g:titlestring =
 	\ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
@@ -63,6 +66,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'staticWagomu/wagomuColor'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'cocopon/iceberg.vim'
 
 "{{{telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -423,21 +427,6 @@ EOF
 
 "{{{toggleterm
 lua << EOF
---require("toggleterm").setup{
---	open_mapping = [[<C-/>]],
---	hide_numbers = true,
---	direction = 'float',
---	close_on_exit = true,
---	shell = vim.o.shell,
---	float_opts = {
---		border = 'single',
---		width = 100,
---		height = 80,
---		winblend = 10,
---	},
---	dir= vim.fn.expand('%'),
---}
-
 require('toggleterm').setup({
 	open_mapping = [[<c-\>]],
 	shade_filetypes = { 'none' },
@@ -1403,7 +1392,9 @@ if has('win32')
 endif
 "colorscheme nord
 "colorscheme torte
-colorscheme wagomuColor
+"colorscheme wagomuColor
+"colorscheme nord
+colorscheme iceberg
 filetype plugin indent on
-set winblend=10
+"set winblend=10
 " }}}
