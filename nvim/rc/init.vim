@@ -26,7 +26,13 @@ set mouse=a
 set clipboard=unnamedplus
 set ambiwidth=single
 set ignorecase
+set smartcase
+set splitbelow
 set splitright
+set display=uhex
+set wildmenu
+set expandtab
+set wrapscan
 set title
 let &g:titlestring =
 	\ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
@@ -1357,6 +1363,10 @@ let g:gitgutter_sign_modified_removed = '<'
 let g:gitgutter_map_keys = 0
 " }}}
 
+"{{{vim-goimports
+let g:goimports = 1
+"}}}
+
 "}}}
 
 " {{{ autocmd
@@ -1376,6 +1386,15 @@ augroup END
 autocmd TermOpen * startinsert
 
 autocmd FileType vim setlocal foldmethod=marker
+
+augroup Cursor
+  autocmd WinLeave * setlocal nocursorline "カレントウィンドウから離れたらカーソルハイライトを消す
+  highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666 "全角スペースを見えるようにする
+  autocmd BufNewFile,BufRead * match ZenkakuSpace /　/
+augroup END
+
+
+command! VimShowHlItem echo synIDattr(synID(line("."), col("."), 1), "name")
 "}}}
 
 " {{{ other
@@ -1387,5 +1406,4 @@ endif
 colorscheme wagomuColor
 filetype plugin indent on
 set winblend=10
-command! VimShowHlItem echo synIDattr(synID(line("."), col("."), 1), "name")
 " }}}
