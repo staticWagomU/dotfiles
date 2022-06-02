@@ -1277,7 +1277,7 @@ function! s:fern_settings() abort
 	nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
 	nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
 	nmap <silent> <buffer> <C-m> <Plug>(fern-action-move)
-	nmap <silent> <buffer> <C-S-d> <Plug>(fern-action-new-dir)
+	nmap <silent> <buffer> <C-s> <Plug>(fern-action-new-dir)
 endfunction
 
 augroup fern-settings
