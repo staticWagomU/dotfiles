@@ -67,6 +67,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'staticWagomu/wagomuColor'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'cocopon/iceberg.vim'
+Plug 'skanehira/jumpcursor.vim'
 
 "{{{telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -256,6 +257,59 @@ cmp.setup.cmdline(':', {
 })
 
 
+EOF
+nnoremap <silent> gf<CR>       <Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gfv          <Cmd>vsplit<CR><Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gfs          <Cmd>split<CR><Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <Leader>i    <Cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <Leader>g    <Cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> <Leader>f    <Cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <Leader>r    <Cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> <Leader>s    <Cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <Leader><CR> <Cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <C-k>        <Cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> <C-j>        <Cmd>lua vim.diagnostic.goto_next()<CR>
+
+"}}}
+endif
+
+if s:enable_ddc
+"{{{ ddc
+call ddc#custom#patch_global('sources', ['around', 'nvim-lsp'])
+
+call ddc#custom#patch_global('sourceoptions', {
+	\ '_': {
+	\   'matchers': ['matcher_head'],
+	\   'sorters': ['sorter_rank'],
+	\   'converters': ['converter_remove_overlap'],},
+	\ 'around': {'mark': 'Around'},
+	\ 'nvim-lsp': {
+	\   'mark': 'lsp',
+	\   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
+	\ })
+
+call ddc#custom#patch_global('sourceparams', {
+	\ 'around': {'maxsize': 500},
+	\ 'nvim-lsp': {'kindLabels': {'Class': 'c'}}
+	\ })
+
+inoremap <silent><expr> <TAB>
+\ ddc#map#pum_visible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#map#manual_complete()
+
+inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+
+call ddc#enable()
+"}}}
+endif
+
+"{{{jumpcursor
+nmap [j <Plug>(jumpcursor-jump)
+"}}}
+
+"{{{lsp
+lua <<EOF
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_init = function(client)
@@ -322,52 +376,19 @@ require'lspconfig'.denols.setup {
 		},
 	}
 }
+
+require'lspconfig'.clangd.setup {
+        on_init = on_init;
+        capabilities = capabilities;
+}
 EOF
-nnoremap <silent> gf<CR>       <Cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gfv          <Cmd>vsplit<CR><Cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gfs          <Cmd>split<CR><Cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <Leader>i    <Cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <Leader>g    <Cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> <Leader>f    <Cmd>lua vim.lsp.buf.formatting()<CR>
-nnoremap <silent> <Leader>r    <Cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> <Leader>s    <Cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> <Leader><CR> <Cmd>lua vim.lsp.buf.code_action()<CR>
-nnoremap <silent> <C-k>        <Cmd>lua vim.diagnostic.goto_prev()<CR>
-nnoremap <silent> <C-j>        <Cmd>lua vim.diagnostic.goto_next()<CR>
-
 "}}}
-endif
 
-if s:enable_ddc
-"{{{ ddc
-call ddc#custom#patch_global('sources', ['around', 'nvim-lsp'])
-
-call ddc#custom#patch_global('sourceoptions', {
-	\ '_': {
-	\   'matchers': ['matcher_head'],
-	\   'sorters': ['sorter_rank'],
-	\   'converters': ['converter_remove_overlap'],},
-	\ 'around': {'mark': 'Around'},
-	\ 'nvim-lsp': {
-	\   'mark': 'lsp',
-	\   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
-	\ })
-
-call ddc#custom#patch_global('sourceparams', {
-	\ 'around': {'maxsize': 500},
-	\ 'nvim-lsp': {'kindLabels': {'Class': 'c'}}
-	\ })
-
-inoremap <silent><expr> <TAB>
-\ ddc#map#pum_visible() ? '<C-n>' :
-\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-\ '<TAB>' : ddc#map#manual_complete()
-
-inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
-
-call ddc#enable()
+"{{{hop.nvim
+lua << EOF
+require'hop'.setup{}
+EOF
 "}}}
-endif
 
 "{{{fzf
 command! -bar MoveBack if &buftype == 'nofile' && (winwidth(0) < &columns / 3 || winheight(0) < &lines / 3) | execute "normal! \<c-w>\<c-p>" | endif
