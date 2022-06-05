@@ -384,11 +384,6 @@ require'lspconfig'.clangd.setup {
 EOF
 "}}}
 
-"{{{hop.nvim
-lua << EOF
-require'hop'.setup{}
-EOF
-"}}}
 
 "{{{fzf
 command! -bar MoveBack if &buftype == 'nofile' && (winwidth(0) < &columns / 3 || winheight(0) < &lines / 3) | execute "normal! \<c-w>\<c-p>" | endif
