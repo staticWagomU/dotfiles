@@ -1206,6 +1206,10 @@ ins_left {
 -- local InactiveLine_fg = white_fg
 -- cmd('hi InActive guibg=' .. InactiveLine_bg .. ' guifg=' .. InactiveLine_fg)
 
+--    let col_insert   = ['#161821', '#84a0c6', 234, 110]
+--    let col_replace  = ['#161821', '#e2a478', 234, 216]
+--    let col_visual   = ['#161821', '#b4be82', 234, 150]
+--    let col_tabsel   = ['#17171b', '#818596', 234, 245]
 -- -- Redraw different colors for different mode
 -- local set_mode_colours = function(mode)
 -- 	if mode == 'n' then
