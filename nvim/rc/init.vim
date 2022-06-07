@@ -1141,142 +1141,85 @@ ins_left {
   padding = { left = 0, right = 1 }, -- We don't need space before this
 }
 
---ins_left {
---  -- mode component
---  function()
---    return ''
---  end,
---  color = function()
---    -- auto change color according to neovims mode
---    local mode_color = {
---      n = colors.red,
---      i = colors.green,
---      v = colors.blue,
---      [''] = colors.blue,
---      V = colors.blue,
---      c = colors.magenta,
---      no = colors.red,
---      s = colors.orange,
---      S = colors.orange,
---      [''] = colors.orange,
---      ic = colors.yellow,
---      R = colors.violet,
---      Rv = colors.violet,
---      cv = colors.red,
---      ce = colors.red,
---      r = colors.cyan,
---      rm = colors.cyan,
---      ['r?'] = colors.cyan,
---      ['!'] = colors.red,
---      t = colors.red,
---    }
---    return { fg = mode_color[vim.fn.mode()] }
---  end,
---  padding = { right = 1 },
---}
--- -- Separators
--- local left_separator = ''
--- local right_separator = ''
+local function setModeColor(mode)
+        local cmd = vim.api.nvim_command
+        local black_fg = '#282c34'
+        local colors = {
+                bg       = '#202328',
+                fg       = '#bbc2cf',
+                yellow   = '#ECBE7B',
+                cyan     = '#008080',
+                darkblue = '#081633',
+                green    = '#98be65',
+                orange   = '#FF8800',
+                violet   = '#a9a1e1',
+                magenta  = '#c678dd',
+                blue     = '#51afef',
+                red      = '#ec5f67',
+        }
 
--- -- Blank Between Components
--- local space = ' '
--- -- Different colors for mode
--- local purple = '#BF616A' --#B48EAD
--- local blue = '#83a598' --#81A1C1
--- local yellow = '#fabd2f' --#EBCB8B
--- local green = '#8ec07c' --#A3BE8C
--- local red = '#fb4934' --#BF616A
-
--- -- fg and bg
--- local white_fg = '#b8b894'
--- local black_fg = '#282c34'
--- local mybg = '#504945'
-
--- --Statusline colour
--- local statusline_bg = 'None' --> Set to none, use native bg
--- local statusline_fg = white_fg
--- -- local statusline_font = 'regular'
--- cmd('hi Status_Line guibg=' .. statusline_bg .. ' guifg=' .. statusline_fg)
-
--- --LSP Function Highlight Color
--- cmd('hi Statusline_LSP_Func guibg=' .. statusline_bg .. ' guifg=' .. green)
-
--- -- INACTIVE BUFFER Colours
--- local InactiveLine_bg = '#1c1c1c'
--- local InactiveLine_fg = white_fg
--- cmd('hi InActive guibg=' .. InactiveLine_bg .. ' guifg=' .. InactiveLine_fg)
-
---    let col_insert   = ['#161821', '#84a0c6', 234, 110]
---    let col_replace  = ['#161821', '#e2a478', 234, 216]
---    let col_visual   = ['#161821', '#b4be82', 234, 150]
---    let col_tabsel   = ['#17171b', '#818596', 234, 245]
--- -- Redraw different colors for different mode
--- local set_mode_colours = function(mode)
--- 	if mode == 'n' then
--- 		cmd('hi Mode guibg=' .. green .. ' guifg=' .. black_fg .. ' gui=bold')
--- 		cmd('hi ModeSeparator guifg=' .. green)
--- 	end
--- 	if mode == 'i' then
--- 		cmd('hi Mode guibg=' .. blue .. ' guifg=' .. black_fg .. ' gui=bold')
--- 		cmd('hi ModeSeparator guifg=' .. blue)
--- 	end
--- 	if mode == 'v' or mode == 'V' or mode == '^V' then
--- 		cmd('hi Mode guibg=' .. purple .. ' guifg=' .. black_fg .. ' gui=bold')
--- 		cmd('hi ModeSeparator guifg=' .. purple)
--- 	end
--- 	if mode == 'c' then
--- 		cmd('hi Mode guibg=' .. yellow .. ' guifg=' .. black_fg .. ' gui=bold')
--- 		cmd('hi ModeSeparator guifg=' .. yellow)
--- 	end
--- 	if mode == 't' then
--- 		cmd('hi Mode guibg=' .. red .. ' guifg=' .. black_fg .. ' gui=bold')
--- 		cmd('hi ModeSeparator guifg=' .. red)
--- 	end
--- end
--- local M = {}
--- -- Mode Prompt Table
--- M.current_mode = setmetatable({
--- 	['n'] = 'N',
--- 	['no'] = 'N·Operator Pending',
--- 	['v'] = 'V',
--- 	['V'] = 'V',
--- 	['^V'] = 'V',
--- 	['s'] = 'Select',
--- 	['S'] = 'S·Line',
--- 	['^S'] = 'S·Block',
--- 	['i'] = 'I',
--- 	['ic'] = 'I',
--- 	['ix'] = 'I',
--- 	['R'] = 'Replace',
--- 	['Rv'] = 'V·Replace',
--- 	['c'] = 'C',
--- 	['cv'] = 'Vim Ex',
--- 	['ce'] = 'Ex',
--- 	['r'] = 'Prompt',
--- 	['rm'] = 'More',
--- 	['r?'] = 'Confirm',
--- 	['!'] = 'Shell',
--- 	['t'] = 'T',
--- }, {
--- 	-- fix weird issues
--- 	__index = function(_, _)
--- 		return 'V·Block'
--- 	end,
--- })
--- local mode = api.nvim_get_mode()['mode']
--- set_mode_colours(mode)
--- statusline = statusline .. '%#ModeSeparator#' .. space
--- statusline = statusline
--- 	.. '%#ModeSeparator#'
--- 	.. left_separator
--- 	.. '%#Mode# '
--- 	.. modes.current_mode[mode]
--- 	.. ' %#ModeSeparator#'
--- 	.. right_separator
--- 	.. space
+        local mode_color = {
+                n = colors.red,
+                i = colors.green,
+                v = colors.blue,
+                [''] = colors.blue,
+                V = colors.blue,
+                c = colors.magenta,
+                no = colors.red,
+                s = colors.orange,
+                S = colors.orange,
+                [''] = colors.orange,
+                ic = colors.yellow,
+                R = colors.violet,
+                Rv = colors.violet,
+                cv = colors.red,
+                ce = colors.red,
+                r = colors.cyan,
+                rm = colors.cyan,
+                ['r?'] = colors.cyan,
+                ['!'] = colors.red,
+                t = colors.red,
+        }
+        cmd('hi Mode guibg=' .. mode_color[mode] .. ' guifg=' .. black_fg .. ' gui=bold')
+        cmd('hi ModeSeparator  guibg=' .. colors.bg .. ' guifg=' .. mode_color[mode])
+end
 
 local function getmode() 
-        return vim.api.nvim_get_mode()['mode']
+        local left_separator = ''
+        local right_separator = ''
+        local space = ' '
+        --local mode = vim.api.nvim_get_mode()['mode']
+        local mode = vim.fn.mode()
+        local modeTable = {
+                n = 'N',
+                i = 'I',
+                v = 'v',
+                [''] = 'V',
+                V = 'V',
+                c = 'C',
+                no = 'N·Operator Pending',
+                s = 'Select',
+                S = 'S·Line',
+                [''] = 'S·Block',
+                ic = 'I',
+                ix = 'I',
+                R = 'Replace',
+                Rv = 'V.Replace',
+                cv = 'Vim Ex',
+                ce = 'Ex',
+                r = 'Prompt',
+                rm = 'More',
+                ['r?'] = 'Confirm',
+                ['!'] = 'Shell',
+                t = 'T',
+          }
+        setModeColor(mode)
+        return  '%#ModeSeparator#'
+                .. left_separator
+                .. '%#Mode# '
+                .. modeTable[mode]
+                .. ' %#ModeSeparator#'
+                .. right_separator
 end
 
 ins_left {
