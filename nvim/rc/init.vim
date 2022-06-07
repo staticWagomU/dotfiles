@@ -1,8 +1,8 @@
 "{{{optionsz
 if has('vim_starting')
-set encoding=utf-8
-set fileencodings=iso-2022-jp,ucs-bom,sjis,utf-8,euc-jp,cp932,default,latin1
-set fileformats=unix,dos,mac
+        set encoding=utf-8
+        set fileencodings=iso-2022-jp,ucs-bom,sjis,utf-8,euc-jp,cp932,default,latin1
+        set fileformats=unix,dos,mac
 endif
 scriptencoding utf-8
 
@@ -1268,7 +1268,7 @@ ins_left {
                 return msg
         end,
         icon = ' LSP:',
-        color = { fg = '#ffffff', gui = 'bold' },
+        color = { fg = colors.fg, gui = 'bold' },
 }
 
 ins_right {
