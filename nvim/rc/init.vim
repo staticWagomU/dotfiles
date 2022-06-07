@@ -1141,7 +1141,6 @@ ins_left {
 
 local function setModeColor(mode)
         local cmd = vim.api.nvim_command
-        local black_fg = '#282c34'
 
         local mode_color = {
                 n = colors.red,
@@ -1165,7 +1164,7 @@ local function setModeColor(mode)
                 ['!'] = colors.red,
                 t = colors.red,
         }
-        cmd('hi Mode guibg=' .. mode_color[mode] .. ' guifg=' .. black_fg .. ' gui=bold')
+        cmd('hi Mode guibg=' .. mode_color[mode] .. ' guifg=' .. colors.bg .. ' gui=bold')
         cmd('hi ModeSeparator  guibg=' .. colors.bg .. ' guifg=' .. mode_color[mode])
 end
 
@@ -1275,12 +1274,12 @@ ins_left {
 ins_right {
         'branch',
         icon = '',
-        color = { fg = colors.violet, gui = 'bold' },
+        color = { fg = colors.violet },
 }
 
 ins_right { 'location' }
 
-ins_right { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+ins_right { 'progress', color = { fg = colors.fg } }
 
 ins_right {
         -- filesize component
