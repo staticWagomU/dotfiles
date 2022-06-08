@@ -1,4 +1,4 @@
-"{{{optionsz
+"{{{options
 if has('vim_starting')
         set encoding=utf-8
         set fileencodings=iso-2022-jp,ucs-bom,sjis,utf-8,euc-jp,cp932,default,latin1
@@ -182,7 +182,7 @@ nnoremap ^ :<C-u>so ~/.dotfiles/nvim/rc/init.vim<CR>
 "}}}
 
 "{{{ pluginConfig
-lua require'colorizer'.setup()
+
 if s:enable_nvim_cmp
 "{{{nvim-cmp
 lua <<EOF
@@ -305,6 +305,11 @@ call ddc#enable()
 "}}}
 endif
 
+
+"{{{colorizer
+lua require'colorizer'.setup()
+"}}}
+
 "{{{jumpcursor
 nmap [j <Plug>(jumpcursor-jump)
 "}}}
@@ -384,7 +389,6 @@ require'lspconfig'.clangd.setup {
 }
 EOF
 "}}}
-
 
 "{{{fzf
 command! -bar MoveBack if &buftype == 'nofile' && (winwidth(0) < &columns / 3 || winheight(0) < &lines / 3) | execute "normal! \<c-w>\<c-p>" | endif
@@ -1218,6 +1222,12 @@ ins_left {
         color = { fg = colors.magenta, gui = 'bold' },
 }
 
+ins_left {
+        'branch',
+        icon = '',
+        color = { fg = colors.violet },
+}
+
 
 ins_left {
         'diagnostics',
@@ -1269,12 +1279,6 @@ ins_left {
         end,
         icon = ' LSP:',
         color = { fg = colors.fg, gui = 'bold' },
-}
-
-ins_right {
-        'branch',
-        icon = '',
-        color = { fg = colors.violet },
 }
 
 ins_right { 'location' }
