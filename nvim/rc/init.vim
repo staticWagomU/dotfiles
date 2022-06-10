@@ -1082,6 +1082,10 @@ local colors = {
         blue     = '#84a0c6',
         red      = '#e27878',
 }
+local g = {}
+local c = {}
+g,c = vim.fn['iceberg#palette#dark#create']()
+
 
 local conditions = {
         buffer_not_empty = function()
