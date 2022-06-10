@@ -65,10 +65,9 @@ Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'staticWagomu/wagomuColor'
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'cocopon/iceberg.vim'
 Plug 'skanehira/jumpcursor.vim'
+Plug 'cocopon/pgmnt.vim'
 
 "{{{telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -103,6 +102,9 @@ Plug 'lambdalisue/fern-git-status.vim'
 " {{{ colorscheme
 Plug 'arcticicestudio/nord-vim'
 Plug 'rebelot/kanagawa.nvim'
+Plug 'cocopon/iceberg.vim'
+Plug 'sainnhe/edge'
+Plug 'staticWagomu/wagomuColor'
 " }}}
 
 "{{{ nvim-cmp
