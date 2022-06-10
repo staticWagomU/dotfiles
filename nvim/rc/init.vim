@@ -179,6 +179,8 @@ nnoremap <Leader>bp :<C-u>bp<CR>
 nnoremap <Leader>bd :<C-u>bd<CR>
 nnoremap <silent> <Leader>cd :<C-u>cd %:p:h<CR>
 nnoremap ^ :<C-u>so ~/.dotfiles/nvim/rc/init.vim<CR>
+
+tnoremap <ESC> <C-\><C-n>
 "}}}
 
 "{{{ pluginConfig
@@ -452,7 +454,7 @@ require('toggleterm').setup({
 	open_mapping = [[<c-\>]],
 	shade_filetypes = { 'none' },
 	direction = 'horizontal',
-	insert_mappings = false,
+	insert_mappings = true,
 	start_in_insert = true,
 	float_opts = { border = 'rounded', winblend = 3 },
 	size = function(term)
@@ -1147,13 +1149,13 @@ local function setModeColor(mode)
         local cmd = vim.api.nvim_command
 
         local mode_color = {
-                n = colors.red,
-                i = colors.green,
+                n = colors.green,
+                i = colors.red,
                 v = colors.blue,
                 [''] = colors.blue,
                 V = colors.blue,
                 c = colors.magenta,
-                no = colors.red,
+                no = colors.green,
                 s = colors.orange,
                 S = colors.orange,
                 [''] = colors.orange,
@@ -1409,6 +1411,10 @@ let g:gitgutter_sign_modified_removed = '<'
 
 " Default key mapping off
 let g:gitgutter_map_keys = 0
+
+nnoremap <silent> <Leader>gn :<C-u>GitGutterNextHunk<CR>
+nnoremap <silent> <Leader>gp :<C-u>GitGutterPrevHunk<CR>
+nnoremap <silent> <Leader>gd :<C-u>GitGutterPreviewHunk<CR>
 " }}}
 
 "{{{vim-goimports
