@@ -183,6 +183,8 @@ nnoremap <silent> <Leader>cd :<C-u>cd %:p:h<CR>
 nnoremap ^ :<C-u>so ~/.dotfiles/nvim/rc/init.vim<CR>
 
 tnoremap <ESC> <C-\><C-n>
+tnoremap <C-w><C-l> <C-\><C-n><C-w><C-l>
+tnoremap <C-w><C-h> <C-\><C-n><C-w><C-h>
 "}}}
 
 "{{{ pluginConfig
