@@ -69,6 +69,20 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'skanehira/jumpcursor.vim'
 Plug 'cocopon/pgmnt.vim'
 
+" {{{ddu 
+Plug 'Shougo/ddu.vim'
+Plug 'vim-denops/denops.vim'
+Plug 'Shougo/ddu-ui-ff'
+Plug 'Shougo/ddu-source-file'
+Plug 'Shougo/ddu-source-register'
+Plug 'kuuote/ddu-source-mr'
+Plug 'lambdalisue/mr.vim'
+Plug 'shun/ddu-source-buffer'
+Plug 'Shougo/ddu-filter-matcher_substring'
+Plug 'Shougo/ddu-commands.vim'
+Plug 'Shougo/ddu-kind-file'
+" }}}
+
 "{{{telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -311,6 +325,55 @@ call ddc#enable()
 "}}}
 endif
 
+"{{{ddu
+call ddu#custom#patch_global({
+    \   'ui': 'ff',
+    \   'sources': [{'name':'file','params':{}},{'name':'mr'},{'name':'register'},{'name':'buffer'}],
+    \   'sourceOptions': {
+    \     '_': {
+    \       'matchers': ['matcher_substring'],
+    \     },
+    \   },
+    \   'kindOptions': {
+    \     'file': {
+    \       'defaultAction': 'open',
+    \     },
+    \   },
+    \ })
+
+"ddu-key-setting
+autocmd FileType ddu-ff call s:ddu_my_settings()
+function! s:ddu_my_settings() abort
+  nnoremap <buffer><silent> <CR>
+        \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
+  nnoremap <buffer><silent> <Space>
+        \ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
+  nnoremap <buffer><silent> i
+        \ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
+  nnoremap <buffer><silent> q
+        \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+endfunction
+
+autocmd FileType ddu-ff-filter call s:ddu_filter_my_settings()
+function! s:ddu_filter_my_settings() abort
+  inoremap <buffer><silent> <CR>
+  \ <Esc><Cmd>close<CR>
+  nnoremap <buffer><silent> <CR>
+  \ <Cmd>close<CR>
+  nnoremap <buffer><silent> q
+  \ <Cmd>close<CR>
+endfunction
+
+"ddu keymapping.
+nnoremap <SID>[ug] <Nop>
+nmap ,u <SID>[ug]
+
+nnoremap <silent> <SID>[ug]m :<C-u>Ddu mr<CR>
+nnoremap <silent> <SID>[ug]b :<C-u>Ddu buffer<CR>
+nnoremap <silent> <SID>[ug]r :<C-u>Ddu register<CR>
+nnoremap <silent> <SID>[ug]n :<C-u>Ddu file -source-param-new -volatile<CR>
+nnoremap <silent> <SID>[ug]f :<C-u>Ddu file<CR>
+"}}}
 
 "{{{colorizer
 lua require'colorizer'.setup()
