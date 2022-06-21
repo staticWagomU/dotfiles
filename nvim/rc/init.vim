@@ -43,116 +43,117 @@ let &g:titlestring =
 "}}}
 
 "{{{ plugin
-call plug#begin('~/.vim/plugged')
+runtime */jetpack.vim
+call jetpack#begin('~/.vim/plugged')
 
-Plug 'vim-jp/vimdoc-ja'
+Jetpack 'vim-jp/vimdoc-ja'
 
-Plug 'mattn/emmet-vim'
-Plug 'hrsh7th/vim-searchx'
-Plug 'vim-denops/denops.vim'
-Plug 'simeji/winresizer'
-Plug 'cohama/lexima.vim'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'mattn/vim-goimports'
-Plug 'mattn/vim-sonictemplate'
-Plug 'machakann/vim-sandwich'
-Plug 'skanehira/translate.vim'
-Plug 'petertriho/nvim-scrollbar'
-Plug 'numToStr/Comment.nvim'
-Plug 'MunifTanjim/nui.nvim'
-Plug 'nvim-neo-tree/neo-tree.nvim'
-Plug 'akinsho/toggleterm.nvim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'skanehira/jumpcursor.vim'
-Plug 'cocopon/pgmnt.vim'
+Jetpack 'mattn/emmet-vim'
+Jetpack 'hrsh7th/vim-searchx'
+Jetpack 'vim-denops/denops.vim'
+Jetpack 'simeji/winresizer'
+Jetpack 'cohama/lexima.vim'
+Jetpack 'nvim-lualine/lualine.nvim'
+Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Jetpack 'mattn/vim-goimports'
+Jetpack 'mattn/vim-sonictemplate'
+Jetpack 'machakann/vim-sandwich'
+Jetpack 'skanehira/translate.vim'
+Jetpack 'petertriho/nvim-scrollbar'
+Jetpack 'numToStr/Comment.nvim'
+Jetpack 'MunifTanjim/nui.nvim'
+Jetpack 'nvim-neo-tree/neo-tree.nvim'
+Jetpack 'akinsho/toggleterm.nvim'
+Jetpack 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Jetpack 'junegunn/fzf.vim'
+Jetpack 'norcalli/nvim-colorizer.lua'
+Jetpack 'skanehira/jumpcursor.vim'
+Jetpack 'cocopon/pgmnt.vim'
 
 " {{{ddu 
-Plug 'Shougo/ddu.vim'
-Plug 'vim-denops/denops.vim'
-Plug 'Shougo/ddu-ui-ff'
-Plug 'Shougo/ddu-source-file'
-Plug 'Shougo/ddu-source-register'
-Plug 'kuuote/ddu-source-mr'
-Plug 'lambdalisue/mr.vim'
-Plug 'shun/ddu-source-buffer'
-Plug 'Shougo/ddu-filter-matcher_substring'
-Plug 'Shougo/ddu-commands.vim'
-Plug 'Shougo/ddu-kind-file'
+Jetpack 'Shougo/ddu.vim'
+Jetpack 'vim-denops/denops.vim'
+Jetpack 'Shougo/ddu-ui-ff'
+Jetpack 'Shougo/ddu-source-file'
+Jetpack 'Shougo/ddu-source-register'
+Jetpack 'kuuote/ddu-source-mr'
+Jetpack 'lambdalisue/mr.vim'
+Jetpack 'shun/ddu-source-buffer'
+Jetpack 'Shougo/ddu-filter-matcher_substring'
+Jetpack 'Shougo/ddu-commands.vim'
+Jetpack 'Shougo/ddu-kind-file'
 " }}}
 
 "{{{telescope
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-github.nvim'
-Plug 'nvim-telescope/telescope-ui-select.nvim'
-Plug 'nvim-telescope/telescope-symbols.nvim'
-Plug 'crispgm/telescope-heading.nvim'
-Plug 'LinArcX/telescope-changes.nvim'
-Plug 'nvim-telescope/telescope-rg.nvim'
-Plug 'nvim-telescope/telescope-smart-history.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nvim-telescope/telescope-file-browser.nvim'
+Jetpack 'nvim-lua/plenary.nvim'
+Jetpack 'nvim-telescope/telescope.nvim'
+Jetpack 'nvim-telescope/telescope-github.nvim'
+Jetpack 'nvim-telescope/telescope-ui-select.nvim'
+Jetpack 'nvim-telescope/telescope-symbols.nvim'
+Jetpack 'crispgm/telescope-heading.nvim'
+Jetpack 'LinArcX/telescope-changes.nvim'
+Jetpack 'nvim-telescope/telescope-rg.nvim'
+Jetpack 'nvim-telescope/telescope-smart-history.nvim'
+Jetpack 'nvim-telescope/telescope-fzy-native.nvim'
+Jetpack 'kyazdani42/nvim-web-devicons'
+Jetpack 'nvim-telescope/telescope-file-browser.nvim'
 "}}}
 
 "{{{ startup menu
-Plug 'goolord/alpha-nvim'
+Jetpack 'goolord/alpha-nvim'
 "}}}
 
 " {{{ git
-Plug 'lambdalisue/gin.vim'
-Plug 'airblade/vim-gitgutter'
+Jetpack 'lambdalisue/gin.vim'
+Jetpack 'airblade/vim-gitgutter'
 " }}}
 
 " {{{ fern
-Plug 'lambdalisue/fern.vim'
-Plug 'yuki-yano/fern-preview.vim'
-Plug 'lambdalisue/fern-git-status.vim'
+Jetpack 'lambdalisue/fern.vim'
+Jetpack 'yuki-yano/fern-preview.vim'
+Jetpack 'lambdalisue/fern-git-status.vim'
 " }}}
 
 " {{{ colorscheme
-Plug 'arcticicestudio/nord-vim'
-Plug 'rebelot/kanagawa.nvim'
-Plug 'cocopon/iceberg.vim'
-Plug 'sainnhe/edge'
-Plug 'staticWagomu/wagomuColor'
+Jetpack 'arcticicestudio/nord-vim'
+Jetpack 'rebelot/kanagawa.nvim'
+Jetpack 'cocopon/iceberg.vim'
+Jetpack 'sainnhe/edge'
+Jetpack 'staticWagomu/wagomuColor'
 " }}}
 
 "{{{ nvim-cmp
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-Plug 'hrsh7th/cmp-nvim-lsp-document-symbol'
-Plug 'hrsh7th/cmp-calc'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'f3fora/cmp-spell'
-Plug 'yutkat/cmp-mocword'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'onsails/lspkind.nvim'
-Plug 'petertriho/cmp-git'
+Jetpack 'neovim/nvim-lspconfig'
+Jetpack 'williamboman/nvim-lsp-installer'
+Jetpack 'hrsh7th/cmp-nvim-lsp'
+Jetpack 'hrsh7th/cmp-buffer'
+Jetpack 'hrsh7th/cmp-path'
+Jetpack 'hrsh7th/cmp-cmdline'
+Jetpack 'hrsh7th/nvim-cmp'
+Jetpack 'hrsh7th/cmp-nvim-lsp-signature-help'
+Jetpack 'hrsh7th/cmp-nvim-lsp-document-symbol'
+Jetpack 'hrsh7th/cmp-calc'
+Jetpack 'hrsh7th/cmp-cmdline'
+Jetpack 'f3fora/cmp-spell'
+Jetpack 'yutkat/cmp-mocword'
+Jetpack 'nvim-lua/plenary.nvim'
+Jetpack 'hrsh7th/cmp-vsnip'
+Jetpack 'hrsh7th/vim-vsnip'
+Jetpack 'hrsh7th/vim-vsnip-integ'
+Jetpack 'onsails/lspkind.nvim'
+Jetpack 'petertriho/cmp-git'
 "}}}
 
 " {{{ ddc
-Plug 'Shougo/ddc.vim'
-Plug 'Shougo/ddc-around' " sources
-Plug 'Shougo/ddc-matcher_head' " filters
-Plug 'Shougo/ddc-sorter_rank' " filters
-Plug 'Shougo/ddc-nvim-lsp'
-Plug 'Shougo/ddc-converter_remove_overlap'
+Jetpack 'Shougo/ddc.vim'
+Jetpack 'Shougo/ddc-around' " sources
+Jetpack 'Shougo/ddc-matcher_head' " filters
+Jetpack 'Shougo/ddc-sorter_rank' " filters
+Jetpack 'Shougo/ddc-nvim-lsp'
+Jetpack 'Shougo/ddc-converter_remove_overlap'
 " }}}
 
-call plug#end()
+call jetpack#end()
 "}}}
 
 "{{{ keymaps
@@ -801,7 +802,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("h", "  Recently opened files", ":Telescope my_mru<CR>"),
 	dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
 	dashboard.button('s', '  Settings', ':e ~/.dotfiles/nvim/rc/init.vim<CR>'),
-	dashboard.button("u", "  Update plugins", ":PlugUpdate<CR>"),
+	dashboard.button("u", "  Update plugins", ":JetpackSync<CR>"),
 	dashboard.button("q", "  Exit", ":qa<CR>"),
 }
 
