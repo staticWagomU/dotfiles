@@ -753,7 +753,7 @@ EOF
 
 function! s:print_plugins_message() abort
 	let l:packer = stdpath('data') .'/site/pack/packer/start/packer.nvim'
-	let s:footer_icon = ''
+	let s:footer_icon = 'ﮣ '
 	if exists('g:dashboard_footer_icon')
 		let s:footer_icon = get(g:,'dashboard_footer_icon','')
 	endif
