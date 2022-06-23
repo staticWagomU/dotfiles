@@ -770,6 +770,8 @@ function! s:print_plugins_message() abort
 		let l:total_plugins = len(keys(g:plugs))
 	elseif isdirectory(l:packer)
 		let l:total_plugins = luaeval('#vim.tbl_keys(packer_plugins)')
+        elseif exists('*jetpack#names')
+                let l:total_plugins = len(jetpack#names())
 	else
 		return [s:footer_icon . ' Have fun with ' . l:vim]
 	endif
