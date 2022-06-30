@@ -10,9 +10,6 @@ if &compatible
 set nocompatible
 endif
 
-
-let s:enable_ddc = v:false
-let s:enable_nvim_cmp = v:true
 filetype off
 filetype plugin indent off
 
@@ -69,20 +66,6 @@ Jetpack 'junegunn/fzf.vim'
 Jetpack 'norcalli/nvim-colorizer.lua'
 Jetpack 'skanehira/jumpcursor.vim'
 Jetpack 'cocopon/pgmnt.vim'
-
-" {{{ddu 
-Jetpack 'Shougo/ddu.vim'
-Jetpack 'vim-denops/denops.vim'
-Jetpack 'Shougo/ddu-ui-ff'
-Jetpack 'Shougo/ddu-source-file'
-Jetpack 'Shougo/ddu-source-register'
-Jetpack 'kuuote/ddu-source-mr'
-Jetpack 'lambdalisue/mr.vim'
-Jetpack 'shun/ddu-source-buffer'
-Jetpack 'Shougo/ddu-filter-matcher_substring'
-Jetpack 'Shougo/ddu-commands.vim'
-Jetpack 'Shougo/ddu-kind-file'
-" }}}
 
 "{{{telescope
 Jetpack 'nvim-lua/plenary.nvim'
@@ -144,15 +127,6 @@ Jetpack 'onsails/lspkind.nvim'
 Jetpack 'petertriho/cmp-git'
 "}}}
 
-" {{{ ddc
-Jetpack 'Shougo/ddc.vim'
-Jetpack 'Shougo/ddc-around' " sources
-Jetpack 'Shougo/ddc-matcher_head' " filters
-Jetpack 'Shougo/ddc-sorter_rank' " filters
-Jetpack 'Shougo/ddc-nvim-lsp'
-Jetpack 'Shougo/ddc-converter_remove_overlap'
-" }}}
-
 call jetpack#end()
 "}}}
 
@@ -204,7 +178,6 @@ tnoremap <C-w><C-h> <C-\><C-n><C-w><C-h>
 
 "{{{ pluginConfig
 
-if s:enable_nvim_cmp
 "{{{nvim-cmp
 lua <<EOF
 local lspkind = require'lspkind'
@@ -292,88 +265,6 @@ nnoremap <silent> <Leader><CR> <Cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <C-k>        <Cmd>lua vim.diagnostic.goto_prev()<CR>
 nnoremap <silent> <C-j>        <Cmd>lua vim.diagnostic.goto_next()<CR>
 
-"}}}
-endif
-
-if s:enable_ddc
-"{{{ ddc
-call ddc#custom#patch_global('sources', ['around', 'nvim-lsp'])
-
-call ddc#custom#patch_global('sourceoptions', {
-	\ '_': {
-	\   'matchers': ['matcher_head'],
-	\   'sorters': ['sorter_rank'],
-	\   'converters': ['converter_remove_overlap'],},
-	\ 'around': {'mark': 'Around'},
-	\ 'nvim-lsp': {
-	\   'mark': 'lsp',
-	\   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
-	\ })
-
-call ddc#custom#patch_global('sourceparams', {
-	\ 'around': {'maxsize': 500},
-	\ 'nvim-lsp': {'kindLabels': {'Class': 'c'}}
-	\ })
-
-inoremap <silent><expr> <TAB>
-\ ddc#map#pum_visible() ? '<C-n>' :
-\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-\ '<TAB>' : ddc#map#manual_complete()
-
-inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
-
-call ddc#enable()
-"}}}
-endif
-
-"{{{ddu
-call ddu#custom#patch_global({
-    \   'ui': 'ff',
-    \   'sources': [{'name':'file','params':{}},{'name':'mr'},{'name':'register'},{'name':'buffer'}],
-    \   'sourceOptions': {
-    \     '_': {
-    \       'matchers': ['matcher_substring'],
-    \     },
-    \   },
-    \   'kindOptions': {
-    \     'file': {
-    \       'defaultAction': 'open',
-    \     },
-    \   },
-    \ })
-
-"ddu-key-setting
-autocmd FileType ddu-ff call s:ddu_my_settings()
-function! s:ddu_my_settings() abort
-  nnoremap <buffer><silent> <CR>
-        \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
-  nnoremap <buffer><silent> <Space>
-        \ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
-  nnoremap <buffer><silent> i
-        \ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
-  nnoremap <buffer><silent> q
-        \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
-endfunction
-
-autocmd FileType ddu-ff-filter call s:ddu_filter_my_settings()
-function! s:ddu_filter_my_settings() abort
-  inoremap <buffer><silent> <CR>
-  \ <Esc><Cmd>close<CR>
-  nnoremap <buffer><silent> <CR>
-  \ <Cmd>close<CR>
-  nnoremap <buffer><silent> q
-  \ <Cmd>close<CR>
-endfunction
-
-"ddu keymapping.
-nnoremap <SID>[ug] <Nop>
-nmap ,u <SID>[ug]
-
-nnoremap <silent> <SID>[ug]m :<C-u>Ddu mr<CR>
-nnoremap <silent> <SID>[ug]b :<C-u>Ddu buffer<CR>
-nnoremap <silent> <SID>[ug]r :<C-u>Ddu register<CR>
-nnoremap <silent> <SID>[ug]n :<C-u>Ddu file -source-param-new -volatile<CR>
-nnoremap <silent> <SID>[ug]f :<C-u>Ddu file<CR>
 "}}}
 
 "{{{colorizer
