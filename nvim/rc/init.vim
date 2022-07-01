@@ -1043,7 +1043,19 @@ local colors = {
 local g = {}
 local c = {}
 g,c = vim.fn['iceberg#palette#dark#create']()
-
+-- PowerLine chars...
+--  \ue0b0
+--  \ue0b1
+--  \ue0b2
+--  \ue0b3
+--  \ue0b8
+--  \ue0b9
+--  \ue0ba
+--  \ue0bb
+--  \ue0bc 
+--  \ue0bd
+--  \ue0be 
+--  \ue0bf
 
 local conditions = {
         buffer_not_empty = function()
