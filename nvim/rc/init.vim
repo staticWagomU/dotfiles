@@ -46,7 +46,6 @@ call jetpack#begin('~/.vim/plugged')
 Jetpack 'vim-jp/vimdoc-ja'
 
 Jetpack 'mattn/emmet-vim'
-Jetpack 'hrsh7th/vim-searchx'
 Jetpack 'vim-denops/denops.vim'
 Jetpack 'simeji/winresizer'
 Jetpack 'cohama/lexima.vim'
@@ -1335,27 +1334,6 @@ let g:fern_git_status#disable_submodules = 1
 let g:fern_git_status#disable_directories = 1
 "}}}
 
-"}}}
-
-"{{{ vim-searchx
-" Overwrite / and ?.
-nnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
-nnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
-xnoremap ? <Cmd>call searchx#start({ 'dir': 0 })<CR>
-xnoremap / <Cmd>call searchx#start({ 'dir': 1 })<CR>
-cnoremap ; <Cmd>call searchx#select()<CR>
-
-" Move to next/prev match.
-nnoremap N <Cmd>call searchx#prev_dir()<CR>
-nnoremap n <Cmd>call searchx#next_dir()<CR>
-xnoremap N <Cmd>call searchx#prev_dir()<CR>
-xnoremap n <Cmd>call searchx#next_dir()<CR>
-nnoremap <C-k> <Cmd>call searchx#prev()<CR>
-nnoremap <C-j> <Cmd>call searchx#next()<CR>
-xnoremap <C-k> <Cmd>call searchx#prev()<CR>
-xnoremap <C-j> <Cmd>call searchx#next()<CR>
-cnoremap <C-k> <Cmd>call searchx#prev()<CR>
-cnoremap <C-j> <Cmd>call searchx#next()<CR>
 "}}}
 
 " {{{ treesitter
