@@ -65,6 +65,7 @@ Jetpack 'junegunn/fzf.vim'
 Jetpack 'norcalli/nvim-colorizer.lua'
 Jetpack 'skanehira/jumpcursor.vim'
 Jetpack 'cocopon/pgmnt.vim'
+Jetpack 'lambdalisue/guise.vim'
 
 "{{{telescope
 Jetpack 'nvim-lua/plenary.nvim'
