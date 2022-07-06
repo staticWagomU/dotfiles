@@ -2,9 +2,16 @@ filetype off
 filetype plugin indent off
 
 " {{{ options
+if has('vim_starting')
+set encoding=utf-8
 set fileencodings=iso-2022-jp,ucs-bom,sjis,utf-8,euc-jp,cp932,default,latin1
 set fileformats=unix,dos,mac
+endif
 scriptencoding utf-8
+
+if &compatible
+set nocompatible
+endif
 set number
 set helplang=ja
 set signcolumn=yes 
