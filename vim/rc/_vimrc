@@ -28,64 +28,22 @@ let &g:titlestring =
 call plug#begin()
 
 Plug 'vim-jp/vimdoc-ja'
-Plug 'vim-denops/denops.vim'
 Plug 'cohama/lexima.vim'
-Plug 'mattn/vim-sonictemplate'
 Plug 'machakann/vim-sandwich'
 Plug 'mattn/emmet-vim'
 Plug 'simeji/winresizer'
-Plug 'thaerkh/vim-workspace'
 Plug 'skanehira/translate.vim'
-Plug 'mhinz/vim-startify'
 Plug 'thinca/vim-fontzoom'
-
-" {{{ lsp
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'mattn/vim-lsp-icons'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
-" }}}
+Plug 'vim-denops/denops.vim'
 
 " {{{ fern
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 " }}}
 
-" {{{ golang
-Plug 'mattn/vim-goimports'
-Plug 'mattn/vim-gomod'
-" }}}
-
-" {{{ airline
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-" }}}
-
 " {{{ lightline.vim
 Plug 'itchyny/lightline.vim'
 " }}}
-
-
-" {{{ colorscheme
-Plug 'arcticicestudio/nord-vim'
-" }}}
-
-"{{{ ddu
-Plug 'Shougo/ddu.vim'
-Plug 'Shougo/ddu-ui-ff'
-Plug 'Shougo/ddu-source-file'
-Plug 'Shougo/ddu-source-register'
-Plug 'kuuote/ddu-source-mr'
-Plug 'lambdalisue/mr.vim'
-Plug 'shun/ddu-source-buffer'
-Plug 'Shougo/ddu-filter-matcher_substring'
-Plug 'Shougo/ddu-commands.vim'
-Plug 'Shougo/ddu-kind-file'
-"}}}
 
 " {{{ git
 Plug 'lambdalisue/gin.vim'
@@ -153,138 +111,11 @@ augroup fern-settings
 augroup END
 " }}}
 
-" {{{ lsp
-if empty(globpath(&rtp, 'autoload/lsp.vim'))
-  finish
-endif
-
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> <f2> <plug>(lsp-rename)
-    nmap <buffer> <leader>ac <plug>(lsp-code-action)
-    nmap <buffer> <leader>cl <plug>(lsp-code-lens)
-    nmap <buffer> <leader>df <plug>(lsp-definition)
-    nmap <buffer> <leader>dd <plug>(lsp-document-diagnostics)
-    nmap <buffer> <leader>im <plug>(lsp-implementation)
-    nmap <buffer> <leader>pdf <plug>(lsp-peek-definition)
-    nmap <buffer> <leader>sm <plug>(lsp-document-symbol-search)
-    nmap <buffer> <leader>Sm <plug>(lsp-workspace-symbol-search)
-    nmap <buffer> <leader>rf <plug>(lsp-references)
-    nmap <buffer> <leader>td <plug>(lsp-type-definition)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> <leader>en <plug>(lsp-next-error)
-    nmap <buffer> <leader>ep <plug>(lsp-previous-error)
-    nmap <buffer> <leader>ho <plug>(lsp-hover)
-
-    let g:lsp_format_sync_timeout = 500
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-endfunction
-
-augroup lsp_install
-  au!
-  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
-command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
-
-let g:lsp_diagnostics_enabled = 1
-let g:lsp_diagnostics_echo_cursor = 1
-let g:asyncomplete_auto_popup = 1
-let g:asyncomplete_auto_completeopt = 1
-let g:asyncomplete_popup_delay = 200
-let g:lsp_text_edit_enabled = 0
-" }}}
-
-" {{{ vim-workspace
-nnoremap <leader>s :ToggleWorkspace<CR>
-" }}}
-
-"{{{vim-fontzoom
-nnoremap +			<Plug>(fontzoom-larger)
-nnoremap -			<Plug>(fontzoom-smaller)
-nnoremap <C-ScrollWheelUp>	<Plug>(fontzoom-larger)
-nnoremap <C-ScrollWheelDown>	<Plug>(fontzoom-smaller)
-"}}}
-
-"" {{{ airline
-"let g:airline_theme = 'nord'
-"let g:airline_powerline_fonts = 1
-"set t_Co=256
-"let g:airline#extensions#hunks#enabled = 0
-"let g:airline#extensions#branch#enabled = 1
-"
-"if !exists('g:airline_symbols')
-"  let g:airline_symbols = {}
-"endif
-" }}}
-
-" {{{ lightline.vim
-let g:lightline = {
-	\ 'colorscheme': 'nord',
-	\
-	\}
-
-let g:lightline.separator = { 'left': '', 'right': '' }
-let g:lightline.subseparator = { 'left': '|', 'right': '|' }
-" }}}
-
 " {{{ translate.vim
 let g:translate_source = "en"
 let g:translate_target = "ja"
-vmap t <Plug>(VTranslate)
+vmap <Leader>t <Plug>(VTranslate)
 " }}}
-
-"{{{ ddu
-call ddu#custom#patch_global({
-    \   'ui': 'ff',
-    \   'sources': [{'name':'file','params':{}},{'name':'mr'},{'name':'register'},{'name':'buffer'}],
-    \   'sourceOptions': {
-    \     '_': {
-    \       'matchers': ['matcher_substring'],
-    \     },
-    \   },
-    \   'kindOptions': {
-    \     'file': {
-    \       'defaultAction': 'open',
-    \     },
-    \   },
-    \ })
-autocmd FileType ddu-ff call s:ddu_my_settings()
-
-function! s:ddu_my_settings() abort
-  nnoremap <buffer><silent> <CR>
-        \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
-  nnoremap <buffer><silent> <Space>
-        \ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
-  nnoremap <buffer><silent> i
-        \ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
-  nnoremap <buffer><silent> q
-        \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
-endfunction
-
-autocmd FileType ddu-ff-filter call s:ddu_filter_my_settings()
-
-function! s:ddu_filter_my_settings() abort
-  inoremap <buffer><silent> <CR>
-  \ <Esc><Cmd>close<CR>
-  nnoremap <buffer><silent> <CR>
-  \ <Cmd>close<CR>
-  nnoremap <buffer><silent> q
-  \ <Cmd>close<CR>
-endfunction
-
-nnoremap <SID>[ug] <Nop>
-nmap ,u <SID>[ug]
-
-nnoremap <silent> <SID>[ug]m :<C-u>Ddu mr<CR>
-nnoremap <silent> <SID>[ug]b :<C-u>Ddu buffer<CR>
-nnoremap <silent> <SID>[ug]r :<C-u>Ddu register<CR>
-nnoremap <silent> <SID>[ug]n :<C-u>Ddu file -source-param-new -volatile<CR>
-nnoremap <silent> <SID>[ug]f :<C-u>Ddu file<CR>
-"}}}
 
 " {{{ git-gutter
 " By default updatetime is 4000 ms
@@ -300,26 +131,6 @@ let g:gitgutter_sign_modified_removed = '<'
 " Default key mapping off
 let g:gitgutter_map_keys = 0
 
-" Execute after loading the color schema
-" https://teratail.com/questions/29844#reply-46767
-"augroup vimrc_vim_gitgutter
-"  autocmd!
-"   sign column bg color
-"   autocmd VimEnter,ColorScheme * highlight SignColumn guibg=bg ctermbg=bg
-"
-"   sign column color
-"  autocmd VimEnter,ColorScheme * highlight GitGutterAdd guifg=#000900 ctermfg=2
-"  autocmd VimEnter,ColorScheme * highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-"  autocmd VimEnter,ColorScheme * highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-"augroup END
-" }}}
-
-" {{{ startify
-let g:startify_bookmarks = ["~/dotfiles/vim/rc/_vimrc", "~/dotfiles/vim/rc/gvimrc"]
-autocmd User Startified setlocal cursorline
-let g:startify_skiplist = [
-   \ '.*\.jax$',
-   \ ]
 " }}}
 
 " }}}
@@ -342,7 +153,9 @@ autocmd FileType vim setlocal foldmethod=marker
 " }}}
 
 " {{{ other
-colorscheme nord
-cd ~
+colorscheme elflord
+if has('win32')
+	cd ~
+endif
 filetype plugin indent on
 " }}}
