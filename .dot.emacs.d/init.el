@@ -1,4 +1,9 @@
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(misterioso))
  '(init-loader-show-log-after-init 'error-only))
 
 (setq visible-bell 1)
@@ -12,10 +17,10 @@
 (fringe-mode 0);;ムカつくから消してる
 
 ;;; 色とか見た目とか
-(set-background-color "Gray12")
-(set-foreground-color "LightGray")
-(set-cursor-color "Gray")
-(set-face-attribute 'mode-line nil :box nil :background "HotPink")
+;(set-background-color "Gray12")
+;(set-foreground-color "LightGray")
+;(set-cursor-color "Gray")
+;(set-face-attribute 'mode-line nil :box nil :background "HotPink")
 (set-scroll-bar-mode 'right)
 (show-paren-mode t)
 (set-scroll-bar-mode 'nil)
@@ -69,13 +74,21 @@
 
   ;(setq w32-enable-synthesized-fonts t)
   ;; 初期フレームの設定
-  (setq initial-frame-alist
-        (append (list '(foreground-color . "white")
-                      '(background-color . "gray20")
-                      '(border-color . "gray20")
-                      '(mouse-color . "white")
-                      '(cursor-color . "white")
-                      '(height . 35)
-                      )
-                initial-frame-alist))
+;  (setq initial-frame-alist
+;        (append (list '(foreground-color . "white")
+;                      '(background-color . "gray20")
+;                      '(border-color . "gray20")
+;                      '(mouse-color . "white")
+;                      '(cursor-color . "white")
+;                      '(height . 35)
+;                      )
+;                initial-frame-alist))
   (setq default-frame-alist initial-frame-alist)))
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
