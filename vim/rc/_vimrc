@@ -22,6 +22,7 @@ set undodir=~
 set title
 let &g:titlestring =
 \ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
+set nowrap
 " }}}
 
 " {{{ plugins
@@ -89,6 +90,8 @@ nnoremap <Leader>bn :<C-u>bn<CR>
 nnoremap <Leader>bp :<C-u>bp<CR>
 nnoremap <Leader>bd :<C-u>bd<CR>
 nnoremap <silent> <Leader>cd :<C-u>cd %:p:h<CR> 
+
+nnoremap <silent> ^ :<C-u>so $MYVIMRC<CR>
 " }}}
 
 " {{{ plugin config
@@ -100,7 +103,7 @@ let g:fern#default_hidden=1
 
 function! s:fern_settings() abort
   nmap <silent> <buffer> <C-m> <Plug>(fern-action-move)
-  nmap <silent> <buffer> <C-S-d> <Plug>(fern-action-new-dir)
+  nmap <silent> <buffer> <C-s> <Plug>(fern-action-new-dir)
   setlocal signcolumn=no
   setlocal nonumber
 endfunction
@@ -137,16 +140,15 @@ let g:gitgutter_map_keys = 0
 
 " {{{ commands
 augroup restore-cursor
-  autocmd!
-  autocmd BufReadPost *
-        \ : if line("'\"") >= 1 && line("'\"") <= line("$")
-        \ |   exe "normal! g`\""
-        \ | endif
-  autocmd BufWinEnter *
+	autocmd!
+	autocmd BufReadPost *
+		\ : if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+		\ |   exe "normal! g`\""
+		\ | endif
 
-        \ : if empty(&buftype) && line('.') > winheight(0) / 2
-        \ |   execute 'normal! zz'
-        \ | endif
+		\ : if empty(&buftype) && line('.') > winheight(0) / 2
+		\ |   execute 'normal! zz'
+		\ | endif
 augroup END
 
 autocmd FileType vim setlocal foldmethod=marker

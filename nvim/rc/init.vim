@@ -7,7 +7,7 @@ endif
 scriptencoding utf-8
 
 if &compatible
-set nocompatible
+	set nocompatible
 endif
 
 filetype off
