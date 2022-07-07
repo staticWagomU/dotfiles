@@ -271,10 +271,6 @@ nnoremap <silent> <C-j>        <Cmd>lua vim.diagnostic.goto_next()<CR>
 lua require'colorizer'.setup()
 "}}}
 
-"{{{jumpcursor
-nmap [j <Plug>(jumpcursor-jump)
-"}}}
-
 "{{{lsp
 lua <<EOF
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
