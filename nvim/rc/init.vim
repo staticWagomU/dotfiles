@@ -155,7 +155,7 @@ xnoremap <Leader> <Nop>
 nmap s <Nop>
 xmap s <Nop>
 
-inoremap <silent> jj <ESC>
+"inoremap <silent> jj <ESC>
 
 
 " expand path
