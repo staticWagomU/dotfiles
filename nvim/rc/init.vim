@@ -159,7 +159,7 @@ xmap s <Nop>
 
 
 " expand path
-cmap <C-x> <C-r>=expand('%:p:h')<CR>\
+cmap <C-x> <C-r>=expand('%:p')<CR>
 " expand file (not ext)
 cmap <C-z> <C-r>=expand('%:p:r')<CR>
 
