@@ -80,14 +80,11 @@ let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
 xnoremap <Leader> <Nop>
 
-nmap s <Nop>
-xmap s <Nop>
-
-inoremap <silent> jj <ESC>
+"inoremap <silent> jj <ESC>
 
 
 " expand path
-cmap <C-x> <C-r>=expand('%:p:h')<CR>\
+cmap <C-x> <C-r>=expand('%:p')<CR>
 " expand file (not ext)
 cmap <C-z> <C-r>=expand('%:p:r')<CR>
 
