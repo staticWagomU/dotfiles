@@ -1403,9 +1403,6 @@ command! VimShowHlItem echo synIDattr(synID(line("."), col("."), 1), "name")
 "}}}
 
 " {{{ other
-if has('win32')
-	cd ~
-endif
 colorscheme iceberg
 filetype plugin indent on
 " }}}
