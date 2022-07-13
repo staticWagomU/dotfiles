@@ -160,8 +160,5 @@ autocmd FileType vim setlocal foldmethod=marker
 
 " {{{ other
 colorscheme elflord
-if has('win32')
-	cd ~
-endif
 filetype plugin indent on
 " }}}
