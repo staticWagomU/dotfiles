@@ -66,6 +66,7 @@ Jetpack 'norcalli/nvim-colorizer.lua'
 Jetpack 'skanehira/jumpcursor.vim'
 Jetpack 'cocopon/pgmnt.vim'
 Jetpack 'lambdalisue/guise.vim'
+Jetpack 'ctrlpvim/ctrlp.vim'
 
 "{{{telescope
 Jetpack 'nvim-lua/plenary.nvim'
@@ -1325,6 +1326,12 @@ nnoremap <silent> <Leader>gd :<C-u>GitGutterPreviewHunk<CR>
 "{{{vim-goimports
 let g:goimports = 1
 "}}}
+
+" {{{ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+" }}}
 
 "}}}
 
