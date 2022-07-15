@@ -1021,24 +1021,9 @@ endfor
 lua << EOF
 local lualine = require('lualine')
 
--- Color table for highlights
--- stylua: ignore
 local g = {}
 local c = {}
 g,c = vim.fn['iceberg#palette#dark#create']()
--- PowerLine chars...
---  \ue0b0
---  \ue0b1
---  \ue0b2
---  \ue0b3
---  \ue0b8
---  \ue0b9
---  \ue0ba
---  \ue0bb
---  \ue0bc 
---  \ue0bd
---  \ue0be 
---  \ue0bf
 
 local conditions = {
         buffer_not_empty = function()
@@ -1129,7 +1114,6 @@ local function getmode()
         local left_separator = ''
         local right_separator = ''
         local space = ' '
-        --local mode = vim.api.nvim_get_mode()['mode']
         local mode = vim.fn.mode()
         local modeTable = {
                 n = 'N',
@@ -1188,8 +1172,8 @@ ins_left {
         symbols = { error = ' ', warn = ' ', info = ' ' },
         diagnostics_color = {
                 color_error = { fg = g.gui.red },
-                color_warn = { fg = g.gui.yellow },
-                color_info = { fg = g.gui.purple},
+                color_warn = { fg = g.gui.purple},
+                color_info = { fg = g.gui.pale },
         },
 }
 
