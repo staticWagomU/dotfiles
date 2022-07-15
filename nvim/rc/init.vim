@@ -1023,19 +1023,6 @@ local lualine = require('lualine')
 
 -- Color table for highlights
 -- stylua: ignore
-local colors = {
-        bg       = '#202328',
-        fg       = '#bbc2cf',
-        yellow   = '#ECBE7B',
-        cyan     = '#008080',
-        darkblue = '#081633',
-        green    = '#b4be82',
-        orange   = '#e2a478',
-        violet   = '#a093c7',
-        magenta  = '#c678dd',
-        blue     = '#84a0c6',
-        red      = '#e27878',
-}
 local g = {}
 local c = {}
 g,c = vim.fn['iceberg#palette#dark#create']()
@@ -1074,8 +1061,8 @@ local config = {
                 component_separators = '',
                 section_separators = '',
                 theme = {
-                        normal = { c = { fg = colors.fg, bg = colors.bg } },
-                        inactive = { c = { fg = colors.fg, bg = colors.bg } },
+                        normal = { c = { fg = g.gui.statuslinenc_fg, bg = g.gui.statuslinenc_bg} },
+                        inactive = { c = { fg = g.gui.statuslinenc_fg, bg = g.gui.statuslinenc_bg} },
                 },
         },
         sections = {
@@ -1109,41 +1096,33 @@ local function ins_right(component)
         table.insert(config.sections.lualine_x, component)
 end
 
-ins_left {
-        function()
-                return '▊'
-        end,
-        color = { fg = colors.blue }, -- Sets highlighting of component
-        padding = { left = 0, right = 1 }, -- We don't need space before this
-}
-
 local function setModeColor(mode)
         local cmd = vim.api.nvim_command
 
         local mode_color = {
-                n = colors.green,
-                i = colors.red,
-                v = colors.blue,
-                [''] = colors.blue,
-                V = colors.blue,
-                c = colors.magenta,
-                no = colors.green,
-                s = colors.orange,
-                S = colors.orange,
-                [''] = colors.orange,
-                ic = colors.yellow,
-                R = colors.violet,
-                Rv = colors.violet,
-                cv = colors.red,
-                ce = colors.red,
-                r = colors.cyan,
-                rm = colors.cyan,
-                ['r?'] = colors.cyan,
-                ['!'] = colors.red,
-                t = colors.red,
+                n = g.gui.green,
+                i = g.gui.red,
+                v = g.gui.blue,
+                [''] = g.gui.blue,
+                V = g.gui.blue,
+                c = g.gui.pale,
+                no = g.gui.green,
+                s = g.gui.orange,
+                S = g.gui.orange,
+                [''] = g.gui.orange,
+                ic = g.gui.lblue,
+                R = g.gui.purple,
+                Rv = g.gui.purple,
+                cv = g.gui.red,
+                ce = g.gui.red,
+                r = g.gui.pale,
+                rm = g.gui.pale,
+                ['r?'] = g.gui.pale,
+                ['!'] = g.gui.red,
+                t = g.gui.red,
         }
-        cmd('hi Mode guibg=' .. mode_color[mode] .. ' guifg=' .. colors.bg .. ' gui=bold')
-        cmd('hi ModeSeparator  guibg=' .. colors.bg .. ' guifg=' .. mode_color[mode])
+        cmd('hi Mode guibg=' .. mode_color[mode] .. ' guifg=' .. g.gui.statuslinenc_bg .. ' gui=bold')
+        cmd('hi ModeSeparator  guibg=' .. g.gui.statuslinenc_bg .. ' guifg=' .. mode_color[mode])
 end
 
 local function getmode() 
@@ -1193,13 +1172,13 @@ ins_left {
 ins_left {
         'filename',
         cond = conditions.buffer_not_empty,
-        color = { fg = colors.magenta, gui = 'bold' },
+        color = { fg = g.gui.pale , gui = 'bold' },
 }
 
 ins_left {
         'branch',
         icon = '',
-        color = { fg = colors.violet },
+        color = { fg = g.gui.purple},
 }
 
 
@@ -1208,9 +1187,9 @@ ins_left {
         sources = { 'nvim_diagnostic' },
         symbols = { error = ' ', warn = ' ', info = ' ' },
         diagnostics_color = {
-                color_error = { fg = colors.red },
-                color_warn = { fg = colors.yellow },
-                color_info = { fg = colors.cyan },
+                color_error = { fg = g.gui.red },
+                color_warn = { fg = g.gui.yellow },
+                color_info = { fg = g.gui.purple},
         },
 }
 
@@ -1219,9 +1198,9 @@ ins_left {
         -- Is it me or the symbol for modified us really weird
         symbols = { added = ' ', modified = '柳 ', removed = ' ' },
         diff_color = {
-                added = { fg = colors.green },
-                modified = { fg = colors.orange },
-        removed = { fg = colors.red },
+                added = { fg = g.gui.green },
+                modified = { fg = g.gui.orange },
+        removed = { fg = g.gui.red },
         },
         cond = conditions.hide_in_width,
 }
@@ -1252,12 +1231,12 @@ ins_left {
                 return msg
         end,
         icon = ' LSP:',
-        color = { fg = colors.fg, gui = 'bold' },
+        color = { fg = g.gui.fg, gui = 'bold' },
 }
 
 ins_right { 'location' }
 
-ins_right { 'progress', color = { fg = colors.fg } }
+ins_right { 'progress', color = { fg = g.gui.fg } }
 
 ins_right {
         -- filesize component
@@ -1270,23 +1249,14 @@ ins_right {
         'o:encoding', -- option component same as &encoding in viml
         fmt = string.upper, -- I'm not sure why it's upper case either ;)
         cond = conditions.hide_in_width,
-        color = { fg = colors.green, gui = 'bold' },
+        color = { fg = g.gui.green, gui = 'bold' },
 }
 
 ins_right {
         'fileformat',
         fmt = string.upper,
         icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-        color = { fg = colors.green, gui = 'bold' },
-}
-
-
-ins_right {
-        function()
-                return '▊'
-        end,
-        color = { fg = colors.blue },
-        padding = { left = 1 },
+        color = { fg = g.gui.green, gui = 'bold' },
 }
 
 -- Now don't forget to initialize lualine
