@@ -43,6 +43,7 @@ Plug 'simeji/winresizer'
 Plug 'skanehira/translate.vim'
 Plug 'thinca/vim-fontzoom'
 Plug 'vim-denops/denops.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " {{{ fern
 Plug 'lambdalisue/fern.vim'
@@ -138,6 +139,12 @@ let g:gitgutter_sign_modified_removed = '<'
 " Default key mapping off
 let g:gitgutter_map_keys = 0
 
+" }}}
+
+" {{{ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 " }}}
 
 " }}}
