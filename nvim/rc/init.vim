@@ -34,6 +34,10 @@ set termguicolors
 set noshowmode
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set directory=~
+set backupdir=~
+set undodir=~
+set matchpairs+=「:」,（:）
 set title
 let &g:titlestring =
 	\ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
@@ -753,7 +757,7 @@ require("telescope").setup({
 				mirror = false,
 				prompt_position = "top",
 				preview_cutoff = 120,
-				preview_width = 0.5,
+				--preview_width = 0.5,
 			},
 		},
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
