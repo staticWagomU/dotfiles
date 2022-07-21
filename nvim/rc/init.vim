@@ -644,7 +644,7 @@ EOF
 "{{{alpha
 
 function! s:print_plugins_message() abort
-	"let l:packer = stdpath('data') .'/site/pack/packer/start/packer.nvim'
+	let l:packer = stdpath('data') .'/site/pack/packer/start/packer.nvim'
 	let s:footer_icon = 'ﮣ '
 	if exists('g:dashboard_footer_icon')
 		let s:footer_icon = get(g:,'dashboard_footer_icon','')
@@ -660,8 +660,8 @@ function! s:print_plugins_message() abort
 		let l:total_plugins = len(dein#get())
 	elseif exists('*plug#begin')
 		let l:total_plugins = len(keys(g:plugs))
-	"elseif isdirectory(l:packer)
-	"	let l:total_plugins = luaeval('#vim.tbl_keys(packer_plugins)')
+	elseif isdirectory(l:packer)
+		let l:total_plugins = luaeval('#vim.tbl_keys(packer_plugins)')
         elseif exists('*jetpack#names')
                 let l:total_plugins = len(jetpack#names())
 	else
