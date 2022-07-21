@@ -696,7 +696,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("h", "  Recently opened files", ":Telescope my_mru<CR>"),
 	dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
 	dashboard.button('s', '  Settings', ':e ~/.dotfiles/nvim/rc/init.vim<CR>'),
-	dashboard.button("u", "  Update plugins", ":JetpackSync<CR>"),
+	dashboard.button("u", "  Update plugins", ":PlugUpdate<CR>"),
 	dashboard.button("q", "  Exit", ":qa<CR>"),
 }
 
