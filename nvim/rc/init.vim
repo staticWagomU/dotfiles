@@ -71,6 +71,8 @@ Plug 'cocopon/pgmnt.vim'
 Plug 'lambdalisue/guise.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'yuki-yano/fuzzy-motion.vim'
+Plug 'mvllow/modes.nvim'
+Plug 'sidebar-nvim/sidebar.nvim'
 
 "{{{telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -693,7 +695,7 @@ dashboard.section.footer.val = vim.fn['s:print_plugins_message']()
 
 dashboard.section.buttons.val = {
 	dashboard.button('e', '  New file', ':enew<CR>'),
-	dashboard.button("h", "  Recently opened files", ":Telescope my_mru<CR>"),
+	--dashboard.button("h", "  Recently opened files", ":Telescope my_mru<CR>"),
 	dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
 	dashboard.button('s', '  Settings', ':e ~/.dotfiles/nvim/rc/init.vim<CR>'),
 	dashboard.button("u", "  Update plugins", ":PlugUpdate<CR>"),
@@ -1339,6 +1341,44 @@ let g:ctrlp_working_path_mode = 'ra'
 
 "{{{ fuzzy-motion.vim
 nnoremap <Leader><Leader> :<C-u>FuzzyMotion<CR>
+"}}}
+
+"{{{ modes.nvim
+lua << EOF
+require('modes').setup({
+	colors = {
+		copy = "#f5c359",
+		delete = "#c75c6a",
+		insert = "#78ccc5",
+		visual = "#9745be",
+	},
+
+	-- Set opacity for cursorline and number background
+	line_opacity = 0.15,
+
+	-- Enable cursor highlights
+	set_cursor = true,
+
+	-- Enable cursorline initially, and disable cursorline for inactive windows
+	-- or ignored filetypes
+	set_cursorline = true,
+
+	-- Enable line number highlights to match cursorline
+	set_number = true,
+
+	-- Disable modes highlights in specified filetypes
+	-- Please PR commonly ignored filetypes
+	ignore_filetypes = { 'NvimTree', 'TelescopePrompt' }
+})
+EOF
+"}}}
+
+"{{{ sidebar.nvim
+lua << EOF
+local sidebar = require("sidebar-nvim")
+local opts = {open = true}
+sidebar.setup(opts)
+EOF
 "}}}
 
 "}}}
