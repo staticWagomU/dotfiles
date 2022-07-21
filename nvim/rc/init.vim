@@ -44,95 +44,95 @@ let &g:titlestring =
 "}}}
 
 "{{{ plugin
-runtime */jetpack.vim
-call jetpack#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged')
 
-Jetpack 'vim-jp/vimdoc-ja'
+Plug 'vim-jp/vimdoc-ja'
 
-Jetpack 'mattn/emmet-vim'
-Jetpack 'vim-denops/denops.vim'
-Jetpack 'simeji/winresizer'
-Jetpack 'cohama/lexima.vim'
-Jetpack 'nvim-lualine/lualine.nvim'
-Jetpack 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Jetpack 'mattn/vim-goimports'
-Jetpack 'mattn/vim-sonictemplate'
-Jetpack 'machakann/vim-sandwich'
-Jetpack 'skanehira/translate.vim'
-Jetpack 'petertriho/nvim-scrollbar'
-Jetpack 'numToStr/Comment.nvim'
-Jetpack 'MunifTanjim/nui.nvim'
-Jetpack 'nvim-neo-tree/neo-tree.nvim'
-Jetpack 'akinsho/toggleterm.nvim'
-Jetpack 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Jetpack 'junegunn/fzf.vim'
-Jetpack 'norcalli/nvim-colorizer.lua'
-Jetpack 'skanehira/jumpcursor.vim'
-Jetpack 'cocopon/pgmnt.vim'
-Jetpack 'lambdalisue/guise.vim'
-Jetpack 'ctrlpvim/ctrlp.vim'
+Plug 'mattn/emmet-vim'
+Plug 'vim-denops/denops.vim'
+Plug 'simeji/winresizer'
+Plug 'cohama/lexima.vim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'mattn/vim-goimports'
+Plug 'mattn/vim-sonictemplate'
+Plug 'machakann/vim-sandwich'
+Plug 'skanehira/translate.vim'
+Plug 'petertriho/nvim-scrollbar'
+Plug 'numToStr/Comment.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-neo-tree/neo-tree.nvim'
+Plug 'akinsho/toggleterm.nvim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'skanehira/jumpcursor.vim'
+Plug 'cocopon/pgmnt.vim'
+Plug 'lambdalisue/guise.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'yuki-yano/fuzzy-motion.vim'
 
 "{{{telescope
-Jetpack 'nvim-lua/plenary.nvim'
-Jetpack 'nvim-telescope/telescope.nvim'
-Jetpack 'nvim-telescope/telescope-github.nvim'
-Jetpack 'nvim-telescope/telescope-ui-select.nvim'
-Jetpack 'nvim-telescope/telescope-symbols.nvim'
-Jetpack 'crispgm/telescope-heading.nvim'
-Jetpack 'LinArcX/telescope-changes.nvim'
-Jetpack 'nvim-telescope/telescope-rg.nvim'
-Jetpack 'nvim-telescope/telescope-smart-history.nvim'
-Jetpack 'nvim-telescope/telescope-fzy-native.nvim'
-Jetpack 'kyazdani42/nvim-web-devicons'
-Jetpack 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-github.nvim'
+Plug 'nvim-telescope/telescope-ui-select.nvim'
+Plug 'nvim-telescope/telescope-symbols.nvim'
+Plug 'crispgm/telescope-heading.nvim'
+Plug 'LinArcX/telescope-changes.nvim'
+Plug 'nvim-telescope/telescope-rg.nvim'
+Plug 'nvim-telescope/telescope-smart-history.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 "}}}
 
 "{{{ startup menu
-Jetpack 'goolord/alpha-nvim'
+Plug 'goolord/alpha-nvim'
 "}}}
 
 " {{{ git
-Jetpack 'lambdalisue/gin.vim'
-Jetpack 'airblade/vim-gitgutter'
+Plug 'lambdalisue/gin.vim'
+Plug 'airblade/vim-gitgutter'
 " }}}
 
 " {{{ fern
-Jetpack 'lambdalisue/fern.vim'
-Jetpack 'yuki-yano/fern-preview.vim'
-Jetpack 'lambdalisue/fern-git-status.vim'
+Plug 'lambdalisue/fern.vim'
+Plug 'yuki-yano/fern-preview.vim'
+Plug 'lambdalisue/fern-git-status.vim'
 " }}}
 
 " {{{ colorscheme
-Jetpack 'arcticicestudio/nord-vim'
-Jetpack 'rebelot/kanagawa.nvim'
-Jetpack 'cocopon/iceberg.vim'
-Jetpack 'sainnhe/edge'
-Jetpack 'staticWagomu/wagomuColor'
+Plug 'arcticicestudio/nord-vim'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'cocopon/iceberg.vim'
+Plug 'sainnhe/edge'
+Plug 'staticWagomu/wagomuColor'
 " }}}
 
 "{{{ nvim-cmp
-Jetpack 'neovim/nvim-lspconfig'
-Jetpack 'williamboman/nvim-lsp-installer'
-Jetpack 'hrsh7th/cmp-nvim-lsp'
-Jetpack 'hrsh7th/cmp-buffer'
-Jetpack 'hrsh7th/cmp-path'
-Jetpack 'hrsh7th/cmp-cmdline'
-Jetpack 'hrsh7th/nvim-cmp'
-Jetpack 'hrsh7th/cmp-nvim-lsp-signature-help'
-Jetpack 'hrsh7th/cmp-nvim-lsp-document-symbol'
-Jetpack 'hrsh7th/cmp-calc'
-Jetpack 'hrsh7th/cmp-cmdline'
-Jetpack 'f3fora/cmp-spell'
-Jetpack 'yutkat/cmp-mocword'
-Jetpack 'nvim-lua/plenary.nvim'
-Jetpack 'hrsh7th/cmp-vsnip'
-Jetpack 'hrsh7th/vim-vsnip'
-Jetpack 'hrsh7th/vim-vsnip-integ'
-Jetpack 'onsails/lspkind.nvim'
-Jetpack 'petertriho/cmp-git'
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+Plug 'hrsh7th/cmp-nvim-lsp-document-symbol'
+Plug 'hrsh7th/cmp-calc'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'f3fora/cmp-spell'
+Plug 'yutkat/cmp-mocword'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'onsails/lspkind.nvim'
+Plug 'petertriho/cmp-git'
 "}}}
 
-call jetpack#end()
+call plug#end()
 "}}}
 
 "{{{ keymaps
@@ -644,7 +644,7 @@ EOF
 "{{{alpha
 
 function! s:print_plugins_message() abort
-	let l:packer = stdpath('data') .'/site/pack/packer/start/packer.nvim'
+	"let l:packer = stdpath('data') .'/site/pack/packer/start/packer.nvim'
 	let s:footer_icon = 'ﮣ '
 	if exists('g:dashboard_footer_icon')
 		let s:footer_icon = get(g:,'dashboard_footer_icon','')
@@ -660,8 +660,8 @@ function! s:print_plugins_message() abort
 		let l:total_plugins = len(dein#get())
 	elseif exists('*plug#begin')
 		let l:total_plugins = len(keys(g:plugs))
-	elseif isdirectory(l:packer)
-		let l:total_plugins = luaeval('#vim.tbl_keys(packer_plugins)')
+	"elseif isdirectory(l:packer)
+	"	let l:total_plugins = luaeval('#vim.tbl_keys(packer_plugins)')
         elseif exists('*jetpack#names')
                 let l:total_plugins = len(jetpack#names())
 	else
@@ -997,7 +997,7 @@ vim.api.nvim_set_keymap(
 	"<Cmd>lua require('telescope.builtin').git_branches()<CR>",
 	{ noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap("n", "<Leader><Leader>", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "<Leader><Leader>", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
 EOF
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -1336,6 +1336,10 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 " }}}
+
+"{{{ fuzzy-motion.vim
+nnoremap <Leader><Leader> :<C-u>FuzzyMotion<CR>
+"}}}
 
 "}}}
 
