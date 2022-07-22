@@ -799,7 +799,6 @@ require("telescope").setup({
 	}
 })
 require('telescope').load_extension('fzy_native')
-require('telescope').load_extension('file_browser')
 
 local function remove_duplicate_paths(tbl, cwd)
 	local res = {}
