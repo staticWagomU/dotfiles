@@ -647,7 +647,7 @@ EOF
 
 function! s:print_plugins_message() abort
 	let l:packer = stdpath('data') .'/site/pack/packer/start/packer.nvim'
-	let s:footer_icon = 'ﮣ '
+	let s:footer_icon = '🔌 '
 	if exists('g:dashboard_footer_icon')
 		let s:footer_icon = get(g:,'dashboard_footer_icon','')
 	endif
@@ -694,12 +694,13 @@ dashboard.section.header.val = banner
 dashboard.section.footer.val = vim.fn['s:print_plugins_message']()
 
 dashboard.section.buttons.val = {
-	dashboard.button('e', '  New file', ':enew<CR>'),
+	dashboard.button("e", "📓  New file", ":enew<CR>"),
 	--dashboard.button("h", "  Recently opened files", ":Telescope my_mru<CR>"),
-	dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
-	dashboard.button('s', '  Settings', ':e ~/.dotfiles/nvim/rc/init.vim<CR>'),
-	dashboard.button("u", "  Update plugins", ":PlugUpdate<CR>"),
-	dashboard.button("q", "  Exit", ":qa<CR>"),
+	dashboard.button("t", "🔭 Telescope", ":Telescope<CR>"),
+	dashboard.button("f", "🔎  Find file", ":Telescope find_files<CR>"),
+	dashboard.button("s", "🔧  Settings", ":e ~/.dotfiles/nvim/rc/init.vim<CR>"),
+	dashboard.button("u", "📫  Update plugins", ":PlugUpdate<CR>"),
+	dashboard.button("q", "🚪  Exit", ":qa<CR>"),
 }
 
 require'alpha'.setup(dashboard.config)
