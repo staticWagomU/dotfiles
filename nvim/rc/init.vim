@@ -1375,12 +1375,24 @@ EOF
 
 "{{{ sidebar.nvim
 lua << EOF
-local sidebar = require("sidebar-nvim")
-local opts = {open = false}
-sidebar.setup(opts)
+require("sidebar-nvim").setup({
+	disable_default_keybindings = 0,
+	bindings = {
+		["q"] = function()
+			require("sidebar-nvim").close()
+		end,
+		["u"] = function()
+			require("sidebar-nvim").update()
+		end,
+	},
+	open = false,
+	side = "right",
+	initial_width = 35,
+	update_interval = 1000,
+	section_separator = "-----",
+})
 EOF
 nnoremap <silent> <Space>qt :<C-u>SidebarNvimToggle<CR>
-nnoremap <silent> <Space>qu :<C-u>SidebarNvimUpdate<CR>
 "}}}
 
 "}}}
