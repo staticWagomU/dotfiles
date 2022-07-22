@@ -1376,9 +1376,11 @@ EOF
 "{{{ sidebar.nvim
 lua << EOF
 local sidebar = require("sidebar-nvim")
-local opts = {open = true}
+local opts = {open = false}
 sidebar.setup(opts)
 EOF
+nnoremap <silent> <Space>qt :<C-u>SidebarNvimToggle<CR>
+nnoremap <silent> <Space>qu :<C-u>SidebarNvimUpdate<CR>
 "}}}
 
 "}}}
