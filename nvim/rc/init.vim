@@ -73,6 +73,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'yuki-yano/fuzzy-motion.vim'
 Plug 'mvllow/modes.nvim'
 Plug 'sidebar-nvim/sidebar.nvim'
+Plug 'mattn/vim-findroot'
 
 "{{{telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -1379,6 +1380,22 @@ require("sidebar-nvim").setup({
 })
 EOF
 nnoremap <silent> <Space>qt :<C-u>SidebarNvimToggle<CR>
+"}}}
+
+"{{{ vim-findroot
+let g:findroot_patterns = [
+\  '.git/',
+\  '.svn/',
+\  '.hg/',
+\  '.bzr/',
+\  '.gitignore',
+\  'Rakefile',
+\  'pom.xml',
+\  'project.clj',
+\  '*.csproj',
+\  '*.sln',
+\  '.venv/',
+\]
 "}}}
 
 "}}}
