@@ -168,4 +168,16 @@ autocmd FileType vim setlocal foldmethod=marker
 " {{{ other
 colorscheme elflord
 filetype plugin indent on
+
+function! s:Vimrc()
+	execute 'edit ~/.dotfiles/vim/rc/_vimrc'
+endfunction
+
+command! Vimrc call s:Vimrc()
+
+function! s:Gvimrc()
+	execute 'edit ~/.dotfiles/vim/rc/gvimrc'
+endfunction
+
+command! Gvimrc call s:Gvimrc()
 " }}}
