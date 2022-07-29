@@ -89,12 +89,12 @@ cmap <C-x> <C-r>=expand('%:p')<CR>
 " expand file (not ext)
 cmap <C-z> <C-r>=expand('%:p:r')<CR>
 
-nnoremap <Leader>ls :<C-u>ls<CR>
-nnoremap <Leader>w :<C-u>w<CR>
-nnoremap <Leader>bn :<C-u>bn<CR>
-nnoremap <Leader>bp :<C-u>bp<CR>
-nnoremap <Leader>bd :<C-u>bd<CR>
-nnoremap <silent> <Leader>cd :<C-u>cd %:p:h<CR> 
+nnoremap <silent> <Leader>ls :<C-u>ls<CR>
+nnoremap <silent> <Leader>w :<C-u>w<CR>
+nnoremap <silent> <Leader>bn :<C-u>bn<CR>
+nnoremap <silent> <Leader>bp :<C-u>bp<CR>
+nnoremap <silent> <Leader>bd :<C-u>bd<CR>
+nnoremap <silent> <silent> <Leader>cd :<C-u>cd %:p:h<CR> 
 
 nnoremap <silent> ^ :<C-u>so $MYVIMRC<CR>
 " }}}
