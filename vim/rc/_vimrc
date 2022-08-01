@@ -83,7 +83,6 @@ xnoremap <Leader> <Nop>
 
 "inoremap <silent> jj <ESC>
 
-
 " expand path
 cmap <C-x> <C-r>=expand('%:p')<CR>
 " expand file (not ext)
@@ -96,7 +95,7 @@ nnoremap <silent> <Leader>bp :<C-u>bp<CR>
 nnoremap <silent> <Leader>bd :<C-u>bd<CR>
 nnoremap <silent> <silent> <Leader>cd :<C-u>cd %:p:h<CR> 
 
-nnoremap <silent> ^ :<C-u>so $MYVIMRC<CR>
+nnoremap <silent> \ :<C-u>so $MYVIMRC<CR>
 " }}}
 
 " {{{ plugin config
