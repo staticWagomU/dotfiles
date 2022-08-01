@@ -83,8 +83,8 @@ nnoremap <Leader> <Nop>
 xnoremap <Leader> <Nop>
 
 "inoremap <silent> jj <ESC>
-inoremap <silent> <Up> gk
-inoremap <silent> <Down> gj
+inoremap <silent> <Up> <C-o>gk
+inoremap <silent> <Down> <C-o>gj
 nnoremap <silent> <Up> gk
 nnoremap <silent> <Down> gj
 
