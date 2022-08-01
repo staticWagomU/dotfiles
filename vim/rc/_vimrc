@@ -82,6 +82,10 @@ nnoremap <Leader> <Nop>
 xnoremap <Leader> <Nop>
 
 "inoremap <silent> jj <ESC>
+inoremap <silent> <Up> gk
+inoremap <silent> <Down> gj
+nnoremap <silent> <Up> gk
+nnoremap <silent> <Down> gj
 
 " expand path
 cmap <C-x> <C-r>=expand('%:p')<CR>
