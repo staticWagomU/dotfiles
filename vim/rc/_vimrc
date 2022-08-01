@@ -44,6 +44,7 @@ Plug 'skanehira/translate.vim'
 Plug 'thinca/vim-fontzoom'
 Plug 'vim-denops/denops.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'LeafCage/yankround.vim'
 
 " {{{ fern
 Plug 'lambdalisue/fern.vim'
@@ -149,6 +150,17 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 " }}}
+
+"{{{ yankround
+nmap p <Plug>(yankround-p)
+xmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+xmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+"}}}
 
 " }}}
 
