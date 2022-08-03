@@ -26,6 +26,7 @@ set matchpairs+=「:」,（:）
 set directory=~
 set backupdir=~
 set undodir=~
+set backspace=indent,eol,start
 set title
 let &g:titlestring =
 \ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
