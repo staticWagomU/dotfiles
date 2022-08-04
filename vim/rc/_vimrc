@@ -10,7 +10,7 @@ endif
 scriptencoding utf-8
 
 if &compatible
-set nocompatible
+	set nocompatible
 endif
 set number
 set helplang=ja
@@ -18,14 +18,18 @@ set signcolumn=yes
 set hidden
 set laststatus=2
 set mouse=a
+" クリップボードレジスタを使用する autoselectはわからない
 set clipboard=unnamed,autoselect
+" 音を鳴らさないようにする
 set belloff=all
 set formatoptions+=mMj
 set ambiwidth=double
+" 大文字の括弧を%でマッチさせる
 set matchpairs+=「:」,（:）
 set directory=~
 set backupdir=~
 set undodir=~
+" normal modeに戻った後も<BS> <DELETE>を効かせる
 set backspace=indent,eol,start
 set title
 let &g:titlestring =
