@@ -179,6 +179,10 @@ let g:gitgutter_map_keys = 0
 
 " }}}
 
+"{{{ lsp
+let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-language-server', 'deno']
+"}}}
+
 "{{{ ddc
 call ddc#custom#patch_global('completionMenu', 'pum.vim')
 call ddc#custom#patch_global('sources', [
