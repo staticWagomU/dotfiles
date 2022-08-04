@@ -48,6 +48,7 @@ Plug 'simeji/winresizer'
 Plug 'skanehira/translate.vim'
 Plug 'thinca/vim-fontzoom'
 Plug 'vim-denops/denops.vim'
+Plug 'KeitaNakamura/neodark.vim'
 
 " {{{ fern
 Plug 'lambdalisue/fern.vim'
@@ -195,8 +196,8 @@ function! s:on_lsp_buffer_enabled() abort
 	nmap <buffer> [g <plug>(lsp-previous-diagnostic)
 	nmap <buffer> ]g <plug>(lsp-next-diagnostic)
 	nmap <buffer> K <plug>(lsp-hover)
-	nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-	nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+	nnoremap <buffer> <expr><C-f> lsp#scroll(+4)
+	nnoremap <buffer> <expr><C-S-f> lsp#scroll(-4)
 
 	let g:lsp_format_sync_timeout = 1000
 	autocmd! BufWritePre *.rs,*.go,*.ts call execute('LspDocumentFormatSync')
@@ -377,6 +378,16 @@ nmap <silent> ;d <Cmd>call ddu#start({
 
 " }}}
 
+" {{{neodark
+let g:neodark#terminal_transparent = 1
+let g:neodark#solid_vertsplit = 1
+" }}}
+
+" {{{lightline
+let g:lightline = {}
+let g:lightline.colorscheme = 'neodark'
+" }}}
+
 " }}}
 
 " {{{ commands
@@ -396,7 +407,7 @@ autocmd FileType vim setlocal foldmethod=marker
 " }}}
 
 " {{{ other
-colorscheme elflord
+colorscheme neodark
 filetype plugin indent on
 
 command! Vimrc execute 'edit ~/.dotfiles/vim/rc/_vimrc'
