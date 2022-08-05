@@ -181,6 +181,7 @@ let g:gitgutter_map_keys = 0
 " }}}
 
 "{{{ lsp
+let g:lsp_diagnostics_float_delay = 1500
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-language-server', 'deno']
 function! s:on_lsp_buffer_enabled() abort
