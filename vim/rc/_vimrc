@@ -181,6 +181,10 @@ let g:gitgutter_map_keys = 0
 " }}}
 
 "{{{ lsp
+let g:lsp_document_code_action_signs_hint = {'text': '🪄'}
+let g:lsp_diagnostics_signs_error = {'text': '❌'}
+let g:lsp_diagnostics_signs_warning = {'text': '⚠️'} 
+let g:lsp_diagnostics_signs_hint = {'text': '🔎'}
 let g:lsp_diagnostics_float_delay = 1500
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-language-server', 'deno']
@@ -386,8 +390,8 @@ let g:neodark#solid_vertsplit = 1
 " }}}
 
 " {{{lightline
-let g:lightline = {}
-let g:lightline.colorscheme = 'neodark'
+"let g:lightline = {}
+"let g:lightline.colorscheme = 'neodark'
 " }}}
 
 " }}}
@@ -409,9 +413,17 @@ autocmd FileType vim setlocal foldmethod=marker
 " }}}
 
 " {{{ other
-colorscheme neodark
+"colorscheme neodark
 filetype plugin indent on
 
 command! Vimrc execute 'edit ~/.dotfiles/vim/rc/_vimrc'
 command! Gvimrc execute 'edit ~/.dotfiles/vim/rc/gvimrc'
+
+function RandomColorScheme()
+  let mycolors = split(globpath(&rtp,"**/colors/*.vim"),"\n") 
+  exe 'so ' . mycolors[localtime() % len(mycolors)]
+  unlet mycolors
+endfunction
+
+call RandomColorScheme()
 " }}}
