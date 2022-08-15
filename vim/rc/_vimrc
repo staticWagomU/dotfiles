@@ -45,7 +45,7 @@ Plug 'cohama/lexima.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'mattn/emmet-vim'
 Plug 'simeji/winresizer'
-Plug 'skanehira/translate.vim'
+Plug 'skanehira/denops-translate.vim'
 Plug 'thinca/vim-fontzoom'
 Plug 'vim-denops/denops.vim'
 Plug 'KeitaNakamura/neodark.vim'
@@ -133,7 +133,7 @@ nnoremap <silent> <Leader>w :<C-u>w<CR>
 nnoremap <silent> <Leader>bn :<C-u>bn<CR>
 nnoremap <silent> <Leader>bp :<C-u>bp<CR>
 nnoremap <silent> <Leader>bd :<C-u>bd<CR>
-nnoremap <silent> <silent> <Leader>cd :<C-u>cd %:p:h<CR> 
+nnoremap <silent> <silent> <Leader>cd :<C-u>cd %:p:h<CR> :cd<CR>
 
 nnoremap <silent> \ :<C-u>so $MYVIMRC<CR>
 " }}}
@@ -143,11 +143,13 @@ nnoremap <silent> \ :<C-u>so $MYVIMRC<CR>
 " {{{ fern
 nnoremap <silent> <Leader>e :<C-u>Fern . -drawer <CR>
 nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -toggle<CR>
+nnoremap <silent> <C-F> :Fern . -drawer -reveal=%<CR>
 let g:fern#default_hidden=1
 
 function! s:fern_settings() abort
   nmap <silent> <buffer> <C-m> <Plug>(fern-action-move)
   nmap <silent> <buffer> <C-s> <Plug>(fern-action-new-dir)
+  nnoremap <buffer> <C-F> <C-W>p
   setlocal signcolumn=no
   setlocal nonumber
 endfunction
@@ -159,8 +161,6 @@ augroup END
 " }}}
 
 " {{{ translate.vim
-let g:translate_source = "en"
-let g:translate_target = "ja"
 vmap <Leader>t <Plug>(VTranslate)
 " }}}
 
