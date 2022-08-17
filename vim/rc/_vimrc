@@ -68,6 +68,7 @@ Plug 'airblade/vim-gitgutter'
 "{{{ lsp
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+Plug 'ziglang/zig.vim'
 "}}}
 
 "{{{ ddc
@@ -487,17 +488,17 @@ autocmd FileType vim setlocal foldmethod=marker
 " }}}
 
 " {{{ other
-"colorscheme neodark
+colorscheme neodark
 filetype plugin indent on
 
 command! Vimrc execute 'edit ~/.dotfiles/vim/rc/_vimrc'
 command! Gvimrc execute 'edit ~/.dotfiles/vim/rc/gvimrc'
 
-function s:RandomColorScheme()
+function g:RandomColorScheme()
 	let mycolors = split(globpath(&rtp,"**/colors/*.vim"),"\n") 
 	exe 'so ' . mycolors[localtime() % len(mycolors)]
 	unlet mycolors
 endfunction
 
-call s:RandomColorScheme()
+"call g:RandomColorScheme()
 " }}}
