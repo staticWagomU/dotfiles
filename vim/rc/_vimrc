@@ -288,6 +288,10 @@ function! CommandlinePre() abort
   \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
   \ ddc#manual_complete()
   cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+  cnoremap <expr> <C-n>
+  \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+  \ ddc#manual_complete()
+  cnoremap <C-p> <Cmd>call pum#map#insert_relative(-1)<CR>
   cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
   cnoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 
@@ -309,6 +313,8 @@ endfunction
 function! CommandlinePost() abort
   cunmap <Tab>
   cunmap <S-Tab>
+  cunmap <C-n>
+  cunmap <C-p>
   cunmap <C-y>
   cunmap <C-e>
 
@@ -325,6 +331,8 @@ call ddc#enable()
 
 inoremap <Tab> <Cmd>call pum#map#insert_relative(+1)<CR>
 inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <C-n> <Cmd>call pum#map#insert_relative(+1)<CR>
+inoremap <C-p> <Cmd>call pum#map#insert_relative(-1)<CR>
 nnoremap :       <Cmd>call CommandlinePre()<CR>:
 
 " }}}
