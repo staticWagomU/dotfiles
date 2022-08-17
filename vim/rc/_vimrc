@@ -128,9 +128,9 @@ nnoremap <silent> <Up> gk
 nnoremap <silent> <Down> gj
 
 " expand path
-cmap <C-x> <C-r>=expand('%:p')<CR>
-" expand file (not ext)
-cmap <C-z> <C-r>=expand('%:p:r')<CR>
+cmap <C-x> <C-r>=expand('%:p:h')<CR>
+" expand file 
+cmap <C-z> <C-r>=expand('%:p')<CR>
 
 nnoremap <silent> <Leader>ls :<C-u>ls<CR>
 nnoremap <silent> <Leader>w :<C-u>w<CR>
