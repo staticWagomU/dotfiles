@@ -112,7 +112,12 @@ return require("packer").startup(function(use)
         use {"hrsh7th/cmp-calc"}
         use {"f3fora/cmp-spell"}
         use {"yutkat/cmp-mocword"}
-        use {"onsails/lspkind.nvim"}
+        use {
+                "onsails/lspkind.nvim",
+                config = function()
+                        require("pluginconfig/lspkind")
+                end
+        }
         use {"petertriho/cmp-git"}
 
         use {"L3MON4D3/LuaSnip"}
@@ -127,8 +132,6 @@ return require("packer").startup(function(use)
         }
         use {"cocopon/pgmnt.vim"}
 
-        use {"akinsho/toggleterm.nvim"}
-
         use {
                 "mvllow/modes.nvim",
                 config = function()
@@ -136,12 +139,73 @@ return require("packer").startup(function(use)
                 end
         }
 
-        use({
+        use {
                 "glepnir/lspsaga.nvim",
                 branch = "main",
                 config = function()
                         require("pluginconfig/lspsaga")
                 end,
-            })
+        }
+
+        use {"rcarriga/nvim-notify"}
+
+--        use {
+--                "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+--                config = function()
+--                        require("lsp_lines").setup()
+--                end,
+--        }
+
+        use {
+                "lewis6991/gitsigns.nvim",
+                config = function()
+                        require("pluginconfig/gitsigns")
+                end
+        }
+
+        use {
+                "windwp/nvim-autopairs",
+                config = function() 
+                        require("nvim-autopairs").setup {}
+                end
+        }
+
+        use {
+                "dinhhuy258/git.nvim"
+        }
+
+
+        use {
+                "SmiteshP/nvim-navic",
+                requires = "neovim/nvim-lspconfig"
+        }
+
+        use {
+                "anuvyklack/pretty-fold.nvim",
+                config = function()
+                        require("pretty-fold").setup()
+                end
+        }
+
+        use {
+                "petertriho/nvim-scrollbar",
+                config = function()
+                        require("pluginconfig/nvim-scrollbar")
+                end
+        }
+
+        use {
+                "goolord/alpha-nvim",
+                config = function()
+                        require("pluginconfig/alpha-nvim")
+                end
+        }
+
+        use {
+                "akinsho/toggleterm.nvim",
+                config = function()
+                        require("pluginconfig/toggleterm")
+                end
+        }
 
 end)
