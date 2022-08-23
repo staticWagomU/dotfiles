@@ -28,3 +28,5 @@ let &g:titlestring =
 	\ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
 
 ]]
+
+vim.g.mapleader = " "

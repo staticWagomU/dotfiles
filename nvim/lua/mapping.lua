@@ -1,41 +1,33 @@
-vim.cmd[[
-let g:mapleader = "\<Space>"
-nnoremap <Leader> <Nop>
-xnoremap <Leader> <Nop>
+local m = vim.api.nvim_set_keymap
+local silent = { noremap = true, silent = true }
 
-nmap s <Nop>
-xmap s <Nop>
+m("n", "<Leader>", "<Nop>", silent)
+m("x", "<Leader>", "<Nop>", silent)
 
-"inoremap <silent> jj <ESC>
+-- expand file
+m("c", "<C-x>", "<C-r>=expand('%:p')<CR>", {})
+-- expand path
+m("c", "<C-z>", "<C-r>=expand('%:p:r')<CR>", {})
 
+m("n", "<Leader>ls", ":<C-u>ls<CR>", { noremap = true })
+m("n", "<Leader>w", ":<C-u>w<CR>", { noremap = true }
+m("n", "<Leader>bn", ":<C-u>bn<CR>", { noremap = true }
+m("n", "<Leader>bp", ":<C-u>bp<CR>", { noremap = true }
+m("n", "<Leader>bd", ":<C-u>bd<CR>", { noremap = true }
+m("n", "<Leader>cd", ":<C-u>cd %:p:h<CR>", silent)
 
-" expand path
-cmap <C-x> <C-r>=expand('%:p')<CR>
-" expand file (not ext)
-cmap <C-z> <C-r>=expand('%:p:r')<CR>
+m("t", "<ESC>", "<C-\><C-n>", silent)
+m("t", "<C-w><C-l>", "<C-\><C-n><C-w><C-l>", silent)
+m("t", "<C-w><C-h>", "<C-\><C-n><C-w><C-h>", silent)
 
-nnoremap <Leader>ls :<C-u>ls<CR>
-nnoremap <Leader>w :<C-u>w<CR>
-nnoremap <Leader>bn :<C-u>bn<CR>
-nnoremap <Leader>bp :<C-u>bp<CR>
-nnoremap <Leader>bd :<C-u>bd<CR>
-nnoremap <silent> <Leader>cd :<C-u>cd %:p:h<CR>
-nnoremap <C-^> :<C-u>so $MYVIMRC<CR>
+m("n", ";", "<Nop>", silent)
+m("n", "[lsp]", "<Nop>", silent)
+m("n", ";", "[lsp]", {})
 
-tnoremap <ESC> <C-\><C-n>
-tnoremap <C-w><C-l> <C-\><C-n><C-w><C-l>
-tnoremap <C-w><C-h> <C-\><C-n><C-w><C-h>
+m("n", "Z", "<Nop>", silent)
+m("n", "[telescope]", "<Nop>", silent)
+m("n", "Z", "[telescope]", {})
 
-]]
-
-vim.api.nvim_set_keymap("n", ";", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[lsp]", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", ";", "[lsp]", {})
-
-vim.api.nvim_set_keymap("n", "Z", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[telescope]", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "Z", "[telescope]", {})
-
-vim.api.nvim_set_keymap("v", "Z", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "[telescope]", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "Z", "[telescope]", {})
+m("v", "Z", "<Nop>", silent)
+m("v", "[telescope]", "<Nop>", silent)
+m("v", "Z", "[telescope]", {})
