@@ -12,6 +12,7 @@ local Path = require("plenary.path")
 local action_state = require("telescope.actions.state")
 local custom_actions = {}
 local fb_actions = require "telescope".extensions.file_browser.actions
+local trouble = require("trouble.providers.telescope")
 
 require("telescope").setup({
 	defaults = {
@@ -62,7 +63,10 @@ require("telescope").setup({
 		use_less = true,
 		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 		mappings = {
-			n = { ["<C-t>"] = action_layout.toggle_preview },
+			n = {
+				["<C-t>"] = action_layout.toggle_preview,
+				["<C-r>"] = trouble.open_with_trouble
+			},
 			i = {
 				["<C-t>"] = action_layout.toggle_preview,
 				["<C-x>"] = false,
@@ -71,6 +75,7 @@ require("telescope").setup({
 				["<C-q>"] = actions.send_selected_to_qflist,
 				["<CR>"] = actions.select_default + actions.center,
 				["<C-g>"] = custom_actions.multi_selection_open,
+				["<C-r>"] = trouble.open_with_trouble
 			},
 		},
 	},
@@ -80,7 +85,7 @@ require("telescope").setup({
 			override_file_sorter = true,
 		},
                 file_browser = {
-                        theme = "iceberg",
+                        -- theme = "iceberg",
                         -- disables netrw and use telescope-file-browser in its place
                         hijack_netrw = true,
                         mappings = {

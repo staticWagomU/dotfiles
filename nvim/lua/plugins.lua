@@ -37,7 +37,8 @@ return require("packer").startup(function(use)
                         {"nvim-telescope/telescope-smart-history.nvim", after="telescope.nvim" },
                         {"nvim-telescope/telescope-fzy-native.nvim"},
                         {"nvim-telescope/telescope-file-browser.nvim"},
-                        {"kyazdani42/nvim-web-devicons", after="telescope.nvim" }
+                        {"kyazdani42/nvim-web-devicons", after="telescope.nvim" },
+                        {"folke/trouble.nvim", after="telescope.nvim" }
                 },
                 config = function()
                         require("pluginconfig/telescope")
@@ -94,8 +95,6 @@ return require("packer").startup(function(use)
                         {"nvim-lua/plenary.nvim", after="hrsh7th/nvim-cmp" },
                         {"onsails/lspkind.nvim", after="hrsh7th/nvim-cmp" },
                         {"petertriho/cmp-git", after="hrsh7th/nvim-cmp" },
-
-
                 },
                 config = function()
                         require("pluginconfig/nvim-cmp")
@@ -125,7 +124,10 @@ return require("packer").startup(function(use)
         
         use {
                 "nvim-lualine/lualine.nvim",
-                requires = {{"cocopon/pgmnt.vim"}},
+                requires = {
+                        {"cocopon/pgmnt.vim"}, 
+                        {"SmiteshP/nvim-navic", after = "nvim-lualine/lualine.nvim"}
+                },
                 config = function()
                         require("pluginconfig/lualine")
                 end
@@ -171,14 +173,6 @@ return require("packer").startup(function(use)
         }
 
         use {
-                "dinhhuy258/git.nvim",
-                config = function()
-                        require("pluginconfig/git")
-                end
-        }
-
-
-        use {
                 "SmiteshP/nvim-navic",
                 requires = "neovim/nvim-lspconfig"
         }
@@ -222,52 +216,7 @@ return require("packer").startup(function(use)
                 "folke/trouble.nvim",
                 requires = "kyazdani42/nvim-web-devicons",
                 config = function()
-                        require("trouble").setup {
-                        -- your configuration comes here
-                        -- or leave it empty to use the default settings
-                        -- refer to the configuration section below
-                        }
-                end
-        }
-
-        use {
-                "fgheng/winbar.nvim",
-                config = function()
-                        require("winbar").setup({
-                                enabled = true,
-                            
-                                show_file_path = true,
-                                show_symbols = true,
-                            
-                                colors = {
-                                    path = '', -- You can customize colors like #c946fd
-                                    file_name = '',
-                                    symbols = '',
-                                },
-                            
-                                icons = {
-                                    file_icon_default = '',
-                                    seperator = '>',
-                                    editor_state = '●',
-                                    lock_icon = '',
-                                },
-                            
-                                exclude_filetype = {
-                                    'help',
-                                    'startify',
-                                    'dashboard',
-                                    'packer',
-                                    'neogitstatus',
-                                    'NvimTree',
-                                    'Trouble',
-                                    'alpha',
-                                    'lir',
-                                    'Outline',
-                                    'spectre_panel',
-                                    'toggleterm',
-                                    'qf',
-                                }
-                            })
+                        require("pluginconfig/trouble")
                 end
         }
 

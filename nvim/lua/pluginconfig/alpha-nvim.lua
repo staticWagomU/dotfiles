@@ -20,7 +20,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("f", "🔎 Find file", ":Telescope find_files<CR>"),
 	dashboard.button("i", "🔧 Init.vim", ":cd ~/.dotfiles/nvim<CR>:Telescope file_browser<CR>"),
 	-- dashboard.button("g", "🐻 Ginit.vim", ":e ~/.dotfiles/nvim/rc/ginit.vim<CR>"),
-	dashboard.button("u", "📫 Update plugins", ":PlugUpdate<CR>"),
+	dashboard.button("u", "📫 Update plugins", ":PackerSync<CR>"),
 	dashboard.button("q", "🚪 Exit", ":qa<CR>"),
 }
 
