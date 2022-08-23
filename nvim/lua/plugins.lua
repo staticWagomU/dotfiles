@@ -171,7 +171,10 @@ return require("packer").startup(function(use)
         }
 
         use {
-                "dinhhuy258/git.nvim"
+                "dinhhuy258/git.nvim",
+                config = function()
+                        require("pluginconfig/git")
+                end
         }
 
 
@@ -205,6 +208,25 @@ return require("packer").startup(function(use)
                 "akinsho/toggleterm.nvim",
                 config = function()
                         require("pluginconfig/toggleterm")
+                end
+        }
+        
+        use {
+                'numToStr/Comment.nvim',
+                config = function()
+                        require("pluginconfig/comment")
+                end
+        }
+
+        use {
+                "folke/trouble.nvim",
+                requires = "kyazdani42/nvim-web-devicons",
+                config = function()
+                        require("trouble").setup {
+                        -- your configuration comes here
+                        -- or leave it empty to use the default settings
+                        -- refer to the configuration section below
+                        }
                 end
         }
 

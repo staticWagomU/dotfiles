@@ -27,3 +27,11 @@ tnoremap <C-w><C-l> <C-\><C-n><C-w><C-l>
 tnoremap <C-w><C-h> <C-\><C-n><C-w><C-h>
 
 ]]
+
+vim.keymap.set("n", ";", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("n", "[lsp]", "<Nop>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", ";", "[lsp]", {})
+
+vim.keymap.set("n", "Z", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("n", "[telescope]", "<Nop>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", ";", "[telescope]", {})
