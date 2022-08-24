@@ -175,6 +175,8 @@ telescope_builtin.my_grep_in_dir = function(opts)
 	})
 end
 
+local opts = { noremap = true, silent = true }
+
 -- vim.api.nvim_set_keymap("n", "<Leader>gf", "<Cmd>Telescope git_files<CR>", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("n", "[telescope]>", "<Cmd>Telescope my_grep_in_dir<CR>", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("n", "[telescope]s", "<Cmd>Telescope live_grep<CR>", { noremap = true, silent = true })
@@ -207,17 +209,21 @@ end
 -- )
 -- vim.api.nvim_set_keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
 
- vim.api.nvim_set_keymap(
-         "n",
-         "<Leader>e",
-         ":Telescope file_browser<CR>",
-         { noremap = true, silent = true }
- )
+vim.api.nvim_set_keymap(
+        "n",
+        "<Leader>e",
+        ":Telescope file_browser<CR>",
+        opts
+)
 
 
- vim.api.nvim_set_keymap(
-         "n",
-         "<Leader>E",
-         ":Telescope find_files<CR>",
-         { noremap = true, silent = true }
- )
+vim.api.nvim_set_keymap(
+        "n",
+        "<Leader>E",
+        ":Telescope find_files<CR>",
+        opts
+)
+
+vim.api.nvim_set_keymap("n", "<Leader>tt", ":Telescope<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>tb", ":Telescope buffers<CR>", opts)
+
