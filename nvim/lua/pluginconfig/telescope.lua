@@ -91,6 +91,11 @@ require("telescope").setup({
                         mappings = {
                                 ["i"] = {
                                         -- your custom insert mode mappings
+                                        ["<C-k>"] = fb_actions.create,
+                                        ["<C-r>"] = fb_actions.rename,
+                                        ["<C-c>"] = fb_actions.copy,
+                                        ["<C-m>"] = fb_actions.move,
+                                        ["<C-d>"] = fb_actions.remove,
                                 },
                                 ["n"] = {
                                         -- your custom normal mode mappings
@@ -202,17 +207,17 @@ end
 -- )
 -- vim.api.nvim_set_keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
 
--- vim.api.nvim_set_keymap(
---         "n",
---         "<Leader>e",
---         ":Telescope file_browser<CR>",
---         { noremap = true, silent = true }
--- )
+ vim.api.nvim_set_keymap(
+         "n",
+         "<Leader>e",
+         ":Telescope file_browser<CR>",
+         { noremap = true, silent = true }
+ )
 
 
--- vim.api.nvim_set_keymap(
---         "n",
---         "<Leader>E",
---         ":Telescope find_files<CR>",
---         { noremap = true, silent = true }
--- )
+ vim.api.nvim_set_keymap(
+         "n",
+         "<Leader>E",
+         ":Telescope find_files<CR>",
+         { noremap = true, silent = true }
+ )

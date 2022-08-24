@@ -220,4 +220,19 @@ return require("packer").startup(function(use)
                 end
         }
 
+--        use {
+--                "tamago324/lir.nvim",
+--                requires = {
+--                        {"nvim-lua/plenary.nvim"},
+--                        {"tamago324/lir-git-status.nvim"}
+--                },
+--                config = function()
+--                        require("pluginconfig/lir")
+--                end
+--        }
+--
+--        use {
+--                "tamago324/lir-git-status.nvim",
+--        }
+
 end)
