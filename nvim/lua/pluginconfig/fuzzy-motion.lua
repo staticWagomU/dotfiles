@@ -1,0 +1,1 @@
+vim.api.nvim_set_keymap("n", "<Leader><Leader>", ":<C-u>FuzzyMotion<CR>", {noremap=true})

@@ -238,4 +238,15 @@ return require("packer").startup(function(use)
 --                "tamago324/lir-git-status.nvim",
 --        }
 
+        use {
+                "yuki-yano/fuzzy-motion.vim",
+                config = function()
+                        require("pluginconfig/fuzzy-motion")
+                end
+        }
+
+        use {"mattn/vim-sonictemplate"}
+
+        use {"simeji/winresizer"}
+
 end)
