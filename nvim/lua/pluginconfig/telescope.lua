@@ -12,7 +12,6 @@ local Path = require("plenary.path")
 local action_state = require("telescope.actions.state")
 local custom_actions = {}
 local fb_actions = require "telescope".extensions.file_browser.actions
-local trouble = require("trouble.providers.telescope")
 
 require("telescope").setup({
 	defaults = {
@@ -65,7 +64,6 @@ require("telescope").setup({
 		mappings = {
 			n = {
 				["<C-t>"] = action_layout.toggle_preview,
-				["<C-r>"] = trouble.open_with_trouble
 			},
 			i = {
 				["<C-t>"] = action_layout.toggle_preview,
@@ -75,7 +73,6 @@ require("telescope").setup({
 				["<C-q>"] = actions.send_selected_to_qflist,
 				["<CR>"] = actions.select_default + actions.center,
 				["<C-g>"] = custom_actions.multi_selection_open,
-				["<C-r>"] = trouble.open_with_trouble
 			},
 		},
 	},
