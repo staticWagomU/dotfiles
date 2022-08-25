@@ -85,12 +85,9 @@ require("telescope").setup({
 			override_file_sorter = true,
 		},
                 file_browser = {
-                        -- theme = "iceberg",
-                        -- disables netrw and use telescope-file-browser in its place
                         hijack_netrw = true,
                         mappings = {
                                 ["i"] = {
-                                        -- your custom insert mode mappings
                                         ["<C-k>"] = fb_actions.create,
                                         ["<C-r>"] = fb_actions.rename,
                                         ["<C-c>"] = fb_actions.copy,
@@ -98,7 +95,11 @@ require("telescope").setup({
                                         ["<C-d>"] = fb_actions.remove,
                                 },
                                 ["n"] = {
-                                        -- your custom normal mode mappings
+                                        ["<C-k>"] = fb_actions.create,
+                                        ["<C-r>"] = fb_actions.rename,
+                                        ["<C-c>"] = fb_actions.copy,
+                                        ["<C-m>"] = fb_actions.move,
+                                        ["<C-d>"] = fb_actions.remove,
                                 },
                         },
                 },
@@ -178,16 +179,16 @@ end
 local opts = { noremap = true, silent = true }
 
 -- vim.api.nvim_set_keymap("n", "<Leader>gf", "<Cmd>Telescope git_files<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]>", "<Cmd>Telescope my_grep_in_dir<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]s", "<Cmd>Telescope live_grep<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]h", "<Cmd>Telescope help_tags<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]c", "<Cmd>Telescope commands<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]t", "<Cmd>Telescope treesitter<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]q", "<Cmd>Telescope quickfix<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]l", "<Cmd>Telescope loclist<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]m", "<Cmd>Telescope marks<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]r", "<Cmd>Telescope registers<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]*", "<Cmd>Telescope grep_string<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[telescope]>", "<Cmd>Telescope my_grep_in_dir<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[telescope]s", "<Cmd>Telescope live_grep<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[telescope]h", "<Cmd>Telescope help_tags<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[telescope]c", "<Cmd>Telescope commands<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[telescope]t", "<Cmd>Telescope treesitter<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[telescope]q", "<Cmd>Telescope quickfix<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[telescope]l", "<Cmd>Telescope loclist<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[telescope]m", "<Cmd>Telescope marks<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[telescope]r", "<Cmd>Telescope registers<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[telescope]*", "<Cmd>Telescope grep_string<CR>", { noremap = true, silent = true })
 -- git
 -- vim.api.nvim_set_keymap(
 -- 	"n",
@@ -226,4 +227,5 @@ vim.api.nvim_set_keymap(
 
 vim.api.nvim_set_keymap("n", "<Leader>tt", ":Telescope<CR>", opts)
 vim.api.nvim_set_keymap("n", "<Leader>tb", ":Telescope buffers<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>tf", ":Telescope current_buffer_fuzzy_find<CR>", opts)
 
