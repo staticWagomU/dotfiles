@@ -1,5 +1,7 @@
 vim.cmd[[
-set number
+"set number
+set relativenumber
+set nowrap
 set helplang=ja
 set signcolumn=yes 
 set hidden
