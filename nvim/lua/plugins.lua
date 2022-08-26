@@ -249,13 +249,27 @@ return require("packer").startup(function(use)
 
         use {"simeji/winresizer"}
 
-        use{
+        use {
                 -- using packer.nvim
                 "akinsho/bufferline.nvim",
                 tag = "v2.*",
                 requires = "kyazdani42/nvim-web-devicons",
                 config = function()
                         require("pluginconfig/bufferline")
+                end
+        }
+
+        use {
+                "folke/lsp-colors.nvim",
+                config = function()
+                        require("pluginconfig/lsp-colors")
+                end
+        }
+
+        use {
+                "jose-elias-alvarez/null-ls.nvim",
+                config = function()
+                        require("pluginconfig/null-ls")
                 end
         }
 
