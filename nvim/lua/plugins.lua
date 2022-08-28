@@ -4,6 +4,7 @@ return require("packer").startup(function(use)
 	use {"wbthomason/packer.nvim"}
 
         use {"nvim-lua/plenary.nvim"}
+        use {"vim-denops/denops.vim"}
 
         use {
                 "williamboman/mason.nvim",
@@ -223,23 +224,9 @@ return require("packer").startup(function(use)
                 end
         }
 
---        use {
---                "tamago324/lir.nvim",
---                requires = {
---                        {"nvim-lua/plenary.nvim"},
---                        {"tamago324/lir-git-status.nvim"}
---                },
---                config = function()
---                        require("pluginconfig/lir")
---                end
---        }
---
---        use {
---                "tamago324/lir-git-status.nvim",
---        }
-
         use {
                 "yuki-yano/fuzzy-motion.vim",
+                after = { "denops.vim" },
                 config = function()
                         require("pluginconfig/fuzzy-motion")
                 end
