@@ -260,4 +260,25 @@ return require("packer").startup(function(use)
                 end
         }
 
+
+        use {
+                "TimUntersberger/neogit",
+                requires = { 
+                        {"nvim-lua/plenary.nvim", after = "neogit"},
+                },
+                config = function()
+                        require("pluginconfig/neogit")
+                end
+        }
+
+        use {
+                "sindrets/diffview.nvim",
+                requires = { 
+                        {"nvim-lua/plenary.nvim", after = "diffview.nvim"},
+                },
+                config = function()
+                        require("pluginconfig/diffview")
+                end
+        }
+
 end)
