@@ -311,4 +311,10 @@ return require("packer").startup(function(use)
         use { "cohama/lexima.vim"}
         use { "mattn/vim-goimports"}
         use { "machakann/vim-sandwich"}
+        use {
+                "skanehira/denops-translate.vim",
+                config = function()
+                        require("pluginconfig/denops-translate")
+                end
+        }
 end)
