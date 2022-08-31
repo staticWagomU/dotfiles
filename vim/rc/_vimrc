@@ -49,6 +49,7 @@ Plug 'skanehira/denops-translate.vim'
 Plug 'thinca/vim-fontzoom'
 Plug 'vim-denops/denops.vim'
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'cocopon/iceberg.vim'
 
 " {{{ fern
 Plug 'lambdalisue/fern.vim'
@@ -501,7 +502,8 @@ autocmd FileType vim setlocal foldmethod=marker
 " }}}
 
 " {{{ other
-colorscheme neodark
+"colorscheme neodark
+colorscheme iceberg
 filetype plugin indent on
 
 command! Vimrc execute 'edit ~/.dotfiles/vim/rc/_vimrc'
