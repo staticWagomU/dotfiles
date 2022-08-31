@@ -5,6 +5,7 @@ return require("packer").startup(function(use)
 
         use {"nvim-lua/plenary.nvim"}
         use {"vim-denops/denops.vim"}
+        use { "MunifTanjim/nui.nvim"}
 
         use {
                 "williamboman/mason.nvim",
@@ -295,4 +296,9 @@ return require("packer").startup(function(use)
                 end
         }
 
+        use { "vim-jp/vimdoc-ja"}
+        use { "mattn/emmet-vim"}
+        use { "cohama/lexima.vim"}
+        use { "mattn/vim-goimports"}
+        use { "machakann/vim-sandwich"}
 end)
