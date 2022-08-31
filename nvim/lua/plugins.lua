@@ -4,6 +4,7 @@ return require("packer").startup(function(use)
 	use {"wbthomason/packer.nvim"}
 
         use {"nvim-lua/plenary.nvim"}
+        use {"vim-denops/denops.vim"}
 
         use {
                 "williamboman/mason.nvim",
@@ -223,23 +224,9 @@ return require("packer").startup(function(use)
                 end
         }
 
---        use {
---                "tamago324/lir.nvim",
---                requires = {
---                        {"nvim-lua/plenary.nvim"},
---                        {"tamago324/lir-git-status.nvim"}
---                },
---                config = function()
---                        require("pluginconfig/lir")
---                end
---        }
---
---        use {
---                "tamago324/lir-git-status.nvim",
---        }
-
         use {
                 "yuki-yano/fuzzy-motion.vim",
+                after = { "denops.vim" },
                 config = function()
                         require("pluginconfig/fuzzy-motion")
                 end
@@ -270,6 +257,27 @@ return require("packer").startup(function(use)
                 "jose-elias-alvarez/null-ls.nvim",
                 config = function()
                         require("pluginconfig/null-ls")
+                end
+        }
+
+
+        use {
+                "TimUntersberger/neogit",
+                requires = { 
+                        {"nvim-lua/plenary.nvim", after = "neogit"},
+                },
+                config = function()
+                        require("pluginconfig/neogit")
+                end
+        }
+
+        use {
+                "sindrets/diffview.nvim",
+                requires = { 
+                        {"nvim-lua/plenary.nvim", after = "diffview.nvim"},
+                },
+                config = function()
+                        require("pluginconfig/diffview")
                 end
         }
 
