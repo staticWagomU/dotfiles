@@ -123,16 +123,16 @@ return require("packer").startup(function(use)
         use {"L3MON4D3/LuaSnip"}
 
         
-        use {
-                "nvim-lualine/lualine.nvim",
-                requires = {
-                        {"cocopon/pgmnt.vim"}, 
-                        {"SmiteshP/nvim-navic", after = "nvim-lualine/lualine.nvim"}
-                },
-                config = function()
-                        require("pluginconfig/lualine")
-                end
-        }
+        -- use {
+        --         "nvim-lualine/lualine.nvim",
+        --         requires = {
+        --                 {"cocopon/pgmnt.vim"}, 
+        --                 {"SmiteshP/nvim-navic", after = "nvim-lualine/lualine.nvim"}
+        --         },
+        --         config = function()
+        --                 require("pluginconfig/lualine")
+        --         end
+        -- }
         use {"cocopon/pgmnt.vim"}
 
         use {
@@ -278,6 +278,20 @@ return require("packer").startup(function(use)
                 },
                 config = function()
                         require("pluginconfig/diffview")
+                end
+        }
+
+        use {
+                "feline-nvim/feline.nvim",
+                config = function()
+                        require("pluginconfig/feline")
+                end
+        }
+
+        use {
+                "j-hui/fidget.nvim",
+                config = function()
+                        require"fidget".setup{}
                 end
         }
 
