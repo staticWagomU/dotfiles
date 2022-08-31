@@ -71,3 +71,4 @@ require("lsp_signature").setup({
                 border = "single"
         }
 })
+require('ufo').setup()
