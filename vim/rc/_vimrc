@@ -294,46 +294,36 @@ function! CommandlinePre() abort
 	cnoremap <C-p> <Cmd>call pum#map#insert_relative(-1)<CR>
 	cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
 	cnoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
-	echo "1"
 
 	" Overwrite sources
 	if !exists('b:prev_buffer_config')
 		let b:prev_buffer_config = ddc#custom#get_buffer()
 	endif
-	echo "2"
 	call ddc#custom#patch_buffer('cmdlineSources',
 		\ ['cmdline', 'cmdline-history', 'around'])
-	echo "3"
 	call ddc#custom#patch_buffer('keywordPattern', '[0-9a-zA-Z_:#]*')
 
-	echo "4"
 	autocmd User DDCCmdlineLeave ++once call CommandlinePost()
-	echo "5"
 	autocmd InsertEnter <buffer> ++once call CommandlinePost()
 
 	" Enable command line completion
 	call ddc#enable_cmdline_completion()
-	echo "6"
 endfunction
 
 function! CommandlinePost() abort
-	echo "10"
 	cunmap <Tab>
 	cunmap <S-Tab>
 	cunmap <C-n>
 	cunmap <C-p>
 	cunmap <C-y>
 	cunmap <C-e>
-	echo "7"
 
 	" Restore sources
 	if exists('b:prev_buffer_config')
 		call ddc#custom#set_buffer(b:prev_buffer_config)
 		unlet b:prev_buffer_config
-		echo "8"
 	else
 		call ddc#custom#set_buffer({})
-		echo "9"
 	endif
 endfunction
 
