@@ -1,6 +1,8 @@
 local wezterm = require("wezterm")
 return {
-        default_prog = {os.getenv("LOCALAPPDATA") .. "\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe")},
+        if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+                default_prog = {os.getenv("LOCALAPPDATA") .. "\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe")},
+        end
         color_scheme = "Dracula",
         font_size = 10.0,
         font = wezterm.font "JetBrains Mono",
