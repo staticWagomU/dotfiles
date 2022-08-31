@@ -105,6 +105,7 @@ return require("packer").startup(function(use)
                         {"nvim-lua/plenary.nvim", after="hrsh7th/nvim-cmp" },
                         {"onsails/lspkind.nvim", after="hrsh7th/nvim-cmp" },
                         {"petertriho/cmp-git", after="hrsh7th/nvim-cmp" },
+                        {"ray-x/lsp_signature.nvim", after="hrsh7th/nvim-cmp" },
                 },
                 config = function()
                         require("pluginconfig/nvim-cmp")
@@ -128,6 +129,7 @@ return require("packer").startup(function(use)
                 end
         }
         use {"petertriho/cmp-git"}
+        use {"ray-x/lsp_signature.nvim"}
 
         use {"L3MON4D3/LuaSnip"}
 
