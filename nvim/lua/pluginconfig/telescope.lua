@@ -100,6 +100,14 @@ require("telescope").setup({
                                 },
                         },
                 },
+                project = {
+                        base_dirs = {
+                                '~/dev/',
+                                {'~/dev/', max_depth = 4},
+                        },
+                        hidden_files = true, -- default: false
+                        theme = "dropdown"
+                },
 	}
 })
 
