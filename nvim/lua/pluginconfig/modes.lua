@@ -25,5 +25,5 @@ require('modes').setup({
 
 	-- Disable modes highlights in specified filetypes
 	-- Please PR commonly ignored filetypes
-	ignore_filetypes = { 'NvimTree', 'TelescopePrompt', 'Alpha' }
+	ignore_filetypes = { 'NvimTree', 'TelescopePrompt', 'Alpha', 'Trouble' }
 })
