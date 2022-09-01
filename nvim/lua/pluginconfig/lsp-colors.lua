@@ -1,7 +1,11 @@
+local g = {}
+local c = {}
+g,c = vim.fn['iceberg#palette#dark#create']()
+
 -- Lua
 require("lsp-colors").setup({
-  Error = "#db4b4b",
-  Warning = "#e0af68",
-  Information = "#0db9d7",
-  Hint = "#10B981"
+  Error = g.gui.red,
+  Warning = g.gui.yellow,
+  Information = g.gui.green,
+  Hint = g.gui.orange,
 })
