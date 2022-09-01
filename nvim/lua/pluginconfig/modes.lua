@@ -1,9 +1,13 @@
+local g = {}
+local c = {}
+g,c = vim.fn['iceberg#palette#dark#create']()
+
 require('modes').setup({
 	colors = {
-		copy = "#f5c359",
-		delete = "#c75c6a",
-		insert = "#78ccc5",
-		visual = "#9745be",
+		copy = g.gui.yellow,
+		delete = g.gui.red,
+		insert = g.gui.green,
+		visual = g.gui.purple,
 	},
 
 	-- Set opacity for cursorline and number background
@@ -21,5 +25,5 @@ require('modes').setup({
 
 	-- Disable modes highlights in specified filetypes
 	-- Please PR commonly ignored filetypes
-	ignore_filetypes = { 'NvimTree', 'TelescopePrompt' }
+	ignore_filetypes = { 'NvimTree', 'TelescopePrompt', 'Alpha' }
 })
