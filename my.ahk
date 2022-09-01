@@ -20,11 +20,11 @@ return
 return
 
 ; Pressing the win + c key execute notepad++. 
-#c::Run, C:\Program Files\npp.8.1.9.3.portable.x64\notepad++.exe
+#f::Run, C:\Program Files\npp.8.1.9.3.portable.x64\notepad++.exe
 return
 
 ; Pressing the win + f key execute sakura editor. 
-#f::Run, C:\Program Files\sakura\sakura.exe
+#!f::Run, C:\Program Files\sakura\sakura.exe
 return
 
 
@@ -39,6 +39,11 @@ return
   Send, !{PrintScreen}
 return
 
-
 #\::Run, C:\Program Files\Wezterm\wezterm-gui.exe
+return
+
+#c::Run, %LOCALAPPDATA%\Programs\Microsoft VS Code\Code.exe
+return
+
+#!c::Run, %LOCALAPPDATA%\Programs\Microsoft VS Code Insiders\Code - Insiders.exe
 return
