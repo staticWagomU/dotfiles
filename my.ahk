@@ -38,3 +38,7 @@ return
 #b::
   Send, !{PrintScreen}
 return
+
+
+#\::Run, C:\Program Files\Wezterm\wezterm-gui.exe
+return
