@@ -30,6 +30,7 @@ let &g:titlestring =
 	\ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
 
 "autocmd bufWritePost *.zig !zig fmt %
+autocmd bufWritePost * :lua vim.lsp.buf.formatting_sync()
 ]]
 
 vim.o.foldcolumn = '0'
