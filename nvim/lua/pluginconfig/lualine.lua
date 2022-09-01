@@ -28,6 +28,7 @@ local config = {
                         normal = { c = { fg = g.gui.statuslinenc_fg, bg = g.gui.statuslinenc_bg} },
                         inactive = { c = { fg = g.gui.statuslinenc_fg, bg = g.gui.statuslinenc_bg} },
                 },
+                disabled_filetypes = {'Trouble', 'packer', 'alpha', 'lspsagaoutline'}
         },
         sections = {
                 -- these are to remove the defaults
@@ -196,6 +197,8 @@ ins_left {
         icon = ' LSP:',
         color = { fg = g.gui.fg, gui = 'bold' },
 }
+
+ins_right { 'filetype' }
 
 ins_right { 'location' }
 
