@@ -32,7 +32,7 @@ require("telescope").setup({
 		sorting_strategy = "ascending",
 		layout_strategy = "flex",
 		layout_config = {
-			width = 0.8,
+			width = 0.9,
 			horizontal = {
 				mirror = false,
 				prompt_position = "bottom",
