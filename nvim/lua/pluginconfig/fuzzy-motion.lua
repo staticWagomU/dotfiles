@@ -1,4 +1,4 @@
-vim.api.nvim_set_keymap("n", "<Leader><Leader>", ":<C-u>FuzzyMotion<CR>", {noremap=true})
+-- vim.api.nvim_set_keymap("n", "<Leader><Leader>", ":<C-u>FuzzyMotion<CR>", {noremap=true})
 vim.cmd [[
 let g:fuzzy_motion_word_regexp_list = [
   \ '[0-9a-zA-Z_-]+',
