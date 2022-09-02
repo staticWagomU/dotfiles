@@ -6,6 +6,7 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/avit.omp.json" | Invoke-Exp
 function git_status() {git status}
 
 Set-Alias csl Clear-Host
+Set-Alias cl Clear-Host
 Set-Alias n nvim
 Set-Alias v vim
 Set-Alias gs git_status
