@@ -1,4 +1,5 @@
 local lualine = require('lualine')
+local navic = require("nvim-navic")
 
 local g = {}
 local c = {}
@@ -196,6 +197,11 @@ ins_left {
         end,
         icon = ' LSP:',
         color = { fg = g.gui.fg, gui = 'bold' },
+}
+
+ins_right {
+                navic.get_location,
+        cond = navic.is_available
 }
 
 ins_right { 'filetype' }
