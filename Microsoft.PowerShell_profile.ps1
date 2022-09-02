@@ -2,10 +2,7 @@ if(-not $env:path.Split(';').Contains('.')){
     $env:path += ";."
 }
 
-oh-my-posh init pwsh | Invoke-Expression
-Import-Module oh-my-posh
-        Set-PoshPrompt -Theme avit
-
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/avit.omp.json" | Invoke-Expression
 function git_status() {git status}
 
 Set-Alias csl Clear-Host
