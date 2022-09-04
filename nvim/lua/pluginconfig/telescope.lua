@@ -65,6 +65,13 @@ require("telescope").setup({
 		mappings = {
 			n = {
 				["<C-t>"] = action_layout.toggle_preview,
+                                ["cd"] = function(prompt_bufnr)
+                                        local selection = require("telescope.actions.state").get_selected_entry()
+                                        local dir = vim.fn.fnamemodify(selection.path, ":p:h")
+                                        require("telescope.actions").close(prompt_bufnr)
+                                        -- Depending on what you want put `cd`, `lcd`, `tcd`
+                                        vim.cmd(string.format("silent lcd %s", dir))
+                                end
 			},
 			i = {
 				["<C-t>"] = action_layout.toggle_preview,
@@ -214,24 +221,24 @@ local opts = { noremap = true, silent = true }
 -- 	"<Cmd>lua require('telescope.builtin').git_branches()<CR>",
 -- 	{ noremap = true, silent = true }
 -- )
--- vim.api.nvim_set_keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
 
--- vim.api.nvim_set_keymap(
---         "n",
---         "<Leader>e",
---         ":Telescope file_browser<CR>",
---         opts
--- )
---
---
--- vim.api.nvim_set_keymap(
---         "n",
---         "<Leader>E",
---         ":Telescope find_files<CR>",
---         opts
--- )
---
--- vim.api.nvim_set_keymap("n", "<Leader>tt", ":Telescope<CR>", opts)
--- vim.api.nvim_set_keymap("n", "<Leader>tb", ":Telescope buffers<CR>", opts)
--- vim.api.nvim_set_keymap("n", "<Leader>tf", ":Telescope current_buffer_fuzzy_find<CR>", opts)
+vim.api.nvim_set_keymap(
+        "n",
+        "<Leader>e",
+        ":Telescope file_browser<CR>",
+        opts
+)
+
+
+vim.api.nvim_set_keymap(
+        "n",
+        "<Leader>E",
+        ":Telescope find_files<CR>",
+        opts
+)
+
+vim.api.nvim_set_keymap("n", "<Leader>tt", ":Telescope<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>tb", ":Telescope buffers<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>tf", ":Telescope current_buffer_fuzzy_find<CR>", opts)
 

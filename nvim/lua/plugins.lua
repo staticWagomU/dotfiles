@@ -1,7 +1,7 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require("packer").startup(function(use)
-	use {"wbthomason/packer.nvim"}
+        use {"wbthomason/packer.nvim"}
 
         use {"nvim-lua/plenary.nvim"}
         use {"vim-denops/denops.vim"}
@@ -17,15 +17,17 @@ return require("packer").startup(function(use)
                         require("pluginconfig/mason")
                 end
         }
+
         use {
                 "neovim/nvim-lspconfig",
                 config = function()
                         require("pluginconfig/nvim-lspconfig")
                 end
         }
+
         use {"williamboman/mason-lspconfig.nvim"}
 
-	use {
+        use {
                 "cocopon/iceberg.vim",
                 config = function()
                         require("pluginconfig/iceberg")
@@ -71,7 +73,7 @@ return require("packer").startup(function(use)
                 "nvim-telescope/telescope-project.nvim",
                 requires="telescope.nvim",
                 config = function()
-                        require'telescope'.load_extension('project')
+                        require"telescope".load_extension("project")
                 end
         }
 
@@ -138,7 +140,6 @@ return require("packer").startup(function(use)
 
         use {"L3MON4D3/LuaSnip"}
 
-        
         use {
                 "nvim-lualine/lualine.nvim",
                 requires = {
@@ -149,6 +150,7 @@ return require("packer").startup(function(use)
                         require("pluginconfig/lualine")
                 end
         }
+
         use {"cocopon/pgmnt.vim"}
 
         use {
@@ -168,12 +170,12 @@ return require("packer").startup(function(use)
 
         use {"rcarriga/nvim-notify"}
 
---        use {
---                "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
---                config = function()
---                        require("lsp_lines").setup()
---                end,
---        }
+        --        use {
+        --                "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        --                config = function()
+        --                        require("lsp_lines").setup()
+        --                end,
+        --        }
 
         use {
                 "lewis6991/gitsigns.nvim",
@@ -224,9 +226,9 @@ return require("packer").startup(function(use)
                         require("pluginconfig/toggleterm")
                 end
         }
-        
+
         use {
-                'numToStr/Comment.nvim',
+                "numToStr/Comment.nvim",
                 config = function()
                         require("pluginconfig/comment")
                 end
@@ -305,16 +307,54 @@ return require("packer").startup(function(use)
         }
 
         use { "vim-jp/vimdoc-ja"}
+
         use { "mattn/emmet-vim"}
+
         use { "cohama/lexima.vim"}
+
         use { "mattn/vim-goimports"}
+
         use { "machakann/vim-sandwich"}
+
         use {
                 "skanehira/denops-translate.vim",
                 config = function()
                         require("pluginconfig/denops-translate")
                 end
         }
+
         use {"kevinhwang91/promise-async"}
         use {"kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async"}
+        use {
+                "Maan2003/lsp_lines.nvim",
+                config = function()
+                        require("lsp_lines").setup()
+                end,
+        }
+
+        use {
+                "folke/which-key.nvim",
+                config = function()
+                        require("which-key").setup({})
+                end
+        }
+
+        use {
+                "kylechui/nvim-surround",
+                config = function()
+                        require("nvim-surround").setup({})
+                end
+        }
+
+        use {
+                "kyazdani42/nvim-tree.lua",
+                requires = {
+                        "kyazdani42/nvim-web-devicons",
+                },
+                tag = "nightly",
+                config = function()
+                        require("nvim-tree")
+                end
+        }
+
 end)

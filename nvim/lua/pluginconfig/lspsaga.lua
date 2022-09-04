@@ -18,7 +18,8 @@ lspsaga.init_lsp_saga({ -- defaults ...
 	-- is function type it will have a param `entry`
 	-- entry is a table type has these filed
 	-- { bufnr, code, col, end_col, end_lnum, lnum, message, severity, source }
-	diagnostic_header = { " ", " ", " ", "ﴞ " },
+	-- diagnostic_header = { " ", " ", " ", "ﴞ " },
+	diagnostic_header = { "😡", "😥", "😤", "😐" },
 	-- show diagnostic source
 	show_diagnostic_source = true,
 	-- add bracket or something with diagnostic source, just have 2 elements
@@ -86,23 +87,23 @@ lspsaga.init_lsp_saga({ -- defaults ...
  -- vim.keymap.set("n", "[lsp]r", "<cmd>Lspsaga rename<cr>", { silent = true, noremap = true })
  -- vim.keymap.set("n", "M", "<cmd>Lspsaga code_action<cr>", { silent = true, noremap = true })
  -- vim.keymap.set("x", "M", ":<c-u>Lspsaga range_code_action<cr>", { silent = true, noremap = true })
- -- vim.keymap.set("n", "<C-k>", "<cmd>Lspsaga hover_doc<cr>", { silent = true, noremap = true })
+ vim.keymap.set("n", "<C-k>", "<cmd>Lspsaga hover_doc<cr>", { silent = true, noremap = true })
  -- vim.keymap.set("n", "[lsp]o", "<cmd>Lspsaga show_line_diagnostics<cr>", { silent = true, noremap = true })
- -- vim.keymap.set("n", "[lsp]j", "<cmd>Lspsaga diagnostic_jump_next<cr>", { silent = true, noremap = true })
- -- vim.keymap.set("n", "[lsp]k", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { silent = true, noremap = true })
+ vim.keymap.set("n", "[lsp]j", "<cmd>Lspsaga diagnostic_jump_next<cr>", { silent = true, noremap = true })
+ vim.keymap.set("n", "[lsp]k", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { silent = true, noremap = true })
  -- vim.keymap.set("n", "[lsp]f", "<cmd>Lspsaga lsp_finder<CR>", { silent = true, noremap = true })
  -- vim.keymap.set("n", "[lsp]s", "<cmd>Lspsaga signature_help<CR>", { silent = true, noremap = true })
  -- vim.keymap.set("n", "[lsp]d", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
  -- vim.keymap.set("n", "[lsp]o", "<cmd>LSoutlineToggle<CR>", { silent = true })
- -- vim.keymap.set(
- -- 	"n",
- -- 	"<C-b>",
- -- 	"<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>",
- -- 	{ silent = true, noremap = true }
- -- )
- -- vim.keymap.set(
- -- 	"n",
- -- 	"<C-f>",
- -- 	"<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>",
- -- 	{ silent = true, noremap = true }
- -- )
+ vim.keymap.set(
+ 	"n",
+ 	"<C-b>",
+ 	"<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>",
+ 	{ silent = true, noremap = true }
+ )
+ vim.keymap.set(
+ 	"n",
+ 	"<C-f>",
+ 	"<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>",
+ 	{ silent = true, noremap = true }
+ )
