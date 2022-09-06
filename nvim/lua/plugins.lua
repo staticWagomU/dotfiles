@@ -69,14 +69,6 @@ return require("packer").startup(function(use)
                 end
         }
 
-        use {
-                "nvim-telescope/telescope-project.nvim",
-                requires="telescope.nvim",
-                config = function()
-                        require"telescope".load_extension("project")
-                end
-        }
-
         use {"nvim-telescope/telescope-github.nvim"}
         use {"nvim-telescope/telescope-ui-select.nvim"}
         use {"nvim-telescope/telescope-symbols.nvim"}
