@@ -1,4 +1,4 @@
-vim.cmd[[
+vim.cmd [[
 set number
 set relativenumber
 set nowrap
@@ -41,19 +41,18 @@ vim.g.mapleader = " "
 
 local set = vim.opt
 set.list = true
-set.listchars =  {eol = '↴', tab = '▸ ', trail = '»', space='⋅'}
+set.listchars = { eol = '↴', tab = '▸ ', trail = '»', space = '⋅' }
 set.fillchars = {
-	stl = ' ',
-	stlnc = ' ',
-	diff = '∙',
-	eob = ' ',
-	fold = '·',
-	horiz = '━',
-	horizup = '┻',
-	horizdown = '┳',
-	vert = '┃',
-	vertleft = '┫',
-	vertright = '┣',
-	verthoriz = '╋'
+  stl = ' ',
+  stlnc = ' ',
+  diff = '∙',
+  eob = ' ',
+  fold = '·',
+  horiz = '━',
+  horizup = '┻',
+  horizdown = '┳',
+  vert = '┃',
+  vertleft = '┫',
+  vertright = '┣',
+  verthoriz = '╋'
 }
-

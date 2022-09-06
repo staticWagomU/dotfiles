@@ -1,6 +1,6 @@
 local g = {}
 local c = {}
-g,c = vim.fn['iceberg#palette#dark#create']()
+g, _ = vim.fn['iceberg#palette#dark#create']()
 
 -- Lua
 require("lsp-colors").setup({
