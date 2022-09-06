@@ -1,0 +1,2 @@
+-- vim.api.nvim_buf_set_keymap("n", "<C-j>", "<Plug>(edgemotion-j)", {  silent = true })
+-- vim.api.nvim_buf_set_keymap("n", "<C-k>", "<Plug>(edgemotion-k)", {  silent = true })

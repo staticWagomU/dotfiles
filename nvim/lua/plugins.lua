@@ -327,7 +327,7 @@ return require("packer").startup(function(use)
   use {
     "folke/which-key.nvim",
     config = function()
-      require("which-key").setup({})
+      require("pluginconfig/which-key")
     end
   }
 
@@ -353,6 +353,13 @@ return require("packer").startup(function(use)
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("pluginconfig/indent-blankline")
+    end
+  }
+
+  use {
+    "haya14busa/vim-edgemotion",
+    config = function()
+      require("pluginconfig/vim-edgemotion")
     end
   }
 

@@ -63,6 +63,34 @@ require("mason-lspconfig").setup_handlers({
   end,
   --	["zls"] = function()
   --	end,
+  ["sumneko_lua"] = function()
+    local has_lua_dev, lua_dev = pcall(require, "lua-dev")
+    if has_lua_dev then
+      local l = lua_dev.setup({
+        library = {
+          vimruntime = true, -- runtime path
+          types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
+          -- plugins = false, -- installed opt or start plugins in packpath
+          -- you can also specify the list of plugins to make available as a workspace library
+          -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+          plugins = { "nvim-treesitter", "plenary.nvim" },
+        },
+        runtime_path = false,
+        lspconfig = opts,
+      })
+      lspconfig.sumneko_lua.setup(l)
+    else
+      lspconfig.sumneko_lua.setup({
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+          },
+        },
+      })
+    end
+  end,
 })
 
 require("lsp_signature").setup({
