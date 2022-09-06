@@ -39,3 +39,21 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.g.mapleader = " "
 
+local set = vim.opt
+set.list = true
+set.listchars =  {eol = '↴', tab = '▸ ', trail = '»', space='⋅'}
+set.fillchars = {
+	stl = ' ',
+	stlnc = ' ',
+	diff = '∙',
+	eob = ' ',
+	fold = '·',
+	horiz = '━',
+	horizup = '┻',
+	horizdown = '┳',
+	vert = '┃',
+	vertleft = '┫',
+	vertright = '┣',
+	verthoriz = '╋'
+}
+
