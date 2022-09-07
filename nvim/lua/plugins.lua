@@ -57,6 +57,7 @@ return require("packer").startup(function(use)
     "nvim-telescope/telescope-file-browser.nvim",
     requires = "telescope.nvim",
     config = function()
+      ---@diagnostic disable-next-line: different-requires
       require("telescope").load_extension("file_browser")
     end
   }
@@ -65,6 +66,7 @@ return require("packer").startup(function(use)
     "nvim-telescope/telescope-fzy-native.nvim",
     requires = "telescope.nvim",
     config = function()
+      ---@diagnostic disable-next-line: different-requires
       require("telescope").load_extension("fzy_native")
     end
   }

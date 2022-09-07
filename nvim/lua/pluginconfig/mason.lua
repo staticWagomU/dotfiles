@@ -9,6 +9,7 @@ mason.setup({
   }
 })
 
+---@diagnostic disable-next-line: unused-local
 local nvim_lsp = require('lspconfig')
 require("mason-lspconfig").setup()
 local on_attach = function(client, bufnr)
@@ -25,18 +26,18 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  -- buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   -- buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
   -- buf_set_keymap("n", "?", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  -- buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   -- buf_set_keymap("n", "g?", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   -- buf_set_keymap("n", "[lsp]wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
   -- buf_set_keymap("n", "[lsp]wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
   -- buf_set_keymap("n", "[lsp]wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-  -- buf_set_keymap("n", "[lsp]D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+  buf_set_keymap("n", "[lsp]D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
   -- -- buf_set_keymap("n", "[lsp]rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   -- buf_set_keymap("n", "[lsp]a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  -- buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+  buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   -- buf_set_keymap("n", "[lsp]e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   -- buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   -- buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
@@ -64,32 +65,15 @@ require("mason-lspconfig").setup_handlers({
   --	["zls"] = function()
   --	end,
   ["sumneko_lua"] = function()
-    local has_lua_dev, lua_dev = pcall(require, "lua-dev")
-    if has_lua_dev then
-      local l = lua_dev.setup({
-        library = {
-          vimruntime = true, -- runtime path
-          types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-          -- plugins = false, -- installed opt or start plugins in packpath
-          -- you can also specify the list of plugins to make available as a workspace library
-          -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
-          plugins = { "nvim-treesitter", "plenary.nvim" },
-        },
-        runtime_path = false,
-        lspconfig = opts,
-      })
-      lspconfig.sumneko_lua.setup(l)
-    else
-      lspconfig.sumneko_lua.setup({
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
+    lspconfig.sumneko_lua.setup({
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
           },
         },
-      })
-    end
+      },
+    })
   end,
 })
 
