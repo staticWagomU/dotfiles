@@ -21,6 +21,7 @@ dashboard.section.buttons.val = {
   dashboard.button("e", " File browser", ":Telescope file_browser<CR>"),
   dashboard.button("i", " Init.vim", ":cd ~/dotfiles/nvim/lua<CR>:Telescope file_browser<CR>"),
   dashboard.button("u", " Update plugins", ":PackerSync<CR>"),
+  dashboard.button("c", " Compile plugins", ":PackerCompile<CR>"),
   dashboard.button("q", " Exit", ":qa<CR>"),
 }
 
