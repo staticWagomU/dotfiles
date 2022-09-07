@@ -1,15 +1,6 @@
 local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
-local config = require("telescope.config")
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
-local make_entry = require("telescope.make_entry")
-local previewers = require("telescope.previewers")
-local utils = require("telescope.utils")
-local conf = require("telescope.config").values
 local telescope_builtin = require("telescope.builtin")
-local Path = require("plenary.path")
-local action_state = require("telescope.actions.state")
 local custom_actions = {}
 local fb_actions = require "telescope".extensions.file_browser.actions
 
@@ -110,50 +101,6 @@ require("telescope").setup({
     },
   }
 })
-
-local function remove_duplicate_paths(tbl, cwd)
-  local res = {}
-  local hash = {}
-  for _, v in ipairs(tbl) do
-    local v1 = Path:new(v):normalize(cwd)
-    if not hash[v1] then
-      res[#res + 1] = v1
-      hash[v1] = true
-    end
-  end
-  return res
-end
-
-local function join_uniq(tbl, tbl2)
-  local res = {}
-  local hash = {}
-  for _, v1 in ipairs(tbl) do
-    res[#res + 1] = v1
-    hash[v1] = true
-  end
-
-  for _, v in pairs(tbl2) do
-    if not hash[v] then
-      table.insert(res, v)
-    end
-  end
-  return res
-end
-
-local function filter_by_cwd_paths(tbl, cwd)
-  local res = {}
-  local hash = {}
-  for _, v in ipairs(tbl) do
-    if v:find(cwd, 1, true) then
-      local v1 = Path:new(v):normalize(cwd)
-      if not hash[v1] then
-        res[#res + 1] = v1
-        hash[v1] = true
-      end
-    end
-  end
-  return res
-end
 
 telescope_builtin.grep_prompt = function(opts)
   opts.search = vim.fn.input("Grep String > ")
