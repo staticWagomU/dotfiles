@@ -30,6 +30,8 @@ function mkdir_cd_cls {
                         Clear-Host
 }
 
+function ex{exit}
+
 Set-Alias csl Clear-Host
 Set-Alias cl Clear-Host
 Set-Alias n nvim
@@ -37,3 +39,4 @@ Set-Alias v vim
 Set-Alias gs git_status
 Set-Alias mcd mkdir_cd
 Set-Alias mccd mkdir_cd_cls
+Set-Alias :q ex
