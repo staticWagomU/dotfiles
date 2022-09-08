@@ -56,13 +56,6 @@ require("telescope").setup({
     mappings = {
       n = {
         ["<C-t>"] = action_layout.toggle_preview,
-        ["cd"] = function(prompt_bufnr)
-          local selection = require("telescope.actions.state").get_selected_entry()
-          local dir = vim.fn.fnamemodify(selection.path, ":p:h")
-          require("telescope.actions").close(prompt_bufnr)
-          -- Depending on what you want put `cd`, `lcd`, `tcd`
-          vim.cmd(string.format("silent lcd %s", dir))
-        end
       },
       i = {
         ["<C-t>"] = action_layout.toggle_preview,
@@ -96,6 +89,13 @@ require("telescope").setup({
           ["<C-c>"] = fb_actions.copy,
           ["<C-m>"] = fb_actions.move,
           ["<C-d>"] = fb_actions.remove,
+          ["cd"] = function(prompt_bufnr)
+            local selection = require("telescope.actions.state").get_selected_entry()
+            local dir = vim.fn.fnamemodify(selection.path, ":p:h")
+            require("telescope.actions").close(prompt_bufnr)
+            -- Depending on what you want put `cd`, `lcd`, `tcd`
+            vim.cmd(string.format("silent lcd %s", dir))
+          end
         },
       },
     },
