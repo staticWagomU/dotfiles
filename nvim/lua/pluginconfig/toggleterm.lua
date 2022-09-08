@@ -72,15 +72,20 @@ end
 
 local Terminal = require('toggleterm.terminal').Terminal
 
-local lazygit = Terminal:new({
-  cmd = 'lazygit',
-  dir = 'git_dir',
+local toggleTermFloat = Terminal:new({
+  -- cmd = 'lazygit',
+  -- dir = 'git_dir',
   hidden = true,
   direction = 'float',
   on_open = float_handler,
+  float_opts = {
+    border = 'rounded',
+    winblend = 3
+  },
 })
 
-local toggleLazegit = function()
-  lazygit:toggle()
+local toggleTermFloat = function()
+  toggleTermFloat:toggle()
 end
-vim.api.nvim_create_user_command('Lazygit', toggleLazegit, {})
+vim.api.nvim_create_user_command('ToggleTermFloat', toggleTermFloat, {})
+vim.api.nvim_set_keymap("n", "<Leader>f", ":<C-u>ToggleTermFloat<CR>", {noremap=true, silent=true})
