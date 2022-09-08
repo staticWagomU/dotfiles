@@ -1,33 +1,33 @@
 if(-not $env:path.Split(';').Contains('.')){
-    $env:path += ";."
+  $env:path += ";."
 }
 
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/avit.omp.json" | Invoke-Expression
 function git_status() {git status}
 
 function mkdir_cd {
-        [CmdletBinding()]
-                param(
-                                [Parameter(Mandatory = $true)]
-                                $Path
-                     )
+  [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        $Path
+        )
 
-                        New-Item -Path $Path -ItemType Directory
+      New-Item -Path $Path -ItemType Directory
 
-                        Set-Location -Path $Path
+      Set-Location -Path $Path
 }
 
 function mkdir_cd_cls {
-        [CmdletBinding()]
-                param(
-                                [Parameter(Mandatory = $true)]
-                                $Path
-                     )
+  [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        $Path
+        )
 
-                        New-Item -Path $Path -ItemType Directory
+      New-Item -Path $Path -ItemType Directory
 
-                        Set-Location -Path $Path
-                        Clear-Host
+      Set-Location -Path $Path
+      Clear-Host
 }
 
 function ex{exit}
