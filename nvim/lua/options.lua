@@ -43,6 +43,7 @@ set.fillchars = {
   vertright = '┣',
   verthoriz = '╋'
 }
+-- set.winbar = '%=%f%m%='
 
 vim.cmd [[
 set directory=~

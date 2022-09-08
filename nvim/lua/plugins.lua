@@ -360,8 +360,23 @@ return require("packer").startup(function(use)
 
   use {
     "b0o/incline.nvim",
-    config = function ()
+    config = function()
       require("pluginconfig/incline")
+    end
+  }
+
+  use {
+    "levouh/tint.nvim",
+    config = function()
+      require("pluginconfig/tint")
+    end
+  }
+
+  use {
+    "fgheng/winbar.nvim",
+    config = function()
+      require("pluginconfig/winbar")
+
     end
   }
 

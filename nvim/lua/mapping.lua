@@ -1,3 +1,18 @@
+-- "-------------------------------------------------------------------------------------------------+
+-- " Commands \ Modes | Normal | Insert | Command | Visual | Select | Operator | Terminal | Lang-Arg |
+-- " ================================================================================================+
+-- " map  / noremap   |    @   |   -    |    -    |   @    |   @    |    @     |    -     |    -     |
+-- " nmap / nnoremap  |    @   |   -    |    -    |   -    |   -    |    -     |    -     |    -     |
+-- " map! / noremap!  |    -   |   @    |    @    |   -    |   -    |    -     |    -     |    -     |
+-- " imap / inoremap  |    -   |   @    |    -    |   -    |   -    |    -     |    -     |    -     |
+-- " cmap / cnoremap  |    -   |   -    |    @    |   -    |   -    |    -     |    -     |    -     |
+-- " vmap / vnoremap  |    -   |   -    |    -    |   @    |   @    |    -     |    -     |    -     |
+-- " xmap / xnoremap  |    -   |   -    |    -    |   @    |   -    |    -     |    -     |    -     |
+-- " smap / snoremap  |    -   |   -    |    -    |   -    |   @    |    -     |    -     |    -     |
+-- " omap / onoremap  |    -   |   -    |    -    |   -    |   -    |    @     |    -     |    -     |
+-- " tmap / tnoremap  |    -   |   -    |    -    |   -    |   -    |    -     |    @     |    -     |
+-- " lmap / lnoremap  |    -   |   @    |    @    |   -    |   -    |    -     |    -     |    @     |
+-- "-------------------------------------------------------------------------------------------------+
 local m = vim.api.nvim_set_keymap
 local silent = { noremap = true, silent = true }
 
@@ -31,3 +46,11 @@ m("n", "Z", "[telescope]", {})
 m("v", "Z", "<Nop>", silent)
 m("v", "[telescope]", "<Nop>", silent)
 m("v", "Z", "[telescope]", {})
+
+m("n", "v2", 'vi"', silent)
+m("n", "v7", "vi'", silent)
+m("n", "v8", "vi(", silent)
+
+m("o", "a2", 'ai"', silent)
+m("o", "a7", "ai'", silent)
+m("o", "a8", "ai(", silent)
