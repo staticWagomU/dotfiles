@@ -7,8 +7,8 @@ vim.g.mapleader = " "
 
 local set = vim.opt
 
-set.number = true
-set.relativenumber = true
+set.number = false
+set.relativenumber = false
 set.wrap = false
 set.helplang = "ja"
 set.signcolumn = "yes"
@@ -51,5 +51,5 @@ set backupdir=~
 set undodir=~
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-autocmd bufWritePost * :lua vim.lsp.buf.formatting_sync()
+"autocmd bufWritePost * :lua vim.lsp.buf.formatting_sync()
 ]]
