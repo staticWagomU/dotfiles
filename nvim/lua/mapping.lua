@@ -31,4 +31,3 @@ m("n", "Z", "[telescope]", {})
 m("v", "Z", "<Nop>", silent)
 m("v", "[telescope]", "<Nop>", silent)
 m("v", "Z", "[telescope]", {})
-
