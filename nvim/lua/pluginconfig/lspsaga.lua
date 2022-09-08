@@ -91,7 +91,7 @@ vim.keymap.set("n", "<C-k>", "<cmd>Lspsaga hover_doc<cr>", { silent = true, nore
 -- vim.keymap.set("n", "[lsp]o", "<cmd>Lspsaga show_line_diagnostics<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "[lsp]j", "<cmd>Lspsaga diagnostic_jump_next<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "[lsp]k", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { silent = true, noremap = true })
--- vim.keymap.set("n", "[lsp]f", "<cmd>Lspsaga lsp_finder<CR>", { silent = true, noremap = true })
+vim.keymap.set("n", "[lsp]f", "<cmd>Lspsaga lsp_finder<CR>", { silent = true, noremap = true })
 vim.keymap.set("n", "[lsp]h", "<cmd>Lspsaga signature_help<CR>", { silent = true, noremap = true })
 vim.keymap.set("n", "gd", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
 vim.keymap.set("n", "[lsp]o", "<cmd>LSoutlineToggle<CR>", { silent = true })
