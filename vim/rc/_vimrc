@@ -123,7 +123,22 @@ nnoremap <silent> <Leader>w :<C-u>w<CR>
 nnoremap <silent> <Leader>bn :<C-u>bn<CR>
 nnoremap <silent> <Leader>bp :<C-u>bp<CR>
 nnoremap <silent> <Leader>bd :<C-u>bd<CR>
-nnoremap <silent> <silent> <Leader>cd :<C-u>cd %:p:h<CR> :cd<CR>
+nnoremap <silent> <Leader>cd :<C-u>cd %:p:h<CR> :cd<CR>
+
+nnoremap <silent> v2 vi"
+nnoremap <silent> v7 vi'
+nnoremap <silent> v8 vi(
+nnoremap <silent> v[ vi[
+nnoremap <silent> v{ vi{
+nnoremap <silent> v, vi<
+
+nnoremap <silent> va2 va"
+nnoremap <silent> va7 va'
+nnoremap <silent> va8 va(
+nnoremap <silent> va, va<
+
+nnoremap <silent> <C-j> o<ESC>
+nnoremap <silent> <C-k> O<ESC>
 
 nnoremap <silent> \ :<C-u>so $MYVIMRC<CR>
 " }}}
