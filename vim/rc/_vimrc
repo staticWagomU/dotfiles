@@ -85,21 +85,6 @@ Plug 'Shougo/ddc-cmdline-history'
 Plug 'Shougo/ddc-cmdline'
 "}}}
 
-"{{{ ddu 
-Plug 'Shougo/ddu.vim'
-Plug 'Shougo/ddu-ui-ff'
-Plug 'Shougo/ddu-source-file'
-Plug 'Shougo/ddu-source-register'
-Plug 'kuuote/ddu-source-mr'
-Plug 'lambdalisue/mr.vim'
-Plug 'shun/ddu-source-buffer'
-Plug 'Shougo/ddu-filter-matcher_substring'
-Plug 'Shougo/ddu-commands.vim'
-Plug 'Shougo/ddu-ui-filer'
-Plug 'Shougo/ddu-kind-file'
-Plug 'Shougo/ddu-column-filename'
-"}}}
-
 call plug#end()
 " }}}
 
@@ -240,7 +225,6 @@ call ddc#custom#patch_global('sources', [
 	\ 'around',
 	\ 'vim-lsp',
 	\ 'file',
-	\ 'cmdline-history'
 	\ ])
 call ddc#custom#patch_global('sourceOptions', {
 	\ '_': {
@@ -259,74 +243,12 @@ call ddc#custom#patch_global('sourceOptions', {
 	\   'isVolatile': v:true, 
 	\   'forceCompletionPattern': '\S/\S*'
 	\ },
-	\ 'cmdline': {
-	\   'mark': 'cmdline',
-	\   'forceCompletionPattern': '\S/\S*',
-	\   'dup': v:true,
-	\ },
-	\ 'cmdline-history': {
-	\   'mark': 'history',
-	\   'sorts': []
-	\ }})
+	\ })
 
 call ddc#custom#patch_global('autoCompleteEvents', [
 	\ 'InsertEnter', 'TextChangedI', 'TextChangedP',
-	\ 'CmdlineEnter', 'CmdlineChanged',
 	\ ])
 
-call ddc#custom#patch_filetype(['FineCmdlinePrompt'], {
-	\ 'keywordPattern': '[0-9a-zA-Z_:#]*',
-	\ 'sources': ['cmdline-history', 'cmdline', 'around'],
-	\ 'specialBufferCompletion': v:true,
-	\ })
-call ddc#custom#patch_global('cmdlineSources',
-	\ ['cmdline-history', 'input', 'file', 'around']
-	\ )
-
-function! CommandlinePre() abort
-	" Note: It disables default command line completion!
-	cnoremap <expr> <Tab>
-		\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-		\ ddc#manual_complete()
-	cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
-	cnoremap <expr> <C-n>
-		\ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-		\ ddc#manual_complete()
-	cnoremap <C-p> <Cmd>call pum#map#insert_relative(-1)<CR>
-	cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
-	cnoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
-
-	" Overwrite sources
-	if !exists('b:prev_buffer_config')
-		let b:prev_buffer_config = ddc#custom#get_buffer()
-	endif
-	call ddc#custom#patch_buffer('cmdlineSources',
-		\ ['cmdline', 'cmdline-history', 'around'])
-	call ddc#custom#patch_buffer('keywordPattern', '[0-9a-zA-Z_:#]*')
-
-	autocmd User DDCCmdlineLeave ++once call CommandlinePost()
-	autocmd InsertEnter <buffer> ++once call CommandlinePost()
-
-	" Enable command line completion
-	call ddc#enable_cmdline_completion()
-endfunction
-
-function! CommandlinePost() abort
-	cunmap <Tab>
-	cunmap <S-Tab>
-	cunmap <C-n>
-	cunmap <C-p>
-	cunmap <C-y>
-	cunmap <C-e>
-
-	" Restore sources
-	if exists('b:prev_buffer_config')
-		call ddc#custom#set_buffer(b:prev_buffer_config)
-		unlet b:prev_buffer_config
-	else
-		call ddc#custom#set_buffer({})
-	endif
-endfunction
 
 call ddc#enable()
 
@@ -334,137 +256,6 @@ inoremap <Tab> <Cmd>call pum#map#insert_relative(+1)<CR>
 inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 inoremap <C-n> <Cmd>call pum#map#insert_relative(+1)<CR>
 inoremap <C-p> <Cmd>call pum#map#insert_relative(-1)<CR>
-nnoremap :       <Cmd>call CommandlinePre()<CR>:
-
-" }}}
-
-"{{{ ddu
-call ddu#custom#patch_global({
-	\   'ui': 'ff',
-	\   'sources': [{'name':'file','params':{}},{'name':'mr'},{'name':'register'},{'name':'buffer'}],
-	\   'sourceOptions': {
-	\     '_': {
-	\       'matchers': ['matcher_substring'],
-	\     },
-	\   },
-	\   'kindOptions': {
-	\     'file': {
-	\       'defaultAction': 'open',
-	\     },
-	\   },
-	\ })
-
-"ddu-key-setting
-autocmd FileType ddu-ff call s:ddu_my_settings()
-function! s:ddu_my_settings() abort
-	nnoremap <buffer><silent> <CR>
-		\ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
-	nnoremap <buffer><silent> <Space>
-		\ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
-	nnoremap <buffer><silent> i
-		\ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
-	nnoremap <buffer><silent> q
-		\ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
-endfunction
-
-autocmd FileType ddu-ff-filter call s:ddu_filter_my_settings()
-function! s:ddu_filter_my_settings() abort
-	nnoremap <buffer> <CR>
-		\ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
-	nnoremap <buffer><silent> q
-		\ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
-	inoremap <buffer> <CR>
-		\ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
-	inoremap <buffer> <C-j>
-		\ <Cmd>call ddu#ui#ff#execute("call cursor(line('.')+1,0)")<CR>
-	inoremap <buffer> <C-k>
-		\ <Cmd>call ddu#ui#ff#execute("call cursor(line('.')-1,0)")<CR>
-endfunction
-
-"ddu keymapping.
-nnoremap <SID>[ug] <Nop>
-nmap ,u <SID>[ug]
-
-nnoremap <silent> <SID>[ug]m :<C-u>Ddu mr<CR>
-nnoremap <silent> <SID>[ug]b :<C-u>Ddu buffer<CR>
-nnoremap <silent> <SID>[ug]r :<C-u>Ddu register<CR>
-nnoremap <silent> <SID>[ug]n :<C-u>Ddu file -source-param-new -volatile<CR>
-nnoremap <silent> <SID>[ug]f :<C-u>Ddu file<CR>
-
-call ddu#custom#patch_local('filer', {
-	\   'ui': 'filer',
-	\   'sources': [
-	\     {
-	\       'name': 'file',
-	\       'params': {},
-	\     },
-	\   ],
-	\   'sourceOptions': {
-	\     '_': {
-	\       'columns': ['filename'],
-	\     },
-	\   },
-	\   'kindOptions': {
-	\     'file': {
-	\       'defaultAction': 'open',
-	\     },
-	\   },
-	\   'uiParams': {
-	\     'filer': {
-	\       'winWidth': 40,
-	\       'split': 'vertical',
-	\       'splitDirection': 'topleft',
-	\     }
-	\   },
-	\ })
-
-autocmd FileType ddu-filer call s:ddu_filer_my_settings()
-function! s:ddu_filer_my_settings() abort
-	nnoremap <buffer><silent><expr> <CR>
-		\ ddu#ui#filer#is_directory() ?
-		\ "<Cmd>call ddu#ui#filer#do_action('expandItem', {'mode': 'toggle'})<CR>" :
-		\ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open', 'params': {'command': 'vsplit'}})<CR>"
-
-	nnoremap <buffer><silent><expr> <Space>
-		\ ddu#ui#filer#is_directory() ?
-		\ "<Cmd>call ddu#ui#filer#do_action('expandItem', {'mode': 'toggle'})<CR>" :
-		\ "<Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'open', 'params': {'command': 'split'}})<CR>"
-
-	nnoremap <buffer><silent> <Esc>
-		\ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
-
-	nnoremap <buffer><silent> q
-		\ <Cmd>call ddu#ui#filer#do_action('quit')<CR>
-
-	nnoremap <buffer><silent> c
-		\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'copy'})<CR>
-
-	nnoremap <buffer><silent> p
-		\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'paste'})<CR>
-
-	nnoremap <buffer><silent> d
-		\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'delete'})<CR>
-
-	nnoremap <buffer><silent> r
-		\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'rename'})<CR>
-
-	nnoremap <buffer><silent> mv
-		\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'move'})<CR>
-
-	nnoremap <buffer><silent> t
-		\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newFile'})<CR>
-
-	nnoremap <buffer><silent> mk
-		\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'newDirectory'})<CR>
-
-	nnoremap <buffer><silent> yy
-		\ <Cmd>call ddu#ui#filer#do_action('itemAction', {'name': 'yank'})<CR>
-endfunction
-
-nmap <silent> ;d <Cmd>call ddu#start({
-	\   'name': 'filer',
-	\   'uiParams': {'filer': {'search': expand('%:p')}},
-	\ })<CR>
 
 " }}}
 
@@ -506,8 +297,8 @@ autocmd FileType vim setlocal foldmethod=marker
 colorscheme iceberg
 filetype plugin indent on
 
-command! Vimrc execute 'edit ~/.dotfiles/vim/rc/_vimrc'
-command! Gvimrc execute 'edit ~/.dotfiles/vim/rc/gvimrc'
+command! Vimrc execute 'edit ~/dotfiles/vim/rc/_vimrc'
+command! Gvimrc execute 'edit ~/dotfiles/vim/rc/gvimrc'
 
 function g:RandomColorScheme()
 	let mycolors = split(globpath(&rtp,"**/colors/*.vim"),"\n") 
