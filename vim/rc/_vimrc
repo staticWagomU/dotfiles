@@ -50,6 +50,7 @@ Plug 'thinca/vim-fontzoom'
 Plug 'vim-denops/denops.vim'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'cocopon/iceberg.vim'
+Plug 'yuki-yano/fuzzy-motion.vim'
 
 " {{{ fern
 Plug 'lambdalisue/fern.vim'
@@ -282,6 +283,15 @@ let g:neodark#solid_vertsplit = 1
 " {{{lightline
 "let g:lightline = {}
 "let g:lightline.colorscheme = 'neodark'
+" }}}
+
+" {{{ fuzzy-motion
+nnoremap <Leader><Leader> :<C-u>FuzzyMotion<CR>
+let g:fuzzy_motion_word_regexp_list = [
+  \ '[0-9a-zA-Z_-]+',
+  \ '([0-9a-zA-Z_-]|[.])+',
+  \ '([0-9a-zA-Z]|[()<>.-_#''"]|(\s=+\s)|(,\s)|(:\s)|(\s=>\s))+'
+  \ ]
 " }}}
 
 " }}}
