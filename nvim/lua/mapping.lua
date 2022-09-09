@@ -32,8 +32,6 @@ m("n", "<Leader>bd", ":<C-u>bd<CR>", { noremap = true })
 m("n", "<Leader>cd", ":<C-u>cd %:p:h<CR>", silent)
 
 m("t", "<ESC>", [[<C-\><C-n>]], silent)
--- m("t", "<C-w><C-l>", "<C-\\><C-n><C-w><C-l>", silent)
--- m("t", "<C-w><C-h>", "<C-\\><C-n><C-w><C-h>", silent)
 
 m("n", ";", "<Nop>", silent)
 m("n", "[lsp]", "<Nop>", silent)
@@ -42,10 +40,6 @@ m("n", ";", "[lsp]", {})
 m("n", "Z", "<Nop>", silent)
 m("n", "[telescope]", "<Nop>", silent)
 m("n", "Z", "[telescope]", {})
-
--- m("v", "Z", "<Nop>", silent)
--- m("v", "[telescope]", "<Nop>", silent)
--- m("v", "Z", "[telescope]", {})
 
 m("n", "v2", 'vi"', silent)
 m("n", "v7", "vi'", silent)
@@ -71,3 +65,6 @@ m("n", "q?", [[q?]], silent)
 -- m("n", "P", "]P", silent)
 -- m("n", "]p", "p", silent)
 -- m("n", "]P", "P", silent)
+
+m("n", "<C-j>", "O<ESC>", silent)
+m("n", "<M-j>", "o<ESC>", silent)
