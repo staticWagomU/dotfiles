@@ -359,12 +359,12 @@ return require("packer").startup(function(use)
     end
   }
 
-  use {
-    "b0o/incline.nvim",
-    config = function()
-      require("pluginconfig/incline")
-    end
-  }
+  -- use {
+  --   "b0o/incline.nvim",
+  --   config = function()
+  --     require("pluginconfig/incline")
+  --   end
+  -- }
 
   use {
     "levouh/tint.nvim",
