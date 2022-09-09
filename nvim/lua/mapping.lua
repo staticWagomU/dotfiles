@@ -31,7 +31,7 @@ m("n", "<Leader>bp", ":<C-u>bp<CR>", { noremap = true })
 m("n", "<Leader>bd", ":<C-u>bd<CR>", { noremap = true })
 m("n", "<Leader>cd", ":<C-u>cd %:p:h<CR>", silent)
 
--- m("t", "<ESC>", "<C-\\><C-n>", silent)
+m("t", "<ESC>", [[<C-\><C-n>]], silent)
 -- m("t", "<C-w><C-l>", "<C-\\><C-n><C-w><C-l>", silent)
 -- m("t", "<C-w><C-h>", "<C-\\><C-n><C-w><C-h>", silent)
 

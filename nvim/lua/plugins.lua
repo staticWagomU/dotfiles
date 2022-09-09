@@ -150,6 +150,7 @@ return require("packer").startup(function(use)
   use {
     "mvllow/modes.nvim",
     config = function()
+      print(1)
       require("pluginconfig/modes")
     end
   }

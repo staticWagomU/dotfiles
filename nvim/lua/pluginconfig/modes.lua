@@ -2,12 +2,12 @@ local g = {}
 g, _ = vim.fn['iceberg#palette#dark#create']()
 
 require('modes').setup({
-  -- colors = {
-  --   copy = g.gui.yellow,
-  --   delete = g.gui.red,
-  --   insert = g.gui.green,
-  --   visual = g.gui.purple,
-  -- },
+  colors = {
+    copy = g.gui.yellow,
+    delete = g.gui.red,
+    insert = g.gui.blue,
+    visual = g.gui.purple,
+  },
 
   -- Set opacity for cursorline and number background
   line_opacity = 0.15,
