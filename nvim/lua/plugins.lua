@@ -182,6 +182,7 @@ return require("packer").startup(function(use)
     "SmiteshP/nvim-navic",
     requires = "neovim/nvim-lspconfig",
     config = function()
+      ---@diagnostic disable-next-line: different-requires
       require("pluginconfig/nvim-navic")
     end
   }

@@ -28,7 +28,8 @@ local config = {
       normal = { c = { fg = g.gui.statuslinenc_fg, bg = g.gui.statuslinenc_bg } },
       inactive = { c = { fg = g.gui.statuslinenc_fg, bg = g.gui.statuslinenc_bg } },
     },
-    disabled_filetypes = { 'Trouble', 'packer', 'alpha', 'lspsagaoutline' }
+    disabled_filetypes = { 'Trouble', 'packer', 'alpha', 'lspsagaoutline' },
+    globalstatus = true,
   },
   sections = {
     -- these are to remove the defaults
@@ -93,7 +94,6 @@ end
 local function getmode()
   local left_separator = ''
   local right_separator = ''
-  local space = ' '
   local mode = vim.fn.mode()
   local modeTable = {
     n = 'N',
@@ -131,12 +131,6 @@ ins_left {
   function()
     return getmode()
   end
-}
-
-ins_left {
-  'filename',
-  cond = conditions.buffer_not_empty,
-  color = { fg = g.gui.pale, gui = 'bold' },
 }
 
 ins_left {

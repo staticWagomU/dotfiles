@@ -28,6 +28,31 @@ require("incline").setup({
     wintypes = "special"
   },
   render = "basic",
+  -- render = function()
+  --   return {
+  --     { "foo", guifg = "blue" },
+  --     { "bar", guibg = "red", gui = "italic" },
+  --     {
+  --       "baz",
+  --       "qux",
+  --       {
+  --         1,
+  --         2,
+  --         guibg = 'black',
+  --         gui = 'undercurl',
+  --       },
+  --       guibg = 'green',
+  --       guifg = 'yellow',
+  --     },
+  --     "hello",
+  --     "world",
+  --     {
+  --       "and",
+  --       "goodnight",
+  --       blend = 10,
+  --     },
+  --   }
+  -- end,
   window = {
     margin = {
       horizontal = 1,
