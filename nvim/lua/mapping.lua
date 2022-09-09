@@ -65,3 +65,9 @@ m("n", "Q", [[q]], silent)
 m("n", "q:", [[q:]], silent)
 m("n", "q/", [[q/]], silent)
 m("n", "q?", [[q?]], silent)
+
+
+-- m("n", "p", "]p", silent)
+-- m("n", "P", "]P", silent)
+-- m("n", "]p", "p", silent)
+-- m("n", "]P", "P", silent)
