@@ -2,7 +2,6 @@ local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
 local telescope_builtin = require("telescope.builtin")
 local custom_actions = {}
--- local fb_actions = require "telescope".extensions.file_browser.actions
 
 require("telescope").setup({
   defaults = {
@@ -68,38 +67,6 @@ require("telescope").setup({
       },
     },
   },
-  extensions = {
-    -- fzy_native = {
-    --   override_generic_sorter = false,
-    --   override_file_sorter = true,
-    -- },
-    -- file_browser = {
-    --   hijack_netrw = true,
-    --   mappings = {
-    --     ["i"] = {
-    --       ["<C-k>"] = fb_actions.create,
-    --       ["<C-r>"] = fb_actions.rename,
-    --       ["<C-c>"] = fb_actions.copy,
-    --       ["<C-m>"] = fb_actions.move,
-    --       ["<C-d>"] = fb_actions.remove,
-    --     },
-    --     ["n"] = {
-    --       ["<C-k>"] = fb_actions.create,
-    --       ["<C-r>"] = fb_actions.rename,
-    --       ["<C-c>"] = fb_actions.copy,
-    --       ["<C-m>"] = fb_actions.move,
-    --       ["<C-d>"] = fb_actions.remove,
-    --       ["cd"] = function(prompt_bufnr)
-    --         local selection = require("telescope.actions.state").get_selected_entry()
-    --         local dir = vim.fn.fnamemodify(selection.path, ":p:h")
-    --         require("telescope.actions").close(prompt_bufnr)
-    --         -- Depending on what you want put `cd`, `lcd`, `tcd`
-    --         vim.cmd(string.format("silent lcd %s", dir))
-    --       end
-    --     },
-    --   },
-    -- },
-  }
 })
 
 telescope_builtin.grep_prompt = function(opts)
@@ -130,44 +97,7 @@ end
 
 local opts = { noremap = true, silent = true }
 
--- vim.api.nvim_set_keymap("n", "<Leader>gf", "<Cmd>Telescope git_files<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]>", "<Cmd>Telescope my_grep_in_dir<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]s", "<Cmd>Telescope live_grep<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]h", "<Cmd>Telescope help_tags<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]c", "<Cmd>Telescope commands<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]t", "<Cmd>Telescope treesitter<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]q", "<Cmd>Telescope quickfix<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]l", "<Cmd>Telescope loclist<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]m", "<Cmd>Telescope marks<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]r", "<Cmd>Telescope registers<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "[telescope]*", "<Cmd>Telescope grep_string<CR>", { noremap = true, silent = true })
--- git
--- vim.api.nvim_set_keymap(
--- 	"n",
--- 	"<Leader>gs",
--- 	"<Cmd>lua require('telescope.builtin').git_status()<CR>",
--- 	{ noremap = true, silent = true }
--- )
--- vim.api.nvim_set_keymap(
--- 	"n",
--- 	"<Leader>gc",
--- 	"<Cmd>lua require('telescope.builtin').git_commits()<CR>",
--- 	{ noremap = true, silent = true }
--- )
--- vim.api.nvim_set_keymap(
--- 	"n",
--- 	"<Leader>gb",
--- 	"<Cmd>lua require('telescope.builtin').git_branches()<CR>",
--- 	{ noremap = true, silent = true }
--- )
 vim.api.nvim_set_keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
-
--- vim.api.nvim_set_keymap(
---   "n",
---   "<Leader>e",
---   ":Telescope file_browser<CR>",
---   opts
--- )
 
 
 vim.api.nvim_set_keymap(
