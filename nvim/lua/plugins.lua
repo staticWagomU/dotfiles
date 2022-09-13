@@ -6,6 +6,7 @@ return require("packer").startup(function(use)
   use { "nvim-lua/plenary.nvim" }
   use { "vim-denops/denops.vim" }
   use { "MunifTanjim/nui.nvim" }
+  use { "kyazdani42/nvim-web-devicons" }
 
   use {
     "williamboman/mason.nvim",
@@ -54,7 +55,6 @@ return require("packer").startup(function(use)
   use { "nvim-telescope/telescope-rg.nvim", after = "telescope.nvim" }
   use { "nvim-telescope/telescope-smart-history.nvim", after = "telescope.nvim" }
   use { "nvim-telescope/telescope-github.nvim", after = "telescope.nvim" }
-  use { "kyazdani42/nvim-web-devicons", after = "telescope.nvim" }
 
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -354,6 +354,26 @@ return require("packer").startup(function(use)
     config = function()
       require("pluginconfig/winbar")
 
+    end
+  }
+
+  use {
+    "tamago324/lir.nvim",
+    requires = { "nvim-web-devicons" },
+    config = function()
+      require("pluginconfig/lir")
+    end,
+  }
+
+  use {
+    "tamago324/lir-git-status.nvim",
+    requires = { "lir.nvim" }
+  }
+
+  use {
+    "Hvassaa/sterm.nvim",
+    config = function()
+      require("pluginconfig/sterm")
     end
   }
 

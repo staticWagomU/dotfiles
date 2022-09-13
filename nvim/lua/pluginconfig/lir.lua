@@ -1,57 +1,56 @@
-local actions = require'lir.actions'
-local mark_actions = require 'lir.mark.actions'
-local clipboard_actions = require'lir.clipboard.actions'
+local actions = require "lir.actions"
+local mark_actions = require "lir.mark.actions"
+local clipboard_actions = require "lir.clipboard.actions"
 
-require'lir'.setup {
+require "lir".setup {
   show_hidden_files = false,
   devicons_enable = true,
   mappings = {
-    ['l']     = actions.edit,
-    ['<C-s>'] = actions.split,
-    ['<C-v>'] = actions.vsplit,
-    ['<C-t>'] = actions.tabedit,
+    ["l"]     = actions.edit,
+    ["<CR>"]  = actions.edit,
+    ["<C-s>"] = actions.split,
+    ["<C-v>"] = actions.vsplit,
+    ["<C-t>"] = actions.tabedit,
 
-    ['h']     = actions.up,
-    ['q']     = actions.quit,
+    ["h"] = actions.up,
+    ["q"] = actions.quit,
+    ["<ESC>"] = actions.quit,
 
-    ['K']     = actions.mkdir,
-    ['N']     = actions.newfile,
-    ['R']     = actions.rename,
-    ['@']     = actions.cd,
-    ['Y']     = actions.yank_path,
-    ['.']     = actions.toggle_show_hidden,
-    ['D']     = actions.delete,
+    ["K"] = actions.mkdir,
+    ["N"] = actions.newfile,
+    ["R"] = actions.rename,
+    ["@"] = actions.cd,
+    ["Y"] = actions.yank_path,
+    ["."] = actions.toggle_show_hidden,
+    ["D"] = actions.delete,
 
-    ['J'] = function()
+    ["J"] = function()
       mark_actions.toggle_mark()
-      vim.cmd('normal! j')
+      vim.cmd("normal! j")
     end,
-    ['C'] = clipboard_actions.copy,
-    ['X'] = clipboard_actions.cut,
-    ['P'] = clipboard_actions.paste,
+    ["C"] = clipboard_actions.copy,
+    ["X"] = clipboard_actions.cut,
+    ["P"] = clipboard_actions.paste,
   },
   float = {
-    winblend = 0,
+    winblend = 10,
     curdir_window = {
       enable = false,
-      highlight_dirname = false
+      highlight_dirname = false,
     },
-
-    -- -- You can define a function that returns a table to be passed as the third
-    -- -- argument of nvim_open_win().
-     win_opts = function()
-       local width = math.floor(vim.o.columns * 0.8)
-       local height = math.floor(vim.o.lines * 0.8)
-       return {
-         border = {
-           "+", "─", "+", "│", "+", "─", "+", "│",
-         },
-         width = width,
-         height = height,
-         row = 1,
-         col = math.floor((vim.o.columns - width) / 2),
-       }
-     end,
+    win_opts = function()
+      local width = math.floor(vim.o.columns * 0.6)
+      local height = math.floor(vim.o.lines * 0.8)
+      return {
+        border = require("lir.float.helper").make_border_opts({
+          "┌", "─", "┐", "│", "┘", "─", "└", "│",
+        }, "Normal"),
+        width = width,
+        height = height,
+        row = math.floor((vim.o.columns - width) / 2) - 1,
+        col = math.floor((vim.o.columns - width) / 2),
+      }
+    end,
   },
   hide_cursor = true,
   on_init = function()
@@ -60,7 +59,7 @@ require'lir'.setup {
       0,
       "x",
       "J",
-      ':<C-u>lua require"lir.mark.actions".toggle_mark("v")<CR>',
+      ":<C-u>lua require'lir.mark.actions'.toggle_mark('v')<CR>",
       { noremap = true, silent = true }
     )
 
@@ -70,7 +69,7 @@ require'lir'.setup {
 }
 
 -- custom folder icon
-require'nvim-web-devicons'.set_icon({
+require("nvim-web-devicons").set_icon({
   lir_folder_icon = {
     icon = "",
     color = "#7ebae4",
@@ -78,8 +77,8 @@ require'nvim-web-devicons'.set_icon({
   }
 })
 
-require'lir.git_status'.setup({
+require("lir.git_status").setup({
   show_ignored = false
 })
 
---vim.api.nvim_set_keymap("n", "<Leader>e", "<cmd>lua require'lir.float'.toggle()<cr>", {noremap=true, silent=true})
+vim.api.nvim_set_keymap("n", "<Leader>e", "<cmd>lua require'lir.float'.toggle()<cr>", { noremap = true, silent = true })

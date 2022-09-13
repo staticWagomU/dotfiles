@@ -31,5 +31,6 @@ require('winbar').setup({
     'spectre_panel',
     'toggleterm',
     'qf',
+    'term',
   }
 })
