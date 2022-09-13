@@ -84,8 +84,27 @@ local toggleTermFloat = Terminal:new({
   },
 })
 
-local toggleTermFloat = function()
+local ToggleTermFloat = function()
   toggleTermFloat:toggle()
 end
-vim.api.nvim_create_user_command('ToggleTermFloat', toggleTermFloat, {})
-vim.api.nvim_set_keymap("n", "<Leader>f", ":<C-u>ToggleTermFloat<CR>", {noremap=true, silent=true})
+
+local toggleTermVert = Terminal:new({
+  hidden = true,
+  direction = 'vertical',
+  on_open = float_handler,
+  float_opts = {
+    border = 'rounded',
+    winblend = 3
+  },
+})
+
+local ToggleTermVert = function()
+  toggleTermVert:toggle()
+end
+vim.api.nvim_create_user_command('ToggleTermFloat', ToggleTermFloat, {})
+vim.api.nvim_set_keymap("n", "<M-f>", ":<C-u>ToggleTermFloat<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<M-f>", [[<C-\><C-n>:<C-u>ToggleTermFloat<CR>]], { noremap = true, silent = true })
+
+vim.api.nvim_create_user_command('ToggleTermVert', ToggleTermVert, {})
+vim.api.nvim_set_keymap("n", [[<M-\>]], ":<C-u>ToggleTermVert<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", [[<M-\>]], [[<C-\><C-n>:<C-u>ToggleTermVert<CR>]], { noremap = true, silent = true })

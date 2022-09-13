@@ -370,11 +370,4 @@ return require("packer").startup(function(use)
     requires = { "lir.nvim" }
   }
 
-  use {
-    "Hvassaa/sterm.nvim",
-    config = function()
-      require("pluginconfig/sterm")
-    end
-  }
-
 end)
