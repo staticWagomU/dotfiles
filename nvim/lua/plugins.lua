@@ -15,7 +15,8 @@ return require("packer").startup(function(use)
     },
     config = function()
       require("pluginconfig/mason")
-    end
+    end,
+    event = "VimEnter",
   }
 
   use {
@@ -38,47 +39,22 @@ return require("packer").startup(function(use)
     "nvim-telescope/telescope.nvim", tag = "0.1.0",
     requires = {
       { "nvim-lua/plenary.nvim", after = "telescope.nvim" },
-      { "nvim-telescope/telescope-ui-select.nvim", after = "telescope.nvim" },
-      { "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" },
-      { "crispgm/telescope-heading.nvim", after = "telescope.nvim" },
-      { "LinArcX/telescope-changes.nvim", after = "telescope.nvim" },
-      { "nvim-telescope/telescope-rg.nvim", after = "telescope.nvim" },
-      { "nvim-telescope/telescope-smart-history.nvim", after = "telescope.nvim" },
-      { "nvim-telescope/telescope-fzy-native.nvim" },
-      { "nvim-telescope/telescope-file-browser.nvim" },
-      { "kyazdani42/nvim-web-devicons", after = "telescope.nvim" },
-      { "folke/trouble.nvim", after = "telescope.nvim" }
     },
     config = function()
       require("pluginconfig/telescope")
-    end
-  }
-  use {
-    "nvim-telescope/telescope-file-browser.nvim",
-    requires = "telescope.nvim",
-    config = function()
-      ---@diagnostic disable-next-line: different-requires
-      require("telescope").load_extension("file_browser")
-    end
+    end,
+    opt = true,
+    cmd = { 'Telescope' }
   }
 
-  use {
-    "nvim-telescope/telescope-fzy-native.nvim",
-    requires = "telescope.nvim",
-    config = function()
-      ---@diagnostic disable-next-line: different-requires
-      require("telescope").load_extension("fzy_native")
-    end
-  }
-
-  use { "nvim-telescope/telescope-github.nvim" }
-  use { "nvim-telescope/telescope-ui-select.nvim" }
-  use { "nvim-telescope/telescope-symbols.nvim" }
-  use { "crispgm/telescope-heading.nvim" }
-  use { "LinArcX/telescope-changes.nvim" }
-  use { "nvim-telescope/telescope-rg.nvim" }
-  use { "nvim-telescope/telescope-smart-history.nvim" }
-  use { "kyazdani42/nvim-web-devicons" }
+  use { "nvim-telescope/telescope-ui-select.nvim", after = "telescope.nvim" }
+  use { "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" }
+  use { "crispgm/telescope-heading.nvim", after = "telescope.nvim" }
+  use { "LinArcX/telescope-changes.nvim", after = "telescope.nvim" }
+  use { "nvim-telescope/telescope-rg.nvim", after = "telescope.nvim" }
+  use { "nvim-telescope/telescope-smart-history.nvim", after = "telescope.nvim" }
+  use { "nvim-telescope/telescope-github.nvim", after = "telescope.nvim" }
+  use { "kyazdani42/nvim-web-devicons", after = "telescope.nvim" }
 
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -150,7 +126,6 @@ return require("packer").startup(function(use)
   use {
     "mvllow/modes.nvim",
     config = function()
-      print(1)
       require("pluginconfig/modes")
     end
   }
