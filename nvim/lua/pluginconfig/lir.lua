@@ -39,7 +39,7 @@ require "lir".setup {
       highlight_dirname = false,
     },
     win_opts = function()
-      local width = math.floor(vim.o.columns * 0.6)
+      local width = math.floor(vim.o.columns * 0.8)
       local height = math.floor(vim.o.lines * 0.8)
       return {
         border = require("lir.float.helper").make_border_opts({
