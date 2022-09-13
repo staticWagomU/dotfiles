@@ -28,7 +28,7 @@ local config = {
       normal = { c = { fg = g.gui.statuslinenc_fg, bg = g.gui.statuslinenc_bg } },
       inactive = { c = { fg = g.gui.statuslinenc_fg, bg = g.gui.statuslinenc_bg } },
     },
-    disabled_filetypes = { 'Trouble', 'packer', 'alpha', 'lspsagaoutline' },
+    disabled_filetypes = { 'Trouble', 'packer', 'alpha', 'lspsagaoutline' , 'lir', 'toggleterm'},
     globalstatus = true,
   },
   sections = {
