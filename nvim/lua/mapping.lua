@@ -14,50 +14,52 @@
 -- " lmap / lnoremap  |    -   |   @    |    @    |   -    |   -    |    -     |    -     |    @     |
 -- "-------------------------------------------------------------------------------------------------+
 local keymap = vim.keymap.set
-local silent = { noremap = true, silent = true }
+local opts = { noremap = true, silent = true }
+local silent = { silent = true }
+local noremap = { noremap = true }
 
-keymap({ "n", "x" }, "<Leader>", "<Nop>", silent)
+keymap({ "n", "x" }, "<Leader>", "<Nop>", opts)
 
 -- expand file
-keymap("c", "<C-x>", "<C-r>=expand('%:p')<CR>", {})
+keymap("c", "<C-x>", "<C-r>=expand('%:p')<CR>")
 -- expand path
-keymap("c", "<C-z>", "<C-r>=expand('%:p:r')<CR>", {})
+keymap("c", "<C-z>", "<C-r>=expand('%:p:r')<CR>")
 
-keymap("n", "<Leader>ls", ":<C-u>ls<CR>", { noremap = true })
-keymap("n", "<Leader>w", ":<C-u>w<CR>", { noremap = true })
-keymap("n", "<Leader>bn", ":<C-u>bn<CR>", { noremap = true })
-keymap("n", "<Leader>bp", ":<C-u>bp<CR>", { noremap = true })
-keymap("n", "<Leader>bd", ":<C-u>bd<CR>", { noremap = true })
-keymap("n", "<Leader>cd", ":<C-u>cd %:p:h<CR>", silent)
+keymap("n", "<Leader>ls", ":<C-u>ls<CR>", noremap)
+keymap("n", "<Leader>w", ":<C-u>w<CR>", noremap)
+keymap("n", "<Leader>bn", ":<C-u>bn<CR>", noremap)
+keymap("n", "<Leader>bp", ":<C-u>bp<CR>", noremap)
+keymap("n", "<Leader>bd", ":<C-u>bd<CR>", noremap)
+keymap("n", "<Leader>cd", ":<C-u>cd %:p:h<CR>", opts)
 
-keymap("t", "<ESC>", [[<C-\><C-n>]], silent)
+keymap("t", "<ESC>", [[<C-\><C-n>]], opts)
 
-keymap("n", ";", "<Nop>", silent)
-keymap("n", "[lsp]", "<Nop>", silent)
-keymap("n", ";", "[lsp]", {})
+keymap("n", ";", "<Nop>", opts)
+keymap("n", "[lsp]", "<Nop>", opts)
+keymap("n", ";", "[lsp]")
 
-keymap("n", "Z", "<Nop>", silent)
-keymap("n", "[telescope]", "<Nop>", silent)
-keymap("n", "Z", "[telescope]", {})
+keymap("n", "Z", "<Nop>", opts)
+keymap("n", "[telescope]", "<Nop>", opts)
+keymap("n", "Z", "[telescope]")
 
-keymap("n", "v2", 'vi"', silent)
-keymap("n", "v7", "vi'", silent)
-keymap("n", "v8", "vi(", silent)
+keymap("n", "v2", 'vi"', opts)
+keymap("n", "v7", "vi'", opts)
+keymap("n", "v8", "vi(", opts)
 
-keymap("n", "va2", 'va"', silent)
-keymap("n", "va7", "va'", silent)
-keymap("n", "va7", "va(", silent)
+keymap("n", "va2", 'va"', opts)
+keymap("n", "va7", "va'", opts)
+keymap("n", "va7", "va(", opts)
 
-keymap("n", "q", [[<Nop>]], silent)
-keymap("n", "Q", [[q]], silent)
+keymap("n", "q", [[<Nop>]], opts)
+keymap("n", "Q", [[q]], opts)
 --keymap("n", "qh", [[<Cmd>call <SID>Quit('h')<CR>]], silent)
 --keymap("n", "qj", [[<Cmd>call <SID>Quit('j')<CR>]], silent)
 --keymap("n", "qk", [[<Cmd>call <SID>Quit('k')<CR>]], silent)
 --keymap("n", "ql", [[<Cmd>call <SID>Quit('l')<CR>]], silent)
 --keymap("n", "qq", [[<Cmd>call <SID>Quit()<CR>]], silent)
-keymap("n", "q:", [[q:]], silent)
-keymap("n", "q/", [[q/]], silent)
-keymap("n", "q?", [[q?]], silent)
+keymap("n", "q:", [[q:]], opts)
+keymap("n", "q/", [[q/]], opts)
+keymap("n", "q?", [[q?]], opts)
 
 
 -- keymap("n", "p", "]p", silent)
@@ -65,5 +67,5 @@ keymap("n", "q?", [[q?]], silent)
 -- keymap("n", "]p", "p", silent)
 -- keymap("n", "]P", "P", silent)
 
-keymap("n", "<C-j>", "O<ESC>", silent)
-keymap("n", "<M-j>", "o<ESC>", silent)
+keymap("n", "<C-j>", "O<ESC>", opts)
+keymap("n", "<M-j>", "o<ESC>", opts)

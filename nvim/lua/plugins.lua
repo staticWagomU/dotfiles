@@ -44,8 +44,6 @@ return require("packer").startup(function(use)
     config = function()
       require("pluginconfig/telescope")
     end,
-    opt = true,
-    cmd = { 'Telescope' }
   }
 
   use { "nvim-telescope/telescope-ui-select.nvim", after = "telescope.nvim" }
@@ -240,7 +238,9 @@ return require("packer").startup(function(use)
     },
     config = function()
       require("pluginconfig/neogit")
-    end
+    end,
+    opts =true,
+    cmd = {"Neogit"}
   }
 
   use {
