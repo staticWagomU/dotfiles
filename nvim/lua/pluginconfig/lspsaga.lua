@@ -1,4 +1,42 @@
 local lspsaga = require("lspsaga")
+local vim = vim
+local api = vim.api
+
+local function lua_help()
+  if vim.bo.filetype ~= "lua" then
+    return false
+  end
+  local current_line = api.nvim_get_current_line()
+  local cursor_col = api.nvim_win_get_cursor(0)[2] + 1
+  -- vim.fn.foo
+  local s, e, m = current_line:find("fn%.([%w_]+)%(?")
+  if s and s <= cursor_col and cursor_col <= e then
+    vim.cmd("h " .. m)
+    return true
+  end
+  -- vim.fn["foo"]
+  s, e, m = current_line:find("fn%[['\"]([%w_#]+)['\"]%]%(?")
+  if s and s <= cursor_col and cursor_col <= e then
+    vim.cmd("h " .. m)
+    return true
+  end
+  -- vim.api.foo
+  s, e, m = current_line:find("api%.([%w_]+)%(?")
+  if s and s <= cursor_col and cursor_col <= e then
+    vim.cmd("h " .. m)
+    return true
+  end
+  -- other vim.foo (e.g. vim.tbl_map, vim.lsp.foo, ...)
+  s, e, m = current_line:find("(vim%.[%w_%.]+)%(?")
+  if s and s <= cursor_col and cursor_col <= e then
+    vim.cmd("h " .. m)
+    return true
+  end
+  return false
+end
+
+local keymap = vim.keymap.set
+
 lspsaga.init_lsp_saga({ -- defaults ...
   -- Options with default value
   -- "single" | "double" | "rounded" | "bold" | "plus"
@@ -108,7 +146,12 @@ vim.keymap.set(
   { silent = true, noremap = true }
 )
 
-local keymap = vim.keymap.set
+keymap("n", "K", function()
+  if not lua_help() then
+    vim.lsp.buf.hover()
+  end
+end)
+
 
 -- Lsp finder find the symbol definition implement reference
 -- if there is no implement it will hide
