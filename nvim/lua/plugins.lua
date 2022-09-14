@@ -218,16 +218,6 @@ return require("packer").startup(function(use)
 
   use { "simeji/winresizer" }
 
-  -- use {
-  --   -- using packer.nvim
-  --   "akinsho/bufferline.nvim",
-  --   tag = "v2.*",
-  --   requires = "kyazdani42/nvim-web-devicons",
-  --   config = function()
-  --     require("pluginconfig/bufferline")
-  --   end
-  -- }
-
   use {
     "folke/lsp-colors.nvim",
     config = function()
@@ -310,16 +300,16 @@ return require("packer").startup(function(use)
     end
   }
 
-  -- use {
-  --   "kyazdani42/nvim-tree.lua",
-  --   requires = {
-  --     "kyazdani42/nvim-web-devicons",
-  --   },
-  --   tag = "nightly",
-  --   config = function()
-  --     require("pluginconfig/nvim-tree")
-  --   end
-  -- }
+  use {
+    "kyazdani42/nvim-tree.lua",
+    requires = {
+      "kyazdani42/nvim-web-devicons",
+    },
+    tag = "nightly",
+    config = function()
+      require("pluginconfig/nvim-tree")
+    end
+  }
 
   use {
     "lukas-reineke/indent-blankline.nvim",
@@ -334,13 +324,6 @@ return require("packer").startup(function(use)
       require("pluginconfig/vim-edgemotion")
     end
   }
-
-  -- use {
-  --   "b0o/incline.nvim",
-  --   config = function()
-  --     require("pluginconfig/incline")
-  --   end
-  -- }
 
   use {
     "levouh/tint.nvim",
