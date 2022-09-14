@@ -36,11 +36,11 @@ keymap("t", "<ESC>", [[<C-\><C-n>]], opts)
 
 keymap("n", ";", "<Nop>", opts)
 keymap("n", "[lsp]", "<Nop>", opts)
-keymap("n", ";", "[lsp]")
+vim.api.nvim_set_keymap("n", ";", "[lsp]", {})
 
 keymap("n", "Z", "<Nop>", opts)
 keymap("n", "[telescope]", "<Nop>", opts)
-keymap("n", "Z", "[telescope]")
+vim.api.nvim_set_keymap("n", "Z", "[telescope]", {})
 
 keymap("n", "v2", 'vi"', opts)
 keymap("n", "v7", "vi'", opts)
