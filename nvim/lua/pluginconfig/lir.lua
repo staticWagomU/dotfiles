@@ -1,6 +1,7 @@
 local actions = require "lir.actions"
 local mark_actions = require "lir.mark.actions"
 local clipboard_actions = require "lir.clipboard.actions"
+local keymap = vim.keymap.set
 
 require "lir".setup {
   show_hidden_files = false,
@@ -81,4 +82,4 @@ require("lir.git_status").setup({
   show_ignored = false
 })
 
-vim.api.nvim_set_keymap("n", "<Leader>e", "<cmd>lua require'lir.float'.toggle()<cr>", { noremap = true, silent = true })
+keymap("n", "<Leader>e", "<cmd>lua require'lir.float'.toggle()<cr>", { noremap = true, silent = true })

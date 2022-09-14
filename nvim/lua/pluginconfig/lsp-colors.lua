@@ -1,5 +1,4 @@
 local g = {}
-local c = {}
 g, _ = vim.fn['iceberg#palette#dark#create']()
 
 -- Lua

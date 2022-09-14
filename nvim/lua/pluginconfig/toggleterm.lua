@@ -101,10 +101,13 @@ local toggleTermVert = Terminal:new({
 local ToggleTermVert = function()
   toggleTermVert:toggle()
 end
+
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
 vim.api.nvim_create_user_command('ToggleTermFloat', ToggleTermFloat, {})
-vim.api.nvim_set_keymap("n", "<M-f>", ":<C-u>ToggleTermFloat<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", "<M-f>", [[<C-\><C-n>:<C-u>ToggleTermFloat<CR>]], { noremap = true, silent = true })
+keymap("n", "<M-f>", ":<C-u>ToggleTermFloat<CR>", opts)
+keymap("t", "<M-f>", [[<C-\><C-n>:<C-u>ToggleTermFloat<CR>]], opts)
 
 vim.api.nvim_create_user_command('ToggleTermVert', ToggleTermVert, {})
-vim.api.nvim_set_keymap("n", [[<M-\>]], ":<C-u>ToggleTermVert<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", [[<M-\>]], [[<C-\><C-n>:<C-u>ToggleTermVert<CR>]], { noremap = true, silent = true })
+keymap("n", [[<M-\>]], ":<C-u>ToggleTermVert<CR>", opts)
+keymap("t", [[<M-\>]], [[<C-\><C-n>:<C-u>ToggleTermVert<CR>]], opts)

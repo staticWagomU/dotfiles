@@ -2,6 +2,7 @@ local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
 local telescope_builtin = require("telescope.builtin")
 local custom_actions = {}
+local keymap = vim.keymap.set
 
 require("telescope").setup({
   defaults = {
@@ -97,16 +98,16 @@ end
 
 local opts = { noremap = true, silent = true }
 
-vim.api.nvim_set_keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
+keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", opts)
 
 
-vim.api.nvim_set_keymap(
+keymap(
   "n",
   "<Leader>E",
   ":Telescope find_files<CR>",
   opts
 )
 
-vim.api.nvim_set_keymap("n", "<Leader>tt", ":Telescope<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>tb", ":Telescope buffers<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>tf", ":Telescope current_buffer_fuzzy_find<CR>", opts)
+keymap("n", "<Leader>tt", ":Telescope<CR>", opts)
+keymap("n", "<Leader>tb", ":Telescope buffers<CR>", opts)
+keymap("n", "<Leader>tf", ":Telescope current_buffer_fuzzy_find<CR>", opts)

@@ -1,5 +1,6 @@
 require("Comment").setup({})
+local keymap = vim.keymap.set
 
-vim.api.nvim_set_keymap("n", "<C-_>", "<Cmd>lua require('Comment.api').toggle.linewise.current()<CR>", {})
-vim.api.nvim_set_keymap("i", "<C-_>", "<Esc>:<C-u>lua require('Comment.api').toggle.linewise.current()<CR>\"_cc", {})
-vim.api.nvim_set_keymap("v", "<C-_>", "gc", {})
+keymap("n", "<C-_>", "<Cmd>lua require('Comment.api').toggle.linewise.current()<CR>")
+keymap("i", "<C-_>", "<Esc>:<C-u>lua require('Comment.api').toggle.linewise.current()<CR>\"_cc")
+keymap("v", "<C-_>", "gc")
