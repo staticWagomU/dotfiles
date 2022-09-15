@@ -34,9 +34,8 @@ keymap("n", "<Leader>cd", ":<C-u>cd %:p:h<CR>", opts)
 
 keymap("t", "<ESC>", [[<C-\><C-n>]], opts)
 
-keymap("n", ";", "<Nop>", opts)
-keymap("n", "[lsp]", "<Nop>", opts)
-vim.api.nvim_set_keymap("n", ";", "[lsp]", {})
+keymap("n", "<Plug>(lsp);", "<Nop>", opts)
+keymap("n", ";", "<Plug>(lsp);")
 
 keymap("n", "Z", "<Nop>", opts)
 keymap("n", "[telescope]", "<Nop>", opts)
