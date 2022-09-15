@@ -44,6 +44,7 @@ set.fillchars = {
   verthoriz = '╋'
 }
 -- set.winbar = '%=%f%m%='
+set.backspace = {"indent", "eol", "start"}
 
 vim.cmd [=[
 set directory=~
