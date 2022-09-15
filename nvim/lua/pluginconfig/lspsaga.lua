@@ -103,17 +103,17 @@ lspsaga.init_lsp_saga({ -- defaults ...
   },
 })
 
-keymap("n", "[lsp]r", "<cmd>Lspsaga rename<cr>", opts)
-keymap("n", "[lsp]a", "<cmd>Lspsaga code_action<cr>", opts)
-keymap("x", "[lsp]a", ":<c-u>Lspsaga range_code_action<cr>", opts)
+keymap("n", "<Plug>(lsp);r", "<cmd>Lspsaga rename<cr>", opts)
+keymap("n", "<Plug>(lsp);a", "<cmd>Lspsaga code_action<cr>", opts)
+keymap("x", "<Plug>(lsp);a", ":<c-u>Lspsaga range_code_action<cr>", opts)
 -- keymap("n", "<C-k>", "<cmd>Lspsaga hover_doc<cr>", opts)
--- keymap("n", "[lsp]o", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
-keymap("n", "[lsp]j", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-keymap("n", "[lsp]k", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
-keymap("n", "[lsp]f", "<cmd>Lspsaga lsp_finder<CR>", opts)
-keymap("n", "[lsp]h", "<cmd>Lspsaga signature_help<CR>", opts)
+-- keymap("n", "<Plug>(lsp);o", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
+keymap("n", "<Plug>(lsp);j", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+keymap("n", "<Plug>(lsp);k", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+keymap("n", "<Plug>(lsp);f", "<cmd>Lspsaga lsp_finder<CR>", opts)
+keymap("n", "<Plug>(lsp);h", "<cmd>Lspsaga signature_help<CR>", opts)
 keymap("n", "gd", "<cmd>Lspsaga preview_definition<CR>", silent)
-keymap("n", "[lsp]o", "<cmd>LSoutlineToggle<CR>", silent)
+keymap("n", "<Plug>(lsp);o", "<cmd>LSoutlineToggle<CR>", silent)
 keymap(
   "n",
   "<C-b>",
