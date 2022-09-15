@@ -1,6 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
-return require("packer").startup(function(use)
+return require("packer").startup({ function(use)
   use { "wbthomason/packer.nvim" }
 
   use { "nvim-lua/plenary.nvim" }
@@ -239,8 +239,6 @@ return require("packer").startup(function(use)
     config = function()
       require("pluginconfig/neogit")
     end,
-    opts =true,
-    cmd = {"Neogit"}
   }
 
   use {
@@ -353,4 +351,13 @@ return require("packer").startup(function(use)
     requires = { "lir.nvim" }
   }
 
-end)
+end,
+  config = {
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+      end
+    },
+    enable = true,
+    threshold = 1
+  } })
