@@ -3,6 +3,14 @@ vim.cmd [[packadd packer.nvim]]
 return require("packer").startup({ function(use)
   use { "wbthomason/packer.nvim" }
 
+  use {
+    "lewis6991/impatient.nvim",
+    config = function()
+      require('impatient')
+      require('impatient').enable_profile()
+    end
+  }
+
   use { "nvim-lua/plenary.nvim" }
   use { "vim-denops/denops.vim" }
   use { "MunifTanjim/nui.nvim" }
@@ -44,6 +52,7 @@ return require("packer").startup({ function(use)
     config = function()
       require("pluginconfig/telescope")
     end,
+    event = { "VimEnter" }
   }
 
   use { "nvim-telescope/telescope-ui-select.nvim", after = "telescope.nvim" }
@@ -58,75 +67,51 @@ return require("packer").startup({ function(use)
     "nvim-treesitter/nvim-treesitter",
     config = function()
       require("pluginconfig/nvim-treesitter")
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
     "hrsh7th/nvim-cmp",
-    requires = {
-      { "neovim/nvim-lspconfig", after = "hrsh7th/nvim-cmp" },
-      { "hrsh7th/cmp-nvim-lsp", after = "hrsh7th/nvim-cmp" },
-      { "hrsh7th/cmp-buffer", after = "hrsh7th/nvim-cmp" },
-      { "hrsh7th/cmp-path", after = "hrsh7th/nvim-cmp" },
-      { "hrsh7th/cmp-cmdline", after = "hrsh7th/nvim-cmp" },
-      { "L3MON4D3/LuaSnip", after = "hrsh7th/nvim-cmp" },
-      { "saadparwaiz0/cmp_luasnip", after = "hrsh7th/nvim-cmp" },
-      { "nvim-telescope/telescope-github.nvim", after = "hrsh7th/nvim-cmp" },
-      { "hrsh7th/cmp-nvim-lsp-signature-help", after = "hrsh7th/nvim-cmp" },
-      { "hrsh7th/cmp-nvim-lsp-document-symbol", after = "hrsh7th/nvim-cmp" },
-      { "hrsh7th/cmp-calc", after = "hrsh7th/nvim-cmp" },
-      { "f3fora/cmp-spell", after = "hrsh7th/nvim-cmp" },
-      { "yutkat/cmp-mocword", after = "hrsh7th/nvim-cmp" },
-      { "nvim-lua/plenary.nvim", after = "hrsh7th/nvim-cmp" },
-      { "onsails/lspkind.nvim", after = "hrsh7th/nvim-cmp" },
-      { "petertriho/cmp-git", after = "hrsh7th/nvim-cmp" },
-      { "ray-x/lsp_signature.nvim", after = "hrsh7th/nvim-cmp" },
-    },
     config = function()
       require("pluginconfig/nvim-cmp")
-    end
+    end,
+    event = { "VimEnter" }
   }
 
-  use { "hrsh7th/cmp-nvim-lsp" }
-  use { "hrsh7th/cmp-buffer" }
-  use { "hrsh7th/cmp-path" }
-  use { "hrsh7th/cmp-cmdline" }
-  use { "saadparwaiz1/cmp_luasnip" }
-  use { "hrsh7th/cmp-nvim-lsp-signature-help" }
-  use { "hrsh7th/cmp-nvim-lsp-document-symbol" }
-  use { "hrsh7th/cmp-calc" }
-  use { "f3fora/cmp-spell" }
-  use { "yutkat/cmp-mocword" }
+  use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
+  use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
+  use { "hrsh7th/cmp-path", after = "nvim-cmp" }
+  use { "hrsh7th/cmp-cmdline", after = "nvim-cmp" }
+  use { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" }
+  use { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" }
+  use { "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" }
+  use { "hrsh7th/cmp-calc", after = "nvim-cmp" }
+  use { "f3fora/cmp-spell", after = "nvim-cmp" }
+  use { "yutkat/cmp-mocword", after = "nvim-cmp" }
   use {
     "onsails/lspkind.nvim",
     config = function()
       require("pluginconfig/lspkind")
     end
   }
-  use { "petertriho/cmp-git" }
+  use { "petertriho/cmp-git", after = "nvim-cmp" }
   use { "ray-x/lsp_signature.nvim" }
 
-  use { "L3MON4D3/LuaSnip" }
+  use { "L3MON4D3/LuaSnip", after = "nvim-cmp" }
 
   use {
     "nvim-lualine/lualine.nvim",
     requires = {
       { "cocopon/pgmnt.vim" },
-      { "SmiteshP/nvim-navic", after = "nvim-lualine/lualine.nvim" }
     },
     config = function()
       require("pluginconfig/lualine")
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use { "cocopon/pgmnt.vim" }
-
-  use {
-    "mvllow/modes.nvim",
-    config = function()
-      require("pluginconfig/modes")
-    end
-  }
 
   use {
     "glepnir/lspsaga.nvim",
@@ -134,6 +119,7 @@ return require("packer").startup({ function(use)
     config = function()
       require("pluginconfig/lspsaga")
     end,
+    event = { "VimEnter" }
   }
 
   use { "rcarriga/nvim-notify" }
@@ -142,7 +128,8 @@ return require("packer").startup({ function(use)
     "lewis6991/gitsigns.nvim",
     config = function()
       require("pluginconfig/gitsigns")
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
@@ -172,7 +159,8 @@ return require("packer").startup({ function(use)
     "petertriho/nvim-scrollbar",
     config = function()
       require("pluginconfig/nvim-scrollbar")
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
@@ -186,14 +174,16 @@ return require("packer").startup({ function(use)
     "akinsho/toggleterm.nvim",
     config = function()
       require("pluginconfig/toggleterm")
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
     "numToStr/Comment.nvim",
     config = function()
       require("pluginconfig/comment")
-    end
+    end,
+    event = {"VimEnter"}
   }
 
   use {
@@ -201,7 +191,8 @@ return require("packer").startup({ function(use)
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
       require("pluginconfig/trouble")
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
@@ -220,14 +211,16 @@ return require("packer").startup({ function(use)
     "folke/lsp-colors.nvim",
     config = function()
       require("pluginconfig/lsp-colors")
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
       require("pluginconfig/null-ls")
-    end
+    end,
+    event = { "VimEnter" }
   }
 
 
@@ -239,6 +232,7 @@ return require("packer").startup({ function(use)
     config = function()
       require("pluginconfig/neogit")
     end,
+    cmd = { "Neogit" }
   }
 
   use {
@@ -248,7 +242,16 @@ return require("packer").startup({ function(use)
     },
     config = function()
       require("pluginconfig/diffview")
-    end
+    end,
+    cmd = {
+      "DiffviewLog",
+      "DiffviewOpen",
+      "DiffviewClose",
+      "DiffviewRefresh",
+      "DiffviewFocusFiles",
+      "DiffviewToggleFiles",
+      "DiffviewFileHistory",
+    },
   }
 
   use {
@@ -272,7 +275,8 @@ return require("packer").startup({ function(use)
     "skanehira/denops-translate.vim",
     config = function()
       require("pluginconfig/denops-translate")
-    end
+    end,
+    event = {"VimEnter"}
   }
 
   use { "kevinhwang91/promise-async" }
@@ -288,7 +292,8 @@ return require("packer").startup({ function(use)
     "folke/which-key.nvim",
     config = function()
       require("pluginconfig/which-key")
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
@@ -299,21 +304,10 @@ return require("packer").startup({ function(use)
   }
 
   use {
-    "kyazdani42/nvim-tree.lua",
-    requires = {
-      "kyazdani42/nvim-web-devicons",
-    },
-    tag = "nightly",
-    config = function()
-      require("pluginconfig/nvim-tree")
-    end
-  }
-
-  use {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("pluginconfig/indent-blankline")
-    end
+    end,
   }
 
   use {
@@ -327,7 +321,8 @@ return require("packer").startup({ function(use)
     "levouh/tint.nvim",
     config = function()
       require("pluginconfig/tint")
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
@@ -335,7 +330,8 @@ return require("packer").startup({ function(use)
     config = function()
       require("pluginconfig/winbar")
 
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
@@ -344,11 +340,66 @@ return require("packer").startup({ function(use)
     config = function()
       require("pluginconfig/lir")
     end,
+    event = { "VimEnter" }
   }
 
   use {
     "tamago324/lir-git-status.nvim",
     requires = { "lir.nvim" }
+  }
+
+  use {
+    "nathom/filetype.nvim",
+    config = function()
+      -- In init.lua or filetype.nvim's config file
+      require("filetype").setup({
+        overrides = {
+          extensions = {
+            -- Set the filetype of *.pn files to potion
+            pn = "potion",
+          },
+          literal = {
+            -- Set the filetype of files named "MyBackupFile" to lua
+            MyBackupFile = "lua",
+          },
+          complex = {
+            -- Set the filetype of any full filename matching the regex to gitconfig
+            [".*git/config"] = "gitconfig", -- Included in the plugin
+          },
+
+          -- The same as the ones above except the keys map to functions
+          function_extensions = {
+            ["cpp"] = function()
+              vim.bo.filetype = "cpp"
+              -- Remove annoying indent jumping
+              vim.bo.cinoptions = vim.bo.cinoptions .. "L0"
+            end,
+            ["pdf"] = function()
+              vim.bo.filetype = "pdf"
+              -- Open in PDF viewer (Skim.app) automatically
+              vim.fn.jobstart(
+                "open -a skim " .. '"' .. vim.fn.expand("%") .. '"'
+              )
+            end,
+          },
+          function_literal = {
+            Brewfile = function()
+              vim.cmd("syntax off")
+            end,
+          },
+          function_complex = {
+            ["*.math_notes/%w+"] = function()
+              vim.cmd("iabbrev $ $$")
+            end,
+          },
+
+          shebang = {
+            -- Set the filetype of files with a dash shebang to sh
+            dash = "sh",
+          },
+        },
+      })
+    end
   }
 
 end,
