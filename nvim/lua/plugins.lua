@@ -41,7 +41,8 @@ return require("packer").startup({ function(use)
     "cocopon/iceberg.vim",
     config = function()
       require("pluginconfig/iceberg")
-    end
+    end,
+    after = { "pgmnt.vim" }
   }
 
   use {
@@ -136,7 +137,8 @@ return require("packer").startup({ function(use)
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup {}
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
@@ -145,14 +147,16 @@ return require("packer").startup({ function(use)
     config = function()
       ---@diagnostic disable-next-line: different-requires
       require("pluginconfig/nvim-navic")
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
     "anuvyklack/pretty-fold.nvim",
     config = function()
       require("pretty-fold").setup()
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
@@ -183,7 +187,7 @@ return require("packer").startup({ function(use)
     config = function()
       require("pluginconfig/comment")
     end,
-    event = {"VimEnter"}
+    event = { "VimEnter" }
   }
 
   use {
@@ -205,7 +209,10 @@ return require("packer").startup({ function(use)
 
   use { "mattn/vim-sonictemplate" }
 
-  use { "simeji/winresizer" }
+  use {
+    "simeji/winresizer",
+    event = { "VimEnter" }
+  }
 
   use {
     "folke/lsp-colors.nvim",
@@ -263,20 +270,22 @@ return require("packer").startup({ function(use)
 
   use { "vim-jp/vimdoc-ja" }
 
-  use { "mattn/emmet-vim" }
+  use {
+    "mattn/emmet-vim",
+    event = { "VimEnter" }
+  }
 
-  use { "cohama/lexima.vim" }
-
-  use { "mattn/vim-goimports" }
-
-  use { "machakann/vim-sandwich" }
+  use {
+    "mattn/vim-goimports",
+    ft = "go"
+  }
 
   use {
     "skanehira/denops-translate.vim",
     config = function()
       require("pluginconfig/denops-translate")
     end,
-    event = {"VimEnter"}
+    event = { "VimEnter" }
   }
 
   use { "kevinhwang91/promise-async" }
@@ -286,6 +295,7 @@ return require("packer").startup({ function(use)
     config = function()
       require("lsp_lines").setup()
     end,
+    event = { "VimEnter" }
   }
 
   use {
@@ -300,7 +310,8 @@ return require("packer").startup({ function(use)
     "kylechui/nvim-surround",
     config = function()
       require("nvim-surround").setup({})
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
@@ -308,13 +319,15 @@ return require("packer").startup({ function(use)
     config = function()
       require("pluginconfig/indent-blankline")
     end,
+    event = { "VimEnter" }
   }
 
   use {
     "haya14busa/vim-edgemotion",
     config = function()
       require("pluginconfig/vim-edgemotion")
-    end
+    end,
+    event = { "VimEnter" }
   }
 
   use {
