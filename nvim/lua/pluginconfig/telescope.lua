@@ -100,10 +100,16 @@ local opts = { noremap = true, silent = true }
 
 keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", opts)
 
+keymap(
+  "n",
+  "<Leader>EG",
+  ":Telescope git_files<CR>",
+  opts
+)
 
 keymap(
   "n",
-  "<Leader>E",
+  "<Leader>EE",
   ":Telescope find_files<CR>",
   opts
 )
