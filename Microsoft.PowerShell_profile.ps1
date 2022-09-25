@@ -31,6 +31,9 @@ function mkdir_cd_cls {
 }
 
 function ex{exit}
+function cd1{cd ..\}
+function cd2{cd ..\..\}
+function cd3{cd ..\..\..\}
 
 Set-Alias csl Clear-Host
 Set-Alias cl Clear-Host
@@ -40,3 +43,6 @@ Set-Alias gs git_status
 Set-Alias mcd mkdir_cd
 Set-Alias mccd mkdir_cd_cls
 Set-Alias :q ex
+Set-Alias ... cd1
+Set-Alias .... cd2
+Set-Alias ..... cd3
