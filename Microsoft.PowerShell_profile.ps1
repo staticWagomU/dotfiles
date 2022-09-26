@@ -34,6 +34,7 @@ function ex{exit}
 function cd1{cd ..\}
 function cd2{cd ..\..\}
 function cd3{cd ..\..\..\}
+function cdhome{cd ~}
 
 Set-Alias csl Clear-Host
 Set-Alias cl Clear-Host
@@ -46,3 +47,4 @@ Set-Alias :q ex
 Set-Alias ... cd1
 Set-Alias .... cd2
 Set-Alias ..... cd3
+Set-Alias ~ cdhome
