@@ -3,7 +3,6 @@ if(-not $env:path.Split(';').Contains('.')){
 }
 
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/avit.omp.json" | Invoke-Expression
-function git_status() {git status}
 
 function mkdir_cd {
   [CmdletBinding()]
@@ -30,11 +29,13 @@ function mkdir_cd_cls {
       Clear-Host
 }
 
+function git_status() {git status}
 function ex{exit}
 function cd1{cd ..\}
 function cd2{cd ..\..\}
 function cd3{cd ..\..\..\}
 function cdhome{cd ~}
+function cddotfiles{cd ~\dotfiles}
 
 Set-Alias csl Clear-Host
 Set-Alias cl Clear-Host
@@ -48,3 +49,4 @@ Set-Alias ... cd1
 Set-Alias .... cd2
 Set-Alias ..... cd3
 Set-Alias ~ cdhome
+Set-Alias dot cddotfiles
