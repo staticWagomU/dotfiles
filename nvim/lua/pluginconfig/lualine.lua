@@ -23,7 +23,7 @@ local config = {
     component_separators = '',
     section_separators = '',
     theme = {
-      normal = { c = { fg = colors.foreground, bg = colors.background } },
+      normal = { c = { fg = colors.foreground, bg = colors.ruler } },
       inactive = { c = { fg = colors.foreground, bg = colors.background } },
     },
     disabled_filetypes = { 'Trouble', 'packer', 'alpha', 'lspsagaoutline', 'lir', 'toggleterm' },
@@ -69,7 +69,7 @@ local function setModeColor(mode)
     v = colors.blue,
     [''] = colors.blue,
     V = colors.blue,
-    c = colors.black,
+    c = colors.yellow,
     no = colors.green,
     s = colors.orange,
     S = colors.orange,
@@ -79,14 +79,14 @@ local function setModeColor(mode)
     Rv = colors.purple,
     cv = colors.red,
     ce = colors.red,
-    r = colors.black,
-    rm = colors.black,
-    ['r?'] = colors.black,
+    r = colors.yellow,
+    rm = colors.yellow,
+    ['r?'] = colors.yellow,
     ['!'] = colors.red,
     t = colors.red,
   }
-  cmd('hi Mode guibg=' .. mode_color[mode] .. ' guifg=' .. colors.background .. ' gui=bold')
-  cmd('hi ModeSeparator  guibg=' .. colors.background .. ' guifg=' .. mode_color[mode])
+  cmd('hi Mode guibg=' .. mode_color[mode] .. ' guifg=' .. colors.ruler .. ' gui=bold')
+  cmd('hi ModeSeparator  guibg=' .. colors.ruler .. ' guifg=' .. mode_color[mode])
 end
 
 local function getmode()
@@ -145,7 +145,7 @@ ins_left {
   diagnostics_color = {
     color_error = { fg = colors.red },
     color_warn = { fg = colors.purple },
-    color_info = { fg = colors.black },
+    color_info = { fg = colors.yellow },
   },
 }
 

@@ -1,12 +1,11 @@
-local g = {}
-g, _ = vim.fn['iceberg#palette#dark#create']()
+local colors = require("neobeans.core").get_dark_colors()
 
 require('modes').setup({
   colors = {
-    copy = g.gui.yellow,
-    delete = g.gui.red,
-    insert = g.gui.blue,
-    visual = g.gui.purple,
+    copy = colors.yellow,
+    delete = colors.red,
+    insert = colors.blue,
+    visual = colors.purple,
   },
 
   -- Set opacity for cursorline and number background

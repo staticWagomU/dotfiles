@@ -1,10 +1,9 @@
-local g = {}
-g, _ = vim.fn['iceberg#palette#dark#create']()
+local colors = require("neobeans.core").get_dark_colors()
 
 -- Lua
 require("lsp-colors").setup({
-  Error = g.gui.red,
-  Warning = g.gui.yellow,
-  Information = g.gui.green,
-  Hint = g.gui.orange,
+  Error = colors.red,
+  Warning = colors.yellow,
+  Information = colors.green,
+  Hint = colors.orange,
 })
