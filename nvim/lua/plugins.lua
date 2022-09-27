@@ -38,6 +38,17 @@ return require("packer").startup({ function(use)
   use { "williamboman/mason-lspconfig.nvim" }
 
   use {
+    "mweisshaupt1988/neobeans.vim",
+    as = "neobeans",
+    config = function()
+      require("neobeans").setup({
+        nvim_tree = { contrast = true }, -- or use contrast = false to not apply contrast
+        light_mode = false, -- the default is the dark theme, set to true to enable light theme
+      })
+    end
+  }
+
+  use {
     "cocopon/iceberg.vim",
     config = function()
       require("pluginconfig/iceberg")
@@ -293,9 +304,8 @@ return require("packer").startup({ function(use)
   use {
     "Maan2003/lsp_lines.nvim",
     config = function()
-      require("lsp_lines").setup()
-    end,
-    event = { "VimEnter" }
+      require("pluginconfig/lsp_lines")
+    end
   }
 
   use {
@@ -373,6 +383,8 @@ return require("packer").startup({ function(use)
       require("pluginconfig/SmoothCursor")
     end
   }
+
+  vim.cmd [[colorscheme neobeans]]
 
 end,
   config = {

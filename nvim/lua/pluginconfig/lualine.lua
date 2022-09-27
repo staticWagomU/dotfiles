@@ -1,7 +1,6 @@
 local lualine = require('lualine')
 
-local g = {}
-g, _ = vim.fn['iceberg#palette#dark#create']()
+local colors = require("neobeans.core").get_dark_colors()
 
 local conditions = {
   buffer_not_empty = function()
@@ -24,10 +23,10 @@ local config = {
     component_separators = '',
     section_separators = '',
     theme = {
-      normal = { c = { fg = g.gui.statuslinenc_fg, bg = g.gui.statuslinenc_bg } },
-      inactive = { c = { fg = g.gui.statuslinenc_fg, bg = g.gui.statuslinenc_bg } },
+      normal = { c = { fg = colors.foreground, bg = colors.background } },
+      inactive = { c = { fg = colors.foreground, bg = colors.background } },
     },
-    disabled_filetypes = { 'Trouble', 'packer', 'alpha', 'lspsagaoutline' , 'lir', 'toggleterm'},
+    disabled_filetypes = { 'Trouble', 'packer', 'alpha', 'lspsagaoutline', 'lir', 'toggleterm' },
     globalstatus = true,
   },
   sections = {
@@ -65,29 +64,29 @@ local function setModeColor(mode)
   local cmd = vim.api.nvim_command
 
   local mode_color = {
-    n = g.gui.green,
-    i = g.gui.red,
-    v = g.gui.blue,
-    [''] = g.gui.blue,
-    V = g.gui.blue,
-    c = g.gui.pale,
-    no = g.gui.green,
-    s = g.gui.orange,
-    S = g.gui.orange,
-    [''] = g.gui.orange,
-    ic = g.gui.lblue,
-    R = g.gui.purple,
-    Rv = g.gui.purple,
-    cv = g.gui.red,
-    ce = g.gui.red,
-    r = g.gui.pale,
-    rm = g.gui.pale,
-    ['r?'] = g.gui.pale,
-    ['!'] = g.gui.red,
-    t = g.gui.red,
+    n = colors.green,
+    i = colors.red,
+    v = colors.blue,
+    [''] = colors.blue,
+    V = colors.blue,
+    c = colors.black,
+    no = colors.green,
+    s = colors.orange,
+    S = colors.orange,
+    [''] = colors.orange,
+    ic = colors.blue,
+    R = colors.purple,
+    Rv = colors.purple,
+    cv = colors.red,
+    ce = colors.red,
+    r = colors.black,
+    rm = colors.black,
+    ['r?'] = colors.black,
+    ['!'] = colors.red,
+    t = colors.red,
   }
-  cmd('hi Mode guibg=' .. mode_color[mode] .. ' guifg=' .. g.gui.statuslinenc_bg .. ' gui=bold')
-  cmd('hi ModeSeparator  guibg=' .. g.gui.statuslinenc_bg .. ' guifg=' .. mode_color[mode])
+  cmd('hi Mode guibg=' .. mode_color[mode] .. ' guifg=' .. colors.background .. ' gui=bold')
+  cmd('hi ModeSeparator  guibg=' .. colors.background .. ' guifg=' .. mode_color[mode])
 end
 
 local function getmode()
@@ -135,7 +134,7 @@ ins_left {
 ins_left {
   'branch',
   icon = '',
-  color = { fg = g.gui.purple },
+  color = { fg = colors.purple },
 }
 
 
@@ -144,9 +143,9 @@ ins_left {
   sources = { 'nvim_diagnostic' },
   symbols = { error = ' ', warn = ' ', info = ' ' },
   diagnostics_color = {
-    color_error = { fg = g.gui.red },
-    color_warn = { fg = g.gui.purple },
-    color_info = { fg = g.gui.pale },
+    color_error = { fg = colors.red },
+    color_warn = { fg = colors.purple },
+    color_info = { fg = colors.black },
   },
 }
 
@@ -155,9 +154,9 @@ ins_left {
   -- Is it me or the symbol for modified us really weird
   symbols = { added = ' ', modified = '柳 ', removed = ' ' },
   diff_color = {
-    added = { fg = g.gui.green },
-    modified = { fg = g.gui.orange },
-    removed = { fg = g.gui.red },
+    added = { fg = colors.green },
+    modified = { fg = colors.orange },
+    removed = { fg = colors.red },
   },
   cond = conditions.hide_in_width,
 }
@@ -188,14 +187,14 @@ ins_left {
     return msg
   end,
   icon = ' LSP:',
-  color = { fg = g.gui.fg, gui = 'bold' },
+  color = { fg = colors.foreground, gui = 'bold' },
 }
 
 ins_right { 'filetype' }
 
 ins_right { 'location' }
 
-ins_right { 'progress', color = { fg = g.gui.fg } }
+ins_right { 'progress', color = { fg = colors.foreground } }
 
 ins_right {
   -- filesize component
@@ -208,15 +207,16 @@ ins_right {
   'o:encoding', -- option component same as &encoding in viml
   fmt = string.upper, -- I'm not sure why it's upper case either ;)
   cond = conditions.hide_in_width,
-  color = { fg = g.gui.green, gui = 'bold' },
+  color = { fg = colors.green, gui = 'bold' },
 }
 
 ins_right {
   'fileformat',
   fmt = string.upper,
   icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = g.gui.green, gui = 'bold' },
+  color = { fg = colors.green, gui = 'bold' },
 }
 
 -- Now don't forget to initialize lualine
-lualine.setup(config)
+-- lualine.setup(config)
+lualine.setup()
