@@ -65,7 +65,7 @@ local function setModeColor(mode)
 
   local mode_color = {
     n = colors.green,
-    i = colors.red,
+    i = colors.red_light,
     v = colors.blue,
     [''] = colors.blue,
     V = colors.blue,
@@ -77,13 +77,13 @@ local function setModeColor(mode)
     ic = colors.blue,
     R = colors.purple,
     Rv = colors.purple,
-    cv = colors.red,
-    ce = colors.red,
+    cv = colors.red_light,
+    ce = colors.red_light,
     r = colors.yellow,
     rm = colors.yellow,
     ['r?'] = colors.yellow,
-    ['!'] = colors.red,
-    t = colors.red,
+    ['!'] = colors.red_light,
+    t = colors.red_light,
   }
   cmd('hi Mode guibg=' .. mode_color[mode] .. ' guifg=' .. colors.ruler .. ' gui=bold')
   cmd('hi ModeSeparator  guibg=' .. colors.ruler .. ' guifg=' .. mode_color[mode])
@@ -143,7 +143,7 @@ ins_left {
   sources = { 'nvim_diagnostic' },
   symbols = { error = ' ', warn = ' ', info = ' ' },
   diagnostics_color = {
-    color_error = { fg = colors.red },
+    color_error = { fg = colors.red_light },
     color_warn = { fg = colors.purple },
     color_info = { fg = colors.yellow },
   },
@@ -156,7 +156,7 @@ ins_left {
   diff_color = {
     added = { fg = colors.green },
     modified = { fg = colors.orange },
-    removed = { fg = colors.red },
+    removed = { fg = colors.red_light },
   },
   cond = conditions.hide_in_width,
 }
