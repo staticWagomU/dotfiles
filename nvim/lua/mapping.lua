@@ -41,6 +41,14 @@ keymap("n", "Z", "<Nop>", opts)
 keymap("n", "[telescope]", "<Nop>", opts)
 vim.api.nvim_set_keymap("n", "Z", "[telescope]", {})
 
+keymap("n", "c2", 'ci"', opts)
+keymap("n", "c7", "ci'", opts)
+keymap("n", "c8", "ci(", opts)
+
+keymap("n", "ca2", 'ca"', opts)
+keymap("n", "ca7", "ca'", opts)
+keymap("n", "ca7", "ca(", opts)
+
 keymap("n", "v2", 'vi"', opts)
 keymap("n", "v7", "vi'", opts)
 keymap("n", "v8", "vi(", opts)
