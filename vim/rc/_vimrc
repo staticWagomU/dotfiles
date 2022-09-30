@@ -138,6 +138,18 @@ nnoremap <silent> va7 va'
 nnoremap <silent> va8 va(
 nnoremap <silent> va, va<
 
+nnoremap <silent> c2 ci"
+nnoremap <silent> c7 ci'
+nnoremap <silent> c8 ci(
+nnoremap <silent> c[ ci[
+nnoremap <silent> c{ ci{
+nnoremap <silent> c, ci<
+
+nnoremap <silent> ca2 ca"
+nnoremap <silent> ca7 ca'
+nnoremap <silent> ca8 ca(
+nnoremap <silent> ca, ca<
+
 nnoremap <silent> <C-j> o<ESC>
 nnoremap <silent> <C-k> O<ESC>
 

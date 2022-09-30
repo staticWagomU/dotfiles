@@ -74,5 +74,5 @@ keymap("n", "q?", [[q?]], opts)
 -- keymap("n", "]p", "p", silent)
 -- keymap("n", "]P", "P", silent)
 
-keymap("n", "<C-j>", "O<ESC>", opts)
-keymap("n", "<M-j>", "o<ESC>", opts)
+keymap("n", "<M-j>", "O<ESC>", opts)
+keymap("n", "<C-j>", "o<ESC>", opts)
