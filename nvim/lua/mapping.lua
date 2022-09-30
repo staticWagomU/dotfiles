@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-local
 -- "-------------------------------------------------------------------------------------------------+
 -- " Commands \ Modes | Normal | Insert | Command | Visual | Select | Operator | Terminal | Lang-Arg |
 -- " ================================================================================================+
@@ -76,3 +77,5 @@ keymap("n", "q?", [[q?]], opts)
 
 keymap("n", "<M-j>", "O<ESC>", opts)
 keymap("n", "<C-j>", "o<ESC>", opts)
+
+keymap("i", "<C-x><C-c>", "<ESC>", opts)
