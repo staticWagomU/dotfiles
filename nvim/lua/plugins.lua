@@ -110,7 +110,13 @@ return require("packer").startup({ function(use)
   use { "petertriho/cmp-git", after = "nvim-cmp" }
   use { "ray-x/lsp_signature.nvim" }
 
-  use { "L3MON4D3/LuaSnip", after = "nvim-cmp" }
+  use {
+    "L3MON4D3/LuaSnip",
+    after = "nvim-cmp",
+    config = function()
+      require("pluginconfig/Luasip")
+    end
+  }
 
   use {
     "nvim-lualine/lualine.nvim",
