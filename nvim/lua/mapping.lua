@@ -58,24 +58,5 @@ keymap("n", "va2", 'va"', opts)
 keymap("n", "va7", "va'", opts)
 keymap("n", "va7", "va(", opts)
 
-keymap("n", "q", [[<Nop>]], opts)
-keymap("n", "Q", [[q]], opts)
---keymap("n", "qh", [[<Cmd>call <SID>Quit('h')<CR>]], silent)
---keymap("n", "qj", [[<Cmd>call <SID>Quit('j')<CR>]], silent)
---keymap("n", "qk", [[<Cmd>call <SID>Quit('k')<CR>]], silent)
---keymap("n", "ql", [[<Cmd>call <SID>Quit('l')<CR>]], silent)
---keymap("n", "qq", [[<Cmd>call <SID>Quit()<CR>]], silent)
-keymap("n", "q:", [[q:]], opts)
-keymap("n", "q/", [[q/]], opts)
-keymap("n", "q?", [[q?]], opts)
-
-
--- keymap("n", "p", "]p", silent)
--- keymap("n", "P", "]P", silent)
--- keymap("n", "]p", "p", silent)
--- keymap("n", "]P", "P", silent)
-
 keymap("n", "<M-j>", "O<ESC>", opts)
 keymap("n", "<C-j>", "o<ESC>", opts)
-
-keymap("i", "<C-x><C-c>", "<ESC>", opts)
