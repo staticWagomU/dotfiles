@@ -45,6 +45,7 @@ Set-Alias gs git_status
 Set-Alias mcd mkdir_cd
 Set-Alias mccd mkdir_cd_cls
 Set-Alias :q ex
+Set-Alias q: ex
 Set-Alias ... cd1
 Set-Alias .... cd2
 Set-Alias ..... cd3
