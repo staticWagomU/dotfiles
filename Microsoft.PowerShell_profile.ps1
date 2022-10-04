@@ -1,41 +1,71 @@
-if(-not $env:path.Split(';').Contains('.')){
+if(-not $env:path.Split(';').Contains('.'))
+{
   $env:path += ";."
 }
 
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/avit.omp.json" | Invoke-Expression
 
-function mkdir_cd {
+function mkdir_cd
+{
   [CmdletBinding()]
-    param(
-        [Parameter(Mandatory = $true)]
-        $Path
-        )
+  param(
+    [Parameter(Mandatory = $true)]
+    $Path
+  )
 
-      New-Item -Path $Path -ItemType Directory
+  New-Item -Path $Path -ItemType Directory
 
-      Set-Location -Path $Path
+  Set-Location -Path $Path
 }
 
-function mkdir_cd_cls {
+function mkdir_cd_cls
+{
   [CmdletBinding()]
-    param(
-        [Parameter(Mandatory = $true)]
-        $Path
-        )
+  param(
+    [Parameter(Mandatory = $true)]
+    $Path
+  )
 
-      New-Item -Path $Path -ItemType Directory
+  New-Item -Path $Path -ItemType Directory
 
-      Set-Location -Path $Path
-      Clear-Host
+  Set-Location -Path $Path
+  Clear-Host
 }
 
-function git_status() {git status}
-function ex{exit}
-function cd1{cd ..\}
-function cd2{cd ..\..\}
-function cd3{cd ..\..\..\}
-function cdhome{cd ~}
-function cddotfiles{cd ~\dotfiles}
+function git_status()
+{
+  git status
+}
+function ex
+{
+  exit
+}
+function cd1
+{
+  Set-Location ..\
+}
+function cd2
+{
+  Set-Location ..\..\
+}
+function cd3
+{
+  Set-Location ..\..\..\
+}
+function cdhome
+{
+  Set-Location ~
+}
+function cddotfiles
+{
+  Set-Location ~\dotfiles
+}
+
+function clsls
+{
+  Clear-Host
+  Get-ChildItem
+}
 
 Set-Alias csl Clear-Host
 Set-Alias cl Clear-Host
@@ -51,3 +81,4 @@ Set-Alias .... cd2
 Set-Alias ..... cd3
 Set-Alias ~ cdhome
 Set-Alias dot cddotfiles
+Set-Alias ccls clsls
