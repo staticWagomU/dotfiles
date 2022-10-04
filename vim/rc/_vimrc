@@ -12,7 +12,7 @@ scriptencoding utf-8
 if &compatible
 	set nocompatible
 endif
-set number
+"set number
 set helplang=ja
 set signcolumn=yes 
 set hidden
@@ -154,6 +154,10 @@ nnoremap <silent> <C-j> o<ESC>
 nnoremap <silent> <C-k> O<ESC>
 
 nnoremap <silent> \ :<C-u>so $MYVIMRC<CR>
+
+nnoremap <silent> q: :q<CR>
+nnoremap <silent> qq: q:
+
 " }}}
 
 " {{{ plugin config
