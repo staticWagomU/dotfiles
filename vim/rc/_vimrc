@@ -293,8 +293,8 @@ let g:neodark#solid_vertsplit = 1
 " }}}
 
 " {{{lightline
-"let g:lightline = {}
-"let g:lightline.colorscheme = 'neodark'
+let g:lightline = {}
+let g:lightline.colorscheme = 'iceberg'
 " }}}
 
 " {{{ fuzzy-motion
@@ -330,7 +330,7 @@ autocmd FileType vim setlocal foldmethod=marker
 " }}}
 
 " {{{ other
-"colorscheme neodark
+set background=light
 colorscheme iceberg
 filetype plugin indent on
 
