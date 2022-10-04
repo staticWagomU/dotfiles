@@ -114,7 +114,7 @@ return require("packer").startup({ function(use)
     "L3MON4D3/LuaSnip",
     after = "nvim-cmp",
     config = function()
-      require("pluginconfig/Luasip")
+      require("pluginconfig/LuaSnip")
     end
   }
 
