@@ -67,8 +67,26 @@ function clsls
   Get-ChildItem
 }
 
-Set-Alias csl Clear-Host
-Set-Alias cl Clear-Host
+function cdclsls
+{
+  [CmdletBinding()]
+  param(
+    [Parameter(Mandatory = $true)]
+    $Path
+  )
+
+  Set-Location -Path $Path
+  Clear-Host
+  Get-ChildItem
+}
+
+function clear
+{
+  Clear-Host
+}
+
+Set-Alias csl clear
+Set-Alias cl clear
 Set-Alias n nvim
 Set-Alias v vim
 Set-Alias gs git_status
@@ -82,3 +100,4 @@ Set-Alias ..... cd3
 Set-Alias ~ cdhome
 Set-Alias dot cddotfiles
 Set-Alias ccls clsls
+Set-Alias cdls cdclsls
