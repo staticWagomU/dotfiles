@@ -35,6 +35,10 @@ set title
 let &g:titlestring =
 \ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
 set nowrap
+if !has('gui_running')
+  set t_Co=256
+endif
+set noshowmode
 " }}}
 
 " {{{ plugins
@@ -51,6 +55,7 @@ Plug 'vim-denops/denops.vim'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'yuki-yano/fuzzy-motion.vim'
+Plug 'vim-skk/skkeleton'
 
 " {{{ fern
 Plug 'lambdalisue/fern.vim'
@@ -257,6 +262,7 @@ call ddc#custom#patch_global('sources', [
 	\ 'around',
 	\ 'vim-lsp',
 	\ 'file',
+	\ 'skkeleton',
 	\ ])
 call ddc#custom#patch_global('sourceOptions', {
 	\ '_': {
@@ -269,6 +275,12 @@ call ddc#custom#patch_global('sourceOptions', {
 	\   'mark': 'LSP', 
 	\   'matchers': ['matcher_head'],
 	\   'forceCompletionPattern': '\.|:|->|"\w+/*'
+	\ },
+	\ 'skkeleton': {
+	\   'mark': 'skkeleton',
+	\   'matches': ['skkeleton'],
+	\   'sources': [],
+	\   'minAutoCompleteLength': 2
 	\ },
 	\ 'file': {
 	\   'mark': 'file',
@@ -308,6 +320,33 @@ let g:fuzzy_motion_word_regexp_list = [
   \ '([0-9a-zA-Z_-]|[.])+',
   \ '([0-9a-zA-Z]|[()<>.-_#''"]|(\s=+\s)|(,\s)|(:\s)|(\s=>\s))+'
   \ ]
+" }}}
+
+" {{{skkeleton
+"let g:skkeleton#debug = v:true
+function! s:skkeleton_init() abort
+ call skkeleton#config({
+ \ 'eggLikeNewline': v:true,
+ \ "globalDictionaries": [
+ \  ["C:\\Program Files\\skk\\SKK-JISYO.L", "euc-jp"],
+ \  ["C:\\Program Files\\skk\\SKK-JISYO.geo", "euc-jp"],
+ \  ["C:\\Program Files\\skk\\SKK-JISYO.jinmei", "euc-jp"],
+ \  ["C:\\Program Files\\skk\\SKK-JISYO.propernoun", "euc-jp"],
+ \  ["C:\\Program Files\\skk\\SKK-JISYO.station", "euc-jp"]
+ \ ]
+ \})
+ call skkeleton#register_kanatable('rom', {
+ \ "z\<Space>": ["\u3000", ''],
+ \})
+endfunction
+
+augroup skkeleton-initialize-pre
+ autocmd!
+ autocmd User skkeleton-initialize-pre call s:skkeleton_init()
+augroup END
+
+imap <C-j> <Plug>(skkeleton-toggle)
+cmap <C-j> <Plug>(skkeleton-toggle)
 " }}}
 
 " }}}
