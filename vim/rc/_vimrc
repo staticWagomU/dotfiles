@@ -97,23 +97,22 @@ call plug#end()
 " {{{ keymaps
 "           Mode  | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang | ~
 "  Command        +------+-----+-----+-----+-----+-----+------+------+ ~
-"  [nore]map      | yes  |  -  |  -  | yes | yes | yes |  -   |  -   |
-"  n[nore]map     | yes  |  -  |  -  |  -  |  -  |  -  |  -   |  -   |
-"  [nore]map!     |  -   | yes | yes |  -  |  -  |  -  |  -   |  -   |
-"  i[nore]map     |  -   | yes |  -  |  -  |  -  |  -  |  -   |  -   |
-"  c[nore]map     |  -   |  -  | yes |  -  |  -  |  -  |  -   |  -   |
-"  v[nore]map     |  -   |  -  |  -  | yes | yes |  -  |  -   |  -   |
-"  x[nore]map     |  -   |  -  |  -  | yes |  -  |  -  |  -   |  -   |
-"  s[nore]map     |  -   |  -  |  -  |  -  | yes |  -  |  -   |  -   |
-"  o[nore]map     |  -   |  -  |  -  |  -  |  -  | yes |  -   |  -   |
-"  t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  | yes  |  -   |
-"  l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
+"  [nore]map      |  @   |  -  |  -  |  @  |  @  |  @  |  -   |  -   |
+"  n[nore]map     |  @   |  -  |  -  |  -  |  -  |  -  |  -   |  -   |
+"  [nore]map!     |  -   |  @  |  @  |  -  |  -  |  -  |  -   |  -   |
+"  i[nore]map     |  -   |  @  |  -  |  -  |  -  |  -  |  -   |  -   |
+"  c[nore]map     |  -   |  -  |  @  |  -  |  -  |  -  |  -   |  -   |
+"  v[nore]map     |  -   |  -  |  -  |  @  |  @  |  -  |  -   |  -   |
+"  x[nore]map     |  -   |  -  |  -  |  @  |  -  |  -  |  -   |  -   |
+"  s[nore]map     |  -   |  -  |  -  |  -  |  @  |  -  |  -   |  -   |
+"  o[nore]map     |  -   |  -  |  -  |  -  |  -  |  @  |  -   |  -   |
+"  t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  |  @   |  -   |
+"  l[nore]map     |  -   |  @  |  @  |  -  |  -  |  -  |  -   |  @   |
 
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
 xnoremap <Leader> <Nop>
 
-"inoremap <silent> jj <ESC>
 inoremap <silent> <Up> <C-o>gk
 inoremap <silent> <Down> <C-o>gj
 nnoremap <silent> <Up> gk
@@ -156,7 +155,7 @@ nnoremap <silent> ca8 ca(
 nnoremap <silent> ca, ca<
 
 nnoremap <silent> <C-j> o<ESC>
-nnoremap <silent> <C-k> O<ESC>
+nnoremap <silent> <C-j> O<ESC>
 
 nnoremap <silent> \ :<C-u>so $MYVIMRC<CR>
 
@@ -196,17 +195,14 @@ vmap <Leader>t <Plug>(VTranslate)
 " }}}
 
 " {{{ git-gutter
-" By default updatetime is 4000 ms
 set updatetime=100
 
-" Use fontawesome icons as signs
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '>'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_removed_first_line = '^'
 let g:gitgutter_sign_modified_removed = '<'
 
-" Default key mapping off
 let g:gitgutter_map_keys = 0
 
 " }}}
@@ -303,12 +299,12 @@ inoremap <C-p> <Cmd>call pum#map#insert_relative(-1)<CR>
 
 " }}}
 
-" {{{neodark
+" {{{ neodark
 let g:neodark#terminal_transparent = 1
 let g:neodark#solid_vertsplit = 1
 " }}}
 
-" {{{lightline
+" {{{ lightline
 let g:lightline = {}
 let g:lightline.colorscheme = 'iceberg'
 " }}}
@@ -322,7 +318,7 @@ let g:fuzzy_motion_word_regexp_list = [
   \ ]
 " }}}
 
-" {{{skkeleton
+" {{{ skkeleton
 "let g:skkeleton#debug = v:true
 function! s:skkeleton_init() abort
  call skkeleton#config({
@@ -386,5 +382,4 @@ function g:RandomColorScheme()
 	unlet mycolors
 endfunction
 
-"call g:RandomColorScheme()
 " }}}
