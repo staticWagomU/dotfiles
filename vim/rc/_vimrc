@@ -305,8 +305,24 @@ let g:neodark#solid_vertsplit = 1
 " }}}
 
 " {{{ lightline
-let g:lightline = {}
-let g:lightline.colorscheme = 'iceberg'
+let g:lightline = {
+ \ 'colorscheme': 'iceberg'
+ \}
+let g:lightline.active = {
+ \ 'left': [
+ \   [ 'mode', 'paste' ],
+ \   [ 'readonly', 'filename', 'modified' ]
+ \ ],
+ \ 'right': [
+ \   [ 'lineinfo' ],
+ \   [ 'percent' ],
+ \   [ 'fileformat', 'fileencoding', 'filetype' ]
+ \ ]
+ \}
+let g:lightline.inactive = {
+ \ 'left': [],
+ \ 'right': []
+ \ }
 " }}}
 
 " {{{ fuzzy-motion
