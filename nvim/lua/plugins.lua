@@ -390,6 +390,20 @@ return require("packer").startup({ function(use)
     end
   }
 
+  -- Packer
+  use({
+    "folke/noice.nvim",
+    event = "VimEnter",
+    config = function()
+      require("pluginconfig/noice")
+    end,
+    requires = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
+  })
+
   vim.cmd [[colorscheme neobeans]]
 
 end,
