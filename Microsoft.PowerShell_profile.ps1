@@ -85,6 +85,12 @@ function clear
   Clear-Host
 }
 
+function dotfiles_gitpull
+{
+  Set-Location ~\dotfiles
+  git pull
+}
+
 Set-Alias csl clear
 Set-Alias cl clear
 Set-Alias n nvim
@@ -101,3 +107,4 @@ Set-Alias ~ cdhome
 Set-Alias dot cddotfiles
 Set-Alias ccls clsls
 Set-Alias cdls cdclsls
+Set-Alias dgp dotfiles_gitpull
