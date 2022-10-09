@@ -4,7 +4,7 @@ filetype plugin indent off
 " {{{ options
 if has('vim_starting')
 	set encoding=utf-8
-	set fileencodings=iso-2022-jp,ucs-bom,sjis,utf-8,euc-jp,cp932,default,latin1
+	set fileencodings=utf-8,sjis,iso-2022-jp,ucs-bom,euc-jp,cp932,default,latin1
 	set fileformats=unix,dos,mac
 endif
 scriptencoding utf-8
@@ -56,6 +56,11 @@ Plug 'KeitaNakamura/neodark.vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'yuki-yano/fuzzy-motion.vim'
 Plug 'vim-skk/skkeleton'
+Plug 'mattn/vim-sonictemplate'
+
+" {{{ golang
+Plug 'mattn/vim-goimports'
+" }}}
 
 " {{{ fern
 Plug 'lambdalisue/fern.vim'
