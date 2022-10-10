@@ -44,7 +44,7 @@ set.fillchars = {
   verthoriz = '╋'
 }
 -- set.winbar = '%=%f%m%='
-set.backspace = {"indent", "eol", "start"}
+set.backspace = { "indent", "eol", "start" }
 
 vim.cmd [=[
 set directory=~
@@ -52,7 +52,7 @@ set backupdir=~
 set undodir=~
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-autocmd bufWritePost * :lua vim.lsp.buf.format()
+" autocmd bufWritePost * :lua vim.lsp.buf.format()
 
 augroup restore-cursor
 	autocmd!
