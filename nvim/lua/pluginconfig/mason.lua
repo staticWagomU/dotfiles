@@ -46,7 +46,7 @@ local on_attach = function(client, bufnr)
 
   -- require("lsp_signature").on_attach()
   -- require("illuminate").on_attach(client)
----@diagnostic disable-next-line: different-requires
+  ---@diagnostic disable-next-line: different-requires
   require("nvim-navic").attach(client, bufnr)
 end
 
@@ -63,8 +63,15 @@ require("mason-lspconfig").setup_handlers({
   function(server_name)
     lspconfig[server_name].setup(opts)
   end,
-  --	["zls"] = function()
-  --	end,
+  ["zls"] = function()
+    lspconfig.zls.setup({
+      settings = {
+        zig = {
+          enable_inlay_hints = true
+        }
+      }
+    })
+  end,
   ["sumneko_lua"] = function()
     lspconfig.sumneko_lua.setup({
       settings = {
@@ -76,6 +83,15 @@ require("mason-lspconfig").setup_handlers({
       },
     })
   end,
+  -- ["pyright"] = function ()
+  --   lspconfig.pyright.setup({
+  --     settings = {
+  --       python = {
+  --         pythonPath = ""
+  --       }
+  --     }
+  --   })
+  -- end,
 })
 
 require("lsp_signature").setup({
