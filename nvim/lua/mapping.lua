@@ -60,3 +60,6 @@ keymap("n", "va7", "va(", opts)
 
 keymap("n", "<M-j>", "O<ESC>", opts)
 keymap("n", "<C-j>", "o<ESC>", opts)
+
+keymap("n", "q:", ":q<CR>", opts)
+keymap("n", "qq:", "qq:", opts)
