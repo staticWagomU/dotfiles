@@ -395,11 +395,11 @@ return require("packer").startup({ function(use)
 
 end,
   config = {
-    display = {
-      open_fn = function()
-        return require("packer.util").float({ border = "single" })
-      end
-    },
+    -- display = {
+    --   open_fn = function()
+    --     return require("packer.util").float({ border = "single" })
+    --   end
+    -- },
     enable = true,
     threshold = 1
   } })
