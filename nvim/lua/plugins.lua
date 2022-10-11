@@ -6,8 +6,8 @@ return require("packer").startup({ function(use)
   use {
     "lewis6991/impatient.nvim",
     config = function()
-      require('impatient')
-      require('impatient').enable_profile()
+      require("impatient")
+      require("impatient").enable_profile()
     end
   }
 
@@ -46,14 +46,6 @@ return require("packer").startup({ function(use)
         light_mode = false, -- the default is the dark theme, set to true to enable light theme
       })
     end
-  }
-
-  use {
-    "cocopon/iceberg.vim",
-    config = function()
-      require("pluginconfig/iceberg")
-    end,
-    after = { "pgmnt.vim" }
   }
 
   use {
@@ -120,16 +112,11 @@ return require("packer").startup({ function(use)
 
   use {
     "nvim-lualine/lualine.nvim",
-    requires = {
-      { "cocopon/pgmnt.vim" },
-    },
     config = function()
       require("pluginconfig/lualine")
     end,
     event = { "VimEnter" }
   }
-
-  use { "cocopon/pgmnt.vim" }
 
   use {
     "glepnir/lspsaga.nvim",
@@ -410,7 +397,7 @@ end,
   config = {
     display = {
       open_fn = function()
-        return require('packer.util').float({ border = 'single' })
+        return require("packer.util").float({ border = "single" })
       end
     },
     enable = true,
