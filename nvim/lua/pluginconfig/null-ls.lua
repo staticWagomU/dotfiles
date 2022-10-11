@@ -11,5 +11,5 @@ local sources = {
 null_ls.setup({
   -- debug = true,
   sources = sources,
-  on_attach = require("plugins.configs.nvim_lsp.nvim_lsp").on_attach,
+  on_attach = require("mason").on_attach,
 })
