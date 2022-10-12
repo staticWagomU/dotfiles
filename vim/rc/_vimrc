@@ -167,6 +167,8 @@ nnoremap <silent> \ :<C-u>so $MYVIMRC<CR>
 nnoremap <silent> q: :q<CR>
 nnoremap <silent> qq: q:
 
+nnoremap <silent> <C-\> :<C-u>bo term<CR>
+
 " }}}
 
 " {{{ plugin config
