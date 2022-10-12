@@ -396,6 +396,7 @@ filetype plugin indent on
 
 command! Vimrc execute 'edit ~/dotfiles/vim/rc/_vimrc'
 command! Gvimrc execute 'edit ~/dotfiles/vim/rc/gvimrc'
+command! Dot execute 'cd ~/dotfiles'
 
 function g:RandomColorScheme()
 	let mycolors = split(globpath(&rtp,"**/colors/*.vim"),"\n") 
