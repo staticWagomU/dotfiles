@@ -21,6 +21,7 @@ $appList=@(
   "OpenJS.NodeJS.LTS"
   "Neovim.Neovim"
   "wez.wezterm"
+  "Noetepad++.Notepad++"
 )
 
 function exec_winget($app)
