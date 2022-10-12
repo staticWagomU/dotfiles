@@ -16,6 +16,6 @@ local ai = require 'luasnip.nodes.absolute_indexer'
 
 ls.snippets = {
   javascript = {
-    s({ trig = "print" }, { t("console.log(") }, i(0), t({ ")" }))
+    s("print", { t("console.log(") }, i(0), t({ ")" }))
   }
 }
