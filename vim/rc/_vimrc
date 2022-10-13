@@ -167,7 +167,7 @@ nnoremap <silent> \ :<C-u>so $MYVIMRC<CR>
 nnoremap <silent> q: :q<CR>
 nnoremap <silent> qq: q:
 
-nnoremap <silent> <C-\> :<C-u>bo term<CR>
+"nnoremap <silent> <C-\> :<C-u>bo term<CR>
 
 " }}}
 
@@ -389,6 +389,38 @@ augroup fileTypeIndent
 augroup END
 
 autocmd FileType vim setlocal foldmethod=marker
+
+ let s:termname = '__terminal__'
+ function! s:open() abort
+   if bufexists(s:termname)
+     botright split
+     call execute('buffer ' .. s:termname)
+     startinsert
+   else
+     if has('nvim')
+       botright split | terminal
+     else
+       botright terminal
+     endif
+     startinsert
+     call execute('file ' .. s:termname)
+     setl nobuflisted
+   endif
+ endfunction
+ function! s:close(pane) abort
+   call execute(a:pane . 'wincmd c')
+ endfunction
+ function! s:toggle() abort
+   let pane = bufwinnr(s:termname)
+   if pane > -1
+     call s:close(pane)
+   else
+     call s:open()
+   endif
+ endfunction
+ command! -nargs=0 TerminalToggle call s:toggle()
+nnoremap <silent> <C-\> <cmd>TerminalToggle<CR>
+tnoremap <silent> <C-\> <cmd>TerminalToggle<CR>
 " }}}
 
 " {{{ other
