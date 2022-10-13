@@ -182,7 +182,7 @@ let g:fern#default_hidden=1
 function! s:fern_settings() abort
   nmap <silent> <buffer> <C-m> <Plug>(fern-action-move)
   nmap <silent> <buffer> <C-s> <Plug>(fern-action-new-dir)
-  nnoremap <buffer> <C-F> <C-W>p
+  nnoremap <buffer> <C-f> <C-W>p
   nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
   nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
   nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
