@@ -3,16 +3,13 @@ vim.cmd [[packadd packer.nvim]]
 return require("packer").startup({ function(use)
   use { "wbthomason/packer.nvim" }
 
-  use {
-    "lewis6991/impatient.nvim",
-    config = function()
-      require("impatient")
-      require("impatient").enable_profile()
-    end
-  }
+  use { "lewis6991/impatient.nvim" }
 
   use { "nvim-lua/plenary.nvim" }
-  use { "vim-denops/denops.vim" }
+  use {
+    "vim-denops/denops.vim",
+    event = "CursorHold",
+  }
   use { "MunifTanjim/nui.nvim" }
   use { "kyazdani42/nvim-web-devicons" }
 
@@ -22,17 +19,13 @@ return require("packer").startup({ function(use)
       { "neovim/nvim-lspconfig", after = "mason.nvim" },
       { "williamboman/mason-lspconfig.nvim", after = "mason.nvim" }
     },
-    config = function()
-      require("pluginconfig/mason")
-    end,
+    config = 'require("pluginconfig.mason")',
     event = "VimEnter",
   }
 
   use {
     "neovim/nvim-lspconfig",
-    config = function()
-      require("pluginconfig/nvim-lspconfig")
-    end
+    config = 'require("pluginconfig.nvim-lspconfig")',
   }
 
   use { "williamboman/mason-lspconfig.nvim" }
@@ -80,7 +73,7 @@ return require("packer").startup({ function(use)
     config = function()
       require("pluginconfig/nvim-cmp")
     end,
-    event = { "VimEnter" }
+    event = { "InsertEnter", "CmdlineEnter" },
   }
 
   use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
@@ -107,7 +100,8 @@ return require("packer").startup({ function(use)
     after = "nvim-cmp",
     config = function()
       require("pluginconfig/LuaSnip")
-    end
+    end,
+    event = "InsertEnter",
   }
 
   use {
@@ -115,7 +109,7 @@ return require("packer").startup({ function(use)
     config = function()
       require("pluginconfig/lualine")
     end,
-    event = { "VimEnter" }
+    event = { "BufRead", "BufNewFile" },
   }
 
   use {
@@ -208,7 +202,8 @@ return require("packer").startup({ function(use)
     after = { "denops.vim" },
     config = function()
       require("pluginconfig/fuzzy-motion")
-    end
+    end,
+    event = "BufEnter",
   }
 
   use { "mattn/vim-sonictemplate" }
@@ -220,17 +215,13 @@ return require("packer").startup({ function(use)
 
   use {
     "folke/lsp-colors.nvim",
-    config = function()
-      require("pluginconfig/lsp-colors")
-    end,
+    config = 'require("pluginconfig.lsp-colors")',
     event = { "VimEnter" }
   }
 
   use {
     "jose-elias-alvarez/null-ls.nvim",
-    config = function()
-      require("pluginconfig/null-ls")
-    end,
+    config = 'require("pluginconfig.null-ls")',
     event = { "VimEnter" }
   }
 
@@ -240,9 +231,7 @@ return require("packer").startup({ function(use)
     requires = {
       { "nvim-lua/plenary.nvim", after = "neogit" },
     },
-    config = function()
-      require("pluginconfig/neogit")
-    end,
+    config = 'require("pluginconfig.neogit")',
     cmd = { "Neogit" }
   }
 
@@ -251,9 +240,7 @@ return require("packer").startup({ function(use)
     requires = {
       { "nvim-lua/plenary.nvim", after = "diffview.nvim" },
     },
-    config = function()
-      require("pluginconfig/diffview")
-    end,
+    config = 'require("pluginconfig.diffview")',
     cmd = {
       "DiffviewLog",
       "DiffviewOpen",
@@ -267,9 +254,7 @@ return require("packer").startup({ function(use)
 
   use {
     "j-hui/fidget.nvim",
-    config = function()
-      require "fidget".setup {}
-    end
+    config = 'require "fidget".setup {}'
   }
 
   use { "vim-jp/vimdoc-ja" }
@@ -286,9 +271,7 @@ return require("packer").startup({ function(use)
 
   use {
     "skanehira/denops-translate.vim",
-    config = function()
-      require("pluginconfig/denops-translate")
-    end,
+    config = 'require("pluginconfig.denops-translate")',
     event = { "VimEnter" }
   }
 
@@ -296,16 +279,12 @@ return require("packer").startup({ function(use)
   use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
   use {
     "Maan2003/lsp_lines.nvim",
-    config = function()
-      require("pluginconfig/lsp_lines")
-    end
+    config = 'require("pluginconfig.lsp_lines")',
   }
 
   use {
     "folke/which-key.nvim",
-    config = function()
-      require("pluginconfig/which-key")
-    end,
+    config = 'require("pluginconfig.which-key")',
     event = { "VimEnter" }
   }
 
@@ -319,42 +298,31 @@ return require("packer").startup({ function(use)
 
   use {
     "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("pluginconfig/indent-blankline")
-    end,
+    config = 'require("pluginconfig.indent-blankline")',
   }
 
   use {
     "haya14busa/vim-edgemotion",
-    config = function()
-      require("pluginconfig/vim-edgemotion")
-    end,
+    config = 'require("pluginconfig.vim-edgemotion")',
     event = { "VimEnter" }
   }
 
   use {
     "levouh/tint.nvim",
-    config = function()
-      require("pluginconfig/tint")
-    end,
+    config = 'require("pluginconfig.tint")',
     event = { "VimEnter" }
   }
 
   use {
     "fgheng/winbar.nvim",
-    config = function()
-      require("pluginconfig/winbar")
-
-    end,
+    config = 'require("pluginconfig.winbar")',
     event = { "VimEnter" }
   }
 
   use {
     "tamago324/lir.nvim",
     requires = { "nvim-web-devicons" },
-    config = function()
-      require("pluginconfig/lir")
-    end,
+    config = 'require("pluginconfig.lir")',
     event = { "VimEnter" }
   }
 
@@ -377,15 +345,11 @@ return require("packer").startup({ function(use)
     end
   }
 
-  -- Packer
   use({
     "folke/noice.nvim",
     event = "VimEnter",
-    config = function()
-      require("pluginconfig/noice")
-    end,
+    config = 'require("pluginconfig.noice")',
     requires = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     }
@@ -395,11 +359,6 @@ return require("packer").startup({ function(use)
 
 end,
   config = {
-    -- display = {
-    --   open_fn = function()
-    --     return require("packer.util").float({ border = "single" })
-    --   end
-    -- },
     enable = true,
     threshold = 1
   } })
