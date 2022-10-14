@@ -32,5 +32,6 @@ require('winbar').setup({
     'toggleterm',
     'qf',
     'term',
+    'noice'
   }
 })
