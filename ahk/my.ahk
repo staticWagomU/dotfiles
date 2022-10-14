@@ -27,11 +27,7 @@ return
 #!f::Run, C:\Program Files\sakura\sakura.exe
 return
 
-
-#n::Run, C:\Program Files\Neovim\bin\nvim-qt.exe
-return
-
-#!n::Run, C:\Program Files\Vim\vim90\gvim.exe
+#n::Run, C:\Program Files\Vim\vim90\gvim.exe
 return
 
 ; Capture screenshot
