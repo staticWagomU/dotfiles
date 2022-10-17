@@ -1,4 +1,5 @@
 local cmp = require 'cmp'
+local lspkind = require("lspkind")
 
 cmp.setup({
   snippet = {
@@ -6,6 +7,11 @@ cmp.setup({
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
+    format = lspkind.cmp_format({
+      mode = 'symbol',
+      maxwidth = 50,
+      ellipsis_char = '...',
+    }),
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),

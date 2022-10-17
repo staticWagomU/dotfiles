@@ -1,4 +1,5 @@
 local symbol_map = {}
+---@diagnostic disable-next-line: different-requires
 for key, value in pairs(require("lspkind").symbol_map) do
   symbol_map[key] = value .. " "
 end

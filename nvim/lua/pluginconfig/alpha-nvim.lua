@@ -12,7 +12,7 @@ local banner = {
 }
 
 local print_plugins_message = function()
-  local footer_icon = "  "
+  local footer_icon = "  "
   local total_plugins = vim.fn.luaeval("#vim.tbl_keys(packer_plugins)")
 
   return {
@@ -36,4 +36,4 @@ dashboard.section.buttons.val = {
   dashboard.button("q", " Exit", ":qa<CR>"),
 }
 
-require 'alpha'.setup(dashboard.config)
+require("alpha").setup(dashboard.config)

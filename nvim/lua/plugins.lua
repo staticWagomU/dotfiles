@@ -1,7 +1,7 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require("packer").startup({ function(use)
-  use { "wbthomason/packer.nvim" }
+  use { "wbthomason/packer.nvim", opt = true }
 
   use { "lewis6991/impatient.nvim" }
 
@@ -296,15 +296,15 @@ return require("packer").startup({ function(use)
     config = 'require("pluginconfig.SmoothCursor")'
   }
 
-  use({
-    "folke/noice.nvim",
-    event = { "VimEnter" },
-    config = 'require("pluginconfig.noice")',
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    }
-  })
+  -- use({
+  --   "folke/noice.nvim",
+  --   event = { "VimEnter" },
+  --   config = 'require("pluginconfig.noice")',
+  --   requires = {
+  --     "MunifTanjim/nui.nvim",
+  --     "rcarriga/nvim-notify",
+  --   }
+  -- })
 
   vim.cmd [[colorscheme neobeans]]
 

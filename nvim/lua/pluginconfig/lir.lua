@@ -49,7 +49,7 @@ require "lir".setup {
         }, "Normal"),
         width = width,
         height = height,
-        row = math.floor((vim.o.columns - width) / 2) - 1,
+        row = math.floor((vim.o.columns - width) / 2) - math.floor(height / 2),
         col = math.floor((vim.o.columns - width) / 2),
       }
     end,
