@@ -20,7 +20,7 @@ return
 return
 
 ; Pressing the win + c key execute notepad++. 
-#f::Run, C:\Program Files\npp.8.1.9.3.portable.x64\notepad++.exe
+#f::Run, C:\Program Files\Notepad++\notepad++.exe
 return
 
 ; Pressing the win + f key execute sakura editor. 
