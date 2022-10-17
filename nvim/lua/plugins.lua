@@ -6,10 +6,7 @@ return require("packer").startup({ function(use)
   use { "lewis6991/impatient.nvim" }
 
   use { "nvim-lua/plenary.nvim" }
-  use {
-    "vim-denops/denops.vim",
-    event = "CursorHold",
-  }
+  use { "vim-denops/denops.vim", }
   use { "MunifTanjim/nui.nvim" }
   use { "kyazdani42/nvim-web-devicons" }
 
@@ -20,7 +17,7 @@ return require("packer").startup({ function(use)
       { "williamboman/mason-lspconfig.nvim", after = "mason.nvim" }
     },
     config = 'require("pluginconfig.mason")',
-    event = "VimEnter",
+    event = { "VimEnter" },
   }
 
   use {
@@ -33,12 +30,7 @@ return require("packer").startup({ function(use)
   use {
     "mweisshaupt1988/neobeans.vim",
     as = "neobeans",
-    config = function()
-      require("neobeans").setup({
-        nvim_tree = { contrast = true }, -- or use contrast = false to not apply contrast
-        light_mode = false, -- the default is the dark theme, set to true to enable light theme
-      })
-    end
+    config = 'require("pluginconfig.neobeans")',
   }
 
   use {
@@ -46,9 +38,7 @@ return require("packer").startup({ function(use)
     requires = {
       { "nvim-lua/plenary.nvim", after = "telescope.nvim" },
     },
-    config = function()
-      require("pluginconfig/telescope")
-    end,
+    config = 'require("pluginconfig.telescope")',
     event = { "VimEnter" }
   }
 
@@ -62,17 +52,13 @@ return require("packer").startup({ function(use)
 
   use {
     "nvim-treesitter/nvim-treesitter",
-    config = function()
-      require("pluginconfig/nvim-treesitter")
-    end,
+    config = 'require("pluginconfig.nvim-treesitter")',
     event = { "VimEnter" }
   }
 
   use {
     "hrsh7th/nvim-cmp",
-    config = function()
-      require("pluginconfig/nvim-cmp")
-    end,
+    config = 'require("pluginconfig.nvim-cmp")',
     event = { "InsertEnter", "CmdlineEnter" },
   }
 
@@ -88,9 +74,7 @@ return require("packer").startup({ function(use)
   use { "yutkat/cmp-mocword", after = "nvim-cmp" }
   use {
     "onsails/lspkind.nvim",
-    config = function()
-      require("pluginconfig/lspkind")
-    end
+    config = 'require("pluginconfig.lspkind")',
   }
   use { "petertriho/cmp-git", after = "nvim-cmp" }
   use { "ray-x/lsp_signature.nvim" }
@@ -98,26 +82,20 @@ return require("packer").startup({ function(use)
   use {
     "L3MON4D3/LuaSnip",
     after = "nvim-cmp",
-    config = function()
-      require("pluginconfig/LuaSnip")
-    end,
-    event = "InsertEnter",
+    config = 'require("pluginconfig.LuaSnip")',
+    event = { "InsertEnter" },
   }
 
   use {
     "nvim-lualine/lualine.nvim",
-    config = function()
-      require("pluginconfig/lualine")
-    end,
+    config = 'require("pluginconfig.lualine")',
     event = { "BufRead", "BufNewFile" },
   }
 
   use {
     "glepnir/lspsaga.nvim",
     branch = "main",
-    config = function()
-      require("pluginconfig/lspsaga")
-    end,
+    config = 'require("pluginconfig.lspsaga")',
     event = { "VimEnter" }
   }
 
@@ -125,85 +103,64 @@ return require("packer").startup({ function(use)
 
   use {
     "lewis6991/gitsigns.nvim",
-    config = function()
-      require("pluginconfig/gitsigns")
-    end,
+    config = 'require("pluginconfig.gitsigns")',
     event = { "VimEnter" }
   }
 
   use {
     "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup {}
-    end,
+    config = 'require("nvim-autopairs").setup({})',
     event = { "VimEnter" }
   }
 
   use {
     "SmiteshP/nvim-navic",
     requires = "neovim/nvim-lspconfig",
-    config = function()
-      ---@diagnostic disable-next-line: different-requires
-      require("pluginconfig/nvim-navic")
-    end,
+    config = 'require("pluginconfig.nvim-navic")',
     event = { "VimEnter" }
   }
 
   use {
     "anuvyklack/pretty-fold.nvim",
-    config = function()
-      require("pretty-fold").setup()
-    end,
+    config = 'require("pretty-fold").setup({})',
     event = { "VimEnter" }
   }
 
   use {
     "petertriho/nvim-scrollbar",
-    config = function()
-      require("pluginconfig/nvim-scrollbar")
-    end,
+    config = 'require("pluginconfig.nvim-scrollbar")',
     event = { "VimEnter" }
   }
 
   use {
     "goolord/alpha-nvim",
-    config = function()
-      require("pluginconfig/alpha-nvim")
-    end
+    config = 'require("pluginconfig.alpha-nvim")'
   }
 
   use {
     "akinsho/toggleterm.nvim",
-    config = function()
-      require("pluginconfig/toggleterm")
-    end,
+    config = 'require("pluginconfig.toggleterm")',
     event = { "VimEnter" }
   }
 
   use {
     "numToStr/Comment.nvim",
-    config = function()
-      require("pluginconfig/comment")
-    end,
+    config = 'require("pluginconfig.comment")',
     event = { "VimEnter" }
   }
 
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("pluginconfig/trouble")
-    end,
+    config = 'require("pluginconfig.trouble")',
     event = { "VimEnter" }
   }
 
   use {
     "yuki-yano/fuzzy-motion.vim",
     after = { "denops.vim" },
-    config = function()
-      require("pluginconfig/fuzzy-motion")
-    end,
-    event = "BufEnter",
+    config = 'require("pluginconfig.fuzzy-motion")',
+    event = { "BufEnter" },
   }
 
   use { "mattn/vim-sonictemplate" }
@@ -290,9 +247,7 @@ return require("packer").startup({ function(use)
 
   use {
     "kylechui/nvim-surround",
-    config = function()
-      require("nvim-surround").setup({})
-    end,
+    config = 'require("nvim-surround").setup({})',
     event = { "VimEnter" }
   }
 
@@ -333,21 +288,17 @@ return require("packer").startup({ function(use)
 
   use {
     "nathom/filetype.nvim",
-    config = function()
-      require("pluginconfig/filetype")
-    end
+    config = 'require("pluginconfig.filetype")',
   }
 
   use {
     "gen740/SmoothCursor.nvim",
-    config = function()
-      require("pluginconfig/SmoothCursor")
-    end
+    config = 'require("pluginconfig.SmoothCursor")'
   }
 
   use({
     "folke/noice.nvim",
-    event = "VimEnter",
+    event = { "VimEnter" },
     config = 'require("pluginconfig.noice")',
     requires = {
       "MunifTanjim/nui.nvim",
