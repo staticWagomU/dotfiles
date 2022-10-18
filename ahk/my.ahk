@@ -35,7 +35,18 @@ return
   Send, !{PrintScreen}
 return
 
-#\::Run, C:\Program Files\Wezterm\wezterm-gui.exe
+Term()
+{
+if(FileExist("C:\Program Files\Wezterm\wezterm-gui.exe ")) 
+	{
+		Run, C:\Program Files\Wezterm\wezterm-gui.exe
+	} else 
+	{
+		Run, %LOCALAPPDATA%\Microsoft\WindowsApps\wt.exe
+
+	}
+}
+#\::Term()
 return
 
 #c::Run, %LOCALAPPDATA%\Programs\Microsoft VS Code\Code.exe
