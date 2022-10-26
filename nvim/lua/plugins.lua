@@ -269,12 +269,6 @@ return require("packer").startup({ function(use)
   }
 
   use {
-    "fgheng/winbar.nvim",
-    config = 'require("pluginconfig.winbar")',
-    event = { "VimEnter" }
-  }
-
-  use {
     "tamago324/lir.nvim",
     requires = { "nvim-web-devicons" },
     config = 'require("pluginconfig.lir")',
@@ -296,15 +290,15 @@ return require("packer").startup({ function(use)
     config = 'require("pluginconfig.SmoothCursor")'
   }
 
-  -- use({
-  --   "folke/noice.nvim",
-  --   event = { "VimEnter" },
-  --   config = 'require("pluginconfig.noice")',
-  --   requires = {
-  --     "MunifTanjim/nui.nvim",
-  --     "rcarriga/nvim-notify",
-  --   }
-  -- })
+  use({
+    "folke/noice.nvim",
+    event = { "VimEnter" },
+    config = 'require("pluginconfig.noice")',
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
+  })
 
   vim.cmd [[colorscheme neobeans]]
 

@@ -56,7 +56,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 local lspconfig = require("lspconfig")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+-- capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 local opts = { capabilities = capabilities, on_attach = on_attach }
 
 require("mason-lspconfig").setup_handlers({

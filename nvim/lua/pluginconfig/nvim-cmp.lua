@@ -7,11 +7,13 @@ cmp.setup({
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
+  formatting = {
     format = lspkind.cmp_format({
       mode = 'symbol',
       maxwidth = 50,
       ellipsis_char = '...',
     }),
+  },
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
