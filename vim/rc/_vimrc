@@ -88,6 +88,7 @@ Plug 'ziglang/zig.vim'
 "{{{ ddc
 Plug 'Shougo/pum.vim'
 Plug 'Shougo/ddc.vim'
+Plug 'Shougo/ddc-ui-pum'
 Plug 'shun/ddc-vim-lsp'
 Plug 'Shougo/ddc-around'
 Plug 'Shougo/ddc-matcher_head'
@@ -262,7 +263,7 @@ let g:lsp_fold_enabled = 0
 "}}}
 
 "{{{ ddc
-call ddc#custom#patch_global('completionMenu', 'pum.vim')
+call ddc#custom#patch_global('ui', 'pum')
 call ddc#custom#patch_global('sources', [
 	\ 'around',
 	\ 'vim-lsp',
@@ -351,10 +352,10 @@ let g:lightline.mode_map = {
 
 " from https://github.com/thinca/config/blob/4b02d5abcb/dotfiles/dot.vim/vimrc#L2263
 let s:skkeleton_modes = {
- \ 'hira': 'あ',
- \ 'kata': 'ア',
- \ 'hankata': 'ｧｱ',
- \ 'zenkaku': 'ａ',
+ \ 'hira': ' あ',
+ \ 'kata': ' ア',
+ \ 'hankata': ' ｧｱ',
+ \ 'zenkaku': ' ａ',
  \ }
 
 function! LightLineMode() abort
