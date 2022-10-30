@@ -209,11 +209,6 @@ return require("packer").startup({ function(use)
     },
   }
 
-  use {
-    "j-hui/fidget.nvim",
-    config = 'require "fidget".setup {}'
-  }
-
   use { "vim-jp/vimdoc-ja" }
 
   use {
