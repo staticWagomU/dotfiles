@@ -54,9 +54,11 @@ Plug 'thinca/vim-fontzoom'
 Plug 'vim-denops/denops.vim'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'cocopon/iceberg.vim'
+Plug 'cocopon/pgmnt.vim'
 Plug 'yuki-yano/fuzzy-motion.vim'
 Plug 'vim-skk/skkeleton'
 Plug 'mattn/vim-sonictemplate'
+Plug 'morhetz/gruvbox'
 
 " {{{ golang
 Plug 'mattn/vim-goimports'
@@ -313,7 +315,7 @@ let g:neodark#solid_vertsplit = 1
 
 " {{{ lightline
 let g:lightline = {
- \ 'colorscheme': 'iceberg'
+ \ 'colorscheme': 'customeiceberg'
  \}
 let g:lightline.active = {
  \ 'left': [
@@ -364,7 +366,6 @@ function! LightLineMode() abort
 			\ get(s:skkeleton_modes, skk_mode, skk_mode))
 	endif
  endif
- echo lightline#mode()
  return lightline#mode()
 endfunction
 
@@ -372,6 +373,93 @@ augroup skkeleton-mode-changed
  autocmd!
  autocmd User skkeleton-mode-changed call LightLineMode()
 augroup END
+
+let s:save_cpo = &cpo
+set cpo&vim
+
+
+function! s:build_palette() abort
+let colors = iceberg#palette#light#create()
+let g = colors.gui
+let c = colors.cterm
+
+let p = {
+	\ 'normal':   {},
+	\ 'inactive': {},
+	\ 'insert':   {},
+	\ 'replace':  {},
+	\ 'visual':   {},
+	\ 'command':   {},
+	\ 'tabline':  {}}
+
+ let col_base     = [g.statuslinenc_fg, g.statuslinenc_bg, c.statuslinenc_fg, c.statuslinenc_bg]
+ let col_edge     = [g.statusline_fg, g.statusline_bg, c.statusline_fg, c.statusline_bg]
+ let col_gradient = [g.statusline_fg, g.xline_gradient_bg, c.statusline_fg, c.xline_gradient_bg]
+ let col_nc       = [g.statuslinenc_fg, g.statuslinenc_bg, c.statuslinenc_fg, c.statuslinenc_bg]
+ let col_tabfill  = [g.statuslinenc_fg, g.statuslinenc_bg, c.statuslinenc_fg, c.statuslinenc_bg]
+ let col_normal   = [g.statusline_fg, g.statusline_bg, c.statusline_fg, c.statusline_bg]
+ let col_error    = [g.statusline_fg, g.red, c.normal_bg, c.red]
+ let col_warning  = [g.statusline_fg, g.orange, c.normal_bg, c.orange]
+ let col_insert   = [g.statusline_fg, g.blue, c.normal_bg, c.blue]
+ let col_replace  = [g.statusline_fg, g.orange, c.normal_bg, c.orange]
+ let col_visual   = [g.statusline_fg, g.purple, c.normal_bg, c.purple]
+ let col_command   = [g.statusline_fg, g.green, c.normal_bg, c.green]
+ let col_tabsel   = [g.statusline_fg, g.statusline_bg, c.statusline_fg, c.statusline_bg]
+
+ let p.normal.middle = [
+	\ col_base]
+ let p.normal.left = [
+	\ col_normal,
+	\ col_gradient]
+ let p.normal.right = [
+	\ col_edge,
+	\ col_gradient]
+ let p.normal.error = [
+	\ col_error]
+ let p.normal.warning = [
+	\ col_warning]
+
+ let p.insert.left = [
+	\ col_insert,
+	\ col_gradient]
+ let p.replace.left = [
+	\ col_replace,
+	\ col_gradient]
+ let p.visual.left = [
+	\ col_visual,
+	\ col_gradient]
+ let p.command.left = [
+	\ col_command,
+	\ col_gradient]
+
+ let p.inactive.middle = [
+	\ col_nc]
+ let p.inactive.left = [
+	\ col_nc,
+	\ col_nc]
+ let p.inactive.right = [
+	\ col_nc,
+	\ col_nc]
+
+ let p.tabline.middle = [
+	\ col_tabfill]
+ let p.tabline.left = [
+	\ col_tabfill]
+ let p.tabline.tabsel = [
+	\ col_tabsel]
+
+ let p.tabline.right = copy(p.normal.right)
+
+ return p
+endfunction
+
+
+let g:lightline#colorscheme#customeiceberg#palette = s:build_palette()
+
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
+
 " }}}
 
 " {{{ fuzzy-motion
@@ -470,9 +558,9 @@ set background=light
 colorscheme iceberg
 filetype plugin indent on
 
-command! Vimrc execute 'edit ~/dotfiles/vim/rc/_vimrc'
-command! Gvimrc execute 'edit ~/dotfiles/vim/rc/gvimrc'
-command! Dot execute 'cd ~/dotfiles'
+command! MYVIMRC execute 'edit ~/dotfiles/vim/rc/_vimrc'
+command! MYGVIMRC execute 'edit ~/dotfiles/vim/rc/gvimrc'
+command! DOT execute 'cd ~/dotfiles'
 
 function g:RandomColorScheme()
 	let mycolors = split(globpath(&rtp,"**/colors/*.vim"),"\n") 
