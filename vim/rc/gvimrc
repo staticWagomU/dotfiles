@@ -1,5 +1,6 @@
 set guifont=CaskaydiaCove_Nerd_Font_Mono:h12:cANSI:qDRAFT
 set guioptions-=T
+set guioptions-=m
 
 if has('win32')
 	cd ~
