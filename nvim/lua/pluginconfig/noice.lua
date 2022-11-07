@@ -27,6 +27,9 @@ require("noice").setup({
     -- The default routes will forward notifications to nvim-notify
     enabled = false,
   },
+  lsp = {
+    signature = { enabled = false }
+  },
   throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
   ---@type table<string, NoiceViewOptions>
   views = {}, -- @see the section on views below

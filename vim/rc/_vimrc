@@ -74,6 +74,7 @@ Plug 'yuki-yano/fern-preview.vim'
 
 " {{{ lightline.vim
 Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-gitbranch'
 " }}}
 
 " {{{ git
@@ -244,6 +245,8 @@ function! s:on_lsp_buffer_enabled() abort
 	nmap <buffer> [g <plug>(lsp-previous-diagnostic)
 	nmap <buffer> ]g <plug>(lsp-next-diagnostic)
 	nmap <buffer> K <plug>(lsp-hover)
+	nmap <buffer> <leader>a <plug>(lsp-code-action)
+	nmap <buffer> <leader>lsp <plug>(lsp-status)
 	nnoremap <buffer> <expr><C-f> lsp#scroll(+4)
 	nnoremap <buffer> <expr><C-S-f> lsp#scroll(-4)
 
@@ -323,10 +326,14 @@ let g:neodark#solid_vertsplit = 1
 let g:lightline = {
  \ 'colorscheme': 'customeiceberg'
  \}
+"let g:lightline = {
+" \ 'colorscheme': 'mystatusline'
+" \}
 let g:lightline.active = {
  \ 'left': [
  \   [ 'mode', 'paste' ],
- \   [ 'readonly', 'filename', 'modified' ]
+ \   [ 'readonly', 'filename', 'modified' ],
+ \   [ 'gitbranch' ]
  \ ],
  \ 'right': [
  \   [ 'lineinfo' ],
@@ -339,7 +346,8 @@ let g:lightline.inactive = {
  \ 'right': []
  \ }
 let g:lightline.component_function = {
- \ 'mode': 'LightLineMode'
+ \ 'mode': 'LightLineMode',
+ \ 'gitbranch': 'gitbranch#name'
  \}
 let g:lightline.mode_map = {
  \ 'n' : 'N',
@@ -557,6 +565,16 @@ endfunction
 command! -nargs=0 TerminalToggle call s:toggle()
 nnoremap <silent> <C-\> <cmd>TerminalToggle<CR>
 tnoremap <silent> <C-\> <cmd>TerminalToggle<CR>
+
+function! s:create_zenn_article(article_name) abort
+  let date = strftime("%Y-%m-%d")
+  let slug = date . "-" . a:article_name
+	call system("npx zenn new:article --slug " . slug)
+  let article_path = "articles/" . slug . ".md"
+  exe "edit " . article_path
+endfunction
+
+command! -nargs=1 ZennCreateArticle call <SID>create_zenn_article(<f-args>)
 " }}}
 
 " {{{ other
@@ -569,9 +587,110 @@ command! MYGVIMRC execute 'edit ~/dotfiles/vim/rc/gvimrc'
 command! DOT execute 'cd ~/dotfiles'
 
 function g:RandomColorScheme()
-	let mycolors = split(globpath(&rtp,"**/colors/*.vim"),"\n") 
-	exe 'so ' . mycolors[localtime() % len(mycolors)]
-	unlet mycolors
+	let l:mycolors = split(globpath(&rtp,"**/colors/*.vim"),"\n") 
+	let l:seed = srand()
+	let l:rnd = rand(l:seed) % len(l:mycolors)
+	execute 'source ' . l:mycolors[l:rnd]
+	unlet l:mycolors
 endfunction
+
+"if has('vim_starting')
+" call g:RandomColorScheme()
+"
+" let s:save_cpo = &cpo
+" set cpo&vim
+"
+" function! s:build_palette() abort
+"	let g = {}
+"	let c = {}
+"
+"	let g = {
+"	\ 'statuslinenc_fg' : hlget('StatusLineNC', v:true)[0]['guifg'],
+"	\ 'statuslinenc_bg' : hlget('StatusLineNC', v:true)[0]['guibg'],
+"	\}
+"	let c = {
+"	\ 'statuslinenc_fg' : hlget('StatusLineNC', v:true)[0]['ctermfg'],
+"	\ 'statuslinenc_bg' : hlget('StatusLineNC', v:true)[0]['ctermbg'],
+"	\}
+"
+"
+"	let p = {
+"		 \ 'normal':   {},
+"		 \ 'inactive': {},
+"		 \ 'insert':   {},
+"		 \ 'replace':  {},
+"		 \ 'visual':   {},
+"		 \ 'command':   {},
+"		 \ 'tabline':  {}}
+"
+"	let col_base     = [g.statuslinenc_fg, g.statuslinenc_bg, c.statuslinenc_fg, c.statuslinenc_bg]
+"	let col_edge     = [g.statusline_fg, g.statusline_bg, c.statusline_fg, c.statusline_bg]
+"	let col_gradient = [g.statusline_fg, g.xline_gradient_bg, c.statusline_fg, c.xline_gradient_bg]
+"	let col_nc       = [g.statuslinenc_fg, g.statuslinenc_bg, c.statuslinenc_fg, c.statuslinenc_bg]
+"	let col_tabfill  = [g.statuslinenc_fg, g.statuslinenc_bg, c.statuslinenc_fg, c.statuslinenc_bg]
+"	let col_normal   = [g.statusline_fg, g.statusline_bg, c.statusline_fg, c.statusline_bg]
+"	let col_error    = [g.statusline_fg, g.red, c.normal_bg, c.red]
+"	let col_warning  = [g.statusline_fg, g.orange, c.normal_bg, c.orange]
+"	let col_insert   = [g.statusline_fg, g.blue, c.normal_bg, c.blue]
+"	let col_replace  = [g.statusline_fg, g.orange, c.normal_bg, c.orange]
+"	let col_visual   = [g.statusline_fg, g.purple, c.normal_bg, c.purple]
+"	let col_command   = [g.statusline_fg, g.green, c.normal_bg, c.green]
+"	let col_tabsel   = [g.statusline_fg, g.statusline_bg, c.statusline_fg, c.statusline_bg]
+"
+"	let p.normal.middle = [
+"		 \ col_base]
+"	let p.normal.left = [
+"		 \ col_normal,
+"		 \ col_gradient]
+"	let p.normal.right = [
+"		 \ col_edge,
+"		 \ col_gradient]
+"	let p.normal.error = [
+"		 \ col_error]
+"	let p.normal.warning = [
+"		 \ col_warning]
+"
+"	let p.insert.left = [
+"		 \ col_insert,
+"		 \ col_gradient]
+"	let p.replace.left = [
+"		 \ col_replace,
+"		 \ col_gradient]
+"	let p.visual.left = [
+"		 \ col_visual,
+"		 \ col_gradient]
+"	let p.command.left = [
+"		 \ col_command,
+"		 \ col_gradient]
+"
+"	let p.inactive.middle = [
+"		 \ col_nc]
+"	let p.inactive.left = [
+"		 \ col_nc,
+"		 \ col_nc]
+"	let p.inactive.right = [
+"		 \ col_nc,
+"		 \ col_nc]
+"
+"	let p.tabline.middle = [
+"		 \ col_tabfill]
+"	let p.tabline.left = [
+"		 \ col_tabfill]
+"	let p.tabline.tabsel = [
+"		 \ col_tabsel]
+"
+"	let p.tabline.right = copy(p.normal.right)
+"
+"	return p
+" endfunction
+"
+"
+" let g:lightline#colorscheme#mystatusline#palette = s:build_palette()
+"
+"
+" let &cpo = s:save_cpo
+" unlet s:save_cpo
+" call lightline#update()
+"endif
 
 " }}}

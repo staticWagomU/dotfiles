@@ -81,3 +81,10 @@ augroup restore-cursor
 		\ | endif
 augroup END
 ]=]
+
+vim.api.nvim_create_user_command("ShowPluginReadme", function()
+	local plugin_name = string.match(vim.fn.expand("<cWORD>"), "['\"].*/(.*)['\"]")
+	local path = vim.fn.stdpath("data") .. "/site/pack/packer/*/" .. plugin_name .. "/README.md"
+
+	vim.cmd("edit " .. vim.fn.resolve(path))
+end, { force = true })
