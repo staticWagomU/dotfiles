@@ -1,5 +1,7 @@
 return {
   "williamboman/mason.nvim",
-  lazy = false,
   event = "BufReadPre",
+  config = function()
+    require("mason").setup({})
+  end,
 }
