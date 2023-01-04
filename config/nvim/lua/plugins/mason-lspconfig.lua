@@ -43,6 +43,7 @@ return {
       -- buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
       -- buf_set_keymap("n", "[lsp]q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
       buf_set_keymap("n", "<Plug>(lsp);l", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+      buf_set_keymap("n", "gv", ":vsplit | lua vim.lsp.buf.definition()<CR>", opts)
 
       -- require("lsp_signature").on_attach()
       -- require("illuminate").on_attach(client)

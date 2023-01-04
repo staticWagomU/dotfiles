@@ -8,5 +8,5 @@ let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S" " フォーマットを yyyy/mm/dd(�
 let g:netrw_preview=1 " プレビューウィンドウを垂直分割で表示する
 "Netrw を toggle する関数を設定
 "元処理と異なり Vex を呼び出すことで左 window に表示
-noremap <silent><C-e> :e ./<CR>
+"noremap <silent><C-e> :e ./<CR>
 ]])
