@@ -2,3 +2,4 @@
 .vscode/*
 nvim/plugin/*
 .DS_Store
+lazy-lock.json
