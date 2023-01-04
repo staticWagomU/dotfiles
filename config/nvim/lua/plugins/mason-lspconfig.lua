@@ -98,11 +98,10 @@ return {
       bind = true, -- This is mandatory, otherwise border config won't get registered.
       handler_opts = {
         border = "single"
-      }
+      },
+      toggle_key = "<C-s>",
+      select_signature_key = "<C-l>"
     })
-    require('ufo').setup()config = function()
-
-    end
   end
 }
 
