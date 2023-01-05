@@ -35,6 +35,7 @@ return {
         dashboard.button("t", " Telescope", ":Telescope<CR>"),
         dashboard.button("f", " Find file", ":Telescope find_files<CR>"),
         dashboard.button("e", " File browser", ":e ./<CR>"),
+        dashboard.button("d", " Dotfiles", ":lcd ~/dotfiles<CR>:Telescope find_files<CR>"),
         --        dashboard.button("i", " Init.lua", ":cd ~/dotfiles/nvim/lua<CR>:lua require'lir.float'.toggle()<cr>"),
         --        dashboard.button("d", " Dotfiles", ":cd ~/dotfiles/<CR>:lua require'lir.float'.toggle()<cr>"),
         --        dashboard.button("u", " Update plugins", ":PackerSync<CR>"),
