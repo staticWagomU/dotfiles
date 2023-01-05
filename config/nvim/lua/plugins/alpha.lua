@@ -18,8 +18,8 @@ return {
 
       local print_plugins_message = function()
         local footer_icon = "  "
-        --local total_plugins = vim.fn.luaeval("#vim.tbl_keys(packer_plugins)")
-        local total_plugins = 0
+        local lazy = require("lazy")
+        local total_plugins = lazy.stats().count
 
         return {
           footer_icon .. "neovim loaded " .. total_plugins .. " plugins"
@@ -36,6 +36,7 @@ return {
         dashboard.button("f", " Find file", ":Telescope find_files<CR>"),
         dashboard.button("e", " File browser", ":e ./<CR>"),
         dashboard.button("d", " Dotfiles", ":lcd ~/dotfiles<CR>:Telescope find_files<CR>"),
+        dashboard.button("a", " Nvim Config", ":lcd ~/dotfiles/config/nvim<CR>:Telescope find_files<CR>"),
         --        dashboard.button("i", " Init.lua", ":cd ~/dotfiles/nvim/lua<CR>:lua require'lir.float'.toggle()<cr>"),
         --        dashboard.button("d", " Dotfiles", ":cd ~/dotfiles/<CR>:lua require'lir.float'.toggle()<cr>"),
         --        dashboard.button("u", " Update plugins", ":PackerSync<CR>"),
