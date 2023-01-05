@@ -5,7 +5,7 @@ local M = {
   dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 }
 
-function M.config() 
+function M.config()
   require("nvim-treesitter.configs").setup {
     highlight = { enable = true, },
     ensure_installed = {
@@ -38,7 +38,6 @@ function M.config()
     },
     sync_install = false,
     auto_install = false,
-    highlight = { enable = true },
     indent = { enable = false },
     context_commentstring = { enable = true, enable_autocmd = false },
   }
