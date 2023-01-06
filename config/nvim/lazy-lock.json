@@ -42,6 +42,7 @@
   "mason-lspconfig.nvim": { "branch": "main", "commit": "aa25b4153d2f2636c3b3a8c8360349d2b29e7ae3" },
   "mason.nvim": { "branch": "main", "commit": "38f0d1e467d1d3c22724c467efab8a4671a3b7bb" },
   "modes.nvim": { "branch": "main", "commit": "3188692abf02a8838ec75e59d68c2ce3e4323f5c" },
+  "mr.vim": { "branch": "main", "commit": "e85f1c91e811abd06c1dcae33034351e530c4e8b" },
   "neobeans.vim": { "branch": "master", "commit": "a4481ba25d124c7a22f5680583b4300f4334d483" },
   "neoconf.nvim": { "branch": "main", "commit": "3e3294631ef23599b9fccb87dee2592c73d11c60" },
   "nerdfont.vim": { "branch": "master", "commit": "3daf10116daad5da257486c9043c658cced4dd31" },

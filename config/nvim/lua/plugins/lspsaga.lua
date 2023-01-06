@@ -50,7 +50,6 @@ return {
     border_style = "single",
     saga_winblend = 0,
     move_in_saga = { prev = "<C-p>", next = "<C-n>" },
-    -- diagnostic_header = { " ", " ", " ", "ﴞ " },
     diagnostic_header = { "😡", "😥", "😤", "😐" },
     max_preview_lines = 10,
     code_action_icon = " ",
@@ -137,7 +136,8 @@ return {
 
   keymap("n", "K", function()
     if not lua_help() then
-      vim.lsp.buf.hover()
+      -- vim.lsp.buf.hover()
+      lspsaga.render_hover_doc()
     end
   end)
 

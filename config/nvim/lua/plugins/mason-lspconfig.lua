@@ -45,9 +45,7 @@ return {
       buf_set_keymap("n", "<Plug>(lsp);l", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
       buf_set_keymap("n", "gv", ":vsplit | lua vim.lsp.buf.definition()<CR>", opts)
 
-      -- require("lsp_signature").on_attach()
-      -- require("illuminate").on_attach(client)
-      ---@diagnostic disable-next-line: different-requires
+      require("lsp_signature").on_attach()
       require("nvim-navic").attach(client, bufnr)
     end
 
@@ -84,15 +82,6 @@ return {
           },
         })
       end,
-      -- ["pyright"] = function ()
-      --   lspconfig.pyright.setup({
-      --     settings = {
-      --       python = {
-      --         pythonPath = ""
-      --       }
-      --     }
-      --   })
-      -- end,
     })
 
     require("lsp_signature").setup({

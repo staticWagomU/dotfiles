@@ -1,7 +1,7 @@
 return {
   {
     "goolord/alpha-nvim",
-    lazy = false,
+    event = "VimEnter",
     config = function()
       local dashboard = require 'alpha.themes.dashboard'
 
@@ -16,19 +16,7 @@ return {
         "                                                    ",
       }
 
-      local print_plugins_message = function()
-        local footer_icon = "  "
-        local lazy = require("lazy")
-        local total_plugins = lazy.stats().count
-
-        return {
-          footer_icon .. "neovim loaded " .. total_plugins .. " plugins"
-        }
-
-      end
-
       dashboard.section.header.val = banner
-      dashboard.section.footer.val = print_plugins_message
 
       dashboard.section.buttons.val = {
         dashboard.button("n", " New file", ":enew<CR>"),
@@ -36,15 +24,24 @@ return {
         dashboard.button("f", " Find file", ":Telescope find_files<CR>"),
         dashboard.button("e", " File browser", ":e ./<CR>"),
         dashboard.button("d", " Dotfiles", ":lcd ~/dotfiles<CR>:Telescope find_files<CR>"),
-        dashboard.button("a", " Nvim Config", ":lcd ~/dotfiles/config/nvim<CR>:Telescope find_files<CR>"),
-        --        dashboard.button("i", " Init.lua", ":cd ~/dotfiles/nvim/lua<CR>:lua require'lir.float'.toggle()<cr>"),
-        --        dashboard.button("d", " Dotfiles", ":cd ~/dotfiles/<CR>:lua require'lir.float'.toggle()<cr>"),
-        --        dashboard.button("u", " Update plugins", ":PackerSync<CR>"),
-        --        dashboard.button("c", " Compile plugins", ":PackerCompile<CR>"),
+        dashboard.button("a", " Nvim Config Telescope", ":lcd ~/dotfiles/config/nvim<CR>:Telescope find_files<CR>"),
+        dashboard.button("l", " Nvim Config Fern", ":lcd ~/dotfiles/config/nvim<CR><cmd>Fern . -drawer <CR>"),
+        dashboard.button("ru", " Recent written files", "<cmd>RecentWrittenFiles<CR>"),
+        dashboard.button("rw", " Recent used files", "<cmd>RecentUsedFiles<CR>"),
         dashboard.button("q", " Exit", ":qa<CR>"),
       }
 
       require("alpha").setup(dashboard.config)
+
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "LazyVimStarted",
+        callback = function()
+          local stats = require("lazy").stats()
+          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+          dashboard.section.footer.val = "  Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+          pcall(vim.cmd.AlphaRedraw)
+        end,
+      })
     end
   },
 }
