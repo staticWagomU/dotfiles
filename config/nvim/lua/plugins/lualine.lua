@@ -1,6 +1,6 @@
 local M = {
   "nvim-lualine/lualine.nvim",
-  lazy = false,
+  event = "VimEnter",
 }
 
 function M.config()
