@@ -26,8 +26,8 @@ return {
         dashboard.button("d", " Dotfiles", ":lcd ~/dotfiles<CR>:Telescope find_files<CR>"),
         dashboard.button("a", " Nvim Config Telescope", ":lcd ~/dotfiles/config/nvim<CR>:Telescope find_files<CR>"),
         dashboard.button("l", " Nvim Config Fern", ":lcd ~/dotfiles/config/nvim<CR><cmd>Fern . -drawer <CR>"),
-        dashboard.button("ru", " Recent written files", "<cmd>RecentWrittenFiles<CR>"),
-        dashboard.button("rw", " Recent used files", "<cmd>RecentUsedFiles<CR>"),
+        dashboard.button("rw", " Recent written files", "<cmd>RecentWrittenFiles<CR>"),
+        dashboard.button("ru", " Recent used files", "<cmd>RecentUsedFiles<CR>"),
         dashboard.button("q", " Exit", ":qa<CR>"),
       }
 
