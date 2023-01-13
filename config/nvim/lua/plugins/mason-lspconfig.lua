@@ -82,6 +82,36 @@ return {
           },
         })
       end,
+      ["denols"] = function()
+        lspconfig["denols"].setup({
+          root_dir = lspconfig.util.root_pattern("deno.json"),
+          init_options = {
+            lint = true,
+            unstable = true,
+            suggest = {
+              imports = {
+                hosts = {
+                  ["https://deno.land"] = true,
+                  ["https://cdn.nest.land"] = true,
+                  ["https://crux.land"] = true,
+                },
+              },
+            },
+          },
+
+        })
+      end,
+      ["tsserver"] = function()
+
+        lspconfig["tsserver"].setup({
+          root_dir = lspconfig.util.root_pattern("package.json"),
+        })
+      end,
+      ["astro"] = function ()
+        lspconfig["astro"].setup({
+          root_dir = lspconfig.util.root_pattern("astro.config.mjs")
+        })
+      end,
     })
 
     require("lsp_signature").setup({

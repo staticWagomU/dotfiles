@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-local
 local M = {
   "folke/noice.nvim",
   event = "VeryLazy",

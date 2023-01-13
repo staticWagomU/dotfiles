@@ -80,6 +80,8 @@ augroup restore-cursor
 		\ |   execute 'normal! zz'
 		\ | endif
 augroup END
+
+"autocmd InsertEnter * lia vim.schedule(vim.cmd.nohlsearch)
 ]=]
 
 vim.api.nvim_create_user_command("ShowPluginReadme", function()
