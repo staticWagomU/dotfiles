@@ -68,11 +68,4 @@ return {
 	{ "kylechui/nvim-surround" },
 	{ "lukas-reineke/indent-blankline.nvim" },
 	{ "nathom/filetype.nvim" },
-	{
-    "gen740/SmoothCursor.nvim" ,
-    event = "BufReadPre",
-    config = function()
-      require('smoothcursor').setup({})
-    end
-  },
 }
