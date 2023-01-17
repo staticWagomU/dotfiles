@@ -1,6 +1,9 @@
 return {
   "yuki-yano/fuzzy-motion.vim",
-  dependencies = { "vim-denops/denops.vim" },
+  dependencies = {
+    "vim-denops/denops.vim",
+    "lambdalisue/kensaku.vim",
+  },
   lazy = false,
   keys = {
     { "<Leader><Leader>", ":<C-u>FuzzyMotion<CR>", desc="FuzzyMotion" },
@@ -11,8 +14,12 @@ return {
     let g:fuzzy_motion_word_regexp_list = [
     \ '[0-9a-zA-Z_-]+',
     \ '([0-9a-zA-Z_-]|[.])+',
-    \ '([0-9a-zA-Z]|[()<>.-_#''"]|(\s=+\s)|(,\s)|(:\s)|(\s=>\s))+'
+    \ '([0-9a-zA-Z]|[()<>.-_#''"]|(\s=+\s)|(,\s)|(:\s)|(\s=>\s))+',
+    \ '\P{Script_Extensions=Latin}+'
     \ ]
+    ]]
+    vim.cmd[[
+    let g:fuzzy_motion_matchers = ['fzf', 'kensaku']
     ]]
   end,
 }
