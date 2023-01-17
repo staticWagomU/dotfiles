@@ -26,7 +26,7 @@ return {
 	{
 		"folke/trouble.nvim",
 	},
-  { 
+  {
 		"mattn/vim-sonictemplate",
 		cmd = "Template"
 	},
@@ -50,7 +50,7 @@ return {
 		"mattn/vim-goimports",
 		ft = "go"
 	},
-	{ 
+	{
 		"skanehira/denops-translate.vim",
 		dependencies = { "vim-denops/denops.vim" },
 	},
@@ -65,7 +65,10 @@ return {
     end
   },
 	{ "folke/which-key.nvim" },
-	{ "kylechui/nvim-surround" },
+  {
+    "kylechui/nvim-surround",
+    lazy = false,
+  },
 	{ "lukas-reineke/indent-blankline.nvim" },
 	{ "nathom/filetype.nvim" },
 }
