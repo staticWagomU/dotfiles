@@ -5,7 +5,7 @@ return {
 	{ "nvim-lua/plenary.nvim" },
 	{ "vim-denops/denops.vim" },
 	{ "MunifTanjim/nui.nvim" },
-	{ "kyazdani42/nvim-web-devicons" },
+	{ "nvim-tree/nvim-web-devicons" },
   { "jose-elias-alvarez/typescript.nvim" },
 	{"anuvyklack/pretty-fold.nvim"},
   {
