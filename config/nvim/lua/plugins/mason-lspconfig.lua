@@ -11,6 +11,7 @@ return {
   config = function()
     ---@diagnostic disable-next-line: unused-local
     local nvim_lsp = require('lspconfig')
+    local vim = vim
     require("mason-lspconfig").setup()
     local on_attach = function(client, bufnr)
       local function buf_set_keymap(...)

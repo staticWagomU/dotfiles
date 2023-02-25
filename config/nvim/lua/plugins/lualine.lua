@@ -4,9 +4,11 @@ local M = {
 }
 
 function M.config()
+  local vim = vim
   local lualine = require('lualine')
 
-  local colors = require("neobeans.core").get_dark_colors()
+  local macchiato = require("catppuccin.palettes").get_palette "macchiato"
+
 
   local conditions = {
     buffer_not_empty = function()
@@ -29,10 +31,10 @@ function M.config()
       component_separators = '',
       section_separators = '',
       theme = {
-        normal = { c = { fg = colors.foreground, bg = colors.ruler } },
-        inactive = { c = { fg = colors.foreground, bg = colors.background } },
+        normal = { c = { fg = macchiato.text, bg = macchiato.mantle } },
+        inactive = { c = { fg = macchiato.text, bg = macchiato.crust } },
       },
-      disabled_filetypes = { 'Trouble', 'packer', 'alpha', 'lspsagaoutline', 'lir', 'toggleterm' },
+      disabled_filetypes = { 'Trouble', 'alpha', 'lspsagaoutline', 'lir', 'toggleterm' },
       globalstatus = true,
     },
     sections = {
@@ -70,29 +72,29 @@ function M.config()
     local cmd = vim.api.nvim_command
 
     local mode_color = {
-      n = colors.green,
-      i = colors.red_light,
-      v = colors.blue,
-      [''] = colors.blue,
-      V = colors.blue,
-      c = colors.yellow,
-      no = colors.green,
-      s = colors.orange,
-      S = colors.orange,
-      [''] = colors.orange,
-      ic = colors.blue,
-      R = colors.purple,
-      Rv = colors.purple,
-      cv = colors.red_light,
-      ce = colors.red_light,
-      r = colors.yellow,
-      rm = colors.yellow,
-      ['r?'] = colors.yellow,
-      ['!'] = colors.red_light,
-      t = colors.red_light,
+      n = macchiato.green,
+      i = macchiato.red,
+      v = macchiato.blue,
+      [''] = macchiato.blue,
+      V = macchiato.blue,
+      c = macchiato.yellow,
+      no = macchiato.green,
+      s = macchiato.mauve,
+      S = macchiato.mauve,
+      [''] = macchiato.mauve,
+      ic = macchiato.blue,
+      R = macchiato.lavender,
+      Rv = macchiato.lavender,
+      cv = macchiato.red,
+      ce = macchiato.red,
+      r = macchiato.yellow,
+      rm = macchiato.yellow,
+      ['r?'] = macchiato.yellow,
+      ['!'] = macchiato.red,
+      t = macchiato.red,
     }
-    cmd('hi Mode guibg=' .. mode_color[mode] .. ' guifg=' .. colors.ruler .. ' gui=bold')
-    cmd('hi ModeSeparator  guibg=' .. colors.ruler .. ' guifg=' .. mode_color[mode])
+    cmd('hi Mode guibg=' .. mode_color[mode] .. ' guifg=' .. macchiato.mantle .. ' gui=bold')
+    cmd('hi ModeSeparator  guibg=' .. macchiato.mantle .. ' guifg=' .. mode_color[mode])
   end
 
   local function getmode()
@@ -140,7 +142,7 @@ function M.config()
   ins_left {
     'branch',
     icon = '',
-    color = { fg = colors.purple },
+    color = { fg = macchiato.lavender },
   }
 
 
@@ -149,9 +151,9 @@ function M.config()
     sources = { 'nvim_diagnostic' },
     symbols = { error = ' ', warn = ' ', info = ' ' },
     diagnostics_color = {
-      color_error = { fg = colors.red_light },
-      color_warn = { fg = colors.purple },
-      color_info = { fg = colors.yellow },
+      color_error = { fg = macchiato.red },
+      color_warn = { fg = macchiato.lavender },
+      color_info = { fg = macchiato.yellow },
     },
   }
 
@@ -160,9 +162,9 @@ function M.config()
     -- Is it me or the symbol for modified us really weird
     symbols = { added = ' ', modified = '柳 ', removed = ' ' },
     diff_color = {
-      added = { fg = colors.green },
-      modified = { fg = colors.orange },
-      removed = { fg = colors.red_light },
+      added = { fg = macchiato.green },
+      modified = { fg = macchiato.mauve },
+      removed = { fg = macchiato.red },
     },
     cond = conditions.hide_in_width,
   }
@@ -193,20 +195,20 @@ function M.config()
       return msg
     end,
     icon = ' LSP:',
-    color = { fg = colors.foreground, gui = 'bold' },
+    color = { fg = macchiato.text, gui = 'bold' },
   }
 
   ins_right       {
     require("lazy.status").updates,
     cond = require("lazy.status").has_updates,
-    color = { fg = colors.blue},
+    color = { fg = macchiato.blue},
   }
 
   ins_right { 'filetype' }
 
   ins_right { 'location' }
 
-  ins_right { 'progress', color = { fg = colors.foreground } }
+  ins_right { 'progress', color = { fg = macchiato.text } }
 
   ins_right {
     -- filesize component
@@ -219,14 +221,14 @@ function M.config()
     'o:encoding', -- option component same as &encoding in viml
     fmt = string.upper, -- I'm not sure why it's upper case either ;)
     cond = conditions.hide_in_width,
-    color = { fg = colors.green, gui = 'bold' },
+    color = { fg = macchiato.green, gui = 'bold' },
   }
 
   ins_right {
     'fileformat',
     fmt = string.upper,
     icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-    color = { fg = colors.green, gui = 'bold' },
+    color = { fg = macchiato.green, gui = 'bold' },
   }
 
   -- Now don't forget to initialize lualine

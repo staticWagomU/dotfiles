@@ -90,3 +90,9 @@ vim.api.nvim_create_user_command("ShowPluginReadme", function()
 
 	vim.cmd("edit " .. vim.fn.resolve(path))
 end, { force = true })
+
+vim.filetype.add({
+  extension = {
+    mdx = 'markdown',
+  },
+})

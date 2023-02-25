@@ -22,7 +22,7 @@ return {
         dashboard.button("n", " New file", ":enew<CR>"),
         dashboard.button("t", " Telescope", ":Telescope<CR>"),
         dashboard.button("f", " Find file", ":Telescope find_files<CR>"),
-        dashboard.button("e", " File browser", ":e ./<CR>"),
+--        dashboard.button("e", " File browser", ":e ./<CR>"),
         dashboard.button("d", " Dotfiles", ":lcd ~/dotfiles<CR>:Telescope find_files<CR>"),
         dashboard.button("a", " Nvim Config Telescope", ":lcd ~/dotfiles/config/nvim<CR>:Telescope find_files<CR>"),
         dashboard.button("s", " Nvim Config Fern", ":lcd ~/dotfiles/config/nvim<CR><cmd>Fern . -drawer <CR>"),
