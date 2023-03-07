@@ -1,0 +1,121 @@
+[[plugins]]
+repo = 'vim-denops/denops.vim' 
+
+[[plugins]]
+repo = 'yuki-yano/fuzzy-motion.vim'
+hook_source = '''
+let g:fuzzy_motion_word_regexp_list = [
+			\ '[0-9a-zA-Z_-]+',
+			\ '([0-9a-zA-Z_-]|[.])+',
+			\ '([0-9a-zA-Z]|[()<>.-_#''"]|(\s=+\s)|(,\s)|(:\s)|(\s=>\s))+',
+			\ '\P{Script_Extensions=Latin}+'
+			\ ]
+let g:fuzzy_motion_matchers = ['fzf', 'kensaku']
+'''
+hook_add = '''
+nnoremap <Leader><Leader> :<C-u>FuzzyMotion<CR>
+'''
+
+[[plugins]]
+repo =  'vim-skk/skkeleton'
+depends = 'denops.vim'
+on_event = "InsertEnter"
+hook_source = '''
+" let g:skkeleton#debug = v:true
+function! s:skkeleton_init() abort
+	call skkeleton#config(#{
+				\ eggLikeNewline: v:true,
+				\ globalDictionaries: [
+				\  ["~\\skk\\SKK-JISYO.L", "euc-jp"],
+				\  ["~\\skk\\SKK-JISYO.geo", "euc-jp"],
+				\  ["~\\skk\\SKK-JISYO.jinmei", "euc-jp"],
+				\  ["~\\skk\\SKK-JISYO.propernoun", "euc-jp"],
+				\  ["~\\skk\\SKK-JISYO.station", "euc-jp"]
+				\ ],
+				\ registerConvertResult: v:true,
+				\})
+	call skkeleton#register_kanatable('rom', {
+				\ "z\<Space>": ["\u3000", ''],
+				\})
+endfunction
+
+augroup skkeleton-initialize-pre
+	autocmd!
+	autocmd User skkeleton-initialize-pre call s:skkeleton_init()
+augroup END
+
+
+function! s:skkeleton_pre() abort
+	" Overwrite sources
+	let s:prev_buffer_config = ddc#custom#get_buffer()
+	call ddc#custom#patch_buffer('sources', ['skkeleton'])
+endfunction
+autocmd User skkeleton-enable-pre call s:skkeleton_pre()
+
+function! s:skkeleton_post() abort
+	" Restore sources
+	call ddc#custom#set_buffer(s:prev_buffer_config)
+endfunction
+autocmd User skkeleton-disable-pre call s:skkeleton_post()
+
+'''
+hook_add = '''
+imap <C-j> <Plug>(skkeleton-toggle)
+cmap <C-j> <Plug>(skkeleton-toggle)
+'''
+
+[[plugins]]
+repo = 'lambdalisue/kensaku.vim' 
+depends = 'denops.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
+depends = 'denops.vim'
+hook_source = '''
+let g:fern#default_hidden=1
+let g:fern#renderer = "nerdfont"
+let g:fern#renderer#nerdfont#indent_markers = 1
+
+function! s:fern_settings() abort
+	nmap <silent> <buffer> <C-m> <Plug>(fern-action-move)
+	nmap <silent> <buffer> <C-s> <Plug>(fern-action-new-dir)
+	nnoremap <buffer> <C-f> <C-W>p
+	nmap <silent> <buffer> p     <Plug>(fern-action-preview:auto:toggle)
+	nmap <silent> <buffer> <C-n> <Plug>(fern-action-preview:scroll:down:half)
+	nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:scroll:up:half)
+	setlocal signcolumn=no
+	setlocal nonumber
+endfunction
+
+augroup fern-settings
+	autocmd!
+	autocmd FileType fern call s:fern_settings()
+augroup END
+
+
+call skkeleton#register_kanatable('rom', {
+	\ 'xn': ['ん'],
+	\ "z\<Space>": ["\u3000"],
+	\ })
+'''
+hook_add = '''
+nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -toggle <CR>
+nnoremap <silent> <Leader>e :<C-u>Fern . <CR>
+nnoremap <silent> <C-F> :Fern . -drawer -reveal=%<CR>
+'''
+
+[[plugins]]
+repo = 'lambdalisue/fern-git-status.vim'
+depends = 'fern.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern-renderer-nerdfont.vim'
+depends = 'fern.vim'
+
+[[plugins]]
+repo = 'lambdalisue/nerdfont.vim'
+depends = 'fern.vim'
+
+[[plugins]]
+repo = 'yuki-yano/fern-preview.vim'
+depends = 'fern.vim'

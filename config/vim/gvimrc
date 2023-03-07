@@ -1,1 +1,2 @@
-set guifont=JetBrainsMono_Nerd_Font_Mono:h8:cANSI:qDRAFT
+set guioptions-=T
+set guifont=CaskaydiaCove_Nerd_Font_Mono:h10:cANSI:qDRAFT
