@@ -1,0 +1,4 @@
+[[plugins]]
+repo = 'thinca/vim-partedit'
+on_cmd = 'Partedit'
+

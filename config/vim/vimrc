@@ -1,0 +1,205 @@
+filetype off
+filetype plugin indent off
+
+" {{{ options
+if has('vim_starting')
+	set encoding=utf-8
+	set fileencodings=utf-8,sjis,iso-2022-jp,ucs-bom,euc-jp,cp932,default,latin1
+	set fileformats=unix,dos,mac
+endif
+scriptencoding utf-8
+
+if &compatible
+	set nocompatible
+endif
+"set number
+set helplang=ja
+set signcolumn=yes 
+set hidden
+set laststatus=2
+set mouse=a
+" クリップボードレジスタを使用する autoselectはわからない
+set clipboard=unnamed,autoselect
+" 音を鳴らさないようにする
+set belloff=all
+set formatoptions+=mMj
+set ambiwidth=double
+" 大文字の括弧を%でマッチさせる
+set matchpairs+=「:」,（:）
+set directory=~
+set backupdir=~
+set undodir=~
+" normal modeに戻った後も<BS> <DELETE>を効かせる
+set backspace=indent,eol,start
+set title
+let &g:titlestring =
+			\ "%{expand('%:p:~:.')} %<\(%{fnamemodify(getcwd(), ':~')}\)%(%m%r%w%)"
+set nowrap
+if !has('gui_running')
+	set t_Co=256
+endif
+set noshowmode
+set shortmess +=I
+let g:mapleader = "\<Space>"
+" }}}
+
+" {{{ plugins
+let s:dein_base = '~/.cache/dein/'
+let s:dein_src = s:dein_base . 'repos/github.com/Shougo/dein.vim'
+execute 'set runtimepath^=' . s:dein_src
+
+let s:toml_base = '~/vimfiles/'
+let s:dein_toml = s:toml_base . 'dein.toml'
+let s:denops_toml = s:toml_base . 'denops.toml'
+let s:lazy_toml = s:toml_base . 'lazy_plugin.toml'
+let s:colorscheme_toml = s:toml_base . 'colorscheme.toml'
+let s:ddc_toml = s:toml_base . 'ddc.toml'
+let s:ddu_toml = s:toml_base . 'ddu.toml'
+
+call dein#begin(s:dein_base)
+ call dein#load_toml(s:dein_toml, #{lazy: 0})
+ call dein#load_toml(s:colorscheme_toml, #{lazy: 0})
+ call dein#load_toml(s:denops_toml, #{lazy: 0})
+ call dein#load_toml(s:ddc_toml, #{lazy: 0})
+ call dein#load_toml(s:ddu_toml, #{lazy: 0})
+ call dein#load_toml(s:lazy_toml, #{lazy: 1})
+call dein#end()
+
+" }}} 
+
+" {{{ keymaps
+"           Mode  | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang | ~
+"  Command        +------+-----+-----+-----+-----+-----+------+------+ ~
+"  [nore]map      |  @   |  -  |  -  |  @  |  @  |  @  |  -   |  -   |
+"  n[nore]map     |  @   |  -  |  -  |  -  |  -  |  -  |  -   |  -   |
+"  [nore]map!     |  -   |  @  |  @  |  -  |  -  |  -  |  -   |  -   |
+"  i[nore]map     |  -   |  @  |  -  |  -  |  -  |  -  |  -   |  -   |
+"  c[nore]map     |  -   |  -  |  @  |  -  |  -  |  -  |  -   |  -   |
+"  v[nore]map     |  -   |  -  |  -  |  @  |  @  |  -  |  -   |  -   |
+"  x[nore]map     |  -   |  -  |  -  |  @  |  -  |  -  |  -   |  -   |
+"  s[nore]map     |  -   |  -  |  -  |  -  |  @  |  -  |  -   |  -   |
+"  o[nore]map     |  -   |  -  |  -  |  -  |  -  |  @  |  -   |  -   |
+"  t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  |  @   |  -   |
+"  l[nore]map     |  -   |  @  |  @  |  -  |  -  |  -  |  -   |  @   |
+
+nnoremap <Leader> <Nop>
+xnoremap <Leader> <Nop>
+
+inoremap <silent> <Up> <C-o>gk
+inoremap <silent> <Down> <C-o>gj
+nnoremap <silent> <Up> gk
+nnoremap <silent> <Down> gj
+
+" expand path
+cmap <C-x> <C-r>=expand('%:p:h')<CR>
+" expand file 
+cmap <C-z> <C-r>=expand('%:p')<CR>
+
+nnoremap <silent> <Leader>ls :<C-u>ls<CR>
+nnoremap <silent> <Leader>w :<C-u>w<CR>
+nnoremap <silent> <Leader>bn :<C-u>bn<CR>
+nnoremap <silent> <Leader>bp :<C-u>bp<CR>
+nnoremap <silent> <Leader>bd :<C-u>bd<CR>
+nnoremap <silent> <Leader>cd :<C-u>cd %:p:h<CR> :cd<CR>
+
+nnoremap <silent> v2 vi"
+nnoremap <silent> v7 vi'
+nnoremap <silent> v8 vi(
+nnoremap <silent> v[ vi[
+nnoremap <silent> v{ vi{
+nnoremap <silent> v, vi<
+
+nnoremap <silent> va2 va"
+nnoremap <silent> va7 va'
+nnoremap <silent> va8 va(
+nnoremap <silent> va, va<
+
+nnoremap <silent> vt2 vt"
+nnoremap <silent> vt7 vt'
+nnoremap <silent> vt9 vt)
+nnoremap <silent> vt] vt]
+nnoremap <silent> vt} vt}
+
+nnoremap <silent> c2 ci"
+nnoremap <silent> c7 ci'
+nnoremap <silent> c8 ci(
+nnoremap <silent> c[ ci[
+nnoremap <silent> c{ ci{
+nnoremap <silent> c, ci<
+
+nnoremap <silent> ca2 ca"
+nnoremap <silent> ca7 ca'
+nnoremap <silent> ca8 ca(
+nnoremap <silent> ca, ca<
+
+nnoremap <silent> ct2 ct"
+nnoremap <silent> ct7 ct'
+nnoremap <silent> ct9 ct)
+nnoremap <silent> ct] ct]
+nnoremap <silent> ct} ct}
+
+nnoremap <silent> d2 di"
+nnoremap <silent> d7 di'
+nnoremap <silent> d8 di(
+nnoremap <silent> d[ di[
+nnoremap <silent> d{ di{
+nnoremap <silent> d, di<
+
+nnoremap <silent> da2 da"
+nnoremap <silent> da7 da'
+nnoremap <silent> da8 da(
+nnoremap <silent> da, da<
+
+nnoremap <silent> dt2 dt"
+nnoremap <silent> dt7 dt'
+nnoremap <silent> dt9 dt)
+nnoremap <silent> dt] dt]
+nnoremap <silent> dt} dt}
+
+nnoremap <silent> <C-j> o<ESC>
+nnoremap <silent> <C-j> O<ESC>
+
+nnoremap <silent> \ :<C-u>so $MYVIMRC<CR>
+
+nnoremap <silent> q: :q<CR>
+nnoremap <silent> qq: q:
+
+vnoremap <RightMouse> :w !clip.exe<CR><ESC>
+" }}}
+
+" {{{ commands
+augroup restore-cursor
+	autocmd!
+	autocmd BufReadPost *
+				\ : if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+				\ |   exe "normal! g`\""
+				\ | endif
+
+				\ : if empty(&buftype) && line('.') > winheight(0) / 2
+				\ |   execute 'normal! zz'
+				\ | endif
+augroup END
+
+augroup fileTypeIndent
+	autocmd!
+	autocmd BufNewFile,BufRead vimrc setlocal tabstop=2 shiftwidth=1
+augroup END
+
+autocmd FileType vim setlocal foldmethod=marker
+
+set background=dark
+filetype plugin indent on
+
+if has('syntax')
+ syntax on
+endif
+
+if &term =~ "^xterm"
+	let &t_SI="\<Esc>[4 q"
+	let &t_EI="\<Esc>[2 q"
+endif
+" }}}
+
+" {{{ other
+colorscheme catppuccin_latte
+" }}}

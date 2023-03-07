@@ -1,0 +1,18 @@
+[[plugins]]
+repo='Shougo/ddu-kind-file'
+depends = ['ddu.vim']
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo='Shougo/ddu-filter-matcher_substring'
+depends = ['ddu.vim']
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo='Shougo/ddu-source-file'
+depends = ['ddu.vim']
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+depends = 'denops.vim'
