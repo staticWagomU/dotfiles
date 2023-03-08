@@ -1,5 +1,5 @@
 .git/*
 .vscode/*
-nvim/plugin/*
 .DS_Store
 lazy-lock.json
+config/nvim/lua/local_vimrc.lua
