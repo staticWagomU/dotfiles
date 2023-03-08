@@ -14,18 +14,17 @@ return {
       let g:fern#renderer = "nerdfont"
       let g:fern#renderer#nerdfont#indent_markers = 1
 
-      nnoremap <silent> <Leader>e :<C-u>Fern . -drawer <CR>
-      nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -toggle<CR>
+      nnoremap <silent> <Leader>E :<C-u>Fern . <CR>
+      nnoremap <silent> <Leader>e :<C-u>Fern . -drawer -toggle<CR>
       nnoremap <silent> <C-F> :Fern . -drawer -reveal=%<CR>
 
       function! s:fern_settings() abort
         nmap <silent> <buffer> <C-m> <Plug>(fern-action-move)
         nmap <silent> <buffer> <C-s> <Plug>(fern-action-new-dir)
         nnoremap <buffer> <C-f> <C-W>p
-        nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
-        nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
-        nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
-        nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
+        nmap <silent> <buffer> p     <Plug>(fern-action-preview:auto:toggle)
+        nmap <silent> <buffer> <C-n> <Plug>(fern-action-preview:scroll:down:half)
+        nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:scroll:up:half)
         setlocal signcolumn=no
         setlocal nonumber
       endfunction
