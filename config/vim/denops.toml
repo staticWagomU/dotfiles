@@ -23,17 +23,32 @@ on_event = "InsertEnter"
 hook_source = '''
 " let g:skkeleton#debug = v:true
 function! s:skkeleton_init() abort
-	call skkeleton#config(#{
-				\ eggLikeNewline: v:true,
-				\ globalDictionaries: [
-				\  ["~\\skk\\SKK-JISYO.L", "euc-jp"],
-				\  ["~\\skk\\SKK-JISYO.geo", "euc-jp"],
-				\  ["~\\skk\\SKK-JISYO.jinmei", "euc-jp"],
-				\  ["~\\skk\\SKK-JISYO.propernoun", "euc-jp"],
-				\  ["~\\skk\\SKK-JISYO.station", "euc-jp"]
-				\ ],
-				\ registerConvertResult: v:true,
-				\})
+	if has('mac')
+		call skkeleton#config(#{
+					\ eggLikeNewline: v:true,
+					\ globalDictionaries: [
+					\  ["~/skk/SKK-JISYO.L", "euc-jp"],
+					\  ["~/skk/SKK-JISYO.geo", "euc-jp"],
+					\  ["~/skk/SKK-JISYO.jinmei", "euc-jp"],
+					\  ["~/skk/SKK-JISYO.propernoun", "euc-jp"],
+					\  ["~/skk/SKK-JISYO.station", "euc-jp"]
+					\ ],
+					\ registerConvertResult: v:true,
+					\})
+	endif
+	if has('win32')
+		call skkeleton#config(#{
+					\ eggLikeNewline: v:true,
+					\ globalDictionaries: [
+					\  ["~\\skk\\SKK-JISYO.L", "euc-jp"],
+					\  ["~\\skk\\SKK-JISYO.geo", "euc-jp"],
+					\  ["~\\skk\\SKK-JISYO.jinmei", "euc-jp"],
+					\  ["~\\skk\\SKK-JISYO.propernoun", "euc-jp"],
+					\  ["~\\skk\\SKK-JISYO.station", "euc-jp"]
+					\ ],
+					\ registerConvertResult: v:true,
+					\})
+	endif
 	call skkeleton#register_kanatable('rom', {
 				\ "z\<Space>": ["\u3000", ''],
 				\})
@@ -119,3 +134,6 @@ depends = 'fern.vim'
 [[plugins]]
 repo = 'yuki-yano/fern-preview.vim'
 depends = 'fern.vim'
+
+[[plugins]]
+repo = 'lambdalisue/gin.vim'

@@ -49,6 +49,9 @@ let s:dein_src = s:dein_base . 'repos/github.com/Shougo/dein.vim'
 execute 'set runtimepath^=' . s:dein_src
 
 let s:toml_base = '~/vimfiles/'
+if has('mac')
+ let s:toml_base = '~/.vim/'
+endif
 let s:dein_toml = s:toml_base . 'dein.toml'
 let s:denops_toml = s:toml_base . 'denops.toml'
 let s:lazy_toml = s:toml_base . 'lazy_plugin.toml'
@@ -84,6 +87,11 @@ call dein#end()
 
 nnoremap <Leader> <Nop>
 xnoremap <Leader> <Nop>
+
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 inoremap <silent> <Up> <C-o>gk
 inoremap <silent> <Down> <C-o>gj
@@ -186,6 +194,7 @@ augroup fileTypeIndent
 augroup END
 
 autocmd FileType vim setlocal foldmethod=marker
+autocmd BufNewFile,BufRead *.mdx set filetype=markdown
 
 set background=dark
 filetype plugin indent on
