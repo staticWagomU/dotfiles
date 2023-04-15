@@ -72,7 +72,7 @@ return {
           }
         })
       end,
-      ["sumneko_lua"] = function()
+      ["lua_ls"] = function()
         lspconfig.sumneko_lua.setup({
           settings = {
             Lua = {
