@@ -79,3 +79,7 @@ merged = 0
 
 [[plugins]]
 repo = 'thinca/vim-fontzoom'
+
+[[plugins]]
+repo = 'github/copilot.vim'
+merged = 0
