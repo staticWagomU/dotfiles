@@ -14,9 +14,9 @@ return {
       let g:fern#renderer = "nerdfont"
       let g:fern#renderer#nerdfont#indent_markers = 1
 
-      nnoremap <silent> <Leader>E :<C-u>Fern . <CR>
-      nnoremap <silent> <Leader>e :<C-u>Fern . -drawer -toggle<CR>
-      nnoremap <silent> <C-F> :Fern . -drawer -reveal=%<CR>
+      nnoremap <silent> <Leader>e :<C-u>Fern . <CR>
+      nnoremap <silent> <Leader>E :<C-u>Fern . -drawer -toggle<CR>
+      nnoremap <silent> <C-f> :Fern . -drawer -reveal=%<CR>
 
       function! s:fern_settings() abort
         nmap <silent> <buffer> <C-m> <Plug>(fern-action-move)

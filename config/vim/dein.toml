@@ -22,7 +22,7 @@ let g:ctrlp_custom_ignore = {
 '''
 hook_add = '''
 nnoremap <silent> <C-m> <CMD>CtrlPMRUFiles<CR>
-nnoremap <silent> <C-l> <CMD>CtrlPLine<CR>
+nnoremap <silent> <C-S-l> <CMD>CtrlPLine<CR>
 nnoremap <silent> <C-b> <CMD>CtrlPBuffer<CR>
 '''
 

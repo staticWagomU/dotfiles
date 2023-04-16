@@ -20,3 +20,14 @@ else
 fi
 
 ln -s ./wezterm.lua ../.config/wezterm/wezterm.lua
+
+
+if [ -d "../.config/.vim" ]
+then
+  mkdir ~/.config/.vim
+else
+  rm -rf ~/.config/.vim
+  mkdir ~/.config/.vim
+fi
+
+
