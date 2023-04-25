@@ -8,12 +8,14 @@ local M = {
     "nvim-telescope/telescope-rg.nvim",
     "nvim-telescope/telescope-smart-history.nvim",
     "nvim-telescope/telescope-github.nvim",
+    "nvim-telescope/telescope-file-browser.nvim",
   },
   cmd = { "Telescope", "RecentWrittenFiles", "RecentUsedFiles" },
   keys = {
     {"<C-t>", "<BS><Cmd>Telescope command_history<CR>", desc="Telescope "},
-    {"<Leader>tg", ":Telescope git_files<CR>", desc="Telescope "},
-    {"<Leader>te", ":Telescope find_files<CR>", desc="Telescope "},
+    {"<Leader>tg", ":Telescope git_files<CR>", desc="Telescope git_files"},
+    {"<Leader>te", ":Telescope find_files<CR>", desc="Telescope find_files"},
+    {"<Leader>fb", ":Telescope file_browser<CR>", desc="Telescope file_browser"},
     {"<Leader>tt", ":Telescope<CR>", desc="Telescope "},
     {"<Leader>tb", ":Telescope buffers<CR>", desc="Telescope "},
     {"<Leader>tf", ":Telescope current_buffer_fuzzy_find<CR>", desc="Telescope "},
@@ -34,6 +36,12 @@ function M.config()
 
 
   require("telescope").setup({
+    extensions = {
+      file_browser = {
+        theme = "ivy",
+        hijack_netrw = true,
+      },
+    },
     defaults = {
       vimgrep_arguments = {
         "rg",
@@ -152,6 +160,7 @@ function M.config()
       sorter = conf.file_sorter(safe_opts),
     }):find()
   end
+  require("telescope").load_extension "file_browser"
 
   vim.api.nvim_create_user_command("RecentWrittenFiles", function()
     recent_written_files()
@@ -166,6 +175,7 @@ function M.config()
   keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", opts)
   keymap("n", "<Leader>tg", ":Telescope git_files<CR>", opts)
   keymap("n", "<Leader>te", ":Telescope find_files<CR>", opts)
+  keymap("n", "<Leader>fb", ":Telescope file_browser<CR>", opts)
   keymap("n", "<Leader>tt", ":Telescope<CR>", opts)
   keymap("n", "<Leader>tb", ":Telescope buffers<CR>", opts)
   keymap("n", "<Leader>tf", ":Telescope current_buffer_fuzzy_find<CR>", opts)
