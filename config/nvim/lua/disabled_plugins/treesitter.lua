@@ -21,6 +21,7 @@ function M.config()
       "jsonc",
       "lua",
       "markdown",
+      "markdown_inline",
       "python",
       "regex",
       -- "rust",

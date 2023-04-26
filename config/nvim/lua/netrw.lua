@@ -1,7 +1,7 @@
 vim.cmd([[
 let g:netrw_keepdir = 0 " tree開いた位置を current dir として扱う。その階層でファイル作成とかができるようになる
 let g:netrw_banner = 0 " 上のバナー消す
- let g:netrw_winsize = 35 "window サイズ
+let g:netrw_winsize = 35 "window サイズ
 let g:netrw_liststyle=1 " ファイルツリーの表示形式、1にするとls -laのような表示になります
 let g:netrw_sizestyle="H" " サイズを(K,M,G)で表示する
 let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S" " フォーマットを yyyy/mm/dd(曜日) hh:mm:ss 
