@@ -8,3 +8,5 @@ vim.api.nvim_create_autocmd("User", {
     require("netrw")
   end,
 })
+
+vim.cmd.colorscheme "nightfly"
