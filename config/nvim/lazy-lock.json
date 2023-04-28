@@ -1,3 +1,7 @@
 {
-  "lazy.nvim": { "branch": "main", "commit": "903f0fe542fc35b74f3c09494f9c175346dfa76d" }
+  "denops.vim": { "branch": "main", "commit": "d7a15615f86830e9464c30f761a3911f619b38b3" },
+  "gin.vim": { "branch": "main", "commit": "87b661b3ed2f65feb8455be6e7ee5902649ec208" },
+  "gitsigns.nvim": { "branch": "main", "commit": "e5edefd9976039f5352e0c900f35206770b33a2d" },
+  "lazy.nvim": { "branch": "main", "commit": "bb5cc9ef3bbb17541929b745f74551c900188099" },
+  "nightfly": { "branch": "master", "commit": "db050001fb10ed1bcf11be135bf6bcbf3310be0f" }
 }
