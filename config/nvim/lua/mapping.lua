@@ -18,6 +18,7 @@ local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 local silent = { silent = true }
 local noremap = { noremap = true }
+vim.g.mapleader = " "
 
 keymap({ "n", "x" }, "<Leader>", "<Nop>", opts)
 
