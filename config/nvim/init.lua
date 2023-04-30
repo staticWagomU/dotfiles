@@ -6,6 +6,7 @@ vim.api.nvim_create_autocmd("User", {
   callback = function()
     require("mapping")
     require("netrw")
+    require("command")
   end,
 })
 
