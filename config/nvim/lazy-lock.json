@@ -4,5 +4,7 @@
   "gin.vim": { "branch": "main", "commit": "87b661b3ed2f65feb8455be6e7ee5902649ec208" },
   "gitsigns.nvim": { "branch": "main", "commit": "e5edefd9976039f5352e0c900f35206770b33a2d" },
   "lazy.nvim": { "branch": "main", "commit": "bb5cc9ef3bbb17541929b745f74551c900188099" },
-  "nightfly": { "branch": "master", "commit": "db050001fb10ed1bcf11be135bf6bcbf3310be0f" }
+  "nightfly": { "branch": "master", "commit": "db050001fb10ed1bcf11be135bf6bcbf3310be0f" },
+  "nvim-autopairs": { "branch": "master", "commit": "8225f4c976090164b1905403fb013e40deeed37e" },
+  "nvim-insx": { "branch": "main", "commit": "5e1edf1694ca235d82b20a9d90be193baac3129f" }
 }
