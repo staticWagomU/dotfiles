@@ -1,10 +1,10 @@
 {
   "denops.vim": { "branch": "main", "commit": "d7a15615f86830e9464c30f761a3911f619b38b3" },
-  "fern.vim": { "branch": "main", "commit": "dae5eb2debe023fce0e3dfafbf879bd89946d6d0" },
   "gin.vim": { "branch": "main", "commit": "87b661b3ed2f65feb8455be6e7ee5902649ec208" },
   "gitsigns.nvim": { "branch": "main", "commit": "e5edefd9976039f5352e0c900f35206770b33a2d" },
   "lazy.nvim": { "branch": "main", "commit": "bb5cc9ef3bbb17541929b745f74551c900188099" },
   "nightfly": { "branch": "master", "commit": "db050001fb10ed1bcf11be135bf6bcbf3310be0f" },
   "nvim-autopairs": { "branch": "master", "commit": "8225f4c976090164b1905403fb013e40deeed37e" },
-  "nvim-insx": { "branch": "main", "commit": "5e1edf1694ca235d82b20a9d90be193baac3129f" }
+  "nvim-web-devicons": { "branch": "master", "commit": "b34362b20a4942b3245f958e73ebe1b09b020ad1" },
+  "oil.nvim": { "branch": "master", "commit": "82c706822bb13a8ea7a21e0e3dccc83eaf40bfbc" }
 }
