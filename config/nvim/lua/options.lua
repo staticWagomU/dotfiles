@@ -58,16 +58,12 @@ set.fillchars = {
   vertright = '┣',
   verthoriz = '╋'
 }
--- set.winbar = '%=%f%m%='
 set.backspace = { "indent", "eol", "start" }
+set.directory=vim.fn.expand("~")
+set.backupdir=vim.fn.expand("~")
+set.undodir=vim.fn.expand("~")
 
 vim.cmd [=[
-set directory=~
-set backupdir=~
-set undodir=~
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-" autocmd bufWritePost * :lua vim.lsp.buf.format()
 
 augroup restore-cursor
 	autocmd!
@@ -80,8 +76,6 @@ augroup restore-cursor
 		\ |   execute 'normal! zz'
 		\ | endif
 augroup END
-
-"autocmd InsertEnter * lia vim.schedule(vim.cmd.nohlsearch)
 ]=]
 
 vim.api.nvim_create_user_command("ShowPluginReadme", function()
@@ -95,4 +89,12 @@ vim.filetype.add({
   extension = {
     mdx = 'markdown',
   },
+})
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+  pattern = "*",
+  desc = "インサート時に検索ハイライトを消す",
+  callback = function()
+    vim.schedule(vim.cmd.nohlsearch)
+  end
 })
