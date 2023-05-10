@@ -98,3 +98,17 @@ vim.api.nvim_create_autocmd("InsertEnter", {
     vim.schedule(vim.cmd.nohlsearch)
   end
 })
+
+vim.api.nvim_create_augroup("extra-whitespace", {})
+vim.api.nvim_create_autocmd({"VimEnter", "WinEnter"}, {
+  group = "extra-whitespace",
+  pattern = {"*"},
+  desc = "全角空白を可視化させる",
+  command = [[call matchadd("ExtraWhitespace", "[\u00A0\u2000-\u200B\u3000]")]]
+})
+vim.api.nvim_create_autocmd({"ColorScheme"}, {
+  group = "extra-whitespace",
+  pattern = {"*"},
+  desc = "全角空白を可視化させる",
+  command = [[highlight default ExtraWhitespace ctermbg=red guibg=red]]
+})
