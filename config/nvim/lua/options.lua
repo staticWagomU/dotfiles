@@ -45,7 +45,7 @@ set.showmode = false
 set.list = true
 set.listchars = { eol = '↴', tab = '▸ ', trail = '»', space = '⋅' }
 set.fillchars = {
-  stl = ' ',
+  stl = '━',
   stlnc = ' ',
   diff = '∙',
   eob = ' ',
@@ -62,9 +62,9 @@ set.backspace = { "indent", "eol", "start" }
 set.directory=vim.fn.expand("~")
 set.backupdir=vim.fn.expand("~")
 set.undodir=vim.fn.expand("~")
+set.laststatus=3
 
 vim.cmd [=[
-
 augroup restore-cursor
 	autocmd!
 	autocmd BufReadPost *
