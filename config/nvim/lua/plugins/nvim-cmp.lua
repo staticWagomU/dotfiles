@@ -17,10 +17,25 @@ return {
     -- lua snip
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
+
+    -- copilot
+    "hrsh7th/cmp-copilot",
+    "github/copilot.vim",
+--    "zbirenbaum/copilot.lua",
+--    { "zbirenbaum/copilot-cmp", opts={} },
+
+    "onsails/lspkind.nvim",
   },
   config = function()
     local cmp = require("cmp")
     local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+    local lspkind = require("lspkind")
+    lspkind.init({
+      symbol_map = {
+        Copilot = "",
+      },
+    })
+
     cmp.setup({
       snippet = {
         expand = function(args)
@@ -40,19 +55,22 @@ return {
       }),
       sources = cmp.config.sources(
       {
+        { name = "copilot" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
-      },
-      {
         { name = "nvim_lsp_signature_help" },
         { name = "nvim_lua" },
         { name = "emoji" },
         { name = "calc" },
-      },
-      {
         { name = "buffer" },
-      }
-      )
+      }),
+      formatting = {
+        format = lspkind.cmp_format({
+          mode = "symbol",
+          with_text = true,
+          maxwidth = 50
+        }),
+      },
     })
 
     cmp.setup.filetype("gitcommit", {
