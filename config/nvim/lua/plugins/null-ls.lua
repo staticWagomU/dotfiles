@@ -42,6 +42,10 @@ return {
         filetypes = { "markdown" }
       }),
 
+      diagnostics.markuplint.with({
+        filetypes = { "html", "astro" }
+      }),
+
       formatting.deno_fmt.with({
         condition = with_root_file("deno.json", "deno.jsonc"),
       }),

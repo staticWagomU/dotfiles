@@ -90,7 +90,9 @@ return {
         })
       end,
       ["tailwindcss"] = function()
-        lspconfig["tailwindcss"].setup({})
+        lspconfig["tailwindcss"].setup({
+          root_dir = lspconfig.util.root_pattern("tailwind.config.js", "tailwind.config.ts", "tailwind.config.lua", "tailwind.config.json"),
+        })
       end,
       ["denols"] = function()
         lspconfig["denols"].setup({
@@ -117,6 +119,9 @@ return {
         lspconfig["emmet_ls"].setup({
           extra_filetype = html_like
         })
+      end,
+      ["cssls"] = function ()
+        lspconfig["cssls"].setup({})
       end,
     })
   end

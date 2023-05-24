@@ -1,5 +1,6 @@
 return {
   "github/copilot.vim",
+  event = "BufRead",
 --  "zbirenbaum/copilot.lua",
 --  cmd = "Copilot",
 --  event = "InsertEnter",
