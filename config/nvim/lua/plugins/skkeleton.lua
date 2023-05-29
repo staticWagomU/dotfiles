@@ -1,55 +1,39 @@
 return {
   {
   "vim-skk/skkeleton",
-  config = function()
-   vim.cmd[=[
-function! s:skkeleton_init() abort
-	if has('mac')
-		call skkeleton#config(#{
-					\ eggLikeNewline: v:true,
-					\ globalDictionaries: [
-					\  ["~/skk/SKK-JISYO.L", "euc-jp"],
-					\ ],
-					\ registerConvertResult: v:true,
-					\})
-	endif
-	if has('win32')
-		call skkeleton#config(#{
-					\ eggLikeNewline: v:true,
-					\ globalDictionaries: [
-					\  ["~\\skk\\SKK-JISYO.L", "euc-jp"],
-					\ ],
-					\ registerConvertResult: v:true,
-					\})
-	endif
-	call skkeleton#register_kanatable('rom', {
-				\ "z\<Space>": ["\u3000", ''],
-				\})
-endfunction
+  config = function(p)
+    local dictdir = vim.fs.joinpath(vim.fs.dirname(p.dir), "dict")
 
-augroup skkeleton-initialize-pre
-	autocmd!
-	autocmd User skkeleton-initialize-pre call s:skkeleton_init()
-augroup END
+    local skkeleton_init = function ()
+      vim.fn["skkeleton#config"]({
+        eggLikeNewline = true,
+        globalDictionaries = {
+          vim.fs.joinpath(dictdir, "SKK-JISYO.L"),
+          vim.fs.joinpath(dictdir, "SKK-JISYO.assoc"),
+          vim.fs.joinpath(dictdir, "SKK-JISYO.emoji"),
+          vim.fs.joinpath(dictdir, "SKK-JISYO.edict"),
+          vim.fs.joinpath(dictdir, "SKK-JISYO.edict2"),
+          vim.fs.joinpath(dictdir, "SKK-JISYO.fullname"),
+          vim.fs.joinpath(dictdir, "SKK-JISYO.geo"),
+          vim.fs.joinpath(dictdir, "SKK-JISYO.hukugougo"),
+          vim.fs.joinpath(dictdir, "SKK-JISYO.mazegaki"),
+          vim.fs.joinpath(dictdir, "SKK-JISYO.propernoun"),
+          vim.fs.joinpath(dictdir, "SKK-JISYO.station"),
+        },
+      })
+      vim.fn["skkeleton#register_kanatable"]("rom", {
+          [ [[z\<Space>]] ] = {[[\u3000]], ''},
+      })
+    end
+    vim.keymap.set({ "i", "c" }, "<C-J>", "<Plug>(skkeleton-enable)")
 
-
-function! s:skkeleton_pre() abort
-	" Overwrite sources
-	let s:prev_buffer_config = ddc#custom#get_buffer()
-	call ddc#custom#patch_buffer('sources', ['skkeleton'])
-endfunction
-autocmd User skkeleton-enable-pre call s:skkeleton_pre()
-
-function! s:skkeleton_post() abort
-	" Restore sources
-	call ddc#custom#set_buffer(s:prev_buffer_config)
-endfunction
-autocmd User skkeleton-disable-pre call s:skkeleton_post()
-
-
-imap <C-j> <Plug>(skkeleton-toggle)
-cmap <C-j> <Plug>(skkeleton-toggle)
-   ]=] 
+    vim.api.nvim_create_autocmd({ "User" }, {
+      group = vim.api.nvim_create_augroup("skkeleton-initialize-pre", {}),
+      callback = function()
+        skkeleton_init()
+      end,
+      once = true,
+    })
   end
   },
   {
@@ -58,5 +42,9 @@ cmap <C-j> <Plug>(skkeleton-toggle)
     opts = {
       alwaysShown = false,
     },
+  },
+  {
+    "skk-dev/dict",
+    cond = false,
   },
 }
