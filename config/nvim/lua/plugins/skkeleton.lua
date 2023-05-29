@@ -2,23 +2,24 @@ return {
   {
   "vim-skk/skkeleton",
   config = function(p)
-    local dictdir = vim.fs.joinpath(vim.fs.dirname(p.dir), "dict")
+    local path_join = require("utils").path_join
+    local dictdir = path_join(vim.fs.dirname(p.dir), "dict")
 
     local skkeleton_init = function ()
       vim.fn["skkeleton#config"]({
         eggLikeNewline = true,
         globalDictionaries = {
-          vim.fs.joinpath(dictdir, "SKK-JISYO.L"),
-          vim.fs.joinpath(dictdir, "SKK-JISYO.assoc"),
-          vim.fs.joinpath(dictdir, "SKK-JISYO.emoji"),
-          vim.fs.joinpath(dictdir, "SKK-JISYO.edict"),
-          vim.fs.joinpath(dictdir, "SKK-JISYO.edict2"),
-          vim.fs.joinpath(dictdir, "SKK-JISYO.fullname"),
-          vim.fs.joinpath(dictdir, "SKK-JISYO.geo"),
-          vim.fs.joinpath(dictdir, "SKK-JISYO.hukugougo"),
-          vim.fs.joinpath(dictdir, "SKK-JISYO.mazegaki"),
-          vim.fs.joinpath(dictdir, "SKK-JISYO.propernoun"),
-          vim.fs.joinpath(dictdir, "SKK-JISYO.station"),
+          path_join(dictdir, "SKK-JISYO.L"),
+          path_join(dictdir, "SKK-JISYO.assoc"),
+          path_join(dictdir, "SKK-JISYO.emoji"),
+          path_join(dictdir, "SKK-JISYO.edict"),
+          path_join(dictdir, "SKK-JISYO.edict2"),
+          path_join(dictdir, "SKK-JISYO.fullname"),
+          path_join(dictdir, "SKK-JISYO.geo"),
+          path_join(dictdir, "SKK-JISYO.hukugougo"),
+          path_join(dictdir, "SKK-JISYO.mazegaki"),
+          path_join(dictdir, "SKK-JISYO.propernoun"),
+          path_join(dictdir, "SKK-JISYO.station"),
         },
       })
       vim.fn["skkeleton#register_kanatable"]("rom", {
