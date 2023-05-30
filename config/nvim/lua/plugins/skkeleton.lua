@@ -24,7 +24,7 @@ return {
     vim.fn["skkeleton#register_kanatable"]("rom", {
         [ [[z\<Space>]] ] = {[[\u3000]], ''},
     })
-    vim.keymap.set({ "i", "c" }, "<C-J>", "<Plug>(skkeleton-enable)")
+    vim.keymap.set({ "i", "c" }, "<C-j>", "<Plug>(skkeleton-toggle)")
   end
   },
   {
