@@ -10,7 +10,7 @@ return {
       vim.cmd"Oil ."
       vim.defer_fn(function()
         vim.cmd.FuzzyMotion()
-      end, 300)
+      end, 150)
     end,
     { noremap=true, silent=true })
     vim.keymap.set("n", "<leader>E", "<cmd>Oil %:p:h<cr>", { noremap=true, silent=true })
