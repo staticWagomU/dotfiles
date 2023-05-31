@@ -2,23 +2,17 @@ return {
   {
   "vim-skk/skkeleton",
   config = function(p)
-    local path_join = require("utils").path_join
-    local dictdir = path_join(vim.fs.dirname(p.dir), "dict")
+    local dictdir = vim.fs.joinpath(vim.fs.dirname(p.dir), "dict")
 
     vim.fn["skkeleton#config"]({
       eggLikeNewline = true,
       globalDictionaries = {
-        vim.fs.joinpath(dictdir, "SKK-JISYO.L"),
-        vim.fs.joinpath(dictdir, "SKK-JISYO.assoc"),
-        vim.fs.joinpath(dictdir, "SKK-JISYO.emoji"),
-        vim.fs.joinpath(dictdir, "SKK-JISYO.edict"),
-        vim.fs.joinpath(dictdir, "SKK-JISYO.edict2"),
-        vim.fs.joinpath(dictdir, "SKK-JISYO.fullname"),
-        vim.fs.joinpath(dictdir, "SKK-JISYO.geo"),
-        vim.fs.joinpath(dictdir, "SKK-JISYO.hukugougo"),
-        vim.fs.joinpath(dictdir, "SKK-JISYO.mazegaki"),
-        vim.fs.joinpath(dictdir, "SKK-JISYO.propernoun"),
-        vim.fs.joinpath(dictdir, "SKK-JISYO.station"),
+        "~/skk/SKK-JISYO.L",
+        {vim.fs.joinpath(dictdir, "SKK-JISYO.L"), "utf-8" },
+        {vim.fs.joinpath(dictdir, "SKK-JISYO.hukugougo"), "utf-8" },
+        {vim.fs.joinpath(dictdir, "SKK-JISYO.mazegaki"), "utf-8" },
+        {vim.fs.joinpath(dictdir, "SKK-JISYO.propernoun"), "utf-8" },
+        {vim.fs.joinpath(dictdir, "SKK-JISYO.station"), "utf-8" },
       },
     })
     vim.fn["skkeleton#register_kanatable"]("rom", {
