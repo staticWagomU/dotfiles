@@ -64,3 +64,5 @@ keymap("n", "<C-j>", "o<ESC>", opts)
 
 keymap("n", "q:", ":q<CR>", opts)
 keymap("n", "qq:", "qq:", opts)
+
+vim.keymap.set({ 'n', 'o', 'x' }, '0', [[getline('.')[0 : col('.') - 2] =~# '^\s\+$' ? '0' : '^']], { expr = true })
