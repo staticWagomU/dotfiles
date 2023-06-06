@@ -8,9 +8,9 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.color_scheme = "iceberg-dark"
 config.keys = {
   -- paste from the clipboard
-  { key = 'v', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
+  { key = 'V', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
   -- paste from the primary selection
-  { key = 'v', mods = 'CTRL', action = act.PasteFrom 'PrimarySelection' },
+  { key = 'V', mods = 'CTRL', action = act.PasteFrom 'PrimarySelection' },
 }
 
 return config
