@@ -48,3 +48,5 @@ require("lazy").setup("plugins",{
   },
 })
 
+vim.keymap.set("n", "<leader>li", "<cmd>Lazy install<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>lu", "<cmd>Lazy update<CR>", { noremap = true, silent = true })
