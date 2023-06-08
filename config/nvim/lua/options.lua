@@ -59,10 +59,14 @@ set.fillchars = {
   verthoriz = '╋'
 }
 set.backspace = { "indent", "eol", "start" }
+---@diagnostic disable-next-line: assign-type-mismatch
 set.directory=vim.fn.expand("~")
+---@diagnostic disable-next-line: assign-type-mismatch
 set.backupdir=vim.fn.expand("~")
+---@diagnostic disable-next-line: assign-type-mismatch
 set.undodir=vim.fn.expand("~")
 set.laststatus=3
+set.fileformat="unix"
 
 vim.cmd [=[
 augroup restore-cursor
