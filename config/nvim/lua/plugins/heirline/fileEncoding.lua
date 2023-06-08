@@ -1,6 +1,7 @@
 local colors = require("nightfly").palette
 
 return  {
+  condition = (vim.bo.fenc ~= "" and vim.bo.fenc)  or vim.o.enc ~= "UFF-8",
   {provider = "| "},
   {
     init = function(self)
@@ -9,7 +10,6 @@ return  {
     provider = function(self)
       return self.enc:upper()
     end,
-    condition = (vim.bo.fenc ~= "" and vim.bo.fenc)  or vim.o.enc ~= "utf-8",
     hl = { fg = colors.ash_blue, bg = colors.slate_blue },
 
   },

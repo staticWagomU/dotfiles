@@ -18,15 +18,21 @@ return {
   Space,
   FileType,
   Space,
-  FileEncoding,
+--  FileEncoding,
   Space,
-  { provider = "| " },
+  {
+    provider = "| ",
+    condition = vim.fn.expand("%F") ~= "",
+  },
   {
     provider = "%F",
     condition = vim.fn.expand("%F") ~= "",
     hl = { fg = colors.ash_blue, bg = colors.slate_blue },
   },
-  { provider = " |" },
+  {
+    provider = " |",
+    condition = vim.fn.expand("%F") ~= "",
+  },
   Space,
   Mode,
 }

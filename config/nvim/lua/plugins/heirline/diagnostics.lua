@@ -11,6 +11,9 @@ return {
   end,
   update = { "DiagnosticChanged", "BufEnter" },
   {
+    provider = "| ",
+  },
+  {
     provider = function(self)
       return self.errors > 0 and (" " .. self.errors .. " ")
     end,
@@ -33,5 +36,8 @@ return {
       return self.hints > 0 and (" ".. self.hints)
     end,
     hl = { fg = colors.grey_blue, bg = colors.slate_blue },
+  },
+  {
+    provider = " |",
   },
 }

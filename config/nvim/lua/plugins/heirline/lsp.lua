@@ -2,13 +2,12 @@ local conditions = require("heirline.conditions")
 local colors = require("nightfly").palette
 
 return {
+  condition = conditions.lsp_attached,
   {
     provider = "| ",
-    condition = conditions.lsp_attached,
   },
   {
-    condition = conditions.lsp_attached,
-    update = {"LspAttach", "LspDetach"},
+    update = { 'LspAttach', 'LspDetach', 'WinEnter' },
     provider  = function()
       local names = {}
       for _, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
@@ -20,6 +19,5 @@ return {
   },
   {
     provider = " |",
-    condition = conditions.lsp_attached,
   },
 }
