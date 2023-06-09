@@ -64,6 +64,20 @@ return {
     end
     require("neodev").setup({})
     local lspconfig = require("lspconfig")
+    require("mason-lspconfig").setup({
+      ensure_installed = {
+        "astro",
+        "denols",
+        "vtsls",
+        "lua_ls",
+        "tailwindcss",
+        "gopls",
+        "emmet_ls",
+        "cssls",
+        "ruby_ls",
+        "zls"
+      },
+    })
     require("mason-lspconfig").setup_handlers({
       function(server_name)
         lspconfig[server_name].setup()
@@ -126,6 +140,12 @@ return {
       end,
       ["cssls"] = function ()
         lspconfig["cssls"].setup({})
+      end,
+      ["zls"] = function ()
+        lspconfig["zls"].setup({})
+      end,
+      ["ruby_ls"] = function ()
+        lspconfig["ruby_ls"].setup({})
       end,
     })
   end
