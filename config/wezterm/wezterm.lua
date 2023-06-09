@@ -11,6 +11,11 @@ config.keys = {
   { key = 'V', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
   -- paste from the primary selection
   { key = 'V', mods = 'CTRL', action = act.PasteFrom 'PrimarySelection' },
+  -- vim key binding
+  { key = 'h', mods = 'ALT', action = act.SendKey { key = 'LeftArrow'}},
+  { key = 'j', mods = 'ALT', action = act.SendKey { key = 'DownArrow'}},
+  { key = 'k', mods = 'ALT', action = act.SendKey { key = 'UpArrow'}},
+  { key = 'l', mods = 'ALT', action = act.SendKey { key = 'RightArrow'}},
 }
 
 return config
