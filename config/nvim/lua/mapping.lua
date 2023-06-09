@@ -54,4 +54,5 @@ keymap("o", "a[", "a[", opts)
 keymap("o", "a{", "a{", opts)
 keymap("o", "a@", "a`", opts)
 
-vim.keymap.set({ 'n', 'o', 'x' }, '0', [[getline('.')[0 : col('.') - 2] =~# '^\s\+$' ? '0' : '^']], { expr = true })
+keymap("t", "<esc>", [[<C-\><C-n>]], { noremap = true })
+keymap({ 'n', 'o', 'x' }, '0', [[getline('.')[0 : col('.') - 2] =~# '^\s\+$' ? '0' : '^']], { expr = true })
