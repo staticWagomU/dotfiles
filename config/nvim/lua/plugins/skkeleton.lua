@@ -1,6 +1,9 @@
 return {
   {
   "vim-skk/skkeleton",
+  dependencies = {
+    "vim-denops/denops.vim",
+  },
   config = function(p)
     vim.api.nvim_create_autocmd("User", {
       pattern = "DenopsPluginPost:skkeleton",
