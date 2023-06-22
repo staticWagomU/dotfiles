@@ -1,0 +1,3 @@
+return {
+  "lambdalisue/mr.vim",
+}
