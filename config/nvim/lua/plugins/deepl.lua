@@ -11,7 +11,7 @@ return {
 
     " translate a current line and display on a new line
     nmap t<C-e> yypV<Cmd>call deepl#v("EN")<CR>
-    nmap t<C-j> yyp<Cmd>s/`/'/g<CR>V<Cmd>call deepl#v("JA")<CR>
+    nmap t<C-j> yyp<Cmd>s/`/_'/g<CR>V<Cmd>call deepl#v("JA")<CR><Cmd>s/_'/`/g<CR>
 
     ]]
   end
