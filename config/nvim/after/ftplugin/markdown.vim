@@ -32,4 +32,4 @@ function! s:markdown_outline() abort
 endfunction
 
 nnoremap <buffer> gO <Cmd>call <sid>markdown_outline()<CR>a
-
+set wrap
