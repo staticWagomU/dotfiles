@@ -58,9 +58,9 @@ return {
       {
         { name = "skkeleton" },
         { name = "copilot" },
+        { name = "nvim_lsp_signature_help" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "nvim_lsp_signature_help" },
         { name = "nvim_lua" },
         { name = "emoji" },
         { name = "calc" },
