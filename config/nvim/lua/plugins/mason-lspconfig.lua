@@ -75,7 +75,8 @@ return {
         "emmet_ls",
         "cssls",
         "ruby_ls",
-        "zls"
+        "zls",
+        "vuels",
       },
     })
     require("mason-lspconfig").setup_handlers({
@@ -146,6 +147,9 @@ return {
       end,
       ["ruby_ls"] = function ()
         lspconfig["ruby_ls"].setup({})
+      end,
+      ["vuels"] = function ()
+        lspconfig["vuels"].setup({})
       end,
     })
   end
