@@ -8,6 +8,7 @@ return {
     "hrsh7th/cmp-emoji",
     "hrsh7th/cmp-calc",
     "dmitmel/cmp-cmdline-history",
+    "uga-rosa/cmp-skkeleton",
 
     -- lsp
     "hrsh7th/cmp-nvim-lsp",
@@ -55,6 +56,7 @@ return {
       }),
       sources = cmp.config.sources(
       {
+        { name = "skkeleton" },
         { name = "copilot" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
