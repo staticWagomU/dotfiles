@@ -1,3 +1,9 @@
+require("utils").make_abbrev({
+  { from = "ldi", to = "Lspsaga show_line_diagnostics" },
+  { from = "ldn", to = "Lspsaga diagnostic_jump_next" },
+  { from = "ldp", to = "Lspsaga diagnostic_jump_prev" },
+})
+
 return {
   "glepnir/lspsaga.nvim",
   event = "LspAttach",

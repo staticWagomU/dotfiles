@@ -65,3 +65,16 @@ keymap("t", "<esc>", [[<C-\><C-n>]], { noremap = true })
 keymap({ 'n', 'o', 'x' }, '0', [[getline('.')[0 : col('.') - 2] =~# '^\s\+$' ? '0' : '^']], { expr = true })
 
 keymap({ "n", "x" }, "s", "<Nop>", { noremap = false, silent = false})
+
+-- kuuさんから教えてもらった
+keymap('c', '<C-p>', function()
+  local pos = vim.fn.getcmdpos()
+  local left = vim.fn.getcmdline():sub(pos - 1, pos)
+  local k
+  if left == '/' then
+    k = vim.fn.expand('%:p:t')
+  else
+    k = vim.fn.expand('%:p:h') .. '/'
+  end
+  vim.fn.feedkeys(k, 'n')
+end)
