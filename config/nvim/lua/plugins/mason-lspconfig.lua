@@ -68,7 +68,8 @@ return {
       ensure_installed = {
         "astro",
         "denols",
-        "vtsls",
+        -- "vtsls",
+        "tsserver",
         "lua_ls",
         "tailwindcss",
         "gopls",
@@ -106,14 +107,17 @@ return {
           },
         })
       end,
-      ["vtsls"] = function()
-        local deno_root = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "import_map.json")
-        if deno_root ~= nil then
-          return
-        end
-        lspconfig["vtsls"].setup({
-          root_dir = lspconfig.util.root_pattern("package.json"),
-        })
+      -- ["vtsls"] = function()
+      --   local deno_root = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "import_map.json")
+      --   if deno_root ~= nil then
+      --     return
+      --   end
+      --   lspconfig["vtsls"].setup({
+      --     root_dir = lspconfig.util.root_pattern("package.json"),
+      --   })
+      -- end,
+      ["tsserver"] = function ()
+        lspconfig["tsserver"].setup({})
       end,
       ["lua_ls"] = function()
         lspconfig["lua_ls"].setup({
