@@ -95,13 +95,13 @@ vim.filetype.add({
   },
 })
 
-vim.api.nvim_create_autocmd("InsertEnter", {
-  pattern = "*",
-  desc = "インサート時に検索ハイライトを消す",
-  callback = function()
-    vim.schedule(vim.cmd.nohlsearch)
-  end
-})
+-- vim.api.nvim_create_autocmd("InsertEnter", {
+--   pattern = "*",
+--   desc = "インサート時に検索ハイライトを消す",
+--   callback = function()
+--     vim.schedule(vim.cmd.nohlsearch)
+--   end
+-- })
 
 vim.api.nvim_create_augroup("extra-whitespace", {})
 vim.api.nvim_create_autocmd({"VimEnter", "WinEnter"}, {
