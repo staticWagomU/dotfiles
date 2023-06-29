@@ -1,7 +1,6 @@
 require("utils").make_abbrev({
   { from = "ldi", to = "Lspsaga show_line_diagnostics" },
-  { from = "ldn", to = "Lspsaga diagnostic_jump_next" },
-  { from = "ldp", to = "Lspsaga diagnostic_jump_prev" },
+  { from = "lca", to = "Lspsaga code_action" },
 })
 
 return {
@@ -21,21 +20,22 @@ return {
 
     require("utils").on_attach(function()
       vim.keymap.set("n", "K", function()
-        local ft = vim.o.filetype
+        local ft = vim.lo.filetype
         if ft == "vim" or ft == "help" then
-          vim.cmd([[execute "h " . expand("<cword>") ]])
+          vim.cmd.execute[["h " . expand("<cword>")]]
         else
-          vim.cmd([[Lspsaga hover_doc]])
+          vim.cmd.Lspsaga[["hover_doc"]]
         end
       end)
 
-      vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<cr>")
-      vim.keymap.set("n", "gD", "<cmd>Lspsaga goto_definition<cr>")
-
-      vim.keymap.set("n", "gt", "<cmd>Lspsaga peek_type_definition<cr>")
-      vim.keymap.set("n", "gT", "<cmd>Lspsaga goto_type_definition<cr>")
-
-      vim.keymap.set("n", "gr", "<cmd>Lspsaga rename<cr>")
+      local opts = { noremap = true, silent = true }
+      vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<cr>", opts)
+      vim.keymap.set("n", "gD", "<cmd>Lspsaga goto_definition<cr>", opts)
+      vim.keymap.set("n", "gt", "<cmd>Lspsaga peek_type_definition<cr>", opts)
+      vim.keymap.set("n", "gT", "<cmd>Lspsaga goto_type_definition<cr>", opts)
+      vim.keymap.set("n", "gr", "<cmd>Lspsaga rename<cr>", opts)
+      vim.keymap.set("n", "[l", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+      vim.keymap.set("n", "[l", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
     end)
   end
 }
