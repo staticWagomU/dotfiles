@@ -8,6 +8,11 @@ require("utils").make_abbrev({
   { from = "gl", to = "GinLog --graph" },
   { from = "glo", to = "GinLog --graph --oneline" },
   { from = "gc", to = "Gin commit" },
+  { from = "gd", to = "GinDiff" },
+  { from = "gds", to = "GinDiff --cached" },
+  { from = "gdss", to = "GinDiff stash@{}<Left>" },
+  { from = "gss", to = "Gin stash " },
+  { from = "gsl", to = "Gin stash list" },
   { prepose = "Gin commit", from = "a", to = "--amend" },
 })
 
