@@ -31,11 +31,15 @@ return {
       local opts = { noremap = true, silent = true }
       vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<cr>", opts)
       vim.keymap.set("n", "gD", "<cmd>Lspsaga goto_definition<cr>", opts)
+      vim.keymap.set("n", "gvd", "<cmd>vs | Lspsaga goto_definition<cr>", opts)
+      vim.keymap.set("n", "gsd", "<cmd>sp | Lspsaga goto_definition<cr>", opts)
       vim.keymap.set("n", "gt", "<cmd>Lspsaga peek_type_definition<cr>", opts)
       vim.keymap.set("n", "gT", "<cmd>Lspsaga goto_type_definition<cr>", opts)
+      vim.keymap.set("n", "gvt", "<cmd>vs | Lspsaga goto_type_definition<cr>", opts)
+      vim.keymap.set("n", "gst", "<cmd>sp | Lspsaga goto_type_definition<cr>", opts)
       vim.keymap.set("n", "gr", "<cmd>Lspsaga rename<cr>", opts)
       vim.keymap.set("n", "[l", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
-      vim.keymap.set("n", "[l", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+      vim.keymap.set("n", "]l", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
     end)
   end
 }
