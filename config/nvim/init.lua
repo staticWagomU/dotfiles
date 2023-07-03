@@ -1,4 +1,4 @@
-pcall(require, "impatient")
+vim.env.DOTVIM = vim.fn.expand("<sfile>:p:h")
 require("options")
 require("lazy_nvim")
 vim.api.nvim_create_autocmd("User", {
@@ -9,4 +9,6 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
-vim.cmd.colorscheme "nightfly"
+DEFAULT_COLORSCHEME = "nightfly"
+INACTIVE_COLORSCHEME = "nordfox"
+vim.cmd.colorscheme(DEFAULT_COLORSCHEME)
