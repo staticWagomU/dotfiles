@@ -78,6 +78,7 @@ return {
         "ruby_ls",
         "zls",
         "vuels",
+        "svelte",
       },
     })
     require("mason-lspconfig").setup_handlers({
@@ -154,6 +155,9 @@ return {
       end,
       ["vuels"] = function ()
         lspconfig["vuels"].setup({})
+      end,
+      ["svelte"] = function ()
+        lspconfig["svelte"].setup({})
       end,
     })
   end
