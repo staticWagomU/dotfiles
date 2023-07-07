@@ -18,6 +18,9 @@ vim.o.foldcolumn = '0'
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
 vim.g.mapleader = " "
 
 local set = vim.opt
@@ -115,4 +118,19 @@ vim.api.nvim_create_autocmd({"ColorScheme"}, {
   pattern = {"*"},
   desc = "全角空白を可視化させる",
   command = [[highlight default ExtraWhitespace ctermbg=red guibg=red]]
+})
+local lsplns = vim.api.nvim_create_augroup("toggleLspLines", {})
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = lsplns,
+  pattern = {"*"},
+  callback = function()
+    vim.diagnostic.config({ virtual_lines = false })
+  end
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = lsplns,
+  pattern = {"*"},
+  callback = function()
+    vim.diagnostic.config({ virtual_lines = true })
+  end
 })
