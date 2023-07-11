@@ -29,6 +29,11 @@ return {
       "node_modules",
     }
 
+    o.deno_root_dir = {
+      "deno.json",
+      "deno.jsonc",
+    }
+
     o.html_like = {
       "astro",
       "html",
@@ -54,6 +59,7 @@ return {
     local html_like = opts.html_like
     local node_root_dir = opts.node_root_dir
     local disable_formatting = opts.disable_formatting
+    local deno_root_dir = opts.deno_root_dir
     opts = opts.opts
 
     -- sign columnのアイコンを変更
@@ -158,6 +164,9 @@ return {
       end,
       ["svelte"] = function ()
         lspconfig["svelte"].setup({})
+      end,
+      ["eslint"] = function ()
+        lspconfig["eslint"].setup({})
       end,
     })
   end
