@@ -9,31 +9,34 @@ return {
     "yuki-yano/fern-preview.vim",
   },
   config = function()
-    vim.cmd([[
-      let g:fern#default_hidden=1
-      let g:fern#renderer = "nerdfont"
-      let g:fern#renderer#nerdfont#indent_markers = 1
+    vim.g["fern#default_hidden"] = 1
+    vim.g["fern#renderer"] = "nerdfont"
+    vim.g["fern#renderer#nerdfont#indent_markers"] = 1
 
-      nnoremap <silent> <Leader>f :<C-u>Fern . <CR>
-      nnoremap <silent> <Leader>F :<C-u>Fern %:h<CR>
-      nnoremap <silent> <C-f> :Fern . -reveal=%<CR>
+    local opts = { noremap = true, silent = true }
+    vim.keymap.set("n", "<Leader>f", "<cmd>Fern .<CR>", opts)
+    vim.keymap.set("n", "<Leader>F", "<cmd>Fern %:h<CR>", opts)
+    vim.keymap.set("n", "<C-f>", "<cmd>Fern . -reveal=%<CR>", opts)
 
-      function! s:fern_settings() abort
-        nmap <silent> <buffer> <C-m> <Plug>(fern-action-move)
-        nmap <silent> <buffer> <C-s> <Plug>(fern-action-new-dir)
-        " nnoremap <buffer> <C-f> <C-W>p
-        nmap <silent> <buffer> <Leader>cd <Plug>(fern-action-cd:cursor)
-        nmap <silent> <buffer> p     <Plug>(fern-action-preview:auto:toggle)
-        nmap <silent> <buffer> <C-n> <Plug>(fern-action-preview:scroll:down:half)
-        nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:scroll:up:half)
-        setlocal signcolumn=no
-        setlocal nonumber
-      endfunction
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "fern",
+      -- group = vim.api.nvim_create_augroup("fern_settings"),
+      callback = function()
+        local buffer_silent = { silent =true, buffer = true }
+        vim.opt_local.signcolumn="no"
+        vim.opt_local.number=false
 
-      augroup fern-settings
-        autocmd!
-        autocmd FileType fern call s:fern_settings()
-      augroup END
-      ]])
+        vim.keymap.set("n", "<C-m>", "<Plug>(fern-action-move)", buffer_silent)
+        vim.keymap.set("n", "<C-s>", "<Plug>(fern-action-new-dir)", buffer_silent)
+        vim.keymap.set("n", "<Leader>cd", "<Plug>(fern-action-cd:cursor)", buffer_silent)
+        vim.keymap.set("n", "p", "<Plug>(fern-action-preview:auto:toggle)", buffer_silent)
+        vim.keymap.set("n", "<C-n>", "<Plug>(fern-action-preview:scroll:down:half)", buffer_silent)
+        vim.keymap.set("n", "<C-p>", "<Plug>(fern-action-preview:scroll:up:half)", buffer_silent)
+        vim.keymap.set("n", "`", "<Plug>(fern-action-preview:scroll:up:half)", buffer_silent)
+        vim.keymap.set("n", "g.", "<Plug>(fern-action-hidden:toggle)", buffer_silent)
+        vim.keymap.set("n", "-", "<Plug>(fern-action-leave)", buffer_silent)
+        -- vim.keymap.set("n", "", "<Plug>(fern-action-)", buffer_silent)
+      end,
+    })
   end
 }
