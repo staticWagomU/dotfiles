@@ -17,47 +17,68 @@ return {
     "jay-babu/mason-null-ls.nvim",
     "nvim-lua/plenary.nvim",
   },
---  opts = function()
---    local null_ls = require("null-ls")
---    local diagnostics_format = "[#{c}] #{m} (#{s})"
---    local formatting = null_ls.builtins.formatting
---    local diagnostics = null_ls.builtins.diagnostics
---
---    local with_root_file = function(...)
---      local files = { ... }
---      return function(utils)
---        return utils.root_has_file(files)
---      end
---    end
---
---    local opts = {}
---    opts.sources = merge_arrays(opts.sources or {}, {
---      -- web
---      diagnostics.tsc.with({
---        diagnostics_format = diagnostics_format,
---        condition = with_root_file("deno.json", "deno.jsonc"),
---      }),
---
---      diagnostics.textlint.with({
---        filetypes = { "markdown" }
---      }),
---
---      diagnostics.markuplint.with({
---        filetypes = { "html", "astro" }
---      }),
---
---      formatting.deno_fmt.with({
---        condition = with_root_file("deno.json", "deno.jsonc"),
---      }),
---
---      -- format
---      -- lua
---      formatting.stylua.with({
---        diagnostics_format = diagnostics_format,
---        condition = with_root_file({ "stylua.toml", ".stylua.toml" }),
---      }),
---
---    })
---    return opts
---  end,
+ opts = function()
+   local null_ls = require("null-ls")
+   local diagnostics_format = "[#{c}] #{m} (#{s})"
+   local formatting = null_ls.builtins.formatting
+   local diagnostics = null_ls.builtins.diagnostics
+
+   local with_root_file = function(...)
+     local files = { ... }
+     return function(utils)
+       return utils.root_has_file(files)
+     end
+   end
+
+   local opts = {}
+   opts.sources = merge_arrays(opts.sources or {}, {
+     -- web
+     -- diagnostics.eslint.with({
+     --   diagnostics_format = diagnostics_format,
+     --   condition = with_root_file(".eslintrc.cjs", ".eslintrc"),
+     --   filetypes = {
+     --     "javascript",
+     --     "typescript",
+     --     "astro",
+     --     "javascriptreact",
+     --     "javascript.jsx",
+     --     "typescriptreact",
+     --     "typescript.tsx",
+     --     "svelte",
+     --     "vue",
+     --   }
+     -- }),
+
+     diagnostics.tsc.with({
+       diagnostics_format = diagnostics_format,
+       condition = with_root_file("deno.json", "deno.jsonc"),
+     }),
+
+     diagnostics.textlint.with({
+       filetypes = { "markdown" }
+     }),
+
+     diagnostics.markuplint.with({
+       filetypes = { "html", "astro" }
+     }),
+
+     -- format
+     formatting.deno_fmt.with({
+       condition = with_root_file("deno.json", "deno.jsonc"),
+     }),
+
+     -- lua
+     formatting.stylua.with({
+       diagnostics_format = diagnostics_format,
+       condition = with_root_file({ "stylua.toml", ".stylua.toml" }),
+     }),
+
+     formatting.prettier.with({
+       diagnostics_format = diagnostics_format,
+       condition = with_root_file({ ".prettierrc", ".prettierrc.json" }),
+     }),
+
+   })
+   return opts
+ end,
 }
