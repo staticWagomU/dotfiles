@@ -6,5 +6,10 @@ return {
   },
   {
     "EdenEast/nightfox.nvim",
-  }
+    priority = 1000,
+  },
+  {
+    "zootedb0t/citruszest.nvim",
+    priority = 1000,
+  },
 }
