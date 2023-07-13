@@ -57,9 +57,9 @@ return {
   end,
   config = function(_, opts)
     local html_like = opts.html_like
-    local node_root_dir = opts.node_root_dir
-    local disable_formatting = opts.disable_formatting
-    local deno_root_dir = opts.deno_root_dir
+    -- local node_root_dir = opts.node_root_dir
+    -- local disable_formatting = opts.disable_formatting
+    -- local deno_root_dir = opts.deno_root_dir
     opts = opts.opts
 
     -- sign columnのアイコンを変更
