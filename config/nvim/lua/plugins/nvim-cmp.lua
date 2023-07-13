@@ -77,6 +77,8 @@ return {
 
     cmp.setup.filetype("gitcommit", {
       sources = cmp.config.sources({
+        { name = "emoji" },
+        { name = "skkeleton" },
         { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
       }, {
         { name = "buffer" },
