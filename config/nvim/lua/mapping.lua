@@ -28,6 +28,7 @@ keymap("n", "gi", 'i')
 
 keymap("n", "<Leader>q", ":q<CR>", opts)
 keymap("n", "<Leader>w", ":w<CR>", opts)
+keymap("n", "<Leader>bd", ":bd<CR>", opts)
 keymap("n", "<Leader>bn", ":bn<CR>", opts)
 keymap("n", "<Leader>bp", ":bp<CR>", opts)
 keymap("n", "<Leader>cd", ":<C-u>cd %:p:h<CR>", opts)
