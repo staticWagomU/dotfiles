@@ -1,6 +1,6 @@
 return {
   provider = function()
-    return require("lspsaga.symbolwinbar"):get_winbar()
+    return require("lspsaga.symbol.winbar").get_bar()
   end,
   event = "LspAttach",
 }
