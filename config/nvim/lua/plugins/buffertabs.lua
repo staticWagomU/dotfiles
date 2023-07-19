@@ -11,5 +11,8 @@ return {
     horizontal = 'right',
     ---@type 'top'|'bottom'|'center'
     vertical = 'top',
-  }
+  },
+  cond = function()
+    return false
+  end,
 }
