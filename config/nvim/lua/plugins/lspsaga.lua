@@ -45,6 +45,7 @@ return {
       vim.keymap.set("n", "gr", "<cmd>Lspsaga rename<cr>", opts)
       vim.keymap.set("n", "[l", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
       vim.keymap.set("n", "]l", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+      vim.keymap.set("n", "<Space>lo", "<cmd>Lspsaga outline<cr>", opts)
       vim.keymap.set({"n", "t"}, "<A-d>", "<cmd>Lspsaga term_toggle<cr>", opts)
     end)
   end
