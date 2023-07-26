@@ -124,6 +124,10 @@ return {
       --   })
       -- end,
       ["tsserver"] = function ()
+        local deno_root = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "import_map.json")
+        if deno_root ~= nil then
+          return
+        end
         lspconfig["tsserver"].setup({})
       end,
       ["lua_ls"] = function()
