@@ -36,3 +36,9 @@ endfunction
 command! -nargs=1 ZennCreate call <sid>zenn_create_article(<f-args>)
 command! ZennPreview call <sid>zenn_preview()
 ]=]
+vim.api.nvim_create_user_command("PluginList", function()
+  local plugins = require("lazy").plugins()
+  for i, plugin in ipairs(plugins) do
+    vim.fn.setline(i, plugin[1])
+  end
+end, {})
