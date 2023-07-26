@@ -6,16 +6,15 @@ require("utils").make_abbrev({
 
 return {
   "nvimdev/lspsaga.nvim",
-  event = "LspAttach",
   dependencies = {
     { "nvim-tree/nvim-web-devicons" },
     { "nvim-treesitter/nvim-treesitter" }
   },
   config = function()
     require("lspsaga").setup({
-      symbol_in_winbar = {
+      symbols_in_winbar = {
         enable = false,
-        show_file = false,
+        sign = true
       },
       ui = {
         code_action = '🌞'
