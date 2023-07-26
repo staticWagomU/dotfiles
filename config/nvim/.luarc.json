@@ -4,5 +4,8 @@
         "C:\\Program Files\\Neovim\\share\\nvim\\runtime\\lua",
         "C:/Users/wagomu/dotfiles/config/nvim/lua",
         "${3rd}/luv/library"
+    ],
+    "diagnostics.disable": [
+        "undefined-field"
     ]
 }
