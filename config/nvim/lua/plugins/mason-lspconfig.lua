@@ -85,6 +85,7 @@ return {
         "zls",
         "vuels",
         "svelte",
+        "rust_analyzer",
       },
     })
     require("mason-lspconfig").setup_handlers({
@@ -171,6 +172,10 @@ return {
       end,
       ["eslint"] = function ()
         lspconfig["eslint"].setup({})
+      end,
+      ["rust_analyzer"] = function()
+        lspconfig["rust_analyzer"].setup({
+        })
       end,
     })
   end
