@@ -85,6 +85,7 @@ return {
         "zls",
         "svelte",
         "volar",
+        "rust_analyzer",
       },
     })
     require("mason-lspconfig").setup_handlers({
@@ -174,6 +175,10 @@ return {
       end,
       ["volar"] = function ()
         lspconfig["volar"].setup({})
+      end,
+      ["rust_analyzer"] = function()
+        lspconfig["rust_analyzer"].setup({
+        })
       end,
     })
   end
