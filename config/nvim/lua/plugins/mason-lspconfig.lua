@@ -83,8 +83,8 @@ return {
         "cssls",
         "ruby_ls",
         "zls",
-        "vuels",
         "svelte",
+        "volar",
       },
     })
     require("mason-lspconfig").setup_handlers({
@@ -171,6 +171,9 @@ return {
       end,
       ["eslint"] = function ()
         lspconfig["eslint"].setup({})
+      end,
+      ["volar"] = function ()
+        lspconfig["volar"].setup({})
       end,
     })
   end
