@@ -26,6 +26,9 @@ keymap("n", "i", [[len(getline('.')) ? 'i' : '"_cc']], { expr = true })
 keymap("n", "A", [[len(getline('.')) ? 'A' : '"_cc']], { expr = true })
 keymap("n", "gi", 'i')
 
+keymap("n", "Q", "q")
+keymap("n", "q", "<Nop>")
+
 keymap("n", "<Leader>q", ":q<CR>", opts)
 keymap("n", "<Leader>w", ":w<CR>", opts)
 keymap("n", "<Leader>bd", ":bd<CR>", opts)
