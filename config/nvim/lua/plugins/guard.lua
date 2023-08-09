@@ -22,9 +22,7 @@ return {
       "astro",
       "svelte",
     }
-    for _, language in ipairs(filetypes) do
-      ft(language):fmt("prettier")
-    end
+    ft(table.concat(filetypes, ",")):fmt("prettier")
     -- call setup LAST
     require("guard").setup({
       -- the only option for the setup function
