@@ -2,6 +2,8 @@ local has_cmp = function ()
   return require("lazy.core.config").spec.plugins["nvim-cmp"] ~= nil
 end
 
+local enabled_vtsls = true
+
 return {
   "williamboman/mason-lspconfig.nvim",
   dependencies = {
@@ -74,7 +76,7 @@ return {
       ensure_installed = {
         "astro",
         "denols",
-        -- "vtsls",
+        "vtsls",
         "tsserver",
         "lua_ls",
         "tailwindcss",
@@ -115,21 +117,17 @@ return {
           },
         })
       end,
-      -- ["vtsls"] = function()
-      --   local deno_root = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "import_map.json")
-      --   if deno_root ~= nil then
-      --     return
-      --   end
-      --   lspconfig["vtsls"].setup({
-      --     root_dir = lspconfig.util.root_pattern("package.json"),
-      --   })
-      -- end,
-      ["tsserver"] = function ()
-        local deno_root = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "import_map.json")
-        if deno_root ~= nil then
-          return
+      ["vtsls"] = function()
+        local is_node = require("lspconfig").util.find_node_modules_ancestor(".")
+        if is_node and enabled_vtsls then
+          lspconfig["vtsls"].setup({})
         end
-        lspconfig["tsserver"].setup({})
+      end,
+      ["tsserver"] = function ()
+        local is_node = require("lspconfig").util.find_node_modules_ancestor(".")
+        if is_node and (not enabled_vtsls) then
+          lspconfig["tsserver"].setup({})
+        end
       end,
       ["lua_ls"] = function()
         lspconfig["lua_ls"].setup({
