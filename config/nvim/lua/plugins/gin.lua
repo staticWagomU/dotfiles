@@ -16,6 +16,8 @@ require("utils").make_abbrev({
   { prepose = "Gin commit", from = "a", to = "--amend" },
 })
 
+vim.g["gin_diff_default_args"] = { "++processor=delta" }
+
 return {
   {
     "lambdalisue/gin.vim",
