@@ -6,6 +6,8 @@ return {
     -- use stylua to format lua files and no linter
     ft("lua"):fmt("stylua")
 
+    ft("go"):fmt("lsp")
+
     local filetypes = {
       "css",
       "graphql",
