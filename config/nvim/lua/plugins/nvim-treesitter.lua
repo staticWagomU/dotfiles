@@ -3,6 +3,7 @@ return {
   dependencies = {
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
+  branch = "main",
   opts = {
     highlight = {
       enable = true,
