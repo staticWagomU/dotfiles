@@ -12,6 +12,7 @@ return {
     "folke/neodev.nvim",
     { "hrsh7th/cmp-nvim-lsp", cond = has_cmp },
     { "hrsh7th/cmp-nvim-lsp-document-symbol", cond = has_cmp },
+    { "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
   },
   opts = function()
     local o = { opts = {} }
