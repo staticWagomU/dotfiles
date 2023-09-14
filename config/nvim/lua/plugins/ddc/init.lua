@@ -123,6 +123,7 @@ return {
   -- endfunction
   --   ]]
     vim.fn["ddc#enable_terminal_completion"]()
+    ---@diagnostic disable-next-line: param-type-mismatch
     vim.fn["ddc#custom#load_config"](vim.fs.joinpath(vim.fn.stdpath("config"), "lua", "plugins", "ddc", "ddc.ts"))
   end,
 }
