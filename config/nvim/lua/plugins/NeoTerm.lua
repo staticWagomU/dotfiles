@@ -1,5 +1,6 @@
 return {
   "nyngwang/NeoTerm.lua",
+  keys = {"<M-d>"},
   config = function ()
     require("neo-term").setup {
       exclude_filetypes = { "oil" },

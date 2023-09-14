@@ -6,6 +6,7 @@ local sveltekit_target = {
 
 return {
   "rgroli/other.nvim",
+  cmd = { "Other", "OtherClear", "OtherSplit", "OtherVSplit", "OtherTabNew" },
   config = function ()
     require("other-nvim").setup({
       mappings = {

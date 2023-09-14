@@ -1,3 +1,4 @@
 return {
-  "thinca/vim-quickrun"
+  "thinca/vim-quickrun",
+  cmd = { "QuickRun" },
 }
