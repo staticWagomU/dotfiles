@@ -42,3 +42,28 @@ vim.api.nvim_create_user_command("PluginList", function()
     vim.fn.setline(i, plugin[1])
   end
 end, {})
+
+
+vim.api.nvim_create_autocmd("ModeChanged", {
+		pattern = "*",
+		callback = function()
+			local colors = require("nightfly").palette
+			local mode_colors = {
+				n = colors.ash_blue,
+				i = colors.green,
+				v = colors.purple,
+				V =  colors.purple,
+				["\22"] =  colors.purple,
+				c =  colors.orange,
+				s =  colors.orange,
+				S =  colors.orange,
+				["\19"] =  colors.orange,
+				R =  colors.orange,
+				r =  colors.orange,
+				["!"] =  colors.red,
+				t =  colors.red,
+			}
+			local mode = vim.fn.mode():sub(1, 1) -- get only the first mode character
+			vim.api.nvim_set_hl(0, "StatusLine", {fg = mode_colors[mode], bg = colors.slate_blue})
+		end,
+	})
