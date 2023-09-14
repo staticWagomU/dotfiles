@@ -7,6 +7,7 @@ require("utils").make_abbrev({
 
 return {
   "lukas-reineke/indent-blankline.nvim",
+  dependencies = { "nvim-treesitter/nvim-treesitter" },
   opts = {
     show_end_of_line = true,
     space_char_blankline = " ",
