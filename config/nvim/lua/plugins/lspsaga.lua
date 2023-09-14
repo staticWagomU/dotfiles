@@ -13,12 +13,11 @@ return {
   event = "LspAttach",
   config = function()
     require("lspsaga").setup({
-      symbols_in_winbar = {
+      symbol_in_winbar = {
         enable = false,
-        sign = true
       },
       ui = {
-        code_action = '🌞'
+        code_action = '🌟'
       }
     })
 
