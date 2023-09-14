@@ -1,7 +1,11 @@
 return {
-  "williamboman/mason.nvim",
-  event = "BufReadPre",
-  config = function()
-    require("mason").setup({})
-  end,
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+    opts = {
+      ui = {
+        border = "single",
+      }
+    },
+  },
 }

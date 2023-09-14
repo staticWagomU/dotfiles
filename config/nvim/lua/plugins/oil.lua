@@ -9,3 +9,4 @@ return {
   end,
   event = { "BufReadPre", "BufNewFile" },
 }
+

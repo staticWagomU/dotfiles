@@ -14,17 +14,6 @@ return {
         "laravel",
         "rails",
         "golang",
-        -- astro
-        {
-          pattern = "/src/components/.*.astro$",
-          target = "/src/pages/.*.astro$",
-          context = "pages",
-        },
-        {
-          pattern = "/src/pages/.*.astro",
-          target = "/src/pages/.*.astro",
-          context = "pages",
-        },
         -- sveltekit
         {
           pattern = "/(.*)/%+(.*).server.ts$",
