@@ -10,8 +10,4 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
-DEFAULT_COLORSCHEME = "nightfly"
--- DEFAULT_COLORSCHEME = "citruszest"
--- INACTIVE_COLORSCHEME = "nordfox"
-INACTIVE_COLORSCHEME = "citruszest"
-vim.cmd.colorscheme(DEFAULT_COLORSCHEME)
+vim.cmd.colorscheme("nightfly")
