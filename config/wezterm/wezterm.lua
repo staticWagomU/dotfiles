@@ -2,8 +2,9 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 
 local config = {}
-config.font_size = 11.0
-config.font = wezterm.font("JetBrains Mono")
+config.font_size = 12.0
+-- config.font = wezterm.font("JetBrains Mono")
+config.font = wezterm.font("HackGen Console NF")
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.color_scheme = "iceberg-dark"
 config.keys = {
