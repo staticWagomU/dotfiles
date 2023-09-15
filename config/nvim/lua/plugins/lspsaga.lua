@@ -18,7 +18,10 @@ return {
       },
       ui = {
         code_action = '🌟'
-      }
+      },
+      lightbulb = {
+        virtual_text = false,
+      },
     })
 
     require("utils").on_attach(function()
