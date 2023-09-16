@@ -6,6 +6,6 @@ return {
       exclude_filetypes = { "oil" },
     }
     vim.keymap.set("n", "<M-d>", function () vim.cmd("NeoTermToggle") end)
-    vim.keymap.set("t", "<M-d>", function () vim.cmd("NeoTermEnterNormal") end)
+    vim.keymap.set("t", "<M-d>", function () vim.cmd("NeoTermToggle") end)
   end
 }
