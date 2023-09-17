@@ -1,3 +1,0 @@
-return {
-  "rbtnn/vim-ambiwidth",
-}
