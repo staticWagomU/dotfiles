@@ -3,22 +3,25 @@ return {
   "vim-skk/skkeleton",
   dependencies = {
     "vim-denops/denops.vim",
+    "Shougo/ddc.vim",
   },
-  config = function(p)
+  config = function()
     vim.api.nvim_create_autocmd("User", {
       pattern = "DenopsPluginPost:skkeleton",
       callback = function()
-        local dictdir = vim.fs.joinpath(vim.fs.dirname(p.dir), "dict")
+        local jisyo_path = function(name)
+          local dictdir = vim.fs.joinpath(require("lazy.core.config").options.root, "dict")
+          return vim.fs.joinpath(dictdir, name)
+        end
 
         vim.fn["skkeleton#config"]({
           eggLikeNewline = true,
-          globalDictionaries = {
-            "~/skk/SKK-JISYO.L",
-            {vim.fs.joinpath(dictdir, "SKK-JISYO.L"), "utf-8" },
-            {vim.fs.joinpath(dictdir, "SKK-JISYO.hukugougo"), "utf-8" },
-            {vim.fs.joinpath(dictdir, "SKK-JISYO.mazegaki"), "utf-8" },
-            {vim.fs.joinpath(dictdir, "SKK-JISYO.propernoun"), "utf-8" },
-            {vim.fs.joinpath(dictdir, "SKK-JISYO.station"), "utf-8" },
+          globalDictionaries  = {
+            jisyo_path("SKK-JISYO.L"),
+            jisyo_path("SKK-JISYO.hukugougo"),
+            jisyo_path("SKK-JISYO.mazegaki"),
+            jisyo_path("SKK-JISYO.propernoun"),
+            jisyo_path("SKK-JISYO.station"),
           },
         })
         vim.fn["skkeleton#register_kanatable"]("rom", {
@@ -38,6 +41,5 @@ return {
   },
   {
     "skk-dev/dict",
-    cond = false,
   },
 }
