@@ -4,7 +4,6 @@ import { ConfigArguments } from "https://deno.land/x/ddc_vim@v4.0.4/base/config.
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
-    const hasNvim = args.denops.meta.host === "nvim";
     const hasWindows = await fn.has(args.denops, "win32");
 
     args.contextBuilder.patchGlobal({
@@ -17,14 +16,11 @@ export class Config extends BaseConfig {
         "CmdlineChanged",
         "TextChangedT",
       ],
-      sources: ["around", "file"],
+      sources: ["around", "file", "skkeleton"],
       cmdlineSources: {
         ":": ["cmdline", "cmdline-history", "around"],
-        "@": ["input", "cmdline-history", "file", "around"],
-        ">": ["input", "cmdline-history", "file", "around"],
         "/": ["around"],
         "?": ["around"],
-        "-": ["around"],
         "=": ["input"],
       },
       sourceOptions: {
@@ -42,18 +38,18 @@ export class Config extends BaseConfig {
           mark: "B",
         },
         necovim: {
-          mark: "vim",
+          mark: "",
         },
         "nvim-lua": {
-          mark: "lua",
+          mark: "",
           forceCompletionPattern: "\\.\\w*",
         },
         cmdline: {
-          mark: "cmdline",
+          mark: "󰆍",
           forceCompletionPattern: "\\S/\\S*|\\.\\w*",
         },
         copilot: {
-          mark: "cop",
+          mark: "",
           matchers: [],
           minAutoCompleteLength: 0,
           isVolatile: false,
@@ -84,7 +80,7 @@ export class Config extends BaseConfig {
           forceCompletionPattern: "\\S/\\S*",
         },
         "cmdline-history": {
-          mark: "history",
+          mark: "󰆍 his",
           sorters: [],
         },
         shell: {
@@ -103,7 +99,7 @@ export class Config extends BaseConfig {
           enabledIf: "finddir('.git', ';') != ''",
         },
         skkeleton: {
-          mark: "skk",
+          mark: "sk",
           matchers: ["skkeleton"],
           sorters: [],
           minAutoCompleteLength: 2,
@@ -175,35 +171,35 @@ export class Config extends BaseConfig {
       specialBufferCompletion: true,
     });
 
-    if (hasNvim) {
-      for (
-        const filetype of [
-          "css",
-          "go",
-          "html",
-          "python",
-          "ruby",
-          "typescript",
-          "typescriptreact",
-          "tsx",
-          "graphql",
-          "astro",
-          "svelte",
-        ]
-      ) {
-        args.contextBuilder.patchFiletype(filetype, {
-          sources: ["copilot", "nvim-lsp", "around"],
-        });
-      }
-
-      args.contextBuilder.patchFiletype("lua", {
-        sources: ["copilot", "nvim-lsp", "nvim-lua", "around"],
-      });
-
-      // Enable specialBufferCompletion for cmdwin.
-      args.contextBuilder.patchFiletype("vim", {
-        specialBufferCompletion: true,
+    for (
+      const filetype of [
+        "css",
+        "go",
+        "html",
+        "python",
+        "ruby",
+        "typescript",
+        "typescriptreact",
+        "tsx",
+        "graphql",
+        "astro",
+        "svelte",
+      ]
+    ) {
+      args.contextBuilder.patchFiletype(filetype, {
+        sources: ["copilot", "nvim-lsp", "around"],
       });
     }
+
+    args.contextBuilder.patchFiletype("lua", {
+      sources: ["copilot", "nvim-lsp", "nvim-lua", "around"],
+    });
+
+    // Enable specialBufferCompletion for cmdwin.
+    args.contextBuilder.patchFiletype("vim", {
+      specialBufferCompletion: true,
+    });
   }
 }
+
+
