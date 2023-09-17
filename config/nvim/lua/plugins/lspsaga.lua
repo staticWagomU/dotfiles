@@ -35,7 +35,7 @@ return {
       -- end)
 
       local opts = { noremap = true, silent = true }
-      vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
+      -- vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
       vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<cr>", opts)
       vim.keymap.set("n", "gD", "<cmd>Lspsaga goto_definition<cr>", opts)
       vim.keymap.set("n", "gvd", "<cmd>vs | Lspsaga goto_definition<cr>", opts)
