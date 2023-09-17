@@ -30,6 +30,7 @@ keymap("n", "Q", "q")
 keymap("n", "q", "<Nop>")
 keymap({"n", "x"}, "s", "<Nop>")
 
+keymap("n", "<Leader>ls", ":ls<CR>", opts)
 keymap("n", "<Leader>q", ":q<CR>", opts)
 keymap("n", "<Leader>w", ":w<CR>", opts)
 keymap("n", "<Leader>bd", ":bd<CR>", opts)
