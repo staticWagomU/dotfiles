@@ -86,4 +86,7 @@ function M.make_abbrev(rules)
     end
 end
 
+---@diagnostic disable-next-line: param-type-mismatch
+M.plugins_path = vim.fs.joinpath(vim.fn.stdpath("config"), "lua", "plugins")
+
 return M
