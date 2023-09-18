@@ -1,3 +1,0 @@
-return {
-  "tani/vim-typo",
-}

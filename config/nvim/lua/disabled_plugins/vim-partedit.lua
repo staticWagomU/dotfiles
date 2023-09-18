@@ -1,3 +1,0 @@
-return {
-  "thinca/vim-partedit"
-}
