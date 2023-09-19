@@ -70,6 +70,8 @@ return {
     vim.fn["ddc#custom#load_config"](vim.fs.joinpath(require("utils").plugins_path, "ddc", "ddc.ts"))
     vim.fn["ddc#enable"]()
     vim.fn["ddc#enable_terminal_completion"]()
-    -- TODO: コマンドラインに對應させる
+    ---@diagnostic disable-next-line: param-type-mismatch
+    vim.fn["ddc#custom#load_config"](vim.fs.joinpath(vim.fn.stdpath("config"), "lua", "plugins", "ddc", "ddc.ts"))
+    -- TODO: コマンドラインに対応させる
   end,
 }
