@@ -1,3 +1,23 @@
+function _G.CommandlinePre(mode) 
+  vim.b["prev_buffer_config"] = vim.fn["ddc#custom#get_buffer"]()
+  if mode == ":" then
+    vim.fn["ddc#custom#patch_buffer"]("sourceOptions", { _ = {keywordPattern = {"[0-9a-zA-Z_:#-]*"}, minAutoCompleteLength = 1, }})
+  end
+
+  vim.api.nvim_create_autocmd("User", {
+      pattern = "DDCCmdlineLeave",
+      callback = function()
+        if vim.fn.exists(vim.b["prev_buffer_config"]) then
+          vim.fn["ddc#custom#patch_buffer"](vim.b["prev_buffer_config"])
+          vim.b["prev_buffer_config"] = nil
+        end
+      end,
+      once = true,
+    })
+
+  vim.fn["ddc#enable_cmdline_completion"]()
+end
+
 return {
   "Shougo/ddc.vim",
   dependencies = {
@@ -14,8 +34,8 @@ return {
     "Shougo/ddc-source-mocword",
     "Shougo/ddc-source-nvim-lsp",
     "Shougo/ddc-source-rg",
-    "Shougo/ddc-source-shell-native",
     "Shougo/ddc-source-shell",
+    "Shougo/ddc-source-shell-native",
     "matsui54/ddc-buffer",
     "uga-rosa/ddc-source-nvim-lua",
     -- filter
@@ -51,6 +71,8 @@ return {
     vim.keymap.set("i", "<C-l>", function()
       return vim.fn["ddc#map#manual_complete"]()
     end, { expr = true, replace_keycodes = false, desc="Refresh the completion" })
+    vim.keymap.set({"n", "x"}, ":", "<Cmd>call v:lua.CommandlinePre(':')<CR>:")
+
 
     -- options
     vim.fn["pum#set_option"]({
@@ -68,10 +90,25 @@ return {
     })
     vim.fn["pum#set_local_option"]("c",{ { horizontal_menu = false, }, })
     vim.fn["ddc#custom#load_config"](vim.fs.joinpath(require("utils").plugins_path, "ddc", "ddc.ts"))
-    vim.fn["ddc#enable"]()
-    vim.fn["ddc#enable_terminal_completion"]()
     ---@diagnostic disable-next-line: param-type-mismatch
     vim.fn["ddc#custom#load_config"](vim.fs.joinpath(vim.fn.stdpath("config"), "lua", "plugins", "ddc", "ddc.ts"))
-    -- TODO: コマンドラインに対応させる
-  end,
+    vim.fn["ddc#enable"]({context_filetype = "treesitter"})
+    vim.fn["ddc#enable_terminal_completion"]()
+    vim.cmd[[
+cnoremap <expr> <Tab>
+      \ wildmenumode() ? &wildcharm->nr2char() :
+      \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+      \ ddc#map#manual_complete()
+cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+cnoremap <C-o>   <Cmd>call pum#map#confirm()<CR>
+cnoremap <C-q>   <Cmd>call pum#map#select_relative(+1)<CR>
+cnoremap <C-z>   <Cmd>call pum#map#select_relative(-1)<CR>
+cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
+cnoremap <expr> <C-e> ddc#visible()
+      \ ? '<Cmd>call ddc#hide()<CR>'
+      \ : '<End>'
+
+cnoremap <expr> <C-t>       ddc#map#insert_item(0)
+    ]]
+  end
 }
