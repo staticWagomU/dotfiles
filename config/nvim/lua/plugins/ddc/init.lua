@@ -7,8 +7,8 @@ function _G.CommandlinePre(mode)
   vim.api.nvim_create_autocmd("User", {
       pattern = "DDCCmdlineLeave",
       callback = function()
-        if vim.fn.exists(vim.b["prev_buffer_config"]) then
-          vim.fn["ddc#custom#patch_buffer"](vim.b["prev_buffer_config"])
+        if vim.fn.exists("b:prev_buffer_config") then
+          vim.fn["ddc#custom#set_buffer"](vim.b["prev_buffer_config"])
           vim.b["prev_buffer_config"] = nil
         end
       end,
