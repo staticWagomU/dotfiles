@@ -37,9 +37,6 @@ export class Config extends BaseConfig {
         buffer: {
           mark: "B",
         },
-        necovim: {
-          mark: "",
-        },
         "nvim-lua": {
           mark: "",
           forceCompletionPattern: "\\.\\w*",
@@ -47,6 +44,10 @@ export class Config extends BaseConfig {
         cmdline: {
           mark: "󰆍",
           forceCompletionPattern: "\\S/\\S*|\\.\\w*",
+        },
+        "cmdline-history": {
+          mark: "󰆍 his",
+          sorters: [],
         },
         copilot: {
           mark: "",
@@ -59,15 +60,6 @@ export class Config extends BaseConfig {
           forceCompletionPattern: "\\S/\\S*",
           isVolatile: true,
         },
-        line: {
-          mark: "line",
-          matchers: ["matcher_vimregexp"],
-        },
-        mocword: {
-          mark: "mocword",
-          minAutoCompleteLength: 4,
-          isVolatile: true,
-        },
         "nvim-lsp": {
           mark: "lsp",
           forceCompletionPattern: "\\.\\w*|::\\w*|->\\w*",
@@ -78,10 +70,6 @@ export class Config extends BaseConfig {
           isVolatile: true,
           minAutoCompleteLength: 1000,
           forceCompletionPattern: "\\S/\\S*",
-        },
-        "cmdline-history": {
-          mark: "󰆍 his",
-          sorters: [],
         },
         shell: {
           mark: "sh",
@@ -134,7 +122,7 @@ export class Config extends BaseConfig {
       ]
     ) {
       args.contextBuilder.patchFiletype(filetype, {
-        sources: ["around", "copilot", "mocword"],
+        sources: ["around", "copilot"],
       });
     }
 
