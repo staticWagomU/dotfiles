@@ -1,7 +1,7 @@
 function _G.CommandlinePre(mode) 
   vim.b["prev_buffer_config"] = vim.fn["ddc#custom#get_buffer"]()
   if mode == ":" then
-    vim.fn["ddc#custom#patch_buffer"]("sourceOptions", { _ = {keywordPattern = {"[0-9a-zA-Z_:#-]*"}, minAutoCompleteLength = 1, }})
+    vim.fn["ddc#custom#patch_buffer"]("sourceOptions", { _ = {keywordPattern = "[0-9a-zA-Z_:#-]*", minAutoCompleteLength = 2, }})
   end
 
   vim.api.nvim_create_autocmd("User", {
@@ -48,31 +48,20 @@ return {
   },
   config = function()
     -- keymaps
-    vim.keymap.set("i", "<C-Space>", function()
-      if vim.fn["ddc#visible"]() then
-        return vim.fn["ddc#hide"]("Manual")
-      elseif vim.bo.filetype == "lua" then
-        return vim.fn["ddc#map#manual_complete"]({ sources = { "nvim-lua", "nvim-lsp" } })
-      elseif #vim.lsp.get_clients({ bufnr = 0 }) > 0 then
-        return vim.fn["ddc#map#manual_complete"]({ sources = { "nvim-lsp" } })
-      else
-        return vim.fn["ddc#map#manual_complete"]({ sources = { "buffer", "dictionary" } })
-      end
-    end, { expr = true, replace_keycodes = false })
-    vim.keymap.set("i", "<C-n>", "<Cmd>call pum#map#insert_relative(+1, 'loop')<CR>")
-    vim.keymap.set("i", "<C-p>", "<Cmd>call pum#map#insert_relative(-1, 'loop')<CR>")
-    vim.keymap.set("i", "<C-e>", function()
+    vim.keymap.set({"i", "c"}, "<C-n>", "<Cmd>call pum#map#insert_relative(+1, 'loop')<CR>")
+    vim.keymap.set({"i", "c"}, "<C-p>", "<Cmd>call pum#map#insert_relative(-1, 'loop')<CR>")
+    vim.keymap.set({"i", "c"}, "<C-e>", function()
       if vim.fn["ddc#visible"]() then
         return vim.fn["ddc#hide"]("Manual")
       else
         return "<End>"
       end
-    end, { expr = true, replace_keycodes = false })
-    vim.keymap.set("i", "<C-l>", function()
+    end, { remap = true })
+    vim.keymap.set({"i", "c"}, "<C-l>", function()
       return vim.fn["ddc#map#manual_complete"]()
     end, { expr = true, replace_keycodes = false, desc="Refresh the completion" })
     vim.keymap.set({"n", "x"}, ":", "<Cmd>call v:lua.CommandlinePre(':')<CR>:")
-
+    vim.keymap.set({"n"}, "?", "<Cmd>call v:lua.CommandlinePre('/')<CR>?")
 
     -- options
     vim.fn["pum#set_option"]({
@@ -94,21 +83,5 @@ return {
     vim.fn["ddc#custom#load_config"](vim.fs.joinpath(vim.fn.stdpath("config"), "lua", "plugins", "ddc", "ddc.ts"))
     vim.fn["ddc#enable"]({context_filetype = "treesitter"})
     vim.fn["ddc#enable_terminal_completion"]()
-    vim.cmd[[
-cnoremap <expr> <Tab>
-      \ wildmenumode() ? &wildcharm->nr2char() :
-      \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-      \ ddc#map#manual_complete()
-cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
-cnoremap <C-o>   <Cmd>call pum#map#confirm()<CR>
-cnoremap <C-q>   <Cmd>call pum#map#select_relative(+1)<CR>
-cnoremap <C-z>   <Cmd>call pum#map#select_relative(-1)<CR>
-cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
-cnoremap <expr> <C-e> ddc#visible()
-      \ ? '<Cmd>call ddc#hide()<CR>'
-      \ : '<End>'
-
-cnoremap <expr> <C-t>       ddc#map#insert_item(0)
-    ]]
   end
 }
