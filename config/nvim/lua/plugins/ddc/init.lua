@@ -59,7 +59,7 @@ return {
     end, { remap = true })
     vim.keymap.set({"i", "c"}, "<C-l>", function()
       return vim.fn["ddc#map#manual_complete"]()
-    end, { expr = true, replace_keycodes = false, desc="Refresh the completion" })
+    end, { expr = true, desc="Refresh the completion" })
     vim.keymap.set({"n", "x"}, ":", "<Cmd>call v:lua.CommandlinePre(':')<CR>:")
     vim.keymap.set({"n"}, "?", "<Cmd>call v:lua.CommandlinePre('/')<CR>?")
 
