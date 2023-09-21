@@ -17,8 +17,6 @@ local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 
-keymap("c", "<C-x>", "<C-r>=expand('%:p:h')<CR>")
-
 keymap("n", "j", "gj")
 keymap("n", "k", "gk")
 
@@ -72,7 +70,7 @@ keymap({ 'n', 'o', 'x' }, '0', [[getline('.')[0 : col('.') - 2] =~# '^\s\+$' ? '
 keymap({ "n", "x" }, "s", "<Nop>", { noremap = false, silent = false})
 
 -- kuuさんから教えてもらった
-keymap('c', '<C-p>', function()
+keymap('c', '<C-x>', function()
   local pos = vim.fn.getcmdpos()
   local left = vim.fn.getcmdline():sub(pos - 1, pos)
   local k
