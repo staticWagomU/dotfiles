@@ -79,8 +79,6 @@ return {
     })
     vim.fn["pum#set_local_option"]("c",{ { horizontal_menu = false, }, })
     vim.fn["ddc#custom#load_config"](vim.fs.joinpath(require("utils").plugins_path, "ddc", "ddc.ts"))
-    ---@diagnostic disable-next-line: param-type-mismatch
-    vim.fn["ddc#custom#load_config"](vim.fs.joinpath(vim.fn.stdpath("config"), "lua", "plugins", "ddc", "ddc.ts"))
     vim.fn["ddc#enable"]({context_filetype = "treesitter"})
     vim.fn["ddc#enable_terminal_completion"]()
   end
