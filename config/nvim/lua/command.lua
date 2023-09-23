@@ -67,3 +67,11 @@ vim.api.nvim_create_autocmd("ModeChanged", {
 			vim.api.nvim_set_hl(0, "StatusLine", {fg = mode_colors[mode], bg = colors.slate_blue})
 		end,
 	})
+
+
+vim.api.nvim_create_autocmd({"BufWritePost", "BufRead"}, {
+  pattern = "*.astro",
+  callback = function()
+    vim.bo.filetype = "astro"
+  end,
+})
