@@ -3,13 +3,9 @@ return {
   branch = "main",
   config = function()
     require("nvim-treesitter.config").setup({
-        highlight = {
-          enable = true,
-        },
-        autotag = {
-          enable = true,
-        },
-        ensure_installed = { 'astro', 'css', 'glimmer', 'graphql', 'handlebars', 'html', 'javascript', 'lua', 'nix', 'php', 'python', 'rescript', 'scss', 'svelte', 'tsx', 'twig', 'typescript', 'vim', 'vue', },
-      })
+      highlight = { enable = false, },
+      ensure_installed = { "astro", "css", "glimmer", "graphql", "html", "javascript", "lua", "php", "python", "scss",
+        "svelte", "tsx", "typescript", "vim", "vue", },
+    })
   end,
 }
