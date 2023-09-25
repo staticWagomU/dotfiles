@@ -4,7 +4,7 @@ require("utils").make_abbrev({
   { from = "gs", to = "GinStatus" },
   { from = "gb", to = "GinBranch" },
   { from = "gp", to = "Gin push" },
-  { from = "gpp", to = "Gin pll" },
+  { from = "gpp", to = "Gin pull" },
   { from = "gsh", to = "Gin show" },
   { from = "gll", to = "GinLog --graph" },
   { from = "gl", to = "GinLog --graph --oneline" },
