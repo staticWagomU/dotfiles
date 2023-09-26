@@ -1,3 +1,4 @@
+vim.loader.enable()
 require("options")
 require("lazy_nvim")
 vim.api.nvim_create_autocmd("User", {
