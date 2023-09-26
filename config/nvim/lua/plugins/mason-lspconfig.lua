@@ -8,9 +8,15 @@ return {
     "neovim/nvim-lspconfig",
     "SmiteshP/nvim-navic",
     { "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
+    "Shougo/ddc.vim",
   },
   config = function()
     local lspconfig = require("lspconfig")
+    local capabilities = require("ddc_nvim_lsp").make_client_capabilities()
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    }
 
     require("mason-lspconfig").setup({
       ensure_installed = {
@@ -37,11 +43,13 @@ return {
       end,
       ["astro"] = function()
         lspconfig["astro"].setup({
+          capabilities = capabilities,
           -- root_dir = lspconfig.util.root_pattern("astro.config.mjs", ".astro/")
         })
       end,
       ["denols"] = function()
         lspconfig["denols"].setup({
+          capabilities = capabilities,
           root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "import_map.json"),
           init_options = {
             lint = true,
@@ -61,17 +69,22 @@ return {
       ["vtsls"] = function()
         local is_node = require("lspconfig").util.find_node_modules_ancestor(".")
         if is_node and enabled_vtsls then
-          lspconfig["vtsls"].setup({})
+          lspconfig["vtsls"].setup({
+            capabilities = capabilities,
+          })
         end
       end,
       ["tsserver"] = function()
         local is_node = require("lspconfig").util.find_node_modules_ancestor(".")
         if is_node and (not enabled_vtsls) then
-          lspconfig["tsserver"].setup({})
+          lspconfig["tsserver"].setup({
+            capabilities = capabilities,
+          })
         end
       end,
       ["lua_ls"] = function()
         lspconfig["lua_ls"].setup({
+          capabilities = capabilities,
           settings = {
             Lua = {
               diagnostics = {
@@ -83,15 +96,19 @@ return {
       end,
       ["tailwindcss"] = function()
         lspconfig["tailwindcss"].setup({
+          capabilities = capabilities,
           root_dir = lspconfig.util.root_pattern("tailwind.config.js", "tailwind.config.ts", "tailwind.config.lua",
             "tailwind.config.json"),
         })
       end,
       ["gopls"] = function()
-        lspconfig["gopls"].setup({})
+        lspconfig["gopls"].setup({
+          capabilities = capabilities,
+        })
       end,
       ["emmet_ls"] = function()
         lspconfig["emmet_ls"].setup({
+          capabilities = capabilities,
           extra_filetype = {
             "astro",
             "html",
@@ -107,195 +124,45 @@ return {
         })
       end,
       ["cssls"] = function()
-        lspconfig["cssls"].setup({})
+        lspconfig["cssls"].setup({
+          capabilities = capabilities,
+        })
       end,
       ["zls"] = function()
-        lspconfig["zls"].setup({})
+        lspconfig["zls"].setup({
+          capabilities = capabilities,
+        })
       end,
       ["ruby_ls"] = function()
-        lspconfig["ruby_ls"].setup({})
+        lspconfig["ruby_ls"].setup({
+          capabilities = capabilities,
+        })
       end,
       ["vuels"] = function()
-        lspconfig["vuels"].setup({})
+        lspconfig["vuels"].setup({
+          capabilities = capabilities,
+        })
       end,
       ["svelte"] = function()
-        lspconfig["svelte"].setup({})
+        lspconfig["svelte"].setup({
+          capabilities = capabilities,
+        })
       end,
       ["eslint"] = function()
-        lspconfig["eslint"].setup({})
+        lspconfig["eslint"].setup({
+          capabilities = capabilities,
+        })
       end,
       ["volar"] = function()
-        lspconfig["volar"].setup({})
+        lspconfig["volar"].setup({
+          capabilities = capabilities,
+        })
       end,
       ["rust_analyzer"] = function()
-        lspconfig["rust_analyzer"].setup({})
+        lspconfig["rust_analyzer"].setup({
+          capabilities = capabilities,
+        })
       end,
     })
   end,
-  -- opts = function()
-  --   local o = { opts = {} }
-  --
-  --   o.opts.capabilities = vim.tbl_deep_extend(
-  --     "force",
-  --     {},
-  --     vim.lsp.protocol.make_client_capabilities(),
-  --     {}
-  --     )
-  --   o.opts.capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
-  --
-  --   o.node_root_dir = {
-  --     "package.json",
-  --     "tsconfig.json",
-  --     "tsconfig.jsonc",
-  --     "node_modules",
-  --   }
-  --
-  --   o.deno_root_dir = {
-  --     "deno.json",
-  --     "deno.jsonc",
-  --   }
-  --
-  --   o.html_like = {
-  --     "astro",
-  --     "html",
-  --     "htmldjango",
-  --     "css",
-  --     "javascriptreact",
-  --     "javascript.jsx",
-  --     "typescriptreact",
-  --     "typescript.tsx",
-  --     "svelte",
-  --     "vue",
-  --   }
-  --
-  --   o.disable_formatting = function(client)
-  --     client.resolved_capabilities.document_formatting = false
-  --     client.resolved_capabilities.document_range_formatting = false
-  --     client.server_capabilities.documentFormattingProvider = false
-  --   end
-  --
-  --   return o
-  -- end,
-  -- config = function(_, opts)
-  --   local html_like = opts.html_like
-  --   -- local node_root_dir = opts.node_root_dir
-  --   -- local disable_formatting = opts.disable_formatting
-  --   -- local deno_root_dir = opts.deno_root_dir
-  --   opts = opts.opts
-  --
-  --   -- sign columnのアイコンを変更
-  --   local signs = { Error = "", Warn = "", Hint = "", Info = "" }
-  --   for type, icon in pairs(signs) do
-  --     local hl = "DiagnosticSign" .. type
-  --     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-  --   end
-  --   local lspconfig = require("lspconfig")
-  --   vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-  --   require("mason-lspconfig").setup({
-  --       ensure_installed = {
-  --         "astro",
-  --         "denols",
-  --         "vtsls",
-  --         "tsserver",
-  --         "lua_ls",
-  --         "tailwindcss",
-  --         "gopls",
-  --         "emmet_ls",
-  --         "cssls",
-  --         "ruby_ls",
-  --         "zls",
-  --         "svelte",
-  --         "volar",
-  --         "rust_analyzer",
-  --       },
-  --     })
-  --   require("mason-lspconfig").setup_handlers({
-  --       function(server_name)
-  --         lspconfig[server_name].setup()
-  --       end,
-  --       ["astro"] = function()
-  --         lspconfig["astro"].setup({
-  --             root_dir = lspconfig.util.root_pattern("astro.config.mjs", ".astro/")
-  --           })
-  --       end,
-  --       ["denols"] = function()
-  --         lspconfig["denols"].setup({
-  --             root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "import_map.json"),
-  --             init_options = {
-  --               lint = true,
-  --               unstable = true,
-  --               suggest = {
-  --                 imports = {
-  --                   hosts = {
-  --                     ["https://deno.land"] = true,
-  --                     ["https://cdn.nest.land"] = true,
-  --                     ["https://crux.land"] = true,
-  --                   },
-  --                 },
-  --               },
-  --             },
-  --           })
-  --       end,
-  --       ["vtsls"] = function()
-  --         local is_node = require("lspconfig").util.find_node_modules_ancestor(".")
-  --         if is_node and enabled_vtsls then
-  --           lspconfig["vtsls"].setup({})
-  --         end
-  --       end,
-  --       ["tsserver"] = function ()
-  --         local is_node = require("lspconfig").util.find_node_modules_ancestor(".")
-  --         if is_node and (not enabled_vtsls) then
-  --           lspconfig["tsserver"].setup({})
-  --         end
-  --       end,
-  --       ["lua_ls"] = function()
-  --         lspconfig["lua_ls"].setup({
-  --             settings = {
-  --               Lua = {
-  --                 diagnostics = {
-  --                   globals = { "vim" },
-  --                 },
-  --               },
-  --             },
-  --           })
-  --       end,
-  --       ["tailwindcss"] = function()
-  --         lspconfig["tailwindcss"].setup({
-  --             root_dir = lspconfig.util.root_pattern("tailwind.config.js", "tailwind.config.ts", "tailwind.config.lua", "tailwind.config.json"),
-  --           })
-  --       end,
-  --       ["gopls"] = function()
-  --         lspconfig["gopls"].setup({})
-  --       end,
-  --       ["emmet_ls"] = function()
-  --         lspconfig["emmet_ls"].setup({
-  --             extra_filetype = html_like
-  --           })
-  --       end,
-  --       ["cssls"] = function ()
-  --         lspconfig["cssls"].setup({})
-  --       end,
-  --       ["zls"] = function ()
-  --         lspconfig["zls"].setup({})
-  --       end,
-  --       ["ruby_ls"] = function ()
-  --         lspconfig["ruby_ls"].setup({})
-  --       end,
-  --       ["vuels"] = function ()
-  --         lspconfig["vuels"].setup({})
-  --       end,
-  --       ["svelte"] = function ()
-  --         lspconfig["svelte"].setup({})
-  --       end,
-  --       ["eslint"] = function ()
-  --         lspconfig["eslint"].setup({})
-  --       end,
-  --       ["volar"] = function ()
-  --         lspconfig["volar"].setup({})
-  --       end,
-  --       ["rust_analyzer"] = function()
-  --         lspconfig["rust_analyzer"].setup({})
-  --       end,
-  --     })
-  -- end
 }
