@@ -3,6 +3,7 @@ return {
   dependencies = {
     "vim-denops/denops.vim",
     "lambdalisue/kensaku.vim",
+    "Shougo/ddu-commands.vim",
     -- column
     "Shougo/ddu-column-filename",
     "tamago3keran/ddu-column-devicon_filename",
