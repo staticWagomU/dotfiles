@@ -14,40 +14,40 @@ vim.g.loaded_netrw             = 0
 vim.g.loaded_netrwPlugin       = 0
 vim.g.loaded_netrwSettings     = 0
 vim.g.loaded_netrwFileHandlers = 0
-vim.o.foldcolumn = '0'
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.g.mapleader = " "
+vim.o.foldcolumn               = '0'
+vim.o.foldlevel                = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart           = 99
+vim.o.foldenable               = true
+vim.o.shiftwidth               = 2
+vim.o.tabstop                  = 2
+vim.o.softtabstop              = 2
+vim.g.mapleader                = " "
 
-local set = vim.opt
+local set                      = vim.opt
 
-set.number = false
-set.relativenumber = false
-set.wrap = false
-set.helplang = "ja"
-set.signcolumn = "yes"
-set.hidden = true
-set.laststatus = 3
-set.mouse = "a"
-set.clipboard = "unnamedplus"
-set.ambiwidth = "single"
-set.ignorecase = true
-set.smartcase = true
-set.splitbelow = true
-set.splitright = true
-set.display = "uhex"
-set.wildmenu = true
-set.expandtab = true
-set.wrapscan = true
-set.termguicolors = true
-set.showmode = false
-set.list = true
-set.listchars = { eol = '↴', tab = '▸ ', trail = '»', space = '⋅' }
-set.fillchars = {
+set.number                     = false
+set.relativenumber             = false
+set.wrap                       = false
+set.helplang                   = "ja"
+set.signcolumn                 = "yes"
+set.hidden                     = true
+set.laststatus                 = 3
+set.mouse                      = "a"
+set.clipboard                  = "unnamedplus"
+set.ambiwidth                  = "single"
+set.ignorecase                 = true
+set.smartcase                  = true
+set.splitbelow                 = true
+set.splitright                 = true
+set.display                    = "uhex"
+set.wildmenu                   = true
+set.expandtab                  = true
+set.wrapscan                   = true
+set.termguicolors              = true
+set.showmode                   = false
+set.list                       = true
+set.listchars                  = { eol = '↴', tab = '▸ ', trail = '»', space = '⋅' }
+set.fillchars                  = {
   stl = '━',
   stlnc = ' ',
   diff = '∙',
@@ -61,15 +61,15 @@ set.fillchars = {
   vertright = '┣',
   verthoriz = '╋'
 }
-set.backspace = { "indent", "eol", "start" }
+set.backspace                  = { "indent", "eol", "start" }
 ---@diagnostic disable-next-line: assign-type-mismatch
-set.directory=vim.fn.expand("~")
+set.directory                  = vim.fn.expand("~")
 ---@diagnostic disable-next-line: assign-type-mismatch
-set.backupdir=vim.fn.expand("~")
+set.backupdir                  = vim.fn.expand("~")
 ---@diagnostic disable-next-line: assign-type-mismatch
-set.undodir=vim.fn.expand("~")
-set.laststatus=3
-set.fileformat="unix"
+set.undodir                    = vim.fn.expand("~")
+set.laststatus                 = 3
+set.fileformat                 = "unix"
 
 vim.cmd [=[
 augroup restore-cursor
@@ -86,10 +86,10 @@ augroup END
 ]=]
 
 vim.api.nvim_create_user_command("ShowPluginReadme", function()
-	local plugin_name = string.match(vim.fn.expand("<cWORD>"), "['\"].*/(.*)['\"]")
-	local path = vim.fn.stdpath("data") .. "/site/pack/packer/*/" .. plugin_name .. "/README.md"
+  local plugin_name = string.match(vim.fn.expand("<cWORD>"), "['\"].*/(.*)['\"]")
+  local path = vim.fn.stdpath("data") .. "/site/pack/packer/*/" .. plugin_name .. "/README.md"
 
-	vim.cmd("edit " .. vim.fn.resolve(path))
+  vim.cmd("edit " .. vim.fn.resolve(path))
 end, { force = true })
 
 vim.filetype.add({
@@ -107,29 +107,29 @@ vim.filetype.add({
 -- })
 
 vim.api.nvim_create_augroup("extra-whitespace", {})
-vim.api.nvim_create_autocmd({"VimEnter", "WinEnter"}, {
+vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
   group = "extra-whitespace",
-  pattern = {"*"},
+  pattern = { "*" },
   desc = "全角空白を可視化させる",
   command = [[call matchadd("ExtraWhitespace", "[\u00A0\u2000-\u200B\u3000]")]]
 })
-vim.api.nvim_create_autocmd({"ColorScheme"}, {
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   group = "extra-whitespace",
-  pattern = {"*"},
+  pattern = { "*" },
   desc = "全角空白を可視化させる",
   command = [[highlight default ExtraWhitespace ctermbg=red guibg=red]]
 })
 local lsplns = vim.api.nvim_create_augroup("toggleLspLines", {})
 vim.api.nvim_create_autocmd("InsertEnter", {
   group = lsplns,
-  pattern = {"*"},
+  pattern = { "*" },
   callback = function()
     vim.diagnostic.config({ virtual_lines = false })
   end
 })
 vim.api.nvim_create_autocmd("InsertLeave", {
   group = lsplns,
-  pattern = {"*"},
+  pattern = { "*" },
   callback = function()
     vim.diagnostic.config({ virtual_lines = true })
   end
