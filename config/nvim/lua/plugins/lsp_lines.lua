@@ -9,7 +9,7 @@ return {
     })
     vim.keymap.set(
       "n",
-      "<Leader>l",
+      "<Leader>ll",
       require("lsp_lines").toggle,
       { desc = "Toggle lsp_lines", silent = true }
     )
