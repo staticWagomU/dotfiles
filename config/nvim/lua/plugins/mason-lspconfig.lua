@@ -7,7 +7,6 @@ return {
     "williamboman/mason.nvim",
     "neovim/nvim-lspconfig",
     "SmiteshP/nvim-navic",
-    { "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
     "Shougo/ddc.vim",
   },
   config = function()
