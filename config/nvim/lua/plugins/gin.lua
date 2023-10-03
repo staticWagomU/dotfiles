@@ -15,10 +15,16 @@ require("utils").make_abbrev({
   { from = "gss",  to = "Gin stash " },
   { from = "gsl",  to = "Gin stash list" },
   { from = "gsc",  to = "Gin switch -C " },
+  { from = "grs",  to = "Gin reset --soft" },
+  { from = "grh",  to = "Gin reset --heard" },
+  { from = "gco.", to = "Gin checkout ." },
 })
 
 require("utils").make_abbrev({
-  { prepose = "Gin commit", from = "a", to = "--amend" },
+  { prepose = "Gin commit",        from = "a",  to = "--amend" },
+  { prepose = "Gin reset --soft",  from = "h",  to = "HEAD" },
+  { prepose = "Gin reset --soft",  from = "hh", to = "HEAD^" },
+  { prepose = "Gin reset --heard", from = "h",  to = "HEAD" },
 })
 
 vim.g["gin_diff_default_args"] = { "++processor=delta" }
