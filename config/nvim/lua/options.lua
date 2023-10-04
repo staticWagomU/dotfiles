@@ -49,6 +49,7 @@ set.list                       = true
 set.listchars                  = { eol = '↴', tab = '▸ ', trail = '»', space = '⋅' }
 set.fillchars                  = {
   stl = '━',
+  -- stl = ' ',
   stlnc = ' ',
   diff = '∙',
   eob = ' ',
