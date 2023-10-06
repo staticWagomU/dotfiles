@@ -32,6 +32,7 @@ return {
         end
       })
       vim.keymap.set({ "i", "c", "t" }, "<C-j>", "<Plug>(skkeleton-toggle)")
+      vim.keymap.set({ "n" }, "<C-j>", "i<Plug>(skkeleton-toggle)")
     end
   },
   {
