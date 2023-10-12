@@ -33,5 +33,13 @@ return {
   {
     "lambdalisue/gin.vim",
     dependencies = { "vim-denops/denops.vim" },
+    config = function()
+      local keymap = vim.keymap.set
+      keymap("n", "<C-g><C-s>", "<Cmd>GinStatus<CR>", {})
+      keymap("n", "<C-g><C-l>", "<Cmd>GinLog --graph<CR>", {})
+      keymap("n", "<C-g><C-p>", "<Cmd>Gin push<CR>", {})
+      keymap("n", "<C-g><C-h>", "<Cmd>Gin commit<CR>i", {})
+    end,
   },
 }
+
