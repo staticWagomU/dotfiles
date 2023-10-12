@@ -24,9 +24,12 @@ keymap("n", "i", [[len(getline('.')) ? 'i' : '"_cc']], { expr = true })
 keymap("n", "A", [[len(getline('.')) ? 'A' : '"_cc']], { expr = true })
 keymap("n", "gi", 'i')
 
+keymap("n", "H", "<cmd>tabprevious<Cr>")
+keymap("n", "L", "<cmd>tabnext<Cr>")
+
 keymap("n", "Q", "q")
 keymap("n", "q", "<Nop>")
-keymap({"n", "x"}, "s", "<Nop>")
+keymap({ "n", "x" }, "s", "<Nop>")
 
 keymap("n", "<Leader>ls", ":ls<CR>", opts)
 keymap("n", "<Leader>q", ":q<CR>", opts)
@@ -67,7 +70,7 @@ keymap("o", "a@", "a`", opts)
 keymap("t", "<esc>", [[<C-\><C-n>]], { noremap = true })
 keymap({ 'n', 'o', 'x' }, '0', [[getline('.')[0 : col('.') - 2] =~# '^\s\+$' ? '0' : '^']], { expr = true })
 
-keymap({ "n", "x" }, "s", "<Nop>", { noremap = false, silent = false})
+keymap({ "n", "x" }, "s", "<Nop>", { noremap = false, silent = false })
 
 -- kuuさんから教えてもらった
 keymap('c', '<C-x>', function()
@@ -81,3 +84,4 @@ keymap('c', '<C-x>', function()
   end
   vim.fn.feedkeys(k, 'n')
 end)
+
