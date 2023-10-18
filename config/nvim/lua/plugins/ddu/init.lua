@@ -37,6 +37,7 @@ return {
     "kyoh86/ddu-source-git_log",
     "kyoh86/ddu-source-lazy_nvim",
     "matsui54/ddu-source-command_history",
+    "matsui54/ddu-source-file_external",
     "matsui54/ddu-source-help",
     "peacock0803sz/ddu-source-git_stash",
     "shun/ddu-source-buffer",
