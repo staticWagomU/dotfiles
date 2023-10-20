@@ -43,6 +43,10 @@ vim.api.nvim_create_user_command("PluginList", function()
 	end
 end, {})
 
+vim.api.nvim_create_user_command("MYVIM", function()
+	vim.cmd[[e $MYVIMRC]]
+end, {})
+
 
 vim.api.nvim_create_autocmd("ModeChanged", {
 	pattern = "*",
