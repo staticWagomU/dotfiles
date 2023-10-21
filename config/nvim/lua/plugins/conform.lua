@@ -13,10 +13,11 @@ return {
       -- have other formatters configured.
       ["_"] = { "trim_whitespace" },
     },
-    format_on_save = {
-      -- I recommend these options. See :help conform.format for details.
-      lsp_fallback = true,
-      timeout_ms = 500,
-    },
+    -- format_on_save = {
+    --   -- I recommend these options. See :help conform.format for details.
+    --   lsp_fallback = true,
+    --   timeout_ms = 500,
+    -- },
   },
 }
+
