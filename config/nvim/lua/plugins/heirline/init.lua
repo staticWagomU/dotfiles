@@ -30,11 +30,9 @@ return {
         comp.rpad(comp.FileType),
         comp.Ruler
       ),
-
       winbar = {
         comp.FullFileName,
       },
-
       opts = {
         disable_winbar_cb = function(args)
           local buf = args.buf
