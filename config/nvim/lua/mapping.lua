@@ -19,6 +19,8 @@ vim.g.mapleader = " "
 
 keymap("n", "j", "gj")
 keymap("n", "k", "gk")
+keymap("n", "gj", "j")
+keymap("n", "gk", "k")
 
 keymap("n", "i", [[len(getline('.')) ? 'i' : '"_cc']], { expr = true })
 keymap("n", "A", [[len(getline('.')) ? 'A' : '"_cc']], { expr = true })
