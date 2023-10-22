@@ -44,7 +44,10 @@ let g:mapleader = "\<Space>"
 " }}}
 
 " {{{ plugins
-
+packadd vim-jetpack
+call jetpack#begin()
+Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
+call jetpack#end()
 " }}} 
 
 " {{{ keymaps
