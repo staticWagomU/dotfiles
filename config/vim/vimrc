@@ -44,29 +44,6 @@ let g:mapleader = "\<Space>"
 " }}}
 
 " {{{ plugins
-let s:dein_base = '~/.cache/dein/'
-let s:dein_src = s:dein_base . 'repos/github.com/Shougo/dein.vim'
-execute 'set runtimepath^=' . s:dein_src
-
-let s:toml_base = '~/vimfiles/'
-if has('mac')
- let s:toml_base = '~/.vim/'
-endif
-let s:dein_toml = s:toml_base . 'dein.toml'
-let s:denops_toml = s:toml_base . 'denops.toml'
-let s:lazy_toml = s:toml_base . 'lazy_plugin.toml'
-let s:colorscheme_toml = s:toml_base . 'colorscheme.toml'
-let s:ddc_toml = s:toml_base . 'ddc.toml'
-let s:ddu_toml = s:toml_base . 'ddu.toml'
-
-call dein#begin(s:dein_base)
- call dein#load_toml(s:dein_toml, #{lazy: 0})
- call dein#load_toml(s:colorscheme_toml, #{lazy: 0})
- call dein#load_toml(s:denops_toml, #{lazy: 0})
- call dein#load_toml(s:ddc_toml, #{lazy: 0})
- call dein#load_toml(s:ddu_toml, #{lazy: 0})
- call dein#load_toml(s:lazy_toml, #{lazy: 1})
-call dein#end()
 
 " }}} 
 
@@ -210,5 +187,4 @@ endif
 " }}}
 
 " {{{ other
-colorscheme catppuccin_latte
 " }}}
