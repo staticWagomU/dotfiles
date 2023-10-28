@@ -128,6 +128,7 @@ return {
         }
       })
 
+    vim.keymap.set({ "n" }, "<Leader>ff", [[<Cmd>call ddu#start(#{name: 'file_recursive'})<CR>]], { noremap = true, silent = true })
 
     vim.api.nvim_create_autocmd("FileType",{
         pattern = "ddu-ff",
