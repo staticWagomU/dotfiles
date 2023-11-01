@@ -1,33 +1,5 @@
-if [ -d "../.config/nvim" ]
-then
-  mkdir ~/.config/nvim
-else
-  rm -rf ~/.config/nvim
-  mkdir ~/.config/nvim
-fi
+#!/bin/bash
 
-ln -s ./nvim/init.lua ../.config/nvim/init.lua
-ln -s ./nvim/lua ../.config/nvim/lua
-ln -s ./nvim/after ../.config/nvim/after
-
-
-if [ -d "../.config/wezterm" ]
-then
-  mkdir  ~/.config/wezterm
-else
-  rm -rf ~/.config/wezterm
-  mkdir ~/.config/wezterm
-fi
-
-ln -s ./wezterm.lua ../.config/wezterm/wezterm.lua
-
-
-if [ -d "../.config/.vim" ]
-then
-  mkdir ~/.config/.vim
-else
-  rm -rf ~/.config/.vim
-  mkdir ~/.config/.vim
-fi
-
+ln -s ~/dotfiles/config/nvim ~/.config/nvim
+ln -s ~/dotfiles/config/wezterm.lua ~/.config/wezterm/wezterm.lua
 
