@@ -1,10 +1,13 @@
-return {
-  "ryicoh/deepl.vim",
-  config = function()
-    vim.g["deepl#endpoint"] = "https://api-free.deepl.com/v2/translate"
-    local DEEPL_AUTHKEY = require("local_vimrc").DEEPL_AUTHKEY
-    vim.g["deepl#auth_key"] = DEEPL_AUTHKEY
-    vim.cmd[[
+local success, local_vimrc = pcall(require, "local_vimrc")
+if success then
+  local DEEPL_AUTHKEY = local_vimrc.DEEPL_AUTHKEY
+
+  return {
+    "ryicoh/deepl.vim",
+    config = function()
+      vim.g["deepl#endpoint"] = "https://api-free.deepl.com/v2/translate"
+      vim.g["deepl#auth_key"] = DEEPL_AUTHKEY
+      vim.cmd[[
     " replace a visual selection
     vmap t<C-e> <Cmd>call deepl#v("EN")<CR>
     vmap t<C-j> <Cmd>call deepl#v("JA")<CR>
@@ -14,5 +17,8 @@ return {
     nmap t<C-j> yyp<Cmd>s/`/_'/g<CR>V<Cmd>call deepl#v("JA")<CR><Cmd>s/_'/`/g<CR>
 
     ]]
-  end
-}
+    end
+  }
+else
+  return {}
+end
