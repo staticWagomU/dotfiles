@@ -22,4 +22,8 @@ return {
     priority = 1000,
     opts = {},
   },
+  {
+    "arrow2nd/aqua",
+    priority = 1000,
+  },
 }
