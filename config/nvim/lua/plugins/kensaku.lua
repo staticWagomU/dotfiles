@@ -1,3 +1,0 @@
-return {
-  "lambdalisue/kensaku.vim",
-}
