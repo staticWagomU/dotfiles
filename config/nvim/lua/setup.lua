@@ -1,4 +1,4 @@
-local basePath = vim.fs.joinpath(require("utils").dpp_basePath .. "github.com")
+local basePath = vim.fs.joinpath(require("utils").dpp_basePath, "github.com")
 if not vim.uv.fs_stat(basePath) then
 	vim.fn.mkdir(basePath, "p", 0700)
 end
@@ -47,6 +47,8 @@ local function Init()
 	for _, p in ipairs(appendPlugins) do
 		vim.opt.runtimepath:prepend(vim.fs.joinpath(basePath, p))
 	end
+	require("notifier").setup({})
+
 end
 
 Init()
