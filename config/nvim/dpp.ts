@@ -103,8 +103,6 @@ export class Config extends BaseConfig {
 			},
 		) as LazyMakeStateResult;
 
-		console.log(lazyResult);
-
 		return {
 			plugins: lazyResult.plugins,
 			stateLines: lazyResult.stateLines,
