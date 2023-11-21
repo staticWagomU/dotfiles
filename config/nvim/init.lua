@@ -1,7 +1,5 @@
--- vim.g["denops#debug"] = 1
--- vim.g["denops#trace"] = 1
 require("setup")
-require("dpp")
+require("dpp_vim")
 require("options")
 require("keymaps")
 

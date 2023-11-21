@@ -1,4 +1,4 @@
-local basePath = vim.fs.joinpath(require("utils").dpp_basePath, "github.com")
+local basePath = vim.fs.joinpath(require("utils").dpp_basePath, "repos", "github.com")
 if not vim.uv.fs_stat(basePath) then
 	vim.fn.mkdir(basePath, "p", 0700)
 end

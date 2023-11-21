@@ -57,7 +57,7 @@ export class Config extends BaseConfig {
 
 		tomls.forEach((toml) => {
 
-			for (const plugin of toml.plugins) {
+			for (const plugin of toml.plugins!) {
 				recordPlugins[plugin.name] = plugin;
 			}
 
@@ -88,7 +88,7 @@ export class Config extends BaseConfig {
 		) as LazyMakeStateResult;
 
 		return {
-			plugins: Object.values(recordPlugins),
+			plugins: lazyResult.plugins,
 			stateLines: lazyResult.stateLines,
 		};
 	}

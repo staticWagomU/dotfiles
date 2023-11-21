@@ -36,3 +36,6 @@ let g:copilot_filetypes = #{
   \   text: v:true,
   \ }
 '''
+
+[[plugins]]
+repo = 'simeji/winresizer'
