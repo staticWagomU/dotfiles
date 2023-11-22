@@ -5,7 +5,6 @@ local tsPath = vim.fs.joinpath(vim.fn.stdpath("config"), "rc", "dpp.ts")
 
 local autocmd = require("utils").autocmd
 if dpp.load_state(dppBase) then
-
   autocmd("User", {
     pattern = "DenopsReady",
     callback = function()
@@ -15,17 +14,29 @@ if dpp.load_state(dppBase) then
   })
 end
 
-autocmd({ "User" },
-{
-  pattern = "Dpp:makeStatePost",
-  callback = function()
-    vim.notify("dpp#make_state done")
-    dpp.source()
-  end,
-}
+autocmd(
+  { "User" },
+  {
+    pattern = "Dpp:makeStatePost",
+    callback = function()
+      vim.notify("dpp#make_state done")
+      dpp.source()
+    end,
+  }
 )
 
-vim.fn["dpp#source"]()
+
+
+autocmd(
+  { "CursorHold" },
+  {
+    pattern = [[*/rc/*.toml]],
+    callback = function()
+	vim.fn["dpp#ext#toml#syntax"]()
+    end,
+  }
+)
+
 
 local uc = require("utils").usercmd
 uc(
