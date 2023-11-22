@@ -14,6 +14,7 @@ autocmd({ "FileType" }, {
     local opts  = { buffer=true, noremap = true }
     keymap({ "n" }, "c", "<Cmd>Gin commit<CR>", opts)
     keymap({ "n" }, "s", "<Cmd>GinStatus<CR>", opts)
+    keymap({ "n" }, "q", "<Cmd>bdelete<CR>", opts)
     keymap({ "n" }, "p", [[<Cmd>lua vim.notify("Gin push")<Cr><Cmd>Gin push<CR>]], opts)
     keymap({ "n" }, "P", [[<Cmd>lua vim.notify("Gin pull")<Cr><Cmd>Gin pull<CR>]], opts)
   end,
@@ -24,6 +25,7 @@ autocmd({ "FileType" }, {
   callback = function()
     local keymap = vim.keymap.set
     local opts  = { buffer=true, noremap = true }
+    keymap({ "n" }, "q", "<Cmd>bdelete<CR>", opts)
     keymap({ "n" }, "c", "<Cmd>Gin commit<CR>", opts)
     keymap({ "n" }, "h", "<Plug>(gin-action-stage)", opts)
     keymap({ "n" }, "l", "<Plug>(gin-action-unstage)", opts)
