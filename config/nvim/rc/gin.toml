@@ -3,13 +3,33 @@ repo = 'https://github.com/lambdalisue/gin.vim'
 on_cmd = [
   'Gin',
 ]
-hook_source = '''
-autocmd FileType gin-status nnoremap <buffer> c <Cmd>Gin commit<CR>
-autocmd FileType gin-status nnoremap <buffer> h <Plug>(gin-action-stage)
-autocmd FileType gin-status nnoremap <buffer> l <Plug>(gin-action-unstage)
-'''
 lua_source ='''
-require("utils").make_abbrev({
+local autocmd = require("utils").autocmd
+local abbrev = require("utils").make_abbrev
+
+autocmd({ "FileType" }, {
+  pattern = "gin-diff",
+  callback = function()
+    local keymap = vim.keymap.set
+    local opts  = { buffer=bufnr, noremap = true }
+    keymap({ "n" }, "c", "<Cmd>Gin commit<CR>", opts)
+    keymap({ "n" }, "s", "<Cmd>GinStatus<CR>", opts)
+  end,
+})
+
+autocmd({ "FileType" }, {
+  pattern = "gin-status",
+  callback = function()
+    local keymap = vim.keymap.set
+    local opts  = { buffer=bufnr, noremap = true }
+    keymap({ "n" }, "c", "<Cmd>Gin commit<CR>", opts)
+    keymap({ "n" }, "h", "<Plug>(gin-action-stage)", opts)
+    keymap({ "n" }, "l", "<Plug>(gin-action-unstage)", opts)
+    keymap({ "n" }, "d", "<Cmd>GinDiff --cached<CR>", opts)
+  end,
+})
+
+abbrev({
   { from = "gb",   to = "GinBranch" },
   { from = "gc",   to = "Gin commit" },
   { from = "gd",   to = "GinDiff" },
@@ -22,7 +42,7 @@ require("utils").make_abbrev({
   { from = "gs",   to = "GinStatus" },
 })
 
-require("utils").make_abbrev({
+abbrev({
   { prepose = "Gin commit",        from = "a",  to = "--amend" },
 })
 
