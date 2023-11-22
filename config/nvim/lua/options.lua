@@ -62,16 +62,15 @@ set.wildmenu = true
 set.wrap = false
 set.wrapscan = true
 
-vim.cmd [=[
-augroup restore-cursor
-	autocmd!
-	autocmd BufReadPost *
-		\ : if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-		\ |   execute "normal! g`\""
-		\ | endif
+vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
+  pattern = { '*' },
+  callback = function()
+    if vim.fn.line("'\"") >= 1 and vim.fn.line("'\"") <= vim.fn.line('$') and vim.bo.filetype ~= 'commit' then
+      vim.cmd([[normal! g`"]])
+    end
 
-		\ : if empty(&buftype) && line('.') > winheight(0) / 2
-		\ |   execute 'normal! zz'
-		\ | endif
-augroup END
-]=]
+    if vim.bo.buftype == '' and vim.fn.line('.') > vim.fn.winheight(0) / 2 then
+      vim.cmd([[normal! zz]])
+    end
+  end,
+})
