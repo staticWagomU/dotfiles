@@ -26,6 +26,8 @@ autocmd({ "FileType" }, {
     keymap({ "n" }, "h", "<Plug>(gin-action-stage)", opts)
     keymap({ "n" }, "l", "<Plug>(gin-action-unstage)", opts)
     keymap({ "n" }, "d", "<Cmd>GinDiff --cached<CR>", opts)
+    keymap({ "n" }, "p", "<Cmd>Gin push<CR>", opts)
+    keymap({ "n" }, "P", "<Cmd>Gin pull<CR>", opts)
   end,
 })
 
