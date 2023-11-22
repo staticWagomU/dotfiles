@@ -42,6 +42,7 @@ local function Init()
 		"vim-denops/denops.vim",
 
 		"vigoux/notifier.nvim",
+		"EdenEast/nightfox.nvim",
 	}
 	clone(appendPlugins)
 	for _, p in ipairs(appendPlugins) do
