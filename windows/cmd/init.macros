@@ -1,0 +1,18 @@
+n=nvim $*
+vi=vim $*
+v=vim $*
+mv=mv -i $*
+cp=cp -i $*
+rm=rm -i $*
+gs=git status $*
+gd=git diff $*
+gds=git diff --staged $*
+gl=git log --graph --oneline $*
+gll=git log $*
+ls=eza $*
+ll=eza -la $*
+ncon=cd %USERPROFILE%\dotfiles\config\nvim $*
+lncon=cd %USERPROFILE%\dotfiles\config\nvim\lua $*
+vcon=cd %USERPROFILE%\dotfiles\config\vim $*
+home=cd %USERPROFILE% $*
+
