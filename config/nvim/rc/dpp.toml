@@ -1,41 +1,29 @@
 [[plugins]]
-repo = 'Shougo/dpp.vim'
+repo = 'https://github.com/Shougo/dpp.vim'
 rtp = ''
 
 [[plugins]]
-repo = 'Shougo/dpp-ext-lazy'
+repo = 'https://github.com/Shougo/dpp-ext-lazy'
 on_source = 'dpp.vim'
 rtp = ''
 
 [[plugins]]
-repo = 'Shougo/dpp-ext-toml'
+repo = 'https://github.com/Shougo/dpp-ext-toml'
 on_source = 'dpp.vim'
 
 [[plugins]]
-repo = 'Shougo/dpp-ext-local'
+repo = 'https://github.com/Shougo/dpp-ext-local'
 on_source = 'dpp.vim'
 
 [[plugins]]
-repo = 'Shougo/dpp-ext-installer'
+repo = 'https://github.com/Shougo/dpp-ext-installer'
 on_source = 'dpp.vim'
 
 [[plugins]]
-repo = 'Shougo/dpp-ext-packspec'
+repo = 'https://github.com/Shougo/dpp-ext-packspec'
 on_source = 'dpp.vim'
 
 [[plugins]]
-repo = 'Shougo/dpp-protocol-git'
+repo = 'https://github.com/Shougo/dpp-protocol-git'
 on_source = 'dpp.vim'
 
-[[plugins]]
-repo = 'github/copilot.vim'
-hook_source = '''
-let g:copilot_filetypes = #{
-  \   gitcommit: v:true,
-  \   markdown: v:true,
-  \   text: v:true,
-  \ }
-'''
-
-[[plugins]]
-repo = 'simeji/winresizer'
