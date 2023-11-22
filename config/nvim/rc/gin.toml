@@ -1,0 +1,32 @@
+[[plugins]]
+repo = 'https://github.com/lambdalisue/gin.vim'
+on_cmd = [
+  'Gin',
+]
+hook_source = '''
+autocmd FileType gin-status nnoremap <buffer> c <Cmd>Gin commit<CR>
+autocmd FileType gin-status nnoremap <buffer> h <Plug>(gin-action-stage)
+autocmd FileType gin-status nnoremap <buffer> l <Plug>(gin-action-unstage)
+'''
+lua_source ='''
+require("utils").make_abbrev({
+  { from = "gb",   to = "GinBranch" },
+  { from = "gc",   to = "Gin commit" },
+  { from = "gd",   to = "GinDiff" },
+  { from = "gds",  to = "GinDiff --cached" },
+  { from = "gin",  to = "Gin" },
+  { from = "git",  to = "Gin" },
+  { from = "gl",   to = "GinLog --graph --oneline" },
+  { from = "gp",   to = "Gin push" },
+  { from = "gpp",  to = "Gin pull" },
+  { from = "gs",   to = "GinStatus" },
+})
+
+require("utils").make_abbrev({
+  { prepose = "Gin commit",        from = "a",  to = "--amend" },
+})
+
+vim.g["gin_diff_default_args"] = { "++processor=delta" }
+
+vim.keymap.set({ "n" }, "<C-g><C-s>", "<Cmd>GinStatus<CR>", {})
+'''
