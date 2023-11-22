@@ -11,7 +11,7 @@ autocmd({ "FileType" }, {
   pattern = "gin-diff",
   callback = function()
     local keymap = vim.keymap.set
-    local opts  = { buffer=bufnr, noremap = true }
+    local opts  = { buffer=true, noremap = true }
     keymap({ "n" }, "c", "<Cmd>Gin commit<CR>", opts)
     keymap({ "n" }, "s", "<Cmd>GinStatus<CR>", opts)
   end,
@@ -21,7 +21,7 @@ autocmd({ "FileType" }, {
   pattern = "gin-status",
   callback = function()
     local keymap = vim.keymap.set
-    local opts  = { buffer=bufnr, noremap = true }
+    local opts  = { buffer=true, noremap = true }
     keymap({ "n" }, "c", "<Cmd>Gin commit<CR>", opts)
     keymap({ "n" }, "h", "<Plug>(gin-action-stage)", opts)
     keymap({ "n" }, "l", "<Plug>(gin-action-unstage)", opts)
