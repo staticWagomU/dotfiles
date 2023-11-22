@@ -1,37 +1,41 @@
 local dpp = require("dpp")
 
 local dppBase = require("utils").dpp_basePath
-local tsPath = vim.fs.joinpath(vim.fn.stdpath("config"), "dpp.ts")
+local tsPath = vim.fs.joinpath(vim.fn.stdpath("config"), "rc", "dpp.ts")
+
+local autocmd = require("utils").autocmd
 if dpp.load_state(dppBase) then
 
-  vim.api.nvim_create_autocmd("User", {
+  autocmd("User", {
     pattern = "DenopsReady",
     callback = function()
-      vim.notify("start dpp#make_state")
+      vim.notify("dpp#make_state start")
       dpp.make_state(dppBase, tsPath)
     end,
   })
 end
 
-vim.api.nvim_create_autocmd({ "User" },
+autocmd({ "User" },
 {
   pattern = "Dpp:makeStatePost",
   callback = function()
     vim.notify("dpp#make_state done")
+    dpp.source()
   end,
 }
 )
 
 vim.fn["dpp#source"]()
 
-vim.api.nvim_create_user_command(
+local uc = require("utils").usercmd
+uc(
 "DppInstall",
 function()
   dpp.async_ext_action("installer", "install")
 end,
 {}
 )
-vim.api.nvim_create_user_command(
+uc(
 "DppUpdate",
 function()
   dpp.async_ext_action("installer", "update")
@@ -39,15 +43,16 @@ end,
 {}
 )
 
-vim.api.nvim_create_user_command(
+uc(
 "DppMakeState",
 function()
+  vim.notify("dpp#make_state start")
   dpp.make_state(dppBase, tsPath)
 end,
 {}
 )
 
-vim.api.nvim_create_user_command(
+uc(
 "DppLoad",
 function()
   dpp.load_state(dppBase)
@@ -55,21 +60,21 @@ end,
 {}
 )
 
-vim.api.nvim_create_user_command(
+uc(
 "DppInstall",
 function()
   dpp.async_ext_action("installer", "install", { maxProcess = 10 })
 end,
 {}
 )
-vim.api.nvim_create_user_command(
+uc(
 "DppUpdate",
 function()
   dpp.async_ext_action("installer", "update", { maxProcess = 10 })
 end,
 {}
 )
-vim.api.nvim_create_user_command(
+uc(
 "DppSource",
 function()
   vim.fn["dpp#source"]()
@@ -77,19 +82,19 @@ function()
 end,
 {}
 )
-vim.api.nvim_create_user_command(
-"DppClear",
-function()
-  dpp.clear_state()
-end,
-{}
+
+uc("DppClear",
+  function()
+    dpp.clear_state()
+  end,
+  {}
 )
-vim.api.nvim_create_user_command(
-"DppGet",
-function()
-  dpp.get()
-end,
-{}
+
+uc("DppGet",
+  function()
+    dpp.get()
+  end,
+  {}
 )
 
 vim.cmd("filetype indent plugin on")
