@@ -1,0 +1,19 @@
+[[plugins]]
+repo='https://github.com/lewis6991/gitsigns.nvim'
+lua_source='''
+require("gitsigns").setup({
+  signcolumn = true,
+  numhl = true,
+  attach_to_untracked = true,
+  on_attach = function()
+  end,
+})
+
+local opts = { noremap = true, silent = true }
+local keymap = vim.keymap.set
+keymap("n", "[g", "<cmd>Gitsigns prev_hunk<cr>", opts)
+keymap("n", "]g", "<cmd>Gitsigns next_hunk<cr>", opts)
+keymap("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", opts)
+keymap("n", "<leader>gss", "<cmd>Gitsigns stage_hunk<cr>", opts)
+keymap("n", "<leader>gss", "<cmd>Gitsigns undo_stage_hunk<cr>", opts)
+'''
