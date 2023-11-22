@@ -1,4 +1,5 @@
 local dpp = require("dpp")
+local abbrev = require("utils").make_abbrev
 local autocmd = require("utils").autocmd
 local uc = require("utils").usercmd
 local keymap = vim.keymap.set
@@ -54,6 +55,14 @@ uc( "DppClear", function() dpp.clear_state() end)
 
 keymap({ "n" }, "-", function() require("dpp").source() vim.notify("dpp#source done") end, { noremap = true, silent = true })
 
+abbrev({
+    { from = "dm", to = "DppMakeState" },
+    { from = "dl", to = "DppLoad" },
+    { from = "di", to = "DppInstall" },
+    { from = "du", to = "DppUpdate" },
+    { from = "ds", to = "DppSource" },
+    { from = "dc", to = "DppClear" },
+})
 
 vim.cmd("filetype indent plugin on")
 if vim.fn.has("syntax") then
