@@ -5,7 +5,7 @@ vim.g.loaded_gzip = 1
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwFileHandlers = 1
 vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_netrwSettings= 1
+vim.g.loaded_netrwSettings = 1
 vim.g.loaded_rrhelper = 1
 vim.g.loaded_tar = 1
 vim.g.loaded_tarPlugin = 1
@@ -13,16 +13,14 @@ vim.g.loaded_vimball = 1
 vim.g.loaded_vimballPlugin = 1
 vim.g.loaded_zip = 1
 vim.g.loaded_zipPlugin = 1
-
+vim.g.mapleader = " "
 
 local set = vim.opt
 set.ambiwidth = "single"
 set.backspace = { "indent", "eol", "start" }
-set.backupdir = vim.fn.expand("~")
 set.clipboard = "unnamedplus"
+set.backupdir = vim.fn.expand("~")
 set.directory = vim.fn.expand("~")
-set.display = "uhex"
-set.expandtab = true
 set.expandtab = true
 set.fileformat = "unix"
 set.fillchars = {
@@ -69,7 +67,7 @@ augroup restore-cursor
 	autocmd!
 	autocmd BufReadPost *
 		\ : if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-		\ |   exe "normal! g`\""
+		\ |   execute "normal! g`\""
 		\ | endif
 
 		\ : if empty(&buftype) && line('.') > winheight(0) / 2
@@ -77,18 +75,3 @@ augroup restore-cursor
 		\ | endif
 augroup END
 ]=]
-
-
-vim.api.nvim_create_augroup("extra-whitespace", {})
-vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
-  group = "extra-whitespace",
-  pattern = { "*" },
-  desc = "全角空白を可視化させる",
-  command = [[call matchadd("ExtraWhitespace", "[\u00A0\u2000-\u200B\u3000]")]]
-})
-vim.api.nvim_create_autocmd({ "ColorScheme" }, {
-  group = "extra-whitespace",
-  pattern = { "*" },
-  desc = "全角空白を可視化させる",
-  command = [[highlight default ExtraWhitespace ctermbg=red guibg=red]]
-})
