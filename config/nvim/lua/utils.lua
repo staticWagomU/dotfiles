@@ -4,7 +4,10 @@ M.is_windows = vim.uv.os_uname().version:match("Windows") == not nil
 
 M.dpp_basePath = vim.fn.expand(vim.uv.os_homedir() .. "/.cache/dpp")
 
-M.usercmd = vim.api.nvim_create_user_command
+function M.usercmd(n, f, _opts)
+	local opts = _opts or {}
+	vim.api.nvim_create_user_command(n, f, opts)
+end
 
 M.autocmd = vim.api.nvim_create_autocmd
 
