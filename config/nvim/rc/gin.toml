@@ -14,6 +14,21 @@ autocmd({ "FileType" }, {
     local opts  = { buffer=true, noremap = true }
     keymap({ "n" }, "c", "<Cmd>Gin commit<Cr>", opts)
     keymap({ "n" }, "s", "<Cmd>GinStatus<Cr>", opts)
+    keymap({ "n" }, "L", "<Cmd>GinLog --graph --oneline<Cr>", opts)
+    keymap({ "n" }, "q", "<Cmd>bdelete<Cr>", opts)
+    keymap({ "n" }, "p", [[<Cmd>lua vim.notify("Gin push")<Cr><Cmd>Gin push<Cr>]], opts)
+    keymap({ "n" }, "P", [[<Cmd>lua vim.notify("Gin pull")<Cr><Cmd>Gin pull<Cr>]], opts)
+  end,
+})
+
+autocmd({ "FileType" }, {
+  pattern = "gin-log",
+  callback = function()
+    local keymap = vim.keymap.set
+    local opts  = { buffer=true, noremap = true }
+    keymap({ "n" }, "c", "<Cmd>Gin commit<Cr>", opts)
+    keymap({ "n" }, "s", "<Cmd>GinStatus<Cr>", opts)
+    keymap({ "n" }, "d", "<Cmd>GinDiff --cached<Cr>", opts)
     keymap({ "n" }, "q", "<Cmd>bdelete<Cr>", opts)
     keymap({ "n" }, "p", [[<Cmd>lua vim.notify("Gin push")<Cr><Cmd>Gin push<Cr>]], opts)
     keymap({ "n" }, "P", [[<Cmd>lua vim.notify("Gin pull")<Cr><Cmd>Gin pull<Cr>]], opts)
@@ -29,6 +44,7 @@ autocmd({ "FileType" }, {
     keymap({ "n" }, "c", "<Cmd>Gin commit<Cr>", opts)
     keymap({ "n" }, "h", "<Plug>(gin-action-stage)", opts)
     keymap({ "n" }, "l", "<Plug>(gin-action-unstage)", opts)
+    keymap({ "n" }, "L", "<Cmd>GinLog --graph --oneline<Cr>", opts)
     keymap({ "n" }, "d", "<Cmd>GinDiff --cached<Cr>", opts)
     keymap({ "n" }, "p", [[<Cmd>lua vim.notify("Gin push")<Cr><Cmd>Gin push<Cr>]], opts)
     keymap({ "n" }, "P", [[<Cmd>lua vim.notify("Gin pull")<Cr><Cmd>Gin pull<Cr>]], opts)
@@ -54,5 +70,5 @@ abbrev({
 
 vim.g["gin_diff_default_args"] = { "++processor=delta" }
 
-vim.keymap.set({ "n" }, "<C-g><C-s>", "<Cmd>GinStatus<CR>", {})
+vim.keymap.set({ "n" }, "<C-g><C-s>", "<Cmd>GinStatus<Cr>", {})
 '''
