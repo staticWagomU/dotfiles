@@ -41,6 +41,16 @@ autocmd(
 )
 
 
+autocmd(
+  { "VimEnter" },
+  {
+    pattern = "*",
+    callback = function()
+      require("dpp").source()
+    end,
+  }
+)
+
 uc( "DppMakeState", function() vim.notify("dpp#make_state start") dpp.make_state(dppBase, tsPath) end)
 uc( "DppLoad", function() dpp.load_state(dppBase) end)
 uc( "DppInstall", function() dpp.async_ext_action("installer", "install", { maxProcess = 10 }) end)
