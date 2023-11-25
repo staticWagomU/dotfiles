@@ -6,10 +6,10 @@ end
 local split = require("utils").split
 local function clone(plugins)
 	for _, p in ipairs(plugins) do
-		local owner =  split(p, "/")[1]
-		local ownersRepo = vim.fs.joinpath(basePath, owner)
-		if not vim.loop.fs_stat(ownersRepo) then
-			vim.fn.mkdir(ownersRepo, "p", 0700)
+		local repoOwner =  split(p, "/")[1]
+		local ownersDir = vim.fs.joinpath(basePath, repoOwner)
+		if not vim.loop.fs_stat(ownersDir) then
+			vim.fn.mkdir(ownersDir, "p", 0700)
 		end
 
 		local repoPath = vim.fs.joinpath(basePath, p)
