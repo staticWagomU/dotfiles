@@ -1,0 +1,7 @@
+[[plugins]]
+repo='wuelnerdotexe/vim-astro'
+on_ft='astro'
+lua_source='''
+vim.g["astro_typescript"] = "enable"
+vim.g["astro_stylus"] = "enaable"
+'''
