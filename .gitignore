@@ -3,4 +3,4 @@
 .DS_Store
 lazy-lock.json
 local_vimrc.lua
-config/vim/pack/*
+dotfiles.toml
