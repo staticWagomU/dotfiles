@@ -28,8 +28,6 @@ autocmd(
   }
 )
 
-
-
 autocmd(
   { "CursorHold" },
   {
@@ -62,8 +60,6 @@ uc(
     vim.notify("dpp#source done")
   end)
 uc( "DppClear", function() dpp.clear_state() end)
-
-keymap({ "n" }, "-", function() require("dpp").source() vim.notify("dpp#source done") end, { noremap = true, silent = true })
 
 abbrev({
     { from = "dm", to = "DppMakeState" },
