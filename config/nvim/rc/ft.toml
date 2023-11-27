@@ -1,5 +1,5 @@
 [[plugins]]
-repo='wuelnerdotexe/vim-astro'
+repo='https://github.com/wuelnerdotexe/vim-astro'
 on_ft='astro'
 lua_source='''
 vim.g["astro_typescript"] = "enable"

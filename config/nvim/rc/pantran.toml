@@ -1,5 +1,5 @@
 [[plugins]]
-repo='potamides/pantran.nvim'
+repo='https://github.com/potamides/pantran.nvim'
 lua_source='''
 local pantran = require("pantran")
 vim.env.DEEPL_AUTH_KEY = require("local_vimrc").DEEPL_AUTHKEY
