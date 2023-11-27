@@ -1,6 +1,6 @@
 import {
-  ensure,
-  is,
+	ensure,
+	is,
 } from "https://deno.land/x/unknownutil@v3.10.0/mod.ts";
 import {
 	BaseConfig,
@@ -9,28 +9,28 @@ import {
 	Plugin,
 } from "https://deno.land/x/dpp_vim@v0.0.5/types.ts";
 import {
-  Denops,
-  fn,
+	Denops,
+	fn,
 } from "https://deno.land/x/dpp_vim@v0.0.5/deps.ts";
 
 type Toml = {
-  hooks_file?: string;
-  ftplugins?: Record<string, string>;
-  plugins?: Plugin[];
+	hooks_file?: string;
+	ftplugins?: Record<string, string>;
+	plugins?: Plugin[];
 };
 
 type LazyMakeStateResult = {
-  plugins: Plugin[];
-  stateLines: string[];
+	plugins: Plugin[];
+	stateLines: string[];
 };
 
 const isStringArray = is.ArrayOf(is.String);
 // https://github.com/kuuote/dotvim/blob/version5/conf/dpp.ts?plain=1#L27-L32
 async function glob(denops: Denops, path: string): Promise<string[]> {
-  return ensure(
-    await denops.call("glob", path, 1, 1),
-    isStringArray,
-  );
+	return ensure(
+		await denops.call("glob", path, 1, 1),
+		isStringArray,
+	);
 }
 
 export class Config extends BaseConfig {
@@ -44,9 +44,15 @@ export class Config extends BaseConfig {
 		stateLines: string[];
 	}> {
 		const dotfilesDir = "~/dotfiles/config/nvim/rc"
-    const tomlPaths = await glob(args.denops, `${dotfilesDir}/*.toml`)
+		const tomlPaths = await glob(args.denops, `${dotfilesDir}/*.toml`)
 
 		args.contextBuilder.setGlobal({
+      extParams: {
+        installer: {
+          checkDiff: true,
+          logFilePath: "~/.cache/dpp/installer-log.txt",
+        },
+      },
 			protocols: ["git"],
 		});
 
@@ -54,20 +60,23 @@ export class Config extends BaseConfig {
 		const [context, options] = await args.contextBuilder.get(args.denops);
 
 		const tomls: Toml[] = [];
-    for(const tomlPath of tomlPaths) {
-      tomls.push(
-        await args.dpp.extAction(
-          args.denops,
-          context,
-          options,
-          "toml",
-          "load",
-          {
-            path: tomlPath,
-          },
-        ) as Toml,
-      );
-    }
+		for(const tomlPath of tomlPaths) {
+			tomls.push(
+				await args.dpp.extAction(
+					args.denops,
+					context,
+					options,
+					"toml",
+					"load",
+					{
+						path: tomlPath,
+						options: {
+							lazy: false,
+						},
+					},
+				) as Toml,
+			);
+		}
 
 		const recordPlugins: Record<string, Plugin> = {};
 		const ftplugins: Record<string, string> = {};
@@ -106,7 +115,9 @@ export class Config extends BaseConfig {
 		) as LazyMakeStateResult;
 
 		return {
-			plugins: lazyResult.plugins,
+			ftplugins,
+			hooksFiles,
+			plugins: lazyResult.plugins ?? [],
 			stateLines: lazyResult.stateLines,
 		};
 	}

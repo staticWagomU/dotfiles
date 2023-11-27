@@ -5,7 +5,6 @@ rtp = ''
 [[plugins]]
 repo = 'https://github.com/Shougo/dpp-ext-lazy'
 on_source = 'dpp.vim'
-rtp = ''
 
 [[plugins]]
 repo = 'https://github.com/Shougo/dpp-ext-toml'
