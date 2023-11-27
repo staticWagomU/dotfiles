@@ -1,18 +1,15 @@
 import { BaseConfig } from "https://deno.land/x/ddc_vim@v4.0.5/types.ts";
-import { fn } from "https://deno.land/x/ddc_vim@v4.0.5/deps.ts";
 import { ConfigArguments } from "https://deno.land/x/ddc_vim@v4.0.5/base/config.ts";
 
 export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<void> {
     const hasNvim = args.denops.meta.host === "nvim";
-    const hasWindows = await fn.has(args.denops, "win32");
 
     const commonSources = [
-      "codeium",
+      "copilot",
       "around",
       "yank",
       "file",
-      "mocword",
     ];
 
     args.contextBuilder.patchGlobal({
@@ -49,9 +46,6 @@ export class Config extends BaseConfig {
         buffer: {
           mark: "B",
         },
-        necovim: {
-          mark: "vim",
-        },
         cmdline: {
           mark: "cmdline",
           forceCompletionPattern: "\\S/\\S*|\\.\\w*",
@@ -62,12 +56,6 @@ export class Config extends BaseConfig {
           minAutoCompleteLength: 0,
           isVolatile: false,
         },
-        codeium: {
-          mark: "cod",
-          matchers: ["matcher_length"],
-          minAutoCompleteLength: 0,
-          isVolatile: true,
-        },
         input: {
           mark: "input",
           forceCompletionPattern: "\\S/\\S*",
@@ -76,19 +64,10 @@ export class Config extends BaseConfig {
         line: {
           mark: "line",
         },
-        mocword: {
-          mark: "mocword",
-          minAutoCompleteLength: 4,
-          isVolatile: true,
-        },
         "nvim-lsp": {
           mark: "lsp",
           forceCompletionPattern: "\\.\\w*|::\\w*|->\\w*",
           dup: "force",
-        },
-        rtags: {
-          mark: "R",
-          forceCompletionPattern: "\\.\\w*|::\\w*|->\\w*",
         },
         file: {
           mark: "F",
@@ -99,19 +78,6 @@ export class Config extends BaseConfig {
         "cmdline-history": {
           mark: "history",
           sorters: [],
-        },
-        "shell-history": {
-          mark: "history",
-        },
-        shell: {
-          mark: "sh",
-          isVolatile: true,
-          forceCompletionPattern: "\\S/\\S*",
-        },
-        "shell-native": {
-          mark: "sh",
-          isVolatile: true,
-          forceCompletionPattern: "\\S/\\S*",
         },
         rg: {
           mark: "rg",
@@ -157,7 +123,7 @@ export class Config extends BaseConfig {
       ]
     ) {
       args.contextBuilder.patchFiletype(filetype, {
-        sources: commonSources.concat(["mocword", "line"]),
+        sources: commonSources.concat(["line"]),
       });
     }
 
@@ -170,33 +136,6 @@ export class Config extends BaseConfig {
         },
       });
     }
-
-    for (const filetype of ["zsh", "sh", "bash"]) {
-      args.contextBuilder.patchFiletype(filetype, {
-        sourceOptions: {
-          _: {
-            keywordPattern: "[0-9a-zA-Z_./#:-]*",
-          },
-        },
-        sources: [
-          hasWindows ? "shell" : "shell-native",
-          "around",
-        ],
-      });
-    }
-    args.contextBuilder.patchFiletype("deol", {
-      specialBufferCompletion: true,
-      sources: [
-        hasWindows ? "shell" : "shell-native",
-        "shell-history",
-        "around",
-      ],
-      sourceOptions: {
-        _: {
-          keywordPattern: "[0-9a-zA-Z_./#:-]*",
-        },
-      },
-    });
 
     args.contextBuilder.patchFiletype("ddu-ff-filter", {
       sources: ["line", "buffer"],
@@ -233,11 +172,5 @@ export class Config extends BaseConfig {
         ].concat(commonSources),
       });
     }
-
-    args.contextBuilder.patchFiletype("vim", {
-      // Enable specialBufferCompletion for cmdwin.
-      specialBufferCompletion: true,
-      sources: ["necovim"].concat(commonSources),
-    });
   }
 }

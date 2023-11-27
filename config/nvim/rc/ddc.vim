@@ -2,7 +2,6 @@
 nnoremap :       <Cmd>call CommandlinePre(':')<CR>:
 nnoremap ?       <Cmd>call CommandlinePre('/')<CR>?
 xnoremap :       <Cmd>call CommandlinePre(':')<CR>:
-nnoremap +       <Cmd>call CommandlinePre('dda')<CR>:Dda<Space>
 
 function! CommandlinePre(mode) abort
   " Overwrite sources
@@ -44,16 +43,6 @@ endfunction
 
 " hook_source {{{
 call ddc#custom#load_config(expand('~/dotfiles/config/nvim/rc/ddc.ts'))
-
-" Context config
-"call ddc#custom#set_context_filetype('go', { ->
-"      \   ddc#syntax#in('TSComment') ?
-"      \   #{ sources: ['around', 'mocword'] } : {}
-"      \ })
-"call ddc#custom#set_context_filetype('c', { ->
-"      \   ddc#syntax#in('Comment') ?
-"      \   #{ sources: ['around', 'mocword'] } : {}
-"      \ })
 
 " For insert mode completion
 inoremap <expr> <TAB>
@@ -115,7 +104,5 @@ inoremap <C-a> <Cmd>call ddu#start(#{
       \   },
       \ })<CR>
 
-call ddc#enable(#{
-      \   context_filetype: has('nvim') ? 'treesitter' : 'context_filetype',
-      \ })
+call ddc#enable(#{ context_filetype: 'treesitter', })
 " }}}

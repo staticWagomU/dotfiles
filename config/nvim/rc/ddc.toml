@@ -1,10 +1,11 @@
 [[plugins]]
-repo = 'Shougo/ddc.vim'
+repo='https://github.com/Shougo/ddc.vim'
 depends = 'denops.vim'
 on_event = 'InsertEnter'
+hooks_file='~\dotfiles\config\nvim\rc\ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/pum.vim'
+repo='https://github.com/Shougo/pum.vim'
 hook_source = '''
   call pum#set_option(#{
     \   auto_confirm_time: 3000,
@@ -34,90 +35,76 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/ddc-ui-native'
+repo='https://github.com/Shougo/ddc-ui-native'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-ui-pum'
+repo='https://github.com/Shougo/ddc-ui-pum'
 depends = 'pum.vim'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-ui-inline'
+repo='https://github.com/Shougo/ddc-ui-inline'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-ui-none'
+repo='https://github.com/Shougo/ddc-ui-none'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-around'
+repo='https://github.com/Shougo/ddc-source-around'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-mocword'
+repo='https://github.com/Shougo/ddc-source-copilot'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-shell-native'
-on_source = 'ddc.vim'
-depends = 'ddc.vim'
-
-[[plugins]]
-repo = 'Shougo/ddc-source-shell'
-on_source = 'ddc.vim'
-depends = 'ddc.vim'
-
-[[plugins]]
-repo = 'Shougo/ddc-source-copilot'
+repo='https://github.com/Shougo/ddc-source-codeium'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-codeium'
+repo='https://github.com/Shougo/ddc-source-input'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-input'
+repo='https://github.com/Shougo/ddc-source-rg'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-rg'
+repo='https://github.com/Shougo/ddc-source-line'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-line'
+repo='https://github.com/Shougo/ddc-source-nvim-lsp'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-nvim-lsp'
+repo='https://github.com/Shougo/ddc-source-cmdline'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-cmdline'
+repo='https://github.com/Shougo/ddc-source-cmdline-history'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-cmdline-history'
+repo='https://github.com/Shougo/ddc-source-omni'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-source-omni'
-on_source = 'ddc.vim'
-
-[[plugins]]
-repo = 'Shougo/ddc-source-rtags'
+repo='https://github.com/Shougo/ddc-source-rtags'
 on_ft = ['c', 'cpp']
 
 [[plugins]]
-repo = 'matsui54/ddc-buffer'
+repo='https://github.com/matsui54/ddc-buffer'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'LumaKernel/ddc-source-file'
+repo='https://github.com/LumaKernel/ddc-source-file'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'kuuote/ddc-source-yank'
+repo='https://github.com/kuuote/ddc-source-yank'
 on_source = 'ddc.vim'
 hook_add = '''
   nnoremap cy <Cmd>set operatorfunc=ddc#source#yank#register<CR>g@
@@ -125,38 +112,33 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/ddc-filter-matcher_head'
+repo='https://github.com/Shougo/ddc-filter-matcher_head'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-filter-matcher_length'
+repo='https://github.com/Shougo/ddc-filter-matcher_length'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-filter-matcher_vimregexp'
+repo='https://github.com/Shougo/ddc-filter-matcher_vimregexp'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-filter-matcher_prefix'
+repo='https://github.com/Shougo/ddc-filter-matcher_prefix'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-filter-sorter_rank'
+repo='https://github.com/Shougo/ddc-filter-sorter_rank'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-filter-sorter_head'
+repo='https://github.com/Shougo/ddc-filter-sorter_head'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-filter-converter_remove_overlap'
+repo='https://github.com/Shougo/ddc-filter-converter_remove_overlap'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-filter-converter_truncate_abbr'
+repo='https://github.com/Shougo/ddc-filter-converter_truncate_abbr'
 on_source = 'ddc.vim'
-
-[[plugins]]
-repo = 'Shougo/neco-vim'
-on_ft = ['vim', 'toml', 'markdown']
-depends = 'ddc.vim'
