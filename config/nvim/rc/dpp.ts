@@ -5,12 +5,12 @@ import {
 import {
 	BaseConfig,
 	ContextBuilder,
+	ConfigReturn,
 	Dpp,
 	Plugin,
 } from "https://deno.land/x/dpp_vim@v0.0.5/types.ts";
 import {
 	Denops,
-	fn,
 } from "https://deno.land/x/dpp_vim@v0.0.5/deps.ts";
 
 type Toml = {
@@ -39,20 +39,17 @@ export class Config extends BaseConfig {
 		contextBuilder: ContextBuilder;
 		basePath: string;
 		dpp: Dpp;
-	}): Promise<{
-		plugins: Plugin[];
-		stateLines: string[];
-	}> {
+	}): Promise<ConfigReturn> {
 		const dotfilesDir = "~/dotfiles/config/nvim/rc"
 		const tomlPaths = await glob(args.denops, `${dotfilesDir}/*.toml`)
 
 		args.contextBuilder.setGlobal({
-      extParams: {
-        installer: {
-          checkDiff: true,
-          logFilePath: "~/.cache/dpp/installer-log.txt",
-        },
-      },
+			extParams: {
+				installer: {
+					checkDiff: true,
+					logFilePath: "~/.cache/dpp/installer-log.txt",
+				},
+			},
 			protocols: ["git"],
 		});
 
@@ -102,6 +99,38 @@ export class Config extends BaseConfig {
 				hooksFiles.push(toml.hooks_file);
 			}
 		});
+
+		const localPlugins = await args.dpp.extAction(
+			args.denops,
+			context,
+			options,
+			"local",
+			"local",
+			{
+				directory: "~/dotfiles/config/nvim/plugins",
+				options: {
+					frozen: true,
+					merged: false,
+				},
+				includes: [
+					"ddu-source-patch_local",
+					"denops-statusline",
+				],
+			},
+		) as Plugin[] | undefined;
+
+		if (localPlugins) {
+			for (const plugin of localPlugins) {
+				if (plugin.name in recordPlugins) {
+					recordPlugins[plugin.name] = Object.assign(
+						recordPlugins[plugin.name],
+						plugin,
+					);
+				} else {
+					recordPlugins[plugin.name] = plugin;
+				}
+			}
+		}
 
 		const lazyResult = await args.dpp.extAction(
 			args.denops,
