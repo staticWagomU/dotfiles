@@ -37,6 +37,7 @@ local function Init()
 		"Shougo/dpp-ext-installer",
 		"Shougo/dpp-ext-packspec",
 		"Shougo/dpp-ext-toml",
+		"Shougo/dpp-ext-local",
 		"Shougo/dpp-protocol-git",
 
 		"vim-denops/denops.vim",
