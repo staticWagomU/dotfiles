@@ -1,3 +1,5 @@
+vim.g["denops_server_addr"] = "127.0.0.1:32123"
+
 local basePath = vim.fs.joinpath(require("utils").dpp_basePath, "repos", "github.com")
 if not vim.uv.fs_stat(basePath) then
 	vim.fn.mkdir(basePath, "p", 0700)
