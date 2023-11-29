@@ -46,8 +46,8 @@ autocmd({ 'FileType' }, {
     keymap({ 'n' }, 'l', '<Plug>(gin-action-unstage)', opts)
     keymap({ 'n' }, 'L', '<Cmd>GinLog --graph --oneline<Cr>', opts)
     keymap({ 'n' }, 'd', '<Cmd>GinDiff --cached<Cr>', opts)
-    keymap({ 'n' }, 'p', [[<Cmd>lua vim.notify("Gin push")<Cr><Cmd>Gin push<Cr>]], opts)
-    keymap({ 'n' }, 'P', [[<Cmd>lua vim.notify("Gin pull")<Cr><Cmd>Gin pull<Cr>]], opts)
+    keymap({ 'n' }, 'p', '<Cmd>lua vim.notify("Gin push")<Cr><Cmd>Gin push<Cr>', opts)
+    keymap({ 'n' }, 'P', '<Cmd>lua vim.notify("Gin pull")<Cr><Cmd>Gin pull<Cr>', opts)
   end,
 })
 
