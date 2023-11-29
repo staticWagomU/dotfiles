@@ -62,6 +62,7 @@ abbrev {
   { from = 'gp', to = 'Gin push' },
   { from = 'gpp', to = 'Gin pull' },
   { from = 'gs', to = 'GinStatus' },
+  { from = 'gcd', to = 'GinCd' },
 }
 
 abbrev {
