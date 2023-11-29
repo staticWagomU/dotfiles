@@ -4,71 +4,71 @@ on_cmd = [
   'Gin',
 ]
 lua_source ='''
-local autocmd = require("utils").autocmd
-local abbrev = require("utils").make_abbrev
+local autocmd = require('utils').autocmd
+local abbrev = require('utils').make_abbrev
 
-autocmd({ "FileType" }, {
-  pattern = "gin-diff",
+autocmd({ 'FileType' }, {
+  pattern = 'gin-diff',
   callback = function()
     local keymap = vim.keymap.set
-    local opts  = { buffer=true, noremap = true }
-    keymap({ "n" }, "c", "<Cmd>Gin commit<Cr>", opts)
-    keymap({ "n" }, "s", "<Cmd>GinStatus<Cr>", opts)
-    keymap({ "n" }, "L", "<Cmd>GinLog --graph --oneline<Cr>", opts)
-    keymap({ "n" }, "q", "<Cmd>bdelete<Cr>", opts)
-    keymap({ "n" }, "p", [[<Cmd>lua vim.notify("Gin push")<Cr><Cmd>Gin push<Cr>]], opts)
-    keymap({ "n" }, "P", [[<Cmd>lua vim.notify("Gin pull")<Cr><Cmd>Gin pull<Cr>]], opts)
+    local opts = { buffer = true, noremap = true }
+    keymap({ 'n' }, 'c', '<Cmd>Gin commit<Cr>', opts)
+    keymap({ 'n' }, 's', '<Cmd>GinStatus<Cr>', opts)
+    keymap({ 'n' }, 'L', '<Cmd>GinLog --graph --oneline<Cr>', opts)
+    keymap({ 'n' }, 'q', '<Cmd>bdelete<Cr>', opts)
+    keymap({ 'n' }, 'p', [[<Cmd>lua vim.notify("Gin push")<Cr><Cmd>Gin push<Cr>]], opts)
+    keymap({ 'n' }, 'P', [[<Cmd>lua vim.notify("Gin pull")<Cr><Cmd>Gin pull<Cr>]], opts)
   end,
 })
 
-autocmd({ "FileType" }, {
-  pattern = "gin-log",
+autocmd({ 'FileType' }, {
+  pattern = 'gin-log',
   callback = function()
     local keymap = vim.keymap.set
-    local opts  = { buffer=true, noremap = true }
-    keymap({ "n" }, "c", "<Cmd>Gin commit<Cr>", opts)
-    keymap({ "n" }, "s", "<Cmd>GinStatus<Cr>", opts)
-    keymap({ "n" }, "d", "<Cmd>GinDiff --cached<Cr>", opts)
-    keymap({ "n" }, "q", "<Cmd>bdelete<Cr>", opts)
-    keymap({ "n" }, "p", [[<Cmd>lua vim.notify("Gin push")<Cr><Cmd>Gin push<Cr>]], opts)
-    keymap({ "n" }, "P", [[<Cmd>lua vim.notify("Gin pull")<Cr><Cmd>Gin pull<Cr>]], opts)
+    local opts = { buffer = true, noremap = true }
+    keymap({ 'n' }, 'c', '<Cmd>Gin commit<Cr>', opts)
+    keymap({ 'n' }, 's', '<Cmd>GinStatus<Cr>', opts)
+    keymap({ 'n' }, 'd', '<Cmd>GinDiff --cached<Cr>', opts)
+    keymap({ 'n' }, 'q', '<Cmd>bdelete<Cr>', opts)
+    keymap({ 'n' }, 'p', [[<Cmd>lua vim.notify("Gin push")<Cr><Cmd>Gin push<Cr>]], opts)
+    keymap({ 'n' }, 'P', [[<Cmd>lua vim.notify("Gin pull")<Cr><Cmd>Gin pull<Cr>]], opts)
   end,
 })
 
-autocmd({ "FileType" }, {
-  pattern = "gin-status",
+autocmd({ 'FileType' }, {
+  pattern = 'gin-status',
   callback = function()
     local keymap = vim.keymap.set
-    local opts  = { buffer=true, noremap = true }
-    keymap({ "n" }, "q", "<Cmd>bdelete<Cr>", opts)
-    keymap({ "n" }, "c", "<Cmd>Gin commit<Cr>", opts)
-    keymap({ "n" }, "h", "<Plug>(gin-action-stage)", opts)
-    keymap({ "n" }, "l", "<Plug>(gin-action-unstage)", opts)
-    keymap({ "n" }, "L", "<Cmd>GinLog --graph --oneline<Cr>", opts)
-    keymap({ "n" }, "d", "<Cmd>GinDiff --cached<Cr>", opts)
-    keymap({ "n" }, "p", [[<Cmd>lua vim.notify("Gin push")<Cr><Cmd>Gin push<Cr>]], opts)
-    keymap({ "n" }, "P", [[<Cmd>lua vim.notify("Gin pull")<Cr><Cmd>Gin pull<Cr>]], opts)
+    local opts = { buffer = true, noremap = true }
+    keymap({ 'n' }, 'q', '<Cmd>bdelete<Cr>', opts)
+    keymap({ 'n' }, 'c', '<Cmd>Gin commit<Cr>', opts)
+    keymap({ 'n' }, 'h', '<Plug>(gin-action-stage)', opts)
+    keymap({ 'n' }, 'l', '<Plug>(gin-action-unstage)', opts)
+    keymap({ 'n' }, 'L', '<Cmd>GinLog --graph --oneline<Cr>', opts)
+    keymap({ 'n' }, 'd', '<Cmd>GinDiff --cached<Cr>', opts)
+    keymap({ 'n' }, 'p', [[<Cmd>lua vim.notify("Gin push")<Cr><Cmd>Gin push<Cr>]], opts)
+    keymap({ 'n' }, 'P', [[<Cmd>lua vim.notify("Gin pull")<Cr><Cmd>Gin pull<Cr>]], opts)
   end,
 })
 
-abbrev({
-  { from = "gb",   to = "GinBranch" },
-  { from = "gc",   to = "Gin commit" },
-  { from = "gd",   to = "GinDiff" },
-  { from = "gds",  to = "GinDiff --cached" },
-  { from = "gin",  to = "Gin" },
-  { from = "git",  to = "Gin" },
-  { from = "gl",   to = "GinLog --graph --oneline" },
-  { from = "gp",   to = "Gin push" },
-  { from = "gpp",  to = "Gin pull" },
-  { from = "gs",   to = "GinStatus" },
-})
+abbrev {
+  { from = 'gb', to = 'GinBranch' },
+  { from = 'gc', to = 'Gin commit' },
+  { from = 'gd', to = 'GinDiff' },
+  { from = 'gds', to = 'GinDiff --cached' },
+  { from = 'gin', to = 'Gin' },
+  { from = 'git', to = 'Gin' },
+  { from = 'gl', to = 'GinLog --graph --oneline' },
+  { from = 'gp', to = 'Gin push' },
+  { from = 'gpp', to = 'Gin pull' },
+  { from = 'gs', to = 'GinStatus' },
+}
 
-abbrev({
-  { prepose = "Gin commit",        from = "a",  to = "--amend" },
-})
+abbrev {
+  { prepose = 'Gin commit', from = 'a', to = '--amend' },
+}
 
-vim.g["gin_diff_default_args"] = { "++processor=delta" }
+vim.g['gin_diff_default_args'] = { '++processor=delta' }
 
-vim.keymap.set({ "n" }, "<C-g><C-s>", "<Cmd>GinStatus<Cr>", {})
+vim.keymap.set({ 'n' }, '<C-g><C-s>', '<Cmd>GinStatus<Cr>', {})
 '''
