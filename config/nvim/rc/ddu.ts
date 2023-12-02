@@ -215,6 +215,9 @@ export class Config extends BaseConfig {
         url: {
           defaultAction: "browse",
         },
+        colorscheme: {
+          defaultAction: "set",
+        },
       },
       kindParams: {},
       actionOptions: {

@@ -1,179 +1,284 @@
 [[plugins]]
-repo='Shougo/ddu.vim'
+repo='https://github.com/Shougo/ddu.vim'
 hooks_file='~\dotfiles\config\nvim\rc\ddu.vim'
+lua_source='''
+   vim.fn['ddu#custom#patch_local']('file_recursive', {
+     ui = 'ff',
+     uiParams = {
+       ff = {
+         filterFloatingPosition = 'bottom',
+         filterSplitDirection = 'floating',
+         floatingBorder = 'rounded',
+         previewFloating = true,
+         previewFloatingBorder = 'rounded',
+         previewFloatingTitle = 'Preview',
+         previewSplit = 'horizontal',
+         prompt = '> ',
+         split = 'floating',
+         startFilter = true,
+       },
+     },
+     sources = {
+       {
+         name = { 'file_rec' },
+         options = {
+           matchers = {
+             'matcher_substring',
+           },
+           converters = {
+             'converter_devicon',
+             'converter_hl_dir',
+           },
+           ignoreCase = true,
+         },
+         params = {
+           ignoredDirectories = { 'node_modules', '.git', '.vscode' },
+         },
+       },
+     },
+     kindOptions = {
+       file = {
+         defaultAction = 'open',
+       },
+     },
+     filterParams = {
+       converter_hl_dir = {
+         hlGoup = {"Directory", "Keyword"},
+       },
+     },
+   })
+
+   vim.fn['ddu#custom#patch_local']('colorscheme', {
+     ui = 'ff',
+     sources = {
+       {
+         name = { 'colorscheme' },
+         options = {
+           matchers = {
+             'matcher_substring',
+           },
+           ignoreCase = true,
+         },
+       },
+     },
+     kindOptions = {
+       colorscheme = {
+         defaultAction = 'set',
+       },
+     },
+   })
+
+   vim.fn['ddu#custom#patch_local']('buffer_list', {
+     ui = 'ff',
+     uiParams = {
+       ff = {
+         filterFloatingPosition = 'top',
+         filterSplitDirection = 'floating',
+         floatingBorder = 'rounded',
+         prompt = 'buffer > ',
+         split = 'floating',
+       },
+     },
+     sources = {
+       {
+         name = { 'buffer' },
+         options = {
+           matchers = {
+             'matcher_substring',
+           },
+           converters = {
+             'converter_devicon',
+             'converter_hl_dir',
+           },
+           ignoreCase = true,
+         },
+       },
+     },
+     kindOptions = {
+       file = {
+         defaultAction = 'open',
+       },
+     },
+     filterParams = {
+       converter_hl_dir = {
+         hlGoup = {"Directory", "Keyword"},
+       },
+     },
+   })
+'''
 
 [[plugins]]
-repo='lambdalisue/kensaku.vim'
+repo='https://github.com/lambdalisue/kensaku.vim'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='Shougo/ddu-commands.vim'
+repo='https://github.com/Shougo/ddu-commands.vim'
 on_source = 'ddu.vim'
 [[plugins]]
 on_source = 'ddu.vim'
-repo='lambdalisue/mr.vim'
+repo='https://github.com/lambdalisue/mr.vim'
 #------------------------------
 #-- | ui                       |
 #------------------------------
 [[plugins]]
-repo='Shougo/ddu-ui-ff'
+repo='https://github.com/Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
 hooks_file='~\dotfiles\config\nvim\rc\ddu-ui-ff.vim'
 [[plugins]]
-repo='Shougo/ddu-ui-filer'
+repo='https://github.com/Shougo/ddu-ui-filer'
 on_source = 'ddu.vim'
 hooks_file='~\dotfiles\config\nvim\rc\ddu-ui-filer.vim'
 #------------------------------
 #-- | column                   |
 #------------------------------
 [[plugins]]
-repo='Shougo/ddu-column-filename'
+repo='https://github.com/Shougo/ddu-column-filename'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='tamago3keran/ddu-column-devicon_filename'
+repo='https://github.com/tamago3keran/ddu-column-devicon_filename'
 on_source = 'ddu.vim'
 #------------------------------
 #-- | filter                   |
 #------------------------------
 [[plugins]]
-repo='Milly/ddu-filter-kensaku'
+repo='https://github.com/Milly/ddu-filter-kensaku'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = 'Shougo/ddu-filter-matcher_ignore_files'
+repo='https://github.com/Shougo/ddu-filter-matcher_ignore_files'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = 'Shougo/ddu-filter-matcher_ignores'
+repo='https://github.com/Shougo/ddu-filter-matcher_ignores'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = 'Shougo/ddu-filter-matcher_relative'
+repo='https://github.com/Shougo/ddu-filter-matcher_relative'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = 'Shougo/ddu-filter-matcher_hidden'
+repo='https://github.com/Shougo/ddu-filter-matcher_hidden'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='Shougo/ddu-filter-matcher_files'
+repo='https://github.com/Shougo/ddu-filter-matcher_files'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='Shougo/ddu-filter-matcher_relative'
+repo='https://github.com/Shougo/ddu-filter-matcher_relative'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='Shougo/ddu-filter-matcher_substring'
+repo='https://github.com/Shougo/ddu-filter-matcher_substring'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='Shougo/ddu-filter-sorter_alpha'
+repo='https://github.com/Shougo/ddu-filter-sorter_alpha'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='Shougo/ddu-filter-sorter_reversed'
+repo='https://github.com/Shougo/ddu-filter-sorter_reversed'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='kamecha/ddu-filter-converter_file_icon'
+repo='https://github.com/kamecha/ddu-filter-converter_file_icon'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='kamecha/ddu-filter-converter_file_info'
+repo='https://github.com/kamecha/ddu-filter-converter_file_info'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='uga-rosa/ddu-filter-converter_devicon'
+repo='https://github.com/uga-rosa/ddu-filter-converter_devicon'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = 'Shougo/ddu-filter-converter_display_word'
+repo='https://github.com/Shougo/ddu-filter-converter_display_word'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = 'kyoh86/ddu-filter-converter_hl_dir'
+repo='https://github.com/kyoh86/ddu-filter-converter_hl_dir'
 on_source = 'ddu.vim'
 #------------------------------
 #-- | kind                     |
 #------------------------------
 [[plugins]]
-repo='Shougo/ddu-kind-file'
+repo='https://github.com/Shougo/ddu-kind-file'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='Shougo/ddu-kind-word'
+repo='https://github.com/Shougo/ddu-kind-word'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = '4513ECHO/ddu-kind-url'
+repo='https://github.com/4513ECHO/ddu-kind-url'
 on_source = 'ddu.vim'
 #------------------------------
 #-- | source                   |
 #------------------------------
 [[plugins]]
-repo = 'Shougo/ddu-source-output'
+repo='https://github.com/Shougo/ddu-source-output'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = 'Shougo/ddu-source-path_history'
+repo='https://github.com/Shougo/ddu-source-path_history'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = 'Shougo/ddu-source-action'
+repo='https://github.com/Shougo/ddu-source-action'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = 'Shougo/ddu-source-register'
+repo='https://github.com/Shougo/ddu-source-register'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = 'Shougo/ddu-source-file_point'
+repo='https://github.com/Shougo/ddu-source-file_point'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='4513ECHO/ddu-source-colorscheme'
+repo='https://github.com/4513ECHO/ddu-source-colorscheme'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='4513ECHO/ddu-source-emoji'
+repo='https://github.com/4513ECHO/ddu-source-emoji'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='Shougo/ddu-source-dummy'
+repo='https://github.com/Shougo/ddu-source-dummy'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='Shougo/ddu-source-file'
+repo='https://github.com/Shougo/ddu-source-file'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='Shougo/ddu-source-file_old'
+repo='https://github.com/Shougo/ddu-source-file_old'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='Shougo/ddu-source-file_rec'
+repo='https://github.com/Shougo/ddu-source-file_rec'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='Shougo/ddu-source-line'
+repo='https://github.com/Shougo/ddu-source-line'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='kuuote/ddu-source-git_diff'
+repo='https://github.com/kuuote/ddu-source-git_diff'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='kuuote/ddu-source-git_status'
+repo='https://github.com/kuuote/ddu-source-git_status'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='kuuote/ddu-source-mr'
+repo='https://github.com/kuuote/ddu-source-mr'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='kyoh86/ddu-source-command'
+repo='https://github.com/kyoh86/ddu-source-command'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='kyoh86/ddu-source-git_branch'
+repo='https://github.com/kyoh86/ddu-source-git_branch'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='kyoh86/ddu-source-git_diff_tree'
+repo='https://github.com/kyoh86/ddu-source-git_diff_tree'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='kyoh86/ddu-source-git_log'
+repo='https://github.com/kyoh86/ddu-source-git_log'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='kyoh86/ddu-source-lazy_nvim'
+repo='https://github.com/kyoh86/ddu-source-lazy_nvim'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='matsui54/ddu-source-command_history'
+repo='https://github.com/matsui54/ddu-source-command_history'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='matsui54/ddu-source-file_external'
+repo='https://github.com/matsui54/ddu-source-file_external'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='matsui54/ddu-source-help'
+repo='https://github.com/matsui54/ddu-source-help'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='peacock0803sz/ddu-source-git_stash'
+repo='https://github.com/peacock0803sz/ddu-source-git_stash'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='shun/ddu-source-buffer'
+repo='https://github.com/shun/ddu-source-buffer'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='shun/ddu-source-rg'
+repo='https://github.com/shun/ddu-source-rg'
 on_source = 'ddu.vim'
 [[plugins]]
-repo='uga-rosa/ddu-source-lsp'
+repo='https://github.com/uga-rosa/ddu-source-lsp'
 on_source = 'ddu.vim'
 hook_add = '''
   " Jump to definition
@@ -193,14 +298,14 @@ hook_add = '''
         \ })<CR>
 '''
 [[plugins]]
-repo='uga-rosa/ddu-source-search_history'
+repo='https://github.com/uga-rosa/ddu-source-search_history'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = 'mikanIchinose/ddu-source-markdown'
+repo='https://github.com/mikanIchinose/ddu-source-markdown'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = 'kamecha/ddu-source-jumplist'
+repo='https://github.com/kamecha/ddu-source-jumplist'
 on_source = 'ddu.vim'
 [[plugins]]
-repo = 'yuki-yano/ddu-source-nvim-notify'
+repo='https://github.com/yuki-yano/ddu-source-nvim-notify'
 on_source = 'ddu.vim'
