@@ -1,0 +1,13 @@
+[[plugins]]
+repo='https://github.com/nvimdev/lspsaga.nvim'
+depends=['nvim-web-devicons', 'nvim-treesitter']
+lua_source='''
+require('lspsaga').setup({
+  ui = {
+    code_action = '🚕'
+  },
+  lightbulb = {
+    virtual_text = false,
+  },
+})
+'''

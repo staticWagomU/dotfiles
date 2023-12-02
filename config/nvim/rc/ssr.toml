@@ -1,0 +1,6 @@
+[[plugins]]
+repo='https://github.com/cshuaimin/ssr.nvim/'
+lua_source='''
+require("ssr").setup()
+vim.keymap.set({ "n", "x" }, "<leader>sr", function() require("ssr").open() end)
+'''
