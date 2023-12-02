@@ -1,25 +1,19 @@
-vim.g["denops_server_addr"] = "127.0.0.1:32123"
+if require('utils').is_windows then
+	vim.g["denops_server_addr"] = "127.0.0.1:32123"
+end
 
 local basePath = vim.fs.joinpath(require("utils").dpp_basePath, "repos", "github.com")
-if not vim.uv.fs_stat(basePath) then
-	vim.fn.mkdir(basePath, "p", 0700)
-end
 
 local split = require("utils").split
 local function clone(plugins)
-	for _, p in ipairs(plugins) do
-		local repoOwner =  split(p, "/")[1]
-		local ownersDir = vim.fs.joinpath(basePath, repoOwner)
-		if not vim.loop.fs_stat(ownersDir) then
-			vim.fn.mkdir(ownersDir, "p", 0700)
-		end
+	for _, plugin in ipairs(plugins) do
 
-		local repoPath = vim.fs.joinpath(basePath, p)
+		local repoPath = vim.fs.joinpath(basePath, plugin)
 		if not vim.loop.fs_stat(repoPath) then
 			vim.fn.system({
 				"git",
 				"clone",
-				"https://github.com/" .. p .. ".git",
+				"https://github.com/" .. plugin .. ".git",
 				repoPath
 			})
 		end
