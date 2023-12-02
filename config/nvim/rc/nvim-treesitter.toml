@@ -1,0 +1,2 @@
+[[plugins]]
+repo='https://github.com/nvim-treesitter/nvim-treesitter'
