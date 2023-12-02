@@ -21,8 +21,7 @@ autocmd({ 'User' }, {
   callback = function()
     vim.notify('dpp#make_state done')
     dpp.source()
-    local isWindows = vim.uv.os_uname().sysname == 'Windows_NT'
-    if isWindows then
+    if require('utils').is_windows then
       vim.fn.system([[powershell -Command "rundll32 user32.dll,MessageBeep"]])
     else
       vim.fn.system([[paplay /usr/share/sounds/freedesktop/stereo/complete.oga]])

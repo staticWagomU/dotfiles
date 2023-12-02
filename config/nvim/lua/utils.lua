@@ -1,6 +1,6 @@
 local M = {}
 
-M.is_windows = vim.uv.os_uname().version:match("Windows") == not nil
+M.is_windows = isWindows = vim.uv.os_uname().sysname == 'Windows_NT'
 
 M.dpp_basePath = vim.fn.expand(vim.uv.os_homedir() .. "/.cache/dpp")
 
