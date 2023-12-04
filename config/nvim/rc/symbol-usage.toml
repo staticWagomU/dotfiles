@@ -1,0 +1,6 @@
+[[plugins]]
+repo='https://github.com/Wansmer/symbol-usage.nvim'
+on_event='BufReadPre'
+lua_source='''
+require('symbol-usage').setup()
+'''
