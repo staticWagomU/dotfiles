@@ -7,7 +7,7 @@ require('lspsaga').setup({
     code_action = '🚕'
   },
   lightbulb = {
-    virtual_text = false,
+    enable = false,
   },
 })
 '''
