@@ -1,6 +1,6 @@
 [[plugins]]
 repo='https://github.com/williamboman/mason-lspconfig.nvim'
-depends='mason.nvim'
+depends=['mason.nvim', 'ddc.vim']
 lua_source='''
 local enabled_vtsls = true
 local lspconfig = require('lspconfig')
@@ -134,11 +134,6 @@ require('mason-lspconfig').setup_handlers {
   end,
   ['svelte'] = function()
     lspconfig['svelte'].setup {
-      capabilities = capabilities,
-    }
-  end,
-  ['eslint'] = function()
-    lspconfig['eslint'].setup {
       capabilities = capabilities,
     }
   end,
