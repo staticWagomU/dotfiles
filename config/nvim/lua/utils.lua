@@ -11,18 +11,6 @@ end
 
 M.autocmd = vim.api.nvim_create_autocmd
 
-function M.split(str, sep)
-	if sep == nil then return {} end
-	local t = {}
-	i=1
-	for s in string.gmatch(str, "([^".. sep .."]+)") do
-		t[i] = s
-		i = i + 1
-	end
-
-	return t
-end
-
 -- ref: https://github.com/monaqa/dotfiles/blob/8f7766f142693e47fbef80d6cc1f02fda94fac76/.config/nvim/lua/rc/abbr.lua
 ---@param rules abbrrule[]
 function M.make_abbrev(rules)
