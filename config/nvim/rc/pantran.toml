@@ -1,12 +1,12 @@
 [[plugins]]
 repo='https://github.com/potamides/pantran.nvim'
 lua_source='''
-local _, ok = pcall(require, "local_vimrc")
+local ok, local_vimrc = pcall(require, "local_vimrc")
 if not ok then
   return
 end
 local pantran = require("pantran")
-vim.env.DEEPL_AUTH_KEY = require("local_vimrc").DEEPL_AUTHKEY
+vim.env.DEEPL_AUTH_KEY = local_vimrc.DEEPL_AUTHKEY
 
 local opts = {noremap = true, silent = true, expr = true}
 local keymap = vim.keymap.set
