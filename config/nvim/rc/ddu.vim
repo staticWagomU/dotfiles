@@ -26,7 +26,6 @@ function! s:ddu_grep() abort
 endfunction
 nnoremap \g <Cmd>call <SID>ddu_grep()<Cr>
 nnoremap \f <Cmd>call ddu#start(#{name:'file_recursive'})<Cr>
-nnoremap \b <Cmd>call ddu#start(#{name:'buffer_list'})<Cr>
 nnoremap \m <Cmd>Ddu mr<Cr>
 nnoremap \d <Cmd>Ddu dpp<Cr>
 nnoremap \l <Cmd>Ddu line<Cr>

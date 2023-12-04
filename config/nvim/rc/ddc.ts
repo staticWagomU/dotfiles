@@ -2,9 +2,8 @@ import { BaseConfig } from "https://deno.land/x/ddc_vim@v4.0.5/types.ts";
 import { ConfigArguments } from "https://deno.land/x/ddc_vim@v4.0.5/base/config.ts";
 
 export class Config extends BaseConfig {
+  // deno-lint-ignore require-await
   override async config(args: ConfigArguments): Promise<void> {
-    const hasNvim = args.denops.meta.host === "nvim";
-
     const commonSources = [
       "copilot",
       "around",
@@ -147,30 +146,28 @@ export class Config extends BaseConfig {
       specialBufferCompletion: true,
     });
 
-    if (hasNvim) {
-      for (
-        const filetype of [
-          "css",
-          "go",
-          "html",
-          "python",
-          "ruby",
-          "typescript",
-          "typescriptreact",
-          "tsx",
-          "graphql",
-        ]
-      ) {
-        args.contextBuilder.patchFiletype(filetype, {
-          sources: ["lsp"].concat(commonSources),
-        });
-      }
-
-      args.contextBuilder.patchFiletype("lua", {
-        sources: [
-          "lsp",
-        ].concat(commonSources),
+    for (
+      const filetype of [
+        "css",
+        "go",
+        "html",
+        "python",
+        "ruby",
+        "typescript",
+        "typescriptreact",
+        "tsx",
+        "graphql",
+      ]
+    ) {
+      args.contextBuilder.patchFiletype(filetype, {
+        sources: ["lsp"].concat(commonSources),
       });
     }
+
+    args.contextBuilder.patchFiletype("lua", {
+      sources: [
+        "lsp",
+      ].concat(commonSources),
+    });
   }
 }
