@@ -64,7 +64,7 @@ export class Config extends BaseConfig {
         line: {
           mark: "line",
         },
-        "nvim-lsp": {
+        "lsp": {
           mark: "lsp",
           forceCompletionPattern: "\\.\\w*|::\\w*|->\\w*",
           dup: "force",
@@ -162,13 +162,13 @@ export class Config extends BaseConfig {
         ]
       ) {
         args.contextBuilder.patchFiletype(filetype, {
-          sources: ["nvim-lsp"].concat(commonSources),
+          sources: ["lsp"].concat(commonSources),
         });
       }
 
       args.contextBuilder.patchFiletype("lua", {
         sources: [
-          "nvim-lsp",
+          "lsp",
         ].concat(commonSources),
       });
     }

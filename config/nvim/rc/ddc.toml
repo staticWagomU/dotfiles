@@ -76,7 +76,7 @@ repo='https://github.com/Shougo/ddc-source-line'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo='https://github.com/Shougo/ddc-source-nvim-lsp'
+repo='https://github.com/Shougo/ddc-source-lsp'
 on_source = 'ddc.vim'
 
 [[plugins]]
