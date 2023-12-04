@@ -1,6 +1,6 @@
 [[plugins]]
 repo='https://github.com/Shougo/ddu.vim'
-hooks_file='~\dotfiles\config\nvim\rc\ddu.vim'
+hooks_file='~/dotfiles/config/nvim/rc/ddu.vim'
 lua_source='''
    vim.fn['ddu#custom#patch_local']('file_recursive', {
      ui = 'ff',
@@ -122,11 +122,11 @@ repo='https://github.com/lambdalisue/mr.vim'
 [[plugins]]
 repo='https://github.com/Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
-hooks_file='~\dotfiles\config\nvim\rc\ddu-ui-ff.vim'
+hooks_file='~/dotfiles/config/nvim/rc/ddu-ui-ff.vim'
 [[plugins]]
 repo='https://github.com/Shougo/ddu-ui-filer'
 on_source = 'ddu.vim'
-hooks_file='~\dotfiles\config\nvim\rc\ddu-ui-filer.vim'
+hooks_file='~/dotfiles/config/nvim/rc/ddu-ui-filer.vim'
 #------------------------------
 #-- | column                   |
 #------------------------------
