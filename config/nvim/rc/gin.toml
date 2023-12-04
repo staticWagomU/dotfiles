@@ -26,7 +26,6 @@ autocmd({ 'FileType' }, {
   pattern = 'gin-diff',
   callback = function()
     local keymap = vim.keymap.set
-    local opts = { buffer = true, noremap = true }
     keymap(
       { 'n' },
       'gd',
