@@ -1,4 +1,5 @@
-n=nvim $*
+n=nvim --cmd "let g:useShared=v:true" $*
+nn=nvim $*
 vi=vim $*
 v=vim $*
 mv=mv -i $*
