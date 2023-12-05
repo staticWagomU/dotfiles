@@ -1,0 +1,6 @@
+[[plugins]]
+repo='https://github.com/vim-denops/denops-startup-recorder.vim'
+
+[[plugins]]
+repo='https://github.com/vim-denops/denops-shared-server.vim'
+

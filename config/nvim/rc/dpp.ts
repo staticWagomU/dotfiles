@@ -6,7 +6,7 @@ import {
   Dpp,
   Plugin,
 } from "https://deno.land/x/dpp_vim@v0.0.5/types.ts";
-import { Denops } from "https://deno.land/x/dpp_vim@v0.0.5/deps.ts";
+import { Denops, fn } from "https://deno.land/x/dpp_vim@v0.0.5/deps.ts";
 
 type Toml = {
   hooks_file?: string;
@@ -37,6 +37,7 @@ export class Config extends BaseConfig {
   }): Promise<ConfigReturn> {
     const dotfilesDir = "~/dotfiles/config/nvim/rc";
     const tomlPaths = await glob(args.denops, `${dotfilesDir}/*.toml`);
+    const hasWindows = await fn.has(args.denops, "win32");
 
     args.contextBuilder.setGlobal({
       extParams: {
@@ -61,6 +62,23 @@ export class Config extends BaseConfig {
           "load",
           {
             path: tomlPath,
+            options: {
+              lazy: false,
+            },
+          },
+        ) as Toml,
+      );
+    }
+    if (hasWindows) {
+      tomls.push(
+        await args.dpp.extAction(
+          args.denops,
+          context,
+          options,
+          "toml",
+          "load",
+          {
+            path: "~/dotfiles/config/nvim/rc/windows/windows.toml",
             options: {
               lazy: false,
             },
