@@ -309,3 +309,6 @@ on_source = 'ddu.vim'
 [[plugins]]
 repo='https://github.com/yuki-yano/ddu-source-nvim-notify'
 on_source = 'ddu.vim'
+[[plugins]]
+repo='https://github.com/staticWagomU/ddu-source-patch_local'
+on_source = 'ddu.vim'

@@ -218,6 +218,9 @@ export class Config extends BaseConfig {
         colorscheme: {
           defaultAction: "set",
         },
+        patch_local: {
+          defaultAction: "start",
+        },
       },
       kindParams: {},
       actionOptions: {

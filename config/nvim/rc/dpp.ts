@@ -100,13 +100,13 @@ export class Config extends BaseConfig {
       "local",
       "local",
       {
-        directory: "~/dotfiles/config/nvim/plugins",
+        directory: "~/dotfiles/config/nvim/plug",
         options: {
           frozen: true,
           merged: false,
         },
         includes: [
-          "ddu-source-patch_local",
+          "ddu-source-keymaps",
           "denops-statusline",
         ],
       },
