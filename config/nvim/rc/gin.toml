@@ -64,8 +64,7 @@ abbrev {
   { prepose = 'Gin commit', from = 'a', to = '--amend' },
 }
 
-vim.g['gin_diff_default_args'] = { '++processor=delta' }
-
 vim.keymap.set({ 'n' }, '<C-g><C-s>', '<Cmd>GinStatus<Cr>', {})
 vim.keymap.set({ 'n' }, '<C-g><C-l>', '<Cmd>GinLog --graph --oneline<Cr>', {})
+vim.keymap.set({ 'n' }, '<C-g><C-b>', '<Cmd>GinBranch<Cr>', {})
 '''
