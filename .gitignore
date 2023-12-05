@@ -3,4 +3,4 @@
 .DS_Store
 lazy-lock.json
 local_vimrc.lua
-dotfiles.toml
+plug/*
