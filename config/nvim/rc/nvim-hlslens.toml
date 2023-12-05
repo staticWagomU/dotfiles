@@ -1,0 +1,5 @@
+[[plugins]]
+repo='https://github.com/kevinhwang91/nvim-hlslens'
+lua_source='''
+require('hlslens').setup()
+'''
