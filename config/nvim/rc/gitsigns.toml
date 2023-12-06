@@ -1,5 +1,6 @@
 [[plugins]]
 repo='https://github.com/lewis6991/gitsigns.nvim'
+on_event='BufReadPost'
 lua_source='''
 require("gitsigns").setup({
   signcolumn = true,
@@ -14,6 +15,8 @@ local keymap = vim.keymap.set
 keymap("n", "[g", "<cmd>Gitsigns prev_hunk<cr>", opts)
 keymap("n", "]g", "<cmd>Gitsigns next_hunk<cr>", opts)
 keymap("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", opts)
-keymap("n", "<leader>gss", "<cmd>Gitsigns stage_hunk<cr>", opts)
-keymap("n", "<leader>gss", "<cmd>Gitsigns undo_stage_hunk<cr>", opts)
+keymap("n", "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", opts)
+keymap("n", "<leader>gr", "<cmd>Gitsigns undo_stage_hunk<cr>", opts)
+keymap("n", "<leader>gq", "<cmd>Gitsigns setqflist<cr>", opts)
+keymap("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", opts)
 '''
