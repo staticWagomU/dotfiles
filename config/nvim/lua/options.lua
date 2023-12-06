@@ -60,7 +60,9 @@ set.undodir = vim.fn.expand('~')
 set.wildmenu = true
 set.wrap = false
 set.wrapscan = true
-
+vim.cmd[[
+set matchpairs+=<:>,「:」,（:）,『:』,【:】,《:》,〈:〉,｛:｝,［:］,【:】,‘:’,“:”
+]]
 vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
   pattern = { '*' },
   callback = function()
