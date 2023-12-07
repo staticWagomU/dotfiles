@@ -37,13 +37,28 @@ local function Init()
     'vim-denops/denops.vim',
 
     'vigoux/notifier.nvim',
-    'EdenEast/nightfox.nvim',
+    'bluz71/vim-nightfly-colors',
   }
   clone(appendPlugins)
   for _, p in ipairs(appendPlugins) do
     vim.opt.runtimepath:prepend(vim.fs.joinpath(basePath, p))
   end
   require('notifier').setup {}
+
+  -- -------------------------------------
+  -- colorscheme settings
+  -- -------------------------------------
+  vim.cmd.colorscheme('nightfly')
+  vim.g.nightflyCursorColor = true
+  vim.g.nightflyNormalFloat = true
+  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = 'single',
+  })
+  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signatureHelp, {
+    border = 'single',
+  })
+  vim.diagnostic.config { float = { border = 'single' } }
+  vim.g.colorPalette = require('nightfly').palette
 end
 
 Init()
