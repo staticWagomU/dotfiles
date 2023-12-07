@@ -70,3 +70,20 @@ vim.cmd("filetype indent plugin on")
 if vim.fn.has("syntax") then
   vim.cmd.syntax("on")
 end
+
+-- Neovimの設定ファイルを編集したら、dpp#make_stateを実行する
+autocmd("BufWritePost", {
+  callback = function(e)
+    local normalize = vim.fs.normalize
+    local expand = vim.fn.expand
+
+    local dotnvim = normalize(expand("~/dotfiles/config/nvim"))
+    local bufname = normalize(e.match)
+    if bufname:find(dotnvim, 1, true) == nil then
+      return
+    end
+
+    vim.notify("dpp#make_state start")
+    dpp.make_state(dppBase, tsPath)
+  end,
+})
