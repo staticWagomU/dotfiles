@@ -1,4 +1,4 @@
-if require('utils').is_windows and vim.g["useShared"] == true then
+if require('utils').is_windows and vim.g['useShared'] == true then
   vim.g['denops_server_addr'] = '127.0.0.1:32123'
 end
 

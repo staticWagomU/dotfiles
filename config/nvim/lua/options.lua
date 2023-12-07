@@ -60,18 +60,18 @@ set.undodir = vim.fn.expand('~')
 set.wildmenu = true
 set.wrap = false
 set.wrapscan = true
-vim.cmd[[
+vim.cmd([[
 set matchpairs+=<:>,「:」,（:）,『:』,【:】,《:》,〈:〉,｛:｝,［:］,【:】,‘:’,“:”
-]]
+]])
 vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
   pattern = { '*' },
   callback = function()
     if vim.fn.line('\'"') >= 1 and vim.fn.line('\'"') <= vim.fn.line('$') and vim.bo.filetype ~= 'commit' then
-      vim.cmd[[normal! g`"]]
+      vim.cmd([[normal! g`"]])
     end
 
     if vim.bo.buftype == '' and vim.fn.line('.') > vim.fn.winheight(0) / 2 then
-      vim.cmd[[normal! zz]]
+      vim.cmd([[normal! zz]])
     end
   end,
 })
