@@ -6,11 +6,15 @@ local uc = require('utils').usercmd
 local dppBase = require('dpp.helper').basePath
 local tsPath = require('dpp.helper').tsPath
 
+local function dppNotfy(msg)
+  vim.notify(msg, vim.log.levels.INFO, { title = 'dpp' })
+end
+
 if dpp.load_state(dppBase) then
   autocmd('User', {
     pattern = 'DenopsReady',
     callback = function()
-      vim.notify('dpp#make_state start')
+      dppNotfy('dpp#make_state start')
       dpp.make_state(dppBase, tsPath)
     end,
   })
@@ -19,7 +23,7 @@ end
 autocmd('User', {
   pattern = 'Dpp:makeStatePost',
   callback = function()
-    vim.notify('dpp#make_state done')
+    dppNotfy('dpp#make_state done')
     dpp.source()
     if require('utils').is_windows then
       vim.fn.system([[powershell -Command "rundll32 user32.dll,MessageBeep"]])
@@ -37,7 +41,7 @@ autocmd({ 'VimEnter' }, {
 })
 
 uc('DppMakeState', function()
-  vim.notify('dpp#make_state start')
+  dppNotfy('dpp#make_state start')
   dpp.make_state(dppBase, tsPath)
 end)
 uc('DppLoad', function()
@@ -51,7 +55,7 @@ uc('DppUpdate', function()
 end)
 uc('DppSource', function()
   dpp.source()
-  vim.notify('dpp#source done')
+  dppNotfy('dpp#source done')
 end)
 uc('DppClear', function()
   dpp.clear_state()
@@ -83,7 +87,7 @@ autocmd('BufWritePost', {
       return
     end
 
-    vim.notify('dpp#make_state start')
+    dppNotfy('dpp#make_state start')
     dpp.make_state(dppBase, tsPath)
   end,
 })
