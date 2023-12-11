@@ -2,21 +2,34 @@
 repo='https://github.com/lewis6991/gitsigns.nvim'
 on_event='BufReadPost'
 lua_source='''
-require("gitsigns").setup({
+local gitsigns = require('gitsigns')
+gitsigns.setup {
   signcolumn = true,
   numhl = true,
   attach_to_untracked = true,
-  on_attach = function()
-  end,
-})
+}
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
-keymap("n", "[g", "<cmd>Gitsigns prev_hunk<cr>", opts)
-keymap("n", "]g", "<cmd>Gitsigns next_hunk<cr>", opts)
-keymap("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", opts)
-keymap("n", "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", opts)
-keymap("n", "<leader>gr", "<cmd>Gitsigns undo_stage_hunk<cr>", opts)
-keymap("n", "<leader>gq", "<cmd>Gitsigns setqflist<cr>", opts)
-keymap("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", opts)
+keymap('n', '[g', function()
+  gitsigns.prev_hunk()
+end, opts)
+keymap('n', ']g', function()
+  gitsigns.next_hunk()
+end, opts)
+keymap('n', '<C-g><C-p>', function()
+  gitsigns.preview_hunk()
+end, opts)
+keymap('n', '<C-g><C-a>', function()
+  gitsigns.stage_hunk()
+end, opts)
+keymap('n', '<C-g><C-r>', function()
+  gitsigns.undo_stage_hunk()
+end, opts)
+keymap('n', '<C-g><C-q>', function()
+  gitsigns.setqflist()
+end, opts)
+keymap('n', '<C-g><C-v>', function()
+  gitsigns.blame_line()
+end, opts)
 '''
