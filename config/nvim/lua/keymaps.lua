@@ -26,6 +26,7 @@ keymap({ 'n' }, '<Leader>w', '<Cmd>w<Cr>', opts)
 keymap({ 'n' }, '<Leader>bn', '<Cmd>bnext<Cr>', opts)
 keymap({ 'n' }, '<Leader>bp', '<Cmd>bprevious<Cr>', opts)
 keymap({ 'n' }, '<Leader>bd', '<Cmd>bdelete<Cr>', opts)
+keymap({ 'n' }, '<Leader>bc', '<Cmd>close<Cr>', opts)
 keymap({ 'n' }, '<Leader>cd', '<Cmd>cd %:p:h<Cr>', opts)
 
 keymap({ 'n' }, 'i', [[len(getline('.')) ? 'i' : '"_cc']], { expr = true })
