@@ -40,8 +40,8 @@ autocmd({ 'FileType' }, {
   callback = function()
     local keymap = vim.keymap.set
     local opts = { buffer = true, noremap = true }
-    keymap({ 'n' }, 'h', '<Plug>(gin-action-stage)', opts)
-    keymap({ 'n' }, 'l', '<Plug>(gin-action-unstage)', opts)
+    keymap({ 'n', 'x' }, 'h', '<Plug>(gin-action-stage)', opts)
+    keymap({ 'n', 'x' }, 'l', '<Plug>(gin-action-unstage)', opts)
   end,
 })
 
