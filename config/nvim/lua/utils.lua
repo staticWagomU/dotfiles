@@ -47,4 +47,10 @@ function M.make_abbrev(rules)
   end
 end
 
+function M.addDesc(opts, desc)
+  local new_opts = vim.deepcopy(opts)
+  new_opts.desc = desc
+  return new_opts
+end
+
 return M
