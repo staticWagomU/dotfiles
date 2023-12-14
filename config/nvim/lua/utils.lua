@@ -12,6 +12,7 @@ end
 M.autocmd = vim.api.nvim_create_autocmd
 
 -- ref: https://github.com/monaqa/dotfiles/blob/8f7766f142693e47fbef80d6cc1f02fda94fac76/.config/nvim/lua/rc/abbr.lua
+---@alias abbrrule {from: string, to: string, prepose?: string, prepose_nospace?: string, remove_trigger?: boolean}
 ---@param rules abbrrule[]
 function M.make_abbrev(rules)
   -- 文字列のキーに対して常に0のvalue を格納することで、文字列の hashset を実現。
