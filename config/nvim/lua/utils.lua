@@ -59,13 +59,52 @@ end
 
 ---@alias optsTable {noremap?: boolean, silent?: boolean, expr?: boolean, script?: boolean, nowait?: boolean, buffer?: boolean, unique?: boolean, desc?: string}
 ---@alias keymaps table | string | function
----@param mode string
+---@param mode string | string[]
 ---@param opts optsTable
 ---@param keymaps keymaps[]
 ---@return nil
 function M.setKeymaps(mode, opts, keymaps)
-  local keymap = vim.keymap.set
   -- 同じモードで複数のマッピングを設定するときに楽できるよ
+  --
+  -- 例: 文字列の場合、
+  -- setKeymaps('n', {noremap = true}, {
+  --  { '<Cr>', [[<Esc><Cmd>call ddu#ui#do_action('itemAction')<CR>]], 'exec item action' },
+  --  ...
+  -- })
+  -- ↓
+  -- vim.keymap.set('i', '<Cr>',[[<Esc><Cmd>call ddu#ui#do_action('itemAction')<CR>]] , { noremap = true, desc = 'exec item action' })
+  --
+  --
+  -- 例: 関数の場合、
+  -- setKeymaps('i', {noremap = true}, {
+  --  {
+  --   '<Cr>',
+  --   function()
+  --    vim.cmd.stopinsert()
+  --    require('conf.ddu.helper')['do_action']('closeFilterWindow')
+  --   end,
+  --   'close filter window',
+  --  },
+  --  ...
+  -- })
+  -- ↓
+  -- vim.keymap.set('i', '<Cr>', function()
+  --  vim.cmd.stopinsert()
+  --  require('conf.ddu.helper')['do_action']('closeFilterWindow')
+  -- end, { noremap = true, desc = 'close filter window' })
+  --
+  --
+  -- 例:
+  -- setKeymaps('n', {noremap = true}, {
+  --  { '<Cr>', { 'conf.ddu.helper.do_action', 'itemAction' }, 'exec item action' },
+  --  ...
+  -- })
+  -- ↓
+  -- vim.keymap.set('n', '<Cr>', function()
+  --  require('conf.ddu.helper')['do_action']('itemAction')
+  -- end, { noremap = true, desc = 'exec item action' })
+  -- 
+  local keymap = vim.keymap.set
   for _, k in ipairs(keymaps) do
     local key, action, desc = k[1], k[2], k[3]
 
