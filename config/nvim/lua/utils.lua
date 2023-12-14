@@ -48,10 +48,69 @@ function M.make_abbrev(rules)
   end
 end
 
+---@param opts table
+---@param desc string
+---@return table
 function M.addDesc(opts, desc)
   local new_opts = vim.deepcopy(opts)
   new_opts.desc = desc
   return new_opts
+end
+
+---@alias optsTable {noremap?: boolean, silent?: boolean, expr?: boolean, script?: boolean, nowait?: boolean, buffer?: boolean, unique?: boolean, desc?: string}
+---@alias keymaps table | string | function
+---@param mode string
+---@param opts optsTable
+---@param keymaps keymaps[]
+---@return nil
+function M.setKeymaps(mode, opts, keymaps)
+  local keymap = vim.keymap.set
+  -- 同じモードで複数のマッピングを設定するときに楽できるよ
+  for _, k in ipairs(keymaps) do
+    local key, action, desc = k[1], k[2], k[3]
+
+    if type(action) == 'string' then
+      keymap(mode, key, action, M.addDesc(opts, desc))
+    end
+
+    if type(action) == 'function' then
+      keymap(mode, key, function()
+        action()
+      end, M.addDesc(opts, desc))
+    end
+
+    if type(action) == 'table' then
+      local module = M.split(table.remove(action, 1), '.')
+      local f = table.remove(module, #module)
+      local path = table.concat(module, '.')
+
+      if #action == 0 then
+        keymap(mode, key, function()
+          require(path)[f]()
+        end, M.addDesc(opts, desc))
+      else
+        -- argsは、actionの2番目以降全ての要素を指す
+        local args = action
+        keymap(mode, key, function()
+          ---@diagnostic disable-next-line: deprecated
+          require(path)[f](unpack(args))
+        end, M.addDesc(opts, desc))
+      end
+    end
+  end
+end
+
+---@param str string
+---@param delimiter string
+---@return string[]
+function M.split(str, delimiter)
+  local result = {}
+  local pattern = string.format('([^%s]+)', delimiter)
+  ---@diagnostic disable-next-line: discard-returns
+  str:gsub(pattern, function(token)
+    table.insert(result, token)
+  end)
+  return result
 end
 
 return M
