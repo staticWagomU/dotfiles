@@ -103,7 +103,7 @@ function M.setKeymaps(mode, opts, keymaps)
   -- vim.keymap.set('n', '<Cr>', function()
   --  require('conf.ddu.helper')['do_action']('itemAction')
   -- end, { noremap = true, desc = 'exec item action' })
-  -- 
+  --
   local keymap = vim.keymap.set
   for _, k in ipairs(keymaps) do
     local key, action, desc = k[1], k[2], k[3]
@@ -129,10 +129,10 @@ function M.setKeymaps(mode, opts, keymaps)
         end, M.addDesc(opts, desc))
       else
         -- argsは、actionの2番目以降全ての要素を指す
-        local args = action
         keymap(mode, key, function()
           ---@diagnostic disable-next-line: deprecated
-          require(path)[f](unpack(args))
+          local arg1, arg2 = unpack(action)
+          require(path)[f](arg1, arg2)
         end, M.addDesc(opts, desc))
       end
     end
