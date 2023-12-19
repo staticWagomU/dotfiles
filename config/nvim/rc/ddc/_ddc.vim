@@ -42,7 +42,7 @@ endfunction
 " }}}
 
 " hook_source {{{
-call ddc#custom#load_config(expand('~/dotfiles/config/nvim/rc/ddc.ts'))
+call ddc#custom#load_config(expand('~/dotfiles/config/nvim/rc/ddc/ddc.ts'))
 
 " For insert mode completion
 inoremap <expr> <TAB>
@@ -105,4 +105,7 @@ inoremap <C-a> <Cmd>call ddu#start(#{
       \ })<CR>
 
 call ddc#enable(#{ context_filetype: 'treesitter', })
+" }}}
+" hook_post_update {{{
+call ddc#set_static_import_path()
 " }}}

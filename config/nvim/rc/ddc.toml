@@ -2,36 +2,39 @@
 repo='https://github.com/Shougo/ddc.vim'
 depends = 'denops.vim'
 on_event = 'InsertEnter'
-hooks_file='~/dotfiles/config/nvim/rc/ddc.vim'
+hooks_file='~/dotfiles/config/nvim/rc/ddc/ddc.lua'
 
 [[plugins]]
 repo='https://github.com/Shougo/pum.vim'
-hook_source = '''
-  call pum#set_option(#{
-    \   auto_confirm_time: 3000,
-    \   auto_select: v:false,
-    \   border: 'none',
-    \   follow_cursor: v:false,
-    \   highlight_scrollbar: 'None',
-    \   horizontal_menu: v:false,
-    \   max_width: 80,
-    \   offset_cmdcol: 0,
-    \   padding: v:false,
-    \   preview: v:true,
-    \   preview_width: 80,
-    \   reversed: v:false,
-    \   use_complete: v:true,
-    \   use_setline: v:false,
-    \ })
+lua_source='''
+vim.fn['pum#set_option'] {
+  auto_confirm_time = 3000,
+  auto_select = false,
+  border = 'none',
+  follow_cursor = false,
+  highlight_scrollbar = 'None',
+  horizontal_menu = false,
+  max_width = 80,
+  offset_cmdcol = 0,
+  padding = false,
+  preview = true,
+  preview_width = 80,
+  reversed = false,
+  use_setline = false,
+}
 
-  call pum#set_local_option('c', #{
-    \   horizontal_menu: v:false,
-    \ })
+vim.fn['pum#set_local_option']('c', {
+  horizontal_menu = false,
+})
 
-  autocmd FileType ddu-ff-filter
-    \ call pum#set_buffer_option(#{
-    \   direction: 'above',
-    \ })
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'ddu-ff-filter',
+  callback = function()
+    vim.fn['pum#set_buffer_option'] {
+      direction = 'above',
+    }
+  end,
+})
 '''
 
 [[plugins]]
@@ -102,14 +105,6 @@ on_source = 'ddc.vim'
 [[plugins]]
 repo='https://github.com/LumaKernel/ddc-source-file'
 on_source = 'ddc.vim'
-
-[[plugins]]
-repo='https://github.com/kuuote/ddc-source-yank'
-on_source = 'ddc.vim'
-hook_add = '''
-  nnoremap cy <Cmd>set operatorfunc=ddc#source#yank#register<CR>g@
-  xnoremap Y <Cmd>set operatorfunc=ddc#source#yank#register<CR>g@
-'''
 
 [[plugins]]
 repo='https://github.com/Shougo/ddc-filter-matcher_head'

@@ -1,111 +1,6 @@
 [[plugins]]
 repo='https://github.com/Shougo/ddu.vim'
-hooks_file='~/dotfiles/config/nvim/rc/ddu.vim'
-lua_source='''
-   vim.fn['ddu#custom#patch_local']('file_recursive', {
-     ui = 'ff',
-     uiParams = {
-       ff = {
-         filterFloatingPosition = 'bottom',
-         filterSplitDirection = 'floating',
-         floatingBorder = 'rounded',
-         previewFloating = true,
-         previewFloatingBorder = 'rounded',
-         previewFloatingTitle = 'Preview',
-         previewSplit = 'horizontal',
-         prompt = '> ',
-         split = 'floating',
-         startFilter = true,
-       },
-     },
-     sources = {
-       {
-         name = { 'file_rec' },
-         options = {
-           matchers = {
-             'matcher_substring',
-           },
-           converters = {
-             'converter_devicon',
-             'converter_hl_dir',
-           },
-           ignoreCase = true,
-         },
-         params = {
-           ignoredDirectories = { 'node_modules', '.git', '.vscode' },
-         },
-       },
-     },
-     kindOptions = {
-       file = {
-         defaultAction = 'open',
-       },
-     },
-     filterParams = {
-       converter_hl_dir = {
-         hlGoup = {"Directory", "Keyword"},
-       },
-     },
-   })
-
-   vim.fn['ddu#custom#patch_local']('colorscheme', {
-     ui = 'ff',
-     sources = {
-       {
-         name = { 'colorscheme' },
-         options = {
-           matchers = {
-             'matcher_substring',
-           },
-           ignoreCase = true,
-         },
-       },
-     },
-     kindOptions = {
-       colorscheme = {
-         defaultAction = 'set',
-       },
-     },
-   })
-
-   vim.fn['ddu#custom#patch_local']('buffer_list', {
-     ui = 'ff',
-     uiParams = {
-       ff = {
-         filterFloatingPosition = 'top',
-         filterSplitDirection = 'floating',
-         floatingBorder = 'rounded',
-         prompt = 'buffer > ',
-         split = 'floating',
-       },
-     },
-     sources = {
-       {
-         name = { 'buffer' },
-         options = {
-           matchers = {
-             'matcher_substring',
-           },
-           converters = {
-             'converter_devicon',
-             'converter_hl_dir',
-           },
-           ignoreCase = true,
-         },
-       },
-     },
-     kindOptions = {
-       file = {
-         defaultAction = 'open',
-       },
-     },
-     filterParams = {
-       converter_hl_dir = {
-         hlGoup = {"Directory", "Keyword"},
-       },
-     },
-   })
-'''
+hooks_file='~/dotfiles/config/nvim/rc/ddu/ddu.lua'
 
 [[plugins]]
 repo='https://github.com/lambdalisue/kensaku.vim'
@@ -122,11 +17,10 @@ repo='https://github.com/lambdalisue/mr.vim'
 [[plugins]]
 repo='https://github.com/Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
-hooks_file='~/dotfiles/config/nvim/rc/ddu-ui-ff.vim'
+hooks_file='~/dotfiles/config/nvim/rc/ddu/ff.lua'
 [[plugins]]
 repo='https://github.com/Shougo/ddu-ui-filer'
 on_source = 'ddu.vim'
-hooks_file='~/dotfiles/config/nvim/rc/ddu-ui-filer.vim'
 #------------------------------
 #-- | column                   |
 #------------------------------
@@ -280,31 +174,30 @@ on_source = 'ddu.vim'
 [[plugins]]
 repo='https://github.com/uga-rosa/ddu-source-lsp'
 on_source = 'ddu.vim'
-hook_add = '''
-  " Jump to definition
-  nnoremap td <Cmd>call ddu#start(#{
-        \   sync: v:true,
-        \   sources: [
-        \     #{
-        \       name: 'lsp_definition',
-        \     },
-        \   ],
-        \   uiParams: #{
-        \     ff: #{
-        \       ignoreEmpty: v:true,
-        \       immediateAction: 'open',
-        \     },
-        \   },
-        \ })<CR>
+lua_source='''
+local keymap = vim.keymap.set
+keymap({ 'n' }, 'gd', function()
+  vim.fn['ddu#start'] {
+    sync = true,
+    sources = {
+      {
+        name = 'lsp_definition',
+      },
+    },
+    uiParams = {
+      ff = {
+        ignoreEmpty = true,
+        immediateAction = 'open',
+      },
+    },
+  }
+end, { noremap = true, silent = true })
 '''
 [[plugins]]
 repo='https://github.com/uga-rosa/ddu-source-search_history'
 on_source = 'ddu.vim'
 [[plugins]]
 repo='https://github.com/mikanIchinose/ddu-source-markdown'
-on_source = 'ddu.vim'
-[[plugins]]
-repo='https://github.com/kamecha/ddu-source-jumplist'
 on_source = 'ddu.vim'
 [[plugins]]
 repo='https://github.com/yuki-yano/ddu-source-nvim-notify'

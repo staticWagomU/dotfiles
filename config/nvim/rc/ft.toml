@@ -21,6 +21,7 @@ on_ft='svelte'
 # json ----------------------------------------------
 [[plugins]]
 repo='https://github.com/vuki656/package-info.nvim'
+depends=['nui.nvim']
 on_ft='json'
 lua_source='''
 local keymap = vim.keymap.set

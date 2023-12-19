@@ -1,0 +1,4 @@
+[[plugins]]
+repo='{{_cursor_}}'
+lua_source='''
+'''
