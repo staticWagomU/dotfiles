@@ -1,5 +1,8 @@
 filetype off
 filetype plugin indent off
+if &compatible
+	set nocompatible
+endif
 
 " {{{ options
 if has('vim_starting')
@@ -9,10 +12,6 @@ if has('vim_starting')
 endif
 scriptencoding utf-8
 
-if &compatible
-	set nocompatible
-endif
-"set number
 set helplang=ja
 set signcolumn=yes 
 set hidden
@@ -44,10 +43,6 @@ let g:mapleader = "\<Space>"
 " }}}
 
 " {{{ plugins
-packadd vim-jetpack
-call jetpack#begin()
-Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
-call jetpack#end()
 " }}} 
 
 " {{{ keymaps
@@ -73,11 +68,6 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-inoremap <silent> <Up> <C-o>gk
-inoremap <silent> <Down> <C-o>gj
-nnoremap <silent> <Up> gk
-nnoremap <silent> <Down> gj
-
 " expand path
 cmap <C-x> <C-r>=expand('%:p:h')<CR>
 " expand file 
@@ -95,62 +85,30 @@ nnoremap <silent> v7 vi'
 nnoremap <silent> v8 vi(
 nnoremap <silent> v[ vi[
 nnoremap <silent> v{ vi{
-nnoremap <silent> v, vi<
+nnoremap <silent> v@ vi`
 
 nnoremap <silent> va2 va"
 nnoremap <silent> va7 va'
 nnoremap <silent> va8 va(
-nnoremap <silent> va, va<
+nnoremap <silent> va[ va[
+nnoremap <silent> va{ va{
+nnoremap <silent> va@ va`
 
-nnoremap <silent> vt2 vt"
-nnoremap <silent> vt7 vt'
-nnoremap <silent> vt9 vt)
-nnoremap <silent> vt] vt]
-nnoremap <silent> vt} vt}
+onoremap <silent> 2 i"
+onoremap <silent> 7 i'
+onoremap <silent> 8 i(
+onoremap <silent> [ i[
+onoremap <silent> { i{
+onoremap <silent> @ i`
 
-nnoremap <silent> c2 ci"
-nnoremap <silent> c7 ci'
-nnoremap <silent> c8 ci(
-nnoremap <silent> c[ ci[
-nnoremap <silent> c{ ci{
-nnoremap <silent> c, ci<
-
-nnoremap <silent> ca2 ca"
-nnoremap <silent> ca7 ca'
-nnoremap <silent> ca8 ca(
-nnoremap <silent> ca, ca<
-
-nnoremap <silent> ct2 ct"
-nnoremap <silent> ct7 ct'
-nnoremap <silent> ct9 ct)
-nnoremap <silent> ct] ct]
-nnoremap <silent> ct} ct}
-
-nnoremap <silent> d2 di"
-nnoremap <silent> d7 di'
-nnoremap <silent> d8 di(
-nnoremap <silent> d[ di[
-nnoremap <silent> d{ di{
-nnoremap <silent> d, di<
-
-nnoremap <silent> da2 da"
-nnoremap <silent> da7 da'
-nnoremap <silent> da8 da(
-nnoremap <silent> da, da<
-
-nnoremap <silent> dt2 dt"
-nnoremap <silent> dt7 dt'
-nnoremap <silent> dt9 dt)
-nnoremap <silent> dt] dt]
-nnoremap <silent> dt} dt}
-
-nnoremap <silent> <C-j> o<ESC>
-nnoremap <silent> <C-j> O<ESC>
+onoremap <silent> 2a a"
+onoremap <silent> 7a a'
+onoremap <silent> 8a a(
+onoremap <silent> [a a[
+onoremap <silent> {a a{
+onoremap <silent> @a a`
 
 nnoremap <silent> \ :<C-u>so $MYVIMRC<CR>
-
-nnoremap <silent> q: :q<CR>
-nnoremap <silent> qq: q:
 
 vnoremap <RightMouse> :w !clip.exe<CR><ESC>
 " }}}
@@ -174,7 +132,6 @@ augroup fileTypeIndent
 augroup END
 
 autocmd FileType vim setlocal foldmethod=marker
-autocmd BufNewFile,BufRead *.mdx set filetype=markdown
 
 set background=dark
 filetype plugin indent on
@@ -182,11 +139,10 @@ filetype plugin indent on
 if has('syntax')
  syntax on
 endif
+colorscheme desert
 
-if &term =~ "^xterm"
-	let &t_SI="\<Esc>[4 q"
-	let &t_EI="\<Esc>[2 q"
-endif
+let &t_SI="\<Esc>[4 q"
+let &t_EI="\<Esc>[2 q"
 " }}}
 
 " {{{ other
