@@ -72,7 +72,7 @@ keymap('n', [[\f]], function()
   ddu.start_local('file_recursive')
 end, opts)
 keymap('n', [[\\]], function()
-  ddu.start_local('patch_local')
+  ddu.start({sources = {{name = {'patch_local'}}}})
 end, opts)
 
 -- }}}
