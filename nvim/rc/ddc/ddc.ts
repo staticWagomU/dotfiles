@@ -7,7 +7,6 @@ export class Config extends BaseConfig {
     const commonSources = [
       "copilot",
       "around",
-      "yank",
       "file",
     ];
 
@@ -89,9 +88,6 @@ export class Config extends BaseConfig {
           sorters: [],
           minAutoCompleteLength: 2,
           isVolatile: true,
-        },
-        yank: {
-          mark: "Y",
         },
       },
       sourceParams: {

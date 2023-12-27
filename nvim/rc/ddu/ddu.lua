@@ -34,6 +34,9 @@ ddu.patch_local('file_recursive', {
     file = {
       defaultAction = 'open',
     },
+    action = {
+      defaultAction = 'do',
+    },
   },
   filterParams = {
     matcher_substring = {
@@ -41,32 +44,6 @@ ddu.patch_local('file_recursive', {
     },
   },
 })
-
-ddu.patch_global {
-  ui = 'ff',
-  uiParams = {
-    ff = {
-      maxHighlightItems = 50,
-    },
-  },
-  sourceOptions = {
-    _ = {
-      ignoreCase = true,
-      smartCase = true,
-      matchers = {
-        'matcher_substring',
-      },
-    },
-  },
-  filterOptions = {
-    matcher_substring = {
-      hilightMatched = 'Search',
-    },
-    converter_hl_dir = {
-      hlGoup = { 'Directory', 'Keyword' },
-    },
-  },
-}
 
 keymap('n', [[\f]], function()
   ddu.start_local('file_recursive')
@@ -79,4 +56,11 @@ end, opts)
 
 -- lua_post_update {{{
 require('conf.ddu.helper').set_static_import_path()
+-- }}}
+
+
+-- lua_source {{{
+vim.cmd([[
+call ddu#custom#load_config(expand('~/dotfiles/config/nvim/rc/ddu/ddu.ts'))
+]])
 -- }}}

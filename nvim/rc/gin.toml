@@ -15,7 +15,7 @@ autocmd({ 'FileType' }, {
     keymap({ 'n' }, 'c', '<Cmd>Gin commit<Cr>', opts)
     keymap({ 'n' }, 's', '<Cmd>GinStatus<Cr>', opts)
     keymap({ 'n' }, 'L', '<Cmd>GinLog --graph --oneline<Cr>', opts)
-    keymap({ 'n' }, 'd', '<Cmd>GinDiff --cached<Cr>', opts)
+    keymap({ 'n' }, 'd', [[<Cmd>GinDiff  ++processor=delta\ --no-gitconfig\ --color-only\ --cached<Cr>]], opts)
     keymap({ 'n' }, 'q', '<Cmd>bdelete<Cr>', opts)
     keymap({ 'n' }, 'p', [[<Cmd>lua vim.notify("Gin push")<Cr><Cmd>Gin push<Cr>]], opts)
     keymap({ 'n' }, 'P', [[<Cmd>lua vim.notify("Gin pull")<Cr><Cmd>Gin pull<Cr>]], opts)
@@ -48,8 +48,8 @@ autocmd({ 'FileType' }, {
 abbrev {
   { from = 'gc', to = 'Gin commit' },
   { from = 'gca', to = 'Gin commit --amend' },
-  { from = 'gd', to = 'GinDiff' },
-  { from = 'gds', to = 'GinDiff --cached' },
+  { from = 'gd', to = [[GinDiff ++processor=delta\ --no-gitconfig\ --color-only]] },
+  { from = 'gds', to = [[GinDiff ++processor=delta\ --no-gitconfig\ --color-only\ --cached]] },
   { from = 'gin', to = 'Gin' },
   { from = 'git', to = 'Gin' },
   { from = 'gp', to = 'Gin push' },
