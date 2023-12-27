@@ -127,11 +127,6 @@ require('mason-lspconfig').setup_handlers {
       capabilities = capabilities,
     }
   end,
-  ['vuels'] = function()
-    lspconfig['vuels'].setup {
-      capabilities = capabilities,
-    }
-  end,
   ['svelte'] = function()
     lspconfig['svelte'].setup {
       capabilities = capabilities,
