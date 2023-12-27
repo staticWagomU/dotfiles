@@ -46,17 +46,14 @@ autocmd({ 'FileType' }, {
 })
 
 abbrev {
-  { from = 'gb', to = 'GinBranch' },
   { from = 'gc', to = 'Gin commit' },
   { from = 'gca', to = 'Gin commit --amend' },
   { from = 'gd', to = 'GinDiff' },
   { from = 'gds', to = 'GinDiff --cached' },
   { from = 'gin', to = 'Gin' },
   { from = 'git', to = 'Gin' },
-  { from = 'gl', to = 'GinLog --graph --oneline' },
   { from = 'gp', to = 'Gin push' },
   { from = 'gpp', to = 'Gin pull' },
-  { from = 'gs', to = 'GinStatus' },
   { from = 'gcd', to = 'GinCd' },
 }
 
