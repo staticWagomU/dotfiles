@@ -42,7 +42,7 @@ endfunction
 " }}}
 
 " hook_source {{{
-call ddc#custom#load_config(expand('~/dotfiles/config/nvim/rc/ddc/ddc.ts'))
+call ddc#custom#load_config(expand('~/dotvim/nvim/rc/ddc/ddc.ts'))
 
 " For insert mode completion
 inoremap <expr> <TAB>

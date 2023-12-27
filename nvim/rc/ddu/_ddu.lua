@@ -142,6 +142,6 @@ keymap('n', [[\\]], [[<Cmd>Ddu patch_local<Cr>]], { noremap = true, silent = tru
 
 -- lua_source {{{
 vim.cmd([[
-call ddu#custom#load_config(expand('~/dotfiles/config/nvim/rc/ddu/ddu.ts'))
+call ddu#custom#load_config(expand('~/dotvim/nvim/rc/ddu/ddu.ts'))
 ]])
 -- }}}

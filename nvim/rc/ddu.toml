@@ -1,6 +1,6 @@
 [[plugins]]
 repo='https://github.com/Shougo/ddu.vim'
-hooks_file='~/dotfiles/config/nvim/rc/ddu/ddu.lua'
+hooks_file='~/dotvim/nvim/rc/ddu/ddu.lua'
 
 [[plugins]]
 repo='https://github.com/lambdalisue/kensaku.vim'
@@ -17,7 +17,7 @@ repo='https://github.com/lambdalisue/mr.vim'
 [[plugins]]
 repo='https://github.com/Shougo/ddu-ui-ff'
 on_source = 'ddu.vim'
-hooks_file='~/dotfiles/config/nvim/rc/ddu/ff.lua'
+hooks_file='~/dotvim/nvim/rc/ddu/ff.lua'
 [[plugins]]
 repo='https://github.com/Shougo/ddu-ui-filer'
 on_source = 'ddu.vim'

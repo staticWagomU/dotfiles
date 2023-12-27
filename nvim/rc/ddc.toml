@@ -2,7 +2,7 @@
 repo='https://github.com/Shougo/ddc.vim'
 depends = 'denops.vim'
 on_event = 'InsertEnter'
-hooks_file='~/dotfiles/config/nvim/rc/ddc/ddc.lua'
+hooks_file='~/dotvim/nvim/rc/ddc/ddc.lua'
 
 [[plugins]]
 repo='https://github.com/Shougo/pum.vim'

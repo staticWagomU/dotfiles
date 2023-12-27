@@ -81,7 +81,7 @@ autocmd('BufWritePost', {
     local normalize = vim.fs.normalize
     local expand = vim.fn.expand
 
-    local dotnvim = normalize(expand('~/dotfiles/config/nvim'))
+    local dotnvim = normalize(expand('~/dotvim/nvim'))
     local bufname = normalize(e.match)
     if bufname:find(dotnvim, 1, true) == nil then
       return

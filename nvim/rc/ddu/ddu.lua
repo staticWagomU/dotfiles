@@ -61,6 +61,6 @@ require('conf.ddu.helper').set_static_import_path()
 
 -- lua_source {{{
 vim.cmd([[
-call ddu#custom#load_config(expand('~/dotfiles/config/nvim/rc/ddu/ddu.ts'))
+call ddu#custom#load_config(expand('~/dotvim/nvim/rc/ddu/ddu.ts'))
 ]])
 -- }}}

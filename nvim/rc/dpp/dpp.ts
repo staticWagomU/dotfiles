@@ -35,7 +35,7 @@ export class Config extends BaseConfig {
     basePath: string;
     dpp: Dpp;
   }): Promise<ConfigReturn> {
-    const dotfilesDir = "~/dotfiles/config/nvim/rc";
+    const dotfilesDir = "~/dotvim/nvim/rc";
     const tomlPaths = await glob(args.denops, `${dotfilesDir}/*.toml`);
     const hasWindows = await fn.has(args.denops, "win32");
 
@@ -78,7 +78,7 @@ export class Config extends BaseConfig {
           "toml",
           "load",
           {
-            path: "~/dotfiles/config/nvim/rc/windows/windows.toml",
+            path: "~/dotvim/nvim/rc/windows/windows.toml",
             options: {
               lazy: false,
             },
@@ -118,7 +118,7 @@ export class Config extends BaseConfig {
       "local",
       "local",
       {
-        directory: "~/dotfiles/config/nvim/plug",
+        directory: "~/dotvim/nvim/plug",
         options: {
           frozen: true,
           merged: false,
