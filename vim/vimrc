@@ -103,8 +103,8 @@ function! s:GinFileTypeSetup() abort
  nnoremap <buffer> L <Cmd>GinLog --graph --oneline<CR>
  nnoremap <buffer> d <Cmd>GinDiff ++processor=delta\ --no-gitconfig\ --color-only\ --cached<CR>
  nnoremap <buffer> q <Cmd>bdelete<CR>
- nnoremap <buffer> p <Cmd>lua vim.notify("Gin push")<CR><Cmd>Gin push<CR>
- nnoremap <buffer> P <Cmd>lua vim.notify("Gin pull")<CR><Cmd>Gin pull<CR>
+ nnoremap <buffer> p <Cmd>Gin push<CR>
+ nnoremap <buffer> P <Cmd>Gin pull<CR>
 endfunction
 
 function! s:GinDiffSetup() abort
