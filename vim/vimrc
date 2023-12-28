@@ -1,3 +1,4 @@
+syntax off
 filetype off
 filetype plugin indent off
 if &compatible
@@ -43,6 +44,127 @@ let g:mapleader = "\<Space>"
 " }}}
 
 " {{{ plugins
+call plug#begin()
+
+" {{{ lsp
+Plug 'https://github.com/prabirshrestha/vim-lsp'
+Plug 'https://github.com/mattn/vim-lsp-settings'
+Plug 'https://github.com/prabirshrestha/asyncomplete.vim'
+Plug 'https://github.com/prabirshrestha/asyncomplete-lsp.vim'
+
+let g:lsp_settings_filetype_typescript = ['typescript-language-server', 'eslint-language-server', 'deno']
+let g:lsp_settings = {
+	 \ 'efm-langserver': {
+	 \   'disabled': 0,
+	 \   'allowlist': ['markdown'],
+	 \  }
+	 \ }
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_diagnostics_enabled = 1
+function! s:on_lsp_buffer_enabled() abort
+ setlocal completeopt=menu
+ setlocal omnifunc=lsp#complete
+ if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+ nmap <buffer> ;d <plug>(lsp-definition)
+ nmap <buffer> ;s <plug>(lsp-document-symbol-search)
+ nmap <buffer> ;S <plug>(lsp-workspace-symbol-search)
+ nmap <buffer> ;r <plug>(lsp-references)
+ nmap <buffer> ;i <plug>(lsp-implementation)
+ nmap <buffer> ;T <plug>(lsp-type-definition)
+ nmap <buffer> ;r <plug>(lsp-rename)
+ nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+ nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+ nmap <buffer> K <plug>(lsp-hover)
+endfunction
+
+augroup lsp_install
+ au!
+ au User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+" }}}
+
+" {{{ denops plugins
+Plug 'https://github.com/vim-denops/denops.vim'
+
+Plug 'https://github.com/lambdalisue/gin.vim'
+" {{{ gin settings
+augroup FileTypeGin
+ autocmd!
+
+ autocmd FileType gin-diff,gin-log,gin-status call s:GinFileTypeSetup()
+
+ autocmd FileType gin-diff call s:GinDiffSetup()
+ autocmd FileType gin-status call s:GinStatusSetup()
+augroup END
+
+function! s:GinFileTypeSetup() abort
+ nnoremap <buffer> c <Cmd>Gin commit<CR>
+ nnoremap <buffer> s <Cmd>GinStatus<CR>
+ nnoremap <buffer> L <Cmd>GinLog --graph --oneline<CR>
+ nnoremap <buffer> d <Cmd>GinDiff ++processor=delta\ --no-gitconfig\ --color-only\ --cached<CR>
+ nnoremap <buffer> q <Cmd>bdelete<CR>
+ nnoremap <buffer> p <Cmd>lua vim.notify("Gin push")<CR><Cmd>Gin push<CR>
+ nnoremap <buffer> P <Cmd>lua vim.notify("Gin pull")<CR><Cmd>Gin pull<CR>
+endfunction
+
+function! s:GinDiffSetup() abort
+ nnoremap <buffer> gd <Plug>(gin-diffjump-smart)<Cmd>lua vim.lsp.buf.definition()<CR>
+endfunction
+
+function! s:GinStatusSetup() abort
+ nnoremap <buffer> h <Plug>(gin-action-stage)
+ nnoremap <buffer> l <Plug>(gin-action-unstage)
+endfunction
+
+nnoremap <C-g><C-s> <Cmd>GinStatus<Cr>
+nnoremap <C-g><C-l> <Cmd>GinLog --graph --oneline<Cr>
+nnoremap <C-g><C-b> <Cmd>GinBranch<Cr>
+" }}}
+
+Plug 'https://github.com/vim-skk/skkeleton'
+" {{{ skkeleton settings
+nnoremap <C-j> i<Plug>(skkeleton-toggle)
+imap <C-j> <Plug>(skkeleton-toggle)
+cmap <C-j> <Plug>(skkeleton-toggle)
+tmap <C-j> <Plug>(skkeleton-toggle)
+
+function! s:getDict(d) abort
+ return expand("~\\vimfiles\\plugged\\dict\\SKK-JISYO." . a:d)
+endfunction
+
+function! s:skkeleton_init() abort
+ call skkeleton#config({
+		\ 'eggLikeNewline': v:true,
+		\ 'globalDictionaries': [s:getDict("L")]
+		\ })
+ call skkeleton#register_kanatable('rom', {
+		\ "z\<Space>": ["\u3000", ''],
+		\ })
+endfunction
+augroup skkeleton-initialize-pre
+ autocmd!
+ autocmd User skkeleton-initialize-pre call s:skkeleton_init()
+augroup END
+" }}}
+
+Plug 'https://github.com/skk-dev/dict'
+" {{{ gin-settings
+
+" }}}
+
+" }}}
+
+" {{{ git
+
+" }}}
+
+Plug 'https://github.com/ctrlpvim/ctrlp.vim/'
+
+Plug 'https://github.com/lambdalisue/fern.vim'
+
+" いれようと思っているプラグインリスト
+" - [ ] skkeleton
+call plug#end()
 " }}} 
 
 " {{{ keymaps
@@ -143,7 +265,4 @@ colorscheme desert
 
 let &t_SI="\<Esc>[4 q"
 let &t_EI="\<Esc>[2 q"
-" }}}
-
-" {{{ other
 " }}}
