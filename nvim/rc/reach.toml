@@ -1,7 +1,0 @@
-[[plugins]]
-repo='https://github.com/toppair/reach.nvim'
-lua_source='''
-require("reach").setup()
-local keymap = vim.keymap.set
-keymap("n", "<leader>ls", function() require("reach").buffers(buffer_options) end, opts)
-'''

@@ -1,5 +1,0 @@
-[[plugins]]
-repo='https://github.com/mattn/vim-sonictemplate'
-lua_source='''
-vim.g['sonictemplate_vim_template_dir'] = '~/dotvim/nvim/template'
-'''

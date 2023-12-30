@@ -1,4 +1,0 @@
-[[plugins]]
-repo='https://github.com/thinca/vim-partedit'
-lua_source ='''
-'''

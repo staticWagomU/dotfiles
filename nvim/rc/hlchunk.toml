@@ -1,5 +1,0 @@
-[[plugins]]
-repo='https://github.com/shellRaining/hlchunk.nvim'
-lua_source='''
-require("hlchunk").setup({})
-'''
