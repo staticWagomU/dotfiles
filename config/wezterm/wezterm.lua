@@ -11,6 +11,8 @@ config.disable_default_key_bindings = true
 config.window_background_opacity = 0.9
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
+config.warn_about_missing_glyphs = false
+config.adjust_window_size_when_changing_font_size = false
 config.keys = {
     { key = "C", mods = "SHIFT|CTRL", action = act.CopyTo("Clipboard") },
     { key = "V", mods = "SHIFT|CTRL", action = act.PasteFrom("Clipboard") },
