@@ -21,7 +21,9 @@ config.keys = {
     { key = "L", mods = "SHIFT|CTRL", action = act.ShowDebugOverlay },
     { key = "T", mods = "SHIFT|CTRL", action = act.SpawnTab("CurrentPaneDomain") },
     { key = "X", mods = "SHIFT|CTRL", action = act.CloseCurrentTab({ confirm = true }) },
+    { key = '!', mods = "SHIFT|CTRL", action = wezterm.action.PaneSelect },
     { key = '"', mods = "SHIFT|CTRL", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    { key = '#', mods = "SHIFT|CTRL", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
     { key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
     { key = "Tab", mods = "SHIFT|CTRL", action = act.ActivateTabRelative(-1) },
