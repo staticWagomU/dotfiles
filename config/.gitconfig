@@ -1,0 +1,34 @@
+[user]
+        email = to6wa17@gmail.com
+        name = staticWagomU
+[github]
+        user = staticWagomU
+[core]
+        pager = delta
+[core]
+        editor = vim
+[interactive]
+        diffFilter = delta --color-only
+
+[delta]
+        navigate = true
+        light = false
+        line-numbers = true
+
+[merge]
+        conflictstyle = diff3
+
+[diff]
+        colorMoved = default
+[init]
+        defaultBranch = main
+[push]
+        default = current
+        autoSetupRemote = true
+[pull]
+        ff = only
+[merge]
+        conflictStyle = diff3
+[commit]
+        gpgSign = false
+        verbose = true
