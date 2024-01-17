@@ -1,0 +1,20 @@
+# main view の左端にコミットIDを表示する
+set main-view = id date author:email-user commit-title:graph=yes,refs=yes
+
+# 横分割に強制する
+set vertical-split = no
+
+# 検索時に大文字小文字を無視する (default: false)
+set ignore-case = true
+
+# マウスを有効にする
+set mouse = true
+
+# U で pull
+bind generic U      ?git pull %(remote)
+
+# P で remote への push
+bind generic P      ?git push -u %(remote) %(repo:head)
+
+# + で commit --amend
+bind generic +      !git commit --amend --allow-empty
