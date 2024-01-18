@@ -1,12 +1,15 @@
 [user]
         email = to6wa17@gmail.com
+        user = staticWagomU
         name = staticWagomU
 [github]
         user = staticWagomU
 [core]
         pager = delta
-[core]
         editor = vim
+        quotepath = false
+        autocrlf = input
+
 [interactive]
         diffFilter = delta --color-only
 

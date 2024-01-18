@@ -3,3 +3,6 @@ mklink %USERPROFILE%\.wezterm.lua %USERPROFILE%\dotfiles\config\wezterm\wezterm.
 
 del %USERPROFILE%\.tigrc
 mklink %USERPROFILE%\.tigrc %USERPROFILE%\dotfiles\config\.tigrc
+
+del %USERPROFILE%\.gitconfig
+mklink %USERPROFILE%\.gitconfig %USERPROFILE%\dotfiles\config\.gitconfig
