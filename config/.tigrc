@@ -1,5 +1,5 @@
 # main view の左端にコミットIDを表示する
-set main-view = id date author:email-user commit-title:graph=yes,refs=yes
+set main-view = id date:custom,format="%Y/%m/%d" author:email-user commit-title:yes,graph,refs,overflow=no
 
 # 横分割に強制する
 set vertical-split = no
@@ -9,6 +9,8 @@ set ignore-case = true
 
 # マウスを有効にする
 set mouse = true
+
+set line-graphics = utf-8
 
 # U で pull
 bind generic U      ?git pull %(remote)
