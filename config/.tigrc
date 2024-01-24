@@ -1,5 +1,6 @@
 # main view の左端にコミットIDを表示する
-set main-view = id date:custom,format="%Y/%m/%d" author:email-user commit-title:yes,graph,refs,overflow=no
+set main-view = id date:relative-compact author:full commit-title:yes,graph,refs,overflow=no
+set blame-view = id date:custom,format="%Y/%m/%d" author:full,width=15 line-number,interval=1 text
 
 # 横分割に強制する
 set vertical-split = no
