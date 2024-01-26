@@ -1,14 +1,23 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
-
--- local config = {}
 local config = wezterm.config_builder()
+
+
+wezterm.on('toggle-opacity', function(window, pane)
+  local overrides = window:get_config_overrides() or {}
+  if not overrides.window_background_opacity then
+    overrides.window_background_opacity = 0.5
+  else
+    overrides.window_background_opacity = nil
+  end
+  window:set_config_overrides(overrides)
+end)
 config.font_size = 14.0
 config.font = wezterm.font_with_fallback({ "HackGen Console NF" })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.color_scheme = "iceberg-dark"
-config.disable_default_key_bindings = true
-config.window_background_opacity = 0.9
+config.disable_default_key_bindings = false
+config.window_background_opacity = 1
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.warn_about_missing_glyphs = false
@@ -18,7 +27,6 @@ config.keys = {
     { key = "V", mods = "SHIFT|CTRL", action = act.PasteFrom("Clipboard") },
 
     { key = "P", mods = "SHIFT|CTRL", action = act.ActivateCommandPalette },
-    { key = "L", mods = "SHIFT|CTRL", action = act.ShowDebugOverlay },
     { key = "T", mods = "SHIFT|CTRL", action = act.SpawnTab("CurrentPaneDomain") },
     { key = "X", mods = "SHIFT|CTRL", action = act.CloseCurrentTab({ confirm = true }) },
     { key = '!', mods = "SHIFT|CTRL", action = wezterm.action.PaneSelect },
@@ -28,6 +36,10 @@ config.keys = {
     { key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
     { key = "Tab", mods = "SHIFT|CTRL", action = act.ActivateTabRelative(-1) },
 
+    { key = "'", mods = "SHIFT|CTRL", action = wezterm.action.EmitEvent 'toggle-opacity' },
+
+    { key = "(", mods = "SHIFT|CTRL", action = act.DecreaseFontSize },
+    { key = ")", mods = "SHIFT|CTRL", action = act.IncreaseFontSize },
 }
 config.window_padding = {
     left = "5px",
