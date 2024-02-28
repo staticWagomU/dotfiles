@@ -21,3 +21,5 @@ bind generic P      ?git push -u %(remote) %(repo:head)
 
 # + で commit --amend
 bind generic +      !git commit --amend --allow-empty
+
+bind main    F      !?sh -c "git commit --fixup %(commit) && GIT_SEQUENCE_EDITOR=: git rebase -i --autosquash %(commit)~"
