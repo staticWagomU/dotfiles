@@ -47,3 +47,7 @@ end
 function fish_user_key_bindings
   bind \cr peco_history
 end
+
+# proto
+set -gx PROTO_HOME "$HOME/.proto"
+set -gx PATH "$PROTO_HOME/shims:$PROTO_HOME/bin" $PATH
