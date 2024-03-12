@@ -15,6 +15,8 @@ end
 
 set -gx PATH $aqua_bin_dir $PATH
 
+set -gx BROUSER '"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"'
+
 # -------------------------
 # Abbr
 # -------------------------
