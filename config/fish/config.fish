@@ -4,17 +4,16 @@ end
 
 fish_add_path ~/bin
 
-# deno
-set -xg DENO_INSTALL /home/wagomu/.deno
-fish_add_path $DENO_INSTALL/bin
-
 # aqua
-set -xg AQUA_ROOT_DIR $HOME/.local/share/aquaproj-aqua
-fish_add_path $AQUA_ROOT_DIR/bin
+if set -q AQUA_ROOT_DIR
+    set aqua_bin_dir $AQUA_ROOT_DIR/bin
+else if set -q XDG_DATA_HOME
+    set aqua_bin_dir $XDG_DATA_HOME/aquaproj-aqua/bin
+else
+    set aqua_bin_dir $HOME/.local/share/aquaproj-aqua/bin
+end
 
-# volta
-set -xg VOLTA_HOME $HOME/.volta
-fish_add_path $VOLTA_HOME/bin
+set -gx PATH $aqua_bin_dir $PATH
 
 # -------------------------
 # Abbr
@@ -28,6 +27,10 @@ abbr -a ll ls -al
 abbr -a gs git status
 abbr -a gb branch
 abbr -a gd git diff
+
+abbr -a n nvim
+abbr -a n2 NVIM_APPNAME=nvim-sub nvim
+abbr -a n3 NVIM_APPNAME=nvim-mini nvim
 
 
 function peco_history
