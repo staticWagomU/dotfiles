@@ -1,0 +1,19 @@
+{
+  "vulnerabilityAlerts": {
+    "labels": [
+      "security"
+    ]
+  },
+  "extends": [
+    "github>aquaproj/aqua-renovate-config#1.13.0"
+  ],
+  "labels": [
+    "dependencies",
+    "renovate"
+  ],
+  "platformAutomerge": true,
+  "dependencyDashboard": false,
+  "automerge": true,
+  "branchConcurrentLimit": 0,
+  "stabilityDays": 3
+}
