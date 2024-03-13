@@ -19,7 +19,7 @@ else
     set -gx aqua_bin_dir $HOME/.local/share/aquaproj-aqua/bin
 end
 
-set -gx BROUSER '"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"'
+set -gx BROWSER '"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"'
 
 fish_add_path $aqua_bin_dir
 fish_add_path ~/bin
