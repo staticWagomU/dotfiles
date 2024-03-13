@@ -2,20 +2,28 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-fish_add_path ~/bin
+# -------------------------
+# variables
+# -------------------------
+
+# proto
+set -gx PROTO_HOME "$HOME/.proto"
+set -gx PATH "$PROTO_HOME/shims:$PROTO_HOME/bin" $PATH
 
 # aqua
 if set -q AQUA_ROOT_DIR
-    set aqua_bin_dir $AQUA_ROOT_DIR/bin
+    set -gx aqua_bin_dir $AQUA_ROOT_DIR/bin
 else if set -q XDG_DATA_HOME
-    set aqua_bin_dir $XDG_DATA_HOME/aquaproj-aqua/bin
+    set -gx aqua_bin_dir $XDG_DATA_HOME/aquaproj-aqua/bin
 else
-    set aqua_bin_dir $HOME/.local/share/aquaproj-aqua/bin
+    set -gx aqua_bin_dir $HOME/.local/share/aquaproj-aqua/bin
 end
 
-set -gx PATH $aqua_bin_dir $PATH
-
 set -gx BROUSER '"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"'
+
+fish_add_path $aqua_bin_dir
+fish_add_path ~/bin
+
 
 # -------------------------
 # Abbr
@@ -48,6 +56,3 @@ function fish_user_key_bindings
   bind \cr peco_history
 end
 
-# proto
-set -gx PROTO_HOME "$HOME/.proto"
-set -gx PATH "$PROTO_HOME/shims:$PROTO_HOME/bin" $PATH
