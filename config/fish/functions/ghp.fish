@@ -1,3 +1,3 @@
-function ghp
-  gh repo list --json url -q '.[].url + ".git"' | peco | ghq get
+function ghp --description 'gh + peco + ghq'
+  gh repo list --json url -q '.[].url' | peco | ghq get
 end
