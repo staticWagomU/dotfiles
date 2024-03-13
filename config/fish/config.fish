@@ -39,6 +39,7 @@ abbr -a gb branch
 abbr -a gd git diff
 
 abbr -a n nvim
+abbr -a nn NVIM_APPNAME=nvim-writing nvim
 abbr -a n2 NVIM_APPNAME=nvim-sub nvim
 abbr -a n3 NVIM_APPNAME=nvim-mini nvim
 
