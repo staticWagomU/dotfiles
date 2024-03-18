@@ -1,3 +1,5 @@
+del %USERPROFILE%\wezterm.lua
+mklink %USERPROFILE%\wezterm.lua %USERPROFILE%\dotfiles\config\wezterm\wezterm.lua
 del %USERPROFILE%\.wezterm.lua
 mklink %USERPROFILE%\.wezterm.lua %USERPROFILE%\dotfiles\config\wezterm\wezterm.lua
 
