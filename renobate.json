@@ -1,0 +1,28 @@
+{
+  "automerge": true,
+  "branchConcurrentLimit": 0,
+  "dependencyDashboard": true,
+  "extends": [
+    "config:base",
+    "github>aquaproj/aqua-renovate-config#2.2.0",
+    "github>aquaproj/aqua-renovate-config:file#2.2.0(config/aqua\\.yaml)"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "platformAutomerge": true,
+  "prConcurrentLimit": 0,
+  "prHourlyLimit": 0,
+  "regexManagers": [
+    {
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "actions/go-versions",
+      "fileMatch": [
+        ".github/workflows/aqua.yaml"
+      ],
+      "matchStrings": [
+        "go-version: \"(?<currentValue>.*?)\""
+      ]
+    }
+  ]
+}
