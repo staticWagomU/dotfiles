@@ -34,7 +34,7 @@ jobs:
               - "config/aqua.yaml"
       - name: Install aqua
         if: steps.filter.outputs.aqua == 'true'
-        uses: aquaproj/aqua-installer@v1.1.1
+        uses: aquaproj/aqua-installer@v1.2.0
         with:
           aqua_version: v2.25.0
           policy_allow: config/aqua/aqua-policy.yaml
