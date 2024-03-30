@@ -38,10 +38,13 @@ else if set -q XDG_DATA_HOME
 else
     set -gx aqua_bin_dir $HOME/.local/share/aquaproj-aqua/bin
 end
+fish_add_path $aqua_bin_dir
+
+# mise
+fish_add_path ~/.local/share/mise
 
 set -gx BROWSER '"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"'
 
-fish_add_path $aqua_bin_dir
 fish_add_path ~/bin
 
 
