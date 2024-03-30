@@ -6,6 +6,26 @@ end
 # variables
 # -------------------------
 
+if test (uname -s) = "Darwin"
+  set -l paths \
+    /opt/homebrew/bin \
+    /opt/homebrew/sbin \
+    /usr/bin \
+    /usr/sbin \
+    /bin \
+    /sbin \
+    /usr/local/bin \
+    /usr/local/sbin \
+    /Library/Apple/usr/bin \
+
+  for path in $paths
+    if test -d $path
+      and not contains $path $PATH
+      fish_add_path $path
+    end
+  end
+end
+
 # proto
 set -gx PROTO_HOME "$HOME/.proto"
 set -gx PATH "$PROTO_HOME/shims:$PROTO_HOME/bin" $PATH
