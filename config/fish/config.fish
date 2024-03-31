@@ -67,6 +67,7 @@ abbr -a n nvim
 abbr -a nn NVIM_APPNAME=nvim-writing nvim
 abbr -a n2 NVIM_APPNAME=nvim-sub nvim
 abbr -a n3 NVIM_APPNAME=nvim-mini nvim
+abbr -a n4 NVIM_APPNAME=nvim-tmp nvim
 
 
 function peco_history
