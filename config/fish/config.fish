@@ -60,8 +60,10 @@ abbr -a rm rm -i
 abbr -a ll ls -al
 
 abbr -a gs git status
-abbr -a gb branch
+abbr -a gb git branch
 abbr -a gd git diff
+abbr -a gp git push
+abbr -a gP git pull --autostash
 
 abbr -a n nvim
 abbr -a nn NVIM_APPNAME=nvim-writing nvim
