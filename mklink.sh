@@ -1,14 +1,14 @@
 #!/bin/bash
 
-rm ~/.config/wezterm/wezterm.lua
-rm ~/.wezterm.lua
-ln -s ~/dotfiles/config/wezterm.lua ~/.config/wezterm/wezterm.lua
-ln -s ~/dotfiles/config/wezterm.lua ~/.wezterm.lua
-rm ~/.config/fish/config.fish
-ln -s ~/dotfiles/config/fish/config.fish ~/.config/fish/config.fish
+rm -rf ~/.config/wezterm/wezterm.lua
+rm -rf ~/.wezterm.lua
+rm -rf ~/.config/fish/config.fish
 rm -rf ~/.config/fish/functions
+rm -rf ~/aqua.yaml
+rm -rf ~/.gitconfig
+ln -s ~/dotfiles/config/wezterm ~/.config/wezterm
+ln -s ~/dotfiles/config/wezterm/wezterm.lua ~/.wezterm.lua
+ln -s ~/dotfiles/config/fish/config.fish ~/.config/fish/config.fish
 ln -s ~/dotfiles/config/fish/functions ~/.config/fish/functions
-rm ~/aqua.yaml
 ln -s ~/dotfiles/config/aqua.yaml ~/aqua.yaml
-rm ~/.gitconfig
 ln -s ~/dotfiles/config/.gitconfig ~/.gitconfig
