@@ -47,4 +47,18 @@ config.window_padding = {
     top = "5px",
     bottom = 0,
 }
+config.launch_menu = {
+  {
+    label = "WSL Ubuntu",
+    domain = {
+      DomainName = "WSL:Ubuntu"
+    },
+  },
+  {
+    label = "local",
+    domain = {
+      DomainName = "cmd.exe"
+    },
+  },
+}
 return config
