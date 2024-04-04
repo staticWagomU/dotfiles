@@ -11,3 +11,6 @@ mklink %USERPROFILE%\.gitconfig %USERPROFILE%\dotfiles\config\.gitconfig
 
 del %USERPROFILE%\aqua.yaml
 mklink %USERPROFILE%\aqua.yaml %USERPROFILE%\dotfiles\config\aqua.yaml
+
+del %APPDATA%\alacritty\alacritty.toml
+mklink %APPDATA%\alacritty\alacritty.toml %USERPROFILE%\dotfiles\config\alacritty\alacritty_win.toml

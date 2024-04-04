@@ -1,0 +1,8 @@
+import = [
+  "~/dotfiles/config/alacritty/base.toml",
+  "~/dotfiles/config/alacritty/colorscheme/catppuccin-macchiato.toml"
+]
+
+[shell]
+program = "cmd.exe"
+

@@ -1,0 +1,5 @@
+[font]
+normal = { family = "HackGen Console NF" }
+
+[env]
+TERM = "xterm-256color"
