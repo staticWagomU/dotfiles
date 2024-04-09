@@ -65,11 +65,11 @@ abbr -a gd git diff
 abbr -a gp git push
 abbr -a gP git pull --autostash
 
-abbr -a n nvim
-abbr -a nn NVIM_APPNAME=nvim-writing nvim
-abbr -a n2 NVIM_APPNAME=nvim-sub nvim
-abbr -a n3 NVIM_APPNAME=nvim-mini nvim
-abbr -a n4 NVIM_APPNAME=nvim-tmp nvim
+alias n='nvim'
+alias nn='NVIM_APPNAME=nvim-writing nvim'
+alias n2='NVIM_APPNAME=nvim-sub nvim'
+alias n3='NVIM_APPNAME=nvim-mini nvim'
+alias n4='NVIM_APPNAME=nvim-tmp nvim'
 
 
 function peco_history
