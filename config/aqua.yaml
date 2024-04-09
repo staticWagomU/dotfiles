@@ -22,7 +22,6 @@ packages:
 - name: moonrepo/proto@v0.32.1
 - name: sharkdp/bat@v0.24.0
 - name: ziglang/zig@0.11.0
-- name: JohnnyMorganz/StyLua@v0.20.0
 - name: LuaLS/lua-language-server@3.7.4
 - name: rust-lang/rust-analyzer@2024-04-01
 - name: x-motemen/ghq@v1.5.0
