@@ -60,5 +60,9 @@ config.launch_menu = {
       DomainName = "cmd.exe"
     },
   },
+  {
+    label = "MiniPc",
+    args = { "ssh", "minipc-xubuntu.tail01a12.ts.net" }
+  },
 }
 return config
