@@ -9,24 +9,33 @@
 registries:
 - type: standard
   ref: v4.159.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.165.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: BurntSushi/ripgrep@14.1.0
 - name: biomejs/biome@cli/v1.6.4
 - name: cli/cli@v2.47.0
 - name: dandavison/delta@0.17.0
-- name: denoland/deno@v1.42.1
-- name: docker/cli@v26.0.0
+- name: denoland/deno@v1.42.4
+- name: docker/cli@v26.1.0
 - name: dylanaraps/neofetch@7.1.0
 - name: github/hub@v2.14.2
 - name: golang/go@go1.22.2
 - name: moonrepo/proto@v0.34.2
+- name: golang/go@go1.22.2
+- name: moonrepo/proto@v0.34.4
 - name: sharkdp/bat@v0.24.0
 - name: ziglang/zig@0.11.0
 - name: LuaLS/lua-language-server@3.7.4
 - name: rust-lang/rust-analyzer@2024-04-08
 - name: x-motemen/ghq@v1.6.0
 - name: eza-community/eza@v0.18.9
+- name: ziglang/zig@0.12.0
+- name: LuaLS/lua-language-server@3.8.3
+- name: rust-lang/rust-analyzer@2024-04-22
+- name: x-motemen/ghq@v1.6.1
+- name: eza-community/eza@v0.18.11
 - name: peco/peco@v0.5.11
 - name: jqlang/jq@jq-1.7.1
 - name: jdx/mise@v2024.4.3
+- name: jdx/mise@v2024.4.8
 - name: rhysd/vim-startuptime@v1.3.2
