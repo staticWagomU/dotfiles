@@ -11,4 +11,4 @@ ln -s ~/dotfiles/config/wezterm/wezterm.lua ~/.wezterm.lua
 ln -s ~/dotfiles/config/fish/config.fish ~/.config/fish/config.fish
 ln -s ~/dotfiles/config/fish/functions ~/.config/fish/functions
 ln -s ~/dotfiles/config/aqua.yaml ~/aqua.yaml
-ln -s ~/dotfiles/config/.gitconfig ~/.gitconfig
+cp ~/dotfiles/config/.gitconfig_other ~/.gitconfig

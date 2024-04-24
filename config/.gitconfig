@@ -35,5 +35,3 @@
 [commit]
         gpgSign = false
         verbose = true
-[ghq]
-        root = d:/dev 
