@@ -1,0 +1,5 @@
+[include]
+  path = %USERPROFILE%/dotfiles/config/.gitconfig
+[ghq]
+  root = ~/dev 
+
