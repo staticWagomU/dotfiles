@@ -8,7 +8,7 @@
         pager = delta
         editor = nvim
         quotepath = false
-        autocrlf = input
+        autocrlf = true
 
 [interactive]
         diffFilter = delta --color-only
