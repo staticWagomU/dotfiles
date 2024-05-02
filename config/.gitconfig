@@ -37,4 +37,6 @@
   verbose = true
 [rerere]
   enable = true
+[column]
+  ui = auto
 
