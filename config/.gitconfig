@@ -1,37 +1,40 @@
 [user]
-        email = to6wa17@gmail.com
-        user = staticWagomU
-        name = staticWagomU
+  email = to6wa17@gmail.com
+  user = staticWagomU
+  name = staticWagomU
 [github]
-        user = staticWagomU
+  user = staticWagomU
 [core]
-        pager = delta
-        editor = nvim
-        quotepath = false
-        autocrlf = true
+  pager = delta
+  editor = nvim
+  quotepath = false
+  autocrlf = true
 
 [interactive]
-        diffFilter = delta --color-only
+  diffFilter = delta --color-only
 
 [delta]
-        navigate = true
-        light = false
-        line-numbers = true
+  navigate = true
+  light = false
+  line-numbers = true
 
 [merge]
-        conflictstyle = diff3
+  conflictstyle = diff3
 
 [diff]
-        colorMoved = default
+  colorMoved = default
 [init]
-        defaultBranch = main
+  defaultBranch = main
 [push]
-        default = current
-        autoSetupRemote = true
+  default = current
+  autoSetupRemote = true
 [pull]
-        ff = only
+  ff = only
 [merge]
-        conflictStyle = diff3
+  conflictStyle = diff3
 [commit]
-        gpgSign = false
-        verbose = true
+  gpgSign = false
+  verbose = true
+[rerere]
+  enable = true
+
