@@ -2,4 +2,6 @@
   path = %USERPROFILE%/dotfiles/config/.gitconfig
 [ghq]
   root = D:/dev 
+[core]
+  autocrlf = true
 
