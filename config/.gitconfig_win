@@ -1,3 +1,4 @@
+# vi:syntax=.gitconfig:
 [include]
   path = %USERPROFILE%/dotfiles/config/.gitconfig
 [ghq]
