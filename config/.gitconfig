@@ -38,4 +38,5 @@
   enable = true
 [column]
   ui = auto
-
+[help]
+  autocorrect = prompt
