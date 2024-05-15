@@ -45,6 +45,10 @@ fish_add_path $aqua_bin_dir
 # mise
 fish_add_path ~/.local/share/mise
 
+# deno
+set -gx DENO_INSTALL "$HOME/.deno"
+fish_add_path "$DENO_INSTALL/bin"
+
 set -gx BROWSER '"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"'
 
 fish_add_path ~/bin
