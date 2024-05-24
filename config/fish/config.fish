@@ -77,6 +77,8 @@ alias n3='NVIM_APPNAME=nvim-mini nvim'
 alias n4='NVIM_APPNAME=nvim-tmp nvim'
 
 
+alias findn="find . \( -path '*/.git/*' -o -path '*/node_modules/*' -o -path '*/.next/*' -o -path '*/.vite/*' -o -path '*/.turbo/*' \) -prune -o -type f -print"
+
 function peco_history
   history|peco --layout=bottom-up|read foo
   if [ $foo ]
