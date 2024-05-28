@@ -75,6 +75,8 @@ alias nn='NVIM_APPNAME=nvim-writing nvim'
 alias n2='NVIM_APPNAME=nvim-sub nvim'
 alias n3='NVIM_APPNAME=nvim-mini nvim'
 alias n4='NVIM_APPNAME=nvim-tmp nvim'
+alias ..='cd ..'
+alias ...='cd ../..'
 
 
 alias findn="find . \( -path '*/.git/*' -o -path '*/node_modules/*' -o -path '*/.next/*' -o -path '*/.vite/*' -o -path '*/.turbo/*' \) -prune -o -type f -print"
