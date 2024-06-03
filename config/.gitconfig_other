@@ -3,4 +3,6 @@
   path = ~/dotfiles/config/.gitconfig
 [ghq]
   root = ~/dev 
+[commit]
+  template = ~/dotfiles/config/.gitmessage
 

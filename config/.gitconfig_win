@@ -5,4 +5,5 @@
   root = D:/dev 
 [core]
   autocrlf = true
-
+[commit]
+  template = %USERPROFILE%/dotfiles/config/.gitmessage
