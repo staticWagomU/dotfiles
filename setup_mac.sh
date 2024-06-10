@@ -2,6 +2,10 @@
 
 echo "Start setup"
 
+bash ~/dotfiles/mklink.sh
+bash ~/dotvim/mklink.sh
+
+
 if ! type "brew" > /dev/null 2>&1; then
   echo "Install brew"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -61,7 +65,12 @@ if ! type "nvim" > /dev/null 2>&1; then
   brew install nvim --HEAD
 fi
 
-bash ~/dotfiles/mklink.sh
-bash ~/dotvim/mklink.sh
+if ! type "proto" > /dev/null 2>&1; then
+  brew install proto
+
+  proto install node
+  proto install npm
+  proto install pnpm
+fi
 
 echo "Finish setup"
