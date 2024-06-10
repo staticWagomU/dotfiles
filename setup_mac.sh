@@ -47,5 +47,21 @@ if ! type "aqua" > /dev/null 2>&1; then
   aqua i
 fi
 
+# Vim/Neovimをインストール
+if ! type "vim" > /dev/null 2>&1; then
+  if [ ! -d "~/.vim" ]; then
+    mkdir ~/.vim
+  fi
+  echo "Install vim"
+  brew install vim --HEAD
+fi
+
+if ! type "nvim" > /dev/null 2>&1; then
+  echo "Install nvim"
+  brew install nvim --HEAD
+fi
+
+bash ~/dotfiles/mklink.sh
+bash ~/dotvim/mklink.sh
 
 echo "Finish setup"
