@@ -26,12 +26,6 @@ if test (uname -s) = "Darwin"
   end
 end
 
-# proto
-set -gx PROTO_HOME "$HOME/.proto"
-set -gx PROTO_INSTALL_DIR "$HOME/.proto/bin"
-fish_add_path "$PROTO_HOME/bin"
-fish_add_path "$PROTO_HOME/shims"
-
 # aqua
 if set -q AQUA_ROOT_DIR
     set -gx aqua_bin_dir $AQUA_ROOT_DIR/bin
