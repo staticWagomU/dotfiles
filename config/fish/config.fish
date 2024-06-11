@@ -38,14 +38,9 @@ fish_add_path $aqua_bin_dir
 
 # mise
 fish_add_path ~/.local/share/mise
-<<<<<<< HEAD
 fish_add_path ~/.local/share/mise/shims
-||||||| parent of dfb3803 (fish: なんかいろいろ)
-
-=======
 ~/.local/share/aquaproj-aqua/bin/mise activate fish | source
 
->>>>>>> dfb3803 (fish: なんかいろいろ)
 # deno
 set -gx DENO_INSTALL "$HOME/.deno"
 fish_add_path "$DENO_INSTALL/bin"
