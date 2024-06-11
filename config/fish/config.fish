@@ -38,7 +38,14 @@ fish_add_path $aqua_bin_dir
 
 # mise
 fish_add_path ~/.local/share/mise
+<<<<<<< HEAD
 fish_add_path ~/.local/share/mise/shims
+||||||| parent of dfb3803 (fish: なんかいろいろ)
+
+=======
+~/.local/share/aquaproj-aqua/bin/mise activate fish | source
+
+>>>>>>> dfb3803 (fish: なんかいろいろ)
 # deno
 set -gx DENO_INSTALL "$HOME/.deno"
 fish_add_path "$DENO_INSTALL/bin"
@@ -46,6 +53,8 @@ fish_add_path "$DENO_INSTALL/bin"
 set -gx BROWSER '"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"'
 
 fish_add_path ~/bin
+
+fish_add_path ~/.rbenv/bin
 
 
 # -------------------------
@@ -115,3 +124,6 @@ for mode in default insert visual
     fish_default_key_bindings -M $mode
 end
 fish_vi_key_bindings
+
+# Added by `rbenv init` on Wed Jun  5 22:55:37 JST 2024
+status --is-interactive; and rbenv init - fish | source
