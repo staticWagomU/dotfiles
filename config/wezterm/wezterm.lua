@@ -40,6 +40,11 @@ config.keys = {
 
     { key = "(", mods = "SHIFT|CTRL", action = act.DecreaseFontSize },
     { key = ")", mods = "SHIFT|CTRL", action = act.IncreaseFontSize },
+
+    { key = "H", mods = "SHIFT|CTRL", action = act.AdjustPaneSize { 'Left', 5 } },
+    { key = "J", mods = "SHIFT|CTRL", action = act.AdjustPaneSize { 'Down', 5 } },
+    { key = "K", mods = "SHIFT|CTRL", action = act.AdjustPaneSize { 'Up', 5 } },
+    { key = "L", mods = "SHIFT|CTRL", action = act.AdjustPaneSize { 'Right', 5 } },
 }
 config.window_padding = {
     left = "5px",
