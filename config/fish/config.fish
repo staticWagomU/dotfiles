@@ -51,6 +51,9 @@ fish_add_path ~/bin
 
 fish_add_path ~/.rbenv/bin
 
+# npm bin
+fish_add_path ~/.npm-global/bin
+
 
 # -------------------------
 # Abbr
