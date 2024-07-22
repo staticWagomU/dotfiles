@@ -127,3 +127,10 @@ fish_vi_key_bindings
 
 # Added by `rbenv init` on Wed Jun  5 22:55:37 JST 2024
 status --is-interactive; and rbenv init - fish | source
+
+# pnpm
+set -gx PNPM_HOME "/home/beige/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
