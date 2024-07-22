@@ -73,6 +73,9 @@ abbr -a p 'cd (ghq list -p | peco)'
 
 abbr -a gg ghq get 
 
+alias v='vim'
+alias vi='vim'
+
 alias n='nvim'
 alias nn='NVIM_APPNAME=nvim-writing nvim'
 alias n2='NVIM_APPNAME=nvim-sub nvim'
