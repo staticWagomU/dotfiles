@@ -86,7 +86,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 
-alias findn="find . \( -path '*/.git/*' -o -path '*/node_modules/*' -o -path '*/.next/*' -o -path '*/.vite/*' -o -path '*/.turbo/*' \) -prune -o -type f -print"
+alias findn="find . \( -path '*/.git/*' -o -path '*/node_modules/*' -o -path '*/.next/*' -o -path '*/.vite/*' -o -path '*/.turbo/*' -o -path '*/tmp/*' -o -path '*/.pnpm-store/*' \) -prune -o -type f -print"
 
 function peco_history
   history|peco --layout=bottom-up|read foo
