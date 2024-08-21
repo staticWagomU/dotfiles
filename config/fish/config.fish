@@ -70,7 +70,7 @@ abbr -a gb git branch
 abbr -a gd git diff
 abbr -a gp git push
 abbr -a gP git pull --autostash
-abbr -a p 'cd (ghq list -p | peco)'
+abbr -a p 'cd (ghq list -p | peco --initial-filter Fuzzy)'
 
 abbr -a gg ghq get 
 
