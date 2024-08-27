@@ -72,6 +72,9 @@ abbr -a gp git push
 abbr -a gP git pull --autostash
 abbr -a p 'cd (ghq list -p | peco --initial-filter Fuzzy)'
 
+abbr -a d docker
+abbr -a dc docker compose
+
 abbr -a gg ghq get 
 
 alias v='vim'
