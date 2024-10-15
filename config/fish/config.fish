@@ -85,6 +85,7 @@ alias nn='NVIM_APPNAME=nvim-writing nvim'
 alias n2='NVIM_APPNAME=nvim-sub nvim'
 alias n3='NVIM_APPNAME=nvim-darkpowered nvim'
 alias n4='NVIM_APPNAME=nvim-tmp nvim'
+alias n5='NVIM_APPNAME=nvim-wagomu nvim'
 alias ..='cd ..'
 alias ...='cd ../..'
 
