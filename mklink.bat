@@ -14,3 +14,7 @@ mklink %USERPROFILE%\aqua.yaml %USERPROFILE%\dotfiles\config\aqua.yaml
 
 del %APPDATA%\alacritty\alacritty.toml
 mklink %APPDATA%\alacritty\alacritty.toml %USERPROFILE%\dotfiles\config\alacritty\alacritty_win.toml
+
+del %LOCALAPPDATA%\rio\config.toml
+mklink %LOCALAPPDATA%\rio\config.toml %USERPROFILE%\dotfiles\config\rio\config.toml
+
