@@ -7,7 +7,7 @@ customCommands:
     subprocess: true
     
     gui:
-    language: 'ja'
+    language: "en"
     paging:
     colorArg: always
     pager: delta --dark --paging=never
