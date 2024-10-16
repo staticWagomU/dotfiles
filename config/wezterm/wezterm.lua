@@ -15,6 +15,7 @@ end)
 config.line_height = 1.3
 config.font_size = 14.0
 config.font = wezterm.font_with_fallback({ "HackGen Console NF" })
+config.front_end = "WebGpu"
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.color_scheme = "iceberg-dark"
 config.disable_default_key_bindings = false
