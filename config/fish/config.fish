@@ -136,6 +136,33 @@ fish_vi_key_bindings
 # Added by `rbenv init` on Wed Jun  5 22:55:37 JST 2024
 status --is-interactive; and rbenv init - fish | source
 
+# ref: https://github.com/mozumasu/dotfiles/blame/5c03a2a0d0a643dac52c20b19e6dd98662ab4614/.config/zsh/.zshrc#L111C1-L136C2
+function create_gitignore
+    set input_file $argv[1]
+
+    # If the input is empty, set .gitignore to the default value.
+    if test -z "$input_file"
+        set input_file ".gitignore"
+    end
+
+    # Capture the selected templates from fzf
+    set selected (gibo list | fzf \
+        --multi \
+        --preview "gibo dump {} | bat --style=numbers --color=always --paging=never")
+
+    # If no selection was made, exit the function
+    if test -z "$selected"
+        echo "No templates selected. Exiting."
+        return
+    end
+
+    # Dump the selected templates into the specified file
+    echo "$selected" | xargs -n1 gibo dump >> "$input_file"
+
+    # Display the resulting file with bat
+    bat "$input_file"
+end
+
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
