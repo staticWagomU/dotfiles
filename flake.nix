@@ -71,7 +71,7 @@
           in
           {
             "${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
-              inherit pkgs system; # pkgs と system を渡す
+              inherit pkgs
 
               # Home Manager モジュール (home.nix) を指定
               modules = [
