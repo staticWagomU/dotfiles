@@ -58,7 +58,6 @@
             pkgs = import inputs.nixpkgs {
               inherit system;
               overlays = [
-                inputs.neovim-nightly-overlay.overlays.default
                 inputs.emacs-overlay.overlays.default
                 inputs.vim-overlay.overlays.default
               ];
