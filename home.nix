@@ -22,7 +22,7 @@
     environmentVariables = {
       EDITOR = "nvim";
     };
-  }
+  };
 
 
   home.stateVersion = "24.05";
