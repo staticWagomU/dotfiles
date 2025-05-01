@@ -12,7 +12,7 @@
     pkgs.gh
     pkgs.wezterm
 
-    pkgs.neovim-nightly
+    # pkgs.neovim-nightly
     pkgs.emacs
     pkgs.vim
   ];
