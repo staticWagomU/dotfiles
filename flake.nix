@@ -96,7 +96,7 @@
                 ./home.nix
               ];
 
-              extraSpecialArgs = { inherit inputs username hostname; };
+              extraSpecialArgs = { inherit inputs username hostname pkgs; };
             };
           };
 

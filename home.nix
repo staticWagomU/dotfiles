@@ -12,9 +12,9 @@
     pkgs.gh
     pkgs.wezterm
 
-    pkgs.neovim-nightly-overlay
-    pkgs.emacs-overlay
-    pkgs.vim-overlay
+    pkgs.neovim-nightly
+    pkgs.emacs
+    pkgs.vim
   ];
 
 
