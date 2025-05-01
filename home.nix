@@ -8,6 +8,7 @@
     pkgs.git
 #     pkgs.vim
     pkgs.htop
+    pkgs.neovim
     pkgs.ripgrep
     pkgs.gh
     pkgs.wezterm
