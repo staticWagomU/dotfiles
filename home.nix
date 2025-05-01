@@ -1,8 +1,8 @@
 { config, pkgs, inputs, username, hostname, system, ... }:
 
 {
-  home.username = "wagomu";
-  home.homeDirectory = "/Users/wagomu";
+  home.username = username;
+  home.homeDirectory = "/Users/${username}";
 
   home.packages = [
     pkgs.git
