@@ -6,11 +6,15 @@
 
   home.packages = [
     pkgs.git
-    pkgs.vim
+#     pkgs.vim
     pkgs.htop
     pkgs.ripgrep
     pkgs.gh
     pkgs.wezterm
+
+    pkgs.neovim-nightly-overlay
+    pkgs.emacs-overlay
+    pkgs.vim-overlay
   ];
 
 
