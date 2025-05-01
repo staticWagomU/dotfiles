@@ -41,8 +41,6 @@
         "x86_64-linux"
       ];
 
-      imports = [ treefmt-nix.flakeModule ];
-
       perSystem =
         { ... }:
         {
