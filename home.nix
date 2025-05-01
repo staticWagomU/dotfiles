@@ -5,18 +5,24 @@
   home.homeDirectory = "/Users/${username}";
 
   home.packages = [
+    pkgs.emacs
+    pkgs.fish
+    pkgs.gh
     pkgs.git
-#     pkgs.vim
     pkgs.htop
     pkgs.neovim
     pkgs.ripgrep
-    pkgs.gh
-    pkgs.wezterm
-
-    # pkgs.neovim-nightly
-    pkgs.emacs
     pkgs.vim
+    pkgs.wezterm
   ];
+
+  programs.fish = {
+    enable = true;
+
+    environmentVariables = {
+      EDITOR = "nvim";
+    };
+  }
 
 
   home.stateVersion = "24.05";

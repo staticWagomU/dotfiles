@@ -23,10 +23,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     vim-overlay = {
       url = "github:kawarimidoll/vim-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,25 +36,6 @@
         "aarch64-linux"
         "x86_64-linux"
       ];
-
-#       perSystem =
-#         { ... }:
-#         {
-#           treefmt = {
-#             projectRootFile = "flake.nix";
-#             programs = {
-#               actionlint.enable = true;
-#               nixfmt.enable = true;
-#               taplo.enable = true;
-#               jsonfmt.enable = true;
-#               yamlfmt.enable = true;
-#               fish_indent.enable = true;
-#               stylua.enable = true;
-#               shfmt.enable = true;
-#               prettier.enable = true;
-#             };
-#           };
-#         };
 
 #       flake = {
 #         darwinConfigurations = {
@@ -78,7 +55,6 @@
             username = "wagomu";
             hostname = "MacBookAir";
             system = "aarch64-darwin";
-#             pkgs = nixpkgs.legacyPackages.${system};
             pkgs = import inputs.nixpkgs {
               inherit system;
               overlays = [
