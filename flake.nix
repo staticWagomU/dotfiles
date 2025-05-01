@@ -1,45 +1,91 @@
+
 {
   description = "輪ごむのお部屋";
 
   inputs = {
-    # Nixpkgs (Nix Packages collection) の Flake を指定
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # または安定版 "github:NixOS/nixpkgs/nixos-24.05" など
-
-    # Home Manager の Flake を指定
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
-      # Home Manager が使う Nixpkgs を上で指定したものに合わせる
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    vim-overlay = {
+      url = "github:kawarimidoll/vim-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # flake-parts を使う場合、他の input も flake = false; を指定するか、
+    # flake-parts が解釈できる output を持っている必要があります。
+    # もしエラーが出る場合は、該当する input に flake = false; を追加してみてください。
+    # 例: some-input.flake = false;
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-    let
-      # --- システムアーキテクチャを指定 ---
-      # あなたのMacのアーキテクチャに合わせてください
-      # Intel Mac の場合: "x86_64-darwin"
-      # Apple Silicon (M1/M2/M3) Mac の場合: "aarch64-darwin"
-      # わからない場合はターミナルで `uname -m` を実行して確認
-      system = "aarch64-darwin";
+  outputs = inputs@{ self, nixpkgs, home-manager, flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      # --- Flake 全体の設定 ---
+      # サポートするシステムを指定 (Mac環境に合わせて)
+      systems = [ "aarch64-darwin" "x86_64-darwin" ];
 
-      # --- ユーザー名とホスト名を指定 ---
-      # ユーザー名は `whoami` コマンドで、ホスト名は `hostname` コマンドで確認できます
-      username = "wagomu"; # <---- ここを自分のユーザー名に変更！
-      hostname = "MacBookAir"; # <---- ここを自分のホスト名に変更！
+      # --- システムごとの設定 (perSystem) ---
+      # 各システムに対して共通の outputs を定義
+      # ここでは特に定義していませんが、将来的にパッケージや開発環境を追加できます
+      perSystem = { config, self', inputs', pkgs, system, ... }: {
+        # 例: この Flake をフォーマットするための treefmt 設定
+        # treefmt = inputs.treefmt-nix.lib.mkWrapper pkgs {
+        #   projectRootFile = "flake.nix";
+        #   programs.nixpkgs-fmt.enable = true;
+        # };
+      };
 
-      # Nixpkgs のパッケージセットを取得
-      pkgs = nixpkgs.legacyPackages.${system};
+      # --- システムに依存しない設定 (flake) ---
+      # Home Manager の設定などをここに記述
+      flake = {
+        # Home Manager の設定
+        homeConfigurations =
+          let
+            # ユーザー名とホスト名を定義
+            username = "wagomu";
+            hostname = "MacBookAir";
+            # Home Manager 設定で使うシステムを指定
+            # (homeConfigurations は特定のシステムに紐づくため)
+            system = "aarch64-darwin";
+            # 指定したシステム用の Nixpkgs を取得
+            pkgs = nixpkgs.legacyPackages.${system};
+          in
+          {
+            "${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
+              inherit pkgs system; # pkgs と system を渡す
 
-    in {
-      # Home Manager の設定を定義
-      homeConfigurations."${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs; # 上で定義したパッケージセットを渡す
+              # Home Manager モジュール (home.nix) を指定
+              modules = [
+                ./home.nix
+                # 他の Home Manager モジュールがあればここに追加
+              ];
 
-        # Home Manager の設定本体 (home.nix) を読み込む
-        modules = [ ./home.nix ];
+              # オプション: home.nix 内で inputs を参照できるようにする
+              extraSpecialArgs = { inherit inputs username hostname; };
+            };
+          };
 
-        # オプション: 追加の引数を home.nix に渡す場合
-        # extraSpecialArgs = { inherit inputs; };
+        # 他のシステム非依存の outputs (例: NixOS モジュール) があればここに追加
+        # nixosModules.default = import ./module.nix;
       };
     };
 }
