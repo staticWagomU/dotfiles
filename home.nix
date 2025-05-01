@@ -18,10 +18,6 @@
 
   programs.fish = {
     enable = true;
-
-    environmentVariables = {
-      EDITOR = "nvim";
-    };
   };
 
 
