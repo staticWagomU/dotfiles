@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, username, hostname, system, ... }:
 
 {
   home.username = "wagomu";
