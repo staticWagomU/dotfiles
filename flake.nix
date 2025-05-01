@@ -31,60 +31,69 @@
       url = "github:kawarimidoll/vim-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # flake-parts を使う場合、他の input も flake = false; を指定するか、
-    # flake-parts が解釈できる output を持っている必要があります。
-    # もしエラーが出る場合は、該当する input に flake = false; を追加してみてください。
-    # 例: some-input.flake = false;
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      # --- Flake 全体の設定 ---
-      # サポートするシステムを指定 (Mac環境に合わせて)
-      systems = [ "aarch64-darwin" "x86_64-darwin" ];
+      systems = [
+        "aarch64-darwin"
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
 
-      # --- システムごとの設定 (perSystem) ---
-      # 各システムに対して共通の outputs を定義
-      # ここでは特に定義していませんが、将来的にパッケージや開発環境を追加できます
-      perSystem = { config, self', inputs', pkgs, system, ... }: {
-        # 例: この Flake をフォーマットするための treefmt 設定
-        # treefmt = inputs.treefmt-nix.lib.mkWrapper pkgs {
-        #   projectRootFile = "flake.nix";
-        #   programs.nixpkgs-fmt.enable = true;
-        # };
-      };
+      imports = [ treefmt-nix.flakeModule ];
 
-      # --- システムに依存しない設定 (flake) ---
-      # Home Manager の設定などをここに記述
+      perSystem =
+        { ... }:
+        {
+          treefmt = {
+            projectRootFile = "flake.nix";
+            programs = {
+              actionlint.enable = true;
+              nixfmt.enable = true;
+              taplo.enable = true;
+              jsonfmt.enable = true;
+              yamlfmt.enable = true;
+              fish_indent.enable = true;
+              stylua.enable = true;
+              shfmt.enable = true;
+              prettier.enable = true;
+            };
+          };
+        };
+
+#       flake = {
+#         darwinConfigurations = {
+#           OPL2212-2 = import ./hosts/OPL2212-2 { inherit inputs; };
+#         };
+#         nixosConfigurations = {
+#           # X13Gen2 = import ./hosts/X13Gen2 { inherit inputs; };
+#         };
+#         nixOnDroidConfigurations = {
+#           OPPO-A79 = import ./hosts/OPPO-A79 { inherit inputs; };
+#         };
+#       };
+
       flake = {
-        # Home Manager の設定
         homeConfigurations =
           let
-            # ユーザー名とホスト名を定義
             username = "wagomu";
             hostname = "MacBookAir";
-            # Home Manager 設定で使うシステムを指定
-            # (homeConfigurations は特定のシステムに紐づくため)
             system = "aarch64-darwin";
-            # 指定したシステム用の Nixpkgs を取得
             pkgs = nixpkgs.legacyPackages.${system};
           in
           {
             "${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
               inherit pkgs;
 
-              # Home Manager モジュール (home.nix) を指定
               modules = [
                 ./home.nix
-                # 他の Home Manager モジュールがあればここに追加
               ];
 
-              # オプション: home.nix 内で inputs を参照できるようにする
               extraSpecialArgs = { inherit inputs username hostname; };
             };
           };
 
-        # 他のシステム非依存の outputs (例: NixOS モジュール) があればここに追加
         # nixosModules.default = import ./module.nix;
       };
     };
