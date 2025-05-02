@@ -2,7 +2,6 @@
   description = "輪ごむのお部屋";
 
   inputs = {
-    # ... (inputs は変更なし) ...
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -44,28 +43,29 @@
       perSystem = { pkgs, system, ... }: {
       };
 
-      flake = {
-            mkHomeConfig = { username, hostname, system, modules, extraOverlays ? [] }:
-              let
-                pkgs = import inputs.nixpkgs {
-                  inherit system;
-                  overlays = [
-                    inputs.neovim-nightly-overlay.overlays.default
-                    inputs.emacs-overlay.overlays.default
-                    inputs.vim-overlay.overlays.default
-                  ] ++ extraOverlays;
-                };
-              in
-              home-manager.lib.homeManagerConfiguration {
-                inherit pkgs;
-                modules = modules;
-                extraSpecialArgs = {
-                  inherit inputs username hostname system pkgs;
-                };
+      flake =
+        let
+          mkHomeConfig = { username, hostname, system, modules, extraOverlays ? [] }:
+            let
+              pkgs = import inputs.nixpkgs {
+                inherit system;
+                overlays = [
+                  inputs.neovim-nightly-overlay.overlays.default
+                  inputs.emacs-overlay.overlays.default
+                  inputs.vim-overlay.overlays.default
+                ] ++ extraOverlays;
               };
-
-          in
-          {
+            in
+            home-manager.lib.homeManagerConfiguration {
+              inherit pkgs;
+              modules = modules;
+              extraSpecialArgs = {
+                inherit inputs username hostname system pkgs;
+              };
+            };
+        in
+        {
+          homeConfigurations = {
             MacBookAir = mkHomeConfig {
               username = "wagomu";
               hostname = "MacBookAir";
@@ -73,12 +73,14 @@
               modules = [ ./home-common.nix ./home-mac.nix ];
             };
 
-#             ThinkpadT14 = mkHomeConfig {
-#               hostname = "ThinkpadT14";
-#               system = "x86_64-linux";
-#               modules = [ ./home-common.nix ./home-linux.nix ];
-#             };
+            # ThinkpadT14 = mkHomeConfig {
+            #   username = "wagomu"; # username も渡すように修正
+            #   hostname = "ThinkpadT14";
+            #   system = "x86_64-linux";
+            #   modules = [ ./home-common.nix ./home-linux.nix ];
+            # };
           };
-      };
+
+        };
     };
 }
