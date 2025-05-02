@@ -22,10 +22,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     vim-overlay = {
       url = "github:kawarimidoll/vim-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +46,6 @@
               pkgs = import inputs.nixpkgs {
                 inherit system;
                 overlays = [
-                  inputs.neovim-nightly-overlay.overlays.default
                   inputs.emacs-overlay.overlays.default
                   inputs.vim-overlay.overlays.default
                 ] ++ extraOverlays;

@@ -11,7 +11,7 @@
     pkgs.htop
     pkgs.ripgrep
     pkgs.gh
-    pkgs.neovim-nightly
+    pkgs.neovim
     pkgs.emacs
     pkgs.vim
     pkgs.fish
