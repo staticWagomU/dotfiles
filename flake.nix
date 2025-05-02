@@ -64,6 +64,7 @@
                 };
               };
 
+          in
           {
             MacBookAir = mkHomeConfig {
               username = "wagomu";
