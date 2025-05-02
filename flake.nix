@@ -1,8 +1,8 @@
-
 {
   description = "輪ごむのお部屋";
 
   inputs = {
+    # ... (inputs は変更なし) ...
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -23,6 +23,10 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     vim-overlay = {
       url = "github:kawarimidoll/vim-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,49 +37,47 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "aarch64-darwin"
-        "aarch64-linux"
         "x86_64-linux"
+        "aarch64-linux"
       ];
 
-#       flake = {
-#         darwinConfigurations = {
-#           OPL2212-2 = import ./hosts/OPL2212-2 { inherit inputs; };
-#         };
-#         nixosConfigurations = {
-#           # X13Gen2 = import ./hosts/X13Gen2 { inherit inputs; };
-#         };
-#         nixOnDroidConfigurations = {
-#           OPPO-A79 = import ./hosts/OPPO-A79 { inherit inputs; };
-#         };
-#       };
+      perSystem = { pkgs, system, ... }: {
+      };
 
       flake = {
-        homeConfigurations =
-          let
-            username = "wagomu";
-            hostname = "MacBookAir";
-            system = "aarch64-darwin";
-            pkgs = import inputs.nixpkgs {
-              inherit system;
-              overlays = [
-                inputs.emacs-overlay.overlays.default
-                inputs.vim-overlay.overlays.default
-              ];
-            };
-          in
+            mkHomeConfig = { username, hostname, system, modules, extraOverlays ? [] }:
+              let
+                pkgs = import inputs.nixpkgs {
+                  inherit system;
+                  overlays = [
+                    inputs.neovim-nightly-overlay.overlays.default
+                    inputs.emacs-overlay.overlays.default
+                    inputs.vim-overlay.overlays.default
+                  ] ++ extraOverlays;
+                };
+              in
+              home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                modules = modules;
+                extraSpecialArgs = {
+                  inherit inputs username hostname system pkgs;
+                };
+              };
+
           {
-            "${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
-              inherit pkgs;
-
-              modules = [
-                ./home.nix
-              ];
-
-              extraSpecialArgs = { inherit inputs username hostname system pkgs; };
+            MacBookAir = mkHomeConfig {
+              username = "wagomu";
+              hostname = "MacBookAir";
+              system = "aarch64-darwin";
+              modules = [ ./home-common.nix ./home-mac.nix ];
             };
-          };
 
-        # nixosModules.default = import ./module.nix;
+#             ThinkpadT14 = mkHomeConfig {
+#               hostname = "ThinkpadT14";
+#               system = "x86_64-linux";
+#               modules = [ ./home-common.nix ./home-linux.nix ];
+#             };
+          };
       };
     };
 }
