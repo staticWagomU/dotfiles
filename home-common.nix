@@ -20,10 +20,5 @@
 
   programs.fish.enable = true; # Fish自体は共通で有効化
 
-  home.xdg.configFile."fish" = {
-    source = ./config/fish;
-    recursive = true;
-  };
-
   home.stateVersion = "24.05";
 }
