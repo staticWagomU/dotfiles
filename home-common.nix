@@ -6,22 +6,22 @@
   home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
 
   # --- 共通パッケージ ---
-  home.packages = [
-    pkgs.git
-    pkgs.htop
-    pkgs.ripgrep
-    pkgs.gh
-    pkgs.ghq
-    pkgs.neovim
-    pkgs.emacs
-    pkgs.vim
-    pkgs.fish
-    pkgs.home-manager
-    pkgs.nodejs_20
-    # pkgs.claude-code
+  home.packages =  with pkgs; [
+    git
+    htop
+    ripgrep
+    gh
+    ghq
+    neovim
+    emacs
+    vim
+    fish
+    home-manager
+    nodejs_20
+    # claude-code
 
     # font
-    pkgs.hackgen-nf-font
+    hackgen-nf-font
   ];
 
   programs.direnv = {
