@@ -18,6 +18,12 @@
     pkgs.home-manager
   ];
 
+  fonts.fontconfig.enable = true;
+  home.packages = home.packages ++ [
+    pkgs.hackgen-nf-font
+  ];
+
+
 
   programs.fish.enable = true; # Fish自体は共通で有効化
 
