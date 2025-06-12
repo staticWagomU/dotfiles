@@ -18,7 +18,7 @@
     fish
     home-manager
     nodejs_20
-    # claude-code
+    claude-code
 
     # font
     hackgen-nf-font
