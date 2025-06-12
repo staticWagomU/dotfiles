@@ -45,6 +45,9 @@
             let
               pkgs = import inputs.nixpkgs {
                 inherit system;
+                config = {
+                  allowUnfree = true;
+                };
                 overlays = [
                   inputs.emacs-overlay.overlays.default
                   inputs.vim-overlay.overlays.default
