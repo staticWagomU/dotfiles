@@ -47,6 +47,7 @@
                 inherit system;
                 config = {
                   allowUnfree = true;
+                  allowBroken = true;
                 };
                 overlays = [
                   inputs.emacs-overlay.overlays.default
