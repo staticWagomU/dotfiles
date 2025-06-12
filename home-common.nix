@@ -18,7 +18,7 @@
     pkgs.fish
     pkgs.home-manager
     pkgs.nodejs_20
-    pkgs.claude-code
+    # pkgs.claude-code
 
     # font
     pkgs.hackgen-nf-font
