@@ -11,11 +11,14 @@
     pkgs.htop
     pkgs.ripgrep
     pkgs.gh
+    pkgs.ghq
     pkgs.neovim
     pkgs.emacs
     pkgs.vim
     pkgs.fish
     pkgs.home-manager
+    pkgs.nodejs_20
+    pkgs.claude-code
 
     # font
     pkgs.hackgen-nf-font
