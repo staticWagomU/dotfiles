@@ -19,6 +19,7 @@
     home-manager
     nodejs_20
     claude-code
+    aider-chat
 
     # font
     hackgen-nf-font
