@@ -15,6 +15,7 @@
     pkgs.emacs
     pkgs.vim
     pkgs.fish
+    pkgs.home-manager
   ];
 
 
