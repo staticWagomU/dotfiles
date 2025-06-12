@@ -16,16 +16,16 @@
     pkgs.vim
     pkgs.fish
     pkgs.home-manager
-  ];
 
-  fonts.fontconfig.enable = true;
-  home.packages = home.packages ++ [
+    # font
     pkgs.hackgen-nf-font
   ];
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
-
-  programs.fish.enable = true; # Fish自体は共通で有効化
 
   home.stateVersion = "24.05";
 }
