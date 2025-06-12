@@ -55,6 +55,22 @@ fish_add_path ~/.rbenv/bin
 # npm bin
 fish_add_path ~/.npm-global/bin
 
+# nix
+fish_add_path /nix/var/nix/profiles/default/bin
+fish_add_path ~/.nix-profile/bin
+
+if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+    source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+end
+
+if test -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+    bass source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+end
+
+if command -v direnv >/dev/null
+    direnv hook fish | source
+end
+
 
 # -------------------------
 # Abbr
