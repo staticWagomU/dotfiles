@@ -20,6 +20,7 @@
     nodejs_20
     claude-code
     aider-chat
+    peco
 
     # font
     hackgen-nf-font
