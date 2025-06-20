@@ -31,6 +31,16 @@
     nix-direnv.enable = true;
   };
 
+  programs.fish = {
+    enable = true;
+    plugins = [
+      {
+        name = "bass";
+        src = pkgs.fishPlugins.bass.src;
+      }
+    ];
+  };
+
 
   home.stateVersion = "24.05";
 }
