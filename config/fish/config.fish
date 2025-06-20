@@ -27,11 +27,6 @@ if test (uname -s) = "Darwin"
 end
 
 
-# mise
-fish_add_path ~/.local/share/mise
-fish_add_path ~/.local/share/mise/shims
-~/.local/share/aquaproj-aqua/bin/mise activate fish | source
-
 # deno
 set -gx DENO_INSTALL "$HOME/.deno"
 fish_add_path "$DENO_INSTALL/bin"
