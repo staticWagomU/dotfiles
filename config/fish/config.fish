@@ -26,15 +26,6 @@ if test (uname -s) = "Darwin"
   end
 end
 
-# aqua
-if set -q AQUA_ROOT_DIR
-    set -gx aqua_bin_dir $AQUA_ROOT_DIR/bin
-else if set -q XDG_DATA_HOME
-    set -gx aqua_bin_dir $XDG_DATA_HOME/aquaproj-aqua/bin
-else
-    set -gx aqua_bin_dir $HOME/.local/share/aquaproj-aqua/bin
-end
-fish_add_path $aqua_bin_dir
 
 # mise
 fish_add_path ~/.local/share/mise
