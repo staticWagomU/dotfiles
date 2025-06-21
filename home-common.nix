@@ -1,8 +1,8 @@
 { config, pkgs, inputs, username, hostname, system, ... }:
 
-let
-  myNodePackages = pkgs.callPackage ./default.nix {};
-in
+# let
+#   myNodePackages = pkgs.callPackage ./default.nix {};
+# in
 {
   home.username = username;
   home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
@@ -19,7 +19,7 @@ in
     fish
     home-manager
     nodejs_20
-    nodePackages."@anthropic-ai/claude-code"
+    # nodePackages."@anthropic-ai/claude-code"
     aider-chat
     peco
 
