@@ -1,5 +1,3 @@
 final: prev: {
-  nodePackages = prev.nodePackages // {
-    claude-code = final.callPackage ./node-packages/default.nix {};
-  };
+  claude-code = final.callPackage ./claude-code.nix { };
 }

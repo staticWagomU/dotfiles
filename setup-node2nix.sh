@@ -11,7 +11,7 @@ cp node-packages.json node-packages/
 cd node-packages
 
 echo "Generating package.json..."
-cat > package.json << 'EOF'
+cat >package.json <<'EOF'
 {
   "name": "claude-code-packages",
   "version": "1.0.0",
@@ -26,7 +26,7 @@ echo "Running node2nix..."
 nix-shell -p node2nix --run "node2nix -i package.json -o node-packages.nix -c composition.nix -e node-env.nix"
 
 echo "Creating default.nix..."
-cat > default.nix << 'EOF'
+cat >default.nix <<'EOF'
 { pkgs ? import <nixpkgs> {} }:
 
 let

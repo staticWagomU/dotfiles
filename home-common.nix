@@ -27,7 +27,8 @@
     aider-chat
     peco
 
-    # nodePackages.claude-code
+    # node2nix経由でインストールする最新版のclaude-code
+    nodePkgs."@anthropic-ai/claude-code"
 
     # font
     hackgen-nf-font
