@@ -71,7 +71,6 @@
 
       flake =
         let
-          claudeCodeOverlay = import ./claude-code-overlay.nix;
           mkHomeConfig =
             {
               username,
@@ -81,6 +80,11 @@
               extraOverlays ? [ ],
             }:
             let
+              # node2nixパッケージを追加するオーバーレイ
+              nodePackagesOverlay = final: prev: {
+                nodePkgs = final.callPackage ./node2nix { };
+              };
+
               pkgs = import inputs.nixpkgs {
                 inherit system;
                 config = {
@@ -90,6 +94,7 @@
                 overlays = [
                   inputs.emacs-overlay.overlays.default
                   inputs.vim-overlay.overlays.default
+                  nodePackagesOverlay
                 ] ++ extraOverlays;
               };
             in

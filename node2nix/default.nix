@@ -1,10 +1,29 @@
-{ pkgs ? import <nixpkgs> {} }:
+{
+  pkgs ? import <nixpkgs> { },
+}:
 
 let
-  nodePackages = import ./composition.nix {
+  nodeEnv = import ./node-env.nix {
+    inherit (pkgs)
+      stdenv
+      lib
+      python2
+      runCommand
+      writeTextFile
+      writeShellScript
+      ;
     inherit pkgs;
     inherit (pkgs) nodejs;
-    inherit (pkgs.stdenv.hostPlatform) system;
+    libtool = if pkgs.stdenv.isDarwin then pkgs.darwin.cctools else null;
   };
 in
-nodePackages."@anthropic-ai/claude-code"
+import ./node-packages.nix {
+  inherit (pkgs)
+    fetchurl
+    nix-gitignore
+    stdenv
+    lib
+    fetchgit
+    ;
+  inherit nodeEnv;
+}
