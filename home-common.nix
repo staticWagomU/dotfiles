@@ -18,7 +18,7 @@
     fish
     home-manager
     nodejs_20
-    unstable.claude-code
+    claude-code
     aider-chat
     peco
 
