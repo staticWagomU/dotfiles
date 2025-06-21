@@ -11,52 +11,25 @@
 }:
 
 let
-  sources = {
-    "@anthropic-ai/claude-code-1.0.31" = {
-      name = "_at_anthropic-ai_slash_claude-code";
-      packageName = "@anthropic-ai/claude-code";
-      version = "1.0.31";
-      src = fetchurl {
-        url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.31.tgz";
-        sha512 = "prn3DEIBm5ALgCjp0sCcXwNbfBR5w98bEOXQbWViow/3BwkTgW784V8i0S/kfIWDVorz0o4cqR5D0fB4hbjNIg==";
-      };
+  sources = { };
+in
+{
+  "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
+    name = "_at_anthropic-ai_slash_claude-code";
+    packageName = "@anthropic-ai/claude-code";
+    version = "1.0.31";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.31.tgz";
+      sha512 = "prn3DEIBm5ALgCjp0sCcXwNbfBR5w98bEOXQbWViow/3BwkTgW784V8i0S/kfIWDVorz0o4cqR5D0fB4hbjNIg==";
     };
-  };
-  args = {
-    name = "claude-code-packages";
-    packageName = "claude-code-packages";
-    version = "1.0.0";
-    src = ./.;
-    dependencies = [
-      sources."@anthropic-ai/claude-code-1.0.31"
-    ];
     buildInputs = globalBuildInputs;
     meta = {
-      description = "Node packages for nix";
+      description = "Use Claude, Anthropic's AI assistant, right from your terminal. Claude can understand your codebase, edit files, run terminal commands, and handle entire workflows for you.";
+      homepage = "https://github.com/anthropics/claude-code";
+      license = "SEE LICENSE IN README.md";
     };
     production = true;
     bypassCache = true;
     reconstructLock = true;
   };
-in
-{
-  args = args;
-  sources = sources;
-  tarball = nodeEnv.buildNodeSourceDist args;
-  package = nodeEnv.buildNodePackage args;
-  shell = nodeEnv.buildNodeShell args;
-  nodeDependencies = nodeEnv.buildNodeDependencies (
-    lib.overrideExisting args {
-      src = stdenv.mkDerivation {
-        name = args.name + "-package-json";
-        src = nix-gitignore.gitignoreSourcePure [
-          "*"
-          "!package.json"
-          "!package-lock.json"
-        ] args.src;
-        dontBuild = true;
-        installPhase = "mkdir -p $out; cp -r ./* $out;";
-      };
-    }
-  );
 }
