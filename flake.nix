@@ -28,7 +28,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, flake-parts, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, flake-parts, treefmt-nix, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "aarch64-darwin"
@@ -36,7 +36,27 @@
         "aarch64-linux"
       ];
 
+      imports = [ treefmt-nix.flakeModule ];
+
       perSystem = { pkgs, system, ... }: {
+        treefmt = {
+          projectRootFile = "flake.nix";
+          programs = {
+            nixfmt.enable = true;
+            jsonfmt.enable = true;
+            yamlfmt.enable = true;
+            taplo.enable = true;  # TOML
+            shfmt.enable = true;
+          };
+        };
+
+        # 開発用シェル（必要に応じて）
+        devShells.default = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            nixpkgs-fmt
+            nil
+          ];
+        };
       };
 
       flake =
