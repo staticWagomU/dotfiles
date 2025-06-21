@@ -1,4 +1,12 @@
-{ config, pkgs, inputs, username, hostname, system, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  username,
+  hostname,
+  system,
+  ...
+}:
 
 {
   home.username = username;
@@ -19,7 +27,6 @@
   programs.fish = {
     enable = true;
   };
-
 
   home.stateVersion = "24.05";
 }

@@ -136,7 +136,7 @@ end
 fish_vi_key_bindings
 
 # Added by `rbenv init` on Wed Jun  5 22:55:37 JST 2024
-status --is-interactive; and rbenv init - fish | source
+# status --is-interactive; and rbenv init - fish | source
 
 # ref: https://github.com/mozumasu/dotfiles/blame/5c03a2a0d0a643dac52c20b19e6dd98662ab4614/.config/zsh/.zshrc#L111C1-L136C2
 function create_gitignore

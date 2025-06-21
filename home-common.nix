@@ -1,4 +1,12 @@
-{ config, pkgs, inputs, username, hostname, system, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  username,
+  hostname,
+  system,
+  ...
+}:
 
 # let
 #   myNodePackages = pkgs.callPackage ./default.nix {};
@@ -41,7 +49,6 @@
       }
     ];
   };
-
 
   home.stateVersion = "24.05";
 }

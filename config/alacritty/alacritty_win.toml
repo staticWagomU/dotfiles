@@ -1,10 +1,9 @@
 import = [
   "~/dotfiles/config/alacritty/base.toml",
-  "~/dotfiles/config/alacritty/colorscheme/catppuccin-macchiato.toml"
+  "~/dotfiles/config/alacritty/colorscheme/catppuccin-macchiato.toml",
 ]
 
-working_directory="C:\\Users\\wagomu"
+working_directory = "C:\\Users\\wagomu"
 
 [shell]
-program="cmd.exe"
-
+program = "cmd.exe"

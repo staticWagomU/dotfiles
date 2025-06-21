@@ -4,12 +4,12 @@ echo "Start setup"
 sudo apt update
 sudo apt upgrade -y
 sudo apt autoremove
-if ! type "git" > /dev/null 2>&1; then
+if ! type "git" >/dev/null 2>&1; then
   echo "install git"
   sudo apt install git
 fi
 
-if ! type "fish" > /dev/null 2>&1; then
+if ! type "fish" >/dev/null 2>&1; then
   echo "install fish"
   sudo apt install fish
 fi

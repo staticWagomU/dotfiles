@@ -315,10 +315,10 @@ args = []
 #
 # Example:
 [bindings]
-  keys = [
-    { key = "s", with = "Alt | Shift", action = "SplitHorizontally"},
-    { key = "v", with = "Alt | Shift", action = "SplitVertically"},
-  ]
+keys = [
+  { key = "s", with = "Alt | Shift", action = "SplitHorizontally" },
+  { key = "v", with = "Alt | Shift", action = "SplitVertically" },
+]
 
 # Log level
 #
@@ -328,4 +328,3 @@ args = []
 # [developer]
 # log-level = "OFF"
 # enable-log-file = false
-

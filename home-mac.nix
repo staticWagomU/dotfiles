@@ -1,4 +1,12 @@
-{ config, pkgs, inputs, username, hostname, system, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  username,
+  hostname,
+  system,
+  ...
+}:
 
 {
   home.packages = [

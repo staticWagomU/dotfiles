@@ -2,13 +2,18 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -29,16 +34,13 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "ja_JP.UTF-8";
   console = {
-  #   font = "Lat2-Terminus16";
+    #   font = "Lat2-Terminus16";
     keyMap = "jp106";
     # useXkbConfig = true; # use xkb.options in tty.
   };
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-  
 
   # Configure keymap in X11
   services.xserver = {
@@ -59,7 +61,6 @@
     enable = true;
     wrapperFeatures.gtk = true;
   };
-  
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -144,4 +145,3 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
-
