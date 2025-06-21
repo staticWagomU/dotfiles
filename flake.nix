@@ -71,6 +71,7 @@
 
       flake =
         let
+          claudeCodeOverlay = import ./claude-code-overlay.nix;
           mkHomeConfig =
             {
               username,

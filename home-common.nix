@@ -8,9 +8,6 @@
   ...
 }:
 
-# let
-#   myNodePackages = pkgs.callPackage ./default.nix {};
-# in
 {
   home.username = username;
   home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
@@ -27,9 +24,10 @@
     fish
     home-manager
     nodejs_20
-    # nodePackages."@anthropic-ai/claude-code"
     aider-chat
     peco
+
+    nodePackages.claude-code
 
     # font
     hackgen-nf-font
