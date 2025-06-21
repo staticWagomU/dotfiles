@@ -20,3 +20,7 @@ nix run home-manager/master -- switch --flake .#MacBookAir
 home-manager switch --flake .#MacBookAir
 ```
 
+```
+nix flake update
+```
+
