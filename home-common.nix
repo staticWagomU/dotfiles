@@ -1,12 +1,13 @@
 { config, pkgs, inputs, username, hostname, system, ... }:
 
+let
+  myNodePackages = pkgs.callPackage ./default.nix {};
+in
 {
   home.username = username;
-  # ホームディレクトリはOSによって異なるため、ここで設定
   home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
 
-  # --- 共通パッケージ ---
-  home.packages =  with pkgs; [
+  home.packages = with pkgs; [
     git
     htop
     ripgrep
@@ -18,7 +19,7 @@
     fish
     home-manager
     nodejs_20
-    claude-code
+    nodePackages."@anthropic-ai/claude-code"
     aider-chat
     peco
 
