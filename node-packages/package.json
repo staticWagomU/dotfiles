@@ -1,0 +1,8 @@
+{
+  "name": "claude-code-packages",
+  "version": "1.0.0",
+  "description": "Node packages for nix",
+  "dependencies": {
+    "@anthropic-ai/claude-code": "latest"
+  }
+}

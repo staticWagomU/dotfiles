@@ -27,7 +27,7 @@
     aider-chat
     peco
 
-    nodePackages.claude-code
+    # nodePackages.claude-code
 
     # font
     hackgen-nf-font
