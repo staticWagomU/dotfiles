@@ -8,6 +8,9 @@
   ...
 }:
 
+let
+  nodePkgs = pkgs.callPackage ./node2nix { inherit pkgs; };
+in
 {
   home.username = username;
   home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
@@ -25,10 +28,10 @@
     home-manager
     nodejs_20
     aider-chat
-    peco
+    # peco
 
     # node2nix経由でインストールする最新版のclaude-code
-    nodePkgs."@anthropic-ai/claude-code"
+    # nodePkgs."@anthropic-ai/claude-code"
 
     # font
     hackgen-nf-font
