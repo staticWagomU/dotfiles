@@ -120,7 +120,7 @@
               system = "aarch64-darwin";
               modules = [
                 ./home-manager/common.nix
-                ./home-manager/mac.nix
+                ./home-manager/gui.nix
               ];
             };
 
