@@ -30,7 +30,7 @@ in
     aider-chat
     peco
 
-    # nodePkgs."@anthropic-ai/claude-code"
+    nodePkgs."@anthropic-ai/claude-code"
 
     # font
     hackgen-nf-font
