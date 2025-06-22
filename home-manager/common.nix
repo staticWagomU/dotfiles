@@ -28,10 +28,10 @@ in
     home-manager
     nodejs_20
     aider-chat
-    # peco
+    peco
 
     # node2nix経由でインストールする最新版のclaude-code
-    # nodePkgs."@anthropic-ai/claude-code"
+    nodePkgs."@anthropic-ai/claude-code"
 
     # font
     hackgen-nf-font
