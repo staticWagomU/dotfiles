@@ -119,8 +119,8 @@
               hostname = "MacBookAir";
               system = "aarch64-darwin";
               modules = [
-                .home-manager/common.nix
-                .home-manager/mac.nix
+                ./home-manager/common.nix
+                ./home-manager/mac.nix
               ];
             };
 
@@ -129,7 +129,7 @@
               hostname = "ThinkpadT14Gen3";
               system = "x86_64-linux";
               modules = [
-                .home-manager/home-common.nix
+                ./home-manager/home-common.nix
                 # .home-manager/linux.nix
               ];
             };

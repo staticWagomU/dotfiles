@@ -9,7 +9,7 @@
 }:
 
 let
-  nodePkgs = pkgs.callPackage ./node2nix { inherit pkgs; };
+  nodePkgs = pkgs.callPackage ../node2nix { inherit pkgs; };
 in
 {
   home.username = username;
