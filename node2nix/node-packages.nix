@@ -17,10 +17,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "1.0.33";
+    version = "1.0.34";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.33.tgz";
-      sha512 = "rKQ1C0+iSV/bS4LVfyCt2FIkIc8MnFi5EbmRAXEunNkXLCQLHfXjsqx7cLOy7c11vZwGkyf/wEp5LwaDQHdjCQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.34.tgz";
+      sha512 = "9mQd8hodE5/RxZnsWUCdLzqGUKuCzBczrfc2QfxrNSlvUFpOgTzjT1Zlww2vW9v0K1e5K9g1o08apqPl/QPmpw==";
     };
     buildInputs = globalBuildInputs;
     meta = {
