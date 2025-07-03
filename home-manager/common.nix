@@ -29,6 +29,7 @@ in
     nodejs_20
     aider-chat
     peco
+    duckdb
 
     nodePkgs."@anthropic-ai/claude-code"
     nodePkgs."@google/gemini-cli"

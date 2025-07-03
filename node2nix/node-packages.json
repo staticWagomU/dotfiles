@@ -1,5 +1,4 @@
 [
   "@anthropic-ai/claude-code",
-  "@google/gemini-cli",
-  "@upstash/context7-mcp@latest"
+  "@google/gemini-cli"
 ]
