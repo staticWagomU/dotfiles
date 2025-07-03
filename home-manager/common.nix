@@ -31,6 +31,7 @@ in
     peco
 
     nodePkgs."@anthropic-ai/claude-code"
+    nodePkgs."@google/gemini-cli"
 
     # font
     hackgen-nf-font
