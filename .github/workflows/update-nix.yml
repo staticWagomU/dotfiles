@@ -27,7 +27,7 @@ jobs:
         nix-shell -p nodePackages.node2nix --command "node2nix -i ./node-packages.json -o node-packages.nix"
         cd ..
         nix flake update
-        nix fmt
+        nix fmt --verbose
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add flake.lock node2nix/node-packages.nix
