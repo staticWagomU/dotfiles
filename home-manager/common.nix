@@ -29,7 +29,6 @@ in
     nodejs_20
     # aider-chat  # temporarily disabled due to texlive-bin-big-2025 build failure on macOS
     peco
-    duckdb
     yt-dlp
 
     nodePkgs."@anthropic-ai/claude-code"
