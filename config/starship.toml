@@ -15,7 +15,8 @@ renamed = "🏷"
 deleted = "🗑"
 
 [[battery.display]]
-threshold = 100 // バッテリー残量が常に表示されるように設定
+# バッテリー残量が常に表示されるように設定
+threshold = 100
 style = "bold blue"
 
 [battery]
@@ -25,9 +26,11 @@ discharging_symbol = "😨"
 
 [time]
 disabled = false
-use_12hr = true // 12時間表示に設定
+# 12時間表示に設定
+use_12hr = true
 
 [memory_usage]
 disabled = false
-threshold = -1 // 常にメモリ使用率が表示されるように設定
+# 常にメモリ使用率が表示されるように設定
+threshold = -1
 style = "bold dimmed green"
