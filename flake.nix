@@ -129,7 +129,7 @@
               hostname = "ThinkpadT14Gen3";
               system = "x86_64-linux";
               modules = [
-                ./home-manager/home-common.nix
+                ./home-manager/common.nix
                 # .home-manager/linux.nix
               ];
             };
