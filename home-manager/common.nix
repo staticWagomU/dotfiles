@@ -27,6 +27,7 @@ in
     fish
     home-manager
     nodejs_20
+    delta
     # aider-chat  # temporarily disabled due to texlive-bin-big-2025 build failure on macOS
     peco
     yt-dlp
