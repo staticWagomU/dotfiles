@@ -1857,13 +1857,13 @@ let
         sha512 = "QQnnxNyfvmHFIsj7gkPcYymR8Jdw/o7mp5ZFihxn6h8Ci6fh3Dx4E1gPjpQEpIuPo9XVNY/ZUwh4BPMjGyL01g==";
       };
     };
-    "ink-6.0.1" = {
+    "ink-6.1.0" = {
       name = "ink";
       packageName = "ink";
-      version = "6.0.1";
+      version = "6.1.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/ink/-/ink-6.0.1.tgz";
-        sha512 = "vhhFrCodTHZAPPSdMYzLEbeI0Ug37R9j6yA0kLKok9kSK53lQtj/RJhEQJUjq6OwT4N33nxqSRd/7yXhEhVPIw==";
+        url = "https://registry.npmjs.org/ink/-/ink-6.1.0.tgz";
+        sha512 = "YQ+lbMD79y3FBAJXXZnuRajLEgaMFp102361eY5NrBIEVCi9oFo7gNZU4z2LBWlcjZFiTt7jetlkIbKCCH4KJA==";
       };
     };
     "ink-big-text-2.0.0" = {
@@ -3624,14 +3624,7 @@ in
       sha512 = "Uh6HxrN5OSaxfrR1OJ3V3CUUp8o+UHp1f1N5DwjlC+FPh55m5dlkWXBkUiwqmktKHEoOBuySy2oX5nSZAwf2og==";
     };
     dependencies = [
-      (
-        sources."@alcalzone/ansi-tokenize-0.1.3"
-        // {
-          dependencies = [
-            sources."is-fullwidth-code-point-4.0.0"
-          ];
-        }
-      )
+      sources."@alcalzone/ansi-tokenize-0.1.3"
       sources."@babel/code-frame-7.27.1"
       sources."@babel/helper-validator-identifier-7.27.1"
       (
@@ -3784,7 +3777,6 @@ in
         sources."cli-truncate-4.0.0"
         // {
           dependencies = [
-            sources."is-fullwidth-code-point-4.0.0"
             sources."slice-ansi-5.0.0"
           ];
         }
@@ -3926,7 +3918,7 @@ in
       sources."index-to-position-1.1.0"
       sources."inherits-2.0.4"
       sources."ini-1.3.8"
-      sources."ink-6.0.1"
+      sources."ink-6.1.0"
       sources."ink-big-text-2.0.0"
       sources."ink-gradient-3.0.0"
       sources."ink-link-4.1.0"
@@ -3939,7 +3931,7 @@ in
       sources."is-data-descriptor-1.0.1"
       sources."is-descriptor-1.0.3"
       sources."is-docker-3.0.0"
-      sources."is-fullwidth-code-point-5.0.0"
+      sources."is-fullwidth-code-point-4.0.0"
       sources."is-in-ci-1.0.0"
       sources."is-inside-container-1.0.0"
       sources."is-installed-globally-1.0.0"
@@ -4068,7 +4060,14 @@ in
       sources."side-channel-weakmap-1.0.2"
       sources."signal-exit-3.0.7"
       sources."simple-git-3.28.0"
-      sources."slice-ansi-7.1.0"
+      (
+        sources."slice-ansi-7.1.0"
+        // {
+          dependencies = [
+            sources."is-fullwidth-code-point-5.0.0"
+          ];
+        }
+      )
       sources."spdx-correct-3.2.0"
       sources."spdx-exceptions-2.5.0"
       sources."spdx-expression-parse-3.0.1"
