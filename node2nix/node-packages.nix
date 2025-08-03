@@ -39,13 +39,13 @@ let
         sha512 = "D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow==";
       };
     };
-    "@google/gemini-cli-core-0.1.15" = {
+    "@google/gemini-cli-core-0.1.16" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.1.15";
+      version = "0.1.16";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.1.15.tgz";
-        sha512 = "GCio1JobljxpnXy+nUqA7DSwIumItaJGdaUmiXaQHJjA+swjEIETb93pwAQquhXVa9XhUyHcfpp6/8PCUQaVQg==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.1.16.tgz";
+        sha512 = "4vt6tprtZ0Z3TgxpW191CN98gQVZmHMsXaUMi0dHXbSnXdLtOZ//C8Y1E7CoBJPDGttLAIGkWJXPHEJtnFp0Aw==";
       };
     };
     "@google/genai-1.9.0" = {
@@ -2262,6 +2262,15 @@ let
         sha512 = "JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==";
       };
     };
+    "marked-15.0.12" = {
+      name = "marked";
+      packageName = "marked";
+      version = "15.0.12";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/marked/-/marked-15.0.12.tgz";
+        sha512 = "8dD6FusOQSrpv9Z1rdNMdlSgQOIP880DHqnohobOmYLElGEqAL/JvxvuxZO16r4HtjTlfPRDC1hbvxC9dPN2nA==";
+      };
+    };
     "math-intrinsics-1.1.0" = {
       name = "math-intrinsics";
       packageName = "math-intrinsics";
@@ -3618,17 +3627,17 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.1.15";
+    version = "0.1.16";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.1.15.tgz";
-      sha512 = "5Prt6sK/pZUcNWumFc8pDUE/Wweksqt/BVnbKYnSRNpvjsbbVq23JKCEzRNOH1LzcbL2cw+vu6gpIiUn9liKug==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.1.16.tgz";
+      sha512 = "214HpIY+3WzQM6OLgu9bnSpx41UNC4uZ2VcexvG8NgNOlfUppIpXLFh2Hz/s8GGoqMu7AptTEGbZjRlHUjk5Yg==";
     };
     dependencies = [
       sources."@alcalzone/ansi-tokenize-0.1.3"
       sources."@babel/code-frame-7.27.1"
       sources."@babel/helper-validator-identifier-7.27.1"
       (
-        sources."@google/gemini-cli-core-0.1.15"
+        sources."@google/gemini-cli-core-0.1.16"
         // {
           dependencies = [
             sources."ajv-8.17.1"
@@ -3959,6 +3968,7 @@ in
       sources."loose-envify-1.4.0"
       sources."lowlight-3.3.0"
       sources."lru-cache-10.4.3"
+      sources."marked-15.0.12"
       sources."math-intrinsics-1.1.0"
       sources."media-typer-1.1.0"
       sources."merge-descriptors-2.0.0"
