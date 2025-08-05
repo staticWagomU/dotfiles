@@ -534,13 +534,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-24.1.0" = {
+    "@types/node-24.2.0" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "24.1.0";
+      version = "24.2.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-24.1.0.tgz";
-        sha512 = "ut5FthK5moxFKH2T1CUOC6ctR67rQRvvHdFLCD2Ql6KXmMuCrjsSsRI9UsLCm9M18BMwClv4pn327UvB7eeO1w==";
+        url = "https://registry.npmjs.org/@types/node/-/node-24.2.0.tgz";
+        sha512 = "3xyG3pMCq3oYCNg7/ZP+E1ooTaGB4cG8JWRsqqOYQdbWNY4zbaV0Ennrd7stjiJEFZCaybcIgpTjJWHRfBSIDw==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -3315,13 +3315,13 @@ let
         sha512 = "l+zSMssRqrzDcb3fjMkjjLGmuiiK2pMIcV++mJaAc9vhjSGpvM7h43QgP+OAMb1GImHmbPyG2tBXeuyG5iY4gA==";
       };
     };
-    "undici-types-7.8.0" = {
+    "undici-types-7.10.0" = {
       name = "undici-types";
       packageName = "undici-types";
-      version = "7.8.0";
+      version = "7.10.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/undici-types/-/undici-types-7.8.0.tgz";
-        sha512 = "9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==";
+        url = "https://registry.npmjs.org/undici-types/-/undici-types-7.10.0.tgz";
+        sha512 = "t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag==";
       };
     };
     "unicorn-magic-0.1.0" = {
@@ -3609,10 +3609,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "1.0.67";
+    version = "1.0.68";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.67.tgz";
-      sha512 = "r7CfhbKBXgaL5Wo0BIh08SOahFYQPcbHCNnMLtse7iDd2IVBWeOxqoiqQvzRQ0wTCiqLTshRbnmLWHyP4AbuyQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.68.tgz";
+      sha512 = "L3c73LgUjy3SM6Kkx3ny7docd+MIAQ6c1BA2Q17eXTd5gIa0VH5Fj+UPobfUmu69LPiO97iV6UOeHwiH9G7lNg==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -3714,7 +3714,7 @@ in
       sources."@types/hast-3.0.4"
       sources."@types/html-to-text-9.0.4"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-24.1.0"
+      sources."@types/node-24.2.0"
       sources."@types/normalize-package-data-2.4.4"
       sources."@types/react-19.1.9"
       sources."@types/shimmer-1.2.0"
@@ -4141,7 +4141,7 @@ in
       sources."type-fest-4.41.0"
       sources."type-is-2.0.1"
       sources."undici-7.13.0"
-      sources."undici-types-7.8.0"
+      sources."undici-types-7.10.0"
       sources."unicorn-magic-0.1.0"
       sources."unpipe-1.0.0"
       sources."update-notifier-7.3.1"
