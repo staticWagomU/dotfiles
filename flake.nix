@@ -95,7 +95,8 @@
                   inputs.emacs-overlay.overlays.default
                   inputs.vim-overlay.overlays.default
                   nodePackagesOverlay
-                ] ++ extraOverlays;
+                ]
+                ++ extraOverlays;
               };
             in
             home-manager.lib.homeManagerConfiguration {
