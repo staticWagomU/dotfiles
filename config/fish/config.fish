@@ -49,9 +49,9 @@ if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
     source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
 end
 
-if test -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-    bass source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-end
+# if test -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+#     bass source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+# end
 
 if command -v direnv >/dev/null
     direnv hook fish | source
@@ -72,7 +72,7 @@ abbr -a gb git branch
 abbr -a gd git diff
 abbr -a gp git push
 abbr -a gP git pull --autostash
-abbr -a p 'cd (ghq list -p | peco --initial-filter Fuzzy)'
+abbr -a p 'cd (ghq list -p | fzf)'
 
 abbr -a d docker
 abbr -a dc docker compose
@@ -94,8 +94,8 @@ alias ...='cd ../..'
 
 alias findn="find . \( -path '*/.git/*' -o -path '*/node_modules/*' -o -path '*/.next/*' -o -path '*/.vite/*' -o -path '*/.turbo/*' -o -path '*/tmp/*' -o -path '*/.pnpm-store/*' \) -prune -o -type f -print"
 
-function peco_history
-  history|peco --layout=bottom-up|read foo
+function fzf_history
+  history|fzf --layout=reverse|read foo
   if [ $foo ]
     commandline $foo
   else
@@ -104,7 +104,9 @@ function peco_history
 end
 
 function fish_user_key_bindings
-  bind \cr peco_history
+  # insertモードとdefaultモードの両方でCtrl+Rを有効化
+  bind -M insert \cr fzf_history
+  bind -M default \cr fzf_history
 end
 
 
