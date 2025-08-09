@@ -30,6 +30,7 @@ in
     delta
     # aider-chat  # temporarily disabled due to texlive-bin-big-2025 build failure on macOS
     peco
+    fzf
     yt-dlp
 
     nodePkgs."@anthropic-ai/claude-code"
