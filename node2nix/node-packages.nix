@@ -1371,13 +1371,13 @@ let
         sha512 = "FGgH2h8zKNim9ljj7dankFPcICIK9Cp5bm+c2gQSYePhpaG5+esrLODihIorn+Pe6FGJzWhXQotPv73jTaldXA==";
       };
     };
-    "es-toolkit-1.39.8" = {
+    "es-toolkit-1.39.9" = {
       name = "es-toolkit";
       packageName = "es-toolkit";
-      version = "1.39.8";
+      version = "1.39.9";
       src = fetchurl {
-        url = "https://registry.npmjs.org/es-toolkit/-/es-toolkit-1.39.8.tgz";
-        sha512 = "A8QO9TfF+rltS8BXpdu8OS+rpGgEdnRhqIVxO/ZmNvnXBYgOdSsxukT55ELyP94gZIntWJ+Li9QRrT2u1Kitpg==";
+        url = "https://registry.npmjs.org/es-toolkit/-/es-toolkit-1.39.9.tgz";
+        sha512 = "9OtbkZmTA2Qc9groyA1PUNeb6knVTkvB2RSdr/LcJXDL8IdEakaxwXLHXa7VX/Wj0GmdMJPR3WhnPGhiP3E+qg==";
       };
     };
     "escalade-3.2.0" = {
@@ -3864,7 +3864,7 @@ in
       sources."es-define-property-1.0.1"
       sources."es-errors-1.3.0"
       sources."es-object-atoms-1.1.1"
-      sources."es-toolkit-1.39.8"
+      sources."es-toolkit-1.39.9"
       sources."escalade-3.2.0"
       sources."escape-goat-4.0.0"
       sources."escape-html-1.0.3"
