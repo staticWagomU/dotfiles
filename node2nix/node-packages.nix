@@ -552,13 +552,13 @@ let
         sha512 = "37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==";
       };
     };
-    "@types/react-19.1.9" = {
+    "@types/react-19.1.10" = {
       name = "_at_types_slash_react";
       packageName = "@types/react";
-      version = "19.1.9";
+      version = "19.1.10";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/react/-/react-19.1.9.tgz";
-        sha512 = "WmdoynAX8Stew/36uTSVMcLJJ1KRh6L3IZRx1PZ7qJtBqT3dYTgyDTx8H1qoRghErydW7xw9mSJ3wS//tCRpFA==";
+        url = "https://registry.npmjs.org/@types/react/-/react-19.1.10.tgz";
+        sha512 = "EhBeSYX0Y6ye8pNebpKrwFJq7BoQ8J5SO6NlvNwwHjSj6adXJViPQrKlsyPw7hLBLvckEMO1yxeGdR82YBBlDg==";
       };
     };
     "@types/shimmer-1.2.0" = {
@@ -3627,10 +3627,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "1.0.72";
+    version = "1.0.73";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.72.tgz";
-      sha512 = "nA/l/xKX4sgOE0Y6P3o6czNGQqlyqJPjs9CHFxantsmyKvOot9VlRW4AiEAn42hQrZReCXeSnt8LOMx9ev7Erg==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.73.tgz";
+      sha512 = "UVBkta/BWy49xR9fgi/Oy2tl7p/k+lOCinv21zSK/E9KB4JObAAZ1BAOWteu4fhv7gs3Ipfev5r6yo3OplmwNg==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -3734,7 +3734,7 @@ in
       sources."@types/minimatch-5.1.2"
       sources."@types/node-24.2.1"
       sources."@types/normalize-package-data-2.4.4"
-      sources."@types/react-19.1.9"
+      sources."@types/react-19.1.10"
       sources."@types/shimmer-1.2.0"
       sources."@types/tinycolor2-1.4.6"
       sources."@types/unist-3.0.3"
