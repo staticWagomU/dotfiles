@@ -39,13 +39,13 @@ let
         sha512 = "D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow==";
       };
     };
-    "@google/gemini-cli-core-0.1.18" = {
+    "@google/gemini-cli-core-0.1.19" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.1.18";
+      version = "0.1.19";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.1.18.tgz";
-        sha512 = "a6FVWR70LaNenjxThqaitizA/zoZy00zHyLunB3FZFldRs0D3vkFMAd3tZsEF7MLl0sWZCGRA38BK2LR/I0iww==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.1.19.tgz";
+        sha512 = "nj1JtpbTayAp/VykXUq6fJhYppU+1Mskh4MLZ90Sw667ilxr6d2KUs35yMzto2UwT6xNGgZuJqmSYXZy2bSzYw==";
       };
     };
     "@google/genai-1.9.0" = {
@@ -1578,6 +1578,15 @@ let
         sha512 = "7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==";
       };
     };
+    "fzf-0.5.2" = {
+      name = "fzf";
+      packageName = "fzf";
+      version = "0.5.2";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/fzf/-/fzf-0.5.2.tgz";
+        sha512 = "Tt4kuxLXFKHy8KT40zwsUPUkg1CrsgY25FxA2U/j/0WgEDCk3ddc/zLTCCcbSHX9FcKtLuVaDGtGE/STWC+j3Q==";
+      };
+    };
     "gaxios-6.7.1" = {
       name = "gaxios";
       packageName = "gaxios";
@@ -2370,6 +2379,15 @@ let
         sha512 = "qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==";
       };
     };
+    "mnemonist-0.40.3" = {
+      name = "mnemonist";
+      packageName = "mnemonist";
+      version = "0.40.3";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/mnemonist/-/mnemonist-0.40.3.tgz";
+        sha512 = "Vjyr90sJ23CKKH/qPAgUKicw/v6pRoamxIEDFOF8uSgFME7DqPRpHgRTejWVjkdGg5dXj0/NyxZHZ9bcjH+2uQ==";
+      };
+    };
     "module-details-from-path-1.0.4" = {
       name = "module-details-from-path";
       packageName = "module-details-from-path";
@@ -2440,6 +2458,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/object-inspect/-/object-inspect-1.13.4.tgz";
         sha512 = "W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==";
+      };
+    };
+    "obliterator-2.0.5" = {
+      name = "obliterator";
+      packageName = "obliterator";
+      version = "2.0.5";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/obliterator/-/obliterator-2.0.5.tgz";
+        sha512 = "42CPE9AhahZRsMNslczq0ctAEtqk8Eka26QofnqC346BZdHDySk3LWka23LI7ULIw11NmltpiLagIq8gBozxTw==";
       };
     };
     "on-finished-2.4.1" = {
@@ -3627,10 +3654,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "1.0.73";
+    version = "1.0.77";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.73.tgz";
-      sha512 = "UVBkta/BWy49xR9fgi/Oy2tl7p/k+lOCinv21zSK/E9KB4JObAAZ1BAOWteu4fhv7gs3Ipfev5r6yo3OplmwNg==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.77.tgz";
+      sha512 = "P4jQ9bd9DEcgQUXb94gh8h7bnconmS2qE3eGUHyxNAi8fhSDqA038fmduCKZ/0wCVGPaldYoFIaO35M/ChRtGA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -3645,24 +3672,16 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.1.18";
+    version = "0.1.19";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.1.18.tgz";
-      sha512 = "C50iWTra4GIi5RzK8di7gn3zxkPxSTufjAATqfZCCJCS7+MApgo7NWvHTCxCeACd1lTX3ZonUKxeoc/V2UeVYQ==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.1.19.tgz";
+      sha512 = "fzLaFiRndDwJwvqNKHjzZnvbYqLlm+dae0aoLyCjevB9xPNp31wfh5485jf0N6ThvNW3UGdeIAXnZxgTWmeWsA==";
     };
     dependencies = [
       sources."@alcalzone/ansi-tokenize-0.1.3"
       sources."@babel/code-frame-7.27.1"
       sources."@babel/helper-validator-identifier-7.27.1"
-      (
-        sources."@google/gemini-cli-core-0.1.18"
-        // {
-          dependencies = [
-            sources."ajv-8.17.1"
-            sources."json-schema-traverse-1.0.0"
-          ];
-        }
-      )
+      sources."@google/gemini-cli-core-0.1.19"
       sources."@google/genai-1.9.0"
       sources."@grpc/grpc-js-1.13.4"
       sources."@grpc/proto-loader-0.7.15"
@@ -3679,7 +3698,15 @@ in
       sources."@js-sdsl/ordered-map-4.4.2"
       sources."@kwsites/file-exists-1.1.1"
       sources."@kwsites/promise-deferred-1.1.1"
-      sources."@modelcontextprotocol/sdk-1.17.2"
+      (
+        sources."@modelcontextprotocol/sdk-1.17.2"
+        // {
+          dependencies = [
+            sources."ajv-6.12.6"
+            sources."json-schema-traverse-0.4.1"
+          ];
+        }
+      )
       sources."@opentelemetry/api-1.9.0"
       sources."@opentelemetry/api-logs-0.52.1"
       sources."@opentelemetry/context-async-hooks-1.25.1"
@@ -3755,7 +3782,7 @@ in
       sources."acorn-8.15.0"
       sources."acorn-import-attributes-1.9.5"
       sources."agent-base-7.1.4"
-      sources."ajv-6.12.6"
+      sources."ajv-8.17.1"
       (
         sources."ansi-align-3.0.1"
         // {
@@ -3894,6 +3921,7 @@ in
       sources."forwarded-0.2.0"
       sources."fresh-2.0.0"
       sources."function-bind-1.1.2"
+      sources."fzf-0.5.2"
       sources."gaxios-6.7.1"
       sources."gcp-metadata-6.1.1"
       sources."get-caller-file-2.0.5"
@@ -3974,7 +4002,7 @@ in
       sources."jackspeak-3.4.3"
       sources."js-tokens-4.0.0"
       sources."json-bigint-1.0.0"
-      sources."json-schema-traverse-0.4.1"
+      sources."json-schema-traverse-1.0.0"
       sources."jwa-2.0.1"
       sources."jws-4.0.0"
       sources."kind-of-3.2.2"
@@ -4005,6 +4033,7 @@ in
       sources."minimatch-9.0.5"
       sources."minimist-1.2.8"
       sources."minipass-7.1.2"
+      sources."mnemonist-0.40.3"
       sources."module-details-from-path-1.0.4"
       sources."ms-2.1.3"
       sources."negotiator-1.0.0"
@@ -4013,6 +4042,7 @@ in
       sources."normalize-package-data-6.0.2"
       sources."object-assign-4.1.1"
       sources."object-inspect-1.13.4"
+      sources."obliterator-2.0.5"
       sources."on-finished-2.4.1"
       sources."once-1.4.0"
       sources."onetime-5.1.2"
