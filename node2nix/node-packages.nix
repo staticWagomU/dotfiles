@@ -39,13 +39,13 @@ let
         sha512 = "D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow==";
       };
     };
-    "@google/gemini-cli-core-0.1.19" = {
+    "@google/gemini-cli-core-0.1.20" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.1.19";
+      version = "0.1.20";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.1.19.tgz";
-        sha512 = "nj1JtpbTayAp/VykXUq6fJhYppU+1Mskh4MLZ90Sw667ilxr6d2KUs35yMzto2UwT6xNGgZuJqmSYXZy2bSzYw==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.1.20.tgz";
+        sha512 = "AndaSBfh0bUUlUUgsD52KB2C8Oc6UNZHXtOhvGQOTuaQUZoiIvEBHgKWAzfK8jvbgpEW7MxejctE5p36lvhXJg==";
       };
     };
     "@google/genai-1.9.0" = {
@@ -1875,13 +1875,13 @@ let
         sha512 = "QQnnxNyfvmHFIsj7gkPcYymR8Jdw/o7mp5ZFihxn6h8Ci6fh3Dx4E1gPjpQEpIuPo9XVNY/ZUwh4BPMjGyL01g==";
       };
     };
-    "ink-6.1.0" = {
+    "ink-6.1.1" = {
       name = "ink";
       packageName = "ink";
-      version = "6.1.0";
+      version = "6.1.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/ink/-/ink-6.1.0.tgz";
-        sha512 = "YQ+lbMD79y3FBAJXXZnuRajLEgaMFp102361eY5NrBIEVCi9oFo7gNZU4z2LBWlcjZFiTt7jetlkIbKCCH4KJA==";
+        url = "https://registry.npmjs.org/ink/-/ink-6.1.1.tgz";
+        sha512 = "Bqw78FX+1TSIGxs6bdvohgoy6mTfqjFJVNyYzXn8HIyZyVmwLX8XdnhUtUwyaelLCqLz8uuFseCbomRZWjyo5g==";
       };
     };
     "ink-big-text-2.0.0" = {
@@ -3654,10 +3654,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "1.0.77";
+    version = "1.0.80";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.77.tgz";
-      sha512 = "P4jQ9bd9DEcgQUXb94gh8h7bnconmS2qE3eGUHyxNAi8fhSDqA038fmduCKZ/0wCVGPaldYoFIaO35M/ChRtGA==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.80.tgz";
+      sha512 = "OpJb8LZBYuQ21lmT71c65NwUKGtQiva8dyKmCIPWnRIXHDaZ/31zzpDqcxgONUKUiZrnHqoMXwEwWyPyhD0+dA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -3672,16 +3672,16 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.1.19";
+    version = "0.1.20";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.1.19.tgz";
-      sha512 = "fzLaFiRndDwJwvqNKHjzZnvbYqLlm+dae0aoLyCjevB9xPNp31wfh5485jf0N6ThvNW3UGdeIAXnZxgTWmeWsA==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.1.20.tgz";
+      sha512 = "sCqXwxJdBxjeEIINmDbPFVAH351cRbdX+FBEXcEx+/YBCTrGIDMh607vdnZvju3ujCDn36FC5E2VzZZYnomMiQ==";
     };
     dependencies = [
       sources."@alcalzone/ansi-tokenize-0.1.3"
       sources."@babel/code-frame-7.27.1"
       sources."@babel/helper-validator-identifier-7.27.1"
-      sources."@google/gemini-cli-core-0.1.19"
+      sources."@google/gemini-cli-core-0.1.20"
       sources."@google/genai-1.9.0"
       sources."@grpc/grpc-js-1.13.4"
       sources."@grpc/proto-loader-0.7.15"
@@ -3974,7 +3974,7 @@ in
       sources."index-to-position-1.1.0"
       sources."inherits-2.0.4"
       sources."ini-1.3.8"
-      sources."ink-6.1.0"
+      sources."ink-6.1.1"
       sources."ink-big-text-2.0.0"
       sources."ink-gradient-3.0.0"
       sources."ink-link-4.1.0"
