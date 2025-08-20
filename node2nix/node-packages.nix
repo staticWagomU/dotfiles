@@ -12,13 +12,13 @@
 
 let
   sources = {
-    "@alcalzone/ansi-tokenize-0.1.3" = {
+    "@alcalzone/ansi-tokenize-0.2.0" = {
       name = "_at_alcalzone_slash_ansi-tokenize";
       packageName = "@alcalzone/ansi-tokenize";
-      version = "0.1.3";
+      version = "0.2.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@alcalzone/ansi-tokenize/-/ansi-tokenize-0.1.3.tgz";
-        sha512 = "3yWxPTq3UQ/FY9p1ErPxIyfT64elWaMvM9lIHnaqpyft63tkxodF5aUElYHrdisWve5cETkh1+KBw1yJuW0aRw==";
+        url = "https://registry.npmjs.org/@alcalzone/ansi-tokenize/-/ansi-tokenize-0.2.0.tgz";
+        sha512 = "qI/5TaaaCZE4yeSZ83lu0+xi1r88JSxUjnH4OP/iZF7+KKZ75u3ee5isd0LxX+6N8U0npL61YrpbthILHB6BnA==";
       };
     };
     "@babel/code-frame-7.27.1" = {
@@ -1884,13 +1884,13 @@ let
         sha512 = "QQnnxNyfvmHFIsj7gkPcYymR8Jdw/o7mp5ZFihxn6h8Ci6fh3Dx4E1gPjpQEpIuPo9XVNY/ZUwh4BPMjGyL01g==";
       };
     };
-    "ink-6.2.0" = {
+    "ink-6.2.1" = {
       name = "ink";
       packageName = "ink";
-      version = "6.2.0";
+      version = "6.2.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/ink/-/ink-6.2.0.tgz";
-        sha512 = "NQbNokT11cuxlIcCDfBMk1vEwaqc/cjTSqc4R4JugBO4BpWVe2B2A6ElC2koZQ9Vj91z0C40zid/jxOF2hJL9A==";
+        url = "https://registry.npmjs.org/ink/-/ink-6.2.1.tgz";
+        sha512 = "ZF3V9bHcWqqSrMClU9FRIBLQel1mc7H6zKSTt/MSCh2uks4T3xKq4qb9Z+aC7dOPGU4Ahy/Mw1hvUCl77F4EPg==";
       };
     };
     "ink-big-text-2.0.0" = {
@@ -2035,6 +2035,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/is-in-ci/-/is-in-ci-1.0.0.tgz";
         sha512 = "eUuAjybVTHMYWm/U+vBO1sY/JOCgoPCXRxzdju0K+K0BiGW0SChEL1MLC0PoCIR1OlPo5YAp8HuQoUlsWEICwg==";
+      };
+    };
+    "is-in-ci-2.0.0" = {
+      name = "is-in-ci";
+      packageName = "is-in-ci";
+      version = "2.0.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/is-in-ci/-/is-in-ci-2.0.0.tgz";
+        sha512 = "cFeerHriAnhrQSbpAxL37W1wcJKUUX07HyLWZCW1URJT/ra3GyUTzBgUnh24TMVfNTV2Hij2HLxkPHFZfOZy5w==";
       };
     };
     "is-inside-container-1.0.0" = {
@@ -2892,15 +2901,6 @@ let
         sha512 = "YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==";
       };
     };
-    "scheduler-0.23.2" = {
-      name = "scheduler";
-      packageName = "scheduler";
-      version = "0.23.2";
-      src = fetchurl {
-        url = "https://registry.npmjs.org/scheduler/-/scheduler-0.23.2.tgz";
-        sha512 = "UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==";
-      };
-    };
     "scheduler-0.26.0" = {
       name = "scheduler";
       packageName = "scheduler";
@@ -3663,10 +3663,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "1.0.84";
+    version = "1.0.85";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.84.tgz";
-      sha512 = "+Qu+z1jTdZPu0UL4dalntkofDGL0BgWqs6XmRlq+RuxurHJy58zKae4PL8naevrkbgazauIPYDDGmHF3u+B0uQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.85.tgz";
+      sha512 = "rvLGGSnHQLJI3dP7C/d3Or5LQvgDEae5wurMG4Fs9ourzt+k8YA6WAHeuJmSUq7o7Z2fZTaojcM3VOLzUBEl7w==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -3688,10 +3688,10 @@ in
     };
     dependencies = [
       (
-        sources."@alcalzone/ansi-tokenize-0.1.3"
+        sources."@alcalzone/ansi-tokenize-0.2.0"
         // {
           dependencies = [
-            sources."is-fullwidth-code-point-4.0.0"
+            sources."is-fullwidth-code-point-5.0.0"
           ];
         }
       )
@@ -3979,7 +3979,7 @@ in
       sources."inherits-2.0.4"
       sources."ini-1.3.8"
       (
-        sources."ink-6.2.0"
+        sources."ink-6.2.1"
         // {
           dependencies = [
             sources."signal-exit-3.0.7"
@@ -4002,7 +4002,7 @@ in
       sources."is-descriptor-1.0.3"
       sources."is-docker-3.0.0"
       sources."is-fullwidth-code-point-3.0.0"
-      sources."is-in-ci-1.0.0"
+      sources."is-in-ci-2.0.0"
       sources."is-inside-container-1.0.0"
       sources."is-installed-globally-1.0.0"
       sources."is-npm-6.0.0"
@@ -4110,14 +4110,7 @@ in
         }
       )
       sources."react-is-16.13.1"
-      (
-        sources."react-reconciler-0.32.0"
-        // {
-          dependencies = [
-            sources."scheduler-0.26.0"
-          ];
-        }
-      )
+      sources."react-reconciler-0.32.0"
       (
         sources."read-package-up-11.0.0"
         // {
@@ -4152,7 +4145,7 @@ in
       sources."run-applescript-7.0.0"
       sources."safe-buffer-5.2.1"
       sources."safer-buffer-2.1.2"
-      sources."scheduler-0.23.2"
+      sources."scheduler-0.26.0"
       sources."selderee-0.11.0"
       sources."semver-7.7.2"
       sources."send-1.2.0"
@@ -4247,6 +4240,7 @@ in
           dependencies = [
             sources."boxen-8.0.1"
             sources."camelcase-8.0.0"
+            sources."is-in-ci-1.0.0"
             sources."type-fest-4.41.0"
             sources."widest-line-5.0.0"
             sources."wrap-ansi-9.0.0"
