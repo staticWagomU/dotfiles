@@ -26,15 +26,11 @@ in
     vim
     fish
     home-manager
-    nodejs_20
     delta
     # aider-chat  # temporarily disabled due to texlive-bin-big-2025 build failure on macOS
     peco
     fzf
-    yt-dlp
-
-    nodePkgs."@anthropic-ai/claude-code"
-    nodePkgs."@google/gemini-cli"
+    tree-sitter
 
     # font
     hackgen-nf-font
