@@ -39,13 +39,13 @@ let
         sha512 = "D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow==";
       };
     };
-    "@google/gemini-cli-core-0.2.1" = {
+    "@google/gemini-cli-core-0.2.2" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.2.1";
+      version = "0.2.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.2.1.tgz";
-        sha512 = "Kk2658Ty58PbxpdeWXUlJNwBpwylAMdPv2sLIJ3ajuhpUb5a4sW/fd6+BfhXkZAxCsE+FQtXpkEl8VEEjWzmpw==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.2.2.tgz";
+        sha512 = "SLZkh+yFtpyUBI94Z7bPi2HbvrdV0XQDkLbTZiNqluVMKCWvEl8fMmmergqLjvACl9WK5iL9gXsxrTE//69Rfw==";
       };
     };
     "@google/genai-1.13.0" = {
@@ -1317,13 +1317,13 @@ let
         sha512 = "WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==";
       };
     };
-    "emoji-regex-10.4.0" = {
+    "emoji-regex-10.5.0" = {
       name = "emoji-regex";
       packageName = "emoji-regex";
-      version = "10.4.0";
+      version = "10.5.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/emoji-regex/-/emoji-regex-10.4.0.tgz";
-        sha512 = "EC+0oUMY1Rqm4O6LLrgjtYDvcVYTy7chDnM4Q7030tP4Kwj3u/pR6gP9ygnp2CJMK5Gq+9Q2oqmrFJAz01DXjw==";
+        url = "https://registry.npmjs.org/emoji-regex/-/emoji-regex-10.5.0.tgz";
+        sha512 = "lb49vf1Xzfx080OKA0o6l8DQQpV+6Vg95zyCJX9VB/BqKYlhG7N4wgROUUHRA+ZPUefLnteQOad7z1kT2bV7bg==";
       };
     };
     "emoji-regex-8.0.0" = {
@@ -1920,13 +1920,13 @@ let
         sha512 = "QQnnxNyfvmHFIsj7gkPcYymR8Jdw/o7mp5ZFihxn6h8Ci6fh3Dx4E1gPjpQEpIuPo9XVNY/ZUwh4BPMjGyL01g==";
       };
     };
-    "ink-6.2.2" = {
+    "ink-6.2.3" = {
       name = "ink";
       packageName = "ink";
-      version = "6.2.2";
+      version = "6.2.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/ink/-/ink-6.2.2.tgz";
-        sha512 = "LN1f+/D8KKqMqRux08fIfA9wsEAJ9Bu9CiI3L6ih7bnqNSDUXT/JVJ0rUIc4NkjPiPaeI3BVNREcLYLz9ePSEg==";
+        url = "https://registry.npmjs.org/ink/-/ink-6.2.3.tgz";
+        sha512 = "fQkfEJjKbLXIcVWEE3MvpYSnwtbbmRsmeNDNz1pIuOFlwE+UF2gsy228J36OXKZGWJWZJKUigphBSqCNMcARtg==";
       };
     };
     "ink-big-text-2.0.0" = {
@@ -2253,13 +2253,13 @@ let
         sha512 = "NOW9QQXMoZGg/oqnVNoNTTIFEIid1627WCffUBJEdMxYApq7mNE7CpzucIPc+ZQg25Phej7IJSmX3hO+oblOtQ==";
       };
     };
-    "ky-1.9.0" = {
+    "ky-1.9.1" = {
       name = "ky";
       packageName = "ky";
-      version = "1.9.0";
+      version = "1.9.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/ky/-/ky-1.9.0.tgz";
-        sha512 = "NgBeR/cu7kuC4BAeF1rnXhfoI2uQ9RBe8zl5vo87ASsf1iIQoCeOxyt6Io6K4Ki++5ItCavXAtbEWWCGFciQ6g==";
+        url = "https://registry.npmjs.org/ky/-/ky-1.9.1.tgz";
+        sha512 = "WGzpBn57klhxsqRTEABAqF4tqTtqCuxoTIv9m6nIZtMMFTVcrHp7bRDWblzFIfqkb47+OhTztOgHn6A4xItmqg==";
       };
     };
     "latest-version-9.0.0" = {
@@ -3681,10 +3681,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "1.0.93";
+    version = "1.0.96";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.93.tgz";
-      sha512 = "HSrbuYVu4k1dwoj/IYsXEVSoMWDPujy2D4zl9BMt4Zt0kwUwZch0nHpTyQ0C+YeHMN7hHbViz0bw6spg0a5GgQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.96.tgz";
+      sha512 = "xnxhYzuh6PYlMcw56REMQiGMW20WaLLOvG8L8TObq70zhNKs3dro7nhYwHRe1c2ubTr20oIJK0aSkyD2BpO8nA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -3699,10 +3699,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.2.1";
+    version = "0.2.2";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.2.1.tgz";
-      sha512 = "O1bicwykkSXCqcwMkrnrzUn2hfa/jh7nZ4OBx5oTybZ+N9RxIeU7+SJJcG0FiNdt0tSUIAXoKViTBMaY83fRCw==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.2.2.tgz";
+      sha512 = "V7jy31ilWf04l91CpglS3Un0DZ+8QwvFmJ5MMb135xyP40kZgUH95WlSsxA4Ox4PIIxLVzrvp8yFjXEkGyGP0g==";
     };
     dependencies = [
       (
@@ -3715,7 +3715,7 @@ in
       )
       sources."@babel/code-frame-7.27.1"
       sources."@babel/helper-validator-identifier-7.27.1"
-      sources."@google/gemini-cli-core-0.2.1"
+      sources."@google/gemini-cli-core-0.2.2"
       sources."@google/genai-1.13.0"
       sources."@grpc/grpc-js-1.13.4"
       sources."@grpc/proto-loader-0.7.15"
@@ -4001,7 +4001,7 @@ in
       sources."inherits-2.0.4"
       sources."ini-1.3.8"
       (
-        sources."ink-6.2.2"
+        sources."ink-6.2.3"
         // {
           dependencies = [
             sources."signal-exit-3.0.7"
@@ -4042,7 +4042,7 @@ in
       sources."jwa-2.0.1"
       sources."jws-4.0.0"
       sources."kind-of-3.2.2"
-      sources."ky-1.9.0"
+      sources."ky-1.9.1"
       sources."latest-version-9.0.0"
       sources."leac-0.6.0"
       sources."lodash.camelcase-4.3.0"
@@ -4199,7 +4199,7 @@ in
         sources."string-width-7.2.0"
         // {
           dependencies = [
-            sources."emoji-regex-10.4.0"
+            sources."emoji-regex-10.5.0"
           ];
         }
       )
