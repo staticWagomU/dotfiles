@@ -41,6 +41,9 @@ fish_add_path ~/.rbenv/bin
 # npm bin
 fish_add_path ~/.npm-global/bin
 
+# volta
+fish_add_path ~/.volta/bin
+
 # nix
 fish_add_path /nix/var/nix/profiles/default/bin
 fish_add_path ~/.nix-profile/bin
