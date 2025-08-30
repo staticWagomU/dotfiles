@@ -1,4 +1,3 @@
-# home-mac.nix
 {
   config,
   pkgs,

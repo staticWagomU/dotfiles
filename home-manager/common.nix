@@ -41,15 +41,22 @@ in
     nix-direnv.enable = true;
   };
 
-  # programs.fish = {
-  #   enable = true;
-  #   plugins = [
-  #     {
-  #       name = "bass";
-  #       src = pkgs.fishPlugins.bass.src;
-  #     }
-  #   ];
-  # };
+  programs.fish = {
+    enable = true;
+    plugins = [
+      {
+        name = "bass";
+        src = pkgs.fishPlugins.bass.src;
+      }
+    ];
+    interactiveShellInit = builtins.readFile ../config/fish/config.fish;
+  };
+
+  # Fish functions as symlinks
+  home.file.".config/fish/functions" = {
+    source = ../config/fish/functions;
+    recursive = true;
+  };
 
   home.stateVersion = "24.05";
 }
