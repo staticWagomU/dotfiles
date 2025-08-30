@@ -58,5 +58,8 @@ in
     recursive = true;
   };
 
+  # Git config as a copy (not symlink)
+  home.file.".gitconfig".text = builtins.readFile ../config/.gitconfig_other;
+
   home.stateVersion = "24.05";
 }
