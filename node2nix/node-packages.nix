@@ -1659,13 +1659,13 @@ let
         sha512 = "DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==";
       };
     };
-    "get-east-asian-width-1.3.0" = {
+    "get-east-asian-width-1.3.1" = {
       name = "get-east-asian-width";
       packageName = "get-east-asian-width";
-      version = "1.3.0";
+      version = "1.3.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/get-east-asian-width/-/get-east-asian-width-1.3.0.tgz";
-        sha512 = "vpeMIQKxczTD/0s2CdEWHcb0eeJe6TFjxb+J5xgX7hScxqrGuyjmv4c1D4A/gelKfyox0gJJwIHF+fLjeaM8kQ==";
+        url = "https://registry.npmjs.org/get-east-asian-width/-/get-east-asian-width-1.3.1.tgz";
+        sha512 = "R1QfovbPsKmosqTnPoRFiJ7CF9MLRgb53ChvMZm+r4p76/+8yKDy17qLL2PKInORy2RkZZekuK0efYgmzTkXyQ==";
       };
     };
     "get-intrinsic-1.3.0" = {
@@ -3950,7 +3950,7 @@ in
       sources."gaxios-6.7.1"
       sources."gcp-metadata-6.1.1"
       sources."get-caller-file-2.0.5"
-      sources."get-east-asian-width-1.3.0"
+      sources."get-east-asian-width-1.3.1"
       sources."get-intrinsic-1.3.0"
       sources."get-proto-1.0.1"
       sources."glob-10.4.5"
