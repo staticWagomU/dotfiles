@@ -2055,13 +2055,13 @@ let
         sha512 = "O4L094N2/dZ7xqVdrXhh9r1KODPJpFms8B5sGdJLPy664AgvXsreZUyCQQNItZRDlYug4xStLjNp/sz3HvBowQ==";
       };
     };
-    "is-fullwidth-code-point-5.0.0" = {
+    "is-fullwidth-code-point-5.1.0" = {
       name = "is-fullwidth-code-point";
       packageName = "is-fullwidth-code-point";
-      version = "5.0.0";
+      version = "5.1.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-5.0.0.tgz";
-        sha512 = "OVa3u9kkBbw7b8Xw5F9P+D/T9X+Z4+JruYVNapTjPYZYUznQ5YfWeFkOj606XYYW8yugTfC8Pj0hYqvi4ryAhA==";
+        url = "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-5.1.0.tgz";
+        sha512 = "5XHYaSyiqADb4RnZ1Bdad6cPp8Toise4TzEjcOYDHZkTCbKgiUl7WTUCpNWHuxmDt91wnsZBc9xinNzopv3JMQ==";
       };
     };
     "is-in-ci-1.0.0" = {
@@ -3709,7 +3709,7 @@ in
         sources."@alcalzone/ansi-tokenize-0.2.0"
         // {
           dependencies = [
-            sources."is-fullwidth-code-point-5.0.0"
+            sources."is-fullwidth-code-point-5.1.0"
           ];
         }
       )
@@ -4185,7 +4185,7 @@ in
         sources."slice-ansi-7.1.0"
         // {
           dependencies = [
-            sources."is-fullwidth-code-point-5.0.0"
+            sources."is-fullwidth-code-point-5.1.0"
           ];
         }
       )
