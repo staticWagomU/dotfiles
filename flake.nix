@@ -5,6 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    fisher = {
+      url = "github:jorgebucaran/fisher";
+      flake = false;
+    };
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +29,10 @@
     vim-overlay = {
       url = "github:kawarimidoll/vim-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zeno-zsh = {
+      url = "github:yuki-yano/zeno.zsh";
+      flake = false;
     };
   };
 
@@ -67,6 +75,16 @@
               nil
             ];
           };
+
+          packages.codex = (import inputs.nixpkgs {
+            inherit system;
+            overlays = [ (import ./nix/overlays/codex-overlay.nix) ];
+          }).codex;
+
+          apps.codex = {
+            type = "app";
+            program = "${pkgs.codex}/bin/codex";
+          };
         };
 
       flake =
@@ -95,6 +113,7 @@
                   inputs.emacs-overlay.overlays.default
                   inputs.vim-overlay.overlays.default
                   nodePackagesOverlay
+                  (import ./nix/overlays/codex-overlay.nix)
                 ]
                 ++ extraOverlays;
               };

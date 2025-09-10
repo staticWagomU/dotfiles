@@ -23,6 +23,22 @@
         "type": "github"
       }
     },
+    "fisher": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1725984266,
+        "narHash": "sha256-pR5RKU+zIb7CS0Y6vjx2QIZ8Iu/3ojRfAcAdjCOxl1U=",
+        "owner": "jorgebucaran",
+        "repo": "fisher",
+        "rev": "1f0dc2b4970da160605638cb0f157079660d6e04",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jorgebucaran",
+        "repo": "fisher",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -192,13 +208,15 @@
     "root": {
       "inputs": {
         "emacs-overlay": "emacs-overlay",
+        "fisher": "fisher",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
         "treefmt-nix": "treefmt-nix",
-        "vim-overlay": "vim-overlay"
+        "vim-overlay": "vim-overlay",
+        "zeno-zsh": "zeno-zsh"
       }
     },
     "treefmt-nix": {
@@ -256,6 +274,22 @@
       "original": {
         "owner": "vim",
         "repo": "vim",
+        "type": "github"
+      }
+    },
+    "zeno-zsh": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757383886,
+        "narHash": "sha256-t9jNcO4OoKS0u7jINDlIOdMQpkg9fOJskXbf+Su36zA=",
+        "owner": "yuki-yano",
+        "repo": "zeno.zsh",
+        "rev": "58cb954f1cab41d1b52f3e8ac41334359834e44c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yuki-yano",
+        "repo": "zeno.zsh",
         "type": "github"
       }
     }

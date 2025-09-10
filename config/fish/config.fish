@@ -186,3 +186,10 @@ if test (uname) = "Darwin"
   # This won't be added again if you remove it.
   source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 end
+
+if test "$ZENO_LOADED" = "1"
+    bind ' ' zeno-auto-snippet
+    bind \r zeno-auto-snippet-and-accept-line
+    bind \t zeno-completion
+    bind \cx\x20 zeno-insert-space
+end

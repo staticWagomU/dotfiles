@@ -31,6 +31,7 @@ in
     peco
     fzf
     tree-sitter
+    codex
 
     # font
     hackgen-nf-font
@@ -48,6 +49,10 @@ in
         name = "bass";
         src = pkgs.fishPlugins.bass.src;
       }
+      {
+        name = "fisher";
+        src = inputs.fisher;
+      }
     ];
     interactiveShellInit = builtins.readFile ../config/fish/config.fish;
   };
@@ -57,6 +62,14 @@ in
     source = ../config/fish/functions;
     recursive = true;
   };
+
+  # zeno.zsh (fish) via declarative steps
+  # 1) Provide ZENO_ROOT as an env var inside fish
+  xdg.configFile."fish/conf.d/zeno-env.fish".text = ''
+    set -gx ZENO_ROOT ${inputs.zeno-zsh}
+  '';
+  # 2) Symlink conf.d file from the repo
+  xdg.configFile."fish/conf.d/zeno.fish".source = "${inputs.zeno-zsh}/shells/fish/conf.d/zeno.fish";
 
   # Git config as a copy (not symlink)
   home.file.".gitconfig".text = builtins.readFile ../config/.gitconfig_other;
