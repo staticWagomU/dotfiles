@@ -543,13 +543,13 @@ let
         sha512 = "P33hHGdldxGabLFjPPpaTxVolMrzrcegejx+0GxjrIb9Zv48D8yAIA/QTDR2dFl7Uz7urX8aX6+5bCZslr+gWQ==";
       };
     };
-    "@sindresorhus/is-7.0.2" = {
+    "@sindresorhus/is-7.1.0" = {
       name = "_at_sindresorhus_slash_is";
       packageName = "@sindresorhus/is";
-      version = "7.0.2";
+      version = "7.1.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@sindresorhus/is/-/is-7.0.2.tgz";
-        sha512 = "d9xRovfKNz1SKieM0qJdO+PQonjnnIfSNWfHYnBSJ9hkjm0ZPw6HlxscDXYstp3z+7V2GOFHc+J0CYrYTjqCJw==";
+        url = "https://registry.npmjs.org/@sindresorhus/is/-/is-7.1.0.tgz";
+        sha512 = "7F/yz2IphV39hiS2zB4QYVkivrptHHh0K8qJJd9HhuWSdvf8AN7NpebW3CcDZDBQsUPMoDKWsY2WWgW7bqOcfA==";
       };
     };
     "@sindresorhus/merge-streams-4.0.0" = {
@@ -1218,13 +1218,13 @@ let
         sha512 = "M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==";
       };
     };
-    "debug-4.4.1" = {
+    "debug-4.4.3" = {
       name = "debug";
       packageName = "debug";
-      version = "4.4.1";
+      version = "4.4.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/debug/-/debug-4.4.1.tgz";
-        sha512 = "KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==";
+        url = "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz";
+        sha512 = "RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==";
       };
     };
     "decompress-response-6.0.0" = {
@@ -4005,10 +4005,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "1.0.112";
+    version = "1.0.113";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.112.tgz";
-      sha512 = "UMGxS1iLA8RlrDGpSzMfnJpVHXxcL7AdD8kQfqFy/hAFqwyKpoJPHGBwXt5KjuVDwcWwkpXc3tXDVt//4z6icg==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.113.tgz";
+      sha512 = "K/+N/rECfWa1ZauWLD6C/CnX6bxxAck5CFDuK58JjRN8v6QDuJVX7HZcNCanB0ucxEkaczAwvWnEM+UjFQsdqw==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4111,7 +4111,7 @@ in
       sources."@protobufjs/utf8-1.1.0"
       sources."@sec-ant/readable-stream-0.4.1"
       sources."@selderee/plugin-htmlparser2-0.11.0"
-      sources."@sindresorhus/is-7.0.2"
+      sources."@sindresorhus/is-7.1.0"
       sources."@sindresorhus/merge-streams-4.0.0"
       sources."@szmarczak/http-timer-5.0.1"
       sources."@types/configstore-6.0.2"
@@ -4229,7 +4229,7 @@ in
         }
       )
       sources."csstype-3.1.3"
-      sources."debug-4.4.1"
+      sources."debug-4.4.3"
       (
         sources."decompress-response-6.0.0"
         // {
