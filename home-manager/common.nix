@@ -35,6 +35,8 @@ in
 
     # font
     hackgen-nf-font
+
+    devenv
   ];
 
   programs.direnv = {
