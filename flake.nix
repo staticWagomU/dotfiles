@@ -144,6 +144,16 @@
               ];
             };
 
+            MacBookPro = mkHomeConfig {
+              username = "wagomu";
+              hostname = "MacBookPro";
+              system = "aarch64-darwin";
+              modules = [
+                ./home-manager/common.nix
+                ./home-manager/gui.nix
+              ];
+            };
+
             ThinkpadT14Gen3 = mkHomeConfig {
               username = "wagomu";
               hostname = "ThinkpadT14Gen3";
