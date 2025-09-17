@@ -1,8 +1,4 @@
 tap "apple/apple", "http://github.com/apple/homebrew-apple"
-tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
-tap "homebrew/services"
 brew "curl"
 brew "duckdb"
 brew "eza"
