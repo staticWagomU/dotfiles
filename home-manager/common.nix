@@ -74,6 +74,21 @@ in
   # 2) Symlink conf.d file from the repo
   xdg.configFile."fish/conf.d/zeno.fish".source = "${inputs.zeno-zsh}/shells/fish/conf.d/zeno.fish";
 
+  xdg.configFile."nvim" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotvim/nvim";
+    recursive = true;
+  };
+
+  xdg.configFile."nvim-sub" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotvim/nvim-sub";
+    recursive = true;
+  };
+
+  xdg.configFile."vim" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotvim/vim";
+    recursive = true;
+  };
+
   # Git config as a copy (not symlink)
   home.file.".gitconfig".text = builtins.readFile ../config/.gitconfig_other;
 
