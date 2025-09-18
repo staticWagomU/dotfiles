@@ -35,6 +35,7 @@ in
 
     # font
     hackgen-nf-font
+    intel-one-mono
 
     devenv
   ];
