@@ -1,4 +1,6 @@
 tap "apple/apple", "http://github.com/apple/homebrew-apple"
+tap "atlassian/homebrew-acli"
+brew "acli"
 brew "curl"
 brew "duckdb"
 brew "eza"
