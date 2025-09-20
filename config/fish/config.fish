@@ -48,6 +48,8 @@ fish_add_path ~/.volta/bin
 fish_add_path /nix/var/nix/profiles/default/bin
 fish_add_path ~/.nix-profile/bin
 
+set -gx WEZTERM_CONFIG_FILE ~/.config/wezterm/wezterm.lua
+
 if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
     source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
 end
