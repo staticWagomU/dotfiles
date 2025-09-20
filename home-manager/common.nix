@@ -76,17 +76,14 @@ in
 
   xdg.configFile."nvim" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotvim/nvim";
-    recursive = true;
   };
 
   xdg.configFile."nvim-sub" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotvim/nvim-sub";
-    recursive = true;
   };
 
   xdg.configFile."vim" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotvim/vim";
-    recursive = true;
   };
 
   # Git config as a copy (not symlink)
