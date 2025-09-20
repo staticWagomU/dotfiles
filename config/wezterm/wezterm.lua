@@ -53,6 +53,8 @@ config.keys = {
     { key = "J", mods = "SHIFT|CTRL", action = act.AdjustPaneSize { 'Down', 5 } },
     { key = "K", mods = "SHIFT|CTRL", action = act.AdjustPaneSize { 'Up', 5 } },
     { key = "L", mods = "SHIFT|CTRL", action = act.AdjustPaneSize { 'Right', 5 } },
+
+    {key="Enter", mods="SHIFT", action=wezterm.action{SendString="\x1b\r"}},
 }
 config.window_padding = {
     left = "5px",
