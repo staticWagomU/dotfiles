@@ -777,13 +777,13 @@ let
         sha512 = "IOfwwBF5iczOjp/WeY4YxyjqAFMQoZufdQWDd19SEExbVLNXqvpzSJ/M7Za4/sCPmQ0+GRquoA7bGcINcxew6w==";
       };
     };
-    "ansi-escapes-7.1.0" = {
+    "ansi-escapes-7.1.1" = {
       name = "ansi-escapes";
       packageName = "ansi-escapes";
-      version = "7.1.0";
+      version = "7.1.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-7.1.0.tgz";
-        sha512 = "YdhtCd19sKRKfAAUsrcC1wzm4JuzJoiX4pOJqIoW2qmKj5WzG/dL8uUJ0361zaXtHqK7gEhOwtAtz7t3Yq3X5g==";
+        url = "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-7.1.1.tgz";
+        sha512 = "Zhl0ErHcSRUaVfGUeUdDuLgpkEo8KIFjB4Y9uAc46ScOpdDiU1Dbyplh7qWJeJ/ZHpbyMSM26+X3BySgnIz40Q==";
       };
     };
     "ansi-regex-5.0.1" = {
@@ -3951,10 +3951,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "1.0.120";
+    version = "1.0.123";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.120.tgz";
-      sha512 = "Ga+GbFg4A+woD2LHrPSiDalr6434v3B+m7AmgIaCDO1rg4dQmOJlPd3p0G7NbhD9t/RPqj6j1AZKmlx0CbOXyQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-1.0.123.tgz";
+      sha512 = "egniOpnrjpm8pA2ygj9aDw+rZ0jKJdso94CvKlKzdVcLdw0r0FSMvgxWRGGxjHuqcl6BP6yhHGSKlZ6qzd14OA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4104,7 +4104,7 @@ in
           ];
         }
       )
-      sources."ansi-escapes-7.1.0"
+      sources."ansi-escapes-7.1.1"
       sources."ansi-regex-5.0.1"
       sources."ansi-styles-6.2.3"
       sources."atomically-2.0.3"
