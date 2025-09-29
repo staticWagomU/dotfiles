@@ -777,13 +777,13 @@ let
         sha512 = "37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==";
       };
     };
-    "@types/react-19.1.14" = {
+    "@types/react-19.1.15" = {
       name = "_at_types_slash_react";
       packageName = "@types/react";
-      version = "19.1.14";
+      version = "19.1.15";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/react/-/react-19.1.14.tgz";
-        sha512 = "ukd93VGzaNPMAUPy0gRDSC57UuQbnH9Kussp7HBjM06YFi9uZTFhOvMSO2OKqXm1rSgzOE+pVx1k1PYHGwlc8Q==";
+        url = "https://registry.npmjs.org/@types/react/-/react-19.1.15.tgz";
+        sha512 = "+kLxJpaJzXybyDyFXYADyP1cznTO8HSuBpenGlnKOAkH4hyNINiywvXS/tGJhsrGGP/gM185RA3xpjY0Yg4erA==";
       };
     };
     "@types/request-2.48.13" = {
@@ -4616,7 +4616,7 @@ in
       sources."@types/minimatch-5.1.2"
       sources."@types/node-24.5.2"
       sources."@types/normalize-package-data-2.4.4"
-      sources."@types/react-19.1.14"
+      sources."@types/react-19.1.15"
       sources."@types/request-2.48.13"
       sources."@types/tinycolor2-1.4.6"
       sources."@types/tough-cookie-4.0.5"
