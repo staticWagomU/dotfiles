@@ -228,13 +228,13 @@ let
         sha512 = "+LGuAEIC2L7pbvkyAQVWM2Go0dAy+UWEui28g07zNtZsCBhm+gusBK8PNwLJLV5Jay+TyUYuwLIbJdjLLzqEBg==";
       };
     };
-    "@modelcontextprotocol/sdk-1.18.2" = {
+    "@modelcontextprotocol/sdk-1.19.1" = {
       name = "_at_modelcontextprotocol_slash_sdk";
       packageName = "@modelcontextprotocol/sdk";
-      version = "1.18.2";
+      version = "1.19.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@modelcontextprotocol/sdk/-/sdk-1.18.2.tgz";
-        sha512 = "beedclIvFcCnPrYgHsylqiYJVJ/CI47Vyc4tY8no1/Li/O8U4BTlJfy6ZwxkYwx+Mx10nrgwSVrA7VBbhh4slg==";
+        url = "https://registry.npmjs.org/@modelcontextprotocol/sdk/-/sdk-1.19.1.tgz";
+        sha512 = "3Y2h3MZKjec1eAqSTBclATlX+AbC6n1LgfVzRMJLt3v6w0RCYgwLrjbxPDbhsYHt6Wdqc/aCceNJYgj448ELQQ==";
       };
     };
     "@opentelemetry/api-1.9.0" = {
@@ -759,13 +759,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-24.6.1" = {
+    "@types/node-24.6.2" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "24.6.1";
+      version = "24.6.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-24.6.1.tgz";
-        sha512 = "ljvjjs3DNXummeIaooB4cLBKg2U6SPI6Hjra/9rRIy7CpM0HpLtG9HptkMKAb4HYWy5S7HUvJEuWgr/y0U8SHw==";
+        url = "https://registry.npmjs.org/@types/node/-/node-24.6.2.tgz";
+        sha512 = "d2L25Y4j+W3ZlNAeMKcy7yDsK425ibcAOO2t7aPTz6gNMH0z2GThtwENCDc0d/Pw9wgyRqE5Px1wkV7naz8ang==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -1335,13 +1335,13 @@ let
         sha512 = "LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==";
       };
     };
-    "comment-json-4.3.0" = {
+    "comment-json-4.4.0" = {
       name = "comment-json";
       packageName = "comment-json";
-      version = "4.3.0";
+      version = "4.4.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/comment-json/-/comment-json-4.3.0.tgz";
-        sha512 = "DczdmbvWLd09KATFWY0xcihOO45b32+5V34vZg1oelxqgjtGJotaLrrdFpJRLOdG6Wb031qcg4zOKgnQoBWbEw==";
+        url = "https://registry.npmjs.org/comment-json/-/comment-json-4.4.0.tgz";
+        sha512 = "S/kHITMNFohZ/3lK6zd1Wyxnx+VfjJXzTHSZwUd9kPyNa8ndByPmeZO99MT3k8uFvcgipueyrb6rnefgRiqbAQ==";
       };
     };
     "config-chain-1.1.13" = {
@@ -4473,10 +4473,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.0.1";
+    version = "2.0.5";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.1.tgz";
-      sha512 = "2SboYcdJ+dsE2K784dbJ4ohVWlAkLZhU7mZG1lebyG6TvGLXLhjc2qTEfCxSeelCjJHhIh/YkNpe06veB4IgBw==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.5.tgz";
+      sha512 = "A7Nnbxf4yvfgnzIbML+IYYkyz4Wmg7McHpqi0pzDmyoz3TUQI1KJc798mlQ0bY7ZeLdrzA0IRCv7yR6bwTa3fA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4550,7 +4550,7 @@ in
       sources."@kwsites/promise-deferred-1.1.1"
       sources."@lvce-editor/verror-1.7.0"
       (
-        sources."@modelcontextprotocol/sdk-1.18.2"
+        sources."@modelcontextprotocol/sdk-1.19.1"
         // {
           dependencies = [
             sources."ajv-6.12.6"
@@ -4623,7 +4623,7 @@ in
       sources."@types/http-cache-semantics-4.0.4"
       sources."@types/long-4.0.2"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-24.6.1"
+      sources."@types/node-24.6.2"
       sources."@types/normalize-package-data-2.4.4"
       sources."@types/react-19.2.0"
       sources."@types/request-2.48.13"
@@ -4730,7 +4730,7 @@ in
       sources."color-name-1.1.4"
       sources."combined-stream-1.0.8"
       sources."command-exists-1.2.9"
-      sources."comment-json-4.3.0"
+      sources."comment-json-4.4.0"
       sources."config-chain-1.1.13"
       sources."configstore-7.1.0"
       sources."content-disposition-1.0.0"
