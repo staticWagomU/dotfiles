@@ -1335,13 +1335,13 @@ let
         sha512 = "LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==";
       };
     };
-    "comment-json-4.4.0" = {
+    "comment-json-4.4.1" = {
       name = "comment-json";
       packageName = "comment-json";
-      version = "4.4.0";
+      version = "4.4.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/comment-json/-/comment-json-4.4.0.tgz";
-        sha512 = "S/kHITMNFohZ/3lK6zd1Wyxnx+VfjJXzTHSZwUd9kPyNa8ndByPmeZO99MT3k8uFvcgipueyrb6rnefgRiqbAQ==";
+        url = "https://registry.npmjs.org/comment-json/-/comment-json-4.4.1.tgz";
+        sha512 = "r1To31BQD5060QdkC+Iheai7gHwoSZobzunqkf2/kQ6xIAfJyrKNAFUwdKvkK7Qgu7pVTKQEa7ok7Ed3ycAJgg==";
       };
     };
     "config-chain-1.1.13" = {
@@ -4730,7 +4730,7 @@ in
       sources."color-name-1.1.4"
       sources."combined-stream-1.0.8"
       sources."command-exists-1.2.9"
-      sources."comment-json-4.4.0"
+      sources."comment-json-4.4.1"
       sources."config-chain-1.1.13"
       sources."configstore-7.1.0"
       sources."content-disposition-1.0.0"
