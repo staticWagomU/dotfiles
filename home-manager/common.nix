@@ -31,7 +31,6 @@ in
     peco
     fzf
     tree-sitter
-    codex
 
     # font
     hackgen-nf-font
