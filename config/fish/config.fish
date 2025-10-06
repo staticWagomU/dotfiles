@@ -6,6 +6,27 @@ end
 # variables
 # -------------------------
 
+# deno
+set -gx DENO_INSTALL "$HOME/.deno"
+fish_add_path "$DENO_INSTALL/bin"
+
+set -gx BROWSER '"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"'
+set -gx EDITOR nvim
+
+fish_add_path ~/bin
+
+fish_add_path ~/.rbenv/bin
+
+# volta
+fish_add_path ~/.volta/bin
+
+# npm bin
+fish_add_path ~/.npm-global/bin
+
+# nix
+fish_add_path /nix/var/nix/profiles/default/bin
+fish_add_path ~/.nix-profile/bin
+
 if test (uname -s) = "Darwin"
   set -l paths \
     /opt/homebrew/bin \
@@ -25,28 +46,6 @@ if test (uname -s) = "Darwin"
     end
   end
 end
-
-
-# deno
-set -gx DENO_INSTALL "$HOME/.deno"
-fish_add_path "$DENO_INSTALL/bin"
-
-set -gx BROWSER '"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"'
-set -gx EDITOR nvim
-
-fish_add_path ~/bin
-
-fish_add_path ~/.rbenv/bin
-
-# npm bin
-fish_add_path ~/.npm-global/bin
-
-# volta
-fish_add_path ~/.volta/bin
-
-# nix
-fish_add_path /nix/var/nix/profiles/default/bin
-fish_add_path ~/.nix-profile/bin
 
 set -gx WEZTERM_CONFIG_FILE ~/.config/wezterm/wezterm.lua
 
