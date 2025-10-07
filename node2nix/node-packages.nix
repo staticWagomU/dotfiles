@@ -759,13 +759,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-24.6.2" = {
+    "@types/node-24.7.0" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "24.6.2";
+      version = "24.7.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-24.6.2.tgz";
-        sha512 = "d2L25Y4j+W3ZlNAeMKcy7yDsK425ibcAOO2t7aPTz6gNMH0z2GThtwENCDc0d/Pw9wgyRqE5Px1wkV7naz8ang==";
+        url = "https://registry.npmjs.org/@types/node/-/node-24.7.0.tgz";
+        sha512 = "IbKooQVqUBrlzWTi79E8Fw78l8k1RNtlDDNWsFZs7XonuQSJ8oNYfEeclhprUldXISRMLzBpILuKgPlIxm+/Yw==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -777,13 +777,13 @@ let
         sha512 = "37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==";
       };
     };
-    "@types/react-19.2.0" = {
+    "@types/react-19.2.1" = {
       name = "_at_types_slash_react";
       packageName = "@types/react";
-      version = "19.2.0";
+      version = "19.2.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/react/-/react-19.2.0.tgz";
-        sha512 = "1LOH8xovvsKsCBq1wnT4ntDUdCJKmnEakhsuoUSy6ExlHCkGP2hqnatagYTgFk6oeL0VU31u7SNjunPN+GchtA==";
+        url = "https://registry.npmjs.org/@types/react/-/react-19.2.1.tgz";
+        sha512 = "1U5NQWh/GylZQ50ZMnnPjkYHEaGhg6t5i/KI0LDDh3t4E3h3T3vzm+GLY2BRzMfIjSBwzm6tginoZl5z0O/qsA==";
       };
     };
     "@types/request-2.48.13" = {
@@ -4125,13 +4125,13 @@ let
         sha512 = "QEg3HPMll0o3t2ourKwOeUAZ159Kn9mx5pnzHRQO8+Wixmh88YdZRiIwat0iNzNNXn0yoEtXJqFpyW7eM8BV7g==";
       };
     };
-    "undici-types-7.13.0" = {
+    "undici-types-7.14.0" = {
       name = "undici-types";
       packageName = "undici-types";
-      version = "7.13.0";
+      version = "7.14.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/undici-types/-/undici-types-7.13.0.tgz";
-        sha512 = "Ov2Rr9Sx+fRgagJ5AX0qvItZG/JKKoBRAVITs1zk7IqZGTJUwgUr7qoYBpWwakpWilTZFM98rG/AFRocu10iIQ==";
+        url = "https://registry.npmjs.org/undici-types/-/undici-types-7.14.0.tgz";
+        sha512 = "QQiYxHuyZ9gQUIrmPo3IA+hUl4KYk8uSA7cHrcKd/l3p1OTpZcM0Tbp9x7FAtXdAYhlasd60ncPpgu6ihG6TOA==";
       };
     };
     "unicorn-magic-0.1.0" = {
@@ -4473,10 +4473,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.0.8";
+    version = "2.0.9";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.8.tgz";
-      sha512 = "GeNV0px4GrLnoFlC0Vv5aN0J4JlFV/xEf6KsvfMf3WdkyeaAaUR7MiMl/D6A7hb1fDF4a5nI/mCLEZZC0prpNQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.9.tgz";
+      sha512 = "2IAXb7OogfoTVv7fa4vnMxhUSnQ5yx7ije0xmjvLKrw7CGEiE2cvxKeFGg7nHjL0EE64CrVWYscS3SwD/7/HhQ==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4623,9 +4623,9 @@ in
       sources."@types/http-cache-semantics-4.0.4"
       sources."@types/long-4.0.2"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-24.6.2"
+      sources."@types/node-24.7.0"
       sources."@types/normalize-package-data-2.4.4"
-      sources."@types/react-19.2.0"
+      sources."@types/react-19.2.1"
       sources."@types/request-2.48.13"
       sources."@types/tinycolor2-1.4.6"
       sources."@types/tough-cookie-4.0.5"
@@ -5172,7 +5172,7 @@ in
         }
       )
       sources."undici-7.16.0"
-      sources."undici-types-7.13.0"
+      sources."undici-types-7.14.0"
       sources."unicorn-magic-0.1.0"
       sources."universalify-2.0.1"
       sources."unpipe-1.0.0"
