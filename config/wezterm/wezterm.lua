@@ -25,8 +25,10 @@ config.tab_bar_at_bottom = true
 config.warn_about_missing_glyphs = false
 config.adjust_window_size_when_changing_font_size = false
 config.show_new_tab_button_in_tab_bar = false
-config.use_ime = true
+config.use_ime = false
 config.macos_forward_to_ime_modifier_mask = 'SHIFT|CTRL'
+config.send_composed_key_when_left_alt_is_pressed = true
+config.send_composed_key_when_right_alt_is_pressed = true
 
 config.keys = {
 	{ key = 'q',   mods = 'CTRL',       action = wezterm.action { SendString = '\x11' } },
