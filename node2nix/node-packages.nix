@@ -246,13 +246,13 @@ let
         sha512 = "+LGuAEIC2L7pbvkyAQVWM2Go0dAy+UWEui28g07zNtZsCBhm+gusBK8PNwLJLV5Jay+TyUYuwLIbJdjLLzqEBg==";
       };
     };
-    "@modelcontextprotocol/sdk-1.20.1" = {
+    "@modelcontextprotocol/sdk-1.20.2" = {
       name = "_at_modelcontextprotocol_slash_sdk";
       packageName = "@modelcontextprotocol/sdk";
-      version = "1.20.1";
+      version = "1.20.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@modelcontextprotocol/sdk/-/sdk-1.20.1.tgz";
-        sha512 = "j/P+yuxXfgxb+mW7OEoRCM3G47zCTDqUPivJo/VzpjbG8I9csTXtOprCf5FfOfHK4whOJny0aHuBEON+kS7CCA==";
+        url = "https://registry.npmjs.org/@modelcontextprotocol/sdk/-/sdk-1.20.2.tgz";
+        sha512 = "6rqTdFt67AAAzln3NOKsXRmv5ZzPkgbfaebKBqUbts7vK1GZudqnrun5a8d3M/h955cam9RHZ6Jb4Y1XhnmFPg==";
       };
     };
     "@opentelemetry/api-1.9.0" = {
@@ -1803,13 +1803,13 @@ let
         sha512 = "j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==";
       };
     };
-    "es-toolkit-1.40.0" = {
+    "es-toolkit-1.41.0" = {
       name = "es-toolkit";
       packageName = "es-toolkit";
-      version = "1.40.0";
+      version = "1.41.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/es-toolkit/-/es-toolkit-1.40.0.tgz";
-        sha512 = "8o6w0KFmU0CiIl0/Q/BCEOabF2IJaELM1T2PWj6e8KqzHv1gdx+7JtFnDwOx1kJH/isJ5NwlDG1nCr1HrRF94Q==";
+        url = "https://registry.npmjs.org/es-toolkit/-/es-toolkit-1.41.0.tgz";
+        sha512 = "bDd3oRmbVgqZCJS6WmeQieOrzpl3URcWBUVDXxOELlUW2FuW+0glPOz1n0KnRie+PdyvUZcXz2sOn00c6pPRIA==";
       };
     };
     "escalade-3.2.0" = {
@@ -4518,10 +4518,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.0.26";
+    version = "2.0.27";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.26.tgz";
-      sha512 = "bk/sxGdTEbI0N7g+pTwYq5CNUjdAcvIKXvf/x5oRV9q24b42uq3gijrZGycSbWmtYTIjbzFAHeWw5n7Ic43/6w==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.27.tgz";
+      sha512 = "Ml4tnBeJu+K7MUFLTg8q7U2BE39Vx2D+KI7t86QnFX/K90c58ekFDUUDnfAp1PqTe9vRms6vARJiWzNxrePinA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4597,7 +4597,7 @@ in
       sources."@kwsites/promise-deferred-1.1.1"
       sources."@lvce-editor/verror-1.7.0"
       (
-        sources."@modelcontextprotocol/sdk-1.20.1"
+        sources."@modelcontextprotocol/sdk-1.20.2"
         // {
           dependencies = [
             sources."ajv-6.12.6"
@@ -4835,7 +4835,7 @@ in
       sources."es-errors-1.3.0"
       sources."es-object-atoms-1.1.1"
       sources."es-set-tostringtag-2.1.0"
-      sources."es-toolkit-1.40.0"
+      sources."es-toolkit-1.41.0"
       sources."escalade-3.2.0"
       sources."escape-goat-4.0.0"
       sources."escape-html-1.0.3"
