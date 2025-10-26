@@ -2262,13 +2262,13 @@ let
         sha512 = "ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==";
       };
     };
-    "got-14.6.0" = {
+    "got-14.6.1" = {
       name = "got";
       packageName = "got";
-      version = "14.6.0";
+      version = "14.6.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/got/-/got-14.6.0.tgz";
-        sha512 = "K30JHMsHcwhy+JYet3IxRFw+L9rb77y5LE3OkoAD4qzMR9/g30bWYBfkHYVJL2BBPgfU4lJsRwhy4HUkLPQc3g==";
+        url = "https://registry.npmjs.org/got/-/got-14.6.1.tgz";
+        sha512 = "56lZOw904LHKr6KdKN0Zbgz9Lw6cpEAAqZcS+0iY4D27caHoLiFT0EGCbrX9ZKYvt+I2lGl3a8eeDNSbmhyjkQ==";
       };
     };
     "graceful-fs-4.2.10" = {
@@ -4923,7 +4923,7 @@ in
       sources."googleapis-137.1.0"
       sources."googleapis-common-7.2.0"
       sources."gopd-1.2.0"
-      sources."got-14.6.0"
+      sources."got-14.6.1"
       sources."graceful-fs-4.2.11"
       (
         sources."gradient-string-2.0.2"
