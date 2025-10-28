@@ -37,6 +37,7 @@ in
     intel-one-mono
 
     devenv
+    lftp
   ];
 
   programs.direnv = {
