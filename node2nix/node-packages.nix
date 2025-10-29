@@ -777,13 +777,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-24.9.1" = {
+    "@types/node-24.9.2" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "24.9.1";
+      version = "24.9.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-24.9.1.tgz";
-        sha512 = "QoiaXANRkSXK6p0Duvt56W208du4P9Uye9hWLWgGMDTEoKPhuenzNcC4vGUmrNkiOKTlIrBoyNQYNpSwfEZXSg==";
+        url = "https://registry.npmjs.org/@types/node/-/node-24.9.2.tgz";
+        sha512 = "uWN8YqxXxqFMX2RqGOrumsKeti4LlmIMIyV0lgut4jx7KQBcBiW6vkDtIBvHnHIquwNfJhk8v2OtmO8zXWHfPA==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -4323,13 +4323,13 @@ let
         sha512 = "saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==";
       };
     };
-    "when-exit-2.1.4" = {
+    "when-exit-2.1.5" = {
       name = "when-exit";
       packageName = "when-exit";
-      version = "2.1.4";
+      version = "2.1.5";
       src = fetchurl {
-        url = "https://registry.npmjs.org/when-exit/-/when-exit-2.1.4.tgz";
-        sha512 = "4rnvd3A1t16PWzrBUcSDZqcAmsUIy4minDXT/CZ8F2mVDgd65i4Aalimgz1aQkRGU0iH5eT5+6Rx2TK8o443Pg==";
+        url = "https://registry.npmjs.org/when-exit/-/when-exit-2.1.5.tgz";
+        sha512 = "VGkKJ564kzt6Ms1dbgPP/yuIoQCrsFAnRbptpC5wOEsDaNsbCB2bnfnaA8i/vRs5tjUSEOtIuvl9/MyVsvQZCg==";
       };
     };
     "which-2.0.2" = {
@@ -4679,7 +4679,7 @@ in
       sources."@types/http-cache-semantics-4.0.4"
       sources."@types/long-4.0.2"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-24.9.1"
+      sources."@types/node-24.9.2"
       sources."@types/normalize-package-data-2.4.4"
       sources."@types/react-19.2.2"
       sources."@types/request-2.48.13"
@@ -5244,7 +5244,7 @@ in
       sources."vary-1.1.2"
       sources."webidl-conversions-3.0.1"
       sources."whatwg-url-5.0.0"
-      sources."when-exit-2.1.4"
+      sources."when-exit-2.1.5"
       sources."which-2.0.2"
       sources."widest-line-5.0.0"
       sources."wrap-ansi-9.0.2"
