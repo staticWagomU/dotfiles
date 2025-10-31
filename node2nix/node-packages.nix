@@ -120,13 +120,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.11.0" = {
+    "@google/gemini-cli-core-0.11.1" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.11.0";
+      version = "0.11.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.11.0.tgz";
-        sha512 = "yBSFuJp134TYcpoMB2aYfTwM66zFnYhRzlTRTSbV1WihE68q5zdgraUTJ5JUNb/wEUR3mx8plRLlDOSvppX58A==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.11.1.tgz";
+        sha512 = "kUxWKwsYBH6RLkVzRm8G2LJddYNuk9xJ7AgD1MyvKGqg9gCLnEpKQgVhUAtrK1Xmj7Pi4hL/DOtlQHB31LhDmA==";
       };
     };
     "@google/genai-1.16.0" = {
@@ -3846,13 +3846,13 @@ let
         sha512 = "bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==";
       };
     };
-    "simple-git-3.28.0" = {
+    "simple-git-3.29.0" = {
       name = "simple-git";
       packageName = "simple-git";
-      version = "3.28.0";
+      version = "3.29.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/simple-git/-/simple-git-3.28.0.tgz";
-        sha512 = "Rs/vQRwsn1ILH1oBUy8NucJlXmnnLeLCfcvbSehkPzbv3wwoFWIdtfd6Ndo6ZPhlPsCZ60CPI4rxurnwAa+a2w==";
+        url = "https://registry.npmjs.org/simple-git/-/simple-git-3.29.0.tgz";
+        sha512 = "PEBgFYc8plTys6/XuxinxAJ+6CbXVh+xxsBTOEXw/uYBd3sYlGGoyB12nX5rRPGsFrdnnZWb81qluSl7a83HtA==";
       };
     };
     "slice-ansi-5.0.0" = {
@@ -4098,13 +4098,13 @@ let
         sha512 = "ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==";
       };
     };
-    "tar-7.5.1" = {
+    "tar-7.5.2" = {
       name = "tar";
       packageName = "tar";
-      version = "7.5.1";
+      version = "7.5.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/tar/-/tar-7.5.1.tgz";
-        sha512 = "nlGpxf+hv0v7GkWBK2V9spgactGOp0qvfWRxUMjqHyzrt3SgwE48DIv/FhqPHJYLHpgW1opq3nERbz5Anq7n1g==";
+        url = "https://registry.npmjs.org/tar/-/tar-7.5.2.tgz";
+        sha512 = "7NyxrTE4Anh8km8iEy7o0QYPs+0JKBTj5ZaqHg6B39erLg0qYXN3BijtShwbsNSvQ+LN75+KV+C4QR/f6Gwnpg==";
       };
     };
     "teeny-request-9.0.0" = {
@@ -4572,10 +4572,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.0.29";
+    version = "2.0.30";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.29.tgz";
-      sha512 = "a/dMfD9UTk+aA6DmNRSMUnMsj/Rk657qE8IKBqYS/Dt5stApJH6cSH0dmZKOIPa/qBHcekUPTrRvVpAC1mTQ9A==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.30.tgz";
+      sha512 = "DbRYVgsuKLFxrVtjEych5Eok+OwOumYj4rUJyXBy9UEIARS6ScGjU7JzTvWJSRjT+ZHV4vTUTrakGD9FJHrFtQ==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4590,10 +4590,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.11.0";
+    version = "0.11.1";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.11.0.tgz";
-      sha512 = "VC2HyT5ozmDLHnR1Bsnq5n9K0nm19thusjJR5DF8p6pmnezmz682bXqC/LZs34rsEYYSDDcj2SH/AohgB4NkBg==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.11.1.tgz";
+      sha512 = "9SRtzsPgOAC4XMAS8yKhWBeB5Bf8rHI8JQ3J632VtyoRDniJQfCo5kMZZT3hd0wVE4ADaZjrbTXZdJIjuigy0A==";
     };
     dependencies = [
       sources."@alcalzone/ansi-tokenize-0.2.2"
@@ -4622,7 +4622,7 @@ in
       sources."@google-cloud/precise-date-4.0.0"
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
-      sources."@google/gemini-cli-core-0.11.0"
+      sources."@google/gemini-cli-core-0.11.1"
       sources."@google/genai-1.16.0"
       (
         sources."@grpc/grpc-js-1.14.0"
@@ -5199,7 +5199,7 @@ in
       sources."side-channel-map-1.0.1"
       sources."side-channel-weakmap-1.0.2"
       sources."signal-exit-3.0.7"
-      sources."simple-git-3.28.0"
+      sources."simple-git-3.29.0"
       sources."slice-ansi-7.1.2"
       sources."spdx-correct-3.2.0"
       sources."spdx-exceptions-2.5.0"
@@ -5245,7 +5245,7 @@ in
       sources."stubs-3.0.0"
       sources."supports-color-7.2.0"
       sources."supports-preserve-symlinks-flag-1.0.0"
-      sources."tar-7.5.1"
+      sources."tar-7.5.2"
       (
         sources."teeny-request-9.0.0"
         // {
