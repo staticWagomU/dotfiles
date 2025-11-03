@@ -1173,6 +1173,15 @@ let
         sha512 = "tjwM5exMg6BGRI+kNmTntNsvdZS1X8BFYS6tnJ2hdH0kVxM6/eVZ2xy+FqStSWvYmtfFMDLIxurorHwDKfDz5Q==";
       };
     };
+    "byte-counter-0.1.0" = {
+      name = "byte-counter";
+      packageName = "byte-counter";
+      version = "0.1.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/byte-counter/-/byte-counter-0.1.0.tgz";
+        sha512 = "jheRLVMeUKrDBjVw2O5+k4EvR4t9wtxHL+bo/LxfkxsVeuGMy3a5SEGgXdAFA4FSzTrU8rQXQIrsZ3oBq5a0pQ==";
+      };
+    };
     "bytes-3.1.2" = {
       name = "bytes";
       packageName = "bytes";
@@ -2271,13 +2280,13 @@ let
         sha512 = "ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==";
       };
     };
-    "got-14.6.1" = {
+    "got-14.6.2" = {
       name = "got";
       packageName = "got";
-      version = "14.6.1";
+      version = "14.6.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/got/-/got-14.6.1.tgz";
-        sha512 = "56lZOw904LHKr6KdKN0Zbgz9Lw6cpEAAqZcS+0iY4D27caHoLiFT0EGCbrX9ZKYvt+I2lGl3a8eeDNSbmhyjkQ==";
+        url = "https://registry.npmjs.org/got/-/got-14.6.2.tgz";
+        sha512 = "bnhvxegqufyxHAmzwCZSscjGLVpw6/NzTXOk2tQVu/b9Q9FeMAgLabYulXEQRwP04UYltnkcZwvBq14fsdqvyw==";
       };
     };
     "graceful-fs-4.2.10" = {
@@ -3846,13 +3855,13 @@ let
         sha512 = "bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==";
       };
     };
-    "simple-git-3.29.0" = {
+    "simple-git-3.30.0" = {
       name = "simple-git";
       packageName = "simple-git";
-      version = "3.29.0";
+      version = "3.30.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/simple-git/-/simple-git-3.29.0.tgz";
-        sha512 = "PEBgFYc8plTys6/XuxinxAJ+6CbXVh+xxsBTOEXw/uYBd3sYlGGoyB12nX5rRPGsFrdnnZWb81qluSl7a83HtA==";
+        url = "https://registry.npmjs.org/simple-git/-/simple-git-3.30.0.tgz";
+        sha512 = "q6lxyDsCmEal/MEGhP1aVyQ3oxnagGlBDOVSIB4XUVLl1iZh0Pah6ebC9V4xBap/RfgP2WlI8EKs0WS0rMEJHg==";
       };
     };
     "slice-ansi-5.0.0" = {
@@ -4794,6 +4803,7 @@ in
       sources."buffer-equal-constant-time-1.0.1"
       sources."bufferutil-4.0.9"
       sources."bundle-name-4.1.0"
+      sources."byte-counter-0.1.0"
       sources."bytes-3.1.2"
       sources."cacheable-lookup-7.0.0"
       (
@@ -4978,7 +4988,7 @@ in
       sources."googleapis-137.1.0"
       sources."googleapis-common-7.2.0"
       sources."gopd-1.2.0"
-      sources."got-14.6.1"
+      sources."got-14.6.2"
       sources."graceful-fs-4.2.11"
       (
         sources."gradient-string-2.0.2"
@@ -5199,7 +5209,7 @@ in
       sources."side-channel-map-1.0.1"
       sources."side-channel-weakmap-1.0.2"
       sources."signal-exit-3.0.7"
-      sources."simple-git-3.29.0"
+      sources."simple-git-3.30.0"
       sources."slice-ansi-7.1.2"
       sources."spdx-correct-3.2.0"
       sources."spdx-exceptions-2.5.0"
