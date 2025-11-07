@@ -525,13 +525,13 @@ let
         sha512 = "UhdbPF19pMpBtCWYP5lHbTogLWx9N0EBxtdagvkn5YtsAnCBZzL7SjktG+ZmupRgifsHMjwUaCCaVmqGfSADmA==";
       };
     };
-    "@opentelemetry/semantic-conventions-1.37.0" = {
+    "@opentelemetry/semantic-conventions-1.38.0" = {
       name = "_at_opentelemetry_slash_semantic-conventions";
       packageName = "@opentelemetry/semantic-conventions";
-      version = "1.37.0";
+      version = "1.38.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@opentelemetry/semantic-conventions/-/semantic-conventions-1.37.0.tgz";
-        sha512 = "JD6DerIKdJGmRp4jQyX5FlrQjA4tjOw1cvfsPAZXfOOEErMUHjPcPSICS+6WnM0nB0efSFARh0KAZss+bvExOA==";
+        url = "https://registry.npmjs.org/@opentelemetry/semantic-conventions/-/semantic-conventions-1.38.0.tgz";
+        sha512 = "kocjix+/sSggfJhwXqClZ3i9Y/MI0fp7b+g7kCRm6psy2dsf8uApTRclwG18h8Avm7C9+fnt+O36PspJ/OzoWg==";
       };
     };
     "@pnpm/config.env-replace-1.1.0" = {
@@ -4410,10 +4410,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.0.34";
+    version = "2.0.35";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.34.tgz";
-      sha512 = "lIb/BPiBDZMSXSRcREqDjoERghZTgmEneUDBORolLWIeRJ+UglVpyqRqePK2SrWZR4VUJjs2F+XXqSNphpmj5w==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.35.tgz";
+      sha512 = "vH96QKwNuhxWiIL61C0Eq2TzrgpjfyX1I13cGOJnWtYULal95pR4ig6QFK56DJMSyb8KOQQyyzEBAEEsJZ9uHA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4512,7 +4512,7 @@ in
       sources."@opentelemetry/sdk-node-0.203.0"
       sources."@opentelemetry/sdk-trace-base-2.0.1"
       sources."@opentelemetry/sdk-trace-node-2.0.1"
-      sources."@opentelemetry/semantic-conventions-1.37.0"
+      sources."@opentelemetry/semantic-conventions-1.38.0"
       sources."@pnpm/config.env-replace-1.1.0"
       sources."@pnpm/network.ca-file-1.0.2"
       sources."@pnpm/npm-conf-2.3.1"
