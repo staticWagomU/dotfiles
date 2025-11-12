@@ -786,13 +786,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-24.10.0" = {
+    "@types/node-24.10.1" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "24.10.0";
+      version = "24.10.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-24.10.0.tgz";
-        sha512 = "qzQZRBqkFsYyaSWXuEHc2WR9c0a0CXwiE5FWUvn7ZM+vdy1uZLfCunD38UzhuB7YN/J11ndbDBcTmOdxJo9Q7A==";
+        url = "https://registry.npmjs.org/@types/node/-/node-24.10.1.tgz";
+        sha512 = "GNWcUTRBgIRJD5zj+Tq0fKOJ5XZajIiBroOF0yvj2bSU1WvNdYS/dn9UxwsujGW4JX06dnHyjV2y9rRaybH0iQ==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -804,13 +804,13 @@ let
         sha512 = "37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==";
       };
     };
-    "@types/react-19.2.2" = {
+    "@types/react-19.2.3" = {
       name = "_at_types_slash_react";
       packageName = "@types/react";
-      version = "19.2.2";
+      version = "19.2.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/react/-/react-19.2.2.tgz";
-        sha512 = "6mDvHUFSjyT2B2yeNx2nUgMxh9LtOWvkhIU3uePn2I2oyNymUAX1NIsdgviM4CH+JSrp2D2hsMvJOkxY+0wNRA==";
+        url = "https://registry.npmjs.org/@types/react/-/react-19.2.3.tgz";
+        sha512 = "k5dJVszUiNr1DSe8Cs+knKR6IrqhqdhpUwzqhkS8ecQTSf3THNtbfIp/umqHMpX2bv+9dkx3fwDv/86LcSfvSg==";
       };
     };
     "@types/request-2.48.13" = {
@@ -2676,13 +2676,13 @@ let
         sha512 = "KDncfTmOZoOMTFG4mBlG0qUIOlc03fmzH+ru6RgYVZhPkyiy/92Owlt/8UEN+a4TXR1FQetfIpJE8ApdvdVxTg==";
       };
     };
-    "keyv-5.5.3" = {
+    "keyv-5.5.4" = {
       name = "keyv";
       packageName = "keyv";
-      version = "5.5.3";
+      version = "5.5.4";
       src = fetchurl {
-        url = "https://registry.npmjs.org/keyv/-/keyv-5.5.3.tgz";
-        sha512 = "h0Un1ieD+HUrzBH6dJXhod3ifSghk5Hw/2Y4/KHBziPlZecrFyE9YOTPU6eOs0V9pYl8gOs86fkr/KN8lUX39A==";
+        url = "https://registry.npmjs.org/keyv/-/keyv-5.5.4.tgz";
+        sha512 = "eohl3hKTiVyD1ilYdw9T0OiB4hnjef89e3dMYKz+mVKDzj+5IteTseASUsOB+EU9Tf6VNTCjDePcP6wkDGmLKQ==";
       };
     };
     "kleur-3.0.3" = {
@@ -4383,10 +4383,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.0.36";
+    version = "2.0.37";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.36.tgz";
-      sha512 = "xsdZk/OKakTUNVokA6nCYKA/pJ5xwVLr7bTnnqSmIuz8+OaGe+msew543Mo2hHLecOtl8yxi0XnJmviZKpNqTQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.37.tgz";
+      sha512 = "8d4qRGY9/LGqEbYNfno00wg0tprDC0dPNBBZHk8CVvl5vlB8PX2HVwlI6kok3ZNFBMDL+Hqjbp26xXC1hTL6Hw==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4515,9 +4515,9 @@ in
       sources."@types/http-cache-semantics-4.0.4"
       sources."@types/long-4.0.2"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-24.10.0"
+      sources."@types/node-24.10.1"
       sources."@types/normalize-package-data-2.4.4"
-      sources."@types/react-19.2.2"
+      sources."@types/react-19.2.3"
       sources."@types/request-2.48.13"
       sources."@types/tinycolor2-1.4.6"
       sources."@types/tough-cookie-4.0.5"
@@ -4825,7 +4825,7 @@ in
       sources."jsonfile-6.2.0"
       sources."jwa-2.0.1"
       sources."jws-4.0.0"
-      sources."keyv-5.5.3"
+      sources."keyv-5.5.4"
       sources."kleur-3.0.3"
       sources."ky-1.14.0"
       sources."latest-version-9.0.0"
