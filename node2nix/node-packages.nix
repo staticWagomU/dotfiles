@@ -129,13 +129,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.14.0" = {
+    "@google/gemini-cli-core-0.15.0" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.14.0";
+      version = "0.15.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.14.0.tgz";
-        sha512 = "3cvEfroqWb4pFBJBnmFPJwpy62Q4Etod2SICg95O5ZWmwjYo7e0jG/tQ6WsGrGJvDJo4ssSjijuBT/yAGHsrew==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.15.0.tgz";
+        sha512 = "W47aVbA4UrY0RNj5IKp0oeV+Q4oDZOu+7JcL2kFy3r/m6HdaqTd2A5gOjxnsIdrzhewPXqcGHSiAEXe5eVIUgw==";
       };
     };
     "@google/genai-1.16.0" = {
@@ -255,13 +255,13 @@ let
         sha512 = "+LGuAEIC2L7pbvkyAQVWM2Go0dAy+UWEui28g07zNtZsCBhm+gusBK8PNwLJLV5Jay+TyUYuwLIbJdjLLzqEBg==";
       };
     };
-    "@modelcontextprotocol/sdk-1.21.1" = {
+    "@modelcontextprotocol/sdk-1.22.0" = {
       name = "_at_modelcontextprotocol_slash_sdk";
       packageName = "@modelcontextprotocol/sdk";
-      version = "1.21.1";
+      version = "1.22.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@modelcontextprotocol/sdk/-/sdk-1.21.1.tgz";
-        sha512 = "UyLFcJLDvUuZbGnaQqXFT32CpPpGj7VS19roLut6gkQVhb439xUzYWbsUvdI3ZPL+2hnFosuugtYWE0Mcs1rmQ==";
+        url = "https://registry.npmjs.org/@modelcontextprotocol/sdk/-/sdk-1.22.0.tgz";
+        sha512 = "VUpl106XVTCpDmTBil2ehgJZjhyLY2QZikzF8NvTXtLRF1CvO5iEE2UNZdVIUer35vFOwMKYeUGbjJtvPWan3g==";
       };
     };
     "@opentelemetry/api-1.9.0" = {
@@ -2442,13 +2442,13 @@ let
         sha512 = "JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==";
       };
     };
-    "ink-6.4.0" = {
+    "ink-6.4.3" = {
       name = "ink";
       packageName = "ink";
-      version = "6.4.0";
+      version = "6.4.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@jrichman/ink/-/ink-6.4.0.tgz";
-        sha512 = "RXr0+h414DfVRCOo7hLnGS8E83MV8AJ9qGUMR4/uGoqYID865O0p8NJ1+5QcAKzpP6ZotdIll5l9hvzalFYuDQ==";
+        url = "https://registry.npmjs.org/@jrichman/ink/-/ink-6.4.3.tgz";
+        sha512 = "2qm05tjtdia+d1gD7LQjPJyCPJluKDuR5B+FI3ZZXshFoU1igZBFvXs2++x9OT6d9755q+gkRPOdtH8jzx5MiQ==";
       };
     };
     "ink-gradient-3.0.0" = {
@@ -4401,10 +4401,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.14.0";
+    version = "0.15.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.14.0.tgz";
-      sha512 = "JFGBbJ9p4DD0EFqjDIHGUzdDq1zH1rmFs0/yk5woigKEX07c0G1IXdO+o6L4j39qwa3BCLIOpOsNDch7/lMynQ==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.15.0.tgz";
+      sha512 = "U+rSHfREAmuYUlnFtWR7kN+uN3/QLx0cL0NQ52AZDtiItnztKDHtbvfg5kzyRUe2KC63faEGdPYb0SVhxC/eYw==";
     };
     dependencies = [
       sources."@alcalzone/ansi-tokenize-0.2.2"
@@ -4427,7 +4427,7 @@ in
       sources."@google-cloud/precise-date-4.0.0"
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
-      sources."@google/gemini-cli-core-0.14.0"
+      sources."@google/gemini-cli-core-0.15.0"
       sources."@google/genai-1.16.0"
       (
         sources."@grpc/grpc-js-1.14.1"
@@ -4456,7 +4456,7 @@ in
       sources."@kwsites/file-exists-1.1.1"
       sources."@kwsites/promise-deferred-1.1.1"
       sources."@lvce-editor/verror-1.7.0"
-      sources."@modelcontextprotocol/sdk-1.21.1"
+      sources."@modelcontextprotocol/sdk-1.22.0"
       sources."@opentelemetry/api-1.9.0"
       sources."@opentelemetry/api-logs-0.203.0"
       sources."@opentelemetry/context-async-hooks-2.0.1"
@@ -4802,7 +4802,7 @@ in
       sources."index-to-position-1.2.0"
       sources."inherits-2.0.4"
       sources."ini-1.3.8"
-      sources."ink-6.4.0"
+      sources."ink-6.4.3"
       sources."ink-gradient-3.0.0"
       sources."ink-spinner-5.0.0"
       sources."ipaddr.js-1.9.1"
