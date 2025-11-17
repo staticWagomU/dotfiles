@@ -1173,13 +1173,13 @@ let
         sha512 = "+qJyx4xiKra8mZrcwhjMRMUhD5NR1R8esPkzIYxX96JiecFoxAXFuz/GpR3+ev4PE1WamHip78wV0vcmPQtp8w==";
       };
     };
-    "cacheable-request-13.0.14" = {
+    "cacheable-request-13.0.15" = {
       name = "cacheable-request";
       packageName = "cacheable-request";
-      version = "13.0.14";
+      version = "13.0.15";
       src = fetchurl {
-        url = "https://registry.npmjs.org/cacheable-request/-/cacheable-request-13.0.14.tgz";
-        sha512 = "2hjaCKFHLKCpzhNLjmOr5ODlbAypwpZqh3c2UusxzxKfQ899y0SvFHQJRYMYbefOYak3njSNBS5PmqCJjrmaBg==";
+        url = "https://registry.npmjs.org/cacheable-request/-/cacheable-request-13.0.15.tgz";
+        sha512 = "NjiSrjv37X73FmGGU5ec/M83vWQ6q1Ae3BFe+ABfdeeMy4LOMKYTpfEjrBnLedu43clKZtsYbKrHTIQE7vKq+A==";
       };
     };
     "call-bind-apply-helpers-1.0.2" = {
@@ -1434,13 +1434,13 @@ let
         sha512 = "uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==";
       };
     };
-    "csstype-3.2.1" = {
+    "csstype-3.2.2" = {
       name = "csstype";
       packageName = "csstype";
-      version = "3.2.1";
+      version = "3.2.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/csstype/-/csstype-3.2.1.tgz";
-        sha512 = "98XGutrXoh75MlgLihlNxAGbUuFQc7l1cqcnEZlLNKc0UrVdPndgmaDmYTDDh929VS/eqTZV0rozmhu2qqT1/g==";
+        url = "https://registry.npmjs.org/csstype/-/csstype-3.2.2.tgz";
+        sha512 = "D80T+tiqkd/8B0xNlbstWDG4x6aqVfO52+OlSUNIdkTvmNw0uQpJLeos2J/2XvpyidAFuTPmpad+tUxLndwj6g==";
       };
     };
     "debug-4.4.3" = {
@@ -4585,7 +4585,7 @@ in
       sources."bytes-3.1.2"
       sources."cacheable-lookup-7.0.0"
       (
-        sources."cacheable-request-13.0.14"
+        sources."cacheable-request-13.0.15"
         // {
           dependencies = [
             sources."get-stream-9.0.1"
@@ -4642,7 +4642,7 @@ in
       sources."core-util-is-1.0.3"
       sources."cors-2.8.5"
       sources."cross-spawn-7.0.6"
-      sources."csstype-3.2.1"
+      sources."csstype-3.2.2"
       sources."debug-4.4.3"
       sources."decompress-response-10.0.0"
       sources."deep-extend-0.6.0"
