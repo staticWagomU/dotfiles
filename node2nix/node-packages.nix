@@ -129,13 +129,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.15.3" = {
+    "@google/gemini-cli-core-0.15.4" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.15.3";
+      version = "0.15.4";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.15.3.tgz";
-        sha512 = "kCEGfSU4ShM/P1tYzg+4UVNOAaDaQjpKdkOpcY1Rw0EZgLN+E4Hf7bYRySTFxBj2wW231mRxGdxgkPJI0LiLLA==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.15.4.tgz";
+        sha512 = "mzXcjPUlBzC/MHIGvcTGnDayFPnRojYSBLX99RWVjPg1Adjk11QckfQPD1f+jGK9f1acrrqPx9s3W2BItcRXjA==";
       };
     };
     "@google/genai-1.16.0" = {
@@ -1434,13 +1434,13 @@ let
         sha512 = "uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==";
       };
     };
-    "csstype-3.2.2" = {
+    "csstype-3.2.3" = {
       name = "csstype";
       packageName = "csstype";
-      version = "3.2.2";
+      version = "3.2.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/csstype/-/csstype-3.2.2.tgz";
-        sha512 = "D80T+tiqkd/8B0xNlbstWDG4x6aqVfO52+OlSUNIdkTvmNw0uQpJLeos2J/2XvpyidAFuTPmpad+tUxLndwj6g==";
+        url = "https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz";
+        sha512 = "z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==";
       };
     };
     "debug-4.4.3" = {
@@ -1758,13 +1758,13 @@ let
         sha512 = "j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==";
       };
     };
-    "es-toolkit-1.41.0" = {
+    "es-toolkit-1.42.0" = {
       name = "es-toolkit";
       packageName = "es-toolkit";
-      version = "1.41.0";
+      version = "1.42.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/es-toolkit/-/es-toolkit-1.41.0.tgz";
-        sha512 = "bDd3oRmbVgqZCJS6WmeQieOrzpl3URcWBUVDXxOELlUW2FuW+0glPOz1n0KnRie+PdyvUZcXz2sOn00c6pPRIA==";
+        url = "https://registry.npmjs.org/es-toolkit/-/es-toolkit-1.42.0.tgz";
+        sha512 = "SLHIyY7VfDJBM8clz4+T2oquwTQxEzu263AyhVK4jREOAwJ+8eebaa4wM3nlvnAqhDrMm2EsA6hWHaQsMPQ1nA==";
       };
     };
     "escalade-3.2.0" = {
@@ -4401,10 +4401,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.15.3";
+    version = "0.15.4";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.15.3.tgz";
-      sha512 = "Lxc/2WkJiDfpDCm3RkIw4YYkFPUv8TIaZaTXpy4N536HorKYfnSJc66xhQO1OT8rzE8PWyEO94BH3nMundanYQ==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.15.4.tgz";
+      sha512 = "H3i3I3n5jRU55oeXIAcuS68Qi0bPk9m69Ugo//kIxRrU9BovxHxCQvEBOuW56ZzKy5Z+LqUMbNCDOql27xERTA==";
     };
     dependencies = [
       sources."@alcalzone/ansi-tokenize-0.2.2"
@@ -4427,7 +4427,7 @@ in
       sources."@google-cloud/precise-date-4.0.0"
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
-      sources."@google/gemini-cli-core-0.15.3"
+      sources."@google/gemini-cli-core-0.15.4"
       sources."@google/genai-1.16.0"
       (
         sources."@grpc/grpc-js-1.14.1"
@@ -4642,7 +4642,7 @@ in
       sources."core-util-is-1.0.3"
       sources."cors-2.8.5"
       sources."cross-spawn-7.0.6"
-      sources."csstype-3.2.2"
+      sources."csstype-3.2.3"
       sources."debug-4.4.3"
       sources."decompress-response-10.0.0"
       sources."deep-extend-0.6.0"
@@ -4676,7 +4676,7 @@ in
       sources."es-errors-1.3.0"
       sources."es-object-atoms-1.1.1"
       sources."es-set-tostringtag-2.1.0"
-      sources."es-toolkit-1.41.0"
+      sources."es-toolkit-1.42.0"
       sources."escalade-3.2.0"
       sources."escape-html-1.0.3"
       sources."escape-string-regexp-2.0.0"
