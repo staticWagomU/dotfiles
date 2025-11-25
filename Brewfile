@@ -14,6 +14,7 @@ brew "lnav"
 brew "murex"
 brew "ollama", link: false
 brew "portaudio"
+brew "postgresql@16"
 brew "tailscale"
 brew "tbls"
 brew "tmux"
