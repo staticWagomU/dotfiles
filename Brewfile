@@ -10,6 +10,7 @@ brew "docker-compose"
 brew "duckdb"
 brew "eza"
 brew "gcc"
+brew "lilypond"
 brew "lnav"
 brew "murex"
 brew "ollama", link: false
