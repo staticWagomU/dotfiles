@@ -822,13 +822,13 @@ let
         sha512 = "37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==";
       };
     };
-    "@types/react-19.2.6" = {
+    "@types/react-19.2.7" = {
       name = "_at_types_slash_react";
       packageName = "@types/react";
-      version = "19.2.6";
+      version = "19.2.7";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/react/-/react-19.2.6.tgz";
-        sha512 = "p/jUvulfgU7oKtj6Xpk8cA2Y1xKTtICGpJYeJXz2YVO2UcvjQgeRMLDGfDeqeRW2Ta+0QNFwcc8X3GH8SxZz6w==";
+        url = "https://registry.npmjs.org/@types/react/-/react-19.2.7.tgz";
+        sha512 = "MWtvHrGZLFttgeEj28VXHxpmwYbor/ATPYbBfSFZEIRK0ecCFLl2Qo55z52Hss+UV9CRN7trSeq1zbgx7YDWWg==";
       };
     };
     "@types/request-2.48.13" = {
@@ -1092,13 +1092,13 @@ let
         sha512 = "Ko0uX15oIUS7wJ3Rb30Fs6SkVbLmPBAKdlm7q9+ak9bbIeFf0MwuBsQV6z7+X768/cHsfg+WlysDWJcmthjsjQ==";
       };
     };
-    "body-parser-2.2.0" = {
+    "body-parser-2.2.1" = {
       name = "body-parser";
       packageName = "body-parser";
-      version = "2.2.0";
+      version = "2.2.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/body-parser/-/body-parser-2.2.0.tgz";
-        sha512 = "02qvAaxv8tp7fBa/mw1ga98OGm+eCbqzJOKoRt70sLmfEEi+jyBYVTDGfCL/k06/4EMk/z01gCe7HoCH/f2LTg==";
+        url = "https://registry.npmjs.org/body-parser/-/body-parser-2.2.1.tgz";
+        sha512 = "nfDwkulwiZYQIGwxdy0RUmowMhKcFVcYXUU7m4QlKYim1rUtg83xm2yjZ40QjDuc291AJjjeSc9b++AWHSgSHw==";
       };
     };
     "boxen-7.1.1" = {
@@ -4419,10 +4419,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.0.50";
+    version = "2.0.52";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.50.tgz";
-      sha512 = "zT4vSFr3wSY1XuQHTBbtMyxcv87Al25Icrv7ASnpJTgmXR2MoIcs3dyfoQGUzAHnnAymEVSSQxeX+DgnTvOUDg==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.52.tgz";
+      sha512 = "2VSVNf9rRXxLSAhZMSl7Cad1GUb6yMVdByDJzMhwkDPmOD8NO8hn2GtrzcMLGhS+WQ7g3QzcVNOAkARlFxT69A==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4555,7 +4555,7 @@ in
       sources."@types/minimatch-5.1.2"
       sources."@types/node-24.10.1"
       sources."@types/normalize-package-data-2.4.4"
-      sources."@types/react-19.2.6"
+      sources."@types/react-19.2.7"
       sources."@types/request-2.48.13"
       sources."@types/tinycolor2-1.4.6"
       sources."@types/tough-cookie-4.0.5"
@@ -4601,7 +4601,14 @@ in
       sources."auto-bind-5.0.1"
       sources."base64-js-1.5.1"
       sources."bignumber.js-9.3.1"
-      sources."body-parser-2.2.0"
+      (
+        sources."body-parser-2.2.1"
+        // {
+          dependencies = [
+            sources."iconv-lite-0.7.0"
+          ];
+        }
+      )
       (
         sources."boxen-7.1.1"
         // {
