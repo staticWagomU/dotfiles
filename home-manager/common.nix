@@ -31,6 +31,7 @@ in
     peco
     fzf
     tree-sitter
+    lazygit
 
     # font
     hackgen-nf-font
