@@ -129,13 +129,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.19.4" = {
+    "@google/gemini-cli-core-0.20.0" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.19.4";
+      version = "0.20.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.19.4.tgz";
-        sha512 = "yQpIzXZuALLkwP0GW3GmUyZt28tixy8kUyRlx0c023uO6RFCloTvDAJ7vSHgG3I9TwD+62oGqxsasNv/rk3KiA==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.20.0.tgz";
+        sha512 = "spaK3tT1Y0sU9MaRdCC9Z3kYjattwaryME44Um4QNuC66PSSY0gIxDp+NJeRJxBK0GgYG+72ZWhYCY4hQrQH7Q==";
       };
     };
     "@google/genai-1.30.0" = {
@@ -1191,13 +1191,13 @@ let
         sha512 = "+qJyx4xiKra8mZrcwhjMRMUhD5NR1R8esPkzIYxX96JiecFoxAXFuz/GpR3+ev4PE1WamHip78wV0vcmPQtp8w==";
       };
     };
-    "cacheable-request-13.0.16" = {
+    "cacheable-request-13.0.17" = {
       name = "cacheable-request";
       packageName = "cacheable-request";
-      version = "13.0.16";
+      version = "13.0.17";
       src = fetchurl {
-        url = "https://registry.npmjs.org/cacheable-request/-/cacheable-request-13.0.16.tgz";
-        sha512 = "qwRRfUu3bPhPEgKoLAXpYJfm1E2VuHT4DCzl579k2ODyFG+43jv3iMi2wbHlreIZR3+9Sp1lp4fsaXZ9VIlmzA==";
+        url = "https://registry.npmjs.org/cacheable-request/-/cacheable-request-13.0.17.tgz";
+        sha512 = "tQm7K9zC0cJPpbJS8xZ+NUqJ1bZ78jEXc7/G8uqvQTSdEdbmrxdnvxGb7/piCPeICuRY/L82VVt8UA+qpJ8wyw==";
       };
     };
     "call-bind-apply-helpers-1.0.2" = {
@@ -2818,15 +2818,6 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/jws/-/jws-4.0.1.tgz";
         sha512 = "EKI/M/yqPncGUUh44xz0PxSidXFr/+r0pA70+gIYhjv+et7yxM+s29Y+VGDkovRofQem0fs7Uvf4+YmAdyRduA==";
-      };
-    };
-    "keyv-5.5.4" = {
-      name = "keyv";
-      packageName = "keyv";
-      version = "5.5.4";
-      src = fetchurl {
-        url = "https://registry.npmjs.org/keyv/-/keyv-5.5.4.tgz";
-        sha512 = "eohl3hKTiVyD1ilYdw9T0OiB4hnjef89e3dMYKz+mVKDzj+5IteTseASUsOB+EU9Tf6VNTCjDePcP6wkDGmLKQ==";
       };
     };
     "keyv-5.5.5" = {
@@ -4599,10 +4590,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.0.61";
+    version = "2.0.62";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.61.tgz";
-      sha512 = "3Hkb1J6J52uykcH/UnnmkYFkBbvVET0HvF6K3A4J2aZWdzLo9agJber9AM5yePpompjmwDacgBMCn/SoJYsnNQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.62.tgz";
+      sha512 = "sptw099z8rzN9dzeHI5I120uvRi/ARaiWiQlFEnWjrg+1ZHz6cNs4LAb65jSU92sdKgJmfeg5UERa5vWKzF5PA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4617,10 +4608,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.19.4";
+    version = "0.20.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.19.4.tgz";
-      sha512 = "ByvASKvghLm/HoBJXCsjzAWkb4dPW5YRjRb0sIMq2EPrpSXTVA98q7eQaaNArPrx2AmYByz17tFDG0aKiyCaGw==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.20.0.tgz";
+      sha512 = "Yn7NHwuf0lHi+aAsrLmZ+t1Cy5YYlHSca0D8JknJTUDY84baOVinVA9gMrYRqTEa1TqFIm53qB6PTq8qoiM09Q==";
     };
     dependencies = [
       sources."@alcalzone/ansi-tokenize-0.2.2"
@@ -4701,7 +4692,7 @@ in
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
       (
-        sources."@google/gemini-cli-core-0.19.4"
+        sources."@google/gemini-cli-core-0.20.0"
         // {
           dependencies = [
             sources."gaxios-6.7.1"
@@ -4890,14 +4881,7 @@ in
       sources."byte-counter-0.1.0"
       sources."bytes-3.1.2"
       sources."cacheable-lookup-7.0.0"
-      (
-        sources."cacheable-request-13.0.16"
-        // {
-          dependencies = [
-            sources."keyv-5.5.4"
-          ];
-        }
-      )
+      sources."cacheable-request-13.0.17"
       sources."call-bind-apply-helpers-1.0.2"
       sources."call-bound-1.0.4"
       sources."camelcase-7.0.1"
