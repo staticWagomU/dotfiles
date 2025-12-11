@@ -13,6 +13,7 @@ brew "gcc"
 brew "lilypond"
 brew "lnav"
 brew "murex"
+brew "mysql", restart_service: :changed
 brew "ollama", link: false
 brew "portaudio"
 brew "postgresql@16"

@@ -32,6 +32,7 @@ in
     fzf
     tree-sitter
     lazygit
+    tokei
 
     # font
     hackgen-nf-font
