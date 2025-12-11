@@ -154,6 +154,16 @@
               ];
             };
 
+            WSL = mkHomeConfig {
+              username = "wagomu";
+              hostname = "ThinkpadT14Gen3";
+              system = "x86_64-linux";
+              modules = [
+                ./home-manager/common.nix
+                ./home-manager/linux.nix
+              ];
+            };
+
             ThinkpadT14Gen3 = mkHomeConfig {
               username = "wagomu";
               hostname = "ThinkpadT14Gen3";
