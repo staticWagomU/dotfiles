@@ -147,13 +147,13 @@ let
         sha512 = "3MRcgczBFbUat1wIlZoLJ0vCCfXgm7Qxjh59cZi2X08RgWLtm9hKOspzp7TOg1TV2e26/MLxR2GR5yD5GmBV2w==";
       };
     };
-    "@grpc/grpc-js-1.14.2" = {
+    "@grpc/grpc-js-1.14.3" = {
       name = "_at_grpc_slash_grpc-js";
       packageName = "@grpc/grpc-js";
-      version = "1.14.2";
+      version = "1.14.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@grpc/grpc-js/-/grpc-js-1.14.2.tgz";
-        sha512 = "QzVUtEFyu05UNx2xr0fCQmStUO17uVQhGNowtxs00IgTZT6/W2PBLfUkj30s0FKJ29VtTa3ArVNIhNP6akQhqA==";
+        url = "https://registry.npmjs.org/@grpc/grpc-js/-/grpc-js-1.14.3.tgz";
+        sha512 = "Iq8QQQ/7X3Sac15oB6p0FmUg/klxQvXLeileoqrTRGJYLV+/9tubbr9ipz0GKHjmXVsgFPo/+W+2cA8eNcR+XA==";
       };
     };
     "@grpc/proto-loader-0.7.15" = {
@@ -1371,13 +1371,13 @@ let
         sha512 = "LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==";
       };
     };
-    "comment-json-4.4.1" = {
+    "comment-json-4.5.0" = {
       name = "comment-json";
       packageName = "comment-json";
-      version = "4.4.1";
+      version = "4.5.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/comment-json/-/comment-json-4.4.1.tgz";
-        sha512 = "r1To31BQD5060QdkC+Iheai7gHwoSZobzunqkf2/kQ6xIAfJyrKNAFUwdKvkK7Qgu7pVTKQEa7ok7Ed3ycAJgg==";
+        url = "https://registry.npmjs.org/comment-json/-/comment-json-4.5.0.tgz";
+        sha512 = "aKl8CwoMKxVTfAK4dFN4v54AEvuUh9pzmgVIBeK6gBomLwMgceQUKKWHzJdW1u1VQXQuwnJ7nJGWYYMTl5U4yg==";
       };
     };
     "config-chain-1.1.13" = {
@@ -2487,13 +2487,13 @@ let
         sha512 = "4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==";
       };
     };
-    "iconv-lite-0.7.0" = {
+    "iconv-lite-0.7.1" = {
       name = "iconv-lite";
       packageName = "iconv-lite";
-      version = "0.7.0";
+      version = "0.7.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.7.0.tgz";
-        sha512 = "cf6L2Ds3h57VVmkZe+Pn+5APsT7FpqJtEhhieDCvrE2MK5Qk9MyffgQyuxQTm6BChfeZNtcOLHp9IcWRVcIcBQ==";
+        url = "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.7.1.tgz";
+        sha512 = "2Tth85cXwGFHfvRgZWszZSvdo+0Xsqmw8k8ZwxScfcBneNUraK+dxRxRm24nszx80Y0TVio8kKLt5sLE7ZCLlw==";
       };
     };
     "ignore-7.0.5" = {
@@ -3558,13 +3558,13 @@ let
         sha512 = "y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==";
       };
     };
-    "react-19.2.1" = {
+    "react-19.2.3" = {
       name = "react";
       packageName = "react";
-      version = "19.2.1";
+      version = "19.2.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/react/-/react-19.2.1.tgz";
-        sha512 = "DGrYcCWK7tvYMnWh79yrPHt+vdx9tY+1gPZa7nJQtO/p8bLTDaHp4dzwEhQB7pZ4Xe3ok4XKuEPrVuc+wlpkmw==";
+        url = "https://registry.npmjs.org/react/-/react-19.2.3.tgz";
+        sha512 = "Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==";
       };
     };
     "react-devtools-core-6.1.5" = {
@@ -4590,10 +4590,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.0.64";
+    version = "2.0.65";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.64.tgz";
-      sha512 = "ey4f2xNUnYGJk8CNmLk4467m7FxDIfdB7X8ohiDDVciaAwSxW97ymF5c3cdHGazn9dUg1lNPfwSo3KAOWw1Q2A==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.65.tgz";
+      sha512 = "EkA6pjSvnVLE8dafgn6MfOZ/6oGFJ2TDRY5xVHkLpcGzRO7xjzX3AE3eHQQEL5tmJNyDi6unQfAREIOEQDtHFw==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4707,7 +4707,7 @@ in
       )
       sources."@google/genai-1.30.0"
       (
-        sources."@grpc/grpc-js-1.14.2"
+        sources."@grpc/grpc-js-1.14.3"
         // {
           dependencies = [
             sources."@grpc/proto-loader-0.8.0"
@@ -4858,7 +4858,7 @@ in
         sources."body-parser-2.2.1"
         // {
           dependencies = [
-            sources."iconv-lite-0.7.0"
+            sources."iconv-lite-0.7.1"
           ];
         }
       )
@@ -4922,7 +4922,7 @@ in
       sources."color-name-1.1.4"
       sources."combined-stream-1.0.8"
       sources."command-exists-1.2.9"
-      sources."comment-json-4.4.1"
+      sources."comment-json-4.5.0"
       sources."config-chain-1.1.13"
       sources."content-disposition-1.0.1"
       sources."content-type-1.0.5"
@@ -5249,7 +5249,7 @@ in
         sources."raw-body-3.0.2"
         // {
           dependencies = [
-            sources."iconv-lite-0.7.0"
+            sources."iconv-lite-0.7.1"
           ];
         }
       )
@@ -5261,7 +5261,7 @@ in
           ];
         }
       )
-      sources."react-19.2.1"
+      sources."react-19.2.3"
       (
         sources."react-devtools-core-6.1.5"
         // {
