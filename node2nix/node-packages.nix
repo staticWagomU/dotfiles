@@ -129,13 +129,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.20.0" = {
+    "@google/gemini-cli-core-0.20.2" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.20.0";
+      version = "0.20.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.20.0.tgz";
-        sha512 = "spaK3tT1Y0sU9MaRdCC9Z3kYjattwaryME44Um4QNuC66PSSY0gIxDp+NJeRJxBK0GgYG+72ZWhYCY4hQrQH7Q==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.20.2.tgz";
+        sha512 = "Cn7OM14i0PWSesBSbuV3qGcEsrGlRiN54KXzpEea1KaPSAb+iPyd5BHTs1BKEbrBfhQeaLSYvOyjro4h3xsOtw==";
       };
     };
     "@google/genai-1.30.0" = {
@@ -804,13 +804,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-25.0.0" = {
+    "@types/node-25.0.1" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "25.0.0";
+      version = "25.0.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-25.0.0.tgz";
-        sha512 = "rl78HwuZlaDIUSeUKkmogkhebA+8K1Hy7tddZuJ3D0xV8pZSfsYGTsliGUol1JPzu9EKnTxPC4L1fiWouStRew==";
+        url = "https://registry.npmjs.org/@types/node/-/node-25.0.1.tgz";
+        sha512 = "czWPzKIAXucn9PtsttxmumiQ9N0ok9FrBwgRWrwmVLlp86BrMExzvXRLFYRJ+Ex3g6yqj+KuaxfX1JTgV2lpfg==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -1308,13 +1308,13 @@ let
         sha512 = "nPdaFdQ0h/GEigbPClz11D0v/ZJEwxmeVZGeMo3Z5StPtUTkA9o1lD6QwoirYiSDzbcwn2XcjwmCp68W1IS4TA==";
       };
     };
-    "clipboardy-5.0.1" = {
+    "clipboardy-5.0.2" = {
       name = "clipboardy";
       packageName = "clipboardy";
-      version = "5.0.1";
+      version = "5.0.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/clipboardy/-/clipboardy-5.0.1.tgz";
-        sha512 = "pJ5ZDWjOT593Nli4TqlRLy33KomlAPxIFntMFxXrCqJON1cGcGPT5nNFxRxJ9m4HbfrccsYve7XwXjywW6nXVw==";
+        url = "https://registry.npmjs.org/clipboardy/-/clipboardy-5.0.2.tgz";
+        sha512 = "3IG8i8Yfb410yqDlCx9Ve3lYLFN3bD1IkrWcowT1kyTo6y4bwYf2guK9Q8a6zck5vWm7afm6Y61i7BG/Ir3FMA==";
       };
     };
     "cliui-8.0.1" = {
@@ -1794,13 +1794,13 @@ let
         sha512 = "j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==";
       };
     };
-    "es-toolkit-1.42.0" = {
+    "es-toolkit-1.43.0" = {
       name = "es-toolkit";
       packageName = "es-toolkit";
-      version = "1.42.0";
+      version = "1.43.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/es-toolkit/-/es-toolkit-1.42.0.tgz";
-        sha512 = "SLHIyY7VfDJBM8clz4+T2oquwTQxEzu263AyhVK4jREOAwJ+8eebaa4wM3nlvnAqhDrMm2EsA6hWHaQsMPQ1nA==";
+        url = "https://registry.npmjs.org/es-toolkit/-/es-toolkit-1.43.0.tgz";
+        sha512 = "SKCT8AsWvYzBBuUqMk4NPwFlSdqLpJwmy6AP322ERn8W2YLIB6JBXnwMI2Qsh2gfphT3q7EKAxKb23cvFHFwKA==";
       };
     };
     "escalade-3.2.0" = {
@@ -4590,10 +4590,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.0.65";
+    version = "2.0.68";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.65.tgz";
-      sha512 = "EkA6pjSvnVLE8dafgn6MfOZ/6oGFJ2TDRY5xVHkLpcGzRO7xjzX3AE3eHQQEL5tmJNyDi6unQfAREIOEQDtHFw==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.0.68.tgz";
+      sha512 = "eh7af82d7Zo7Vhr499LOaooBP9jCBT4jxjde4M32Pmkhvl9y29KlOG9KuMOTZZ+QAXzwXckX423YuHA1k+Eayw==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4608,10 +4608,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.20.0";
+    version = "0.20.2";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.20.0.tgz";
-      sha512 = "Yn7NHwuf0lHi+aAsrLmZ+t1Cy5YYlHSca0D8JknJTUDY84baOVinVA9gMrYRqTEa1TqFIm53qB6PTq8qoiM09Q==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.20.2.tgz";
+      sha512 = "9+NKpbE6vSZiXBCELenOiJQqk2dnXvKaygaM+0QJoSs6dYyk3xeDLnPj1Wvc/DNXchPEj3hizDGovmGdLIDOtQ==";
     };
     dependencies = [
       sources."@alcalzone/ansi-tokenize-0.2.2"
@@ -4692,7 +4692,7 @@ in
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
       (
-        sources."@google/gemini-cli-core-0.20.0"
+        sources."@google/gemini-cli-core-0.20.2"
         // {
           dependencies = [
             sources."gaxios-6.7.1"
@@ -4805,7 +4805,7 @@ in
       sources."@types/http-cache-semantics-4.0.4"
       sources."@types/long-4.0.2"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-25.0.0"
+      sources."@types/node-25.0.1"
       sources."@types/normalize-package-data-2.4.4"
       sources."@types/react-19.2.7"
       sources."@types/request-2.48.13"
@@ -4902,7 +4902,7 @@ in
           ];
         }
       )
-      sources."clipboardy-5.0.1"
+      sources."clipboardy-5.0.2"
       (
         sources."cliui-8.0.1"
         // {
@@ -4967,7 +4967,7 @@ in
       sources."es-errors-1.3.0"
       sources."es-object-atoms-1.1.1"
       sources."es-set-tostringtag-2.1.0"
-      sources."es-toolkit-1.42.0"
+      sources."es-toolkit-1.43.0"
       sources."escalade-3.2.0"
       sources."escape-html-1.0.3"
       sources."escape-string-regexp-2.0.0"
