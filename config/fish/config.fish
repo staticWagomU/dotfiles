@@ -86,8 +86,8 @@ abbr -a gg ghq get
 alias v='vim'
 alias vi='vim'
 
-alias n='nvim'
-alias nn='NVIM_APPNAME=nvim-writing nvim'
+alias n='NVIM_APPNAME=nvim-kawaii nvim'
+alias nn='nvim'
 alias n2='NVIM_APPNAME=nvim-sub nvim'
 alias n3='NVIM_APPNAME=nvim-darkpowered nvim'
 alias n4='NVIM_APPNAME=nvim-tmp nvim'
