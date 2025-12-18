@@ -33,6 +33,7 @@ in
     tree-sitter
     lazygit
     tokei
+    zoxide
 
     # font
     hackgen-nf-font
