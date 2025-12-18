@@ -80,6 +80,11 @@ in
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotvim/nvim";
   };
 
+  xdg.configFile."nvim-kawaii" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotvim/nvim-kawaii";
+  };
+
+
   xdg.configFile."nvim-sub" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotvim/nvim-sub";
   };
