@@ -63,6 +63,11 @@ in
     interactiveShellInit = builtins.readFile ../config/fish/config.fish;
   };
 
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
   # Fish functions as symlinks
   home.file.".config/fish/functions" = {
     source = ../config/fish/functions;
