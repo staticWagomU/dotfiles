@@ -129,13 +129,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.21.3" = {
+    "@google/gemini-cli-core-0.22.2" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.21.3";
+      version = "0.22.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.21.3.tgz";
-        sha512 = "XvVduP8tsI1r4KTr4x4CzWnFUvW7lf2Cmhp0Qnx9KDH5GAya4jHNbOnE9gOQ0CY18jjtp3kGX6D1ntVJDkp12g==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.22.2.tgz";
+        sha512 = "UrzBV9VTlZa3vliN5REqvYjqoX4zSSJACQDuWIcmIRQgJeBVyIbeiDVZ0wUaVDtm5NMuorqKKQ3m4dzDA4p5tA==";
       };
     };
     "@google/genai-1.30.0" = {
@@ -4635,10 +4635,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.21.3";
+    version = "0.22.2";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.21.3.tgz";
-      sha512 = "zYcqzxLfVCcFGgtsPJ41a8wBtRe+rXRLdy/aK3eaFLbhBzGgiJpTyWQghNUGt3wggOk6H4iu/tpnK+2GpLotkA==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.22.2.tgz";
+      sha512 = "OBMvMuag1QJXOJRUfJ1BD6hAYeaIlVAFik6yVvf2ez+rctd5rWoqs6/KNjKytUuZDV59kuwRo/tv2U6IObAOIg==";
     };
     dependencies = [
       sources."@alcalzone/ansi-tokenize-0.2.2"
@@ -4719,7 +4719,7 @@ in
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
       (
-        sources."@google/gemini-cli-core-0.21.3"
+        sources."@google/gemini-cli-core-0.22.2"
         // {
           dependencies = [
             sources."gaxios-6.7.1"
@@ -5502,6 +5502,7 @@ in
     meta = {
       description = "Gemini CLI";
       homepage = "https://github.com/google-gemini/gemini-cli#readme";
+      license = "Apache-2.0";
     };
     production = true;
     bypassCache = true;
