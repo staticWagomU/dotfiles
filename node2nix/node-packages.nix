@@ -129,13 +129,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.22.2" = {
+    "@google/gemini-cli-core-0.22.3" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.22.2";
+      version = "0.22.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.22.2.tgz";
-        sha512 = "UrzBV9VTlZa3vliN5REqvYjqoX4zSSJACQDuWIcmIRQgJeBVyIbeiDVZ0wUaVDtm5NMuorqKKQ3m4dzDA4p5tA==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.22.3.tgz";
+        sha512 = "QDChgJdtWHazWRMRpkKEV0mH5pGT7/+DlWqQr4hYciH/Sz4AVfjAW/a2Z+diia5lczME/5hqQ9+Oq9tDinq8Qg==";
       };
     };
     "@google/genai-1.30.0" = {
@@ -1380,13 +1380,13 @@ let
         sha512 = "LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==";
       };
     };
-    "comment-json-4.5.0" = {
+    "comment-json-4.5.1" = {
       name = "comment-json";
       packageName = "comment-json";
-      version = "4.5.0";
+      version = "4.5.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/comment-json/-/comment-json-4.5.0.tgz";
-        sha512 = "aKl8CwoMKxVTfAK4dFN4v54AEvuUh9pzmgVIBeK6gBomLwMgceQUKKWHzJdW1u1VQXQuwnJ7nJGWYYMTl5U4yg==";
+        url = "https://registry.npmjs.org/comment-json/-/comment-json-4.5.1.tgz";
+        sha512 = "taEtr3ozUmOB7it68Jll7s0Pwm+aoiHyXKrEC8SEodL4rNpdfDLqa7PfBlrgFoCNNdR8ImL+muti5IGvktJAAg==";
       };
     };
     "config-chain-1.1.13" = {
@@ -2388,13 +2388,13 @@ let
         sha512 = "Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==";
       };
     };
-    "hono-4.11.2" = {
+    "hono-4.11.3" = {
       name = "hono";
       packageName = "hono";
-      version = "4.11.2";
+      version = "4.11.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/hono/-/hono-4.11.2.tgz";
-        sha512 = "o+avdUAD1v94oHkjGBhiMhBV4WBHxhbu0+CUVH78hhphKy/OKQLxtKjkmmNcrMlbYAhAbsM/9F+l3KnYxyD3Lg==";
+        url = "https://registry.npmjs.org/hono/-/hono-4.11.3.tgz";
+        sha512 = "PmQi306+M/ct/m5s66Hrg+adPnkD5jiO6IjA7WhWw0gSBSo1EcRegwuI1deZ+wd5pzCGynCcn2DprnE4/yEV4w==";
       };
     };
     "hosted-git-info-7.0.2" = {
@@ -2865,13 +2865,13 @@ let
         sha512 = "eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==";
       };
     };
-    "ky-1.14.1" = {
+    "ky-1.14.2" = {
       name = "ky";
       packageName = "ky";
-      version = "1.14.1";
+      version = "1.14.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/ky/-/ky-1.14.1.tgz";
-        sha512 = "hYje4L9JCmpEQBtudo+v52X5X8tgWXUYyPcxKSuxQNboqufecl9VMWjGiucAFH060AwPXHZuH+WB2rrqfkmafw==";
+        url = "https://registry.npmjs.org/ky/-/ky-1.14.2.tgz";
+        sha512 = "q3RBbsO5A5zrPhB6CaCS8ZUv+NWCXv6JJT4Em0i264G9W0fdPB8YRfnnEi7Dm7X7omAkBIPojzYJ2D1oHTHqug==";
       };
     };
     "latest-version-9.0.0" = {
@@ -4635,10 +4635,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.22.2";
+    version = "0.22.3";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.22.2.tgz";
-      sha512 = "OBMvMuag1QJXOJRUfJ1BD6hAYeaIlVAFik6yVvf2ez+rctd5rWoqs6/KNjKytUuZDV59kuwRo/tv2U6IObAOIg==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.22.3.tgz";
+      sha512 = "0/dYBD4Qg0vyU9SXLD2mejP7JTQvZuVCUsysmKSp9LH9BGUSD+RB8H8VVnPGJUn0gHtSrEMG+fu7eFYhmKk71w==";
     };
     dependencies = [
       sources."@alcalzone/ansi-tokenize-0.2.2"
@@ -4719,7 +4719,7 @@ in
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
       (
-        sources."@google/gemini-cli-core-0.22.2"
+        sources."@google/gemini-cli-core-0.22.3"
         // {
           dependencies = [
             sources."gaxios-6.7.1"
@@ -4950,7 +4950,7 @@ in
       sources."color-name-1.1.4"
       sources."combined-stream-1.0.8"
       sources."command-exists-1.2.9"
-      sources."comment-json-4.5.0"
+      sources."comment-json-4.5.1"
       sources."config-chain-1.1.13"
       sources."content-disposition-1.0.1"
       sources."content-type-1.0.5"
@@ -5136,7 +5136,7 @@ in
       sources."has-tostringtag-1.0.2"
       sources."hasown-2.0.2"
       sources."highlight.js-11.11.1"
-      sources."hono-4.11.2"
+      sources."hono-4.11.3"
       (
         sources."hosted-git-info-7.0.2"
         // {
@@ -5197,7 +5197,7 @@ in
       sources."jws-4.0.1"
       sources."keyv-5.5.5"
       sources."kleur-3.0.3"
-      sources."ky-1.14.1"
+      sources."ky-1.14.2"
       sources."latest-version-9.0.0"
       sources."leac-0.6.0"
       sources."lodash.camelcase-4.3.0"
