@@ -76,7 +76,7 @@ abbr -a gb git branch
 abbr -a gd git diff
 abbr -a gp git push
 abbr -a gP git pull --autostash
-abbr -a p 'cd (ghq list -p | fzf)'
+abbr -a p 'z (ghq list -p | fzf)'
 
 abbr -a d docker
 abbr -a dc docker compose
