@@ -2514,13 +2514,13 @@ let
         sha512 = "4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==";
       };
     };
-    "iconv-lite-0.7.1" = {
+    "iconv-lite-0.7.2" = {
       name = "iconv-lite";
       packageName = "iconv-lite";
-      version = "0.7.1";
+      version = "0.7.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.7.1.tgz";
-        sha512 = "2Tth85cXwGFHfvRgZWszZSvdo+0Xsqmw8k8ZwxScfcBneNUraK+dxRxRm24nszx80Y0TVio8kKLt5sLE7ZCLlw==";
+        url = "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.7.2.tgz";
+        sha512 = "im9DjEDQ55s9fL4EYzOAv0yMqmMBSZp6G0VvFyTMPKWxiSBHUj9NW/qqLmXUwXrrM7AvqSlTCfvqRb0cM8yYqw==";
       };
     };
     "ignore-7.0.5" = {
@@ -4626,10 +4626,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.1";
+    version = "2.1.2";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.1.tgz";
-      sha512 = "pZReZIcb4ZFNOlZaAeQxm5O0cTrz6YJeb1kpugqbBjIQC6vVavT1nGSw/9Dk+ti+QEMXap0ibXa1T5i4NgXeqg==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.2.tgz";
+      sha512 = "3hrHlSMkEbIjuDPLtwtZJeodP+KYNrPAB1yhnjyfpI522r7ug7jQypfdzUxfoREbxfvsJgKJhmlkOq+K3UJBRw==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4896,7 +4896,7 @@ in
         sources."body-parser-2.2.2"
         // {
           dependencies = [
-            sources."iconv-lite-0.7.1"
+            sources."iconv-lite-0.7.2"
           ];
         }
       )
@@ -5289,7 +5289,7 @@ in
         sources."raw-body-3.0.2"
         // {
           dependencies = [
-            sources."iconv-lite-0.7.1"
+            sources."iconv-lite-0.7.2"
           ];
         }
       )
