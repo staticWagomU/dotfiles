@@ -183,13 +183,13 @@ let
         sha512 = "rc1hOQtjIWGxcxpb9aHAfLpIctjEnsDehj0DAiVfBlmT84uvR0uUtN2hEi/ecvWVjXUGf5qPF4qEgiLOx1YIMQ==";
       };
     };
-    "@hono/node-server-1.19.7" = {
+    "@hono/node-server-1.19.8" = {
       name = "_at_hono_slash_node-server";
       packageName = "@hono/node-server";
-      version = "1.19.7";
+      version = "1.19.8";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@hono/node-server/-/node-server-1.19.7.tgz";
-        sha512 = "vUcD0uauS7EU2caukW8z5lJKtoGMokxNbJtBiwHgpqxEXokaHCBkQUmCHhjFB1VUTWdqj25QoMkMKzgjq+uhrw==";
+        url = "https://registry.npmjs.org/@hono/node-server/-/node-server-1.19.8.tgz";
+        sha512 = "0/g2lIOPzX8f3vzW1ggQgvG5mjtFBDBHFAzI5SFAi2DzSqS9luJwqg9T6O/gKYLi+inS7eNxBeIFkkghIPvrMA==";
       };
     };
     "@iarna/toml-2.2.5" = {
@@ -1209,13 +1209,13 @@ let
         sha512 = "+qJyx4xiKra8mZrcwhjMRMUhD5NR1R8esPkzIYxX96JiecFoxAXFuz/GpR3+ev4PE1WamHip78wV0vcmPQtp8w==";
       };
     };
-    "cacheable-request-13.0.17" = {
+    "cacheable-request-13.0.18" = {
       name = "cacheable-request";
       packageName = "cacheable-request";
-      version = "13.0.17";
+      version = "13.0.18";
       src = fetchurl {
-        url = "https://registry.npmjs.org/cacheable-request/-/cacheable-request-13.0.17.tgz";
-        sha512 = "tQm7K9zC0cJPpbJS8xZ+NUqJ1bZ78jEXc7/G8uqvQTSdEdbmrxdnvxGb7/piCPeICuRY/L82VVt8UA+qpJ8wyw==";
+        url = "https://registry.npmjs.org/cacheable-request/-/cacheable-request-13.0.18.tgz";
+        sha512 = "rFWadDRKJs3s2eYdXlGggnBZKG7MTblkFBB0YllFds+UYnfogDp2wcR6JN97FhRkHTvq59n2vhNoHNZn29dh/Q==";
       };
     };
     "call-bind-apply-helpers-1.0.2" = {
@@ -4626,10 +4626,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.2";
+    version = "2.1.3";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.2.tgz";
-      sha512 = "3hrHlSMkEbIjuDPLtwtZJeodP+KYNrPAB1yhnjyfpI522r7ug7jQypfdzUxfoREbxfvsJgKJhmlkOq+K3UJBRw==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.3.tgz";
+      sha512 = "HZ6krENkT+4DhxsrTPxJMnmMWjL0lY4OuVK/s86ujn3GVmhgkDctOvjEcYMjfi0ZKMrFBRkWmH97Gr0PKiIXpA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4752,7 +4752,7 @@ in
         }
       )
       sources."@grpc/proto-loader-0.7.15"
-      sources."@hono/node-server-1.19.7"
+      sources."@hono/node-server-1.19.8"
       sources."@iarna/toml-2.2.5"
       sources."@isaacs/balanced-match-4.0.1"
       sources."@isaacs/brace-expansion-5.0.0"
@@ -4919,7 +4919,7 @@ in
       sources."byte-counter-0.1.0"
       sources."bytes-3.1.2"
       sources."cacheable-lookup-7.0.0"
-      sources."cacheable-request-13.0.17"
+      sources."cacheable-request-13.0.18"
       sources."call-bind-apply-helpers-1.0.2"
       sources."call-bound-1.0.4"
       sources."camelcase-7.0.1"
