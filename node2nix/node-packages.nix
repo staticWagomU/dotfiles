@@ -822,13 +822,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-25.0.3" = {
+    "@types/node-25.0.6" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "25.0.3";
+      version = "25.0.6";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-25.0.3.tgz";
-        sha512 = "W609buLVRVmeW693xKfzHeIV6nJGGz98uCPfeXI1ELMLXVeKYZ9m15fAMSaUPBHYLGFsVRcMmSCksQOrZV9BYA==";
+        url = "https://registry.npmjs.org/@types/node/-/node-25.0.6.tgz";
+        sha512 = "NNu0sjyNxpoiW3YuVFfNz7mxSQ+S4X2G28uqg2s+CzoqoQjLPsWSbsFFyztIAqt2vb8kfEAsJNepMGPTxFDx3Q==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -840,13 +840,13 @@ let
         sha512 = "37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==";
       };
     };
-    "@types/react-19.2.7" = {
+    "@types/react-19.2.8" = {
       name = "_at_types_slash_react";
       packageName = "@types/react";
-      version = "19.2.7";
+      version = "19.2.8";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/react/-/react-19.2.7.tgz";
-        sha512 = "MWtvHrGZLFttgeEj28VXHxpmwYbor/ATPYbBfSFZEIRK0ecCFLl2Qo55z52Hss+UV9CRN7trSeq1zbgx7YDWWg==";
+        url = "https://registry.npmjs.org/@types/react/-/react-19.2.8.tgz";
+        sha512 = "3MbSL37jEchWZz2p2mjntRZtPt837ij10ApxKfgmXCTuHWagYg7iA5bqPw6C8BMPfwidlvfPI/fxOc42HLhcyg==";
       };
     };
     "@types/request-2.48.13" = {
@@ -4843,9 +4843,9 @@ in
       sources."@types/http-cache-semantics-4.0.4"
       sources."@types/long-4.0.2"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-25.0.3"
+      sources."@types/node-25.0.6"
       sources."@types/normalize-package-data-2.4.4"
-      sources."@types/react-19.2.7"
+      sources."@types/react-19.2.8"
       sources."@types/request-2.48.13"
       sources."@types/tinycolor2-1.4.6"
       sources."@types/tough-cookie-4.0.5"
