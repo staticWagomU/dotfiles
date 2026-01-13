@@ -30,13 +30,13 @@ let
         sha512 = "jsElTJ0sQ4wHRz+C45tfect76BwbTbgkgKByOzpCN9xG61N5V6u/glvg1CsNJhq2xJIFpKHSwG3D2wPPuEYOrQ==";
       };
     };
-    "@babel/code-frame-7.27.1" = {
+    "@babel/code-frame-7.28.6" = {
       name = "_at_babel_slash_code-frame";
       packageName = "@babel/code-frame";
-      version = "7.27.1";
+      version = "7.28.6";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.27.1.tgz";
-        sha512 = "cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==";
+        url = "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.28.6.tgz";
+        sha512 = "JYgintcMjRiCvS8mMECzaEn+m3PfoQiyqukOMCCVQtoJGYJw8j/8LBJEiqkHLkfwCcs74E3pbAUFNg7d9VNJ+Q==";
       };
     };
     "@babel/helper-validator-identifier-7.28.5" = {
@@ -4652,7 +4652,7 @@ in
     dependencies = [
       sources."@agentclientprotocol/sdk-0.11.0"
       sources."@alcalzone/ansi-tokenize-0.2.3"
-      sources."@babel/code-frame-7.27.1"
+      sources."@babel/code-frame-7.28.6"
       sources."@babel/helper-validator-identifier-7.28.5"
       sources."@cfworker/json-schema-4.1.1"
       (
