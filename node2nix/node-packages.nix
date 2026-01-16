@@ -12,13 +12,13 @@
 
 let
   sources = {
-    "@a2a-js/sdk-0.3.7" = {
+    "@a2a-js/sdk-0.3.8" = {
       name = "_at_a2a-js_slash_sdk";
       packageName = "@a2a-js/sdk";
-      version = "0.3.7";
+      version = "0.3.8";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@a2a-js/sdk/-/sdk-0.3.7.tgz";
-        sha512 = "1WBghkOjgiKt4rPNje8jlB9VateVQXqyjlc887bY/H8yM82Hlf0+5JW8zB98BPExKAplI5XqtXVH980J6vqi+w==";
+        url = "https://registry.npmjs.org/@a2a-js/sdk/-/sdk-0.3.8.tgz";
+        sha512 = "vAg6JQbhOnHTzApsB7nGzCQ9r7PuY4GMr8gt88dIR8Wc8G8RSqVTyTmFeMurgzcYrtHYXS3ru2rnDoGj9UDeSw==";
       };
     };
     "@agentclientprotocol/sdk-0.11.0" = {
@@ -831,13 +831,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-25.0.8" = {
+    "@types/node-25.0.9" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "25.0.8";
+      version = "25.0.9";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-25.0.8.tgz";
-        sha512 = "powIePYMmC3ibL0UJ2i2s0WIbq6cg6UyVFQxSCpaPxxzAaziRfimGivjdF943sSGV6RADVbk0Nvlm5P/FB44Zg==";
+        url = "https://registry.npmjs.org/@types/node/-/node-25.0.9.tgz";
+        sha512 = "/rpCXHlCWeqClNBwUhDcusJxXYDjZTyE8v5oTO7WbL8eij2nKhUeU89/6xgjU7N4/Vh3He0BtyhJdQbDyhiXAw==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -4696,7 +4696,7 @@ in
     };
     dependencies = [
       (
-        sources."@a2a-js/sdk-0.3.7"
+        sources."@a2a-js/sdk-0.3.8"
         // {
           dependencies = [
             sources."uuid-11.1.0"
@@ -4909,7 +4909,7 @@ in
       sources."@types/http-cache-semantics-4.0.4"
       sources."@types/long-4.0.2"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-25.0.8"
+      sources."@types/node-25.0.9"
       sources."@types/normalize-package-data-2.4.4"
       sources."@types/react-19.2.8"
       sources."@types/request-2.48.13"
