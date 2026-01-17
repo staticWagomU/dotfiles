@@ -570,13 +570,13 @@ let
         sha512 = "UhdbPF19pMpBtCWYP5lHbTogLWx9N0EBxtdagvkn5YtsAnCBZzL7SjktG+ZmupRgifsHMjwUaCCaVmqGfSADmA==";
       };
     };
-    "@opentelemetry/semantic-conventions-1.38.0" = {
+    "@opentelemetry/semantic-conventions-1.39.0" = {
       name = "_at_opentelemetry_slash_semantic-conventions";
       packageName = "@opentelemetry/semantic-conventions";
-      version = "1.38.0";
+      version = "1.39.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@opentelemetry/semantic-conventions/-/semantic-conventions-1.38.0.tgz";
-        sha512 = "kocjix+/sSggfJhwXqClZ3i9Y/MI0fp7b+g7kCRm6psy2dsf8uApTRclwG18h8Avm7C9+fnt+O36PspJ/OzoWg==";
+        url = "https://registry.npmjs.org/@opentelemetry/semantic-conventions/-/semantic-conventions-1.39.0.tgz";
+        sha512 = "R5R9tb2AXs2IRLNKLBJDynhkfmx7mX0vi8NkhZb3gUkPWHn6HXk5J8iQ/dql0U3ApfWym4kXXmBDRGO+oeOfjg==";
       };
     };
     "@pnpm/config.env-replace-1.1.0" = {
@@ -597,13 +597,13 @@ let
         sha512 = "YcPQ8a0jwYU9bTdJDpXjMi7Brhkr1mXsXrUJvjqM2mQDgkRiz8jFaQGOdaLxgjtUfQgZhKy/O3cG/YwmgKaxLA==";
       };
     };
-    "@pnpm/npm-conf-2.3.1" = {
+    "@pnpm/npm-conf-3.0.2" = {
       name = "_at_pnpm_slash_npm-conf";
       packageName = "@pnpm/npm-conf";
-      version = "2.3.1";
+      version = "3.0.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@pnpm/npm-conf/-/npm-conf-2.3.1.tgz";
-        sha512 = "c83qWb22rNRuB0UaVCI0uRPNRr8Z0FWnEIvT47jiHAmOIUHbBOg5XvV7pM5x+rKn9HRpjxquDbXYSXr3fAKFcw==";
+        url = "https://registry.npmjs.org/@pnpm/npm-conf/-/npm-conf-3.0.2.tgz";
+        sha512 = "h104Kh26rR8tm+a3Qkc5S4VLYint3FE48as7+/5oCEcKR2idC/pF1G6AhIXKI+eHPJa/3J9i5z0Al47IeGHPkA==";
       };
     };
     "@protobufjs/aspromise-1.1.2" = {
@@ -1830,13 +1830,13 @@ let
         sha512 = "j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==";
       };
     };
-    "es-toolkit-1.43.0" = {
+    "es-toolkit-1.44.0" = {
       name = "es-toolkit";
       packageName = "es-toolkit";
-      version = "1.43.0";
+      version = "1.44.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/es-toolkit/-/es-toolkit-1.43.0.tgz";
-        sha512 = "SKCT8AsWvYzBBuUqMk4NPwFlSdqLpJwmy6AP322ERn8W2YLIB6JBXnwMI2Qsh2gfphT3q7EKAxKb23cvFHFwKA==";
+        url = "https://registry.npmjs.org/es-toolkit/-/es-toolkit-1.44.0.tgz";
+        sha512 = "6penXeZalaV88MM3cGkFZZfOoLGWshWWfdy0tWw/RlVVyhvMaWSBTOvXNeiW3e5FwdS5ePW0LGEu17zT139ktg==";
       };
     };
     "escalade-3.2.0" = {
@@ -3684,13 +3684,13 @@ let
         sha512 = "9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==";
       };
     };
-    "registry-auth-token-5.1.0" = {
+    "registry-auth-token-5.1.1" = {
       name = "registry-auth-token";
       packageName = "registry-auth-token";
-      version = "5.1.0";
+      version = "5.1.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/registry-auth-token/-/registry-auth-token-5.1.0.tgz";
-        sha512 = "GdekYuwLXLxMuFTwAPg5UKGLW/UXzQrZvH/Zj791BQif5T05T0RsaLfHc9q3ZOKi7n+BoprPD9mJ0O0k4xzUlw==";
+        url = "https://registry.npmjs.org/registry-auth-token/-/registry-auth-token-5.1.1.tgz";
+        sha512 = "P7B4+jq8DeD2nMsAcdfaqHbssgHtZ7Z5+++a5ask90fvmJ8p5je4mOa+wzu+DB4vQ5tdJV/xywY+UnVFeQLV5Q==";
       };
     };
     "registry-url-6.0.1" = {
@@ -4206,13 +4206,13 @@ let
         sha512 = "ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==";
       };
     };
-    "tar-7.5.2" = {
+    "tar-7.5.3" = {
       name = "tar";
       packageName = "tar";
-      version = "7.5.2";
+      version = "7.5.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/tar/-/tar-7.5.2.tgz";
-        sha512 = "7NyxrTE4Anh8km8iEy7o0QYPs+0JKBTj5ZaqHg6B39erLg0qYXN3BijtShwbsNSvQ+LN75+KV+C4QR/f6Gwnpg==";
+        url = "https://registry.npmjs.org/tar/-/tar-7.5.3.tgz";
+        sha512 = "ENg5JUHUm2rDD7IvKNFGzyElLXNjachNLp6RaGf4+JOgxXHkqA+gq81ZAMCUmtMtqBsoU62lcp6S27g1LCYGGQ==";
       };
     };
     "teeny-request-9.0.0" = {
@@ -4671,10 +4671,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.7";
+    version = "2.1.9";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.7.tgz";
-      sha512 = "nETDGeuXk/pwUpja/dlVY8dch4doTtue381BjaNqWiMPSqpY4PPg8dDbTqAYpbkIi1sgli7met+okAeDsXVTpg==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.9.tgz";
+      sha512 = "ViGb9RoAQ8l+X5e0egsH64xGi7zHvlNgwx/Lwxez24XgfJSYa+cyjpVX7cSDlBfMb1uXXTDNbpo2RicmvP/BKg==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4880,10 +4880,10 @@ in
       sources."@opentelemetry/sdk-node-0.203.0"
       sources."@opentelemetry/sdk-trace-base-2.0.1"
       sources."@opentelemetry/sdk-trace-node-2.0.1"
-      sources."@opentelemetry/semantic-conventions-1.38.0"
+      sources."@opentelemetry/semantic-conventions-1.39.0"
       sources."@pnpm/config.env-replace-1.1.0"
       sources."@pnpm/network.ca-file-1.0.2"
-      sources."@pnpm/npm-conf-2.3.1"
+      sources."@pnpm/npm-conf-3.0.2"
       sources."@protobufjs/aspromise-1.1.2"
       sources."@protobufjs/base64-1.1.2"
       sources."@protobufjs/codegen-2.0.4"
@@ -5064,7 +5064,7 @@ in
       sources."es-errors-1.3.0"
       sources."es-object-atoms-1.1.1"
       sources."es-set-tostringtag-2.1.0"
-      sources."es-toolkit-1.43.0"
+      sources."es-toolkit-1.44.0"
       sources."escalade-3.2.0"
       sources."escape-html-1.0.3"
       sources."escape-string-regexp-2.0.0"
@@ -5379,7 +5379,7 @@ in
         }
       )
       sources."readable-stream-3.6.2"
-      sources."registry-auth-token-5.1.0"
+      sources."registry-auth-token-5.1.1"
       sources."registry-url-6.0.1"
       sources."require-directory-2.1.1"
       sources."require-from-string-2.0.2"
@@ -5458,7 +5458,7 @@ in
       sources."supports-color-7.2.0"
       sources."supports-preserve-symlinks-flag-1.0.0"
       sources."system-architecture-0.1.0"
-      sources."tar-7.5.2"
+      sources."tar-7.5.3"
       (
         sources."teeny-request-9.0.0"
         // {
