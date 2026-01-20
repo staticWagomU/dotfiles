@@ -147,13 +147,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.24.0" = {
+    "@google/gemini-cli-core-0.24.4" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.24.0";
+      version = "0.24.4";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.24.0.tgz";
-        sha512 = "Uf/SHopiGA68N6580gqLuA1+dfB25edh/jN6+5nGCnrCkfHr4KqKx7mSH/NBI0FjGItBsxFSfBNXcBHeAk327g==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.24.4.tgz";
+        sha512 = "SuS6JJLx0Seed6EmZOJZr072RV918jMU7uP7ZOYzZX0HzLB330X+/qD1hgr8m/wCz8FXrw6u6tmzfyefkFSQwQ==";
       };
     };
     "@google/genai-1.30.0" = {
@@ -4206,13 +4206,13 @@ let
         sha512 = "ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==";
       };
     };
-    "tar-7.5.3" = {
+    "tar-7.5.4" = {
       name = "tar";
       packageName = "tar";
-      version = "7.5.3";
+      version = "7.5.4";
       src = fetchurl {
-        url = "https://registry.npmjs.org/tar/-/tar-7.5.3.tgz";
-        sha512 = "ENg5JUHUm2rDD7IvKNFGzyElLXNjachNLp6RaGf4+JOgxXHkqA+gq81ZAMCUmtMtqBsoU62lcp6S27g1LCYGGQ==";
+        url = "https://registry.npmjs.org/tar/-/tar-7.5.4.tgz";
+        sha512 = "AN04xbWGrSTDmVwlI4/GTlIIwMFk/XEv7uL8aa57zuvRy6s4hdBed+lVq2fAZ89XDa7Us3ANXcE3Tvqvja1kTA==";
       };
     };
     "teeny-request-9.0.0" = {
@@ -4689,10 +4689,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.24.0";
+    version = "0.24.4";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.24.0.tgz";
-      sha512 = "LFIKs6AXsxCtpWsk2oWz55OYgHDMgEbPiOue7j0LxmMVX7ZYSclw1FB/XcckqbJwxF4fcQpdZlT+BNzODuPZ7A==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.24.4.tgz";
+      sha512 = "IIfsfQgjkkTKYEaHe++Xgf+kud0PbLnTwChMOdVkIA8mnx4w8a4Slj8/3RMS3ep/3PZCKnT6Tn2A4b11mte2Hw==";
     };
     dependencies = [
       (
@@ -4787,7 +4787,7 @@ in
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
       (
-        sources."@google/gemini-cli-core-0.24.0"
+        sources."@google/gemini-cli-core-0.24.4"
         // {
           dependencies = [
             (
@@ -5458,7 +5458,7 @@ in
       sources."supports-color-7.2.0"
       sources."supports-preserve-symlinks-flag-1.0.0"
       sources."system-architecture-0.1.0"
-      sources."tar-7.5.3"
+      sources."tar-7.5.4"
       (
         sources."teeny-request-9.0.0"
         // {
