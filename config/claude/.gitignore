@@ -1,0 +1,28 @@
+# Cache and temporary files
+.claude/
+cache/
+debug/
+file-history/
+paste-cache/
+plans/
+session-env/
+shell-snapshots/
+statsig/
+telemetry/
+templates/
+todos/
+
+# History and stats
+history.jsonl
+stats-cache.json
+
+# Plugin runtime files
+plugins/cache/
+plugins/marketplaces/
+plugins/repos/
+plugins/install-counts-cache.json
+plugins/installed_plugins.json
+plugins/known_marketplaces.json
+
+# Project-specific settings (managed per-project)
+projects/
