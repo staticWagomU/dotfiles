@@ -29,6 +29,8 @@ fish_add_path ~/.nix-profile/bin
 
 fish_add_path ~/.bun/bin
 
+fish_add_path ~/.local/bin
+
 if test (uname -s) = "Darwin"
   set -l paths \
     /opt/homebrew/bin \
