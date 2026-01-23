@@ -156,13 +156,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.25.0" = {
+    "@google/gemini-cli-core-0.25.1" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.25.0";
+      version = "0.25.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.25.0.tgz";
-        sha512 = "wgy6RuGh6jdDpKyAFKbltS5/IySLm0F2FMMUxMh6gaCs9Ak8LrJtxnDblILoW543ZU61ya8+5hhXrEOoqXgMEQ==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.25.1.tgz";
+        sha512 = "z7VMKQFZB++r5eW3jALqqPnhWipZhGboKKoxFW0f4g0GlvmGFs/Mq8XRw5MXDLZMIj+keBRA0MbCsvTsuaSoeQ==";
       };
     };
     "@google/genai-1.30.0" = {
@@ -1488,13 +1488,13 @@ let
         sha512 = "ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==";
       };
     };
-    "cors-2.8.5" = {
+    "cors-2.8.6" = {
       name = "cors";
       packageName = "cors";
-      version = "2.8.5";
+      version = "2.8.6";
       src = fetchurl {
-        url = "https://registry.npmjs.org/cors/-/cors-2.8.5.tgz";
-        sha512 = "KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==";
+        url = "https://registry.npmjs.org/cors/-/cors-2.8.6.tgz";
+        sha512 = "tJtZBBHA6vjIAaF6EnIaq6laBBP9aq/Y3ouVJjEfoHbRBcHBAHYcMh/w8LDrk2PvIMMq8gmopa5D4V8RmbrxGw==";
       };
     };
     "cross-spawn-7.0.6" = {
@@ -2424,13 +2424,13 @@ let
         sha512 = "Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==";
       };
     };
-    "hono-4.11.4" = {
+    "hono-4.11.5" = {
       name = "hono";
       packageName = "hono";
-      version = "4.11.4";
+      version = "4.11.5";
       src = fetchurl {
-        url = "https://registry.npmjs.org/hono/-/hono-4.11.4.tgz";
-        sha512 = "U7tt8JsyrxSRKspfhtLET79pU8K+tInj5QZXs1jSugO1Vq5dFj3kmZsRldo29mTBfcjDRVRXrEZ6LS63Cog9ZA==";
+        url = "https://registry.npmjs.org/hono/-/hono-4.11.5.tgz";
+        sha512 = "WemPi9/WfyMwZs+ZUXdiwcCh9Y+m7L+8vki9MzDw3jJ+W9Lc+12HGsd368Qc1vZi1xwW8BWMMsnK5efYKPdt4g==";
       };
     };
     "hosted-git-info-7.0.2" = {
@@ -4689,10 +4689,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.15";
+    version = "2.1.17";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.15.tgz";
-      sha512 = "5bCGfN0w3dJrGqa08eRxxISK8SiL6O5DjSIeR2Aqkp88LXJFJnGIwoDJWk7I0IYyQE7J+rnjBGhL+TbMzv2MZA==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.17.tgz";
+      sha512 = "WA8+vW2NeNkj/H47vC22nTUVw755w9RTrhu59BaawwWWb85k8+yO4GhVlLjeP0+w9cyCQWj0NzyR5x482e8HGw==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4707,10 +4707,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.25.0";
+    version = "0.25.1";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.25.0.tgz";
-      sha512 = "MJUYjp1P1WgRVNfnlIKxpXBOj24Xqj/Nsbf47OxeGlZoaAqmeXZE660uRS30OAf4wvym81OC599skRGzYfNzzg==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.25.1.tgz";
+      sha512 = "qC5a/Ni+PYDK95NEBIhGqq1eFIKIuw7v0BNTqd6ahZnH2D4dwR0OKkmEGpqXaxQ11VQ33tZyg7b+87oZibRTZw==";
     };
     dependencies = [
       (
@@ -4805,7 +4805,7 @@ in
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
       (
-        sources."@google/gemini-cli-core-0.25.0"
+        sources."@google/gemini-cli-core-0.25.1"
         // {
           dependencies = [
             (
@@ -5031,7 +5031,7 @@ in
       sources."cookie-0.7.2"
       sources."cookie-signature-1.2.2"
       sources."core-util-is-1.0.3"
-      sources."cors-2.8.5"
+      sources."cors-2.8.6"
       sources."cross-spawn-7.0.6"
       sources."csstype-3.2.3"
       sources."data-uri-to-buffer-4.0.1"
@@ -5220,7 +5220,7 @@ in
       sources."has-tostringtag-1.0.2"
       sources."hasown-2.0.2"
       sources."highlight.js-11.11.1"
-      sources."hono-4.11.4"
+      sources."hono-4.11.5"
       (
         sources."hosted-git-info-7.0.2"
         // {
