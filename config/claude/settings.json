@@ -59,6 +59,67 @@
             "command": "terminal-notifier -message 'ClaudeCodeのタスクが完了しました！' -title 'Claude Code' -sound Blow"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "ccm hook Stop"
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "ccm hook UserPromptSubmit"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "ccm hook PreToolUse"
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "ccm hook PostToolUse"
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CCM_DEBUG=1 ccm hook Notification 2>> ~/.claude-monitor/debug.log"
+          }
+        ],
+        "matcher": ""
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "ccm hook Notification"
+          }
+        ],
+        "matcher": ""
       }
     ]
   },
@@ -67,6 +128,9 @@
     "command": "~/.claude/statusline.sh",
     "padding": 0
   },
+  "enabledPlugins": {
+    "agentic-scrum@agentic-scrum": true
+  },
   "outputStyle": "Explanatory",
   "alwaysThinkingEnabled": true,
   "autoCompactEnabled": false,
@@ -74,8 +138,5 @@
   "feedbackSurveyState": {
     "lastShownTime": 1754089004345
   },
-  "theme": "dark",
-  "enabledPlugins": {
-    "agentic-scrum@agentic-scrum": true
-  }
+  "theme": "dark"
 }
