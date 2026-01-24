@@ -156,13 +156,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.25.1" = {
+    "@google/gemini-cli-core-0.25.2" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.25.1";
+      version = "0.25.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.25.1.tgz";
-        sha512 = "z7VMKQFZB++r5eW3jALqqPnhWipZhGboKKoxFW0f4g0GlvmGFs/Mq8XRw5MXDLZMIj+keBRA0MbCsvTsuaSoeQ==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.25.2.tgz";
+        sha512 = "ah/xszZSC0Eycb4wl541pAFyfKc2CsX6kLExReqGmml2YA3ts/2NQ/oB666D+odiE7Ved6cYdwu/k3i0izDWNA==";
       };
     };
     "@google/genai-1.30.0" = {
@@ -4689,10 +4689,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.17";
+    version = "2.1.19";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.17.tgz";
-      sha512 = "WA8+vW2NeNkj/H47vC22nTUVw755w9RTrhu59BaawwWWb85k8+yO4GhVlLjeP0+w9cyCQWj0NzyR5x482e8HGw==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.19.tgz";
+      sha512 = "/bUlQuX/6nKr1Zqfi/9Q6xf7WonUBk72ZfKKENU4WVrIFWqTv/0JJsoW/dHol9QBNHvyfKIeBbYu4avHNRAnuQ==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4707,10 +4707,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.25.1";
+    version = "0.25.2";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.25.1.tgz";
-      sha512 = "qC5a/Ni+PYDK95NEBIhGqq1eFIKIuw7v0BNTqd6ahZnH2D4dwR0OKkmEGpqXaxQ11VQ33tZyg7b+87oZibRTZw==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.25.2.tgz";
+      sha512 = "qz3krT7W1+NsQr18tl3KurFzpmXOuP3AiVWsuc8EFZvQebzGPJ5TBP+PF7t3ad4BBGygQgw/OLopnTdIeJWZLQ==";
     };
     dependencies = [
       (
@@ -4805,7 +4805,7 @@ in
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
       (
-        sources."@google/gemini-cli-core-0.25.1"
+        sources."@google/gemini-cli-core-0.25.2"
         // {
           dependencies = [
             (
