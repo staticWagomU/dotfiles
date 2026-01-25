@@ -173,6 +173,16 @@
                 # .home-manager/linux.nix
               ];
             };
+
+            NucBox3 = mkHomeConfig {
+              username = "wagomu";
+              hostname = "NucBox3";
+              system = "x86_64-linux";
+              modules = [
+                ./home-manager/common.nix
+                # .home-manager/linux.nix
+              ];
+            };
           };
 
         };
