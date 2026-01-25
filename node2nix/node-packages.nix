@@ -4215,13 +4215,13 @@ let
         sha512 = "ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==";
       };
     };
-    "systeminformation-5.30.5" = {
+    "systeminformation-5.30.6" = {
       name = "systeminformation";
       packageName = "systeminformation";
-      version = "5.30.5";
+      version = "5.30.6";
       src = fetchurl {
-        url = "https://registry.npmjs.org/systeminformation/-/systeminformation-5.30.5.tgz";
-        sha512 = "DpWmpCckhwR3hG+6udb6/aQB7PpiqVnvSljrjbKxNSvTRsGsg7NVE3/vouoYf96xgwMxXFKcS4Ux+cnkFwYM7A==";
+        url = "https://registry.npmjs.org/systeminformation/-/systeminformation-5.30.6.tgz";
+        sha512 = "LEIyK1aEv5P3BhAPW3swdlIyCihxwEq/Gki+kcONieU4PIeRCSLDuGkk0Va/56PSBgjVgEksOM88dmY6YqOyfQ==";
       };
     };
     "tar-7.5.6" = {
@@ -4323,13 +4323,13 @@ let
         sha512 = "OZs6gsjF4vMp32qrCbiVSkrFmXtG/AZhY3t0iAMrMBiAZyV9oALtXO8hsrHbMXF9x6L3grlFuwW2oAz7cav+Gw==";
       };
     };
-    "undici-7.19.0" = {
+    "undici-7.19.1" = {
       name = "undici";
       packageName = "undici";
-      version = "7.19.0";
+      version = "7.19.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/undici/-/undici-7.19.0.tgz";
-        sha512 = "Heho1hJD81YChi+uS2RkSjcVO+EQLmLSyUlHyp7Y/wFbxQaGb4WXVKD073JytrjXJVkSZVzoE2MCSOKugFGtOQ==";
+        url = "https://registry.npmjs.org/undici/-/undici-7.19.1.tgz";
+        sha512 = "Gpq0iNm5M6cQWlyHQv9MV+uOj1jWk7LpkoE5vSp/7zjb4zMdAcUD+VL5y0nH4p9EbUklq00eVIIX/XcDHzu5xg==";
       };
     };
     "undici-types-7.16.0" = {
@@ -5470,7 +5470,7 @@ in
       sources."supports-color-7.2.0"
       sources."supports-preserve-symlinks-flag-1.0.0"
       sources."system-architecture-0.1.0"
-      sources."systeminformation-5.30.5"
+      sources."systeminformation-5.30.6"
       sources."tar-7.5.6"
       (
         sources."teeny-request-9.0.0"
@@ -5491,7 +5491,7 @@ in
       sources."tree-sitter-bash-0.25.1"
       sources."type-fest-4.41.0"
       sources."type-is-2.0.1"
-      sources."undici-7.19.0"
+      sources."undici-7.19.1"
       sources."undici-types-7.16.0"
       sources."unicorn-magic-0.3.0"
       sources."universalify-2.0.1"
