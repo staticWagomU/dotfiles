@@ -180,7 +180,7 @@
               system = "x86_64-linux";
               modules = [
                 ./home-manager/common.nix
-                # .home-manager/linux.nix
+                ./home-manager/linux.nix
               ];
             };
           };
