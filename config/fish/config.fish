@@ -198,3 +198,5 @@ if test "$ZENO_LOADED" = "1"
     bind \t zeno-completion
     bind \cx\x20 zeno-insert-space
 end
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"
