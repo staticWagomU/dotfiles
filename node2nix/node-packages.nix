@@ -1353,13 +1353,13 @@ let
         sha512 = "nPdaFdQ0h/GEigbPClz11D0v/ZJEwxmeVZGeMo3Z5StPtUTkA9o1lD6QwoirYiSDzbcwn2XcjwmCp68W1IS4TA==";
       };
     };
-    "clipboardy-5.0.2" = {
+    "clipboardy-5.1.0" = {
       name = "clipboardy";
       packageName = "clipboardy";
-      version = "5.0.2";
+      version = "5.1.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/clipboardy/-/clipboardy-5.0.2.tgz";
-        sha512 = "3IG8i8Yfb410yqDlCx9Ve3lYLFN3bD1IkrWcowT1kyTo6y4bwYf2guK9Q8a6zck5vWm7afm6Y61i7BG/Ir3FMA==";
+        url = "https://registry.npmjs.org/clipboardy/-/clipboardy-5.1.0.tgz";
+        sha512 = "w8Faf7egtk+6eZ+QJSYhCc8W5GKKd36Et6Qtl+c/dOFtPSjgCkJn9+QHr7D3EbdAO6rJb8I76sizRQAJpwOoLg==";
       };
     };
     "cliui-8.0.1" = {
@@ -2910,13 +2910,13 @@ let
         sha512 = "eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==";
       };
     };
-    "ky-1.14.2" = {
+    "ky-1.14.3" = {
       name = "ky";
       packageName = "ky";
-      version = "1.14.2";
+      version = "1.14.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/ky/-/ky-1.14.2.tgz";
-        sha512 = "q3RBbsO5A5zrPhB6CaCS8ZUv+NWCXv6JJT4Em0i264G9W0fdPB8YRfnnEi7Dm7X7omAkBIPojzYJ2D1oHTHqug==";
+        url = "https://registry.npmjs.org/ky/-/ky-1.14.3.tgz";
+        sha512 = "9zy9lkjac+TR1c2tG+mkNSVlyOpInnWdSMiue4F+kq8TwJSgv6o8jhLRg8Ho6SnZ9wOYUq/yozts9qQCfk7bIw==";
       };
     };
     "latest-version-9.0.0" = {
@@ -3502,6 +3502,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/pkce-challenge/-/pkce-challenge-5.0.1.tgz";
         sha512 = "wQ0b/W4Fr01qtpHlqSqspcj3EhBvimsdh0KlHhH8HRZnMsEa0ea2fTULOXOS9ccQr3om+GcGRk4e+isrZWV8qQ==";
+      };
+    };
+    "powershell-utils-0.2.0" = {
+      name = "powershell-utils";
+      packageName = "powershell-utils";
+      version = "0.2.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/powershell-utils/-/powershell-utils-0.2.0.tgz";
+        sha512 = "ZlsFlG7MtSFCoc5xreOvBAozCJ6Pf06opgJjh9ONEv418xpZSAzNjstD36C6+JwOnfSqOW/9uDkqKjezTdxZhw==";
       };
     };
     "pretty-ms-9.3.0" = {
@@ -5003,7 +5012,7 @@ in
           ];
         }
       )
-      sources."clipboardy-5.0.2"
+      sources."clipboardy-5.1.0"
       (
         sources."cliui-8.0.1"
         // {
@@ -5282,7 +5291,7 @@ in
       sources."jws-4.0.1"
       sources."keyv-5.6.0"
       sources."kleur-3.0.3"
-      sources."ky-1.14.2"
+      sources."ky-1.14.3"
       sources."latest-version-9.0.0"
       sources."leac-0.6.0"
       sources."lodash.camelcase-4.3.0"
@@ -5348,6 +5357,7 @@ in
       sources."picocolors-1.1.1"
       sources."picomatch-4.0.3"
       sources."pkce-challenge-5.0.1"
+      sources."powershell-utils-0.2.0"
       sources."pretty-ms-9.3.0"
       sources."prompts-2.4.2"
       sources."prop-types-15.8.1"
