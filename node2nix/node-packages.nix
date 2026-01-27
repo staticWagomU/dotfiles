@@ -2424,13 +2424,13 @@ let
         sha512 = "Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==";
       };
     };
-    "hono-4.11.5" = {
+    "hono-4.11.6" = {
       name = "hono";
       packageName = "hono";
-      version = "4.11.5";
+      version = "4.11.6";
       src = fetchurl {
-        url = "https://registry.npmjs.org/hono/-/hono-4.11.5.tgz";
-        sha512 = "WemPi9/WfyMwZs+ZUXdiwcCh9Y+m7L+8vki9MzDw3jJ+W9Lc+12HGsd368Qc1vZi1xwW8BWMMsnK5efYKPdt4g==";
+        url = "https://registry.npmjs.org/hono/-/hono-4.11.6.tgz";
+        sha512 = "ofIiiHyl34SV6AuhE3YT2mhO5HRWokce+eUYE82TsP6z0/H3JeJcjVWEMSIAiw2QkjDOEpES/lYsg8eEbsLtdw==";
       };
     };
     "hosted-git-info-7.0.2" = {
@@ -2991,13 +2991,13 @@ let
         sha512 = "JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==";
       };
     };
-    "lru-cache-11.2.4" = {
+    "lru-cache-11.2.5" = {
       name = "lru-cache";
       packageName = "lru-cache";
-      version = "11.2.4";
+      version = "11.2.5";
       src = fetchurl {
-        url = "https://registry.npmjs.org/lru-cache/-/lru-cache-11.2.4.tgz";
-        sha512 = "B5Y16Jr9LB9dHVkh6ZevG+vAbOsNOYCX+sXvFWFu7B3Iz5mijW3zdbMyhsh8ANd2mSWBYdJgnqi+mL7/LrOPYg==";
+        url = "https://registry.npmjs.org/lru-cache/-/lru-cache-11.2.5.tgz";
+        sha512 = "vFrFJkWtJvJnD5hg+hJvVE8Lh/TcMzKnTgCWmtBipwI5yLX/iX+5UB2tfuyODF5E7k9xEzMdYgGqaSb1c0c5Yw==";
       };
     };
     "marked-15.0.12" = {
@@ -3639,13 +3639,13 @@ let
         sha512 = "y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==";
       };
     };
-    "react-19.2.3" = {
+    "react-19.2.4" = {
       name = "react";
       packageName = "react";
-      version = "19.2.3";
+      version = "19.2.4";
       src = fetchurl {
-        url = "https://registry.npmjs.org/react/-/react-19.2.3.tgz";
-        sha512 = "Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==";
+        url = "https://registry.npmjs.org/react/-/react-19.2.4.tgz";
+        sha512 = "9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==";
       };
     };
     "react-devtools-core-6.1.5" = {
@@ -5229,7 +5229,7 @@ in
       sources."has-tostringtag-1.0.2"
       sources."hasown-2.0.2"
       sources."highlight.js-11.11.1"
-      sources."hono-4.11.5"
+      sources."hono-4.11.6"
       (
         sources."hosted-git-info-7.0.2"
         // {
@@ -5299,7 +5299,7 @@ in
       sources."loose-envify-1.4.0"
       sources."lowercase-keys-3.0.0"
       sources."lowlight-3.3.0"
-      sources."lru-cache-11.2.4"
+      sources."lru-cache-11.2.5"
       sources."marked-15.0.12"
       sources."math-intrinsics-1.1.0"
       sources."media-typer-1.1.0"
@@ -5379,7 +5379,7 @@ in
           ];
         }
       )
-      sources."react-19.2.3"
+      sources."react-19.2.4"
       (
         sources."react-devtools-core-6.1.5"
         // {
