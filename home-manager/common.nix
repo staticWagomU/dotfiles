@@ -35,6 +35,7 @@ in
     tokei
     zoxide
     fd
+    yq
 
     # font
     hackgen-nf-font
@@ -101,7 +102,7 @@ in
   };
 
   # Git config as a copy (not symlink)
-  home.file.".gitconfig".text = builtins.readFile ../config/.gitconfig_other;
+  # home.file.".gitconfig".text = builtins.readFile ../config/.gitconfig_other;
 
   # Claude Code config (individual files, not the whole directory)
   home.file.".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/CLAUDE.md";
