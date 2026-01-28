@@ -57,6 +57,31 @@ config.keys = {
 	{ key = "L",   mods = "SHIFT|CTRL", action = act.AdjustPaneSize { 'Right', 5 } },
 
 	{ key = "Enter", mods = "SHIFT",    action = wezterm.action { SendString = "\x1b\r" } },
+
+  -- 将軍ワークスペースに切り替え
+  {
+    key = 's',
+    mods = 'CTRL|SHIFT|ALT',
+    action = wezterm.action.SwitchToWorkspace {
+      name = 'shogun',
+    },
+  },
+  -- 家老・足軽ワークスペースに切り替え
+  {
+    key = 'm',
+    mods = 'CTRL|SHIFT|ALT',
+    action = wezterm.action.SwitchToWorkspace {
+      name = 'multiagent',
+    },
+  },
+  -- ワークスペース一覧表示
+  {
+    key = 'w',
+    mods = 'CTRL|SHIFT|ALT',
+    action = wezterm.action.ShowLauncherArgs {
+      flags = 'FUZZY|WORKSPACES',
+    },
+  },
 }
 config.window_padding = {
 	left = "5px",
@@ -82,4 +107,11 @@ config.launch_menu = {
 		args = { "ssh", "minipc-xubuntu.tail01a12.ts.net" }
 	},
 }
+config.unix_domains = {
+  {
+    name = 'shogun-mux',
+  },
+}
+config.default_workspace = "default"
+
 return config
