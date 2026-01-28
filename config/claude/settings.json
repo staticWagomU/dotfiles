@@ -17,7 +17,9 @@
     "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1",
     "DISABLE_TELEMETRY": "1",
     "MAX_MCP_OUTPUT_TOKENS": "50000",
-    "MCP_TOOL_TIMEOUT": "120000"
+    "MCP_TOOL_TIMEOUT": "120000",
+    "CLAUDE_CODE_MONITOR_GHOSTTY_ASKED": "1",
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
@@ -61,13 +63,13 @@
         ]
       },
       {
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
             "command": "ccm hook Stop"
           }
-        ],
-        "matcher": ""
+        ]
       }
     ],
     "UserPromptSubmit": [
@@ -82,44 +84,44 @@
     ],
     "PreToolUse": [
       {
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
             "command": "ccm hook PreToolUse"
           }
-        ],
-        "matcher": ""
+        ]
       }
     ],
     "PostToolUse": [
       {
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
             "command": "ccm hook PostToolUse"
           }
-        ],
-        "matcher": ""
+        ]
       }
     ],
     "Notification": [
       {
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
             "command": "CCM_DEBUG=1 ccm hook Notification 2>> ~/.claude-monitor/debug.log"
           }
-        ],
-        "matcher": ""
+        ]
       },
       {
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
             "command": "ccm hook Notification"
           }
-        ],
-        "matcher": ""
+        ]
       }
     ]
   },
@@ -129,7 +131,8 @@
     "padding": 0
   },
   "enabledPlugins": {
-    "agentic-scrum@agentic-scrum": true
+    "agentic-scrum@agentic-scrum": true,
+    "claude-mem@thedotmack": true
   },
   "outputStyle": "Explanatory",
   "alwaysThinkingEnabled": true,
