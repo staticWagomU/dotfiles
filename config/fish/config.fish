@@ -31,6 +31,8 @@ fish_add_path ~/.bun/bin
 
 fish_add_path ~/.local/bin
 
+fish_add_path ~/dotfiles/scripts
+
 if test (uname -s) = "Darwin"
   set -l paths \
     /opt/homebrew/bin \
@@ -199,4 +201,6 @@ if test "$ZENO_LOADED" = "1"
     bind \cx\x20 zeno-insert-space
 end
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"
+if test (uname) = "Linux"; and test -x /home/linuxbrew/.linuxbrew/bin/brew
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"
+end
