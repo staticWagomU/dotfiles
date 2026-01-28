@@ -813,13 +813,13 @@ let
         sha512 = "pUY3cKH/Nm2yYrEmDlPR1mR7yszjGx4DrwPjQ702C4/D5CwHuZTgZdIdwPkRbcuhs7BAh2L5rg3CL5cbRiGTCQ==";
       };
     };
-    "@types/http-cache-semantics-4.0.4" = {
+    "@types/http-cache-semantics-4.2.0" = {
       name = "_at_types_slash_http-cache-semantics";
       packageName = "@types/http-cache-semantics";
-      version = "4.0.4";
+      version = "4.2.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/http-cache-semantics/-/http-cache-semantics-4.0.4.tgz";
-        sha512 = "1m0bIFVc7eJWyve9S0RnuRgcQqF/Xd5QsUZAZeQFr1Q3/p9JWoQQEqmVy+DPTNpGXwhgIetAoYF8JSc33q29QA==";
+        url = "https://registry.npmjs.org/@types/http-cache-semantics/-/http-cache-semantics-4.2.0.tgz";
+        sha512 = "L3LgimLHXtGkWikKnsPg0/VFx9OGZaC+eN1u4r+OB1XRqH3meBIAVC2zr1WdMH+RHmnRkqliQAOHNJ/E0j/e0Q==";
       };
     };
     "@types/long-4.0.2" = {
@@ -858,13 +858,13 @@ let
         sha512 = "37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==";
       };
     };
-    "@types/react-19.2.9" = {
+    "@types/react-19.2.10" = {
       name = "_at_types_slash_react";
       packageName = "@types/react";
-      version = "19.2.9";
+      version = "19.2.10";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/react/-/react-19.2.9.tgz";
-        sha512 = "Lpo8kgb/igvMIPeNV2rsYKTgaORYdO1XGVZ4Qz3akwOj0ySGYMPlQWa8BaLn0G63D1aSaAQ5ldR06wCpChQCjA==";
+        url = "https://registry.npmjs.org/@types/react/-/react-19.2.10.tgz";
+        sha512 = "WPigyYuGhgZ/cTPRXB2EwUw+XvsRA3GqHlsP4qteqrnnjDrApbS7MxcGr/hke5iUoeB7E/gQtrs9I37zAJ0Vjw==";
       };
     };
     "@types/request-2.48.13" = {
@@ -2424,13 +2424,13 @@ let
         sha512 = "Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==";
       };
     };
-    "hono-4.11.6" = {
+    "hono-4.11.7" = {
       name = "hono";
       packageName = "hono";
-      version = "4.11.6";
+      version = "4.11.7";
       src = fetchurl {
-        url = "https://registry.npmjs.org/hono/-/hono-4.11.6.tgz";
-        sha512 = "ofIiiHyl34SV6AuhE3YT2mhO5HRWokce+eUYE82TsP6z0/H3JeJcjVWEMSIAiw2QkjDOEpES/lYsg8eEbsLtdw==";
+        url = "https://registry.npmjs.org/hono/-/hono-4.11.7.tgz";
+        sha512 = "l7qMiNee7t82bH3SeyUCt9UF15EVmaBvsppY2zQtrbIhl/yzBTny+YUxsVjSjQ6gaqaeVtZmGocom8TzBlA4Yw==";
       };
     };
     "hosted-git-info-7.0.2" = {
@@ -4233,13 +4233,13 @@ let
         sha512 = "LEIyK1aEv5P3BhAPW3swdlIyCihxwEq/Gki+kcONieU4PIeRCSLDuGkk0Va/56PSBgjVgEksOM88dmY6YqOyfQ==";
       };
     };
-    "tar-7.5.6" = {
+    "tar-7.5.7" = {
       name = "tar";
       packageName = "tar";
-      version = "7.5.6";
+      version = "7.5.7";
       src = fetchurl {
-        url = "https://registry.npmjs.org/tar/-/tar-7.5.6.tgz";
-        sha512 = "xqUeu2JAIJpXyvskvU3uvQW8PAmHrtXp2KDuMJwQqW8Sqq0CaZBAQ+dKS3RBXVhU4wC5NjAdKrmh84241gO9cA==";
+        url = "https://registry.npmjs.org/tar/-/tar-7.5.7.tgz";
+        sha512 = "fov56fJiRuThVFXD6o6/Q354S7pnWMJIVlDBYijsTNx6jKSE4pvrDTs6lUnmGvNyfJwFQQwWy3owKz1ucIhveQ==";
       };
     };
     "teeny-request-9.0.0" = {
@@ -4332,13 +4332,13 @@ let
         sha512 = "OZs6gsjF4vMp32qrCbiVSkrFmXtG/AZhY3t0iAMrMBiAZyV9oALtXO8hsrHbMXF9x6L3grlFuwW2oAz7cav+Gw==";
       };
     };
-    "undici-7.19.1" = {
+    "undici-7.19.2" = {
       name = "undici";
       packageName = "undici";
-      version = "7.19.1";
+      version = "7.19.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/undici/-/undici-7.19.1.tgz";
-        sha512 = "Gpq0iNm5M6cQWlyHQv9MV+uOj1jWk7LpkoE5vSp/7zjb4zMdAcUD+VL5y0nH4p9EbUklq00eVIIX/XcDHzu5xg==";
+        url = "https://registry.npmjs.org/undici/-/undici-7.19.2.tgz";
+        sha512 = "4VQSpGEGsWzk0VYxyB/wVX/Q7qf9t5znLRgs0dzszr9w9Fej/8RVNQ+S20vdXSAyra/bJ7ZQfGv6ZMj7UEbzSg==";
       };
     };
     "undici-types-7.16.0" = {
@@ -4698,10 +4698,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.19";
+    version = "2.1.20";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.19.tgz";
-      sha512 = "/bUlQuX/6nKr1Zqfi/9Q6xf7WonUBk72ZfKKENU4WVrIFWqTv/0JJsoW/dHol9QBNHvyfKIeBbYu4avHNRAnuQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.20.tgz";
+      sha512 = "5r9OEF5TTmkhOKWtJ9RYqdn/vchwQWABO3dvgZVXftqlBZV/IiKjHVISu0dKtqWzByLBolchwePrhY68ul0QrA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4926,12 +4926,12 @@ in
       sources."@types/gradient-string-1.1.6"
       sources."@types/hast-3.0.4"
       sources."@types/html-to-text-9.0.4"
-      sources."@types/http-cache-semantics-4.0.4"
+      sources."@types/http-cache-semantics-4.2.0"
       sources."@types/long-4.0.2"
       sources."@types/minimatch-5.1.2"
       sources."@types/node-25.0.10"
       sources."@types/normalize-package-data-2.4.4"
-      sources."@types/react-19.2.9"
+      sources."@types/react-19.2.10"
       sources."@types/request-2.48.13"
       sources."@types/tinycolor2-1.4.6"
       sources."@types/tough-cookie-4.0.5"
@@ -5229,7 +5229,7 @@ in
       sources."has-tostringtag-1.0.2"
       sources."hasown-2.0.2"
       sources."highlight.js-11.11.1"
-      sources."hono-4.11.6"
+      sources."hono-4.11.7"
       (
         sources."hosted-git-info-7.0.2"
         // {
@@ -5481,7 +5481,7 @@ in
       sources."supports-preserve-symlinks-flag-1.0.0"
       sources."system-architecture-0.1.0"
       sources."systeminformation-5.30.6"
-      sources."tar-7.5.6"
+      sources."tar-7.5.7"
       (
         sources."teeny-request-9.0.0"
         // {
@@ -5501,7 +5501,7 @@ in
       sources."tree-sitter-bash-0.25.1"
       sources."type-fest-4.41.0"
       sources."type-is-2.0.1"
-      sources."undici-7.19.1"
+      sources."undici-7.19.2"
       sources."undici-types-7.16.0"
       sources."unicorn-magic-0.3.0"
       sources."universalify-2.0.1"
