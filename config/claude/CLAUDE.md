@@ -4,3 +4,4 @@
 * Document at the right layer: Code → How, Tests → What, Commits → Why, Comments → Why not
 * Keep documentation up to date with code changes
 * Think in English and output in Japanese
+* Create plan files (plan.md) in the working repository, not in the ~/.claude directory
