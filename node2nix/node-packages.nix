@@ -21,13 +21,13 @@ let
         sha512 = "GWOSjL/dbkNRETfmLIKqtVV/fm+chPPp0uL5DUDKJlFmVjPCxRS75I6oiIkJeGo3/AM7QjaZTMb003Ia09ibtQ==";
       };
     };
-    "@agentclientprotocol/sdk-0.11.0" = {
+    "@agentclientprotocol/sdk-0.12.0" = {
       name = "_at_agentclientprotocol_slash_sdk";
       packageName = "@agentclientprotocol/sdk";
-      version = "0.11.0";
+      version = "0.12.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@agentclientprotocol/sdk/-/sdk-0.11.0.tgz";
-        sha512 = "hngnMwQ13DCC7oEr0BUnrx+vTDFf/ToCLhF0YcCMWRs+v4X60rKQyAENsx0PdbQF21jC1VjMFkh2+vwNBLh6fQ==";
+        url = "https://registry.npmjs.org/@agentclientprotocol/sdk/-/sdk-0.12.0.tgz";
+        sha512 = "V8uH/KK1t7utqyJmTA7y7DzKu6+jKFIXM+ZVouz8E55j8Ej2RV42rEvPKn3/PpBJlliI5crcGk1qQhZ7VwaepA==";
       };
     };
     "@alcalzone/ansi-tokenize-0.2.3" = {
@@ -156,13 +156,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.25.2" = {
+    "@google/gemini-cli-core-0.26.0" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.25.2";
+      version = "0.26.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.25.2.tgz";
-        sha512 = "ah/xszZSC0Eycb4wl541pAFyfKc2CsX6kLExReqGmml2YA3ts/2NQ/oB666D+odiE7Ved6cYdwu/k3i0izDWNA==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.26.0.tgz";
+        sha512 = "tMGQSz5SrF+yYCd6XYyA+nPjCqvAgLWT5W+c6tfbU/cCorfZILcUYwxojCAz3fvYK1znW+REZekOvywhkKnp/w==";
       };
     };
     "@google/genai-1.30.0" = {
@@ -840,13 +840,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-25.0.10" = {
+    "@types/node-25.1.0" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "25.0.10";
+      version = "25.1.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-25.0.10.tgz";
-        sha512 = "zWW5KPngR/yvakJgGOmZ5vTBemDoSqF3AcV/LrO5u5wTWyEAVVh+IT39G4gtyAkh3CtTZs8aX/yRM82OfzHJRg==";
+        url = "https://registry.npmjs.org/@types/node/-/node-25.1.0.tgz";
+        sha512 = "t7frlewr6+cbx+9Ohpl0NOTKXZNV9xHRmNOvql47BFJKcEG1CxtxlPEEe+gR9uhVWM4DwhnvTF110mIL4yP9RA==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -4698,10 +4698,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.20";
+    version = "2.1.22";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.20.tgz";
-      sha512 = "5r9OEF5TTmkhOKWtJ9RYqdn/vchwQWABO3dvgZVXftqlBZV/IiKjHVISu0dKtqWzByLBolchwePrhY68ul0QrA==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.22.tgz";
+      sha512 = "WMwUUC/Ux87LqBDBC4KI/uYE0L/jcro3XcBzyd4a/YCkGVRyruyhypeeyHqAW7bUxm72xxWaPoy0keBkxpgIpQ==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4716,10 +4716,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.25.2";
+    version = "0.26.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.25.2.tgz";
-      sha512 = "qz3krT7W1+NsQr18tl3KurFzpmXOuP3AiVWsuc8EFZvQebzGPJ5TBP+PF7t3ad4BBGygQgw/OLopnTdIeJWZLQ==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.26.0.tgz";
+      sha512 = "V3YueAz+7zqNLo8KWEMKQkCLvy7dp2SfYXvq11CDQIC3iPbh1NHEjR+anbU4FI/sL9ecYgcxoHAiLqbUFyCRNA==";
     };
     dependencies = [
       (
@@ -4730,7 +4730,7 @@ in
           ];
         }
       )
-      sources."@agentclientprotocol/sdk-0.11.0"
+      sources."@agentclientprotocol/sdk-0.12.0"
       sources."@alcalzone/ansi-tokenize-0.2.3"
       sources."@babel/code-frame-7.28.6"
       sources."@babel/helper-validator-identifier-7.28.5"
@@ -4814,7 +4814,7 @@ in
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
       (
-        sources."@google/gemini-cli-core-0.25.2"
+        sources."@google/gemini-cli-core-0.26.0"
         // {
           dependencies = [
             (
@@ -4929,7 +4929,7 @@ in
       sources."@types/http-cache-semantics-4.2.0"
       sources."@types/long-4.0.2"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-25.0.10"
+      sources."@types/node-25.1.0"
       sources."@types/normalize-package-data-2.4.4"
       sources."@types/react-19.2.10"
       sources."@types/request-2.48.13"
