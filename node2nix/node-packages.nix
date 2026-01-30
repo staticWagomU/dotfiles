@@ -30,13 +30,13 @@ let
         sha512 = "V8uH/KK1t7utqyJmTA7y7DzKu6+jKFIXM+ZVouz8E55j8Ej2RV42rEvPKn3/PpBJlliI5crcGk1qQhZ7VwaepA==";
       };
     };
-    "@alcalzone/ansi-tokenize-0.2.3" = {
+    "@alcalzone/ansi-tokenize-0.2.4" = {
       name = "_at_alcalzone_slash_ansi-tokenize";
       packageName = "@alcalzone/ansi-tokenize";
-      version = "0.2.3";
+      version = "0.2.4";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@alcalzone/ansi-tokenize/-/ansi-tokenize-0.2.3.tgz";
-        sha512 = "jsElTJ0sQ4wHRz+C45tfect76BwbTbgkgKByOzpCN9xG61N5V6u/glvg1CsNJhq2xJIFpKHSwG3D2wPPuEYOrQ==";
+        url = "https://registry.npmjs.org/@alcalzone/ansi-tokenize/-/ansi-tokenize-0.2.4.tgz";
+        sha512 = "HTgrrTgZ9Jgeo6Z3oqbQ7lifOVvRR14vaDuBGPPUxk9Thm+vObaO4QfYYYWw4Zo5CWQDBEfsinFA6Gre+AqwNQ==";
       };
     };
     "@babel/code-frame-7.28.6" = {
@@ -4107,13 +4107,13 @@ let
         sha512 = "tsaTIkKW9b4N+AEj+SVA+WhJzV7/zMhcSu78mLKWSk7cXMOSHsBKFWUs0fWwq8QyK3MgJBQRX6Gbi4kYbdvGkQ==";
       };
     };
-    "string-width-8.1.0" = {
+    "string-width-8.1.1" = {
       name = "string-width";
       packageName = "string-width";
-      version = "8.1.0";
+      version = "8.1.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/string-width/-/string-width-8.1.0.tgz";
-        sha512 = "Kxl3KJGb/gxkaUMOjRsQ8IrXiGW75O4E3RPjFIINOVH8AMl2SQ/yWdTzWwF3FevIX9LcMAjJW+GRwAlAbTSXdg==";
+        url = "https://registry.npmjs.org/string-width/-/string-width-8.1.1.tgz";
+        sha512 = "KpqHIdDL9KwYk22wEOg/VIqYbrnLeSApsKT/bSj6Ez7pn3CftUiLAv2Lccpq1ALcpLV9UX1Ppn92npZWu2w/aw==";
       };
     };
     "string-width-cjs-4.2.3" = {
@@ -4698,10 +4698,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.22";
+    version = "2.1.25";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.22.tgz";
-      sha512 = "WMwUUC/Ux87LqBDBC4KI/uYE0L/jcro3XcBzyd4a/YCkGVRyruyhypeeyHqAW7bUxm72xxWaPoy0keBkxpgIpQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.25.tgz";
+      sha512 = "YRNsHCFfoWL6xjUJxeUScHg77Zbtb1vABp9bLn+L6GdGxrmrvgrzbrUhgWBH4uD8bG9sScf5clQ9aAzQzucymg==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4731,7 +4731,7 @@ in
         }
       )
       sources."@agentclientprotocol/sdk-0.12.0"
-      sources."@alcalzone/ansi-tokenize-0.2.3"
+      sources."@alcalzone/ansi-tokenize-0.2.4"
       sources."@babel/code-frame-7.28.6"
       sources."@babel/helper-validator-identifier-7.28.5"
       sources."@bufbuild/protobuf-2.11.0"
@@ -5452,7 +5452,7 @@ in
       sources."statuses-2.0.2"
       sources."stream-events-1.0.5"
       sources."stream-shift-1.0.3"
-      sources."string-width-8.1.0"
+      sources."string-width-8.1.1"
       (
         sources."string-width-cjs-4.2.3"
         // {
