@@ -39,13 +39,13 @@ let
         sha512 = "HTgrrTgZ9Jgeo6Z3oqbQ7lifOVvRR14vaDuBGPPUxk9Thm+vObaO4QfYYYWw4Zo5CWQDBEfsinFA6Gre+AqwNQ==";
       };
     };
-    "@babel/code-frame-7.28.6" = {
+    "@babel/code-frame-7.29.0" = {
       name = "_at_babel_slash_code-frame";
       packageName = "@babel/code-frame";
-      version = "7.28.6";
+      version = "7.29.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.28.6.tgz";
-        sha512 = "JYgintcMjRiCvS8mMECzaEn+m3PfoQiyqukOMCCVQtoJGYJw8j/8LBJEiqkHLkfwCcs74E3pbAUFNg7d9VNJ+Q==";
+        url = "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.29.0.tgz";
+        sha512 = "9NhCeYjq9+3uxgdtp20LSiJXJvN0FeCtNGpJxuMFZ1Kv3cWUNb6DOhJwUvcVCzKGR66cw4njwM6hrJLqgOwbcw==";
       };
     };
     "@babel/helper-validator-identifier-7.28.5" = {
@@ -4224,13 +4224,13 @@ let
         sha512 = "ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==";
       };
     };
-    "systeminformation-5.30.6" = {
+    "systeminformation-5.30.7" = {
       name = "systeminformation";
       packageName = "systeminformation";
-      version = "5.30.6";
+      version = "5.30.7";
       src = fetchurl {
-        url = "https://registry.npmjs.org/systeminformation/-/systeminformation-5.30.6.tgz";
-        sha512 = "LEIyK1aEv5P3BhAPW3swdlIyCihxwEq/Gki+kcONieU4PIeRCSLDuGkk0Va/56PSBgjVgEksOM88dmY6YqOyfQ==";
+        url = "https://registry.npmjs.org/systeminformation/-/systeminformation-5.30.7.tgz";
+        sha512 = "33B/cftpaWdpvH+Ho9U1b08ss8GQuLxrWHelbJT1yw4M48Taj8W3ezcPuaLoIHZz5V6tVHuQPr5BprEfnBLBMw==";
       };
     };
     "tar-7.5.7" = {
@@ -4698,10 +4698,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.27";
+    version = "2.1.29";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.27.tgz";
-      sha512 = "bmGNK5VRonYLijfMJV4dv51X8jJv4uRLER+Ng8N4AR67dlMfconhD1q+6L4U6RFVzCU1xPiYN1+eUTRaKLEFgA==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.29.tgz";
+      sha512 = "vMHTOXrYdnreGtKUsWdd3Bwx5fKprTyNG7shrvbx3L2/jU9jexkOJrEKmN5loeR5jrE54LSB38QpaIj8pVM6eQ==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4732,7 +4732,7 @@ in
       )
       sources."@agentclientprotocol/sdk-0.12.0"
       sources."@alcalzone/ansi-tokenize-0.2.4"
-      sources."@babel/code-frame-7.28.6"
+      sources."@babel/code-frame-7.29.0"
       sources."@babel/helper-validator-identifier-7.28.5"
       sources."@bufbuild/protobuf-2.11.0"
       sources."@cfworker/json-schema-4.1.1"
@@ -5480,7 +5480,7 @@ in
       sources."supports-color-7.2.0"
       sources."supports-preserve-symlinks-flag-1.0.0"
       sources."system-architecture-0.1.0"
-      sources."systeminformation-5.30.6"
+      sources."systeminformation-5.30.7"
       sources."tar-7.5.7"
       (
         sources."teeny-request-9.0.0"
