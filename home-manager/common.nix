@@ -36,6 +36,7 @@ in
     zoxide
     fd
     yq
+    tailscale
 
     # font
     hackgen-nf-font

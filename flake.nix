@@ -40,6 +40,7 @@
     inputs@{
       self,
       nixpkgs,
+      nix-darwin,
       home-manager,
       flake-parts,
       treefmt-nix,
@@ -89,6 +90,18 @@
 
       flake =
         let
+          # Common overlays
+          commonOverlays = [
+            inputs.emacs-overlay.overlays.default
+            inputs.vim-overlay.overlays.default
+            (import ./nix/overlays/codex-overlay.nix)
+          ];
+
+          # node2nix overlay
+          nodePackagesOverlay = final: prev: {
+            nodePkgs = final.callPackage ./node2nix { };
+          };
+
           mkHomeConfig =
             {
               username,
@@ -98,24 +111,13 @@
               extraOverlays ? [ ],
             }:
             let
-              # node2nixパッケージを追加するオーバーレイ
-              nodePackagesOverlay = final: prev: {
-                nodePkgs = final.callPackage ./node2nix { };
-              };
-
               pkgs = import inputs.nixpkgs {
                 inherit system;
                 config = {
                   allowUnfree = true;
                   allowBroken = true;
                 };
-                overlays = [
-                  inputs.emacs-overlay.overlays.default
-                  inputs.vim-overlay.overlays.default
-                  nodePackagesOverlay
-                  (import ./nix/overlays/codex-overlay.nix)
-                ]
-                ++ extraOverlays;
+                overlays = commonOverlays ++ [ nodePackagesOverlay ] ++ extraOverlays;
               };
             in
             home-manager.lib.homeManagerConfiguration {
@@ -131,8 +133,67 @@
                   ;
               };
             };
+
+          mkDarwinConfig =
+            {
+              username,
+              hostname,
+              system ? "aarch64-darwin",
+              darwinModules ? [ ],
+              homeModules ? [ ],
+              extraOverlays ? [ ],
+            }:
+            nix-darwin.lib.darwinSystem {
+              inherit system;
+              specialArgs = {
+                inherit inputs username hostname;
+              };
+              modules = darwinModules ++ [
+                # Home Manager as a Darwin module
+                home-manager.darwinModules.home-manager
+                {
+                  nixpkgs.overlays = commonOverlays ++ [ nodePackagesOverlay ] ++ extraOverlays;
+                  nixpkgs.config.allowUnfree = true;
+
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                    extraSpecialArgs = {
+                      inherit inputs username hostname system;
+                    };
+                    users.${username} = {
+                      imports = homeModules;
+                    };
+                  };
+                }
+              ];
+            };
         in
         {
+          # nix-darwin configurations (recommended for macOS)
+          darwinConfigurations = {
+            MacBookAir = mkDarwinConfig {
+              username = "wagomu";
+              hostname = "MacBookAir";
+              darwinModules = [ ./darwin/default.nix ];
+              homeModules = [
+                ./home-manager/common.nix
+                ./home-manager/gui.nix
+              ];
+            };
+
+            MacBookPro = mkDarwinConfig {
+              username = "wagomu";
+              hostname = "MacBookPro";
+              darwinModules = [ ./darwin/default.nix ];
+              homeModules = [
+                ./home-manager/common.nix
+                ./home-manager/gui.nix
+              ];
+            };
+          };
+
+          # Standalone home-manager configurations (kept for compatibility/Linux)
           homeConfigurations = {
             MacBookAir = mkHomeConfig {
               username = "wagomu";
