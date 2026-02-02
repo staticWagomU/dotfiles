@@ -840,13 +840,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-25.1.0" = {
+    "@types/node-25.2.0" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "25.1.0";
+      version = "25.2.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-25.1.0.tgz";
-        sha512 = "t7frlewr6+cbx+9Ohpl0NOTKXZNV9xHRmNOvql47BFJKcEG1CxtxlPEEe+gR9uhVWM4DwhnvTF110mIL4yP9RA==";
+        url = "https://registry.npmjs.org/@types/node/-/node-25.2.0.tgz";
+        sha512 = "DZ8VwRFUNzuqJ5khrvwMXHmvPe+zGayJhr2CDNiKB1WBE1ST8Djl00D0IC4vvNmHMdj6DlbYRIaFE7WHjlDl5w==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -4332,13 +4332,13 @@ let
         sha512 = "OZs6gsjF4vMp32qrCbiVSkrFmXtG/AZhY3t0iAMrMBiAZyV9oALtXO8hsrHbMXF9x6L3grlFuwW2oAz7cav+Gw==";
       };
     };
-    "undici-7.19.2" = {
+    "undici-7.20.0" = {
       name = "undici";
       packageName = "undici";
-      version = "7.19.2";
+      version = "7.20.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/undici/-/undici-7.19.2.tgz";
-        sha512 = "4VQSpGEGsWzk0VYxyB/wVX/Q7qf9t5znLRgs0dzszr9w9Fej/8RVNQ+S20vdXSAyra/bJ7ZQfGv6ZMj7UEbzSg==";
+        url = "https://registry.npmjs.org/undici/-/undici-7.20.0.tgz";
+        sha512 = "MJZrkjyd7DeC+uPZh+5/YaMDxFiiEEaDgbUSVMXayofAkDWF1088CDo+2RPg7B1BuS1qf1vgNE7xqwPxE0DuSQ==";
       };
     };
     "undici-types-7.16.0" = {
@@ -4929,7 +4929,7 @@ in
       sources."@types/http-cache-semantics-4.2.0"
       sources."@types/long-4.0.2"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-25.1.0"
+      sources."@types/node-25.2.0"
       sources."@types/normalize-package-data-2.4.4"
       sources."@types/react-19.2.10"
       sources."@types/request-2.48.13"
@@ -5501,7 +5501,7 @@ in
       sources."tree-sitter-bash-0.25.1"
       sources."type-fest-4.41.0"
       sources."type-is-2.0.1"
-      sources."undici-7.19.2"
+      sources."undici-7.20.0"
       sources."undici-types-7.16.0"
       sources."unicorn-magic-0.3.0"
       sources."universalify-2.0.1"
