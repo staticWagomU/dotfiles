@@ -156,13 +156,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.27.0" = {
+    "@google/gemini-cli-core-0.27.2" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.27.0";
+      version = "0.27.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.27.0.tgz";
-        sha512 = "qXMEqMQ9FrTMG6YmwLlDyPIWRfzPUI9W3VyQnrOyFWrn66MrJnPNBs+3KLhouWOuJSUtOcKYtTOdiTPMnLd6cw==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.27.2.tgz";
+        sha512 = "vgxxwtWj97p8HJUIb+awk/2ERGUp16sX5a8QV/i4lj98acXQrAvxawhYiA2w2ybKGay9Zn0bwIGQEST1iSMVUw==";
       };
     };
     "@google/genai-1.30.0" = {
@@ -244,6 +244,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/@isaacs/cliui/-/cliui-8.0.2.tgz";
         sha512 = "O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==";
+      };
+    };
+    "@isaacs/cliui-9.0.0" = {
+      name = "_at_isaacs_slash_cliui";
+      packageName = "@isaacs/cliui";
+      version = "9.0.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@isaacs/cliui/-/cliui-9.0.0.tgz";
+        sha512 = "AokJm4tuBHillT+FpMtxQ60n8ObyXBatq7jD2/JA9dxbDDokKQm8KMht5ibGzLVU9IJDIKK4TPKgMHEYMn3lMg==";
       };
     };
     "@isaacs/fs-minipass-4.0.1" = {
@@ -840,13 +849,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-25.2.0" = {
+    "@types/node-25.2.1" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "25.2.0";
+      version = "25.2.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-25.2.0.tgz";
-        sha512 = "DZ8VwRFUNzuqJ5khrvwMXHmvPe+zGayJhr2CDNiKB1WBE1ST8Djl00D0IC4vvNmHMdj6DlbYRIaFE7WHjlDl5w==";
+        url = "https://registry.npmjs.org/@types/node/-/node-25.2.1.tgz";
+        sha512 = "CPrnr8voK8vC6eEtyRzvMpgp3VyVRhgclonE7qYi6P9sXwYb59ucfrnmFBTaP0yUi8Gk4yZg/LlTJULGxvTNsg==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -858,13 +867,13 @@ let
         sha512 = "37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==";
       };
     };
-    "@types/react-19.2.11" = {
+    "@types/react-19.2.13" = {
       name = "_at_types_slash_react";
       packageName = "@types/react";
-      version = "19.2.11";
+      version = "19.2.13";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/react/-/react-19.2.11.tgz";
-        sha512 = "tORuanb01iEzWvMGVGv2ZDhYZVeRMrw453DCSAIn/5yvcSVnMoUMTyf33nQJLahYEnv9xqrTNbgz4qY5EfSh0g==";
+        url = "https://registry.npmjs.org/@types/react/-/react-19.2.13.tgz";
+        sha512 = "KkiJeU6VbYbUOp5ITMIc7kBfqlYkKA5KhEHVrGMmUUMt7NeaZg65ojdPk+FtNrBAOXNVM5QM72jnADjM+XVRAQ==";
       };
     };
     "@types/request-2.48.13" = {
@@ -1695,13 +1704,13 @@ let
         sha512 = "tE7ztYzXHIeyvc7N+hR3oi7FIbf/NIjVP9hmAt3yMXzrQ072/fpjGLx2GxNxGxUl5V73MEqYzioOMoVhGMJ5cA==";
       };
     };
-    "dotenv-17.2.3" = {
+    "dotenv-17.2.4" = {
       name = "dotenv";
       packageName = "dotenv";
-      version = "17.2.3";
+      version = "17.2.4";
       src = fetchurl {
-        url = "https://registry.npmjs.org/dotenv/-/dotenv-17.2.3.tgz";
-        sha512 = "JVUnt+DUIzu87TABbhPmNfVdBDt18BLOWjMUFJMSi/Qqg7NTYtabbvSNJGOJ7afbRuv9D/lngizHtP7QyLQ+9w==";
+        url = "https://registry.npmjs.org/dotenv/-/dotenv-17.2.4.tgz";
+        sha512 = "mudtfb4zRB4bVvdj0xRo+e6duH1csJRM8IukBqfTRvHotn9+LBXB8ynAidP9zHqoRC/fsllXgk4kCKlR21fIhw==";
       };
     };
     "dunder-proto-1.0.1" = {
@@ -2865,13 +2874,13 @@ let
         sha512 = "OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==";
       };
     };
-    "jackspeak-4.1.1" = {
+    "jackspeak-4.2.1" = {
       name = "jackspeak";
       packageName = "jackspeak";
-      version = "4.1.1";
+      version = "4.2.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/jackspeak/-/jackspeak-4.1.1.tgz";
-        sha512 = "zptv57P3GpL+O0I7VdMJNBZCu+BPHVQUk55Ft8/QCJjTVxrnJHuVuX/0Bl2A6/+2oyR/ZMEuFKwmzqqZ/U5nPQ==";
+        url = "https://registry.npmjs.org/jackspeak/-/jackspeak-4.2.1.tgz";
+        sha512 = "GPBXyfcZSGujjddPeA+V34bW70ZJT7jzCEbloVasSH4yjiqWqXHX8iZQtZdVbOhc5esSeAIuiSmMutRZQB/olg==";
       };
     };
     "jose-6.1.3" = {
@@ -3954,13 +3963,13 @@ let
         sha512 = "5TF+l7p4+OsnP8BCCvSyZiSPc4x4//p5uPwK8TCnVPJYRmU2aYKMpOXvw8zM5a5JvuuCGN1jmsMwuU2W02ukfA==";
       };
     };
-    "semver-7.7.3" = {
+    "semver-7.7.4" = {
       name = "semver";
       packageName = "semver";
-      version = "7.7.3";
+      version = "7.7.4";
       src = fetchurl {
-        url = "https://registry.npmjs.org/semver/-/semver-7.7.3.tgz";
-        sha512 = "SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q==";
+        url = "https://registry.npmjs.org/semver/-/semver-7.7.4.tgz";
+        sha512 = "vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==";
       };
     };
     "send-1.2.1" = {
@@ -4833,10 +4842,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.31";
+    version = "2.1.32";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.31.tgz";
-      sha512 = "FlQYgH8p2VRmqJz3GBw3oiHKQcwukDmepLOwSvEk9gdKaeADLUvrgHzzdMKkVKNnt2Pwro53SWT3cwbzTHcoMg==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.32.tgz";
+      sha512 = "TWySpzIPJCdn/RNHI7nIn/j/2PLGaw1d+v7v9JyVHk8i+cNND3eUm2YACO9219psbdtE1IpG1qeq/xsaHxlyDg==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4851,10 +4860,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.27.0";
+    version = "0.27.2";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.27.0.tgz";
-      sha512 = "VcPNV06squQEql7FwpzAHxYBphxeAH92sOvn8eyB/b4naap4iHYoLKtNyT/NsY3lAl/fDEAzmCnmqNXoY1f3Cg==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.27.2.tgz";
+      sha512 = "nBlDJ7h6/Yegk0SRWOfEytMPuP+L3OIEaKHtNUbr7HP5Z3tNEJKPRYHxrXBMKaKb+ZEUiyVFCDY2Y+5FOUSb6A==";
     };
     dependencies = [
       (
@@ -4944,7 +4953,7 @@ in
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
       (
-        sources."@google/gemini-cli-core-0.27.0"
+        sources."@google/gemini-cli-core-0.27.2"
         // {
           dependencies = [
             (
@@ -4970,16 +4979,7 @@ in
       sources."@iarna/toml-2.2.5"
       sources."@isaacs/balanced-match-4.0.1"
       sources."@isaacs/brace-expansion-5.0.1"
-      (
-        sources."@isaacs/cliui-8.0.2"
-        // {
-          dependencies = [
-            sources."emoji-regex-9.2.2"
-            sources."string-width-5.1.2"
-            sources."wrap-ansi-8.1.0"
-          ];
-        }
-      )
+      sources."@isaacs/cliui-9.0.0"
       sources."@isaacs/fs-minipass-4.0.1"
       sources."@joshua.litt/get-ripgrep-0.0.3"
       sources."@js-sdsl/ordered-map-4.4.2"
@@ -5057,9 +5057,9 @@ in
       sources."@types/http-cache-semantics-4.2.0"
       sources."@types/long-4.0.2"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-25.2.0"
+      sources."@types/node-25.2.1"
       sources."@types/normalize-package-data-2.4.4"
-      sources."@types/react-19.2.11"
+      sources."@types/react-19.2.13"
       sources."@types/request-2.48.13"
       sources."@types/tinycolor2-1.4.6"
       sources."@types/tough-cookie-4.0.5"
@@ -5206,7 +5206,7 @@ in
       sources."domhandler-5.0.3"
       sources."domutils-3.2.2"
       sources."dot-prop-6.0.1"
-      sources."dotenv-17.2.3"
+      sources."dotenv-17.2.4"
       sources."dunder-proto-1.0.1"
       sources."duplexify-4.1.3"
       sources."eastasianwidth-0.2.0"
@@ -5428,7 +5428,7 @@ in
       sources."is-wsl-3.1.0"
       sources."is64bit-2.0.0"
       sources."isexe-2.0.0"
-      sources."jackspeak-4.1.1"
+      sources."jackspeak-4.2.1"
       sources."jose-6.1.3"
       sources."js-tokens-4.0.0"
       sources."js-yaml-4.1.1"
@@ -5559,11 +5559,15 @@ in
         sources."rimraf-5.0.10"
         // {
           dependencies = [
+            sources."@isaacs/cliui-8.0.2"
+            sources."emoji-regex-9.2.2"
             sources."glob-10.5.0"
             sources."jackspeak-3.4.3"
             sources."lru-cache-10.4.3"
             sources."minimatch-9.0.5"
             sources."path-scurry-1.11.1"
+            sources."string-width-5.1.2"
+            sources."wrap-ansi-8.1.0"
           ];
         }
       )
@@ -5582,7 +5586,7 @@ in
       sources."safer-buffer-2.1.2"
       sources."scheduler-0.26.0"
       sources."selderee-0.11.0"
-      sources."semver-7.7.3"
+      sources."semver-7.7.4"
       sources."send-1.2.1"
       sources."serve-static-2.2.1"
       sources."setprototypeof-1.2.0"
