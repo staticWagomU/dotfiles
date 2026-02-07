@@ -95,6 +95,8 @@ abbr -a gg ghq get
 
 abbr -a c claude
 
+abbr -a co codex
+
 alias v='vim'
 alias vi='vim'
 
