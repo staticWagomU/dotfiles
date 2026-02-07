@@ -93,6 +93,8 @@ abbr -a dc docker compose
 
 abbr -a gg ghq get 
 
+abbr -a c claude
+
 alias v='vim'
 alias vi='vim'
 
