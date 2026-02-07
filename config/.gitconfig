@@ -8,6 +8,7 @@
   pager = delta
   editor = nvim
   quotepath = false
+  excludesFile = ~/dotfiles/config/.gitignore_global
 
 [interactive]
   diffFilter = delta --color-only
