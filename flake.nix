@@ -166,30 +166,8 @@
             };
           };
 
-          # Standalone home-manager configurations (kept for compatibility/Linux)
+          # Standalone home-manager configurations (for Linux)
           homeConfigurations = {
-            MacBookAir = mkHomeConfig {
-              username = "wagomu";
-              hostname = "MacBookAir";
-              system = "aarch64-darwin";
-              modules = [
-                ./home-manager/common.nix
-                ./home-manager/mac.nix
-                ./home-manager/gui.nix
-              ];
-            };
-
-            MacBookPro = mkHomeConfig {
-              username = "wagomu";
-              hostname = "MacBookPro";
-              system = "aarch64-darwin";
-              modules = [
-                ./home-manager/common.nix
-                ./home-manager/mac.nix
-                ./home-manager/gui.nix
-              ];
-            };
-
             WSL = mkHomeConfig {
               username = "wagomu";
               hostname = "ThinkpadT14Gen3";
