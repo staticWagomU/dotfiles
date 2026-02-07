@@ -3,29 +3,29 @@ name: obsidian-plugin
 description: Guide Obsidian plugin development following official guidelines. Use when creating/modifying Obsidian plugins, implementing commands, creating UI elements, or handling file operations.
 ---
 
-# INSTRUCTIONS
-
+<purpose>
 Develop Obsidian plugins following official best practices for security, API usage, and UI consistency.
+</purpose>
 
-## Core Rules
+<rules priority="critical">
+  <rule>Use `this.app` - Never use global `app` object (debugging only)</rule>
+  <rule>Build DOM safely - See `security.md` for mandatory patterns</rule>
+  <rule>Use managed cleanup - `registerEvent()`, `addCommand()` for auto-cleanup</rule>
+  <rule>NEVER detach leaves in `onunload()` - Obsidian handles this automatically</rule>
+  <rule>No `innerHTML`, `outerHTML`, or `insertAdjacentHTML` usage</rule>
+</rules>
 
-1. **Use `this.app`** - Never use global `app` object (debugging only)
-2. **Minimize logging** - Errors shown by default, not debug messages
-3. **Build DOM safely** - See `security.md` for mandatory patterns
-4. **Use managed cleanup** - `registerEvent()`, `addCommand()` for auto-cleanup
-5. **Replace placeholders** - Change `MyPlugin`, `SampleSettingTab` to actual names
+<rules priority="standard">
+  <rule>Minimize logging - Errors shown by default, not debug messages</rule>
+  <rule>Replace placeholders - Change `MyPlugin`, `SampleSettingTab` to actual names</rule>
+  <rule>All events registered via `registerEvent()`</rule>
+  <rule>User file paths normalized with `normalizePath()`</rule>
+  <rule>CSS uses Obsidian variables, not hardcoded colors</rule>
+  <rule>Settings have general options at top (no heading)</rule>
+</rules>
 
-## When to Use
-
-Apply this skill when:
-- Creating new Obsidian plugins
-- Adding commands, settings, or views
-- Handling file/folder operations
-- Building plugin UI components
-- Reviewing Obsidian plugin code
-
-## Project Structure
-
+<patterns>
+  <pattern name="project-structure">
 ```
 my-plugin/
 ├── main.ts                 # Plugin entry point
@@ -35,13 +35,11 @@ my-plugin/
 ├── modals/                 # Modal dialogs
 └── styles.css              # Plugin styles (use CSS variables)
 ```
+  </pattern>
 
-## Resource Management
-
-Always use Obsidian's managed registration:
-
+  <pattern name="resource-management">
 ```typescript
-// ✅ GOOD: Auto-cleanup on plugin unload
+// GOOD: Auto-cleanup on plugin unload
 this.registerEvent(
     this.app.vault.on('create', (file) => { ... })
 );
@@ -52,20 +50,36 @@ this.addCommand({
     callback: () => { ... }
 });
 
-// ❌ BAD: Manual cleanup required (avoid)
+// BAD: Manual cleanup required (avoid)
 this.app.vault.on('create', this.handler);
 ```
+  </pattern>
+</patterns>
 
-**NEVER detach leaves in `onunload()`** - Obsidian handles this automatically.
+<constraints>
+  <must>
+    <rule>Apply this skill when creating new Obsidian plugins</rule>
+    <rule>Apply when adding commands, settings, or views</rule>
+    <rule>Apply when handling file/folder operations</rule>
+    <rule>Apply when building plugin UI components</rule>
+    <rule>Apply when reviewing Obsidian plugin code</rule>
+  </must>
+  <avoid>
+    <rule>Using `innerHTML`, `outerHTML`, or `insertAdjacentHTML`</rule>
+    <rule>Manual event listener cleanup instead of `registerEvent()`</rule>
+    <rule>Hardcoded colors instead of CSS variables</rule>
+    <rule>Using global `app` object in production code</rule>
+  </avoid>
+</constraints>
 
-## Key References
+<best_practices>
+  <practice priority="critical">See `security.md` for DOM manipulation rules</practice>
+  <practice priority="high">See `api-patterns.md` for workspace, vault, and editor patterns</practice>
+  <practice priority="high">See `ui-components.md` for settings, modals, and views</practice>
+</best_practices>
 
-- **Security**: See `security.md` for DOM manipulation rules (CRITICAL)
-- **API Patterns**: See `api-patterns.md` for workspace, vault, and editor patterns
-- **UI Components**: See `ui-components.md` for settings, modals, and views
-
-## Terminology (for Documentation)
-
+<patterns>
+  <pattern name="terminology">
 | Use | Avoid |
 |-----|-------|
 | keyboard shortcut | hotkey |
@@ -75,15 +89,11 @@ this.app.vault.on('create', this.handler);
 | perform | invoke |
 
 Use sentence case for headings. Bold button text in docs.
+  </pattern>
+</patterns>
 
-## Quality Checklist
-
-Before releasing a plugin:
-
-- [ ] No `innerHTML`, `outerHTML`, or `insertAdjacentHTML` usage
-- [ ] All events registered via `registerEvent()`
-- [ ] User file paths normalized with `normalizePath()`
-- [ ] CSS uses Obsidian variables, not hardcoded colors
-- [ ] Settings have general options at top (no heading)
-- [ ] Placeholder class names replaced with actual plugin name
-- [ ] Minimal console logging (errors only)
+<related_skills>
+  <skill name="security.md">DOM manipulation rules (CRITICAL)</skill>
+  <skill name="api-patterns.md">Workspace, vault, and editor patterns</skill>
+  <skill name="ui-components.md">Settings, modals, and views</skill>
+</related_skills>

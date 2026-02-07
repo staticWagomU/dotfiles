@@ -4,33 +4,29 @@ description: Review UI code for Web Interface Guidelines compliance. Use when as
 argument-hint: <file-or-pattern>
 ---
 
-# Web Interface Guidelines
+<purpose>
+Review files for compliance with Web Interface Guidelines by fetching the latest rules from the source URL and checking code against them.
+</purpose>
 
-Review files for compliance with Web Interface Guidelines.
+<rules priority="critical">
+  <rule>Fetch fresh guidelines before each review from the source URL</rule>
+  <rule>Apply all rules from the fetched guidelines</rule>
+  <rule>Output findings in the terse `file:line` format specified in the guidelines</rule>
+</rules>
 
-## How It Works
+<patterns>
+  <pattern name="review-workflow">
+    <description>How to perform a Web Interface Guidelines review</description>
+    <steps>
+      1. Fetch the latest guidelines from the source URL
+      2. Read the specified files (or prompt user for files/pattern)
+      3. Check against all rules in the fetched guidelines
+      4. Output findings in the terse `file:line` format
+    </steps>
+  </pattern>
+</patterns>
 
-1. Fetch the latest guidelines from the source URL below
-2. Read the specified files (or prompt user for files/pattern)
-3. Check against all rules in the fetched guidelines
-4. Output findings in the terse `file:line` format
-
-## Guidelines Source
-
-Fetch fresh guidelines before each review:
-
-```
-https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md
-```
-
-Use WebFetch to retrieve the latest rules. The fetched content contains all the rules and output format instructions.
-
-## Usage
-
-When a user provides a file or pattern argument:
-1. Fetch guidelines from the source URL above
-2. Read the specified files
-3. Apply all rules from the fetched guidelines
-4. Output findings using the format specified in the guidelines
-
-If no files specified, ask the user which files to review.
+<constraints>
+  <must>Use WebFetch to retrieve the latest rules from: https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md</must>
+  <must>If no files specified, ask the user which files to review</must>
+</constraints>

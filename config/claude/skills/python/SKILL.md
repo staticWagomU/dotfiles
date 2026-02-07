@@ -7,40 +7,40 @@ description: |
   - Working with uv, poetry, venv
 ---
 
-# Python Skill
+<purpose>
+Guide Python environment setup and script execution using uv, poetry, or venv.
+</purpose>
 
-## 1. Python-specific Rules
+<rules priority="critical">
+  <rule>NEVER add shebang lines (`#!/usr/bin/env python3`)</rule>
+  <rule>NEVER set execute permission on Python files</rule>
+  <rule>Always execute with explicit `python` command</rule>
+</rules>
 
-- NEVER: Do not add shebang lines (`#!/usr/bin/env python3`)
-- NEVER: Do not set execute permission on Python files
-- YOU MUST: Always execute with explicit `python` command
-
-## 2. Virtual Environment Usage
-
-### 2.1. When uv.lock Exists
-
-Use `uv` to execute Python commands:
-
-```sh
+<patterns>
+  <pattern name="uv-lock-exists">
+    <description>When uv.lock exists, use `uv` to execute Python commands</description>
+    <example>
 uv run dbt debug --profiles-dir ~/.dbt --no-use-colors
-```
+    </example>
+  </pattern>
 
-### 2.2. When poetry.lock Exists
+  <pattern name="poetry-lock-exists">
+    <description>When poetry.lock exists, create virtual environment with `uv`</description>
+    <reference>https://i9wa4.github.io/blog/2025-06-08-create-uv-venv-with-poetry-pyproject-toml.html</reference>
+  </pattern>
 
-Create virtual environment with `uv` referring to the blog article:
+  <pattern name="no-uv-lock">
+    <description>When uv.lock does not exist, activate venv manually</description>
+    <steps>
+      1. Activate the virtual environment: `source .venv/bin/activate`
+      2. Execute Python commands: `dbt debug --profiles-dir ~/.dbt --no-use-colors`
+    </steps>
+  </pattern>
+</patterns>
 
-- <https://i9wa4.github.io/blog/2025-06-08-create-uv-venv-with-poetry-pyproject-toml.html>
-
-### 2.3. When uv.lock Does Not Exist
-
-1. Activate the virtual environment
-
-    ```sh
-    source .venv/bin/activate
-    ```
-
-2. Execute Python commands
-
-    ```sh
-    dbt debug --profiles-dir ~/.dbt --no-use-colors
-    ```
+<constraints>
+  <must>Use explicit `python` command for execution</must>
+  <avoid>Adding shebang lines to Python files</avoid>
+  <avoid>Setting execute permissions on Python files</avoid>
+</constraints>

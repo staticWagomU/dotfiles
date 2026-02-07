@@ -3,33 +3,29 @@ name: github-pr-review-operation
 description: GitHub Pull Requestのレビュー操作を行うスキル。PR情報取得、差分確認、コメント取得・投稿、インラインコメント、コメント返信をghコマンドで実行する。PRレビュー、コードレビュー、PR操作が必要な時に使用。
 ---
 
-# GitHub PR Review Operation
-
+<purpose>
 GitHub CLI (`gh`) を使ったPRレビュー操作。
+</purpose>
 
-## 前提条件
+<constraints>
+  <must>
+    <rule>`gh` がインストール済みであること</rule>
+    <rule>`gh auth login` で認証済みであること</rule>
+    <rule>PR URL `https://github.com/OWNER/REPO/pull/NUMBER` から OWNER, REPO, NUMBER を抽出して使用すること</rule>
+    <rule>`-F` (大文字) を数値パラメータ（`line`, `start_line`）に使用すること。`-f`だと文字列になりエラーになる</rule>
+  </must>
+</constraints>
 
-- `gh` インストール済み
-- `gh auth login` で認証済み
-
-## PR URLのパース
-
-PR URL `https://github.com/OWNER/REPO/pull/NUMBER` から以下を抽出して使用：
-
-- `OWNER`: リポジトリオーナー
-- `REPO`: リポジトリ名
-- `NUMBER`: PR番号
-
-## 操作一覧
-
-### 1. PR情報取得
-
+<patterns>
+  <pattern name="pr-info">
+PR情報取得:
 ```bash
 gh pr view NUMBER --repo OWNER/REPO --json title,body,author,state,baseRefName,headRefName,url
 ```
+  </pattern>
 
-### 2. 差分取得（行番号付き）
-
+  <pattern name="diff-with-line-numbers">
+差分取得（行番号付き）:
 ```bash
 gh pr diff NUMBER --repo OWNER/REPO | awk '
 /^@@/ {
@@ -47,8 +43,7 @@ gh pr diff NUMBER --repo OWNER/REPO | awk '
 '
 ```
 
-出力例：
-
+出力例:
 ```
 @@ -46,15 +46,25 @@ jobs:
 L46   R46  |            prompt: |
@@ -59,37 +54,34 @@ L50   R50  |              # レビューガイドライン
 
 - `L数字`: LEFT(base)側の行番号 → インラインコメントで`side=LEFT`に使用
 - `R数字`: RIGHT(head)側の行番号 → インラインコメントで`side=RIGHT`に使用
+  </pattern>
 
-### 3. コメント取得
-
+  <pattern name="get-comments">
 Issue Comments（PR全体へのコメント）:
-
 ```bash
 gh api repos/OWNER/REPO/issues/NUMBER/comments --jq '.[] | {id, user: .user.login, created_at, body}'
 ```
 
 Review Comments（コード行へのコメント）:
-
 ```bash
 gh api repos/OWNER/REPO/pulls/NUMBER/comments --jq '.[] | {id, user: .user.login, path, line, created_at, body, in_reply_to_id}'
 ```
+  </pattern>
 
-### 4. PRにコメント
-
+  <pattern name="post-comment">
+PRにコメント:
 ```bash
 gh pr comment NUMBER --repo OWNER/REPO --body "コメント内容"
 ```
+  </pattern>
 
-### 5. インラインコメント（コード行指定）
-
-まずhead commit SHAを取得：
-
+  <pattern name="inline-comment">
+まずhead commit SHAを取得:
 ```bash
 gh api repos/OWNER/REPO/pulls/NUMBER --jq '.head.sha'
 ```
 
-単一行コメント：
-
+単一行コメント:
 ```bash
 gh api repos/OWNER/REPO/pulls/NUMBER/comments \
   --method POST \
@@ -100,8 +92,7 @@ gh api repos/OWNER/REPO/pulls/NUMBER/comments \
   -f side=RIGHT
 ```
 
-複数行コメント（10〜15行目）：
-
+複数行コメント（10〜15行目）:
 ```bash
 gh api repos/OWNER/REPO/pulls/NUMBER/comments \
   --method POST \
@@ -114,17 +105,18 @@ gh api repos/OWNER/REPO/pulls/NUMBER/comments \
   -f start_side=RIGHT
 ```
 
-**注意点：**
-
+注意点:
 - `-F` (大文字): 数値パラメータ（`line`, `start_line`）に使用。`-f`だと文字列になりエラーになる
 - `side`: `RIGHT`（追加行）または `LEFT`（削除行）
+  </pattern>
 
-### 6. コメントへ返信
-
+  <pattern name="reply-to-comment">
+コメントへ返信:
 ```bash
 gh api repos/OWNER/REPO/pulls/NUMBER/comments/COMMENT_ID/replies \
   --method POST \
   -f body="返信内容"
 ```
-
 `COMMENT_ID`はコメント取得で得た`id`を使用。
+  </pattern>
+</patterns>

@@ -5,35 +5,38 @@ description: |
 alwaysApply: false
 ---
 
-# CLAUDE.md Optimizer
-
+<purpose>
 Claude 4公式ベストプラクティスに基づき、CLAUDE.mdファイルを最適化するスキル。
+</purpose>
 
-## Execution Flow
+<workflow>
+  <phase name="read-target">
+    既存の内容を確認。なければ新規作成を提案。
+  </phase>
 
-### 1. Read target CLAUDE.md
-既存の内容を確認。なければ新規作成を提案。
+  <phase name="analyze">
+    詳細は `claude4-principles.md` を参照。主要評価軸:
+    <rule>明示性: 指示が具体的か。修飾語（"as many as possible"）を使っているか</rule>
+    <rule>コンテキスト: なぜそのルールが必要か説明しているか</rule>
+    <rule>構造: XMLタグで整理されているか（必要な場合）</rule>
+    <rule>過剰防止: 過度なエンジニアリングを抑制する指示があるか</rule>
+  </phase>
 
-### 2. Analyze against Claude 4 principles
-詳細は `claude4-principles.md` を参照。主要評価軸:
-- **明示性**: 指示が具体的か。修飾語（"as many as possible"）を使っているか
-- **コンテキスト**: なぜそのルールが必要か説明しているか
-- **構造**: XMLタグで整理されているか（必要な場合）
-- **過剰防止**: 過度なエンジニアリングを抑制する指示があるか
+  <phase name="apply-optimizations">
+    チェックリストは `checklist.md` を参照。主要な最適化:
+    <rule>曖昧な指示 → 明示的・具体的な指示に変換</rule>
+    <rule>ルールのみ → 理由（なぜ）を追加</rule>
+    <rule>過度な冗長性 → 簡潔かつ必要十分に</rule>
+    <rule>不足している重要指示を追加（過剰エンジニアリング防止など）</rule>
+  </phase>
 
-### 3. Apply optimizations
-チェックリストは `checklist.md` を参照。主要な最適化:
-- 曖昧な指示 → 明示的・具体的な指示に変換
-- ルールのみ → 理由（なぜ）を追加
-- 過度な冗長性 → 簡潔かつ必要十分に
-- 不足している重要指示を追加（過剰エンジニアリング防止など）
+  <phase name="report">
+    変更点とClaude 4原則への対応を説明。
+    課題 → 改善案 → 変更点（テーブル形式）の順で報告。
+  </phase>
+</workflow>
 
-### 4. Report improvements
-変更点とClaude 4原則への対応を説明。
-
-## Output Format
-課題 → 改善案 → 変更点（テーブル形式）の順で報告。
-
-## Reference Files
-- `claude4-principles.md`: Claude 4モデル固有のベストプラクティス詳細
-- `checklist.md`: CLAUDE.md最適化チェックリスト
+<related_skills>
+  <skill name="claude4-principles.md">Claude 4モデル固有のベストプラクティス詳細</skill>
+  <skill name="checklist.md">CLAUDE.md最適化チェックリスト</skill>
+</related_skills>

@@ -8,52 +8,61 @@ description: |
   - Using nurl for hash acquisition
 ---
 
-# Nix Skill
+<purpose>
+Guide Nix commands, package management, and hash acquisition workflows.
+</purpose>
 
-## 1. nix build
+<rules priority="critical">
+  <rule>Always use `--no-link` option with `nix build` to prevent `./result` symlink creation</rule>
+  <rule>See CONTRIBUTING.md section 1.4.2 for adding new custom packages</rule>
+  <rule>Add `doCheck = false;` if tests fail during package build</rule>
+</rules>
 
-- YOU MUST: Always use `--no-link` option with `nix build`
+<patterns>
+  <pattern name="nix-build">
+    <description>Building Nix packages</description>
+    <example>
+nix build .#rumdl --no-link
+    </example>
+  </pattern>
 
-    ```sh
-    nix build .#rumdl --no-link
-    ```
+  <pattern name="nix-run">
+    <description>Running packages registered in packages</description>
+    <example>
+nix run .#pike -- scan -d ./terraform
+    </example>
+  </pattern>
 
-- IMPORTANT: Without `--no-link`, a `./result` symlink is created
+  <pattern name="adding-custom-packages">
+    <description>Hash acquisition flow for new custom packages</description>
+    <steps>
+      1. Get `hash` using nurl: `nurl https://github.com/&lt;owner&gt;/&lt;repo&gt; &lt;tag&gt;`
+      2. Get `vendorHash`/`cargoHash` via build error (`got:` line)
+    </steps>
+  </pattern>
 
-## 2. nix run
+  <pattern name="nurl">
+    <description>Generate Nix fetcher calls from repository URLs</description>
+    <example>
+nurl https://github.com/rvben/rumdl v0.0.206
+    </example>
+    <output_usage>
+Output can be used directly in fetchFromGitHub:
 
-- IMPORTANT: Packages registered in packages can be run with `nix run`
+```nix
+fetchFromGitHub {
+  owner = "rvben";
+  repo = "rumdl";
+  rev = "v0.0.206";
+  hash = "sha256-XXX...";
+}
+```
+    </output_usage>
+    <note>For cargoHash/vendorHash, use build error method (nurl does not support these)</note>
+  </pattern>
+</patterns>
 
-    ```sh
-    nix run .#pike -- scan -d ./terraform
-    ```
-
-## 3. Adding Custom Packages
-
-- YOU MUST: See CONTRIBUTING.md section 1.4.2 for adding new custom packages
-- IMPORTANT: Hash acquisition flow
-    1. Get `hash` using nurl: `nurl https://github.com/<owner>/<repo> <tag>`
-    2. Get `vendorHash`/`cargoHash` via build error (`got:` line)
-- IMPORTANT: Add `doCheck = false;` if tests fail
-
-## 4. nurl
-
-- IMPORTANT: nurl generates Nix fetcher calls from repository URLs
-
-    ```sh
-    nurl https://github.com/rvben/rumdl v0.0.206
-    ```
-
-- IMPORTANT: Output can be used directly in fetchFromGitHub
-
-    ```nix
-    fetchFromGitHub {
-      owner = "rvben";
-      repo = "rumdl";
-      rev = "v0.0.206";
-      hash = "sha256-XXX...";
-    }
-    ```
-
-- IMPORTANT: For cargoHash/vendorHash, use build error method
-  (nurl does not support these)
+<constraints>
+  <must>Use `--no-link` with all `nix build` commands</must>
+  <avoid>Running `nix build` without `--no-link` (creates unwanted `./result` symlink)</avoid>
+</constraints>

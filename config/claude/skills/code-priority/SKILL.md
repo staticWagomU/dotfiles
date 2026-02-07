@@ -3,66 +3,36 @@ name: code-priority
 description: Guide design decisions using the State > Coupling > Complexity > Code priority framework. Use when evaluating tradeoffs, reviewing design choices, deciding between implementations, or when code volume seems to be prioritized over deeper concerns.
 ---
 
-# INSTRUCTIONS
-
+<purpose>
 Apply the code optimization priority framework: sacrifice lower priorities to improve higher ones.
+State > Coupling > Complexity > Code.
+</purpose>
 
-## The Priority Hierarchy
+<rules priority="critical">
+  <rule>Priority 1 - State: Minimize mutable state. Stateless code works identically in sequential, parallel, and distributed contexts</rule>
+  <rule>Priority 2 - Coupling: Reduce dependencies. Loose coupling enables independent change and testing</rule>
+  <rule>Priority 3 - Complexity: Simplify logic. Lower cognitive load, fewer bugs</rule>
+  <rule>Priority 4 - Code: Reduce volume. Less to read and maintain</rule>
+  <rule>Each level can be sacrificed to improve a higher-priority concern</rule>
+</rules>
 
-```
-State > Coupling > Complexity > Code
-```
+<patterns>
+  <pattern name="decision-framework">
+    <description>When evaluating design choices, follow this priority order</description>
+    <steps>
+      1. Does Option A have less mutable state than Option B?
+         Yes -> Prefer Option A (even if more coupled/complex/verbose)
+      2. Does Option A have less coupling than Option B?
+         Yes -> Prefer Option A (even if more complex/verbose)
+      3. Does Option A have less complexity than Option B?
+         Yes -> Prefer Option A (even if more verbose)
+      4. Prefer the option with less code
+    </steps>
+  </pattern>
 
-| Priority | Focus | Why It Matters |
-|----------|-------|----------------|
-| **1. State** | Minimize mutable state | Stateless code works identically in sequential, parallel, and distributed contexts |
-| **2. Coupling** | Reduce dependencies | Loose coupling enables independent change and testing |
-| **3. Complexity** | Simplify logic | Lower cognitive load, fewer bugs |
-| **4. Code** | Reduce volume | Less to read and maintain |
-
-## Core Principle
-
-> "It's okay to increase coupling if it makes your code more stateless."
-
-Each level can be sacrificed to improve a higher-priority concern:
-- **More code** is acceptable for **less complexity**
-- **More complexity** is acceptable for **less coupling**
-- **More coupling** is acceptable for **less state**
-
-## Decision Framework
-
-When evaluating design choices:
-
-```
-1. Does Option A have less mutable state than Option B?
-   Yes → Prefer Option A (even if more coupled/complex/verbose)
-   No  ↓
-2. Does Option A have less coupling than Option B?
-   Yes → Prefer Option A (even if more complex/verbose)
-   No  ↓
-3. Does Option A have less complexity than Option B?
-   Yes → Prefer Option A (even if more verbose)
-   No  ↓
-4. Prefer the option with less code
-```
-
-## Why This Order?
-
-**State is hardest to reason about:**
-- Requires tracking "before" and "after" conditions
-- Creates implicit dependencies between operations
-- Breaks parallelization and distribution
-- Explodes test setup complexity
-
-**Beginners optimize the wrong thing:**
-- Code volume is most visible, so it gets optimized first
-- But state, coupling, and complexity matter more for maintainability
-- Experience teaches that a few extra lines are cheap; hidden state is expensive
-
-## Practical Examples
-
-### Prefer Stateless (Accept More Coupling)
-
+  <pattern name="prefer-stateless">
+    <description>Accept more coupling for less state</description>
+    <example>
 ```python
 # More state, less coupling
 class Processor:
@@ -79,9 +49,12 @@ class Processor:
 def process(data, transformer):
     return transformer(data)
 ```
+    </example>
+  </pattern>
 
-### Prefer Less Coupling (Accept More Code)
-
+  <pattern name="prefer-less-coupling">
+    <description>Accept more code for less coupling</description>
+    <example>
 ```python
 # Less code, more coupling
 def create_user(data):
@@ -97,9 +70,12 @@ def create_user(data, repository, notifier):
     notifier.send_welcome(user)
     return user
 ```
+    </example>
+  </pattern>
 
-### Prefer Less Complexity (Accept More Code)
-
+  <pattern name="prefer-less-complexity">
+    <description>Accept more code for less complexity</description>
+    <example>
 ```python
 # Less code, more complexity
 result = data if condition else (default if not other else fallback)
@@ -112,32 +88,40 @@ elif other:
 else:
     result = default
 ```
+    </example>
+  </pattern>
+</patterns>
 
-## Review Checklist
+<best_practices>
+  <practice priority="critical">Is state being introduced where a pure function would work?</practice>
+  <practice priority="high">Are global/shared dependencies creating hidden coupling?</practice>
+  <practice priority="high">Is clever code sacrificing readability for brevity?</practice>
+  <practice priority="medium">Is the author optimizing for code volume over deeper concerns?</practice>
+</best_practices>
 
-When reviewing code or design:
+<anti_patterns>
+  <avoid name="Global singletons">
+    <description>Maximum coupling + hidden state</description>
+    <instead>Dependency injection</instead>
+  </avoid>
+  <avoid name="Mutable shared state">
+    <description>Race conditions, test complexity</description>
+    <instead>Immutable data, message passing</instead>
+  </avoid>
+  <avoid name="Clever one-liners">
+    <description>Complexity hidden in density</description>
+    <instead>Explicit multi-line logic</instead>
+  </avoid>
+  <avoid name="Premature DRY">
+    <description>Wrong abstraction, coupling</description>
+    <instead>Tolerate duplication until pattern is clear</instead>
+  </avoid>
+</anti_patterns>
 
-- [ ] Is state being introduced where a pure function would work?
-- [ ] Are global/shared dependencies creating hidden coupling?
-- [ ] Is clever code sacrificing readability for brevity?
-- [ ] Is the author optimizing for code volume over deeper concerns?
+<related_skills>
+  <skill name="tidying">Structural improvements often reduce coupling</skill>
+  <skill name="tdd">Tests reveal hidden state and coupling problems early</skill>
+  <skill name="refactoring">Many patterns specifically target state and coupling</skill>
+</related_skills>
 
-## Anti-Patterns
-
-| Anti-Pattern | Problem | Better Approach |
-|--------------|---------|-----------------|
-| Global singletons | Maximum coupling + hidden state | Dependency injection |
-| Mutable shared state | Race conditions, test complexity | Immutable data, message passing |
-| Clever one-liners | Complexity hidden in density | Explicit multi-line logic |
-| Premature DRY | Wrong abstraction, coupling | Tolerate duplication until pattern is clear |
-
-## Integration with Other Practices
-
-This framework complements:
-- **Tidy First**: Structural improvements often reduce coupling
-- **TDD**: Tests reveal hidden state and coupling problems early
-- **Refactoring**: Many patterns specifically target state and coupling
-
-## Reference
-
-Based on: [curun1r's comment on Hacker News](https://news.ycombinator.com/item?id=11042400), attributed to Sandi Metz's design principles
+<reference>Based on: [curun1r's comment on Hacker News](https://news.ycombinator.com/item?id=11042400), attributed to Sandi Metz's design principles</reference>
