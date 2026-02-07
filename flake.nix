@@ -1,40 +1,6 @@
 {
   description = "輪ごむのお部屋";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    fisher = {
-      url = "github:jorgebucaran/fisher";
-      flake = false;
-    };
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
-    };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    vim-overlay = {
-      url = "github:kawarimidoll/vim-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    zeno-zsh = {
-      url = "github:yuki-yano/zeno.zsh";
-      flake = false;
-    };
-  };
 
   outputs =
     inputs@{
@@ -249,4 +215,39 @@
         };
 
     };
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    fisher = {
+      url = "github:jorgebucaran/fisher";
+      flake = false;
+    };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    vim-overlay = {
+      url = "github:kawarimidoll/vim-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zeno-zsh = {
+      url = "github:yuki-yano/zeno.zsh";
+      flake = false;
+    };
+  };
 }
