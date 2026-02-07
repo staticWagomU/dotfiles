@@ -26,6 +26,10 @@ fish_add_path ~/.npm-global/bin
 # nix
 fish_add_path /nix/var/nix/profiles/default/bin
 fish_add_path ~/.nix-profile/bin
+# nix-darwin system binaries (darwin-rebuild, etc.)
+fish_add_path /run/current-system/sw/bin
+# nix-darwin + home-manager integration
+fish_add_path /etc/profiles/per-user/$USER/bin
 
 fish_add_path ~/.bun/bin
 
