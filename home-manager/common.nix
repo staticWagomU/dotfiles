@@ -37,6 +37,7 @@ in
     fd
     yq
     tailscale
+    pik
 
     # font
     hackgen-nf-font
