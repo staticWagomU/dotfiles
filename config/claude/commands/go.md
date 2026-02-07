@@ -2,22 +2,40 @@
 description: Go on with the next item in the plan
 ---
 
-Do one of the following based on the project state.
+<purpose>
+プロジェクトの状態に応じて、計画の次の項目を進める。
+</purpose>
 
-1. If `scrum.yaml` and `plan.md` both exists, ask user for migration preference:
-    * continue with `scrum.yaml` process
-    * migrate to `plan.md` process starting from next unmarked test
-2. If `scrum.yaml` exists, repeatably do following until no more PBIs can be refined:
-    * product backlog refinement
-    * sprint planning
-    * sprint execution with `tdd` skill
-    * sprint review
-    * sprint retrospective
-    * `scrum.yaml` compaction
-3. If `plan.md` exists, do
-    * find the next unmarked test, implement the test, then implement only enough code to make that test pass.
-4. If neither file exists, do
-    * create a new `plan.md` with a list of tests to implement for the feature
-    * start with the first test in the plan 
+<workflow>
+  <phase name="state-detection">
+    <step>scrum.yaml と plan.md の両方が存在する場合、ユーザーにマイグレーション方針を確認する：scrum.yaml プロセスを継続するか、plan.md プロセスに移行するか</step>
+    <step>scrum.yaml のみ存在する場合、scrum プロセスを実行する</step>
+    <step>plan.md のみ存在する場合、plan.md プロセスを実行する</step>
+    <step>どちらも存在しない場合、新規 plan.md を作成する</step>
+  </phase>
 
-Make sure to update the status of tasks in documents as you work on
+  <phase name="scrum-process">
+    <step>product backlog refinement を実施</step>
+    <step>sprint planning を実施</step>
+    <step>tdd skill を用いて sprint execution を実施</step>
+    <step>sprint review を実施</step>
+    <step>sprint retrospective を実施</step>
+    <step>scrum.yaml compaction を実施</step>
+    <step>リファイン可能な PBI がなくなるまで繰り返す</step>
+  </phase>
+
+  <phase name="plan-process">
+    <step>次の未マークのテストを見つける</step>
+    <step>テストを実装する</step>
+    <step>そのテストをパスさせるのに十分なコードのみを実装する</step>
+  </phase>
+
+  <phase name="new-plan">
+    <step>機能のために実装するテストのリストを含む新規 plan.md を作成する</step>
+    <step>計画の最初のテストから開始する</step>
+  </phase>
+</workflow>
+
+<constraints>
+  <must>作業中にドキュメント内のタスクのステータスを更新する</must>
+</constraints>

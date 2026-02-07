@@ -3,47 +3,66 @@ allowed-tools: Read, Write, Bash(cat:*), Bash(ls:*)
 description: Initialize a plan.md file based on AI-Agentic Scrum Dashboard template
 ---
 
-## Initialize AI-Agentic Scrum Dashboard
-
+<purpose>
 You are setting up a new project with the AI-Agentic Scrum methodology. This command will create a `plan.md` file in the project root that serves as the single source of truth for all Scrum artifacts.
+</purpose>
 
-### Step 0: Ensure Project Initialization
+<workflow>
+  <phase name="ensure-init">
+    <objective>Ensure Project Initialization</objective>
+    <step>Run `/init` to ensure CLAUDE.md is up to date.</step>
+  </phase>
 
-First, run `/init` to ensure CLAUDE.md is up to date.
-
-### Step 1: Gather Project Information
-
-Ask the user the following questions interactively. Wait for answers before proceeding to file generation.
-
-**Required Information:**
-
-1. **Product Name**: What is the name of this product/project?
-
-2. **Product Goal**: What is the core user value this product delivers?
+  <phase name="gather-info">
+    <objective>Gather Project Information</objective>
+    <step>Ask the user the following questions interactively. Wait for answers before proceeding to file generation.</step>
+    <step>1. **Product Name**: What is the name of this product/project?</step>
+    <step>2. **Product Goal**: What is the core user value this product delivers?
    - Example: "Enable developers to write tests more efficiently"
-   - This becomes the Product Goal statement
-
-3. **Tech Stack**: What technologies is this project using?
+   - This becomes the Product Goal statement</step>
+    <step>3. **Tech Stack**: What technologies is this project using?
    - Language(s): e.g., Python, TypeScript, Rust, Go
    - Test framework: e.g., pytest, jest, vitest, cargo test
    - Linter/formatter: e.g., ruff, eslint, prettier, rustfmt
    - Type checker: e.g., mypy, tsc, none
-   - This determines the Definition of Done verification commands
-
-4. **Initial PBI Ideas**: What are the first 2-3 features or user stories you want to build?
+   - This determines the Definition of Done verification commands</step>
+    <step>4. **Initial PBI Ideas**: What are the first 2-3 features or user stories you want to build?
    - For each, ask:
      - Who is the user role?
      - What capability do they need?
      - What benefit does it provide?
-   - These become the initial Product Backlog Items
+   - These become the initial Product Backlog Items</step>
+    <step>5. **Success Metrics** (optional): How will you measure product success?
+   - Default metrics will be provided if none specified</step>
+  </phase>
 
-5. **Success Metrics** (optional): How will you measure product success?
-   - Default metrics will be provided if none specified
+  <phase name="generate">
+    <objective>Generate plan.md</objective>
+    <step>After gathering information, generate the `plan.md` file using the template below.</step>
+  </phase>
 
-### Step 2: Generate plan.md
+  <phase name="customize">
+    <objective>Customize Based on Tech Stack</objective>
+    <step>Replace placeholders with actual values based on tech stack for Definition of Done checks and Backlog Items.</step>
+  </phase>
 
-After gathering information, generate the `plan.md` file with this structure:
+  <phase name="save">
+    <objective>Write the File</objective>
+    <step>Save the generated content to `plan.md` in the project root.</step>
+  </phase>
 
+  <phase name="confirm">
+    <objective>Confirm and Guide</objective>
+    <step>1. Confirm the file was created at `[project_root]/plan.md`</step>
+    <step>2. Explain next steps:
+   - Review and refine the initial PBIs
+   - Change status from `draft` to `ready` when stories are complete
+   - Run Sprint Planning to start the first sprint</step>
+    <step>3. Mention that all agents should use this file as the single source of truth</step>
+  </phase>
+</workflow>
+
+<template>
 ``````````markdown
 # AI-Agentic Scrum Dashboard
 
@@ -397,12 +416,11 @@ events:
   refinement: "@scrum-event-backlog-refinement"
 ``````
 ``````````
+</template>
 
-### Step 3: Customize Based on Tech Stack
-
-Replace placeholders with actual values:
-
-**For Definition of Done checks**, use appropriate commands based on tech stack:
+<context>
+  <customization name="definition-of-done">
+Replace placeholders with actual values based on tech stack:
 
 | Tech Stack | Test Command | Lint Command | Type Check |
 |------------|--------------|--------------|------------|
@@ -411,8 +429,10 @@ Replace placeholders with actual values:
 | TypeScript (vitest/eslint) | `npm run test` | `npm run lint` | `npx tsc --noEmit` |
 | Rust | `cargo test` | `cargo clippy -- -D warnings` | `cargo check` |
 | Go | `go test ./...` | `golangci-lint run` | (built-in) |
+  </customization>
 
-**For Backlog Items**, format each PBI as:
+  <customization name="backlog-items">
+Format each PBI as:
 
 ```yaml
   - id: PBI-001
@@ -430,22 +450,7 @@ Replace placeholders with actual values:
     dependencies: []
     status: draft
 ```
-
-### Step 4: Write the File
-
-Save the generated content to `plan.md` in the project root.
-
-### Step 5: Confirm and Guide
-
-After creating the file:
-
-1. Confirm the file was created at `[project_root]/plan.md`
-2. Explain next steps:
-   - Review and refine the initial PBIs
-   - Change status from `draft` to `ready` when stories are complete
-   - Run Sprint Planning to start the first sprint
-3. Mention that all agents should use this file as the single source of truth
-
----
+  </customization>
+</context>
 
 **Begin by running `/init`, then ask the user the required questions one section at a time.**

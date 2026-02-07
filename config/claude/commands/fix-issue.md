@@ -4,26 +4,38 @@ description: Find and fix an issue in the codebase by following a strict process
 argument-hint: [issueNumber]
 ---
 
-# Find and fix issue
+<purpose>
+Issue を理解し、完了要件を満たす修正を実装する。
+</purpose>
 
-## Goal
+<rules priority="critical">
+  <rule>YOUR_ISSUE_TO_FIX: $ARGUMENTS</rule>
+  <rule>Issue がオープンであることを最初に確認する: gh issue view $ARGUMENTS --json state -q .state (must be "OPEN")</rule>
+  <rule>確認後、即座にブランチを作成する: git switch -c fix-issue-$ARGUMENTS（他の作業より前に実行すること）</rule>
+  <rule>コミットメッセージは conventional commit format を使用する</rule>
+</rules>
 
-Understand the issue and meet the completion requirements by implementing a fix.
+<workflow>
+  <phase name="preparation">
+    <step>Issue がオープンか確認: gh issue view $ARGUMENTS --json state -q .state</step>
+    <step>即座にブランチを作成: git switch -c fix-issue-$ARGUMENTS</step>
+  </phase>
 
-## Steps (obey strictly)
+  <phase name="investigation">
+    <step>Issue の詳細を読む: gh issue view $ARGUMENTS</step>
+    <step>コードベース内の関連コードを特定する</step>
+    <step>必要に応じて context7 等のツールで関連コード、ドキュメント、例を検索する</step>
+  </phase>
 
-YOUR_ISSUE_TO_FIX: $ARGUMENTS
+  <phase name="implementation">
+    <step>根本原因に対処する修正を実装する</step>
+    <step>必要に応じて適切なテストを追加する</step>
+    <step>conventional commit format で変更をコミットする</step>
+    <step>修正を説明する簡潔な PR description を準備する</step>
+  </phase>
+</workflow>
 
-1. **FIRST** check if issue is open: `gh issue view $ARGUMENTS --json state -q .state` (must be "OPEN")
-2. **IMMEDIATELY** create branch: `git switch -c fix-issue-$ARGUMENTS` (DO THIS BEFORE ANY OTHER WORK!)
-3. Now read issue details: `gh issue view $ARGUMENTS` to understand the issue
-4. Locate the relevant code in our codebase
-5. Implement a solution that addresses the root cause
-   - Tool like `context7` can be used to search for relevant code, documentation, or examples
-6. Add appropriate tests if needed
-7. Commit changes with proper commit message
-   - **IMPORTANT**: Use conventional commit message format
-8. Prepare a concise PR description explaining the fix
-   - **NEVER**: Do not push commits or create PRs. These are done by the user.
-
-**CRITICAL**: Always create the branch (step 2) immediately after confirming the issue is open. This prevents accidental commits to main branch.
+<constraints>
+  <must>ブランチ作成（step 2）は Issue がオープンであることを確認した直後に行う。main ブランチへの誤コミットを防止するため</must>
+  <avoid>プッシュや PR の作成。これらはユーザーが行う</avoid>
+</constraints>

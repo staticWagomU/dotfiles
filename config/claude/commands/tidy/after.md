@@ -2,74 +2,43 @@
 description: Tidy After - Clean up code after completing a behavioral change
 ---
 
-## Tidy After: Clean Up Your Work
+<purpose>
+Tidy After モード：振る舞いの変更（feat/fix）を完了した後に、コード構造を改善する機会を見つけてクリーンアップする。
+</purpose>
 
-You are entering **Tidy After** mode. You've just completed a behavioral change (feat/fix) and now see opportunities to improve the code structure.
+<rules priority="critical">
+  <rule>振る舞いの変更が既にコミットされていること（feat:/fix:）</rule>
+  <rule>振る舞いの変更は行わない。構造的な変更のみ</rule>
+  <rule>各整頓コミットは小さく保つ：変更行数 20行未満、1コミットにつき1つの整頓</rule>
+  <rule>タイムボックスを設定する（例：10-15分）。最も価値のある整頓から行い、時間切れまたは価値が低下したら停止する</rule>
+</rules>
 
-### When to Use This
+<workflow>
+  <phase name="identify">
+    <step>振る舞い変更後によくある整頓の機会を探す：共通コードの抽出（コピペでテストをパスさせた場合）、より良い命名（ドメインの理解が深まった場合）、条件分岐の簡素化（実装を通じてロジックが明確になった場合）、足場の除去（開発中の一時的なコード）、凝集度の改善（関連コードが散在してしまった場合）</step>
+  </phase>
 
-You just:
-- Completed a feature and see duplication
-- Fixed a bug and noticed messy surrounding code
-- Finished TDD GREEN phase and want broader cleanup (beyond `/tdd:refactor`)
-- Understand the domain better now and see clearer abstractions
+  <phase name="tidy-step">
+    <step>1つの小さな整頓の機会を特定する</step>
+    <step>構造的な変更を行う（振る舞いの変更なし）</step>
+    <step>テストを実行して何も壊れていないことを確認する</step>
+    <step>/git:commit で refactor: タイプのコミット</step>
+  </phase>
 
-### The Process
+  <phase name="iterate">
+    <step>さらに整頓が必要な場合は identify フェーズに戻る</step>
+    <step>残りの機会は /tidy:later で記録する</step>
+    <step>満足したら次の作業に移る</step>
+  </phase>
+</workflow>
 
-```
-1. Ensure your behavioral change is committed (feat:/fix:)
-2. Identify ONE small tidying opportunity
-3. Make the structural change (NO behavior change!)
-4. Run tests to confirm nothing broke
-5. /git:commit with type "refactor:"
-6. More tidying? Repeat from step 2
-7. Satisfied? Move on to next work
-```
+<constraints>
+  <must>振る舞いの変更が既にコミット済みであること</must>
+  <must>変更は純粋に構造的であること</must>
+  <must>テストがパスし続けること</must>
+  <avoid>Tidy After を先延ばしにすること。タイムボックスを設定して出荷する</avoid>
+</constraints>
 
-### What to Look For
-
-After a behavioral change, common tidying opportunities:
-
-| Opportunity | Sign |
-|-------------|------|
-| **Extract Common Code** | You copy-pasted to make tests pass |
-| **Better Names** | You understand the domain better now |
-| **Simplify Conditionals** | The logic became clearer through implementation |
-| **Remove Scaffolding** | Temporary code that helped during development |
-| **Improve Cohesion** | Related code ended up scattered |
-
-### Size Limits
-
-Each tidying commit should be:
-- **Small**: < 20 lines changed
-- **Focused**: One tidying per commit
-- **Fast**: Minutes, not hours
-
-### Time-Boxing
-
-Tidy After should be brief:
-- Set a limit (e.g., 10-15 minutes)
-- Do the most valuable tidyings first
-- Stop when time's up or value diminishes
-- Use `/tidy:later` for remaining opportunities
-
-### Checklist Per Tidying
-
-- [ ] Behavioral change is already committed
-- [ ] This change is purely structural
-- [ ] Tests still pass
-- [ ] Ready to commit as `refactor:`
-
-### Commit Each Tidying
-
-After each successful tidying, run `/git:commit` to save your progress.
-
-### Next Step
-
-When satisfied with the cleanup:
-1. Move on to your next task
-2. Start next TDD cycle with `/tdd:red` if applicable
-
----
-
-**Remember**: Tidy After is optional but valuable. Don't let it become procrastination—time-box it and ship.
+<output>
+  <format>クリーンアップに満足したら：次のタスクに移る、または該当する場合は /tdd:red で次の TDD サイクルを開始する</format>
+</output>

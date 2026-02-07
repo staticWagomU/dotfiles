@@ -2,58 +2,51 @@
 description: Start the RED phase - Write a small, focused failing test
 ---
 
-## TDD RED Phase: Write a Failing Test
+<purpose>
+TDD RED フェーズ：Kent Beck の TDD サイクルにおける RED フェーズに入り、1つの小さく焦点を絞った失敗するテストを書く。
+</purpose>
 
-You are entering the **RED** phase of Kent Beck's TDD cycle. Your goal is to write ONE small, focused failing test.
+<rules priority="critical">
+  <rule>RED フェーズ中はコミットしない（安全な状態ではない）</rule>
+  <rule>このフェーズはサイクルごとに正確に1回実行される</rule>
+  <rule>1つの失敗するテストを書く、または既存テストに1つの失敗するアサーションを追加する</rule>
+</rules>
 
-### Phase Rules
+<rules priority="standard">
+  <rule>テスト名は振る舞いを説明するものにする（良い例：shouldAuthenticateValidUser, test_empty_input_returns_error / 悪い例：testAuth, test1）</rule>
+  <rule>テストは1つの特定の振る舞いをテストする。「さらに...」と考えたら、それは2つ目のテストである</rule>
+  <rule>テストは正しい理由で失敗しなければならない：実装の欠如（期待される）であり、構文エラーやタイポではない</rule>
+</rules>
 
-- **NO COMMIT** during RED phase (you are not in a safe state)
-- This phase occurs **EXACTLY ONCE** per cycle
-- Write **ONE** failing test or add **ONE** failing assertion to an existing test
+<workflow>
+  <phase name="strategy-preview">
+    <step>テストを書く前に、GREEN フェーズでどの戦略を使うか検討する</step>
+    <step>不確実な場合：Fake It（定数を返してパスさせる）</step>
+    <step>確信がある場合：Obvious Implementation（実際の解決策をそのまま実装する）</step>
+    <step>一般化する場合：Triangulation（フェイクを壊すテストを追加する）</step>
+  </phase>
 
-### Writing Your Test
+  <phase name="write-test">
+    <step>振る舞いを説明する記述的な名前のテストを作成する</step>
+    <step>テストは小さく1つのことに焦点を当てる</step>
+    <step>テストを実行して失敗を確認する</step>
+    <step>失敗が正しい理由（実装の欠如）であることを確認する</step>
+  </phase>
 
-**1. Choose a test name that describes behavior:**
-- Good: `shouldAuthenticateValidUser`, `test_empty_input_returns_error`
-- Bad: `testAuth`, `test1`
+  <phase name="split-consideration">
+    <step>異なる振る舞いをテストする場合は別のテスト関数の作成を検討する</step>
+    <step>新しいアサーションが異なるセットアップを必要とする場合は分割する</step>
+    <step>どのアサーションが最初に失敗するか不明な場合は分割する</step>
+  </phase>
+</workflow>
 
-**2. Keep the test small:**
-- Test ONE specific behavior
-- If you are thinking "and also...", stop - that is a second test
+<constraints>
+  <must>テストが正しい理由で失敗することを確認してから次に進む</must>
+  <must>各 RED フェーズでは正確に1つの失敗するテストまたは1つの失敗するアサーションのみ追加する</must>
+  <avoid>RED フェーズ中のコミット</avoid>
+  <avoid>1回のフェーズで複数のテストを追加すること</avoid>
+</constraints>
 
-**3. The test must fail for the RIGHT reason:**
-- Missing implementation (expected)
-- NOT syntax errors or typos
-
-### Beck's Strategy Preview
-
-Before writing, consider which strategy you will use in GREEN:
-
-| Confidence Level | Strategy | Description |
-|------------------|----------|-------------|
-| Uncertain | **Fake It** | Return a constant to pass |
-| Confident | **Obvious Implementation** | Type the real solution |
-| Generalizing | **Triangulation** | Add test to break a fake |
-
-### When to Split Into a New Test
-
-Consider creating a separate test function when:
-- You're testing a **different behavior** (not just another case of the same behavior)
-- The new assertion requires **different setup** than existing assertions
-- You're unsure which assertion would fail first (tests should have clear failure points)
-
-### Checklist Before Proceeding
-
-- [ ] Test has a descriptive name explaining the expected behavior
-- [ ] Test is small and focused on ONE thing
-- [ ] Test FAILS (verify by running tests)
-- [ ] Test fails for the RIGHT reason (not syntax/typo)
-
-### Next Step
-
-Once your test fails for the right reason, proceed to `/tdd:green` to make it pass.
-
----
-
-**Remember**: Each RED phase adds exactly ONE failing test or ONE failing assertion. Keep iterations small!
+<output>
+  <format>テストが正しい理由で失敗したら、/tdd:green に進む</format>
+</output>

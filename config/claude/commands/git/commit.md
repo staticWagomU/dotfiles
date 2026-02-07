@@ -21,105 +21,79 @@ model: sonnet
 ### Current Branch
 !`git branch --show-current`
 
-## Task: Create a Meaningful Commit
+<purpose>
+You are a commit crafting assistant. Stage meaningful diffs and create Conventional Commits with WHY-focused messages following t-wada's principle: Code describes HOW, Tests describe WHAT, Commit log describes WHY, Code comments describe WHY NOT.
+</purpose>
 
-You are a commit crafting assistant following these principles:
+<rules priority="critical">
+  <rule>Format: `&lt;type&gt;[optional scope]: &lt;description&gt;` with optional body and footer(s)</rule>
+  <rule>Types: `fix:` (bug fix, PATCH), `feat:` (new feature, MINOR), `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`</rule>
+  <rule>Breaking Changes: Use `feat!:` or `fix!:` only. Other types cannot be breaking by definition - if behavior changed, recategorize as feat or fix.</rule>
+  <rule>The commit message body must explain the reasoning and motivation behind the change, not just repeat what the diff shows.</rule>
+</rules>
 
-### 1. Conventional Commits 1.0.0 Specification
+<workflow>
+  <phase name="analyze">
+    <objective>Analyze Changes</objective>
+    <step>Review all unstaged and staged changes</step>
+    <step>If needed, show detailed diffs: `git diff [file]` or `git diff --cached [file]`</step>
+    <step>Identify logical groupings of related changes</step>
+  </phase>
 
-Format:
-```
-<type>[optional scope]: <description>
+  <phase name="plan">
+    <objective>Plan Staging Strategy</objective>
+    <step>Group changes that belong together conceptually</step>
+    <step>Separate unrelated changes into different commits</step>
+    <step>Consider: Does this change serve a single purpose?</step>
+  </phase>
 
-[optional body]
+  <phase name="stage">
+    <objective>Stage Meaningfully</objective>
+    <step>Use `git add -p &lt;file&gt;` for partial staging when a file contains multiple logical changes</step>
+    <step>Use `git add &lt;file&gt;` for complete file staging</step>
+    <step>Verify staged content with `git diff --cached`</step>
+  </phase>
 
-[optional footer(s)]
-```
+  <phase name="determine-type">
+    <objective>Determine Commit Type</objective>
+    <step>Is it fixing a bug? -> `fix:`</step>
+    <step>Is it adding new functionality? -> `feat:`</step>
+    <step>Is it restructuring without behavior change? -> `refactor:`</step>
+    <step>Is it improving performance? -> `perf:`</step>
+    <step>Is it adding/fixing tests? -> `test:`</step>
+    <step>Is it documentation? -> `docs:`</step>
+  </phase>
 
-**Types** (choose the most appropriate):
-- `fix:` - Bug fix (PATCH in SemVer)
-- `feat:` - New feature (MINOR in SemVer)
-- `build:` - Build system or external dependencies
-- `chore:` - Maintenance tasks, no production code change
-- `ci:` - CI configuration changes
-- `docs:` - Documentation only
-- `style:` - Code style (formatting, whitespace, etc.)
-- `refactor:` - Code restructuring without behavior change
-- `perf:` - Performance improvement
-- `test:` - Adding or correcting tests
-
-**Breaking Changes**: Use `feat!:` or `fix!:` only. Other types (refactor, style, docs, chore) cannot be breaking by definition—if behavior changed, recategorize as feat or fix.
-
-### 2. Commit Message Philosophy (t-wada's Principle)
-
-- **Code** describes HOW
-- **Tests** describe WHAT happens
-- **Commit log** describes **WHY**
-- **Code comments** describe WHY NOT
-
-The commit message body should explain the **reasoning** and **motivation** behind the change, not just repeat what the diff shows.
-
-### 3. Workflow
-
-**Step 1: Analyze Changes**
-- Review all unstaged and staged changes
-- If needed, show detailed diffs: `git diff [file]` or `git diff --cached [file]`
-- Identify logical groupings of related changes
-
-**Step 2: Plan Staging Strategy**
-- Group changes that belong together conceptually
-- Separate unrelated changes into different commits
-- Consider: Does this change serve a single purpose?
-
-**Step 3: Stage Meaningfully**
-- Use `git add -p <file>` for partial staging when a file contains multiple logical changes
-- Use `git add <file>` for complete file staging
-- Verify staged content with `git diff --cached`
-
-**Step 4: Determine Commit Type**
-Analyze the staged changes:
-- Is it fixing a bug? -> `fix:`
-- Is it adding new functionality? -> `feat:`
-- Is it restructuring without behavior change? -> `refactor:`
-- Is it improving performance? -> `perf:`
-- Is it adding/fixing tests? -> `test:`
-- Is it documentation? -> `docs:`
-- etc.
-
-**Step 5: Craft the Commit Message**
-
-```
-<type>[scope]: <imperative description under 50 chars>
-
-<body: explain WHY this change was necessary>
+  <phase name="craft-message">
+    <objective>Craft the Commit Message</objective>
+    <step>Write the subject line: `&lt;type&gt;[scope]: &lt;imperative description under 50 chars&gt;`</step>
+    <step>Write the body explaining WHY:
 - What problem does this solve?
 - What was the motivation?
-- Why was this approach chosen over alternatives?
+- Why was this approach chosen over alternatives?</step>
+    <step>Add optional footer if needed</step>
+  </phase>
 
-[optional footer]
-```
+  <phase name="execute">
+    <objective>Execute Commit</objective>
+    <step>`git commit -m "&lt;type&gt;[scope]: &lt;description&gt;" -m "&lt;body explaining WHY&gt;"`</step>
+    <step>Or for complex messages: `git commit` (using editor)</step>
+  </phase>
+</workflow>
 
-**Step 6: Execute Commit**
-```bash
-git commit -m "<type>[scope]: <description>" -m "<body explaining WHY>"
-```
+<constraints>
+  <must>Staged changes are logically cohesive (single purpose)</must>
+  <must>Commit type accurately reflects the change nature</must>
+  <must>Description is imperative mood, under 50 characters</must>
+  <must>Body explains WHY, not just WHAT</must>
+  <must>Breaking changes are properly indicated</must>
+  <avoid>Including unrelated changes in a single commit</avoid>
+  <avoid>Mixing behavioral and structural changes</avoid>
+</constraints>
 
-Or for complex messages, use the editor:
-```bash
-git commit
-```
-
-### 4. Quality Checklist
-
-Before committing, verify:
-- [ ] Staged changes are logically cohesive (single purpose)
-- [ ] Commit type accurately reflects the change nature
-- [ ] Description is imperative mood, under 50 characters
-- [ ] Body explains WHY, not just WHAT
-- [ ] No unrelated changes are included
-- [ ] Breaking changes are properly indicated
-
-### 5. Examples of Good WHY-focused Messages
+<output>
+  <format name="examples">
+Good WHY-focused messages:
 
 ```
 feat(auth): add OAuth2 support for GitHub login
@@ -150,6 +124,8 @@ to test connection logic in isolation. Extraction enables unit
 testing of pool behavior and prepares for upcoming multi-database
 support.
 ```
+  </format>
+</output>
 
 ## Begin
 
