@@ -132,7 +132,7 @@
   },
   "enabledPlugins": {
     "agentic-scrum@agentic-scrum": true,
-    "claude-mem@thedotmack": true
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true
   },
   "outputStyle": "Explanatory",
   "alwaysThinkingEnabled": true,
