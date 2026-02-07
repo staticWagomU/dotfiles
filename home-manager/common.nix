@@ -123,5 +123,22 @@ in
   home.file.".claude/skills".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/skills";
 
+  # Git config initialization (copy if not exists, not symlink)
+  # This allows gh auth login and other tools to write to ~/.gitconfig
+  home.activation.gitconfig = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+    if [ ! -f ~/.gitconfig ]; then
+      cat > ~/.gitconfig << 'EOF'
+# vi:syntax=.gitconfig:
+[include]
+  path = ~/dotfiles/config/.gitconfig
+[ghq]
+  root = ~/dev
+[commit]
+  template = ~/dotfiles/config/.gitmessage
+EOF
+      echo "Created ~/.gitconfig with include directive"
+    fi
+  '';
+
   home.stateVersion = "24.05";
 }

@@ -149,6 +149,7 @@
               darwinModules = [ ./darwin/default.nix ];
               homeModules = [
                 ./home-manager/common.nix
+                ./home-manager/mac.nix
                 ./home-manager/gui.nix
               ];
             };
@@ -159,6 +160,7 @@
               darwinModules = [ ./darwin/default.nix ];
               homeModules = [
                 ./home-manager/common.nix
+                ./home-manager/mac.nix
                 ./home-manager/gui.nix
               ];
             };
@@ -172,6 +174,7 @@
               system = "aarch64-darwin";
               modules = [
                 ./home-manager/common.nix
+                ./home-manager/mac.nix
                 ./home-manager/gui.nix
               ];
             };
@@ -182,6 +185,7 @@
               system = "aarch64-darwin";
               modules = [
                 ./home-manager/common.nix
+                ./home-manager/mac.nix
                 ./home-manager/gui.nix
               ];
             };
