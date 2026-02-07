@@ -11,15 +11,15 @@ set -euo pipefail
 # 引数解決
 ARG="${1:-today}"
 case "$ARG" in
-  today)
-    TARGET_DATE=$(date +%Y-%m-%d)
-    ;;
-  yesterday)
-    TARGET_DATE=$(date -v-1d +%Y-%m-%d)
-    ;;
-  *)
-    TARGET_DATE="$ARG"
-    ;;
+today)
+  TARGET_DATE=$(date +%Y-%m-%d)
+  ;;
+yesterday)
+  TARGET_DATE=$(date -v-1d +%Y-%m-%d)
+  ;;
+*)
+  TARGET_DATE="$ARG"
+  ;;
 esac
 
 # 出力先
@@ -47,9 +47,9 @@ fi
 
 # 対象日のログを抽出（history.jsonl）
 RAW_LOGS="$TEMP_DIR/raw.jsonl"
-cat "$HISTORY_FILE" | jq -c "select(.timestamp >= ${START_TS} and .timestamp <= ${END_TS})" > "$RAW_LOGS"
+cat "$HISTORY_FILE" | jq -c "select(.timestamp >= ${START_TS} and .timestamp <= ${END_TS})" >"$RAW_LOGS"
 
-ENTRY_COUNT=$(wc -l < "$RAW_LOGS" | tr -d ' ')
+ENTRY_COUNT=$(wc -l <"$RAW_LOGS" | tr -d ' ')
 if [ "$ENTRY_COUNT" -eq 0 ]; then
   echo '{"error": "no entries found", "date": "'"$TARGET_DATE"'"}' >&2
   exit 1
@@ -57,7 +57,7 @@ fi
 
 # セッションファイルから会話を抽出
 CONVERSATIONS="$TEMP_DIR/conversations.jsonl"
-> "$CONVERSATIONS"
+>"$CONVERSATIONS"
 
 # history.jsonl から対象日のセッションIDを取得
 SESSION_IDS=$(cat "$RAW_LOGS" | jq -r '.sessionId' | sort -u)
@@ -93,7 +93,7 @@ for SESSION_ID in $SESSION_IDS; do
         ),
         timestamp: .timestamp
       }
-    ' >> "$CONVERSATIONS" 2>/dev/null || true
+    ' >>"$CONVERSATIONS" 2>/dev/null || true
   fi
 done
 
@@ -130,7 +130,7 @@ cat "$RAW_LOGS" | jq -s --slurpfile convs <(cat "$CONVERSATIONS" | jq -s '.' 2>/
     total_entries: length
   }) |
   sort_by(.project_name)
-' > "$STRUCTURED"
+' >"$STRUCTURED"
 
 # サマリー統計を生成
 SUMMARY="$TEMP_DIR/summary.json"
@@ -149,7 +149,7 @@ cat "$STRUCTURED" | jq '{
     entries: .total_entries,
     conversations: ([.sessions[].conversations | length] | add)
   }]
-}' > "$SUMMARY"
+}' >"$SUMMARY"
 
 # 最終出力（JSON形式）
 echo "{"

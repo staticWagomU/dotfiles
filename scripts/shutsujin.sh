@@ -25,20 +25,20 @@ source "$SCRIPT_DIR/../lib/pane_manager.sh"
 SETUP_ONLY=false
 
 while [[ $# -gt 0 ]]; do
-    case $1 in
-        -s|--setup-only)
-            SETUP_ONLY=true
-            shift
-            ;;
-        -h|--help)
-            show_help
-            exit 0
-            ;;
-        *)
-            echo "不明なオプション: $1"
-            exit 1
-            ;;
-    esac
+  case $1 in
+  -s | --setup-only)
+    SETUP_ONLY=true
+    shift
+    ;;
+  -h | --help)
+    show_help
+    exit 0
+    ;;
+  *)
+    echo "不明なオプション: $1"
+    exit 1
+    ;;
+  esac
 done
 
 # ============================================================
@@ -86,20 +86,20 @@ log_success "✅ ペイン構築完了"
 # STEP 6: Claude Code 起動
 # ============================================================
 if [ "$SETUP_ONLY" = false ]; then
-    log_war "👑 全軍に Claude Code を召喚中..."
-    launch_claude_code_all
+  log_war "👑 全軍に Claude Code を召喚中..."
+  launch_claude_code_all
 
-    log_success "✅ 全軍 Claude Code 起動完了"
+  log_success "✅ 全軍 Claude Code 起動完了"
 
-    # ============================================================
-    # STEP 7: 指示書読み込み
-    # ============================================================
-    log_info "📜 各エージェントに指示書を伝達中..."
-    sleep 15  # Claude Code 起動待機
+  # ============================================================
+  # STEP 7: 指示書読み込み
+  # ============================================================
+  log_info "📜 各エージェントに指示書を伝達中..."
+  sleep 15 # Claude Code 起動待機
 
-    send_instructions_to_all
+  send_instructions_to_all
 
-    log_success "✅ 全軍に指示書伝達完了"
+  log_success "✅ 全軍に指示書伝達完了"
 fi
 
 # ============================================================

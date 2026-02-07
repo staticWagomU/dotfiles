@@ -1,4 +1,8 @@
-{ lib, rustPlatform, fetchFromGitHub }:
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+}:
 
 rustPlatform.buildRustPackage rec {
   pname = "codex";
@@ -16,7 +20,10 @@ rustPlatform.buildRustPackage rec {
   cargoRoot = "codex-rs";
 
   # Only build the codex bin
-  cargoBuildFlags = [ "--bin" "codex" ];
+  cargoBuildFlags = [
+    "--bin"
+    "codex"
+  ];
 
   # Cargo dependency lock hash; set after first build attempt
   cargoHash = "sha256-tLwvr7OaxrKHCAdsEtT0t34dOE4iBJ0Buh89igPmH2E=";

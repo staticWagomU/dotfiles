@@ -38,10 +38,10 @@ iso_to_date() {
 filter_content() {
   local content="$1"
   # system-reminder, local-command タグを除去
-  echo "$content" | sed -E 's/<system-reminder>.*<\/system-reminder>//g' | \
-                    sed -E 's/<local-command>.*<\/local-command>//g' | \
-                    sed '/^$/d' | \
-                    head -c 1000  # 長すぎるメッセージを切り詰め
+  echo "$content" | sed -E 's/<system-reminder>.*<\/system-reminder>//g' |
+    sed -E 's/<local-command>.*<\/local-command>//g' |
+    sed '/^$/d' |
+    head -c 1000 # 長すぎるメッセージを切り詰め
 }
 
 # セッションファイルを処理
@@ -57,7 +57,7 @@ process_session_file() {
   fi
 
   # 現在の行数を取得
-  local current_lines=$(wc -l < "$session_file" | tr -d ' ')
+  local current_lines=$(wc -l <"$session_file" | tr -d ' ')
 
   # 新規行がない場合はスキップ
   if [ "$current_lines" -le "$last_line" ]; then
@@ -90,7 +90,7 @@ process_session_file() {
     if [ -z "$content" ] || [ "$content" = "null" ]; then
       continue
     fi
-    if [[ "$content" == *"<system-reminder>"* ]] || [[ "$content" == *"<local-command>"* ]]; then
+    if [[ $content == *"<system-reminder>"* ]] || [[ $content == *"<local-command>"* ]]; then
       continue
     fi
 
@@ -101,7 +101,7 @@ process_session_file() {
 
     # ファイルが存在しない場合はヘッダーを追加
     if [ ! -f "$output_file" ]; then
-      cat > "$output_file" << EOF
+      cat >"$output_file" <<EOF
 ---
 type: realtime-log
 date: $msg_date
@@ -124,18 +124,18 @@ EOF
     fi
 
     # Markdownに追記
-    echo "" >> "$output_file"
-    echo "**${role_label}** (${msg_time}):" >> "$output_file"
-    echo "" >> "$output_file"
-    echo "$filtered_content" >> "$output_file"
-    echo "" >> "$output_file"
-    echo "---" >> "$output_file"
+    echo "" >>"$output_file"
+    echo "**${role_label}** (${msg_time}):" >>"$output_file"
+    echo "" >>"$output_file"
+    echo "$filtered_content" >>"$output_file"
+    echo "" >>"$output_file"
+    echo "---" >>"$output_file"
 
     log "Saved: $role_label message to $output_file"
   done
 
   # 処理済み行数を保存
-  echo "$current_lines" > "$state_file"
+  echo "$current_lines" >"$state_file"
 }
 
 # メインループ

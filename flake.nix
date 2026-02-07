@@ -1,7 +1,6 @@
 {
   description = "輪ごむのお部屋";
 
-
   outputs =
     inputs@{
       self,
@@ -43,10 +42,11 @@
             ];
           };
 
-          packages.codex = (import inputs.nixpkgs {
-            inherit system;
-            overlays = [ (import ./nix/overlays/codex-overlay.nix) ];
-          }).codex;
+          packages.codex =
+            (import inputs.nixpkgs {
+              inherit system;
+              overlays = [ (import ./nix/overlays/codex-overlay.nix) ];
+            }).codex;
 
           apps.codex = {
             type = "app";
@@ -125,7 +125,12 @@
                     useGlobalPkgs = true;
                     useUserPackages = true;
                     extraSpecialArgs = {
-                      inherit inputs username hostname system;
+                      inherit
+                        inputs
+                        username
+                        hostname
+                        system
+                        ;
                     };
                     users.${username} = {
                       imports = homeModules;

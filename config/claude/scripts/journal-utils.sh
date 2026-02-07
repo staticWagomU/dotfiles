@@ -59,7 +59,7 @@ extract_weekly_data() {
   echo "=== 週間サマリー: $start_date ~ $end_date ==="
 
   local current_date="$start_date"
-  while [[ "$current_date" != $(date -j -v+1d -f "%Y-%m-%d" "$end_date" "+%Y-%m-%d") ]]; do
+  while [[ $current_date != $(date -j -v+1d -f "%Y-%m-%d" "$end_date" "+%Y-%m-%d") ]]; do
     local start_ts=$(date -j -f "%Y-%m-%d %H:%M:%S" "${current_date} 00:00:00" "+%s")000
     local end_ts=$(date -j -f "%Y-%m-%d %H:%M:%S" "${current_date} 23:59:59" "+%s")999
 
@@ -78,14 +78,14 @@ project_stats() {
 
   echo "=== 過去${days}日間のプロジェクト別統計 ==="
 
-  cat ~/.claude/history.jsonl | \
-    jq -c "select(.timestamp >= ${cutoff_ts})" | \
+  cat ~/.claude/history.jsonl |
+    jq -c "select(.timestamp >= ${cutoff_ts})" |
     jq -rs 'group_by(.project) | map({
       project: (.[0].project | split("/") | last),
       entries: length,
       sessions: ([.[].sessionId] | unique | length)
-    }) | sort_by(-.entries) | .[]' | \
-    jq -r '"\(.project)\t\(.entries) entries\t\(.sessions) sessions"' | \
+    }) | sort_by(-.entries) | .[]' |
+    jq -r '"\(.project)\t\(.entries) entries\t\(.sessions) sessions"' |
     column -t -s $'\t'
 }
 
@@ -138,7 +138,7 @@ count_conversations() {
 
 # 使用方法を表示
 journal_help() {
-  cat << 'EOF'
+  cat <<'EOF'
 AI日誌ユーティリティ関数:
 
 基本機能:

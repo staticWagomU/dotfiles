@@ -16,7 +16,7 @@ log() {
 }
 
 check_dependencies() {
-  if ! command -v jq &> /dev/null; then
+  if ! command -v jq &>/dev/null; then
     log "ERROR: jq is not installed. Please install it first:"
     log "  brew install jq"
     exit 1
@@ -36,7 +36,7 @@ install() {
   mkdir -p "$HOME/Library/LaunchAgents"
 
   # plist ファイル内の HOME を実際のパスに置換してコピー
-  sed "s|~|$HOME|g" "$PLIST_SRC" > "$PLIST_DST"
+  sed "s|~|$HOME|g" "$PLIST_SRC" >"$PLIST_DST"
   log "Installed plist to $PLIST_DST"
 
   # 既存のエージェントをアンロード（エラーは無視）
@@ -127,7 +127,7 @@ restart() {
 }
 
 usage() {
-  cat << EOF
+  cat <<EOF
 Claude Code Journal Watcher Setup
 
 Usage: $0 [command]
@@ -147,20 +147,20 @@ EOF
 
 # メイン処理
 case "${1:-}" in
-  install)
-    install
-    ;;
-  uninstall)
-    uninstall
-    ;;
-  status)
-    status
-    ;;
-  restart)
-    restart
-    ;;
-  *)
-    usage
-    exit 1
-    ;;
+install)
+  install
+  ;;
+uninstall)
+  uninstall
+  ;;
+status)
+  status
+  ;;
+restart)
+  restart
+  ;;
+*)
+  usage
+  exit 1
+  ;;
 esac
