@@ -156,13 +156,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.27.2" = {
+    "@google/gemini-cli-core-0.27.3" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.27.2";
+      version = "0.27.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.27.2.tgz";
-        sha512 = "vgxxwtWj97p8HJUIb+awk/2ERGUp16sX5a8QV/i4lj98acXQrAvxawhYiA2w2ybKGay9Zn0bwIGQEST1iSMVUw==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.27.3.tgz";
+        sha512 = "wztwPx1U/ITMnzC/fUkSSQ79bTZp0v5Q4fZ9TVWpIGNMmRAkdUNdgQTpXtPKB19Ydn2mwretzK3jCEOOkEgH3g==";
       };
     };
     "@google/genai-1.30.0" = {
@@ -2478,13 +2478,13 @@ let
         sha512 = "Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==";
       };
     };
-    "hono-4.11.7" = {
+    "hono-4.11.8" = {
       name = "hono";
       packageName = "hono";
-      version = "4.11.7";
+      version = "4.11.8";
       src = fetchurl {
-        url = "https://registry.npmjs.org/hono/-/hono-4.11.7.tgz";
-        sha512 = "l7qMiNee7t82bH3SeyUCt9UF15EVmaBvsppY2zQtrbIhl/yzBTny+YUxsVjSjQ6gaqaeVtZmGocom8TzBlA4Yw==";
+        url = "https://registry.npmjs.org/hono/-/hono-4.11.8.tgz";
+        sha512 = "eVkB/CYCCei7K2WElZW9yYQFWssG0DhaDhVvr7wy5jJ22K+ck8fWW0EsLpB0sITUTvPnc97+rrbQqIr5iqiy9Q==";
       };
     };
     "hosted-git-info-7.0.2" = {
@@ -4467,13 +4467,13 @@ let
         sha512 = "OZs6gsjF4vMp32qrCbiVSkrFmXtG/AZhY3t0iAMrMBiAZyV9oALtXO8hsrHbMXF9x6L3grlFuwW2oAz7cav+Gw==";
       };
     };
-    "undici-7.20.0" = {
+    "undici-7.21.0" = {
       name = "undici";
       packageName = "undici";
-      version = "7.20.0";
+      version = "7.21.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/undici/-/undici-7.20.0.tgz";
-        sha512 = "MJZrkjyd7DeC+uPZh+5/YaMDxFiiEEaDgbUSVMXayofAkDWF1088CDo+2RPg7B1BuS1qf1vgNE7xqwPxE0DuSQ==";
+        url = "https://registry.npmjs.org/undici/-/undici-7.21.0.tgz";
+        sha512 = "Hn2tCQpoDt1wv23a68Ctc8Cr/BHpUSfaPYrkajTXOS9IKpxVRx/X5m1K2YkbK2ipgZgxXSgsUinl3x+2YdSSfg==";
       };
     };
     "undici-types-7.16.0" = {
@@ -4842,10 +4842,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.32";
+    version = "2.1.34";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.32.tgz";
-      sha512 = "TWySpzIPJCdn/RNHI7nIn/j/2PLGaw1d+v7v9JyVHk8i+cNND3eUm2YACO9219psbdtE1IpG1qeq/xsaHxlyDg==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.34.tgz";
+      sha512 = "uQ3yv41lvCExj2Ju/pCZ1KIKub5d5V3RQyeSKICPoJzk/H2Ktp0zonZeLkD/Q56qa4vPpA8MmvsBmFkAr+Z42w==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4860,10 +4860,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.27.2";
+    version = "0.27.3";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.27.2.tgz";
-      sha512 = "nBlDJ7h6/Yegk0SRWOfEytMPuP+L3OIEaKHtNUbr7HP5Z3tNEJKPRYHxrXBMKaKb+ZEUiyVFCDY2Y+5FOUSb6A==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.27.3.tgz";
+      sha512 = "+w3v1MtlKTMMids/p/VgXI2hcGFxnUp9uyUQXXClfaAx1ma/TeShSJwdYh7ktJzHu8VN8b3DfJdyo8a9+vYsLQ==";
     };
     dependencies = [
       (
@@ -4953,7 +4953,7 @@ in
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
       (
-        sources."@google/gemini-cli-core-0.27.2"
+        sources."@google/gemini-cli-core-0.27.3"
         // {
           dependencies = [
             (
@@ -5377,7 +5377,7 @@ in
       sources."has-tostringtag-1.0.2"
       sources."hasown-2.0.2"
       sources."highlight.js-11.11.1"
-      sources."hono-4.11.7"
+      sources."hono-4.11.8"
       (
         sources."hosted-git-info-7.0.2"
         // {
@@ -5666,7 +5666,7 @@ in
       sources."tree-sitter-bash-0.25.1"
       sources."type-fest-4.41.0"
       sources."type-is-2.0.1"
-      sources."undici-7.20.0"
+      sources."undici-7.21.0"
       sources."undici-types-7.16.0"
       sources."unicorn-magic-0.3.0"
       sources."unique-string-3.0.0"
