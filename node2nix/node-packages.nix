@@ -849,13 +849,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-25.2.1" = {
+    "@types/node-25.2.2" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "25.2.1";
+      version = "25.2.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-25.2.1.tgz";
-        sha512 = "CPrnr8voK8vC6eEtyRzvMpgp3VyVRhgclonE7qYi6P9sXwYb59ucfrnmFBTaP0yUi8Gk4yZg/LlTJULGxvTNsg==";
+        url = "https://registry.npmjs.org/@types/node/-/node-25.2.2.tgz";
+        sha512 = "BkmoP5/FhRYek5izySdkOneRyXYN35I860MFAGupTdebyE66uZaR+bXLHq8k4DirE5DwQi3NuhvRU1jqTVwUrQ==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -2874,13 +2874,13 @@ let
         sha512 = "OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==";
       };
     };
-    "jackspeak-4.2.1" = {
+    "jackspeak-4.2.3" = {
       name = "jackspeak";
       packageName = "jackspeak";
-      version = "4.2.1";
+      version = "4.2.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/jackspeak/-/jackspeak-4.2.1.tgz";
-        sha512 = "GPBXyfcZSGujjddPeA+V34bW70ZJT7jzCEbloVasSH4yjiqWqXHX8iZQtZdVbOhc5esSeAIuiSmMutRZQB/olg==";
+        url = "https://registry.npmjs.org/jackspeak/-/jackspeak-4.2.3.tgz";
+        sha512 = "ykkVRwrYvFm1nb2AJfKKYPr0emF6IiXDYUaFx4Zn9ZuIH7MrzEZ3sD5RlqGXNRpHtvUHJyOnCEFxOlNDtGo7wg==";
       };
     };
     "jose-6.1.3" = {
@@ -4842,10 +4842,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.34";
+    version = "2.1.37";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.34.tgz";
-      sha512 = "uQ3yv41lvCExj2Ju/pCZ1KIKub5d5V3RQyeSKICPoJzk/H2Ktp0zonZeLkD/Q56qa4vPpA8MmvsBmFkAr+Z42w==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.37.tgz";
+      sha512 = "YNrhAhWh/WAXAibZWfGBIUcMp+5caHGJKPkOjKSgYnCNQf7f+fP7eVTF1tr5FvvEksk2d9/HJgnh1fqOo1mP/A==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -5057,7 +5057,7 @@ in
       sources."@types/http-cache-semantics-4.2.0"
       sources."@types/long-4.0.2"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-25.2.1"
+      sources."@types/node-25.2.2"
       sources."@types/normalize-package-data-2.4.4"
       sources."@types/react-19.2.13"
       sources."@types/request-2.48.13"
@@ -5428,7 +5428,7 @@ in
       sources."is-wsl-3.1.0"
       sources."is64bit-2.0.0"
       sources."isexe-2.0.0"
-      sources."jackspeak-4.2.1"
+      sources."jackspeak-4.2.3"
       sources."jose-6.1.3"
       sources."js-tokens-4.0.0"
       sources."js-yaml-4.1.1"
