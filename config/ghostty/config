@@ -62,3 +62,6 @@ shell-integration-features = cursor,sudo,title
 
 # Option+クリックでプロンプト上のカーソルを移動
 cursor-click-to-move = true
+
+# タイピング中はマウスカーソルを非表示
+mouse-hide-while-typing = true
