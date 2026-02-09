@@ -69,3 +69,6 @@ mouse-hide-while-typing = true
 # クリップボード: 末尾空白を除去、選択時に自動コピー
 clipboard-trim-trailing-spaces = true
 copy-on-select = clipboard
+
+# macOS の広色域ディスプレイで Display P3 色空間を使用
+window-colorspace = display-p3
