@@ -59,3 +59,6 @@ quick-terminal-autohide = true
 # シェル統合（プロンプト検出、sudo ラッパー、タイトル設定）
 shell-integration = detect
 shell-integration-features = cursor,sudo,title
+
+# Option+クリックでプロンプト上のカーソルを移動
+cursor-click-to-move = true
