@@ -75,3 +75,8 @@ window-colorspace = display-p3
 
 # Cmd+ホバーでリンクプレビューを表示
 link-previews = true
+
+# ウィンドウリサイズ時にサイズ表示
+resize-overlay = after-first
+resize-overlay-position = center
+resize-overlay-duration = 750ms
