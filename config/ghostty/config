@@ -55,3 +55,7 @@ quick-terminal-position = top
 quick-terminal-size = 40%
 quick-terminal-animation-duration = 0.2
 quick-terminal-autohide = true
+
+# シェル統合（プロンプト検出、sudo ラッパー、タイトル設定）
+shell-integration = detect
+shell-integration-features = cursor,sudo,title
