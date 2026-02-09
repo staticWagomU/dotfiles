@@ -65,3 +65,7 @@ cursor-click-to-move = true
 
 # タイピング中はマウスカーソルを非表示
 mouse-hide-while-typing = true
+
+# クリップボード: 末尾空白を除去、選択時に自動コピー
+clipboard-trim-trailing-spaces = true
+copy-on-select = clipboard
