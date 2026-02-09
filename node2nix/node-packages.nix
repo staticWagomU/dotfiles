@@ -2478,13 +2478,13 @@ let
         sha512 = "Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==";
       };
     };
-    "hono-4.11.8" = {
+    "hono-4.11.9" = {
       name = "hono";
       packageName = "hono";
-      version = "4.11.8";
+      version = "4.11.9";
       src = fetchurl {
-        url = "https://registry.npmjs.org/hono/-/hono-4.11.8.tgz";
-        sha512 = "eVkB/CYCCei7K2WElZW9yYQFWssG0DhaDhVvr7wy5jJ22K+ck8fWW0EsLpB0sITUTvPnc97+rrbQqIr5iqiy9Q==";
+        url = "https://registry.npmjs.org/hono/-/hono-4.11.9.tgz";
+        sha512 = "Eaw2YTGM6WOxA6CXbckaEvslr2Ne4NFsKrvc0v97JD5awbmeBLO5w9Ho9L9kmKonrwF9RJlW6BxT1PVv/agBHQ==";
       };
     };
     "hosted-git-info-7.0.2" = {
@@ -5377,7 +5377,7 @@ in
       sources."has-tostringtag-1.0.2"
       sources."hasown-2.0.2"
       sources."highlight.js-11.11.1"
-      sources."hono-4.11.8"
+      sources."hono-4.11.9"
       (
         sources."hosted-git-info-7.0.2"
         // {
