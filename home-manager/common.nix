@@ -91,6 +91,10 @@ in
   xdg.configFile."tmux/tmux.conf".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/tmux/tmux.conf";
 
+  # Ghostty config as symlink
+  xdg.configFile."ghostty/config".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/ghostty/config";
+
   xdg.configFile."nvim" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotvim/nvim";
   };
