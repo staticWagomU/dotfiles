@@ -72,3 +72,6 @@ copy-on-select = clipboard
 
 # macOS の広色域ディスプレイで Display P3 色空間を使用
 window-colorspace = display-p3
+
+# Cmd+ホバーでリンクプレビューを表示
+link-previews = true
