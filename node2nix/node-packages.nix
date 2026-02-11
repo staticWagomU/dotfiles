@@ -156,13 +156,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.27.3" = {
+    "@google/gemini-cli-core-0.28.0" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.27.3";
+      version = "0.28.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.27.3.tgz";
-        sha512 = "wztwPx1U/ITMnzC/fUkSSQ79bTZp0v5Q4fZ9TVWpIGNMmRAkdUNdgQTpXtPKB19Ydn2mwretzK3jCEOOkEgH3g==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.28.0.tgz";
+        sha512 = "1VPZREaXUtiw+IN0N4qkjWqn9mwvm9DPxOY2Rh3r2M0BQiFS4ysd9KWE9YyOOPE1R7crpQrr2hjf8jzYP0RTYg==";
       };
     };
     "@google/genai-1.30.0" = {
@@ -849,13 +849,13 @@ let
         sha512 = "K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==";
       };
     };
-    "@types/node-25.2.2" = {
+    "@types/node-25.2.3" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "25.2.2";
+      version = "25.2.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-25.2.2.tgz";
-        sha512 = "BkmoP5/FhRYek5izySdkOneRyXYN35I860MFAGupTdebyE66uZaR+bXLHq8k4DirE5DwQi3NuhvRU1jqTVwUrQ==";
+        url = "https://registry.npmjs.org/@types/node/-/node-25.2.3.tgz";
+        sha512 = "m0jEgYlYz+mDJZ2+F4v8D1AyQb+QzsNqRuI7xg1VQX/KlKS0qT9r1Mo16yo5F/MtifXFgaofIFsdFMox2SxIbQ==";
       };
     };
     "@types/normalize-package-data-2.4.4" = {
@@ -3063,13 +3063,13 @@ let
         sha512 = "JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==";
       };
     };
-    "lru-cache-11.2.5" = {
+    "lru-cache-11.2.6" = {
       name = "lru-cache";
       packageName = "lru-cache";
-      version = "11.2.5";
+      version = "11.2.6";
       src = fetchurl {
-        url = "https://registry.npmjs.org/lru-cache/-/lru-cache-11.2.5.tgz";
-        sha512 = "vFrFJkWtJvJnD5hg+hJvVE8Lh/TcMzKnTgCWmtBipwI5yLX/iX+5UB2tfuyODF5E7k9xEzMdYgGqaSb1c0c5Yw==";
+        url = "https://registry.npmjs.org/lru-cache/-/lru-cache-11.2.6.tgz";
+        sha512 = "ESL2CrkS/2wTPfuend7Zhkzo2u0daGJ/A2VucJOgQ/C48S/zB8MMeMHSGKYpXhIjbPxfuezITkaBH1wqv00DDQ==";
       };
     };
     "macos-version-6.0.0" = {
@@ -3639,6 +3639,15 @@ let
         sha512 = "oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==";
       };
     };
+    "proper-lockfile-4.1.2" = {
+      name = "proper-lockfile";
+      packageName = "proper-lockfile";
+      version = "4.1.2";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/proper-lockfile/-/proper-lockfile-4.1.2.tgz";
+        sha512 = "TjNPblN4BwAWMXU8s9AEz4JmQxnD1NNL7bNOY/AKUzyamc379FWASUhc/K1pL2noVb+XmZKLL68cjzLsiOAMaA==";
+      };
+    };
     "proto-list-1.2.4" = {
       name = "proto-list";
       packageName = "proto-list";
@@ -3880,6 +3889,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/restore-cursor/-/restore-cursor-4.0.0.tgz";
         sha512 = "I9fPXU9geO9bHOt9pHHOhOkYerIMsmVaWB0rA2AI9ERh/+x/i7MV5HKBNrg+ljO5eoPVgCcnFuRjJ9uH6I/3eg==";
+      };
+    };
+    "retry-0.12.0" = {
+      name = "retry";
+      packageName = "retry";
+      version = "0.12.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/retry/-/retry-0.12.0.tgz";
+        sha512 = "9LkiTwjUh6rT555DtE9rTX+BKByPfrMzEAtnlEtdEwr3Nkffwiihqe2bWADg+OQRjt9gl6ICdmB/ZFDCGAtSow==";
       };
     };
     "retry-request-7.0.2" = {
@@ -4842,10 +4860,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.37";
+    version = "2.1.39";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.37.tgz";
-      sha512 = "YNrhAhWh/WAXAibZWfGBIUcMp+5caHGJKPkOjKSgYnCNQf7f+fP7eVTF1tr5FvvEksk2d9/HJgnh1fqOo1mP/A==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.39.tgz";
+      sha512 = "3tE1xk4erW4y+iIEWNzO0XiaCnkGNFJdgdw8Q4jd1Dcpl6MWjZonuqFqXtHomKX1Tw/8n/Sa3+oc1F4huvW/rQ==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4860,10 +4878,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.27.3";
+    version = "0.28.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.27.3.tgz";
-      sha512 = "+w3v1MtlKTMMids/p/VgXI2hcGFxnUp9uyUQXXClfaAx1ma/TeShSJwdYh7ktJzHu8VN8b3DfJdyo8a9+vYsLQ==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.28.0.tgz";
+      sha512 = "gME7g3MEGaYoKh0iex6ARO1+38spfuE3MAWmbMoBnOPKTR1L6GoSKH5QNXltuHh7CUjI2ap4e0XB2Cst2RF9oQ==";
     };
     dependencies = [
       (
@@ -4953,7 +4971,7 @@ in
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
       (
-        sources."@google/gemini-cli-core-0.27.3"
+        sources."@google/gemini-cli-core-0.28.0"
         // {
           dependencies = [
             (
@@ -5057,7 +5075,7 @@ in
       sources."@types/http-cache-semantics-4.2.0"
       sources."@types/long-4.0.2"
       sources."@types/minimatch-5.1.2"
-      sources."@types/node-25.2.2"
+      sources."@types/node-25.2.3"
       sources."@types/normalize-package-data-2.4.4"
       sources."@types/react-19.2.13"
       sources."@types/request-2.48.13"
@@ -5448,7 +5466,7 @@ in
       sources."loose-envify-1.4.0"
       sources."lowercase-keys-3.0.0"
       sources."lowlight-3.3.0"
-      sources."lru-cache-11.2.5"
+      sources."lru-cache-11.2.6"
       sources."macos-version-6.0.0"
       sources."marked-15.0.12"
       sources."math-intrinsics-1.1.0"
@@ -5505,6 +5523,7 @@ in
       sources."pretty-ms-9.3.0"
       sources."prompts-2.4.2"
       sources."prop-types-15.8.1"
+      sources."proper-lockfile-4.1.2"
       sources."proto-list-1.2.4"
       sources."proto3-json-serializer-2.0.2"
       sources."protobufjs-7.5.4"
@@ -5554,6 +5573,7 @@ in
       sources."resolve-alpn-1.2.1"
       sources."responselike-4.0.2"
       sources."restore-cursor-4.0.0"
+      sources."retry-0.12.0"
       sources."retry-request-7.0.2"
       (
         sources."rimraf-5.0.10"
