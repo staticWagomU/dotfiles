@@ -30,13 +30,13 @@ let
         sha512 = "V8uH/KK1t7utqyJmTA7y7DzKu6+jKFIXM+ZVouz8E55j8Ej2RV42rEvPKn3/PpBJlliI5crcGk1qQhZ7VwaepA==";
       };
     };
-    "@alcalzone/ansi-tokenize-0.2.4" = {
+    "@alcalzone/ansi-tokenize-0.2.5" = {
       name = "_at_alcalzone_slash_ansi-tokenize";
       packageName = "@alcalzone/ansi-tokenize";
-      version = "0.2.4";
+      version = "0.2.5";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@alcalzone/ansi-tokenize/-/ansi-tokenize-0.2.4.tgz";
-        sha512 = "HTgrrTgZ9Jgeo6Z3oqbQ7lifOVvRR14vaDuBGPPUxk9Thm+vObaO4QfYYYWw4Zo5CWQDBEfsinFA6Gre+AqwNQ==";
+        url = "https://registry.npmjs.org/@alcalzone/ansi-tokenize/-/ansi-tokenize-0.2.5.tgz";
+        sha512 = "3NX/MpTdroi0aKz134A6RC2Gb2iXVECN4QaAXnvCIxxIm3C3AVB1mkUe8NaaiyvOpDfsrqWhYtj+Q6a62RrTsw==";
       };
     };
     "@babel/code-frame-7.29.0" = {
@@ -156,13 +156,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.28.0" = {
+    "@google/gemini-cli-core-0.28.2" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.28.0";
+      version = "0.28.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.28.0.tgz";
-        sha512 = "1VPZREaXUtiw+IN0N4qkjWqn9mwvm9DPxOY2Rh3r2M0BQiFS4ysd9KWE9YyOOPE1R7crpQrr2hjf8jzYP0RTYg==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.28.2.tgz";
+        sha512 = "GiGVYxQQjATKVXrr8mMKWgvdiz9np5iFihitFdkDJDM1H8ltSZ5PYHXFSPjrVhvmfdHaxyQ+6fBvTp7c6zH/6g==";
       };
     };
     "@google/genai-1.30.0" = {
@@ -867,13 +867,13 @@ let
         sha512 = "37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==";
       };
     };
-    "@types/react-19.2.13" = {
+    "@types/react-19.2.14" = {
       name = "_at_types_slash_react";
       packageName = "@types/react";
-      version = "19.2.13";
+      version = "19.2.14";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/react/-/react-19.2.13.tgz";
-        sha512 = "KkiJeU6VbYbUOp5ITMIc7kBfqlYkKA5KhEHVrGMmUUMt7NeaZg65ojdPk+FtNrBAOXNVM5QM72jnADjM+XVRAQ==";
+        url = "https://registry.npmjs.org/@types/react/-/react-19.2.14.tgz";
+        sha512 = "ilcTH/UniCkMdtexkoCN0bI7pMcJDvmQFPvuPvmEaYA/NSfFTAgdUSLAoVjaRJm7+6PvcM+q1zYOwS4wTYMF9w==";
       };
     };
     "@types/request-2.48.13" = {
@@ -3702,13 +3702,13 @@ let
         sha512 = "m7KOje7jZxrmutanlkS1daj1dS6z6BgslzOXmcSEpIlCxM3VJH7lG5QLeck/6hgF6F4crFf01UtQmNsJfweTAw==";
       };
     };
-    "qs-6.14.1" = {
+    "qs-6.14.2" = {
       name = "qs";
       packageName = "qs";
-      version = "6.14.1";
+      version = "6.14.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/qs/-/qs-6.14.1.tgz";
-        sha512 = "4EK3+xJl8Ts67nLYNwqw/dsFVnCf+qR7RgXSK9jEEm9unao3njwMDdmsdvoKBKHzxd7tCYz5e5M+SnMjdtXGQQ==";
+        url = "https://registry.npmjs.org/qs/-/qs-6.14.2.tgz";
+        sha512 = "V/yCWTTF7VJ9hIh18Ugr2zhJMP01MY7c5kh4J870L7imm6/DIzBsNLTXzMwUA3yZ5b/KBqLx8Kp3uRvd7xSe3Q==";
       };
     };
     "quick-lru-5.1.1" = {
@@ -4878,10 +4878,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.28.0";
+    version = "0.28.2";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.28.0.tgz";
-      sha512 = "gME7g3MEGaYoKh0iex6ARO1+38spfuE3MAWmbMoBnOPKTR1L6GoSKH5QNXltuHh7CUjI2ap4e0XB2Cst2RF9oQ==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.28.2.tgz";
+      sha512 = "f/2gaRpWHsKZ+J6455EjEopwvaflM5ddJqkWt0rEAo/ST++mYgP2Gcjx6G0saoYSXWpPCHtu3ixY2ZeU06oaAw==";
     };
     dependencies = [
       (
@@ -4893,7 +4893,7 @@ in
         }
       )
       sources."@agentclientprotocol/sdk-0.12.0"
-      sources."@alcalzone/ansi-tokenize-0.2.4"
+      sources."@alcalzone/ansi-tokenize-0.2.5"
       sources."@babel/code-frame-7.29.0"
       sources."@babel/helper-validator-identifier-7.28.5"
       sources."@bufbuild/protobuf-2.11.0"
@@ -4971,7 +4971,7 @@ in
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
       (
-        sources."@google/gemini-cli-core-0.28.0"
+        sources."@google/gemini-cli-core-0.28.2"
         // {
           dependencies = [
             (
@@ -5077,7 +5077,7 @@ in
       sources."@types/minimatch-5.1.2"
       sources."@types/node-25.2.3"
       sources."@types/normalize-package-data-2.4.4"
-      sources."@types/react-19.2.13"
+      sources."@types/react-19.2.14"
       sources."@types/request-2.48.13"
       sources."@types/tinycolor2-1.4.6"
       sources."@types/tough-cookie-4.0.5"
@@ -5530,7 +5530,7 @@ in
       sources."proxy-addr-2.0.7"
       sources."pump-3.0.3"
       sources."pumpify-2.0.1"
-      sources."qs-6.14.1"
+      sources."qs-6.14.2"
       sources."quick-lru-5.1.1"
       sources."range-parser-1.2.1"
       sources."raw-body-3.0.2"
