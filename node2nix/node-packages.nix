@@ -219,24 +219,6 @@ let
         sha512 = "trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==";
       };
     };
-    "@isaacs/balanced-match-4.0.1" = {
-      name = "_at_isaacs_slash_balanced-match";
-      packageName = "@isaacs/balanced-match";
-      version = "4.0.1";
-      src = fetchurl {
-        url = "https://registry.npmjs.org/@isaacs/balanced-match/-/balanced-match-4.0.1.tgz";
-        sha512 = "yzMTt9lEb8Gv7zRioUilSglI0c0smZ9k5D65677DLWLtWJaXIS3CqcGyUFByYKlnUj6TkjLVs54fBl6+TiGQDQ==";
-      };
-    };
-    "@isaacs/brace-expansion-5.0.1" = {
-      name = "_at_isaacs_slash_brace-expansion";
-      packageName = "@isaacs/brace-expansion";
-      version = "5.0.1";
-      src = fetchurl {
-        url = "https://registry.npmjs.org/@isaacs/brace-expansion/-/brace-expansion-5.0.1.tgz";
-        sha512 = "WMz71T1JS624nWj2n2fnYAuPovhv7EUhk69R6i9dsVyzxt5eM3bjwvgk9L+APE1TRscGysAVMANkB0jh0LQZrQ==";
-      };
-    };
     "@isaacs/cliui-8.0.2" = {
       name = "_at_isaacs_slash_cliui";
       packageName = "@isaacs/cliui";
@@ -1137,6 +1119,15 @@ let
         sha512 = "3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==";
       };
     };
+    "balanced-match-4.0.2" = {
+      name = "balanced-match";
+      packageName = "balanced-match";
+      version = "4.0.2";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/balanced-match/-/balanced-match-4.0.2.tgz";
+        sha512 = "x0K50QvKQ97fdEz2kPehIerj+YTeptKF9hyYkKf6egnwmMWAkADiO0QCzSp0R5xN8FTZgYaBfSaue46Ej62nMg==";
+      };
+    };
     "base64-js-1.5.1" = {
       name = "base64-js";
       packageName = "base64-js";
@@ -1180,6 +1171,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.0.2.tgz";
         sha512 = "Jt0vHyM+jmUBqojB7E1NIYadt0vI0Qxjxd2TErW94wDz+E2LAm5vKMXXwg6ZZBTHPuUlDgQHKXvjGBdfcF1ZDQ==";
+      };
+    };
+    "brace-expansion-5.0.2" = {
+      name = "brace-expansion";
+      packageName = "brace-expansion";
+      version = "5.0.2";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.2.tgz";
+        sha512 = "Pdk8c9poy+YhOgVWw1JNN22/HcivgKWwpxKq04M/jTmHyCZn12WPJebZxdjSa5TmBqISrUSgNYU3eRORljfCCw==";
       };
     };
     "buffer-crc32-0.2.13" = {
@@ -1371,13 +1371,13 @@ let
         sha512 = "SWk7FgaXLNFld19peQ/rTe0n97lwR1WbkqxV6JKCAOh7U52AKV/PeMFCyt/8IhBdqyDA8rdyewQMKZqvWT5Akg==";
       };
     };
-    "clipboardy-5.2.1" = {
+    "clipboardy-5.3.0" = {
       name = "clipboardy";
       packageName = "clipboardy";
-      version = "5.2.1";
+      version = "5.3.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/clipboardy/-/clipboardy-5.2.1.tgz";
-        sha512 = "RWp4E/ivQAzgF4QSWA9sjeW+Bjo+U2SvebkDhNIfO7y65eGdXPUxMTdIKYsn+bxM3ItPHGm3e68Bv3fgQ3mARw==";
+        url = "https://registry.npmjs.org/clipboardy/-/clipboardy-5.3.0.tgz";
+        sha512 = "EOei1RJTbqXbXhUBMGN8C/Pf+QIPrnDWx9ztlmcW5Hljqj/oVlPrlrDw2O4xh5ViHcvHX3+A0zBrCdcptKTaJA==";
       };
     };
     "cliui-8.0.1" = {
@@ -1704,13 +1704,13 @@ let
         sha512 = "tE7ztYzXHIeyvc7N+hR3oi7FIbf/NIjVP9hmAt3yMXzrQ072/fpjGLx2GxNxGxUl5V73MEqYzioOMoVhGMJ5cA==";
       };
     };
-    "dotenv-17.2.4" = {
+    "dotenv-17.3.1" = {
       name = "dotenv";
       packageName = "dotenv";
-      version = "17.2.4";
+      version = "17.3.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/dotenv/-/dotenv-17.2.4.tgz";
-        sha512 = "mudtfb4zRB4bVvdj0xRo+e6duH1csJRM8IukBqfTRvHotn9+LBXB8ynAidP9zHqoRC/fsllXgk4kCKlR21fIhw==";
+        url = "https://registry.npmjs.org/dotenv/-/dotenv-17.3.1.tgz";
+        sha512 = "IO8C/dzEb6O3F9/twg6ZLXz164a2fhTnEWb95H23Dm4OuN+92NmEAlTrupP9VW6Jm3sO26tQlqyvyi4CsnY9GA==";
       };
     };
     "dunder-proto-1.0.1" = {
@@ -3189,13 +3189,13 @@ let
         sha512 = "e5ISH9xMYU0DzrT+jl8q2ze9D6eWBto+I8CNpe+VI+K2J/F/k3PdkdTdz4wvGVH4NTpo+NRYTVIuMQEMMcsLqg==";
       };
     };
-    "minimatch-10.1.2" = {
+    "minimatch-10.2.0" = {
       name = "minimatch";
       packageName = "minimatch";
-      version = "10.1.2";
+      version = "10.2.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/minimatch/-/minimatch-10.1.2.tgz";
-        sha512 = "fu656aJ0n2kcXwsnwnv9g24tkU5uSmOlTjd6WyyaKm2Z+h1qmY6bAjrcaIxF/BslFqbZ8UBtbJi7KgQOZD2PTw==";
+        url = "https://registry.npmjs.org/minimatch/-/minimatch-10.2.0.tgz";
+        sha512 = "ugkC31VaVg9cF0DFVoADH12k6061zNZkZON+aX8AWsR9GhPcErkcMBceb6znR8wLERM2AkkOxy2nWRLpT9Jq5w==";
       };
     };
     "minimatch-9.0.5" = {
@@ -4995,8 +4995,6 @@ in
       sources."@grpc/proto-loader-0.8.0"
       sources."@hono/node-server-1.19.9"
       sources."@iarna/toml-2.2.5"
-      sources."@isaacs/balanced-match-4.0.1"
-      sources."@isaacs/brace-expansion-5.0.1"
       sources."@isaacs/cliui-9.0.0"
       sources."@isaacs/fs-minipass-4.0.1"
       sources."@joshua.litt/get-ripgrep-0.0.3"
@@ -5114,7 +5112,7 @@ in
       sources."async-generator-function-1.0.0"
       sources."asynckit-0.4.0"
       sources."auto-bind-5.0.1"
-      sources."balanced-match-1.0.2"
+      sources."balanced-match-4.0.2"
       sources."base64-js-1.5.1"
       sources."bignumber.js-9.3.1"
       sources."body-parser-2.2.2"
@@ -5129,7 +5127,7 @@ in
           ];
         }
       )
-      sources."brace-expansion-2.0.2"
+      sources."brace-expansion-5.0.2"
       sources."buffer-crc32-0.2.13"
       sources."buffer-equal-constant-time-1.0.1"
       sources."bufferutil-4.1.0"
@@ -5167,7 +5165,7 @@ in
         }
       )
       sources."clipboard-image-0.1.0"
-      sources."clipboardy-5.2.1"
+      sources."clipboardy-5.3.0"
       (
         sources."cliui-8.0.1"
         // {
@@ -5224,7 +5222,7 @@ in
       sources."domhandler-5.0.3"
       sources."domutils-3.2.2"
       sources."dot-prop-6.0.1"
-      sources."dotenv-17.2.4"
+      sources."dotenv-17.3.1"
       sources."dunder-proto-1.0.1"
       sources."duplexify-4.1.3"
       sources."eastasianwidth-0.2.0"
@@ -5478,7 +5476,7 @@ in
       sources."mime-types-3.0.2"
       sources."mimic-fn-2.1.0"
       sources."mimic-response-4.0.0"
-      sources."minimatch-10.1.2"
+      sources."minimatch-10.2.0"
       sources."minimist-1.2.8"
       sources."minipass-7.1.2"
       sources."minizlib-3.1.0"
@@ -5580,6 +5578,8 @@ in
         // {
           dependencies = [
             sources."@isaacs/cliui-8.0.2"
+            sources."balanced-match-1.0.2"
+            sources."brace-expansion-2.0.2"
             sources."emoji-regex-9.2.2"
             sources."glob-10.5.0"
             sources."jackspeak-3.4.3"
