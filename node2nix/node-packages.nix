@@ -4485,13 +4485,13 @@ let
         sha512 = "OZs6gsjF4vMp32qrCbiVSkrFmXtG/AZhY3t0iAMrMBiAZyV9oALtXO8hsrHbMXF9x6L3grlFuwW2oAz7cav+Gw==";
       };
     };
-    "undici-7.21.0" = {
+    "undici-7.22.0" = {
       name = "undici";
       packageName = "undici";
-      version = "7.21.0";
+      version = "7.22.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/undici/-/undici-7.21.0.tgz";
-        sha512 = "Hn2tCQpoDt1wv23a68Ctc8Cr/BHpUSfaPYrkajTXOS9IKpxVRx/X5m1K2YkbK2ipgZgxXSgsUinl3x+2YdSSfg==";
+        url = "https://registry.npmjs.org/undici/-/undici-7.22.0.tgz";
+        sha512 = "RqslV2Us5BrllB+JeiZnK4peryVTndy9Dnqq62S3yYRRTj0tFQCwEniUy2167skdGOy3vqRzEvl1Dm4sV2ReDg==";
       };
     };
     "undici-types-7.16.0" = {
@@ -4860,10 +4860,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.39";
+    version = "2.1.42";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.39.tgz";
-      sha512 = "3tE1xk4erW4y+iIEWNzO0XiaCnkGNFJdgdw8Q4jd1Dcpl6MWjZonuqFqXtHomKX1Tw/8n/Sa3+oc1F4huvW/rQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.42.tgz";
+      sha512 = "6zSAsdkmY3KSiO3EtPLHvXy9NbLYFC9Zk8s5dEBUwFR/vBpCvTlCv81JAIVgX53nuuqFv/ktBYEdAVDVbJJsqA==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -5686,7 +5686,7 @@ in
       sources."tree-sitter-bash-0.25.1"
       sources."type-fest-4.41.0"
       sources."type-is-2.0.1"
-      sources."undici-7.21.0"
+      sources."undici-7.22.0"
       sources."undici-types-7.16.0"
       sources."unicorn-magic-0.3.0"
       sources."unique-string-3.0.0"
