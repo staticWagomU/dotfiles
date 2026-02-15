@@ -975,13 +975,13 @@ let
         sha512 = "MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==";
       };
     };
-    "ajv-8.17.1" = {
+    "ajv-8.18.0" = {
       name = "ajv";
       packageName = "ajv";
-      version = "8.17.1";
+      version = "8.18.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/ajv/-/ajv-8.17.1.tgz";
-        sha512 = "B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==";
+        url = "https://registry.npmjs.org/ajv/-/ajv-8.18.0.tgz";
+        sha512 = "PlXPeEWMXMZ7sPYOHqmDyCJzcfNrUr3fGNKtezX14ykXOEIvyK81d+qydx89KY5O71FKMPaQ2vBfBFI5NHR63A==";
       };
     };
     "ajv-formats-3.0.1" = {
@@ -4098,13 +4098,13 @@ let
         sha512 = "bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==";
       };
     };
-    "simple-git-3.30.0" = {
+    "simple-git-3.31.1" = {
       name = "simple-git";
       packageName = "simple-git";
-      version = "3.30.0";
+      version = "3.31.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/simple-git/-/simple-git-3.30.0.tgz";
-        sha512 = "q6lxyDsCmEal/MEGhP1aVyQ3oxnagGlBDOVSIB4XUVLl1iZh0Pah6ebC9V4xBap/RfgP2WlI8EKs0WS0rMEJHg==";
+        url = "https://registry.npmjs.org/simple-git/-/simple-git-3.31.1.tgz";
+        sha512 = "oiWP4Q9+kO8q9hHqkX35uuHmxiEbZNTrZ5IPxgMGrJwN76pzjm/jabkZO0ItEcqxAincqGAzL3QHSaHt4+knBg==";
       };
     };
     "sisteransi-1.0.5" = {
@@ -4368,13 +4368,13 @@ let
         sha512 = "ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==";
       };
     };
-    "systeminformation-5.30.7" = {
+    "systeminformation-5.30.8" = {
       name = "systeminformation";
       packageName = "systeminformation";
-      version = "5.30.7";
+      version = "5.30.8";
       src = fetchurl {
-        url = "https://registry.npmjs.org/systeminformation/-/systeminformation-5.30.7.tgz";
-        sha512 = "33B/cftpaWdpvH+Ho9U1b08ss8GQuLxrWHelbJT1yw4M48Taj8W3ezcPuaLoIHZz5V6tVHuQPr5BprEfnBLBMw==";
+        url = "https://registry.npmjs.org/systeminformation/-/systeminformation-5.30.8.tgz";
+        sha512 = "imB8LwJCc2DkufKlSRHfzbjhheGzpg1P31A4c55IKTq/ll6Agn1rhBOY+WmS/hyg5inGFp7AyZIK0gvq5rFO2Q==";
       };
     };
     "tar-7.5.7" = {
@@ -5088,7 +5088,7 @@ in
       sources."acorn-8.15.0"
       sources."acorn-import-attributes-1.9.5"
       sources."agent-base-7.1.4"
-      sources."ajv-8.17.1"
+      sources."ajv-8.18.0"
       sources."ajv-formats-3.0.1"
       (
         sources."ansi-align-3.0.1"
@@ -5618,7 +5618,7 @@ in
       sources."side-channel-map-1.0.1"
       sources."side-channel-weakmap-1.0.2"
       sources."signal-exit-3.0.7"
-      sources."simple-git-3.30.0"
+      sources."simple-git-3.31.1"
       sources."sisteransi-1.0.5"
       sources."slice-ansi-7.1.2"
       sources."spdx-correct-3.2.0"
@@ -5665,7 +5665,7 @@ in
       sources."supports-color-7.2.0"
       sources."supports-preserve-symlinks-flag-1.0.0"
       sources."system-architecture-0.1.0"
-      sources."systeminformation-5.30.7"
+      sources."systeminformation-5.30.8"
       sources."tar-7.5.7"
       (
         sources."teeny-request-9.0.0"
