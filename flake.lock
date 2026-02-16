@@ -10,11 +10,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771089514,
-        "narHash": "sha256-eRMstH5ullQLEvtAyAQD/xVuU+WepRppWX9JbozEjRw=",
+        "lastModified": 1771147293,
+        "narHash": "sha256-JA2tZt9buYA37cOXRDa+NRjkhk9cADGzxZKnpsXtITE=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "06ce399f9a0ce9e7fa4d026ab084b57fdc229a12",
+        "rev": "91e9c184015a9696252b8624b2ebb05317c03462",
         "type": "github"
       },
       "original": {
@@ -102,11 +102,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771102945,
-        "narHash": "sha256-e5NfW8NhC3qChR8bHVni/asrig/ZFzd1wzpq+cEE/tg=",
+        "lastModified": 1771188132,
+        "narHash": "sha256-qLXxN/tPrZtnekaLBQuVtxQfvqqs5cT5WbyH4zZaTGI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "ff5e5d882c51f9a032479595cbab40fd04f56399",
+        "rev": "ae8003d8b61d0d373e7ca3da1a48f9c870d15df9",
         "type": "github"
       },
       "original": {
@@ -248,11 +248,11 @@
         "vim-src": "vim-src"
       },
       "locked": {
-        "lastModified": 1771047583,
-        "narHash": "sha256-I8XX0pGRtCiEL2DACgqihfPUUwWRg7ikmjttJlLtPhA=",
+        "lastModified": 1771131019,
+        "narHash": "sha256-wOZzAGKgOjzlAzGgZrDtpwKy/H8QZSzCx8N9CznSKKQ=",
         "owner": "kawarimidoll",
         "repo": "vim-overlay",
-        "rev": "e4da366fcc057d6751da6299aad73bae79c1a9d9",
+        "rev": "a4d94580d318aeda83bd8bf63e0749e202dc226a",
         "type": "github"
       },
       "original": {
@@ -264,11 +264,11 @@
     "vim-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1771016029,
-        "narHash": "sha256-yh/hYGTMO8SxprcvnydRLBShEcApfz1QaVRlTNKyAjo=",
+        "lastModified": 1771082350,
+        "narHash": "sha256-wBG0JTeLrQ1zjnIMCROTxD6Ke8bETYjUyrIXSfhp/t8=",
         "owner": "vim",
         "repo": "vim",
-        "rev": "48cee53615069e3a5a04be265440180e29f9997a",
+        "rev": "e7e21018fc0b60c153c8e668f696d95e574cc5a4",
         "type": "github"
       },
       "original": {
@@ -280,11 +280,11 @@
     "zeno-zsh": {
       "flake": false,
       "locked": {
-        "lastModified": 1770618876,
-        "narHash": "sha256-51BGfcKN0NtZ52ysATp3DjfhKZwvipBiKi09vd+Q/ZY=",
+        "lastModified": 1771138781,
+        "narHash": "sha256-hETP2DB7B3D8JUTSCWdoPTKUtWxRXYkukxFArzP9L20=",
         "owner": "yuki-yano",
         "repo": "zeno.zsh",
-        "rev": "e790867f6d7abdf8c71cc441c669b985b6e079e1",
+        "rev": "ea8e76810a486fbacde601a981339d4002c30ba1",
         "type": "github"
       },
       "original": {

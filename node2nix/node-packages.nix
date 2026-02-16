@@ -2838,13 +2838,13 @@ let
         sha512 = "QkbMsWkIfkrzOPxenwye0h56iAXirZYHG9eHVPb22fO9y+wPbaX/CHacOWBa/I++4ohTcByimhM1/nyCsH8KNA==";
       };
     };
-    "is-wsl-3.1.0" = {
+    "is-wsl-3.1.1" = {
       name = "is-wsl";
       packageName = "is-wsl";
-      version = "3.1.0";
+      version = "3.1.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/is-wsl/-/is-wsl-3.1.0.tgz";
-        sha512 = "UcVfVfaK4Sc4m7X3dUSoHoozQGBEFeDC+zVo06t98xe8CzHSZZBekNXH+tu0NalHolcJ/QAGqS46Hef7QXBIMw==";
+        url = "https://registry.npmjs.org/is-wsl/-/is-wsl-3.1.1.tgz";
+        sha512 = "e6rvdUCiQCAuumZslxRJWR/Doq4VpPR82kqclvcS0efgt430SlGIk05vdCN58+VrzgtIcfNODjozVielycD4Sw==";
       };
     };
     "is64bit-2.0.0" = {
@@ -3702,13 +3702,13 @@ let
         sha512 = "m7KOje7jZxrmutanlkS1daj1dS6z6BgslzOXmcSEpIlCxM3VJH7lG5QLeck/6hgF6F4crFf01UtQmNsJfweTAw==";
       };
     };
-    "qs-6.14.2" = {
+    "qs-6.15.0" = {
       name = "qs";
       packageName = "qs";
-      version = "6.14.2";
+      version = "6.15.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/qs/-/qs-6.14.2.tgz";
-        sha512 = "V/yCWTTF7VJ9hIh18Ugr2zhJMP01MY7c5kh4J870L7imm6/DIzBsNLTXzMwUA3yZ5b/KBqLx8Kp3uRvd7xSe3Q==";
+        url = "https://registry.npmjs.org/qs/-/qs-6.15.0.tgz";
+        sha512 = "mAZTtNCeetKMH+pSjrb76NAM8V9a05I9aBZOHztWy/UqcJdQYNsf59vrRKWnojAT9Y+GbIvoTBC++CPHqpDBhQ==";
       };
     };
     "quick-lru-5.1.1" = {
@@ -4368,22 +4368,22 @@ let
         sha512 = "ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==";
       };
     };
-    "systeminformation-5.30.8" = {
+    "systeminformation-5.31.0" = {
       name = "systeminformation";
       packageName = "systeminformation";
-      version = "5.30.8";
+      version = "5.31.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/systeminformation/-/systeminformation-5.30.8.tgz";
-        sha512 = "imB8LwJCc2DkufKlSRHfzbjhheGzpg1P31A4c55IKTq/ll6Agn1rhBOY+WmS/hyg5inGFp7AyZIK0gvq5rFO2Q==";
+        url = "https://registry.npmjs.org/systeminformation/-/systeminformation-5.31.0.tgz";
+        sha512 = "z5pjzvC8UnQJ/iu34z+mo3lAeMzTGdArjPQoG5uPyV5XY4BY+M6ZcRTl4XnZqudz6sP713LhWMKv6e0kGFGCgQ==";
       };
     };
-    "tar-7.5.7" = {
+    "tar-7.5.8" = {
       name = "tar";
       packageName = "tar";
-      version = "7.5.7";
+      version = "7.5.8";
       src = fetchurl {
-        url = "https://registry.npmjs.org/tar/-/tar-7.5.7.tgz";
-        sha512 = "fov56fJiRuThVFXD6o6/Q354S7pnWMJIVlDBYijsTNx6jKSE4pvrDTs6lUnmGvNyfJwFQQwWy3owKz1ucIhveQ==";
+        url = "https://registry.npmjs.org/tar/-/tar-7.5.8.tgz";
+        sha512 = "SYkBtK99u0yXa+IWL0JRzzcl7RxNpvX/U08Z+8DKnysfno7M+uExnTZH8K+VGgShf2qFPKtbNr9QBl8n7WBP6Q==";
       };
     };
     "teeny-request-9.0.0" = {
@@ -5441,7 +5441,7 @@ in
       sources."is-stream-2.0.1"
       sources."is-unicode-supported-2.1.0"
       sources."is-wayland-0.1.0"
-      sources."is-wsl-3.1.0"
+      sources."is-wsl-3.1.1"
       sources."is64bit-2.0.0"
       sources."isexe-2.0.0"
       sources."jackspeak-4.2.3"
@@ -5528,7 +5528,7 @@ in
       sources."proxy-addr-2.0.7"
       sources."pump-3.0.3"
       sources."pumpify-2.0.1"
-      sources."qs-6.14.2"
+      sources."qs-6.15.0"
       sources."quick-lru-5.1.1"
       sources."range-parser-1.2.1"
       sources."raw-body-3.0.2"
@@ -5665,8 +5665,8 @@ in
       sources."supports-color-7.2.0"
       sources."supports-preserve-symlinks-flag-1.0.0"
       sources."system-architecture-0.1.0"
-      sources."systeminformation-5.30.8"
-      sources."tar-7.5.7"
+      sources."systeminformation-5.31.0"
+      sources."tar-7.5.8"
       (
         sources."teeny-request-9.0.0"
         // {
