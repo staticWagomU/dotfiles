@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat\\(ghostty\\): add Ghostty config managed via home-manager\n\nGhostty の設定ファイルを dotfiles で管理するため、\nconfig/ghostty/config を追加し、home-manager の\nxdg.configFile で mkOutOfStoreSymlink を設定\nEOF\n\\)\")",
+      "WebFetch(domain:ghostty.org)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat\\(ghostty\\): disable window padding\n\nターミナル中央に入力するスタイルのため余白を無効化\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat\\(ghostty\\): add Quick Terminal \\(dropdown terminal\\) settings\n\n画面上部からスライドして現れる Quake 風ドロップダウンターミナルを設定\nグローバルホットキーで呼び出し可能にする\nEOF\n\\)\")",
+      "Bash(git commit:*)"
+    ]
+  }
+}
