@@ -236,5 +236,6 @@
       url = "github:yuki-yano/zeno.zsh";
       flake = false;
     };
+    arto.url = "github:arto-app/Arto";
   };
 }

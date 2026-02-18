@@ -38,7 +38,6 @@
     taps = [
       "apple/apple"
       "atlassian/acli"
-      "lambdalisue/arto"
       "pakerwreah/calendr"
       "sst/tap"
       "steipete/tap"
@@ -75,12 +74,12 @@
       "zellij"
       "atlassian/acli/acli"
       "yakitrak/yakitrak/obsidian-cli"
+      "ekphos"
     ];
 
     casks = [
       "1password"
       "aqua-voice"
-      "lambdalisue/arto/arto"
       "azookey"
       "bitwarden"
       "pakerwreah/calendr/calendr"

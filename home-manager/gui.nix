@@ -15,6 +15,7 @@
 
   home.packages = [
     pkgs.wezterm
+    inputs.arto.packages.${system}.default
   ];
 
   home.sessionVariables = {
