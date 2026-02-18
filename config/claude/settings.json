@@ -25,7 +25,8 @@
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
-      "Bash(serena)"
+      "Bash(serena)",
+      "mcp__pencil"
     ],
     "deny": [
       "Bash(rm -rf /*)",
@@ -137,6 +138,7 @@
   },
   "outputStyle": "Explanatory",
   "alwaysThinkingEnabled": true,
+  "skipDangerousModePermissionPrompt": true,
   "autoCompactEnabled": false,
   "autoUpdates": false,
   "feedbackSurveyState": {
