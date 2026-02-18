@@ -17,9 +17,6 @@ fish_add_path ~/bin
 
 fish_add_path ~/.rbenv/bin
 
-# volta
-fish_add_path ~/.volta/bin
-
 # npm bin
 fish_add_path ~/.npm-global/bin
 
@@ -195,6 +192,9 @@ end
 if test (uname) = "Darwin"
   eval "$(/opt/homebrew/bin/brew shellenv)"
 end
+
+# volta (Homebrewより後に追加することで優先度を上げる)
+fish_add_path ~/.volta/bin
 
 if test (uname) = "Darwin"
   # Added by OrbStack: command-line tools and integration
