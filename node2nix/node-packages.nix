@@ -156,13 +156,13 @@ let
         sha512 = "Orxzlfb9c67A15cq2JQEyVc7wEsmFBmHjZWZYQMUyJ1qivXyMwdyNOs9odi79hze+2zqdTtu1E19IM/FtqZ10g==";
       };
     };
-    "@google/gemini-cli-core-0.29.0" = {
+    "@google/gemini-cli-core-0.29.1" = {
       name = "_at_google_slash_gemini-cli-core";
       packageName = "@google/gemini-cli-core";
-      version = "0.29.0";
+      version = "0.29.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.29.0.tgz";
-        sha512 = "l1qUAoxpVc6SS3DDgsbZgFel3N6JKgu/5MfO1HsEqkfcSwHdaaQUE8qGIgipZRP086D3EMAMxtcseXeJ7hW9AA==";
+        url = "https://registry.npmjs.org/@google/gemini-cli-core/-/gemini-cli-core-0.29.1.tgz";
+        sha512 = "BlNE4vvCbH2TwTsUNLZZPq/BqqLCvxesv8MPICfsjglKAWHsZPM6QabqMNHC0BujvSkWMbcMU8YPb9VgAsQ3TA==";
       };
     };
     "@google/genai-1.30.0" = {
@@ -1092,13 +1092,13 @@ let
         sha512 = "3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==";
       };
     };
-    "balanced-match-4.0.2" = {
+    "balanced-match-4.0.3" = {
       name = "balanced-match";
       packageName = "balanced-match";
-      version = "4.0.2";
+      version = "4.0.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/balanced-match/-/balanced-match-4.0.2.tgz";
-        sha512 = "x0K50QvKQ97fdEz2kPehIerj+YTeptKF9hyYkKf6egnwmMWAkADiO0QCzSp0R5xN8FTZgYaBfSaue46Ej62nMg==";
+        url = "https://registry.npmjs.org/balanced-match/-/balanced-match-4.0.3.tgz";
+        sha512 = "1pHv8LX9CpKut1Zp4EXey7Z8OfH11ONNH6Dhi2WDUt31VVZFXZzKwXcysBgqSumFCmR+0dqjMK5v5JiFHzi0+g==";
       };
     };
     "base64-js-1.5.1" = {
@@ -2199,13 +2199,13 @@ let
         sha512 = "DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==";
       };
     };
-    "get-east-asian-width-1.4.0" = {
+    "get-east-asian-width-1.5.0" = {
       name = "get-east-asian-width";
       packageName = "get-east-asian-width";
-      version = "1.4.0";
+      version = "1.5.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/get-east-asian-width/-/get-east-asian-width-1.4.0.tgz";
-        sha512 = "QZjmEOC+IT1uk6Rx0sX22V6uHWVwbdbxf1faPqJ1QhLdGgsRGCZoyaQBm/piRdJy/D2um6hM1UP7ZEeQ4EkP+Q==";
+        url = "https://registry.npmjs.org/get-east-asian-width/-/get-east-asian-width-1.5.0.tgz";
+        sha512 = "CQ+bEO+Tva/qlmw24dCejulK5pMzVnUOFOijVogd3KQs07HnRIgp8TGipvCCRT06xeYEbpbgwaCxglFyiuIcmA==";
       };
     };
     "get-intrinsic-1.3.1" = {
@@ -2433,13 +2433,13 @@ let
         sha512 = "Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==";
       };
     };
-    "hono-4.11.9" = {
+    "hono-4.11.10" = {
       name = "hono";
       packageName = "hono";
-      version = "4.11.9";
+      version = "4.11.10";
       src = fetchurl {
-        url = "https://registry.npmjs.org/hono/-/hono-4.11.9.tgz";
-        sha512 = "Eaw2YTGM6WOxA6CXbckaEvslr2Ne4NFsKrvc0v97JD5awbmeBLO5w9Ho9L9kmKonrwF9RJlW6BxT1PVv/agBHQ==";
+        url = "https://registry.npmjs.org/hono/-/hono-4.11.10.tgz";
+        sha512 = "kyWP5PAiMooEvGrA9jcD3IXF7ATu8+o7B3KCbPXid5se52NPqnOpM/r9qeW2heMnOekF4kqR1fXJqCYeCLKrZg==";
       };
     };
     "hosted-git-info-7.0.2" = {
@@ -4188,13 +4188,13 @@ let
         sha512 = "tsaTIkKW9b4N+AEj+SVA+WhJzV7/zMhcSu78mLKWSk7cXMOSHsBKFWUs0fWwq8QyK3MgJBQRX6Gbi4kYbdvGkQ==";
       };
     };
-    "string-width-8.1.1" = {
+    "string-width-8.2.0" = {
       name = "string-width";
       packageName = "string-width";
-      version = "8.1.1";
+      version = "8.2.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/string-width/-/string-width-8.1.1.tgz";
-        sha512 = "KpqHIdDL9KwYk22wEOg/VIqYbrnLeSApsKT/bSj6Ez7pn3CftUiLAv2Lccpq1ALcpLV9UX1Ppn92npZWu2w/aw==";
+        url = "https://registry.npmjs.org/string-width/-/string-width-8.2.0.tgz";
+        sha512 = "6hJPQ8N0V0P3SNmP6h2J99RLuzrWz2gvT7VnK5tKvrNqJoyS9W4/Fb8mo31UiPvy00z7DQXkP2hnKBVav76thw==";
       };
     };
     "string-width-cjs-4.2.3" = {
@@ -4806,10 +4806,10 @@ in
   "@anthropic-ai/claude-code" = nodeEnv.buildNodePackage {
     name = "_at_anthropic-ai_slash_claude-code";
     packageName = "@anthropic-ai/claude-code";
-    version = "2.1.45";
+    version = "2.1.47";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.45.tgz";
-      sha512 = "L2F7ieThA0MFkzyvA7qhU8s+7pkWTXSQNj6XircdNP+r/L8uhX7JY39NtWpmMvcyxHse+9qUdylGN/rOQgBpXQ==";
+      url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.47.tgz";
+      sha512 = "RuVCBdSad+tsYsSt8W2s1BICHfulLnj73YqexH8gHgFlOP7mNZOtlGod5UEdrPotedYwiDzKx3L0BiB39YNWPg==";
     };
     buildInputs = globalBuildInputs;
     meta = {
@@ -4824,10 +4824,10 @@ in
   "@google/gemini-cli" = nodeEnv.buildNodePackage {
     name = "_at_google_slash_gemini-cli";
     packageName = "@google/gemini-cli";
-    version = "0.29.0";
+    version = "0.29.1";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.29.0.tgz";
-      sha512 = "fC0bzdjh0Nqx6adrI5FcgNs9eqs8AK7rwgCCqDVpeG5zKqlcAhtaYiaQZrvLP1OxLUXJZWvtj/2CFz6VXcaiBA==";
+      url = "https://registry.npmjs.org/@google/gemini-cli/-/gemini-cli-0.29.1.tgz";
+      sha512 = "dmf/XaRz7ta+8fLObPA5xrOO2wTRU+WEmxrqiSYAKZ8hYfGMEpunOjjRK8zs+47nObuLjo3ilxlJeFDKqs1eng==";
     };
     dependencies = [
       (
@@ -4917,7 +4917,7 @@ in
       sources."@google-cloud/projectify-4.0.0"
       sources."@google-cloud/promisify-4.0.0"
       (
-        sources."@google/gemini-cli-core-0.29.0"
+        sources."@google/gemini-cli-core-0.29.1"
         // {
           dependencies = [
             (
@@ -5044,7 +5044,7 @@ in
       sources."async-generator-function-1.0.0"
       sources."asynckit-0.4.0"
       sources."auto-bind-5.0.1"
-      sources."balanced-match-4.0.2"
+      sources."balanced-match-4.0.3"
       sources."base64-js-1.5.1"
       sources."bignumber.js-9.3.1"
       sources."body-parser-2.2.2"
@@ -5252,7 +5252,7 @@ in
       sources."gcp-metadata-8.1.2"
       sources."generator-function-2.0.1"
       sources."get-caller-file-2.0.5"
-      sources."get-east-asian-width-1.4.0"
+      sources."get-east-asian-width-1.5.0"
       sources."get-intrinsic-1.3.1"
       sources."get-proto-1.0.1"
       sources."get-stream-6.0.1"
@@ -5312,7 +5312,7 @@ in
       sources."has-tostringtag-1.0.2"
       sources."hasown-2.0.2"
       sources."highlight.js-11.11.1"
-      sources."hono-4.11.9"
+      sources."hono-4.11.10"
       (
         sources."hosted-git-info-7.0.2"
         // {
@@ -5555,7 +5555,7 @@ in
       sources."statuses-2.0.2"
       sources."stream-events-1.0.5"
       sources."stream-shift-1.0.3"
-      sources."string-width-8.1.1"
+      sources."string-width-8.2.0"
       (
         sources."string-width-cjs-4.2.3"
         // {
