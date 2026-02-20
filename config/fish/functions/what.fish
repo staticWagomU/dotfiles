@@ -33,7 +33,7 @@ function what --description 'カレントプロジェクトをAIが日本語で�
 
     echo "🤖 プロジェクトを解析中..."
     echo ""
-    echo $context | claude -p $flags \
+    string join \n $context | claude -p $flags \
         "以下のプロジェクトファイル群を分析して日本語で解説してください。"\
         "## 概要 / ## 技術スタック / ## 主要な機能 / ## 開発状況"\
         "の4セクションで簡潔にまとめてください。"
