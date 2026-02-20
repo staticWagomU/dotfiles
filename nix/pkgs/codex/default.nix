@@ -6,14 +6,13 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "codex";
-  version = "0.31.0"; # display version; source is pinned by commit below
+  version = "0.104.0";
 
-  # Build from upstream Git commit (workspace lives at codex-rs)
   src = fetchFromGitHub {
     owner = "openai";
     repo = "codex";
-    rev = "43809a454e5c6348418fc2d5ace1eb0a98f59847";
-    sha256 = "sha256-BZrEVbLrFYb51sqd8yWufZXsbtBS6m1lLu4seTWSF3k=";
+    tag = "rust-v${version}";
+    hash = "sha256-spWb/msjl9am7E4UkZfEoH0diFbvAfydJKJQM1N1aoI=";
   };
 
   # Cargo workspace root
@@ -25,10 +24,13 @@ rustPlatform.buildRustPackage rec {
     "codex"
   ];
 
-  # Cargo dependency lock hash; set after first build attempt
-  cargoHash = "sha256-tLwvr7OaxrKHCAdsEtT0t34dOE4iBJ0Buh89igPmH2E=";
+  # Use cargoLock instead of cargoHash to handle git dependencies
+  # (crossterm is pinned to a custom git branch via nornagon/crossterm)
+  cargoLock = {
+    lockFile = ./Cargo.lock;
+    allowBuiltinFetchGit = true;
+  };
 
-  # Skip running tests during build (optional but safer for CLI tools)
   doCheck = false;
 
   buildPhase = ''
@@ -67,8 +69,6 @@ rustPlatform.buildRustPackage rec {
   meta = with lib; {
     description = "codex CLI built from upstream Git via Nix";
     mainProgram = "codex";
-    # Optional fields can be filled once confirmed
     homepage = "https://github.com/openai/codex";
-    # license = licenses.mit;
   };
 }
