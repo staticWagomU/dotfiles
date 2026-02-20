@@ -45,6 +45,7 @@
     ];
 
     brews = [
+      "atlassian/acli/acli"
       "ballerina"
       "cloud-sql-proxy"
       "colima"
@@ -53,6 +54,7 @@
       "docker"
       "docker-compose"
       "duckdb"
+      "ekphos"
       "eza"
       "gcc"
       "lilypond"
@@ -65,16 +67,14 @@
       "portaudio"
       "postgresql@16"
       "swiftformat"
-      # tailscale CLI is provided by nix-darwin services.tailscale
       "tbls"
       "terminal-notifier"
       "tmux"
       "tree"
       "volta"
-      "zellij"
-      "atlassian/acli/acli"
       "yakitrak/yakitrak/obsidian-cli"
-      "ekphos"
+      "zellij"
+      # tailscale CLI is provided by nix-darwin services.tailscale
     ];
 
     casks = [
