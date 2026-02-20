@@ -45,6 +45,7 @@ in
 
     devenv
     lftp
+    octorus
   ];
 
   programs.direnv = {
