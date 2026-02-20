@@ -64,11 +64,11 @@ function __bit_commit
     end
 
     # fzfでstageしたいファイルをトグル選択
-    # + のファイルは「既にstaged」の意味だが fzf に pre-selection はないため
-    # ユーザーが最終的にstageしたいファイルを選ぶ UI とする
+    # + のファイルは「既にstaged」 → 選択に関わらず常にstageを維持する
+    # ~ / ? のファイルを選択すると追加でstageされる
     set -l selected (string join \n $items | fzf --multi \
         --prompt "stage> " \
-        --header "+:staged  ~:modified  ?:untracked  |  TAB:toggle  Enter:apply" \
+        --header "+:staged(常に維持)  ~:modified  ?:untracked  |  TAB:toggle  Enter:apply" \
         --preview 'f=$(echo {} | cut -c3-); git diff HEAD -- "$f" 2>/dev/null; cat "$f" 2>/dev/null' \
         --preview-window 'right:60%:wrap')
 
@@ -77,22 +77,13 @@ function __bit_commit
         return 0
     end
 
-    # プレフィックス "X " を除いてファイル名を取得
-    set -l files_to_stage
+    # プレフィックス "X " を除いてファイル名を取得し、未stageのものだけ追加stage
     for line in $selected
-        set -a files_to_stage (string sub -s 3 -- $line)
-    end
-
-    # staged済みだが今回選ばなかったものを unstage
-    for f in $staged_files
-        if not contains -- $f $files_to_stage
-            git restore --staged -- $f
+        set -l f (string sub -s 3 -- $line)
+        # + (既にstaged) は git add しても冪等だが、~ / ? は明示的に追加
+        if not contains -- $f $staged_files
+            git add -- $f
         end
-    end
-
-    # 選択ファイルを stage
-    for f in $files_to_stage
-        git add -- $f
     end
 
     set -l diff_staged (git diff --cached)
@@ -105,7 +96,7 @@ function __bit_commit
         --system-prompt "Output only the exact text requested. No markdown, no backticks, no code blocks, no explanations."
 
     echo "🤖 コミットメッセージを生成中..."
-    set -l raw (echo $diff_staged | claude -p $flags \
+    set -l raw (string join \n $diff_staged | claude -p $flags \
         "このgit diffを分析し、Conventional Commits形式でコミットメッセージを1行提案してください。"\
         "例: feat(auth): add JWT token validation")
 
@@ -152,7 +143,7 @@ function __bit_branch
             return 1
         end
 
-        set -l raw (echo $issue_json | claude -p $flags \
+        set -l raw (string join \n $issue_json | claude -p $flags \
             "以下のGitHub issueのJSONからGitブランチ名を生成してください。"\
             "形式: $issue_num-<kebab-case>（例: $issue_num-add-user-auth）。ブランチ名のみ出力。")
         set -l branch_name (__claude_oneliner $raw | string trim)
@@ -167,7 +158,7 @@ function __bit_branch
         end
 
         echo "🤖 変更内容からブランチ名を生成中..."
-        set -l raw (echo $diff | claude -p $flags \
+        set -l raw (string join \n $diff | claude -p $flags \
             "このgit diffからGitブランチ名を提案してください。"\
             "形式: <type>/<kebab-case>（例: feat/add-user-auth）。ブランチ名のみ出力。")
         set -l branch_name (__claude_oneliner $raw | string trim)
@@ -205,13 +196,13 @@ function __bit_pr
         set default_branch main
     end
 
-    set -l log (git log $default_branch..HEAD --oneline 2>/dev/null)
+    set -l log (git log origin/$default_branch..HEAD --oneline 2>/dev/null)
     if test -z "$log"
-        echo "❌ $default_branch との差分コミットが見つかりません"
+        echo "❌ origin/$default_branch との差分コミットが見つかりません"
         return 1
     end
 
-    set -l diff (git diff $default_branch...HEAD 2>/dev/null)
+    set -l diff (git diff origin/$default_branch...HEAD 2>/dev/null)
     set -l flags --model haiku --tools "" --no-session-persistence
 
     echo "🤖 PRを生成中..."
@@ -263,7 +254,7 @@ function __bit_review
 
     echo "🤖 コードレビュー中..."
     echo ""
-    echo $diff | claude -p $flags \
+    string join \n $diff | claude -p $flags \
         "このgit diffに対してコードレビューを行ってください。"\
         "バグ・セキュリティリスク・パフォーマンス・可読性の観点で指摘してください。"\
         "問題がなければ「LGTM」と理由を述べてください。"
@@ -293,7 +284,7 @@ function __bit_stash
         --system-prompt "Output only the exact text requested. No markdown, no backticks, no code blocks, no explanations."
 
     echo "🤖 stash名を生成中..."
-    set -l raw (echo $diff | claude -p $flags \
+    set -l raw (string join \n $diff | claude -p $flags \
         "このgit diffを分析し、stashの内容を表す短い説明を英語で生成してください。"\
         "kebab-caseで30文字以内。名前のみ出力。例: wip-refactor-auth-flow")
     set -l name (__claude_oneliner $raw | string trim)
@@ -395,9 +386,10 @@ function __bit_explain
 
     echo "🤖 コミットを解説中... ($commit)"
     echo ""
-    printf "## Stat\n%s\n\n## Diff\n" (string join \n $stat)
-    git show $commit \
-        | claude -p $flags \
+    begin
+        printf "## Stat\n%s\n\n## Diff\n" (string join \n $stat)
+        git show $commit
+    end | claude -p $flags \
         "以下のgitコミット情報（stat + diff）を日本語でわかりやすく解説してください。"\
         "変更の目的・影響範囲・技術的なポイントを簡潔にまとめてください。"
 end
@@ -433,6 +425,28 @@ function __bit_conflict
             "以下のgitコンフリクトマーカー（<<<<<<<、=======、>>>>>>>）を含むファイルを解析し、"\
             "両方の変更を適切にマージした解決済みのコードを出力してください。"\
             "マーカーは一切含めず、解決済みのファイル全体を出力してください。" > $tmp
+        set -l claude_status $status
+
+        # ── バリデーション ──────────────────────────────
+        # ① claude 自体が失敗した
+        if test $claude_status -ne 0
+            echo "❌ AI生成に失敗しました (exit $claude_status) → スキップ"
+            rm -f $tmp
+            continue
+        end
+        # ② 出力が空
+        if not test -s $tmp
+            echo "❌ AI出力が空です → スキップ"
+            rm -f $tmp
+            continue
+        end
+        # ③ コンフリクトマーカーが残存
+        if grep -qE '^(<<<<<<<|=======|>>>>>>>)' $tmp
+            echo "❌ コンフリクトマーカーが残存しています → スキップ"
+            rm -f $tmp
+            continue
+        end
+        # ────────────────────────────────────────────────
 
         echo ""
         cat $tmp
