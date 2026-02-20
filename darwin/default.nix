@@ -47,6 +47,7 @@
     brews = [
       "atlassian/acli/acli"
       "ballerina"
+      "beads"
       "cloud-sql-proxy"
       "colima"
       "curl"
