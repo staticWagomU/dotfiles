@@ -68,7 +68,9 @@
       "Bash(ekphos --help:*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(git rebase:*)"
+      "Bash(git rebase:*)",
+      "WebFetch(domain:zenn.dev)",
+      "Bash(do)"
     ]
   }
 }
