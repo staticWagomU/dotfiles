@@ -70,7 +70,11 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(git rebase:*)",
       "WebFetch(domain:zenn.dev)",
-      "Bash(do)"
+      "Bash(do)",
+      "WebSearch",
+      "WebFetch(domain:api.github.com)",
+      "Bash(nurl:*)",
+      "Bash(git -C:*)"
     ]
   }
 }
