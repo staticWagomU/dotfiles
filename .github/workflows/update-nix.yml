@@ -18,9 +18,9 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
       - name: Update Nix packages
         run: |
-          cd node2nix/
-          nix-shell -p nodePackages.node2nix --command "node2nix -i ./node-packages.json -o node-packages.nix"
-          cd ..
+          # cd node2nix/
+          # nix-shell -p nodePackages.node2nix --command "node2nix -i ./node-packages.json -o node-packages.nix"
+          # cd ..
           nix flake update
           nix fmt --verbose
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
