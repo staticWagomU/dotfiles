@@ -74,7 +74,8 @@
       "WebSearch",
       "WebFetch(domain:api.github.com)",
       "Bash(nurl:*)",
-      "Bash(git -C:*)"
+      "Bash(git -C:*)",
+      "Bash(curl:*)"
     ]
   }
 }
