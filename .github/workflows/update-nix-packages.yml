@@ -1,0 +1,69 @@
+name: Update Nix Packages
+on:
+  schedule:
+    - cron: '0 0 * * 1' # 毎週月曜 00:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    name: Update ${{ matrix.pkg.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg:
+          - name: codex
+            owner: openai
+            repo: codex
+            tag_prefix: rust-v
+            cargo_lock_subpath: codex-rs/Cargo.lock
+          - name: octorus
+            owner: ushironoko
+            repo: octorus
+            tag_prefix: v
+            cargo_lock_subpath: Cargo.lock
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@v14
+
+      - name: Run update script
+        run: |
+          python3 .github/scripts/update-package.py \
+            --name "${{ matrix.pkg.name }}" \
+            --owner "${{ matrix.pkg.owner }}" \
+            --repo "${{ matrix.pkg.repo }}" \
+            --tag-prefix "${{ matrix.pkg.tag_prefix }}" \
+            --cargo-lock-subpath "${{ matrix.pkg.cargo_lock_subpath }}"
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            VER=$(python3 -c "import json; d=json.load(open('nix/pkgs/${{ matrix.pkg.name }}/versions.json')); print(d['latest'])")
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "version=$VER" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: peter-evans/create-pull-request@v7
+        if: steps.changes.outputs.changed == 'true'
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: update/${{ matrix.pkg.name }}-${{ steps.changes.outputs.version }}
+          delete-branch: true
+          commit-message: "chore(nix/${{ matrix.pkg.name }}): update to ${{ steps.changes.outputs.version }}"
+          title: "chore(nix/${{ matrix.pkg.name }}): update to ${{ steps.changes.outputs.version }}"
+          body: |
+            Automated version bump.
+
+            - **Package**: `${{ matrix.pkg.name }}`
+            - **New version**: `${{ steps.changes.outputs.version }}`
+
+            旧バージョンは `pkgs.${{ matrix.pkg.name }}_XXX` として引き続き使用可能。

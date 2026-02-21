@@ -2,17 +2,20 @@
   lib,
   rustPlatform,
   fetchFromGitHub,
+  version,
+  srcHash,
+  cargoLockFile,
 }:
 
-rustPlatform.buildRustPackage rec {
+rustPlatform.buildRustPackage {
   pname = "octorus";
-  version = "0.4.2";
+  inherit version;
 
   src = fetchFromGitHub {
     owner = "ushironoko";
     repo = "octorus";
     tag = "v${version}";
-    hash = "sha256-fg5yy60A7YzR+yVOGJCJO4ghO6SIdwEYCB+j9y4m15M=";
+    hash = srcHash;
   };
 
   cargoBuildFlags = [
@@ -20,7 +23,10 @@ rustPlatform.buildRustPackage rec {
     "or"
   ];
 
-  cargoHash = "sha256-3ZKi7BcXHO2kgYw6mFMtFBtCJRfXimWMYAN7yvV2ccs=";
+  cargoLock = {
+    lockFile = cargoLockFile;
+    allowBuiltinFetchGit = true;
+  };
 
   doCheck = false;
 
