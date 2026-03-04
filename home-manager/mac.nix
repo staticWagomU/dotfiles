@@ -22,6 +22,8 @@
     tree # Directory tree viewer
     zellij # Modern terminal workspace
 
+		python313Packages.mlx
+
     # Database tools
     duckdb # Analytical database
 
