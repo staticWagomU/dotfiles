@@ -84,7 +84,6 @@
       "azookey"
       "bitwarden"
       "pakerwreah/calendr/calendr"
-      "claude"
       "cleanshot"
       "cyberduck"
       "drawio"
