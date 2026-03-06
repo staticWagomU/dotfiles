@@ -90,7 +90,7 @@ abbr -a dc docker compose
 
 abbr -a gg ghq get 
 
-abbr -a c claude
+abbr -a c claude --dangerously-skip-permissions --model opus --effort high
 
 abbr -a co codex
 
