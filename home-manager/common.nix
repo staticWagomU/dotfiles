@@ -52,11 +52,13 @@ in
     yq
     tailscale
     pik
+    mise
 
     # font
     hackgen-nf-font
     intel-one-mono
 
+    awscli2
     devenv
     lftp
     octorus
