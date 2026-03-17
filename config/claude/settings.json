@@ -144,5 +144,13 @@
   "feedbackSurveyState": {
     "lastShownTime": 1754089004345
   },
-  "theme": "dark"
+  "theme": "dark",
+  "extraKnownMarketplaces": {
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    }
+  }
 }
