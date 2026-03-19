@@ -66,6 +66,7 @@
           commonOverlays = [
             inputs.emacs-overlay.overlays.default
             inputs.vim-overlay.overlays.default
+            inputs.neovim-nightly-overlay.overlays.default
             (import ./nix/overlays/codex-overlay.nix)
             (import ./nix/overlays/octorus-overlay.nix)
           ];
@@ -237,6 +238,10 @@
     };
     vim-overlay = {
       url = "github:kawarimidoll/vim-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zeno-zsh = {
