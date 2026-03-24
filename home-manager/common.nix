@@ -95,6 +95,12 @@ in
     recursive = true;
   };
 
+  # Fish completions as symlinks
+  home.file.".config/fish/completions" = {
+    source = ../config/fish/completions;
+    recursive = true;
+  };
+
   # zeno.zsh (fish) via declarative steps
   # 1) Provide ZENO_ROOT as an env var inside fish
   #    zeno-patched を使うことで bin/zeno が --node-modules-dir=none を使用し、
