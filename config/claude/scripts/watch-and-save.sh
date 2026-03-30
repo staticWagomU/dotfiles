@@ -9,7 +9,7 @@ set -euo pipefail
 
 # 設定
 PROJECTS_DIR="$HOME/.claude/projects"
-OUTPUT_DIR="${1:-$HOME/Documents/MyLife/pages}"
+OUTPUT_DIR="${1:-$HOME/MyLife/pages}"
 STATE_DIR="$HOME/.claude/watcher-state"
 INTERVAL=5
 
@@ -97,17 +97,18 @@ process_session_file() {
     # 日付とファイルパスを決定
     local msg_date=$(iso_to_date "$timestamp")
     local msg_time=$(iso_to_jst "$timestamp")
-    local output_file="$OUTPUT_DIR/${msg_date}_realtime-log.md"
+    local file_date=$(echo "$msg_date" | tr '-' '_')
+    local output_file="$OUTPUT_DIR/${file_date}_realtime-log.md"
 
     # ファイルが存在しない場合はヘッダーを追加
     if [ ! -f "$output_file" ]; then
       cat >"$output_file" <<EOF
 ---
 type: realtime-log
-date: $msg_date
+date: $file_date
 ---
 
-# Claude Code リアルタイムログ - $msg_date
+# Claude Code リアルタイムログ - $file_date
 
 EOF
     fi

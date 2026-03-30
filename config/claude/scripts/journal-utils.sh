@@ -17,7 +17,7 @@ ts_to_jst_full() {
 # 最近N日間の日誌一覧を表示
 list_recent_journals() {
   local days="${1:-7}"
-  local journal_dir="$HOME/Documents/MyLife/ai-journals"
+  local journal_dir="$HOME/MyLife/ai-journals"
 
   if [ ! -d "$journal_dir" ]; then
     echo "日誌ディレクトリが存在しません: $journal_dir"

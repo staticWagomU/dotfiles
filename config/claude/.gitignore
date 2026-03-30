@@ -26,3 +26,8 @@ plugins/known_marketplaces.json
 
 # Project-specific settings (managed per-project)
 projects/
+
+# Script runtime artifacts
+scripts/*.log
+scripts/harvest-done/
+scripts/.last-*

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.user.codex-journal-trigger</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>exec ~/.claude/scripts/auto-codex-journal.sh</string>
+    </array>
+
+    <!-- 毎日 00:05 にスケジュール実行 -->
+    <!-- スリープ中に時刻を過ぎた場合、wake時に一度だけ実行される -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>0</integer>
+        <key>Minute</key>
+        <integer>5</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/auto-codex-journal.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/tmp/auto-codex-journal.error.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin:/Users/wagomu/.local/bin</string>
+        <key>HOME</key>
+        <string>~</string>
+    </dict>
+</dict>
+</plist>

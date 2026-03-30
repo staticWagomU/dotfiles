@@ -23,8 +23,9 @@ yesterday)
 esac
 
 # 出力先
-JOURNAL_DIR="$HOME/Documents/MyLife/pages"
-JOURNAL_PATH="$JOURNAL_DIR/${TARGET_DATE}_ai-journals.md"
+JOURNAL_DIR="$HOME/MyLife/pages"
+FILE_DATE=$(echo "$TARGET_DATE" | tr '-' '_')
+JOURNAL_PATH="$JOURNAL_DIR/${FILE_DATE}_ai-journals.md"
 TEMP_DIR="/tmp/ai-journal-${TARGET_DATE}"
 PROJECTS_DIR="$HOME/.claude/projects"
 

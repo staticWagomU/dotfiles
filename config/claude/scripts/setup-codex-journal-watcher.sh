@@ -1,15 +1,15 @@
 #!/bin/bash
-# Claude Code Journal Watcher セットアップスクリプト
-# Usage: setup-journal-watcher.sh [install|uninstall|status|restart]
+# Codex Journal Watcher セットアップスクリプト
+# Usage: setup-codex-journal-watcher.sh [install|uninstall|status|restart]
 
 set -euo pipefail
 
 SCRIPT_DIR="$HOME/.claude/scripts"
-PLIST_NAME="com.user.claude-journal-watcher.plist"
+PLIST_NAME="com.user.codex-journal-watcher.plist"
 PLIST_SRC="$SCRIPT_DIR/$PLIST_NAME"
 PLIST_DST="$HOME/Library/LaunchAgents/$PLIST_NAME"
-LOG_FILE="/tmp/claude-journal-watcher.log"
-ERROR_LOG="/tmp/claude-journal-watcher.error.log"
+LOG_FILE="/tmp/codex-journal-watcher.log"
+ERROR_LOG="/tmp/codex-journal-watcher.error.log"
 
 log() {
   echo "[setup] $1"
@@ -24,13 +24,13 @@ check_dependencies() {
 }
 
 install() {
-  log "Installing Claude Journal Watcher..."
+  log "Installing Codex Journal Watcher..."
 
   check_dependencies
 
   # スクリプトに実行権限を付与
-  chmod +x "$SCRIPT_DIR/watch-and-save.sh"
-  log "Made watch-and-save.sh executable"
+  chmod +x "$SCRIPT_DIR/codex-watch-and-save.sh"
+  log "Made codex-watch-and-save.sh executable"
 
   # LaunchAgents ディレクトリを作成
   mkdir -p "$HOME/Library/LaunchAgents"
@@ -47,7 +47,7 @@ install() {
   log "Loaded LaunchAgent"
 
   # 状態ディレクトリを作成
-  mkdir -p "$HOME/.claude/watcher-state"
+  mkdir -p "$HOME/.codex/watcher-state"
   mkdir -p "$HOME/MyLife/pages"
   log "Created required directories"
 
@@ -60,7 +60,7 @@ install() {
 }
 
 uninstall() {
-  log "Uninstalling Claude Journal Watcher..."
+  log "Uninstalling Codex Journal Watcher..."
 
   # エージェントをアンロード
   if [ -f "$PLIST_DST" ]; then
@@ -74,17 +74,18 @@ uninstall() {
 
   log ""
   log "Uninstallation complete!"
-  log "Note: State files in ~/.claude/watcher-state are preserved."
+  log "Note: State files in ~/.codex/watcher-state are preserved."
 }
 
 status() {
-  log "Claude Journal Watcher Status"
+  log "Codex Journal Watcher Status"
   log "=============================="
 
   # LaunchAgent の状態を確認
-  if launchctl list | grep -q "com.user.claude-journal-watcher"; then
+  if launchctl list | grep -q "com.user.codex-journal-watcher"; then
     log "LaunchAgent: Running"
-    local pid=$(launchctl list | grep "com.user.claude-journal-watcher" | awk '{print $1}')
+    local pid
+    pid=$(launchctl list | grep "com.user.codex-journal-watcher" | awk '{print $1}')
     log "PID: $pid"
   else
     log "LaunchAgent: Not running"
@@ -113,7 +114,7 @@ status() {
 }
 
 restart() {
-  log "Restarting Claude Journal Watcher..."
+  log "Restarting Codex Journal Watcher..."
 
   if [ -f "$PLIST_DST" ]; then
     launchctl unload "$PLIST_DST" 2>/dev/null || true
@@ -128,7 +129,7 @@ restart() {
 
 usage() {
   cat <<EOF
-Claude Code Journal Watcher Setup
+Codex Journal Watcher Setup
 
 Usage: $0 [command]
 

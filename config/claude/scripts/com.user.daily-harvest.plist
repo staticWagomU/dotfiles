@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.user.daily-harvest</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>exec ~/.claude/scripts/daily-harvest.sh</string>
+    </array>
+
+    <!-- 毎日 00:05 に発火。スリープ中なら復帰直後に実行 -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>0</integer>
+        <key>Minute</key>
+        <integer>5</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/daily-harvest.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/tmp/daily-harvest.error.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/wagomu/.local/bin:/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
+        <key>HOME</key>
+        <string>/Users/wagomu</string>
+    </dict>
+</dict>
+</plist>
