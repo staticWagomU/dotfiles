@@ -249,5 +249,6 @@
       flake = false;
     };
     arto.url = "github:arto-app/Arto";
+    nix-search-tv.url = "github:3timeslazy/nix-search-tv";
   };
 }

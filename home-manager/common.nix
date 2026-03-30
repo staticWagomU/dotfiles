@@ -62,6 +62,7 @@ in
     devenv
     lftp
     octorus
+    inputs.nix-search-tv.packages.${system}.default
   ];
 
   programs.direnv = {
