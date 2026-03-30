@@ -1,89 +1,91 @@
-# Library vs Application Criteria
+# External Contract Criteria
 
-Refactoring scope differs based on whether the code is a **library** or an **application**.
+Refactoring scope depends on the boundary between internal structure and externally observable behavior.
 
-## The Key Distinction
+## The Core Distinction
 
-| Type | External Consumers? | Public API Refactorable? |
-|------|---------------------|--------------------------|
-| **Library** | Yes (unknown callers) | No — breaking change |
-| **Application** | No (you control all callers) | Yes — internal restructuring |
+| Context | External Consumers? | Boundary Refactorable? |
+|--------|----------------------|------------------------|
+| Library | Yes, often unknown | Internal only |
+| Application | Often yes, but contract-specific | Internal only |
+| Internal module | Usually controlled | Often yes, with local updates |
+
+The key question is not "library or application?" alone.
+The key question is: "What contracts exist outside the code I am editing?"
+
+## Observable Behavior Checklist
+
+Treat these as behavior when other systems, teams, or operators depend on them:
+
+- Exported functions, types, module paths, and package structure
+- HTTP, GraphQL, RPC, and webhook contracts
+- CLI flags, subcommands, stdout formats, and exit codes
+- Database schemas, migrations, persisted records, and cache keys
+- Queue messages, event payloads, topic names, and ordering assumptions
+- Error codes, exception types, retry behavior, and timeout semantics
+- Logs, metrics, traces, and audit events when downstream tooling depends on them
+- Performance, memory, and concurrency guarantees when they are part of an agreed contract
 
 ## Library Constraints
 
-Libraries have **external consumers** who depend on the public API:
+Libraries usually have the hardest external boundary because callers are not fully known.
 
-```
-┌─────────────────────────────────────┐
-│        External Consumers           │
-│  (other packages, unknown callers)  │
-└────────────────┬────────────────────┘
-                 │ ← PUBLIC API BOUNDARY (frozen)
-┌────────────────▼────────────────────┐
-│   Exported Symbols (pub, export)    │
-│   - Function signatures             │
-│   - Type definitions                │
-│   - Module paths (if re-exported)   │
-└────────────────┬────────────────────┘
-                 │ ← safe to refactor below
-┌────────────────▼────────────────────┐
-│      Internal Implementation        │
-│   - Private functions               │
-│   - Internal modules                │
-│   - Data structures                 │
-└─────────────────────────────────────┘
-```
+Safe refactoring scope for libraries:
+- Private functions and modules
+- Internal data representation
+- Internal call structure
+- Internal naming and decomposition
 
-**NOT allowed for libraries:**
-- Renaming exported functions/types
-- Changing function signatures (parameters, return types)
-- Removing or renaming public modules
-- Changing default values of public parameters
+Not refactoring for libraries unless compatibility is preserved:
+- Renaming exported functions or types
+- Changing exported signatures
+- Removing or renaming public modules or re-export paths
+- Changing documented defaults or externally visible semantics
 
-## Application Freedom
+## Application Constraints
 
-Applications have **no external consumers** — you control all the code:
+Applications are not automatically free of external boundaries.
+Even if you control the codebase, applications often expose stable contracts to users, operators, or other services.
 
-```
-┌─────────────────────────────────────┐
-│         Your Application            │
-│   (you control all the code)        │
-└────────────────┬────────────────────┘
-                 │ ← no external boundary
-┌────────────────▼────────────────────┐
-│        All Code is Internal         │
-│   - Entry points (main, handlers)   │
-│   - Services and modules            │
-│   - Internal APIs                   │
-└─────────────────────────────────────┘
-```
+Common application boundaries:
+- Public HTTP or RPC endpoints
+- CLI behavior used by scripts or operators
+- Database schemas shared with analytics or other services
+- Events consumed by external workers
+- Config file formats or environment-variable contracts
 
-**Allowed for applications:**
-- Renaming any function/type (update all call sites)
-- Changing function signatures (update all callers)
-- Reorganizing module structure freely
-- Changing internal API contracts
+Safe refactoring scope for applications:
+- Internal service boundaries when all callers can be updated together
+- Internal module names, function signatures, and directory structure
+- Internal data flow and decomposition
 
-## How to Identify
-
-| Signal | Library | Application |
-|--------|---------|-------------|
-| Published to package registry | ✅ | ❌ |
-| Has `lib.rs` / `index.ts` exports | ✅ | Maybe |
-| Other repos depend on it | ✅ | ❌ |
-| Has CLI entry point only | ❌ | ✅ |
-| Deployed as a service | ❌ | ✅ |
-| You control all consumers | ❌ | ✅ |
+Not refactoring unless compatibility is preserved:
+- Breaking public endpoint payloads
+- Changing persisted data formats without a migration strategy
+- Changing operational interfaces that existing tooling depends on
 
 ## Hybrid Cases
 
-Some projects are both:
+Many projects contain multiple boundary types.
 
-```
+Example:
+
+```text
 my-project/
-├── src/lib/        # Library code (API frozen)
-├── src/cli/        # CLI application (freely refactorable)
-└── src/server/     # Server application (freely refactorable)
+|- packages/sdk/      # library boundary
+|- services/api/      # service boundary
+|- apps/cli/          # operator-facing CLI boundary
+\- internal/tools/    # mostly internal
 ```
 
-Apply library constraints only to the library portion.
+Apply the strictest relevant contract rule to each area.
+
+## Practical Decision Rule
+
+Before calling something a refactor, ask:
+
+1. Who can observe this change outside the edited module?
+2. What contract are they relying on?
+3. Is that contract preserved exactly, or only migrated?
+
+If the contract changes, treat the work as behavior change, migration, or compatibility work, not pure refactoring.
