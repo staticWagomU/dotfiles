@@ -97,6 +97,14 @@ function fish_user_key_bindings
   # insertモードとdefaultモードの両方でCtrl+Rを有効化
   bind -M insert \cr fzf_history
   bind -M default \cr fzf_history
+
+  # zeno.zsh keybindings (vi の insert モードで有効にする)
+  if test "$ZENO_LOADED" = "1"
+    bind -M insert ' ' zeno-auto-snippet
+    bind -M insert \r zeno-auto-snippet-and-accept-line
+    bind -M insert \t zeno-completion
+    bind -M insert \cx\x20 zeno-insert-space
+  end
 end
 
 
@@ -177,12 +185,6 @@ if test (uname) = "Darwin"
   source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 end
 
-if test "$ZENO_LOADED" = "1"
-    bind ' ' zeno-auto-snippet
-    bind \r zeno-auto-snippet-and-accept-line
-    bind \t zeno-completion
-    bind \cx\x20 zeno-insert-space
-end
 
 if test (uname) = "Linux"; and test -x /home/linuxbrew/.linuxbrew/bin/brew
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"
