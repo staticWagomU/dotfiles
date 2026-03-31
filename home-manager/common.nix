@@ -114,6 +114,10 @@ in
   # 2) Symlink conf.d file from the repo
   xdg.configFile."fish/conf.d/zeno.fish".source = "${inputs.zeno-zsh}/shells/fish/conf.d/zeno.fish";
 
+  # zeno config as symlink
+  xdg.configFile."zeno/config.yml".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/zeno/config.yml";
+
   # tmux config as symlink
   # シンボリックリンクにすることで、dotfiles の変更が即座に反映される
   xdg.configFile."tmux/tmux.conf".source =

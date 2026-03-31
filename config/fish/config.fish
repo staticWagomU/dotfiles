@@ -69,32 +69,6 @@ if command -v direnv >/dev/null
 end
 
 
-# -------------------------
-# Abbr
-# -------------------------
-abbr -a cls clear
-abbr -a cp cp -i
-abbr -a mc mv -i
-abbr -a rm rm -i
-abbr -a ll ls -al
-
-abbr -a gs git status
-abbr -a gb git branch
-abbr -a gd git diff
-abbr -a gp git push
-abbr -a gP git pull --autostash
-abbr -a p 'z (ghq list -p | fzf)'
-
-abbr -a d docker
-abbr -a dc docker compose
-
-abbr -a gg ghq get 
-
-abbr -a c claude --dangerously-skip-permissions --model opus --effort high
-abbr -a cb env CLAUDE_CODE_USE_BEDROCK=1 claude --dangerously-skip-permissions --model opus --effort high
-
-abbr -a co codex
-
 alias v='vim'
 alias vi='vim'
 
