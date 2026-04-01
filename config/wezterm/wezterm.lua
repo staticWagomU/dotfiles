@@ -526,7 +526,20 @@ config.launch_menu = {
 -- ============================================================
 package.path = wezterm.config_dir .. "/pane-manager.wezterm/?.lua;" .. package.path
 local pane_manager = require("init")
-pane_manager.apply_to_config(config)
+pane_manager.apply_to_config(config, {
+  direct_keys = {
+    grab_key = "i",            -- "i"mport — Leader+g はGCPと競合
+    send_key = "o",            -- send "o"ut
+    rotate_cw_key = "]",       -- Leader+r はSplitHorizontalと競合
+    rotate_cw_mods = "LEADER",
+    rotate_ccw_key = "[",
+    rotate_ccw_mods = "LEADER",
+    detach_tab_key = "t",      -- macOSでSHIFT記号キーが不安定なため変更
+    detach_tab_mods = "LEADER",
+    detach_window_key = "w",
+    detach_window_mods = "LEADER",
+  },
+})
 
 
 return config
