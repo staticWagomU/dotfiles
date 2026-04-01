@@ -524,7 +524,8 @@ config.launch_menu = {
 -- ============================================================
 -- Plugin
 -- ============================================================
-local pane_manager = wezterm.plugin.require("file://" .. wezterm.config_dir .. "/pane-manager.wezterm")
+package.path = wezterm.config_dir .. "/pane-manager.wezterm/?.lua;" .. package.path
+local pane_manager = require("init")
 pane_manager.apply_to_config(config)
 
 
