@@ -2,6 +2,10 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local config = wezterm.config_builder()
 
+-- Load plugins early so we can reference them in config.keys
+package.path = wezterm.config_dir .. "/pane-manager.wezterm/?.lua;" .. package.path
+local pane_manager = require("init")
+
 -- ============================================================
 -- Appearance
 -- ============================================================
@@ -371,6 +375,14 @@ config.keys = {
     end),
   },
 
+  -- Pane manager
+  { key = "p", mods = "LEADER", action = wezterm.action_callback(pane_manager.open_pane_manager) },
+  { key = "i", mods = "LEADER", action = wezterm.action_callback(pane_manager.action_grab_pane) },
+  { key = "o", mods = "LEADER", action = wezterm.action_callback(pane_manager.action_send_pane) },
+  { key = "s", mods = "LEADER", action = wezterm.action_callback(pane_manager.action_swap_pane) },
+  { key = "]", mods = "LEADER", action = wezterm.action_callback(pane_manager.action_rotate_cw) },
+  { key = "[", mods = "LEADER", action = wezterm.action_callback(pane_manager.action_rotate_ccw) },
+
   -- Debug
   { key = "l", mods = "SUPER", action = act.ShowDebugOverlay },
   { key = "r", mods = "SUPER", action = act.ReloadConfiguration },
@@ -521,25 +533,6 @@ config.launch_menu = {
   },
 }
 
--- ============================================================
--- Plugin
--- ============================================================
-package.path = wezterm.config_dir .. "/pane-manager.wezterm/?.lua;" .. package.path
-local pane_manager = require("init")
-pane_manager.apply_to_config(config, {
-  direct_keys = {
-    grab_key = "i",            -- "i"mport — Leader+g はGCPと競合
-    send_key = "o",            -- send "o"ut
-    rotate_cw_key = "]",       -- Leader+r はSplitHorizontalと競合
-    rotate_cw_mods = "LEADER",
-    rotate_ccw_key = "[",
-    rotate_ccw_mods = "LEADER",
-    detach_tab_key = "t",      -- macOSでSHIFT記号キーが不安定なため変更
-    detach_tab_mods = "LEADER",
-    detach_window_key = "w",
-    detach_window_mods = "LEADER",
-  },
-})
 
 
 return config
