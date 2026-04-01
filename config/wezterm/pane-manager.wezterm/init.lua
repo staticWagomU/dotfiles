@@ -51,7 +51,7 @@ end
 ---@return table  { id, label }
 local function make_pane_choice(p, opts)
   opts = opts or {}
-  local color = opts.highlight and "Green" or "Cyan"
+  local color = opts.highlight and "Green" or "Aqua"
   local suffix = opts.highlight and "  ★ current" or ""
 
   return {
