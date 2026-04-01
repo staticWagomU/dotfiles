@@ -130,6 +130,7 @@ abbr -a bg 'brew upgrade'
 # -------------------------
 abbr -a c 'claude --dangerously-skip-permissions --model opus --effort high'
 abbr -a cb 'env CLAUDE_CODE_USE_BEDROCK=1 claude --dangerously-skip-permissions --model opus --effort high'
+abbr -a cz 'claude-mode zai; and claude --dangerously-skip-permissions --model opus --effort high'
 abbr -a co codex
 abbr -a yolo 'codex --yolo'
 
