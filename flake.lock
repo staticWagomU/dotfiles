@@ -380,8 +380,7 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
         "treefmt-nix": "treefmt-nix",
-        "vim-overlay": "vim-overlay",
-        "zeno-zsh": "zeno-zsh"
+        "vim-overlay": "vim-overlay"
       }
     },
     "systems": {
@@ -454,22 +453,6 @@
       "original": {
         "owner": "vim",
         "repo": "vim",
-        "type": "github"
-      }
-    },
-    "zeno-zsh": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1774332025,
-        "narHash": "sha256-zCudI7vbhyxcoZ7530h2G3SUeeFMQ4Vh5S0s4VL4jhU=",
-        "owner": "yuki-yano",
-        "repo": "zeno.zsh",
-        "rev": "25f3a6d9a427b3900912d162a8fb75198550d46c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "yuki-yano",
-        "repo": "zeno.zsh",
         "type": "github"
       }
     }

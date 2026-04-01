@@ -244,10 +244,6 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zeno-zsh = {
-      url = "github:yuki-yano/zeno.zsh";
-      flake = false;
-    };
     arto.url = "github:arto-app/Arto";
     nix-search-tv.url = "github:3timeslazy/nix-search-tv";
   };

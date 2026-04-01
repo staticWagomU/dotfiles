@@ -69,6 +69,77 @@ if command -v direnv >/dev/null
 end
 
 
+# -------------------------
+# Abbr: Shell Basics
+# -------------------------
+abbr -a cls clear
+abbr -a cp 'cp -i'
+abbr -a mc 'mv -i'
+abbr -a rm 'rm -i'
+abbr -a ll 'ls -al'
+abbr -a mkdir 'mkdir -p'
+
+# -------------------------
+# Abbr: Git
+# -------------------------
+abbr -a gs 'git status --short --branch'
+abbr -a gb 'git branch'
+abbr -a ga 'git add'
+abbr -a gaa 'git add --all'
+abbr -a gci 'git commit'
+abbr -a gcim 'git commit -m'
+abbr -a gd 'git diff'
+abbr -a gdc 'git diff --cached'
+abbr -a gco 'git checkout'
+abbr -a gcof 'git checkout --'
+abbr -a gcot 'git checkout --track'
+abbr -a gre 'git reset'
+abbr -a gst 'git stash'
+abbr -a gstu 'git stash -u'
+abbr -a gstl 'git stash list'
+abbr -a gsts 'git stash show'
+abbr -a gsta 'git stash apply'
+abbr -a gstp 'git stash pop'
+abbr -a gstd 'git stash drop'
+abbr -a gp 'git push'
+abbr -a gpf 'git push --force-with-lease'
+abbr -a gpu 'git push --set-upstream'
+abbr -a gP 'git pull --autostash'
+
+# -------------------------
+# Abbr: Project Navigation
+# -------------------------
+abbr -a p 'z (ghq list -p | fzf)'
+abbr -a gg 'ghq get'
+
+# -------------------------
+# Abbr: Docker
+# -------------------------
+abbr -a d docker
+abbr -a dc 'docker compose'
+
+# -------------------------
+# Abbr: Brew
+# -------------------------
+abbr -a b brew
+abbr -a bu 'brew update && brew outdated'
+abbr -a bg 'brew upgrade'
+
+# -------------------------
+# Abbr: AI Tools
+# -------------------------
+abbr -a c 'claude --dangerously-skip-permissions --model opus --effort high'
+abbr -a cb 'env CLAUDE_CODE_USE_BEDROCK=1 claude --dangerously-skip-permissions --model opus --effort high'
+abbr -a co codex
+abbr -a yolo 'codex --yolo'
+
+# -------------------------
+# Abbr: macOS
+# -------------------------
+abbr -a disable_desktop 'defaults write com.apple.finder CreateDesktop -boolean false; killall Finder'
+abbr -a enable_desktop 'defaults write com.apple.finder CreateDesktop -boolean true; killall Finder'
+
+
 alias v='vim'
 alias vi='vim'
 
@@ -97,14 +168,6 @@ function fish_user_key_bindings
   # insertモードとdefaultモードの両方でCtrl+Rを有効化
   bind -M insert \cr fzf_history
   bind -M default \cr fzf_history
-
-  # zeno.zsh keybindings (vi の insert モードで有効にする)
-  if test "$ZENO_LOADED" = "1"
-    bind -M insert ' ' zeno-auto-snippet
-    bind -M insert \r zeno-auto-snippet-and-accept-line
-    bind -M insert \t zeno-completion
-    bind -M insert \cx\x20 zeno-insert-space
-  end
 end
 
 
@@ -184,7 +247,6 @@ if test (uname) = "Darwin"
   # This won't be added again if you remove it.
   source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 end
-
 
 if test (uname) = "Linux"; and test -x /home/linuxbrew/.linuxbrew/bin/brew
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"

@@ -10,20 +10,6 @@
 
 let
   nodePkgs = pkgs.callPackage ../node2nix { inherit pkgs; };
-
-  # bin/zeno が --node-modules-dir=auto でNixストア（読み取り専用）へ書き込もうとする問題を修正。
-  # --node-modules-dir=none に変更することで、DenoはグローバルキャッシュDENO_DIRを使用する。
-  zeno-patched = pkgs.stdenv.mkDerivation {
-    name = "zeno-zsh-patched";
-    src = inputs.zeno-zsh;
-    phases = [ "installPhase" ];
-    installPhase = ''
-      cp -r $src $out
-      chmod -R u+w $out
-      substituteInPlace $out/bin/zeno \
-        --replace-fail "--node-modules-dir=auto" "--node-modules-dir=none"
-    '';
-  };
 in
 {
   home.username = username;
@@ -101,22 +87,6 @@ in
     source = ../config/fish/completions;
     recursive = true;
   };
-
-  # zeno.zsh (fish) via declarative steps
-  # 1) Provide ZENO_ROOT as an env var inside fish
-  #    zeno-patched を使うことで bin/zeno が --node-modules-dir=none を使用し、
-  #    Nixストア（読み取り専用）への書き込みを回避する。
-  #    ZENO_DISABLE_EXECUTE_CACHE_COMMAND=1 で起動時のキャッシュステップをスキップ。
-  xdg.configFile."fish/conf.d/zeno-env.fish".text = ''
-    set -gx ZENO_ROOT ${zeno-patched}
-    set -gx ZENO_DISABLE_EXECUTE_CACHE_COMMAND 1
-  '';
-  # 2) Symlink conf.d file from the repo
-  xdg.configFile."fish/conf.d/zeno.fish".source = "${inputs.zeno-zsh}/shells/fish/conf.d/zeno.fish";
-
-  # zeno config as symlink
-  xdg.configFile."zeno/config.yml".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/zeno/config.yml";
 
   # tmux config as symlink
   # シンボリックリンクにすることで、dotfiles の変更が即座に反映される
