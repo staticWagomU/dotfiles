@@ -7,6 +7,8 @@ local act = wezterm.action
 
 local M = {}
 
+local wezterm_cli = wezterm.executable_dir .. "/wezterm"
+
 -- ============================================================
 -- Helpers
 -- ============================================================
@@ -108,7 +110,7 @@ end
 ---@param direction string              "horizontal" | "vertical"
 local function cli_split_move(target_pane_id, move_pane_id, direction)
   local args = {
-    "wezterm", "cli", "split-pane",
+    wezterm_cli, "cli", "split-pane",
     "--pane-id", tostring(target_pane_id),
     "--move-pane-id", tostring(move_pane_id),
   }
@@ -235,7 +237,7 @@ local function action_move_to_new_tab_in_window(window, pane)
   -- wezterm cli move-pane-to-new-tab --pane-id X
   local current_id = pane:pane_id()
   wezterm.background_child_process({
-    "wezterm", "cli", "move-pane-to-new-tab",
+    wezterm_cli, "cli", "move-pane-to-new-tab",
     "--pane-id", tostring(current_id),
   })
   toast(window, "Pane moved to a new tab")
