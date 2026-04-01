@@ -521,4 +521,11 @@ config.launch_menu = {
   },
 }
 
+-- ============================================================
+-- Plugin
+-- ============================================================
+local pane_manager = wezterm.plugin.require("file://" .. wezterm.config_dir .. "/pane-manager.wezterm")
+pane_manager.apply_to_config(config)
+
+
 return config
