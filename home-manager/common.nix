@@ -43,6 +43,7 @@ in
     # font
     hackgen-nf-font
     intel-one-mono
+    maple-mono.NF-unhinted
 
     awscli2
     devenv
@@ -148,6 +149,26 @@ in
   template = ~/dotfiles/config/.gitmessage
 EOF
       echo "Created ~/.gitconfig with include directive"
+    fi
+  '';
+
+  # macOS: Install fonts to ~/Library/Fonts
+  home.activation.fonts = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+    if [ "$(uname -s)" = "Darwin" ]; then
+      fonts_dir="$HOME/Library/Fonts"
+      mkdir -p "$fonts_dir"
+
+      # Link Maple Mono NF fonts
+      for font in ${pkgs.maple-mono.NF-unhinted}/share/fonts/truetype/*.ttf; do
+        if [ -f "$font" ]; then
+          font_name=$(basename "$font")
+          target="$fonts_dir/$font_name"
+          if [ ! -L "$target" ]; then
+            ln -sf "$font" "$target"
+            echo "Linked $font_name"
+          fi
+        fi
+      done
     fi
   '';
 

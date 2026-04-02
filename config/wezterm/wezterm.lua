@@ -11,22 +11,22 @@ local pane_manager = require("init")
 -- ============================================================
 config.line_height = 1.3
 config.font_size = 14.0
-config.font = wezterm.font_with_fallback({ "HackGen Console NF" })
+config.font = wezterm.font_with_fallback({ "Maple Mono NF" })
 config.font_rules = {
   {
     intensity = "Normal",
     italic = true,
-    font = wezterm.font("HackGen Console NF", { weight = "Regular", style = "Normal" }),
+    font = wezterm.font("Maple Mono NF", { weight = "Regular", style = "Normal" }),
   },
   {
     intensity = "Bold",
     italic = true,
-    font = wezterm.font("HackGen Console NF", { weight = "Bold", style = "Normal" }),
+    font = wezterm.font("Maple Mono NF", { weight = "Bold", style = "Normal" }),
   },
   {
     intensity = "Half",
     italic = true,
-    font = wezterm.font("HackGen Console NF", { weight = "DemiLight", style = "Normal" }),
+    font = wezterm.font("Maple Mono NF", { weight = "ExtraLight", style = "Normal" }),
   },
 }
 config.front_end = "WebGpu"
