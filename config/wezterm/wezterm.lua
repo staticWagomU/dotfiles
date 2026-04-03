@@ -60,6 +60,30 @@ config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
 -- Helper Functions
 -- ============================================================
 
+-- Find wez-cc-viewer binary (handles mise/asdf path issues)
+local _bin_cache = nil
+local function find_wez_cc_viewer()
+  if _bin_cache then return _bin_cache end
+  local ok, stdout = wezterm.run_child_process({
+    os.getenv("SHELL") or "/bin/zsh", "-lic", "which wez-cc-viewer",
+  })
+  if ok and stdout then
+    local path = stdout:gsub("%s+$", "")
+    if path ~= "" then
+      _bin_cache = path
+      return path
+    end
+  end
+  return nil
+end
+
+-- Handle workspace switch from wez-cc-viewer
+wezterm.on("user-var-changed", function(window, pane, name, value)
+  if name == "switch_workspace" then
+    window:perform_action(act.SwitchToWorkspace({ name = value }), pane)
+  end
+end)
+
 -- Toggle opacity
 wezterm.on("toggle-opacity", function(window, _)
   local overrides = window:get_config_overrides() or {}
@@ -313,6 +337,24 @@ config.keys = {
 
   -- Workspace: scratch toggle (Ctrl+Shift+Alt+S)
   { key = "s", mods = "CTRL|SHIFT|ALT", action = toggle_workspace("scratch") },
+
+  -- wez-cc-viewer: monitor Claude Code instances (Leader+A)
+  {
+    key = "A",
+    mods = "LEADER",
+    action = wezterm.action_callback(function(window, pane)
+      local bin = find_wez_cc_viewer()
+      if not bin then
+        window:toast_notification("wezterm", "wez-cc-viewer not found", nil, 3000)
+        return
+      end
+      local new_pane = pane:split({
+        direction = "Bottom",
+        args = { bin },
+      })
+      window:perform_action(act.TogglePaneZoomState, new_pane)
+    end),
+  },
 
   -- Workspace: fuzzy select (Ctrl+Shift+Alt+W)
   { key = "w", mods = "CTRL|SHIFT|ALT", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
