@@ -30,6 +30,9 @@ fish_add_path /etc/profiles/per-user/$USER/bin
 
 fish_add_path ~/.bun/bin
 
+# Go binaries
+fish_add_path ~/go/bin
+
 fish_add_path ~/.local/bin
 
 fish_add_path ~/dotfiles/scripts
@@ -128,8 +131,8 @@ abbr -a bg 'brew upgrade'
 # -------------------------
 # Abbr: AI Tools
 # -------------------------
-abbr -a c 'claude --dangerously-skip-permissions --model opus --effort high'
-abbr -a cb 'env CLAUDE_CODE_USE_BEDROCK=1 claude --dangerously-skip-permissions --model opus --effort high'
+abbr -a c 'claude-mode subscription; and claude --dangerously-skip-permissions --model opus --effort high'
+abbr -a cb 'claude-mode bedrock; and claude --dangerously-skip-permissions --model opus --effort high'
 abbr -a cz 'claude-mode zai; and claude --dangerously-skip-permissions --model opus --effort high'
 abbr -a co codex
 abbr -a yolo 'codex --yolo'
