@@ -68,6 +68,10 @@ in
         name = "fisher";
         src = inputs.fisher;
       }
+      {
+        name = "lophius";
+        src = inputs.lophius;
+      }
     ];
     interactiveShellInit = builtins.readFile ../config/fish/config.fish;
   };

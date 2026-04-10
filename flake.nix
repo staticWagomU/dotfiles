@@ -246,5 +246,6 @@
     };
     arto.url = "github:arto-app/Arto";
     nix-search-tv.url = "github:3timeslazy/nix-search-tv";
+    lophius.url = "github:ogaken-1/lophius.fish";
   };
 }

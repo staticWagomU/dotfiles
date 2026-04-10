@@ -211,6 +211,21 @@
         "type": "github"
       }
     },
+    "lophius": {
+      "locked": {
+        "lastModified": 1775655355,
+        "narHash": "sha256-jw5lh87hTXrjFMSJFlz3gxKFKw1mOCw/zGTCMPLqVtE=",
+        "owner": "ogaken-1",
+        "repo": "lophius.fish",
+        "rev": "ee1e9eb4e47813b96659947d8f53b246b934919f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ogaken-1",
+        "repo": "lophius.fish",
+        "type": "github"
+      }
+    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -374,6 +389,7 @@
         "fisher": "fisher",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
+        "lophius": "lophius",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-darwin": "nix-darwin",
         "nix-search-tv": "nix-search-tv",
