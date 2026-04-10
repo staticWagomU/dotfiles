@@ -21,7 +21,7 @@ STATE_DIR="$HOME/.claude/scripts"
 LAST_RUN_FILE="$STATE_DIR/.last-harvest-date"
 LOG_FILE="$STATE_DIR/daily-harvest.log"
 CLAUDE="$HOME/.local/bin/claude"
-RETRACE_SCRIPT="$HOME/retrace-summary.sh"
+RETRACE_SCRIPT="$HOME/.claude/scripts/retrace-summary.sh"
 CODEX_EXTRACT="$HOME/.claude/scripts/extract-codex-journal-data.sh"
 
 TODAY=$(date +%Y-%m-%d)
