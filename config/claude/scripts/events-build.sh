@@ -75,10 +75,16 @@ fi
     sort -t $'\t' -k1,1 "$TMP" | awk -F'\t' '
       {
         hhmm = $1; src = $2; ctx = $3; desc = $4
+        # Per-source emoji so git/shell/retrace/cal are visually distinct.
+        emoji = "•"
+        if      (src == "git")     emoji = "🌿"
+        else if (src == "shell")   emoji = "💻"
+        else if (src == "retrace") emoji = "⏱️"
+        else if (src == "cal")     emoji = "📅"
         if (ctx == "-" || ctx == "") {
-          printf "- `%s` **%s**  %s\n", hhmm, src, desc
+          printf "- `%s` %s **%s**  %s\n", hhmm, emoji, src, desc
         } else {
-          printf "- `%s` **%s**  *%s*  %s\n", hhmm, src, ctx, desc
+          printf "- `%s` %s **%s**  *%s*  %s\n", hhmm, emoji, src, ctx, desc
         }
       }
     '
