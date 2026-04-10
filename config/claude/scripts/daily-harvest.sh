@@ -7,6 +7,7 @@
 #   2. Claude AI日誌
 #   3. Codex AI日誌
 #   4. Harvest（知識収穫）
+#   5. 機械日報（events-build: git/shell/retrace）
 #
 # トリガー: launchd StartCalendarInterval (00:05)
 # - Mac起動中 → 00:05に実行
@@ -209,6 +210,22 @@ $EXTRACT_OUTPUT"
 else
     log "ERROR: claude not found at $CLAUDE"
     notify "claude CLI が見つかりません"
+fi
+
+# === 5. 機械日報 (events) → デイリーノートに追記 ===
+# raw-first な観測ログ。git / shell / retrace を時系列でマージして
+# デイリーノートに `## 機械日報` セクションとして冪等追記する。既存の処理を壊さ
+# ないため、失敗しても完了フラグには進む。
+EVENTS_BUILD="$HOME/.claude/scripts/events-build.sh"
+if [ -x "$EVENTS_BUILD" ]; then
+    log "Running events-build for $YESTERDAY..."
+    if "$EVENTS_BUILD" "$YESTERDAY" >> "$LOG_FILE" 2>&1; then
+        log "events-build completed"
+    else
+        log "WARNING: events-build failed (exit code: $?)"
+    fi
+else
+    log "events-build: script not found at $EVENTS_BUILD, skipping"
 fi
 
 # === 完了マーク ===
