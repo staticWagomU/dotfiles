@@ -2,7 +2,8 @@
 # events-build.sh - Collect events from all sources and idempotently append
 # a "## 機械日報" section to the Obsidian daily note.
 #
-# Sources: events-from-git.sh, events-from-shell.sh, events-from-retrace.sh
+# Sources: events-from-git.sh, events-from-shell.sh, events-from-retrace.sh,
+#          events-from-calendar.sh
 # Diff   : events-diff.sh
 #
 # Idempotency:
@@ -42,9 +43,10 @@ fi
 TMP=$(mktemp)
 trap 'rm -f "$TMP" "$TMP.diff" "$TMP.section"' EXIT
 
-bash "$SCRIPT_DIR/events-from-git.sh"     "$TARGET_DATE" >> "$TMP" 2>/dev/null || true
-bash "$SCRIPT_DIR/events-from-shell.sh"   "$TARGET_DATE" >> "$TMP" 2>/dev/null || true
-bash "$SCRIPT_DIR/events-from-retrace.sh" "$TARGET_DATE" >> "$TMP" 2>/dev/null || true
+bash "$SCRIPT_DIR/events-from-git.sh"      "$TARGET_DATE" >> "$TMP" 2>/dev/null || true
+bash "$SCRIPT_DIR/events-from-shell.sh"    "$TARGET_DATE" >> "$TMP" 2>/dev/null || true
+bash "$SCRIPT_DIR/events-from-retrace.sh"  "$TARGET_DATE" >> "$TMP" 2>/dev/null || true
+bash "$SCRIPT_DIR/events-from-calendar.sh" "$TARGET_DATE" >> "$TMP" 2>/dev/null || true
 
 TOTAL=$(wc -l < "$TMP" | tr -d ' ')
 

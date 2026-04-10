@@ -7,7 +7,8 @@
 #   2. Claude AI日誌
 #   3. Codex AI日誌
 #   4. Harvest（知識収穫）
-#   5. 機械日報（events-build: git/shell/retrace）
+#   5. 機械日報（events-build: git/shell/retrace/calendar）
+#   6. レビュー（events-review: ToDo 対比 + codex 提案）
 #
 # トリガー: launchd StartCalendarInterval (00:05)
 # - Mac起動中 → 00:05に実行
@@ -213,7 +214,7 @@ else
 fi
 
 # === 5. 機械日報 (events) → デイリーノートに追記 ===
-# raw-first な観測ログ。git / shell / retrace を時系列でマージして
+# raw-first な観測ログ。git / shell / retrace / calendar を時系列でマージして
 # デイリーノートに `## 機械日報` セクションとして冪等追記する。既存の処理を壊さ
 # ないため、失敗しても完了フラグには進む。
 EVENTS_BUILD="$HOME/.claude/scripts/events-build.sh"
@@ -226,6 +227,22 @@ if [ -x "$EVENTS_BUILD" ]; then
     fi
 else
     log "events-build: script not found at $EVENTS_BUILD, skipping"
+fi
+
+# === 6. レビュー (events-review) → デイリーノートに追記 ===
+# ToDo あり/なしの対比 + codex による ToDo 候補抽出を `## レビュー` セクション
+# として `## 機械日報` の直前に冪等挿入する。events-build の後に動かす前提。
+# codex 呼び出しがあるので ~60-90s かかる。失敗しても完了フラグには進む。
+EVENTS_REVIEW="$HOME/.claude/scripts/events-review.sh"
+if [ -x "$EVENTS_REVIEW" ]; then
+    log "Running events-review for $YESTERDAY..."
+    if "$EVENTS_REVIEW" "$YESTERDAY" >> "$LOG_FILE" 2>&1; then
+        log "events-review completed"
+    else
+        log "WARNING: events-review failed (exit code: $?)"
+    fi
+else
+    log "events-review: script not found at $EVENTS_REVIEW, skipping"
 fi
 
 # === 完了マーク ===
