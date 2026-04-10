@@ -44,11 +44,13 @@ if [ ! -x "$CLAUDE" ]; then
 fi
 
 # Fleeting Note の存在確認（1件もなければスキップ）
-FLEETING_COUNT=$(find "$VAULT/pages" -name '[0-9]*-*.md' -newer "$LAST_RUN_FILE" 2>/dev/null | wc -l | tr -d ' ')
-if [ "$FLEETING_COUNT" -eq 0 ] && [ -f "$LAST_RUN_FILE" ]; then
-    log "No new fleeting notes since last review, skipping"
-    echo "$CURRENT_WEEK" > "$LAST_RUN_FILE"
-    exit 0
+if [ -f "$LAST_RUN_FILE" ]; then
+    FLEETING_COUNT=$(find "$VAULT/pages" -name '[0-9]*-*.md' -newer "$LAST_RUN_FILE" 2>/dev/null | wc -l | tr -d ' ' || echo 0)
+    if [ "$FLEETING_COUNT" -eq 0 ]; then
+        log "No new fleeting notes since last review, skipping"
+        echo "$CURRENT_WEEK" > "$LAST_RUN_FILE"
+        exit 0
+    fi
 fi
 
 notify "先週分のWeekly Reviewを開始します..."
