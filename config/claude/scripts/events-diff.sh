@@ -2,12 +2,20 @@
 # events-diff.sh - Emit "注目ポイント" bullets comparing target date to
 # same-weekday history (median + MAD) from Retrace per-app minutes.
 #
-# Output: markdown bullets. Empty output if no baseline is available.
+# Output: markdown bullets. If the baseline is insufficient, a single
+# "_履歴蓄積中 ..._" bullet is emitted instead of staying silent, so the
+# reader knows the feature is waking up (not broken).
 #
 # Rationale: weekday seasonality is strong in computer activity; comparing
 # Wednesday to other Wednesdays is much less noisy than rolling averages.
 # We use median + MAD (robust) instead of mean + stdev so a single weird day
 # doesn't skew the baseline. Only top 3 differences are emitted.
+#
+# Prerequisites (see also events-from-retrace.sh header):
+#   - Requires Retrace segment retention ≥ 21 days (3 same-weekdays) to
+#     emit ANY comparison bullet. The full 8-point baseline wants 56 days.
+#   - Below the threshold, the fallback message names how many more days
+#     are needed so the silent-empty failure mode is ruled out at a glance.
 
 set -uo pipefail
 
@@ -79,6 +87,21 @@ normalize_app() {
 # Compute the diff in awk: for each bundleID, baseline = past 8 same weekdays,
 # compute median. Emit bundles where target is >= 15 min AND |ratio - 1| >= 0.5.
 RAW=$(collect_days | awk -F'\t' '$3 != "" && $3+0 > 0')
+
+# Accumulation-phase guard: if the baseline has fewer than 3 past same-weekdays
+# with ANY data, per-app analysis will silently filter everything out. Emit a
+# humane "_履歴蓄積中_" bullet instead so the reader can distinguish "no notable
+# delta" (real silence) from "baseline not ready yet" (this branch).
+BASELINE_DAYS=$(printf '%s\n' "$RAW" \
+  | awk -F'\t' -v target="$TARGET_DATE" '$2 != target && $2 != "" {print $2}' \
+  | sort -u | wc -l | tr -d ' ')
+: "${BASELINE_DAYS:=0}"
+if [ "$BASELINE_DAYS" -lt 3 ]; then
+  needed=$((3 - BASELINE_DAYS))
+  printf -- "- _履歴蓄積中: 同曜日の過去データ %d 日分 (あと %d 日必要)_\n" \
+    "$BASELINE_DAYS" "$needed"
+  exit 0
+fi
 
 echo "$RAW" | awk -F'\t' -v target="$TARGET_DATE" '
   {

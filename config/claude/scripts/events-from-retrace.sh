@@ -7,6 +7,16 @@
 # into a single "session". Emit only sessions with duration >= 10 min.
 # This complements (not replaces) the existing ## スクリーン時間 section,
 # which shows aggregates. Here we show time-ordered focus events.
+#
+# Data source notes (shared with events-diff.sh):
+#   - Reads from Retrace.app's SQLite `segment` table.
+#   - Retrace has a per-user *segment retention* setting in its Preferences.
+#     This script only needs the TARGET date, but events-diff.sh walks back
+#     8 same-weekdays (56 days) for its baseline comparison. If segment
+#     retention is shorter than that, events-diff.sh degrades gracefully
+#     (see its own header for thresholds).
+#   - Current target retention: 90 days (set 2026-04-11). Default was far
+#     shorter and left events-diff.sh silently empty.
 
 set -uo pipefail
 
