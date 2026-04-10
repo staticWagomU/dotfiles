@@ -71,6 +71,20 @@ if command -v direnv >/dev/null
     direnv hook fish | source
 end
 
+# -------------------------
+# Events cmdlog: record every interactive command with (unix_ts, cwd, cmd)
+# so the 機械日報 timeline (events-from-shell.sh) can show where each
+# command ran. fish_history lacks cwd, so we keep a parallel TSV log.
+# -------------------------
+function __events_cmdlog_record --on-event fish_preexec
+    set -l cmd $argv[1]
+    test -z "$cmd"; and return
+    set -l log "$HOME/.local/share/fish/events_cmdlog.tsv"
+    # Strip tabs/newlines from the command so the TSV stays one-line-per-record.
+    set -l safe_cmd (printf '%s' -- $cmd | tr '\t\n' '  ')
+    printf '%s\t%s\t%s\n' (date +%s) $PWD $safe_cmd >> $log
+end
+
 
 # -------------------------
 # Abbr: Shell Basics
