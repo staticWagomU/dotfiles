@@ -70,6 +70,7 @@
       "swiftformat"
       "tbls"
       "terminal-notifier"
+      "thaw@beta"
       "tmux"
       "tree"
       "volta"
