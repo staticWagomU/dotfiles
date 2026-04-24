@@ -20,7 +20,6 @@ snippets:
   - name: mkdir -p
     keyword: mkdir
     snippet: mkdir -p
-
   # ===================
   # Git
   # ===================
@@ -129,7 +128,6 @@ snippets:
   - name: git rebase squash auto
     keyword: squash
     snippet: GIT_EDITOR=cat git rebase --interactive --autosquash {{branch}}
-
   # --- Context-aware git snippets ---
   - name: git push safe force
     keyword: -f
@@ -147,7 +145,6 @@ snippets:
     context:
       lbuffer: '^git\s+'
     evaluate: true
-
   # ===================
   # Redirect & Pipe
   # ===================
@@ -171,7 +168,6 @@ snippets:
     snippet: "| vi"
     context:
       lbuffer: '.+\s'
-
   # ===================
   # Project Navigation
   # ===================
@@ -181,7 +177,6 @@ snippets:
   - name: ghq get
     keyword: gg
     snippet: ghq get
-
   # ===================
   # Docker
   # ===================
@@ -191,7 +186,6 @@ snippets:
   - name: docker compose
     keyword: dc
     snippet: docker compose
-
   # ===================
   # Brew
   # ===================
@@ -204,7 +198,6 @@ snippets:
   - name: brew upgrade
     keyword: bg
     snippet: brew upgrade
-
   # ===================
   # AI Tools
   # ===================
@@ -226,7 +219,6 @@ snippets:
   - name: claude oneline
     keyword: '??'
     snippet: claude --print --model haiku "{{prompt}}"
-
   # ===================
   # macOS
   # ===================
@@ -236,7 +228,6 @@ snippets:
   - name: enable desktop
     keyword: enable_desktop
     snippet: defaults write com.apple.finder CreateDesktop -boolean true; killall Finder
-
 completions:
   - name: kill
     patterns:
@@ -258,7 +249,6 @@ completions:
       --no-sort: true
       --preview: "git show --color=always {2}"
     callback: "awk '{print $2}'"
-
 history:
   defaultScope: global
   fzfOptions:

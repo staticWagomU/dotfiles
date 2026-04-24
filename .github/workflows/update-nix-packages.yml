@@ -3,11 +3,9 @@ on:
   schedule:
     - cron: '0 0 * * 1' # 毎週月曜 00:00 UTC
   workflow_dispatch:
-
 permissions:
   contents: write
   pull-requests: write
-
 jobs:
   update:
     name: Update ${{ matrix.pkg.name }}
@@ -26,12 +24,9 @@ jobs:
             repo: octorus
             tag_prefix: v
             cargo_lock_subpath: Cargo.lock
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: DeterminateSystems/nix-installer-action@v14
-
       - name: Run update script
         run: |
           python3 .github/scripts/update-package.py \
@@ -40,7 +35,6 @@ jobs:
             --repo "${{ matrix.pkg.repo }}" \
             --tag-prefix "${{ matrix.pkg.tag_prefix }}" \
             --cargo-lock-subpath "${{ matrix.pkg.cargo_lock_subpath }}"
-
       - name: Check for changes
         id: changes
         run: |
@@ -51,7 +45,6 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "version=$VER" >> "$GITHUB_OUTPUT"
           fi
-
       - uses: peter-evans/create-pull-request@v7
         if: steps.changes.outputs.changed == 'true'
         with:
