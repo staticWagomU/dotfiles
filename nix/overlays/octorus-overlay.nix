@@ -21,9 +21,9 @@ let
 
 in
 lib.mapAttrs' (version: meta: {
-  name =
-    if version == versionData.latest
-    then "octorus"
-    else "octorus_${toAttrSuffix version}";
-  value = mkOctorus { inherit version; inherit (meta) srcHash; };
+  name = if version == versionData.latest then "octorus" else "octorus_${toAttrSuffix version}";
+  value = mkOctorus {
+    inherit version;
+    inherit (meta) srcHash;
+  };
 }) versionData.versions
