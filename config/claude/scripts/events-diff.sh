@@ -36,8 +36,8 @@ collect_days() {
     if [ "$i" -gt 0 ]; then
       d=$(date -j -v-7d -f '%Y-%m-%d' "$d" '+%Y-%m-%d')
     fi
-    ms_start=$(( $(date -j -f '%Y-%m-%d %H:%M:%S' "$d 00:00:00" +%s) * 1000 ))
-    ms_end=$((   ms_start + 86400000 ))
+    ms_start=$(($(date -j -f '%Y-%m-%d %H:%M:%S' "$d 00:00:00" +%s) * 1000))
+    ms_end=$((ms_start + 86400000))
     sqlite3 -separator $'\t' "$DB" "
       SELECT bundleID,
              SUM(
@@ -53,34 +53,34 @@ collect_days() {
       HAVING SUM(CASE WHEN MIN(endDate, $ms_end) > MAX(startDate, $ms_start)
                       THEN MIN(endDate, $ms_end) - MAX(startDate, $ms_start)
                       ELSE 0 END) > 0;
-    " 2>/dev/null \
-    | awk -v d="$d" -F'\t' '{ printf "%s\t%s\t%s\n", $1, d, $2 }'
+    " 2>/dev/null |
+      awk -v d="$d" -F'\t' '{ printf "%s\t%s\t%s\n", $1, d, $2 }'
   done
 }
 
 normalize_app() {
   case "$1" in
-    com.microsoft.edgemac)          echo "Edge" ;;
-    com.github.wez.wezterm)         echo "WezTerm" ;;
-    com.tinyspeck.slackmacgap)      echo "Slack" ;;
-    md.obsidian)                    echo "Obsidian" ;;
-    com.anthropic.claudefordesktop) echo "Claude" ;;
-    com.openai.codex)               echo "Codex" ;;
-    com.microsoft.VSCode)           echo "VS Code" ;;
-    com.apple.finder)               echo "Finder" ;;
-    com.apple.logic10)              echo "Logic Pro" ;;
-    com.naver.lineworks)            echo "LINE WORKS" ;;
-    com.lambdalisue.Arto)           echo "Arto" ;;
-    com.google.antigravity)         echo "Antigravity" ;;
-    com.1password.1password)        echo "1Password" ;;
-    pl.maketheweb.cleanshotx)       echo "CleanShot X" ;;
-    com.tataeru.desktop-bible)      echo "Desktop Bible" ;;
-    us.zoom.xos)                    echo "Zoom" ;;
-    com.apple.Safari)               echo "Safari" ;;
-    com.google.Chrome)              echo "Chrome" ;;
-    fun.tw93.kaku)                  echo "Kaku" ;;
-    notion.id)                      echo "Notion" ;;
-    *)                              echo "${1##*.}" ;;
+  com.microsoft.edgemac) echo "Edge" ;;
+  com.github.wez.wezterm) echo "WezTerm" ;;
+  com.tinyspeck.slackmacgap) echo "Slack" ;;
+  md.obsidian) echo "Obsidian" ;;
+  com.anthropic.claudefordesktop) echo "Claude" ;;
+  com.openai.codex) echo "Codex" ;;
+  com.microsoft.VSCode) echo "VS Code" ;;
+  com.apple.finder) echo "Finder" ;;
+  com.apple.logic10) echo "Logic Pro" ;;
+  com.naver.lineworks) echo "LINE WORKS" ;;
+  com.lambdalisue.Arto) echo "Arto" ;;
+  com.google.antigravity) echo "Antigravity" ;;
+  com.1password.1password) echo "1Password" ;;
+  pl.maketheweb.cleanshotx) echo "CleanShot X" ;;
+  com.tataeru.desktop-bible) echo "Desktop Bible" ;;
+  us.zoom.xos) echo "Zoom" ;;
+  com.apple.Safari) echo "Safari" ;;
+  com.google.Chrome) echo "Chrome" ;;
+  fun.tw93.kaku) echo "Kaku" ;;
+  notion.id) echo "Notion" ;;
+  *) echo "${1##*.}" ;;
   esac
 }
 
@@ -92,9 +92,9 @@ RAW=$(collect_days | awk -F'\t' '$3 != "" && $3+0 > 0')
 # with ANY data, per-app analysis will silently filter everything out. Emit a
 # humane "_履歴蓄積中_" bullet instead so the reader can distinguish "no notable
 # delta" (real silence) from "baseline not ready yet" (this branch).
-BASELINE_DAYS=$(printf '%s\n' "$RAW" \
-  | awk -F'\t' -v target="$TARGET_DATE" '$2 != target && $2 != "" {print $2}' \
-  | sort -u | wc -l | tr -d ' ')
+BASELINE_DAYS=$(printf '%s\n' "$RAW" |
+  awk -F'\t' -v target="$TARGET_DATE" '$2 != target && $2 != "" {print $2}' |
+  sort -u | wc -l | tr -d ' ')
 : "${BASELINE_DAYS:=0}"
 if [ "$BASELINE_DAYS" -lt 3 ]; then
   needed=$((3 - BASELINE_DAYS))
@@ -132,19 +132,19 @@ echo "$RAW" | awk -F'\t' -v target="$TARGET_DATE" '
       printf "%.3f\t%s\t%.0f\t%.0f\t%.2f\n", lr, app, t[app], med, ratio
     }
   }
-' \
-  | sort -rn \
-  | head -3 \
-  | while IFS=$'\t' read -r score bundle tmin basemin ratio; do
-      [ -z "$bundle" ] && continue
-      app=$(normalize_app "$bundle")
-      direction="↑"
-      # bash can't compare floats; use awk
-      if awk -v r="$ratio" 'BEGIN { exit !(r < 1) }'; then
-        direction="↓"
-      fi
-      printf -- "- **%s**: %s分 (同曜日中央値 %s分 → %s %.1fx)\n" \
-        "$app" "$tmin" "$basemin" "$direction" "$ratio"
-    done
+' |
+  sort -rn |
+  head -3 |
+  while IFS=$'\t' read -r score bundle tmin basemin ratio; do
+    [ -z "$bundle" ] && continue
+    app=$(normalize_app "$bundle")
+    direction="↑"
+    # bash can't compare floats; use awk
+    if awk -v r="$ratio" 'BEGIN { exit !(r < 1) }'; then
+      direction="↓"
+    fi
+    printf -- "- **%s**: %s分 (同曜日中央値 %s分 → %s %.1fx)\n" \
+      "$app" "$tmin" "$basemin" "$direction" "$ratio"
+  done
 
 # trailing newline only if we emitted something (checked by caller presence)

@@ -28,7 +28,7 @@ MARK_END="<!-- events:auto:end -->"
 # Create daily note with frontmatter if missing (same shape as daily-harvest.sh).
 if [ ! -f "$DAILY_NOTE" ]; then
   mkdir -p "$(dirname "$DAILY_NOTE")"
-  cat > "$DAILY_NOTE" <<EOF
+  cat >"$DAILY_NOTE" <<EOF
 ---
 tags:
   - daily
@@ -43,16 +43,16 @@ fi
 TMP=$(mktemp)
 trap 'rm -f "$TMP" "$TMP.diff" "$TMP.section"' EXIT
 
-bash "$SCRIPT_DIR/events-from-git.sh"      "$TARGET_DATE" >> "$TMP" 2>/dev/null || true
-bash "$SCRIPT_DIR/events-from-shell.sh"    "$TARGET_DATE" >> "$TMP" 2>/dev/null || true
-bash "$SCRIPT_DIR/events-from-retrace.sh"  "$TARGET_DATE" >> "$TMP" 2>/dev/null || true
-bash "$SCRIPT_DIR/events-from-calendar.sh" "$TARGET_DATE" >> "$TMP" 2>/dev/null || true
+bash "$SCRIPT_DIR/events-from-git.sh" "$TARGET_DATE" >>"$TMP" 2>/dev/null || true
+bash "$SCRIPT_DIR/events-from-shell.sh" "$TARGET_DATE" >>"$TMP" 2>/dev/null || true
+bash "$SCRIPT_DIR/events-from-retrace.sh" "$TARGET_DATE" >>"$TMP" 2>/dev/null || true
+bash "$SCRIPT_DIR/events-from-calendar.sh" "$TARGET_DATE" >>"$TMP" 2>/dev/null || true
 
-TOTAL=$(wc -l < "$TMP" | tr -d ' ')
+TOTAL=$(wc -l <"$TMP" | tr -d ' ')
 
 # Also collect the diff bullets (may be empty).
-bash "$SCRIPT_DIR/events-diff.sh" "$TARGET_DATE" > "$TMP.diff" 2>/dev/null || true
-DIFF_LINES=$(wc -l < "$TMP.diff" | tr -d ' ')
+bash "$SCRIPT_DIR/events-diff.sh" "$TARGET_DATE" >"$TMP.diff" 2>/dev/null || true
+DIFF_LINES=$(wc -l <"$TMP.diff" | tr -d ' ')
 
 # If absolutely nothing, skip (don't pollute the note with an empty section).
 if [ "$TOTAL" -eq 0 ] && [ "$DIFF_LINES" -eq 0 ]; then
@@ -91,7 +91,7 @@ fi
     echo ""
   fi
   echo "$MARK_END"
-} > "$TMP.section"
+} >"$TMP.section"
 
 # Idempotent replace: strip any existing block, then append fresh.
 if grep -qF "$MARK_START" "$DAILY_NOTE"; then
@@ -107,7 +107,7 @@ if grep -qF "$MARK_START" "$DAILY_NOTE"; then
       for (i = 1; i <= NR; i++) if (i in buf && buf[i] != "") last = i
       for (i = 1; i <= last; i++) if (i in buf) print buf[i]
     }
-  ' "$DAILY_NOTE" > "$DAILY_NOTE.tmp"
+  ' "$DAILY_NOTE" >"$DAILY_NOTE.tmp"
   mv "$DAILY_NOTE.tmp" "$DAILY_NOTE"
 fi
 
@@ -115,10 +115,10 @@ fi
 {
   if [ -s "$DAILY_NOTE" ]; then
     # ensure a trailing newline in the existing file, then add a blank line
-    tail -c1 "$DAILY_NOTE" | od -An -c | grep -q '\\n' || printf '\n' >> "$DAILY_NOTE"
+    tail -c1 "$DAILY_NOTE" | od -An -c | grep -q '\\n' || printf '\n' >>"$DAILY_NOTE"
     printf '\n'
   fi
   cat "$TMP.section"
-} >> "$DAILY_NOTE"
+} >>"$DAILY_NOTE"
 
 echo "events-build: wrote $TOTAL events + $DIFF_LINES diff lines to $DAILY_NOTE" >&2

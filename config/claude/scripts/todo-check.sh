@@ -43,10 +43,10 @@ fi
 # (Later callers can trust the file has exactly one row per date.)
 if [ -f "$STATE_FILE" ]; then
   tmp=$(mktemp)
-  awk -F'\t' -v d="$TARGET_DATE" '$1 != d' "$STATE_FILE" > "$tmp"
+  awk -F'\t' -v d="$TARGET_DATE" '$1 != d' "$STATE_FILE" >"$tmp"
   mv "$tmp" "$STATE_FILE"
 fi
-printf "%s\t%s\n" "$TARGET_DATE" "$touched" >> "$STATE_FILE"
+printf "%s\t%s\n" "$TARGET_DATE" "$touched" >>"$STATE_FILE"
 
 # Stdout: one-line TSV for callers (events-review.sh).
 printf "touched\t%s\n" "$touched"

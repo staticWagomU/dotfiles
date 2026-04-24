@@ -19,8 +19,8 @@ FORMAT="terminal"
 TARGET_DATE=""
 for arg in "$@"; do
   case "$arg" in
-    --markdown) FORMAT="markdown" ;;
-    *)          TARGET_DATE="$arg" ;;
+  --markdown) FORMAT="markdown" ;;
+  *) TARGET_DATE="$arg" ;;
   esac
 done
 TARGET_DATE="${TARGET_DATE:-$(date -v-1d '+%Y-%m-%d')}"
@@ -40,27 +40,27 @@ DAY_END_MS=$((DAY_END_S * 1000))
 # ===============================================================
 normalize_app() {
   case "$1" in
-    com.microsoft.edgemac)          echo "Edge" ;;
-    com.github.wez.wezterm)         echo "WezTerm" ;;
-    com.tinyspeck.slackmacgap)      echo "Slack" ;;
-    md.obsidian)                    echo "Obsidian" ;;
-    com.anthropic.claudefordesktop) echo "Claude" ;;
-    com.openai.codex)               echo "Codex" ;;
-    com.microsoft.VSCode)           echo "VS Code" ;;
-    com.apple.finder)               echo "Finder" ;;
-    com.apple.logic10)              echo "Logic Pro" ;;
-    com.naver.lineworks)            echo "LINE WORKS" ;;
-    com.lambdalisue.Arto)           echo "Arto" ;;
-    com.google.antigravity)         echo "Google" ;;
-    com.1password.1password)        echo "1Password" ;;
-    pl.maketheweb.cleanshotx)       echo "CleanShot X" ;;
-    com.tataeru.desktop-bible)      echo "Desktop Bible" ;;
-    us.zoom.xos)                    echo "Zoom" ;;
-    com.apple.Safari)               echo "Safari" ;;
-    com.google.Chrome)              echo "Chrome" ;;
-    fun.tw93.kaku)                  echo "Kaku" ;;
-    notion.id)                      echo "Notion" ;;
-    *)                              echo "${1##*.}" ;;
+  com.microsoft.edgemac) echo "Edge" ;;
+  com.github.wez.wezterm) echo "WezTerm" ;;
+  com.tinyspeck.slackmacgap) echo "Slack" ;;
+  md.obsidian) echo "Obsidian" ;;
+  com.anthropic.claudefordesktop) echo "Claude" ;;
+  com.openai.codex) echo "Codex" ;;
+  com.microsoft.VSCode) echo "VS Code" ;;
+  com.apple.finder) echo "Finder" ;;
+  com.apple.logic10) echo "Logic Pro" ;;
+  com.naver.lineworks) echo "LINE WORKS" ;;
+  com.lambdalisue.Arto) echo "Arto" ;;
+  com.google.antigravity) echo "Google" ;;
+  com.1password.1password) echo "1Password" ;;
+  pl.maketheweb.cleanshotx) echo "CleanShot X" ;;
+  com.tataeru.desktop-bible) echo "Desktop Bible" ;;
+  us.zoom.xos) echo "Zoom" ;;
+  com.apple.Safari) echo "Safari" ;;
+  com.google.Chrome) echo "Chrome" ;;
+  fun.tw93.kaku) echo "Kaku" ;;
+  notion.id) echo "Notion" ;;
+  *) echo "${1##*.}" ;;
   esac
 }
 
@@ -68,26 +68,40 @@ normalize_app() {
 # ANSI colors
 # ===============================================================
 if [ "$FORMAT" = "terminal" ]; then
-  B=$'\033[1m';   R=$'\033[0m'
-  C=$'\033[36m';  Y=$'\033[33m'
-  G=$'\033[32m';  W=$'\033[37m'
-  D=$'\033[90m';  RED=$'\033[31m'
-  MAGENTA=$'\033[35m'; BLUE=$'\033[34m'
+  B=$'\033[1m'
+  R=$'\033[0m'
+  C=$'\033[36m'
+  Y=$'\033[33m'
+  G=$'\033[32m'
+  W=$'\033[37m'
+  D=$'\033[90m'
+  RED=$'\033[31m'
+  MAGENTA=$'\033[35m'
+  BLUE=$'\033[34m'
 else
-  B=""; R=""; C=""; Y=""; G=""; W=""; D=""; RED=""; MAGENTA=""; BLUE=""
+  B=""
+  R=""
+  C=""
+  Y=""
+  G=""
+  W=""
+  D=""
+  RED=""
+  MAGENTA=""
+  BLUE=""
 fi
 COLS=$(tput cols 2>/dev/null || echo 80)
-hr()     { printf '%*s\n' "$COLS" '' | tr ' ' '─'; }
+hr() { printf '%*s\n' "$COLS" '' | tr ' ' '─'; }
 center() {
   local text="$1" len=${#text}
-  printf '%*s%s\n' $(( (COLS - len) / 2 )) '' "$text"
+  printf '%*s%s\n' $(((COLS - len) / 2)) '' "$text"
 }
 make_bar() {
   local minutes=$1 max_minutes=$2
-  local bar_max=$(( COLS - 6 ))
+  local bar_max=$((COLS - 6))
   local bar_len=0
   if [ "$max_minutes" -gt 0 ]; then
-    bar_len=$(( minutes * bar_max / max_minutes ))
+    bar_len=$((minutes * bar_max / max_minutes))
   fi
   [ "$bar_len" -lt 1 ] && bar_len=1
   printf '%*s' "$bar_len" '' | tr ' ' '▓'
@@ -102,10 +116,10 @@ clean_title() {
   local title="$1"
 
   # Obsidian バージョン文字列はノイズ
-  [[ "$title" == *"Obsidian "[0-9]* ]] && return
+  [[ $title == *"Obsidian "[0-9]* ]] && return
 
   # [N/N] claude ... path → project名 (Claude Code)
-  if [[ "$title" =~ ^\[[0-9]+/[0-9]+\]\ claude(-mode\ subscrip)?\  ]]; then
+  if [[ $title =~ ^\[[0-9]+/[0-9]+\]\ claude(-mode\ subscrip)?\  ]]; then
     local last_arg="${title##* }"
     if [ "$last_arg" = "~" ] || [ "$last_arg" = "" ]; then
       echo "Claude Code"
@@ -116,10 +130,10 @@ clean_title() {
   fi
 
   # WezTerm 汎用: [N/N] cmd ~/path/project → "cmd (project)"
-  if [[ "$title" =~ ^\[[0-9]+/[0-9]+\]\ (.+)$ ]]; then
+  if [[ $title =~ ^\[[0-9]+/[0-9]+\]\ (.+)$ ]]; then
     local rest="${BASH_REMATCH[1]}"
     # 末尾が ~/... path パターンか
-    if [[ "$rest" =~ ^(.*)[[:space:]](~[^[:space:]]*)$ ]]; then
+    if [[ $rest =~ ^(.*)[[:space:]](~[^[:space:]]*)$ ]]; then
       local cmd="${BASH_REMATCH[1]}"
       local path="${BASH_REMATCH[2]}"
       local proj
@@ -152,7 +166,8 @@ clean_title() {
 # ===============================================================
 # 表示用 title 列を生成するSQL式。raw_win(未加工)はLIKE分類に使う。
 # 🔊 / 休止中 / ブラウザ/Slack/Google Workspace サフィックスを除去。
-SQL_CLEAN=$(cat <<'SQL'
+SQL_CLEAN=$(
+  cat <<'SQL'
 TRIM(
   REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(windowName,
     '🔊', ''),
@@ -396,20 +411,20 @@ get_day_github_refs() {
     line="${line% 🔊}"
     line="${line%🔊}"
     # パターン1: PR #N · owner/repo
-    if [[ "$line" =~ Pull\ Request\ \#([0-9]+).*·\ ([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)[[:space:]]*$ ]]; then
+    if [[ $line =~ Pull\ Request\ \#([0-9]+).*·\ ([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)[[:space:]]*$ ]]; then
       echo "${BASH_REMATCH[2]}#${BASH_REMATCH[1]}"
       continue
     fi
     # パターン2: Issue #N · owner/repo
-    if [[ "$line" =~ Issue\ \#([0-9]+).*·\ ([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)[[:space:]]*$ ]]; then
+    if [[ $line =~ Issue\ \#([0-9]+).*·\ ([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)[[:space:]]*$ ]]; then
       echo "${BASH_REMATCH[2]}#${BASH_REMATCH[1]}"
       continue
     fi
     # パターン3: ... · owner/repo (末尾)
-    if [[ "$line" =~ ·\ ([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)[[:space:]]*$ ]]; then
+    if [[ $line =~ ·\ ([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)[[:space:]]*$ ]]; then
       repo="${BASH_REMATCH[1]}"
       # owner と repo がそれぞれ 2文字以上
-      if [[ "$repo" =~ ^[A-Za-z0-9_.-]{2,}/[A-Za-z0-9_.-]{2,}$ ]]; then
+      if [[ $repo =~ ^[A-Za-z0-9_.-]{2,}/[A-Za-z0-9_.-]{2,}$ ]]; then
         echo "$repo"
       fi
     fi
@@ -632,9 +647,9 @@ output_markdown() {
   local DIST switches sph lbm lba
   DIST=$(calc_distraction_and_break)
   switches=$(echo "$DIST" | awk -F= '/^switches=/{print $2}')
-  sph=$(echo "$DIST"      | awk -F= '/^switches_per_hour=/{print $2}')
-  lbm=$(echo "$DIST"      | awk -F= '/^longest_break_min=/{print $2}')
-  lba=$(echo "$DIST"      | awk -F= '/^longest_break_at=/{print $2}')
+  sph=$(echo "$DIST" | awk -F= '/^switches_per_hour=/{print $2}')
+  lbm=$(echo "$DIST" | awk -F= '/^longest_break_min=/{print $2}')
+  lba=$(echo "$DIST" | awk -F= '/^longest_break_at=/{print $2}')
 
   local yt_pct=""
   if [ "$TOTAL" != "0" ] && [ "$TOTAL" != "0.0" ]; then
@@ -679,7 +694,7 @@ EOF
       while IFS='|' read -r p _c; do
         [ -z "$p" ] && continue
         echo "- ${p}"
-      done <<< "$projs"
+      done <<<"$projs"
     fi
 
     if [ -n "$ghs" ]; then
@@ -688,7 +703,7 @@ EOF
       while IFS= read -r r; do
         [ -z "$r" ] && continue
         echo "- ${r}"
-      done <<< "$ghs"
+      done <<<"$ghs"
     fi
 
     if [ -n "$docs" ] || [ -n "$sheets" ] || [ -n "$slides" ]; then
@@ -697,15 +712,15 @@ EOF
       [ -n "$docs" ] && while IFS= read -r d; do
         [ -z "$d" ] && continue
         echo "- 📄 ${d}"
-      done <<< "$docs"
+      done <<<"$docs"
       [ -n "$sheets" ] && while IFS= read -r s; do
         [ -z "$s" ] && continue
         echo "- 📊 ${s}"
-      done <<< "$sheets"
+      done <<<"$sheets"
       [ -n "$slides" ] && while IFS= read -r s; do
         [ -z "$s" ] && continue
         echo "- 📽 ${s}"
-      done <<< "$slides"
+      done <<<"$slides"
     fi
 
     if [ "$meet_n" != "0" ]; then
@@ -725,7 +740,7 @@ EOF
       continue
     fi
 
-    local block_end=$(( hr + 2 ))
+    local block_end=$((hr + 2))
     local label
     label=$(printf "%02d:00 - %02d:00" "$hr" "$block_end")
     local total_min=${BLOCK_TOTAL_MIN[$hr]:-0}
@@ -741,7 +756,7 @@ EOF
     local yt_min_int=${yt_min%.*}
     local time_info
     if [ "${yt_min_int:-0}" -gt 0 ] 2>/dev/null; then
-      local work_min=$(( total_min_int - yt_min_int ))
+      local work_min=$((total_min_int - yt_min_int))
       time_info="${work_min}min + YT ${yt_min_int}min"
     else
       time_info="${total_min_int}min"
@@ -795,7 +810,7 @@ EOF
       local app_name
       app_name=$(normalize_app "$app")
       echo "- ${start}-${end} (${mins}min, ${frac}%) ${app_name}"
-    done <<< "$sessions"
+    done <<<"$sessions"
   fi
 
   echo ""
@@ -817,9 +832,9 @@ output_terminal() {
   local DIST switches sph lbm lba
   DIST=$(calc_distraction_and_break)
   switches=$(echo "$DIST" | awk -F= '/^switches=/{print $2}')
-  sph=$(echo "$DIST"      | awk -F= '/^switches_per_hour=/{print $2}')
-  lbm=$(echo "$DIST"      | awk -F= '/^longest_break_min=/{print $2}')
-  lba=$(echo "$DIST"      | awk -F= '/^longest_break_at=/{print $2}')
+  sph=$(echo "$DIST" | awk -F= '/^switches_per_hour=/{print $2}')
+  lbm=$(echo "$DIST" | awk -F= '/^longest_break_min=/{print $2}')
+  lba=$(echo "$DIST" | awk -F= '/^longest_break_at=/{print $2}')
 
   echo "  ${D}Total active: ${W}${B}${TOTAL}h${R}    ${MAGENTA}YouTube: ${B}${TOTAL_YT}h${R}"
   echo "  ${D}Switches: ${W}${switches}${D} (${sph}/h)    Longest break: ${W}${lbm}min${D} (${lba})${R}"
@@ -846,7 +861,7 @@ output_terminal() {
     if [ "$hr_b" -lt "$FIRST_ACTIVE" ] || [ "$hr_b" -gt "$LAST_ACTIVE" ]; then
       continue
     fi
-    block_end=$(( hr_b + 2 ))
+    block_end=$((hr_b + 2))
     label=$(printf "%02d:00 - %02d:00" "$hr_b" "$block_end")
     total_min=${BLOCK_TOTAL_MIN[$hr_b]:-0}
     total_min_int=${total_min%.*}
@@ -869,10 +884,10 @@ output_terminal() {
     echo "  ${B}${Y}${label}${R}  ${D}(${total_min_int}min)${R}${yt_label}"
 
     if [ "${yt_min_int:-0}" -gt 0 ] 2>/dev/null && [ "$total_min_int" -gt 0 ]; then
-      bar_max=$(( COLS - 6 ))
-      work_min=$(( total_min_int - yt_min_int ))
-      work_len=$(( work_min * bar_max / MAX_BLOCK_MIN ))
-      yt_len=$(( yt_min_int * bar_max / MAX_BLOCK_MIN ))
+      bar_max=$((COLS - 6))
+      work_min=$((total_min_int - yt_min_int))
+      work_len=$((work_min * bar_max / MAX_BLOCK_MIN))
+      yt_len=$((yt_min_int * bar_max / MAX_BLOCK_MIN))
       [ "$work_len" -lt 0 ] && work_len=0
       [ "$yt_len" -lt 1 ] && yt_len=1
       work_bar=$(printf '%*s' "$work_len" '' | tr ' ' '▓')
@@ -923,7 +938,7 @@ output_terminal() {
       [ -z "$start" ] && continue
       app_name=$(normalize_app "$app")
       echo "  ${G}  ${start}-${end} ${R}${D}(${mins}min, ${frac}%)${R} ${W}${app_name}${R}"
-    done <<< "$sessions"
+    done <<<"$sessions"
     echo ""
   fi
 

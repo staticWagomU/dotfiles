@@ -31,7 +31,7 @@ HIST="$HOME/.local/share/fish/fish_history"
 # because BSD awk (macOS default) does not accept multi-line -v values.
 ALLOWED_FILE=$(mktemp)
 trap 'rm -f "$ALLOWED_FILE"' EXIT
-cat > "$ALLOWED_FILE" <<'EOF'
+cat >"$ALLOWED_FILE" <<'EOF'
 git
 nix
 cargo
@@ -84,8 +84,8 @@ EOF
 # "HH:MM\tshell\t<ctx>\t<cmd>" with dedupe + tilde-relative cwd.
 # ctx becomes "-" when cwd is empty (fish_history fallback path).
 format_rows() {
-  sort -n -u \
-    | awk -F'\t' -v home="$HOME" '
+  sort -n -u |
+    awk -F'\t' -v home="$HOME" '
         BEGIN { prev = "" }
         {
           ts = $1; cwd = $2; cmd = $3
@@ -109,7 +109,7 @@ format_rows() {
 # ---------- Source 1: new cmdlog (has cwd) ----------
 if [ -f "$CMDLOG" ]; then
   NEW_ROWS=$(awk -F'\t' \
-      -v start="$DAY_START" -v end="$DAY_END" -v allowed_file="$ALLOWED_FILE" '
+    -v start="$DAY_START" -v end="$DAY_END" -v allowed_file="$ALLOWED_FILE" '
     BEGIN {
       while ((getline line < allowed_file) > 0) if (line != "") ok[line] = 1
       close(allowed_file)
@@ -165,5 +165,5 @@ BEGIN {
   }
   cmd = ""
 }
-' "$HIST" \
-  | format_rows
+' "$HIST" |
+  format_rows

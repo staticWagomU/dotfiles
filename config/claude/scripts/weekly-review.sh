@@ -22,35 +22,35 @@ CURRENT_WEEK=$(date +%Y-W%V)
 
 # === ヘルパー ===
 log() {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >> "$LOG_FILE"
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >>"$LOG_FILE"
 }
 
 notify() {
-    osascript -e "display notification \"$1\" with title \"Weekly Review\"" 2>/dev/null || true
+  osascript -e "display notification \"$1\" with title \"Weekly Review\"" 2>/dev/null || true
 }
 
 # === 冪等性チェック（同じ週には1回だけ） ===
 if [ -f "$LAST_RUN_FILE" ] && [ "$(cat "$LAST_RUN_FILE")" = "$CURRENT_WEEK" ]; then
-    exit 0
+  exit 0
 fi
 
 log "=== Starting weekly review for last-week ($CURRENT_WEEK) ==="
 
 # claude CLI の存在確認
 if [ ! -x "$CLAUDE" ]; then
-    log "ERROR: claude not found at $CLAUDE"
-    notify "claude CLI が見つかりません"
-    exit 1
+  log "ERROR: claude not found at $CLAUDE"
+  notify "claude CLI が見つかりません"
+  exit 1
 fi
 
 # Fleeting Note の存在確認（1件もなければスキップ）
 if [ -f "$LAST_RUN_FILE" ]; then
-    FLEETING_COUNT=$(find "$VAULT/pages" -name '[0-9]*-*.md' -newer "$LAST_RUN_FILE" 2>/dev/null | wc -l | tr -d ' ' || echo 0)
-    if [ "$FLEETING_COUNT" -eq 0 ]; then
-        log "No new fleeting notes since last review, skipping"
-        echo "$CURRENT_WEEK" > "$LAST_RUN_FILE"
-        exit 0
-    fi
+  FLEETING_COUNT=$(find "$VAULT/pages" -name '[0-9]*-*.md' -newer "$LAST_RUN_FILE" 2>/dev/null | wc -l | tr -d ' ' || echo 0)
+  if [ "$FLEETING_COUNT" -eq 0 ]; then
+    log "No new fleeting notes since last review, skipping"
+    echo "$CURRENT_WEEK" >"$LAST_RUN_FILE"
+    exit 0
+  fi
 fi
 
 notify "先週分のWeekly Reviewを開始します..."
@@ -59,15 +59,15 @@ notify "先週分のWeekly Reviewを開始します..."
 log "Running /review last-week..."
 cd "$VAULT"
 if "$CLAUDE" -p "/review last-week" \
-    --model sonnet \
-    --allowedTools "Read,Write,Edit,Glob,Grep,Bash" \
-    >> "$LOG_FILE" 2>&1; then
-    log "weekly review completed"
+  --model sonnet \
+  --allowedTools "Read,Write,Edit,Glob,Grep,Bash" \
+  >>"$LOG_FILE" 2>&1; then
+  log "weekly review completed"
 else
-    log "WARNING: weekly review failed (exit code: $?)"
+  log "WARNING: weekly review failed (exit code: $?)"
 fi
 
 # === 完了マーク ===
-echo "$CURRENT_WEEK" > "$LAST_RUN_FILE"
+echo "$CURRENT_WEEK" >"$LAST_RUN_FILE"
 log "=== Weekly review completed ==="
 notify "Weekly Reviewが完了しました。レビュー結果を確認してください。"

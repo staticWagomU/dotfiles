@@ -91,9 +91,9 @@ process_session_file() {
 
     local role_label=""
     case "$payload_type" in
-    user_message)   role_label="ユーザー" ;;
-    agent_message)  role_label="Codex" ;;
-    *)              continue ;;
+    user_message) role_label="ユーザー" ;;
+    agent_message) role_label="Codex" ;;
+    *) continue ;;
     esac
 
     # エスケープされた改行を復元

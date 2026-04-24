@@ -118,7 +118,7 @@ HEADER
   # Piping through `iconv -c` drops any invalid sequence at the boundary.
   for note in "$VAULT/pages/${COMPACT_DATE}"*-*.md; do
     [ -f "$note" ] || continue
-    [ -s "$note" ] || continue   # skip empty files
+    [ -s "$note" ] || continue # skip empty files
     printf -- "--- %s ---\n" "$(basename "$note")"
     head -c "$MAX_PER_NOTE" "$note" | iconv -c -f UTF-8 -t UTF-8 2>/dev/null
     printf "\n\n"

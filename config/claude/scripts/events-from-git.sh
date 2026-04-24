@@ -33,15 +33,15 @@ while IFS= read -r repo; do
   name=$(basename "$repo")
   # tformat: (not format:) ensures trailing newline per entry, so concatenation is safe.
   git -C "$repo" log \
-      --author="$AUTHOR_EMAIL" \
-      --since="$TARGET_DATE 00:00" \
-      --until="$NEXT_DATE 00:00" \
-      --pretty=tformat:"%cI%x09${name}%x09%s" \
-      --no-merges 2>/dev/null \
-    | while IFS=$'\t' read -r iso repo_name subject; do
-        [ -z "$iso" ] && continue
-        # Extract HH:MM from the ISO date (already in local tz thanks to %cI)
-        hhmm="${iso:11:5}"
-        printf "%s\tgit\t%s\t%s\n" "$hhmm" "$repo_name" "$subject"
-      done
-done <<< "$REPOS"
+    --author="$AUTHOR_EMAIL" \
+    --since="$TARGET_DATE 00:00" \
+    --until="$NEXT_DATE 00:00" \
+    --pretty=tformat:"%cI%x09${name}%x09%s" \
+    --no-merges 2>/dev/null |
+    while IFS=$'\t' read -r iso repo_name subject; do
+      [ -z "$iso" ] && continue
+      # Extract HH:MM from the ISO date (already in local tz thanks to %cI)
+      hhmm="${iso:11:5}"
+      printf "%s\tgit\t%s\t%s\n" "$hhmm" "$repo_name" "$subject"
+    done
+done <<<"$REPOS"

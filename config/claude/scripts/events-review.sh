@@ -59,7 +59,7 @@ awk -v s="$EVENTS_START" -v e="$EVENTS_END" '
   $0 == s { inblk = 1; next }
   $0 == e { inblk = 0; next }
   inblk { print }
-' "$DAILY_NOTE" > "$EVENTS_BLOCK"
+' "$DAILY_NOTE" >"$EVENTS_BLOCK"
 
 # `grep -c` always writes the match count (even "0") but returns exit 1 on
 # zero matches. Combining with `|| echo 0` causes the fallback to run AND
@@ -93,10 +93,10 @@ FOCUS_MIN=$(echo "$FOCUS_MIN" | tr -d '[:space:]')
 # ─────────────────────────────────────────────────────────────
 if [ -f "$DAILY_METRICS" ]; then
   tmp=$(mktemp)
-  awk -F'\t' -v d="$TARGET_DATE" '$1 != d' "$DAILY_METRICS" > "$tmp"
+  awk -F'\t' -v d="$TARGET_DATE" '$1 != d' "$DAILY_METRICS" >"$tmp"
   mv "$tmp" "$DAILY_METRICS"
 fi
-printf "%s\t%s\t%s\t%s\n" "$TARGET_DATE" "$COMMITS" "$FOCUS_MIN" "$CAL_EVENTS" >> "$DAILY_METRICS"
+printf "%s\t%s\t%s\t%s\n" "$TARGET_DATE" "$COMMITS" "$FOCUS_MIN" "$CAL_EVENTS" >>"$DAILY_METRICS"
 
 # ─────────────────────────────────────────────────────────────
 # 4. Join history: keep only days present in BOTH todo-history and metrics
@@ -106,17 +106,17 @@ if [ -f "$TODO_HISTORY" ] && [ -f "$DAILY_METRICS" ]; then
   awk -F'\t' '
     NR == FNR { touched[$1] = $2; next }
     $1 in touched { printf "%s\t%s\t%s\t%s\t%s\n", $1, touched[$1], $2, $3, $4 }
-  ' "$TODO_HISTORY" "$DAILY_METRICS" | sort > "$HISTORY_JOINED"
+  ' "$TODO_HISTORY" "$DAILY_METRICS" | sort >"$HISTORY_JOINED"
 fi
-TOTAL_DAYS=$(wc -l < "$HISTORY_JOINED" 2>/dev/null | tr -d ' ')
+TOTAL_DAYS=$(wc -l <"$HISTORY_JOINED" 2>/dev/null | tr -d ' ')
 : "${TOTAL_DAYS:=0}"
 
 # Median helper: compute median of column $col for rows where $2 == $touched
 compute_median() {
   local col=$1 touched_val=$2
-  awk -F'\t' -v c="$col" -v t="$touched_val" '$2 == t { print $c }' "$HISTORY_JOINED" \
-    | sort -n \
-    | awk '
+  awk -F'\t' -v c="$col" -v t="$touched_val" '$2 == t { print $c }' "$HISTORY_JOINED" |
+    sort -n |
+    awk '
       { a[NR] = $1 }
       END {
         if (NR == 0) { print "-" }
@@ -129,7 +129,7 @@ compute_median() {
 fmt_focus() {
   local m=$1
   if [ "$m" -ge 60 ]; then
-    printf "%dh%02dm" $((m/60)) $((m%60))
+    printf "%dh%02dm" $((m / 60)) $((m % 60))
   else
     printf "%dm" "$m"
   fi
@@ -139,8 +139,8 @@ fmt_focus() {
 # 5. Collect ToDo suggestions (codex call; ~60s)
 # ─────────────────────────────────────────────────────────────
 SUGGEST_OUT=$(mktemp)
-bash "$SCRIPT_DIR/todo-suggest.sh" "$TARGET_DATE" > "$SUGGEST_OUT" 2>/dev/null || true
-SUGGEST_COUNT=$(wc -l < "$SUGGEST_OUT" | tr -d ' ')
+bash "$SCRIPT_DIR/todo-suggest.sh" "$TARGET_DATE" >"$SUGGEST_OUT" 2>/dev/null || true
+SUGGEST_COUNT=$(wc -l <"$SUGGEST_OUT" | tr -d ' ')
 
 # ─────────────────────────────────────────────────────────────
 # 6. Build the review markdown block
@@ -185,19 +185,19 @@ REVIEW_FILE=$(mktemp)
       [ -z "$todo_line" ] && continue
       echo "- \`${todo_line}\`"
       echo "  > ${source}: ${snippet}"
-    done < "$SUGGEST_OUT"
+    done <"$SUGGEST_OUT"
   else
     echo "_候補なし_"
   fi
   echo ""
   echo "$MARK_END"
-} > "$REVIEW_FILE"
+} >"$REVIEW_FILE"
 
 # ─────────────────────────────────────────────────────────────
 # 7. Insert/replace review block before events block
 # ─────────────────────────────────────────────────────────────
 awk -v ms="$MARK_START" -v me="$MARK_END" -v es="$EVENTS_START" \
-    -v review_file="$REVIEW_FILE" '
+  -v review_file="$REVIEW_FILE" '
 BEGIN {
   while ((getline line < review_file) > 0) review[++rcnt] = line
   close(review_file)
@@ -230,7 +230,7 @@ END {
     for (i = 1; i <= rcnt; i++) print review[i]
   }
 }
-' "$DAILY_NOTE" > "$DAILY_NOTE.tmp"
+' "$DAILY_NOTE" >"$DAILY_NOTE.tmp"
 mv "$DAILY_NOTE.tmp" "$DAILY_NOTE"
 
 echo "events-review: wrote review section with ${SUGGEST_COUNT} suggestions to $DAILY_NOTE" >&2

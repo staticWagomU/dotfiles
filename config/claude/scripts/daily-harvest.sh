@@ -32,16 +32,16 @@ FILE_YESTERDAY=$(echo "$YESTERDAY" | tr '-' '_')
 
 # === ヘルパー ===
 log() {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >> "$LOG_FILE"
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >>"$LOG_FILE"
 }
 
 notify() {
-    osascript -e "display notification \"$1\" with title \"Daily Harvest\"" 2>/dev/null || true
+  osascript -e "display notification \"$1\" with title \"Daily Harvest\"" 2>/dev/null || true
 }
 
 # === 冪等性チェック ===
 if [ -f "$LAST_RUN_FILE" ] && [ "$(cat "$LAST_RUN_FILE")" = "$TODAY" ]; then
-    exit 0
+  exit 0
 fi
 
 log "=== Starting daily harvest for $YESTERDAY ==="
@@ -50,21 +50,21 @@ notify "昨日分（$YESTERDAY）の収穫を開始します..."
 # === 1. Retrace サマリー → デイリーノートに追記 ===
 DAILY_NOTE="$VAULT/pages/${FILE_YESTERDAY}.md"
 if [ -x "$RETRACE_SCRIPT" ]; then
-    # 冪等性: 既にデイリーノートにretraceセクションがあればスキップ
-    if [ -f "$DAILY_NOTE" ] && grep -q '## スクリーン時間' "$DAILY_NOTE" 2>/dev/null; then
-        log "retrace-summary: already in daily note, skipping"
-    else
-        log "Running retrace-summary for $YESTERDAY..."
-        RETRACE_TMP="/tmp/retrace-${YESTERDAY}.md"
-        if "$RETRACE_SCRIPT" --markdown "$YESTERDAY" 2>>"$LOG_FILE" > "$RETRACE_TMP"; then
-            if [ -s "$RETRACE_TMP" ]; then
-                # YAML frontmatter を除去し、見出しレベルを1段下げる（# → ##, ## → ###）
-                RETRACE_BODY=$(awk 'BEGIN{fm=0} /^---$/{fm++; if(fm<=2) next} fm>=2' "$RETRACE_TMP" \
-                    | sed 's/^# /## /' \
-                    | sed 's/^## \([0-9]\)/### \1/')
-                # デイリーノートが存在しない場合は作成
-                if [ ! -f "$DAILY_NOTE" ]; then
-                    cat > "$DAILY_NOTE" <<DNEOF
+  # 冪等性: 既にデイリーノートにretraceセクションがあればスキップ
+  if [ -f "$DAILY_NOTE" ] && grep -q '## スクリーン時間' "$DAILY_NOTE" 2>/dev/null; then
+    log "retrace-summary: already in daily note, skipping"
+  else
+    log "Running retrace-summary for $YESTERDAY..."
+    RETRACE_TMP="/tmp/retrace-${YESTERDAY}.md"
+    if "$RETRACE_SCRIPT" --markdown "$YESTERDAY" 2>>"$LOG_FILE" >"$RETRACE_TMP"; then
+      if [ -s "$RETRACE_TMP" ]; then
+        # YAML frontmatter を除去し、見出しレベルを1段下げる（# → ##, ## → ###）
+        RETRACE_BODY=$(awk 'BEGIN{fm=0} /^---$/{fm++; if(fm<=2) next} fm>=2' "$RETRACE_TMP" |
+          sed 's/^# /## /' |
+          sed 's/^## \([0-9]\)/### \1/')
+        # デイリーノートが存在しない場合は作成
+        if [ ! -f "$DAILY_NOTE" ]; then
+          cat >"$DAILY_NOTE" <<DNEOF
 ---
 tags:
   - daily
@@ -73,50 +73,50 @@ date: $(echo "$YESTERDAY" | tr '-' '/')
 title: ${FILE_YESTERDAY}デイリーノート
 ---
 DNEOF
-                    log "Created daily note: $DAILY_NOTE"
-                fi
-                # 末尾の空行を整理してから追記
-                printf '\n\n%s\n' "$RETRACE_BODY" >> "$DAILY_NOTE"
-                log "retrace-summary appended to $DAILY_NOTE"
-            else
-                log "retrace-summary: no data for $YESTERDAY"
-            fi
-            rm -f "$RETRACE_TMP"
-        else
-            rm -f "$RETRACE_TMP"
-            log "WARNING: retrace-summary failed (exit code: $?)"
+          log "Created daily note: $DAILY_NOTE"
         fi
+        # 末尾の空行を整理してから追記
+        printf '\n\n%s\n' "$RETRACE_BODY" >>"$DAILY_NOTE"
+        log "retrace-summary appended to $DAILY_NOTE"
+      else
+        log "retrace-summary: no data for $YESTERDAY"
+      fi
+      rm -f "$RETRACE_TMP"
+    else
+      rm -f "$RETRACE_TMP"
+      log "WARNING: retrace-summary failed (exit code: $?)"
     fi
+  fi
 else
-    log "retrace-summary: script not found"
+  log "retrace-summary: script not found"
 fi
 
 # === 2. Claude AI日誌 ===
 if [ -x "$CLAUDE" ]; then
-    REALTIME_LOG="$VAULT/pages/${FILE_YESTERDAY}_realtime-log.md"
-    if [ -f "$REALTIME_LOG" ]; then
-        log "Running /ai-journal $YESTERDAY..."
-        cd "$VAULT"
-        if "$CLAUDE" -p "/ai-journal $YESTERDAY" \
-            --model sonnet \
-            --allowedTools "Bash,Read,Write,Edit" \
-            >> "$LOG_FILE" 2>&1; then
-            log "ai-journal completed"
-        else
-            log "WARNING: ai-journal failed (exit code: $?)"
-        fi
+  REALTIME_LOG="$VAULT/pages/${FILE_YESTERDAY}_realtime-log.md"
+  if [ -f "$REALTIME_LOG" ]; then
+    log "Running /ai-journal $YESTERDAY..."
+    cd "$VAULT"
+    if "$CLAUDE" -p "/ai-journal $YESTERDAY" \
+      --model sonnet \
+      --allowedTools "Bash,Read,Write,Edit" \
+      >>"$LOG_FILE" 2>&1; then
+      log "ai-journal completed"
     else
-        log "ai-journal: no realtime-log for $YESTERDAY, skipping"
+      log "WARNING: ai-journal failed (exit code: $?)"
     fi
+  else
+    log "ai-journal: no realtime-log for $YESTERDAY, skipping"
+  fi
 
-    # === 3. Codex AI日誌 ===
-    CODEX_OUTPUT="$VAULT/pages/${FILE_YESTERDAY}_codex-ai-journals.md"
-    if [ -x "$CODEX_EXTRACT" ] && [ ! -f "$CODEX_OUTPUT" ]; then
-        log "Running codex-journal for $YESTERDAY..."
-        EXTRACT_OUTPUT=$("$CODEX_EXTRACT" "$YESTERDAY" 2>/dev/null) || true
-        if [ -n "$EXTRACT_OUTPUT" ]; then
-            cd "$VAULT"
-            PROMPT="以下のCodexログデータから、AI日誌を生成してください。
+  # === 3. Codex AI日誌 ===
+  CODEX_OUTPUT="$VAULT/pages/${FILE_YESTERDAY}_codex-ai-journals.md"
+  if [ -x "$CODEX_EXTRACT" ] && [ ! -f "$CODEX_OUTPUT" ]; then
+    log "Running codex-journal for $YESTERDAY..."
+    EXTRACT_OUTPUT=$("$CODEX_EXTRACT" "$YESTERDAY" 2>/dev/null) || true
+    if [ -n "$EXTRACT_OUTPUT" ]; then
+      cd "$VAULT"
+      PROMPT="以下のCodexログデータから、AI日誌を生成してください。
 
 # 出力フォーマット
 
@@ -173,44 +173,44 @@ total_conversations: 0
 
 $EXTRACT_OUTPUT"
 
-            if "$CLAUDE" -p "$PROMPT" \
-                --model sonnet \
-                --no-session-persistence \
-                --allowedTools "" \
-                --permission-mode bypassPermissions \
-                --system-prompt "あなたはAI日誌ジェネレーターです。入力データからMarkdown形式のAI日誌のみを出力します。出力は必ず --- で始まるYAML frontmatterから開始してください。説明文、メタテキスト、コメント等は一切出力しないでください。純粋なMarkdownのみを出力してください。" \
-                > "$CODEX_OUTPUT" 2>>"$LOG_FILE"; then
-                log "codex-journal saved to $CODEX_OUTPUT"
-            else
-                rm -f "$CODEX_OUTPUT"
-                log "WARNING: codex-journal generation failed (exit code: $?)"
-            fi
-        else
-            log "codex-journal: no sessions for $YESTERDAY"
-        fi
+      if "$CLAUDE" -p "$PROMPT" \
+        --model sonnet \
+        --no-session-persistence \
+        --allowedTools "" \
+        --permission-mode bypassPermissions \
+        --system-prompt "あなたはAI日誌ジェネレーターです。入力データからMarkdown形式のAI日誌のみを出力します。出力は必ず --- で始まるYAML frontmatterから開始してください。説明文、メタテキスト、コメント等は一切出力しないでください。純粋なMarkdownのみを出力してください。" \
+        >"$CODEX_OUTPUT" 2>>"$LOG_FILE"; then
+        log "codex-journal saved to $CODEX_OUTPUT"
+      else
+        rm -f "$CODEX_OUTPUT"
+        log "WARNING: codex-journal generation failed (exit code: $?)"
+      fi
     else
-        log "codex-journal: skipped (already exists or extract script not found)"
+      log "codex-journal: no sessions for $YESTERDAY"
     fi
+  else
+    log "codex-journal: skipped (already exists or extract script not found)"
+  fi
 
-    # === 4. Harvest ===
-    REALTIME_LOG="$VAULT/pages/${FILE_YESTERDAY}_realtime-log.md"
-    if [ -f "$REALTIME_LOG" ] || [ -f "$DAILY_NOTE" ]; then
-        log "Running /harvest $YESTERDAY..."
-        cd "$VAULT"
-        if "$CLAUDE" -p "/harvest $YESTERDAY" \
-            --model sonnet \
-            --allowedTools "Read,Write,Edit,Glob,Grep,Bash" \
-            >> "$LOG_FILE" 2>&1; then
-            log "harvest completed"
-        else
-            log "WARNING: harvest failed (exit code: $?)"
-        fi
+  # === 4. Harvest ===
+  REALTIME_LOG="$VAULT/pages/${FILE_YESTERDAY}_realtime-log.md"
+  if [ -f "$REALTIME_LOG" ] || [ -f "$DAILY_NOTE" ]; then
+    log "Running /harvest $YESTERDAY..."
+    cd "$VAULT"
+    if "$CLAUDE" -p "/harvest $YESTERDAY" \
+      --model sonnet \
+      --allowedTools "Read,Write,Edit,Glob,Grep,Bash" \
+      >>"$LOG_FILE" 2>&1; then
+      log "harvest completed"
     else
-        log "harvest: no realtime-log or daily note for $YESTERDAY, skipping"
+      log "WARNING: harvest failed (exit code: $?)"
     fi
+  else
+    log "harvest: no realtime-log or daily note for $YESTERDAY, skipping"
+  fi
 else
-    log "ERROR: claude not found at $CLAUDE"
-    notify "claude CLI が見つかりません"
+  log "ERROR: claude not found at $CLAUDE"
+  notify "claude CLI が見つかりません"
 fi
 
 # === 5. 機械日報 (events) → デイリーノートに追記 ===
@@ -219,14 +219,14 @@ fi
 # ないため、失敗しても完了フラグには進む。
 EVENTS_BUILD="$HOME/.claude/scripts/events-build.sh"
 if [ -x "$EVENTS_BUILD" ]; then
-    log "Running events-build for $YESTERDAY..."
-    if "$EVENTS_BUILD" "$YESTERDAY" >> "$LOG_FILE" 2>&1; then
-        log "events-build completed"
-    else
-        log "WARNING: events-build failed (exit code: $?)"
-    fi
+  log "Running events-build for $YESTERDAY..."
+  if "$EVENTS_BUILD" "$YESTERDAY" >>"$LOG_FILE" 2>&1; then
+    log "events-build completed"
+  else
+    log "WARNING: events-build failed (exit code: $?)"
+  fi
 else
-    log "events-build: script not found at $EVENTS_BUILD, skipping"
+  log "events-build: script not found at $EVENTS_BUILD, skipping"
 fi
 
 # === 6. レビュー (events-review) → デイリーノートに追記 ===
@@ -235,17 +235,17 @@ fi
 # codex 呼び出しがあるので ~60-90s かかる。失敗しても完了フラグには進む。
 EVENTS_REVIEW="$HOME/.claude/scripts/events-review.sh"
 if [ -x "$EVENTS_REVIEW" ]; then
-    log "Running events-review for $YESTERDAY..."
-    if "$EVENTS_REVIEW" "$YESTERDAY" >> "$LOG_FILE" 2>&1; then
-        log "events-review completed"
-    else
-        log "WARNING: events-review failed (exit code: $?)"
-    fi
+  log "Running events-review for $YESTERDAY..."
+  if "$EVENTS_REVIEW" "$YESTERDAY" >>"$LOG_FILE" 2>&1; then
+    log "events-review completed"
+  else
+    log "WARNING: events-review failed (exit code: $?)"
+  fi
 else
-    log "events-review: script not found at $EVENTS_REVIEW, skipping"
+  log "events-review: script not found at $EVENTS_REVIEW, skipping"
 fi
 
 # === 完了マーク ===
-echo "$TODAY" > "$LAST_RUN_FILE"
+echo "$TODAY" >"$LAST_RUN_FILE"
 log "=== Daily harvest completed ==="
 notify "昨日分の収穫が完了しました"
