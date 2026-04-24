@@ -27,6 +27,16 @@
     enable = true;
   };
 
+  services.jankyborders = {
+    enable = true;
+    style = "round";
+    width = 8.0;
+    hidpi = true;
+    ax_focus = true;
+    active_color = "0xc0ff00f2";
+    inactive_color = "0xff0080ff";
+  };
+
   # Homebrew integration (for GUI apps not in nixpkgs)
   homebrew = {
     enable = true;
@@ -38,6 +48,7 @@
     taps = [
       "apple/apple"
       "atlassian/acli"
+      "barutsrb/tap"
       "pakerwreah/calendr"
       "sst/tap"
       "steipete/tap"
@@ -70,7 +81,7 @@
       "swiftformat"
       "tbls"
       "terminal-notifier"
-      "thaw@beta"
+      "thaw"
       "tmux"
       "tree"
       "volta"
@@ -101,6 +112,7 @@
       "obsidian"
       "ogdesign-eagle"
       "ollama-app"
+      "barutsrb/tap/omniwm"
       "orbstack"
       "raycast"
       "steipete/tap/repobar"
@@ -139,6 +151,10 @@
         InitialKeyRepeat = 15;
         KeyRepeat = 2;
       };
+
+      # OmniWM requires "Displays have separate Spaces" to be disabled.
+      # In nix-darwin this is represented by spaces spanning displays.
+      spaces.spans-displays = true;
     };
   };
 

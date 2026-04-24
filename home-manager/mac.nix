@@ -26,7 +26,7 @@ in
     tree # Directory tree viewer
     zellij # Modern terminal workspace
 
-		python313Packages.mlx
+    python313Packages.mlx
 
     # Database tools
     duckdb # Analytical database
@@ -34,6 +34,15 @@ in
     # Development tools
     terminal-notifier # macOS notifications from CLI
   ];
+
+  home.activation.karabiner = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+    karabiner_json="$HOME/.config/karabiner/karabiner.json"
+    if [ -f "$karabiner_json" ]; then
+      ${pkgs.python3}/bin/python3 \
+        "${homeDir}/dotfiles/config/karabiner/sync-karabiner.py" \
+        "$karabiner_json"
+    fi
+  '';
 
   # launchd agents for journal automation
   launchd.agents = {
