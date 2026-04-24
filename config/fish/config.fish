@@ -148,8 +148,8 @@ abbr -a bg 'brew upgrade'
 abbr -a c 'claude-mode subscription; and claude --dangerously-skip-permissions --model opus --effort high'
 abbr -a cb 'claude-mode bedrock; and claude --dangerously-skip-permissions --model opus --effort high'
 abbr -a cz 'claude-mode zai; and claude --dangerously-skip-permissions --model opus --effort high'
-abbr -a co codex
-abbr -a yolo 'codex --yolo'
+abbr -a co 'codex --dangerously-bypass-approvals-and-sandbox -m gpt-5.4 -c model_reasoning_effort=high'
+abbr -a yolo 'codex --dangerously-bypass-approvals-and-sandbox -m gpt-5.4 -c model_reasoning_effort=high --yolo'
 
 # -------------------------
 # Abbr: macOS
