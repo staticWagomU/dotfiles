@@ -21,9 +21,9 @@ let
 
 in
 lib.mapAttrs' (version: meta: {
-  name =
-    if version == versionData.latest
-    then "codex"
-    else "codex_${toAttrSuffix version}";
-  value = mkCodex { inherit version; inherit (meta) srcHash; };
+  name = if version == versionData.latest then "codex" else "codex_${toAttrSuffix version}";
+  value = mkCodex {
+    inherit version;
+    inherit (meta) srcHash;
+  };
 }) versionData.versions

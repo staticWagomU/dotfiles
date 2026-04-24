@@ -42,11 +42,11 @@
             ];
           };
 
-          packages.codex =
-            (import inputs.nixpkgs {
-              inherit system;
-              overlays = [ (import ./nix/overlays/codex-overlay.nix) ];
-            }).codex;
+          # packages.codex =
+          #   (import inputs.nixpkgs {
+          #     inherit system;
+          #     overlays = [ (import ./nix/overlays/codex-overlay.nix) ];
+          #   }).codex;
 
           packages.octorus =
             (import inputs.nixpkgs {
@@ -54,10 +54,10 @@
               overlays = [ (import ./nix/overlays/octorus-overlay.nix) ];
             }).octorus;
 
-          apps.codex = {
-            type = "app";
-            program = "${pkgs.codex}/bin/codex";
-          };
+          # apps.codex = {
+          #   type = "app";
+          #   program = "${pkgs.codex}/bin/codex";
+          # };
         };
 
       flake =
@@ -67,8 +67,9 @@
             inputs.emacs-overlay.overlays.default
             inputs.vim-overlay.overlays.default
             inputs.neovim-nightly-overlay.overlays.default
-            (import ./nix/overlays/codex-overlay.nix)
+            # (import ./nix/overlays/codex-overlay.nix)
             (import ./nix/overlays/octorus-overlay.nix)
+            # (import ./nix/overlays/git-overlay.nix)
           ];
 
           # node2nix overlay
