@@ -1,8 +1,11 @@
 {
-  "latest": "0.4.2",
+  "latest": "0.6.2",
   "versions": {
     "0.4.2": {
       "srcHash": "sha256-fg5yy60A7YzR+yVOGJCJO4ghO6SIdwEYCB+j9y4m15M="
+    },
+    "0.6.2": {
+      "srcHash": "sha256-ov+5TYYJpdydXYXAqRt8nCC9+RAc8BCRN+yLR5RKeNA="
     }
   }
 }
