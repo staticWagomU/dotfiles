@@ -28,7 +28,7 @@
   };
 
   services.jankyborders = {
-    enable = true;
+    enable = false;
     style = "round";
     width = 8.0;
     hidpi = true;
