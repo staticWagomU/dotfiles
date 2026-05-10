@@ -56,38 +56,28 @@
     ];
 
     brews = [
+      # --- brew に残すもの（nixpkgs にない or brew が適切） ---
       "atlassian/acli/acli"
       "ballerina"
       "beads"
       "cloud-sql-proxy"
       "colima"
-      "curl"
+      "curl" # システム curl との競合回避のため brew に残す
       "devcontainer"
       "docker"
       "docker-compose"
-      "duckdb"
       "ekphos"
-      "eza"
-      "gcc"
-      "lilypond"
-      "lnav"
-      "murex"
       "mysql"
-      "ollama"
       "opencode"
-      "openjdk@21"
-      "portaudio"
       "postgresql@16"
-      "swiftformat"
-      "tbls"
-      "terminal-notifier"
       "thaw"
-      "tmux"
-      "tree"
-      "volta"
+      "volta" # mise と並走中のため一旦残す
       "yakitrak/yakitrak/obsidian-cli"
-      "zellij"
       # tailscale CLI is provided by nix-darwin services.tailscale
+
+      # --- 以下は home-manager (mac.nix) に移行済み ---
+      # duckdb, eza, gcc, lilypond, lnav, murex, ollama, openjdk@21,
+      # portaudio, swiftformat, tbls, terminal-notifier, tmux, tree, zellij
     ];
 
     casks = [

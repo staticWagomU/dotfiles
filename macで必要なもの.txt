@@ -1,3 +1,21 @@
-Logic Pro
-Davinci Resolve
-ペンタブのドライバ
+# nix / brew 以外で別途インストールが必要なもの
+
+## GUI アプリ（App Store / 手動インストール）
+- Logic Pro（App Store）
+- DaVinci Resolve（公式サイトからダウンロード）
+- ペンタブのドライバ（Wacom等、メーカー公式サイト）
+- MyBible（App Store）
+- LINE / LINE WORKS（App Store）
+- Kindle（App Store）
+
+## ランタイム / バージョンマネージャ（スタンドアロンインストール）
+- Deno（~/.deno/bin — curl経由インストール）
+- Bun（~/.bun/bin — curl経由インストール）
+- Go（~/go/bin — 公式インストーラ or mise）
+- rbenv（~/.rbenv/bin — ※ mise で統合可能なら不要）
+- npm global packages（~/.npm-global/bin）
+
+## 備考
+- volta は brew に残置中（mise との並走を整理したら削除可能）
+- Claude Code / Codex は npm global でインストール
+- ~/bin, ~/dotfiles/scripts は個人スクリプト用（管理不要）

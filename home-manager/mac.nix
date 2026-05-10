@@ -33,6 +33,18 @@ in
 
     # Development tools
     terminal-notifier # macOS notifications from CLI
+    swiftformat # Swift code formatter
+    tbls # Database documentation tool
+    murex # Typed shell
+
+    # Build tools & languages
+    gcc # GNU Compiler Collection
+    openjdk21 # Java Development Kit 21
+    lilypond # Music engraving
+    portaudio # Audio I/O library
+
+    # AI / ML
+    ollama # Local LLM runner
   ];
 
   home.activation.karabiner = config.lib.dag.entryAfter [ "writeBoundary" ] ''
