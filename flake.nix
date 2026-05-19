@@ -134,6 +134,10 @@
                   home-manager = {
                     useGlobalPkgs = true;
                     useUserPackages = true;
+                    # Why: 既存実ファイルと内容差分がある場合に "would be clobbered" で
+                    # activation が止まるのを防ぐ。差分があるファイルは
+                    # <path>.backup にリネームしてから symlink を貼り直す。
+                    backupFileExtension = "backup";
                     extraSpecialArgs = {
                       inherit
                         inputs

@@ -70,7 +70,6 @@
       "mysql"
       "opencode"
       "postgresql@16"
-      "thaw"
       "volta" # mise と並走中のため一旦残す
       "yakitrak/yakitrak/obsidian-cli"
       # tailscale CLI is provided by nix-darwin services.tailscale
@@ -109,6 +108,7 @@
       "slack"
       "slack-cli"
       "smoothcsv"
+      "thaw" # cask 化されたので brews から移動
       # tailscale-app removed: using nix-darwin services.tailscale instead
       "visual-studio-code"
       "wezterm@nightly"
