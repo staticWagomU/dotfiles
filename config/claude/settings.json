@@ -134,10 +134,12 @@
   },
   "enabledPlugins": {
     "agentic-scrum@agentic-scrum": true,
-    "ui-ux-pro-max@ui-ux-pro-max-skill": true
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
   },
   "outputStyle": "Explanatory",
   "alwaysThinkingEnabled": true,
+  "fastModePerSessionOptIn": true,
   "skipDangerousModePermissionPrompt": true,
   "autoCompactEnabled": false,
   "autoUpdates": false,
@@ -150,6 +152,12 @@
       "source": {
         "source": "github",
         "repo": "anthropics/claude-plugins-official"
+      }
+    },
+    "worldcoin-agentkit": {
+      "source": {
+        "source": "github",
+        "repo": "worldcoin/agentkit-shopify-demo"
       }
     }
   }
