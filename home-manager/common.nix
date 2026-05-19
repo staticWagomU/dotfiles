@@ -139,6 +139,34 @@ in
   home.file.".claude/skills".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/skills";
 
+  # Misc app configs as symlinks
+  xdg.configFile."zellij/config.kdl".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/zellij/config.kdl";
+  xdg.configFile."helix/config.toml".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/helix/config.toml";
+  xdg.configFile."lazygit/config.yml".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/lazygit/config.yml";
+  xdg.configFile."nix/nix.conf".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/nix/nix.conf";
+  xdg.configFile."yazi".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/yazi";
+
+  # Codex config (subset only; config.toml と動的データは管理しない)
+  home.file.".codex/AGENTS.md".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/codex/AGENTS.md";
+  home.file.".codex/hooks.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/codex/hooks.json";
+  home.file.".codex/keybindings.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/codex/keybindings.json";
+  home.file.".codex/agents".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/codex/agents";
+  home.file.".codex/skills".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/codex/skills";
+
+  # Gemini settings (auth情報は含めない)
+  home.file.".gemini/settings.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/gemini/settings.json";
+
   # Git config initialization (copy if not exists, not symlink)
   # This allows gh auth login and other tools to write to ~/.gitconfig
   home.activation.gitconfig = config.lib.dag.entryAfter [ "writeBoundary" ] ''

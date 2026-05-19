@@ -1,0 +1,4 @@
+interface:
+  display_name: "YouTube Analytics CSV"
+  short_description: "YouTube Studio analytics to CSV workflow"
+  default_prompt: "Use $youtube-studio-analytics-csv to collect YouTube Studio analytics and save them as CSV."

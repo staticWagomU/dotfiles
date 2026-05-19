@@ -1,0 +1,4 @@
+interface:
+  display_name: "スクラップ要約"
+  short_description: "前日分のMyLifeスクラップを要約してデイリーノートへ追記"
+  default_prompt: "前日分のスクラップを要約してデイリーノートに追記してください。"

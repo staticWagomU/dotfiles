@@ -1,0 +1,13 @@
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
+# Kaku manages the [flavor] section below so Yazi matches the current Kaku theme.
+# Add your own theme overrides in other sections if needed.
+
+
+
+# ===== Kaku Yazi Flavor (managed) =====
+[flavor]
+dark = "kaku-dark"
+light = "kaku-dark"
+# ===== End Kaku Yazi Flavor (managed) =====
+

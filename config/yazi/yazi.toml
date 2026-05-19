@@ -1,0 +1,11 @@
+[mgr]
+ratio = [3, 3, 10]
+
+[preview]
+max_width = 2000
+max_height = 2400
+
+[opener]
+edit = [
+  { run = "${EDITOR:-vim} %s", desc = "edit", for = "unix", block = true },
+]
