@@ -67,6 +67,7 @@
             inputs.emacs-overlay.overlays.default
             inputs.vim-overlay.overlays.default
             inputs.neovim-nightly-overlay.overlays.default
+            (import ./nix/overlays/neovim-overlay.nix)
             # (import ./nix/overlays/codex-overlay.nix)
             (import ./nix/overlays/octorus-overlay.nix)
             # (import ./nix/overlays/git-overlay.nix)
