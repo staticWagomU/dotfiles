@@ -165,6 +165,7 @@
                 ./home-manager/common.nix
                 ./home-manager/mac.nix
                 ./home-manager/gui.nix
+                ./home-manager/ai-tools.nix
               ];
             };
 
@@ -176,6 +177,7 @@
                 ./home-manager/common.nix
                 ./home-manager/mac.nix
                 ./home-manager/gui.nix
+                ./home-manager/ai-tools.nix
               ];
             };
           };
@@ -189,6 +191,7 @@
               modules = [
                 ./home-manager/common.nix
                 ./home-manager/linux.nix
+                ./home-manager/ai-tools.nix
               ];
             };
 
@@ -199,6 +202,7 @@
               modules = [
                 ./home-manager/common.nix
                 # .home-manager/linux.nix
+                ./home-manager/ai-tools.nix
               ];
             };
 
@@ -209,6 +213,7 @@
               modules = [
                 ./home-manager/common.nix
                 ./home-manager/linux.nix
+                ./home-manager/ai-tools.nix
               ];
             };
           };
@@ -253,5 +258,20 @@
     arto.url = "github:arto-app/Arto";
     nix-search-tv.url = "github:3timeslazy/nix-search-tv";
     lophius.url = "github:ogaken-1/lophius.fish";
+
+    # AI tools (opencode / oh-my-openagent) — takeokunn/nixos-configuration 由来
+    mcp-servers-nix = {
+      url = "github:natsukium/mcp-servers-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+    };
+    nur-packages = {
+      url = "github:takeokunn/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
