@@ -1,21 +1,79 @@
 # nix / brew 以外で別途インストールが必要なもの
+最終更新: 2026-05-23（PCリセット前 棚卸し）
 
-## GUI アプリ（App Store / 手動インストール）
-- Logic Pro（App Store）
-- DaVinci Resolve（公式サイトからダウンロード）
+## GUI アプリ（App Store ※再ログインで自動再取得可）
+- Logic Pro
+- MyBible
+- LINE / LINE WORKS
+- Kindle
+- Keynote / Numbers / Pages
+- Xcode
+- UpNote / Tot / Dato / Chimr / Grila / MeetingBar / Windows App / Vimari / 1Password for Safari
+
+## GUI アプリ（公式サイト等から手動DL）
+- DaVinci Resolve（公式サイト）
 - ペンタブのドライバ（Wacom等、メーカー公式サイト）
-- MyBible（App Store）
-- LINE / LINE WORKS（App Store）
-- Kindle（App Store）
+- ChatGPT / Gemini / Claude(app) / Codex(app)
+- Notion
+- Zen（ブラウザ）
+- Affinity
+- ComfyUI
+- LM Studio
+- OBS
+- Rive
+- Pencil
+- HEAVYPAINT
+- Scratch
+- Paper
+- iStat Menus
+- Shottr
+- Retrace
+- GitFit
+- Nani
+- Gram
+- ScreenTune
+- TimeAlarm
+- USB Display
+- Amical
+- Genspark Speakly
+- Google Drive
+- 音声入力系（用途が重複、整理候補）: superwhisper / HyperWhisper / Wispr Flow / Willow Voice / Typeless / VoiceOS
+- Blackmagic Proxy Generator / Imaging Edge Desktop（DaVinci / Sony 付随）
+- 自作アプリ: TodoTxtAppend（staticWagomU/electron-todo-append からビルド）
 
-## ランタイム / バージョンマネージャ（スタンドアロンインストール）
-- Deno（~/.deno/bin — curl経由インストール）
-- Bun（~/.bun/bin — curl経由インストール）
-- Go（~/go/bin — 公式インストーラ or mise）
-- rbenv（~/.rbenv/bin — ※ mise で統合可能なら不要）
-- npm global packages（~/.npm-global/bin）
+## CLI（standalone インストーラ / curl）
+- Claude Code  `claude`  （~/.local/bin、ネイティブインストーラ curl|sh）
+- Deno  （~/.deno/bin、curl）        ※ mise でも管理可
+- Bun   （~/.bun/bin、curl）         ※ mise でも管理（重複）
+- uv / uvx  （~/.local/bin、Astral） ※ mise でも管理（重複）
+- rustup + Rust toolchain（~/.cargo/bin、rustup） ※ mise でも rust 管理（重複）
+- amp   （~/.local/bin、Sourcegraph Amp）
+- grok  （~/.local/bin、xAI Grok CLI）
+- 出自要確認（~/.local/bin）: agent / entire / herdr / hermes
+
+## CLI（npm global ※ volta 経由）
+- codex   （@openai/codex）
+- gemini  （@google/gemini-cli）
+- ccusage / claude-code-monitor / vde-layout
+- pnpm / yarn（volta）
+
+## CLI（cargo install）
+- cargo-tauri / cargo-create-tauri-app
+
+## CLI（go install ※ 自作・ソースから再ビルド可）
+- doc-tracer    （staticWagomU/doc-tracer）
+- wez-cc-viewer
+
+## ランタイム / バージョンマネージャ
+- mise … nix(home-manager) 管理。node / python / rust / bun / uv / just を統合
+- volta … brew 管理。node / pnpm / yarn
+- Go（~/go/bin — go install 用）
+- rbenv … 今回未検出（mise の ruby 統合で代替可）
+- npm global packages（volta 配下）
 
 ## 備考
-- volta は brew に残置中（mise との並走を整理したら削除可能）
-- Claude Code / Codex は npm global でインストール
+- すでに brew/nix 管理（手動不要）: mise(nix), volta(brew), opencode(brew), node 系
+- volta と mise が並走中 → どちらかに寄せると管理が楽
+- deno / bun / uv / rust は standalone と mise の二重管理 → mise に寄せれば nix で自動復元できる
+- Claude Code は現在 ~/.local/bin のネイティブ版（旧: npm global から移行済み）
 - ~/bin, ~/dotfiles/scripts は個人スクリプト用（管理不要）
