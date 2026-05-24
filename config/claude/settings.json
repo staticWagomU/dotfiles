@@ -137,16 +137,6 @@
     "ui-ux-pro-max@ui-ux-pro-max-skill": true,
     "rust-analyzer-lsp@claude-plugins-official": true
   },
-  "outputStyle": "Explanatory",
-  "alwaysThinkingEnabled": true,
-  "fastModePerSessionOptIn": true,
-  "skipDangerousModePermissionPrompt": true,
-  "autoCompactEnabled": false,
-  "autoUpdates": false,
-  "feedbackSurveyState": {
-    "lastShownTime": 1754089004345
-  },
-  "theme": "dark",
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
       "source": {
@@ -160,5 +150,15 @@
         "repo": "worldcoin/agentkit-shopify-demo"
       }
     }
+  },
+  "outputStyle": "Explanatory",
+  "alwaysThinkingEnabled": true,
+  "fastModePerSessionOptIn": true,
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
+  "autoCompactEnabled": false,
+  "autoUpdates": false,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754089004345
   }
 }
