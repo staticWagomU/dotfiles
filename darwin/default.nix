@@ -90,6 +90,7 @@
       # "cyberduck"
       # "drawio"
       "dropbox"
+      "gram"
       "gcloud-cli"
       "ghostty"
       "google-chrome"
