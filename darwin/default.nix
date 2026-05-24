@@ -86,6 +86,7 @@
       "bitwarden"
       "pakerwreah/calendr/calendr"
       "cleanshot"
+      "cmux"
       # "cyberduck"
       # "drawio"
       "dropbox"
