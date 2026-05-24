@@ -28,7 +28,7 @@ in
     home-manager
     delta
     # aider-chat  # temporarily disabled due to texlive-bin-big-2025 build failure on macOS
-    peco
+    # peco
     fzf
     tree-sitter
     lazygit
@@ -36,7 +36,7 @@ in
     zoxide
     fd
     yq
-    tailscale
+    # tailscale
     pik
     mise
 
@@ -164,8 +164,8 @@ in
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/codex/skills";
 
   # Gemini settings (auth情報は含めない)
-  home.file.".gemini/settings.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/gemini/settings.json";
+  # home.file.".gemini/settings.json".source =
+  #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/gemini/settings.json";
 
   # Git config initialization (copy if not exists, not symlink)
   # This allows gh auth login and other tools to write to ~/.gitconfig

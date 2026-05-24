@@ -58,7 +58,7 @@
     brews = [
       # --- brew に残すもの（nixpkgs にない or brew が適切） ---
       "atlassian/acli/acli"
-      "ballerina"
+      # "ballerina"
       "beads"
       "cloud-sql-proxy"
       "colima"
@@ -70,7 +70,7 @@
       "mysql"
       "opencode"
       "postgresql@16"
-      "volta" # mise と並走中のため一旦残す
+      # "volta" # mise と並走中のため一旦残す
       "yakitrak/yakitrak/obsidian-cli"
       # tailscale CLI is provided by nix-darwin services.tailscale
 
@@ -82,18 +82,18 @@
     casks = [
       "1password"
       "aqua-voice"
-      "azookey"
+      # "azookey"
       "bitwarden"
       "pakerwreah/calendr/calendr"
       "cleanshot"
-      "cyberduck"
-      "drawio"
+      # "cyberduck"
+      # "drawio"
       "dropbox"
       "gcloud-cli"
       "ghostty"
       "google-chrome"
       "iterm2"
-      "itsycal"
+      # "itsycal"
       "karabiner-elements"
       "keycastr"
       "macskk"
@@ -101,18 +101,18 @@
       "obsidian"
       "ogdesign-eagle"
       "ollama-app"
-      "barutsrb/tap/omniwm"
+      # "barutsrb/tap/omniwm"
       "orbstack"
       "raycast"
-      "steipete/tap/repobar"
+      # "steipete/tap/repobar"
       "slack"
       "slack-cli"
       "smoothcsv"
-      "thaw" # cask 化されたので brews から移動
+      # "thaw" # cask 化されたので brews から移動
       # tailscale-app removed: using nix-darwin services.tailscale instead
       "visual-studio-code"
       "wezterm@nightly"
-      "zettlr"
+      # "zettlr"
     ];
   };
 
