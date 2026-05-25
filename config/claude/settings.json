@@ -155,7 +155,7 @@
   "alwaysThinkingEnabled": true,
   "fastModePerSessionOptIn": true,
   "skipDangerousModePermissionPrompt": true,
-  "theme": "dark",
+  "theme": "light",
   "autoCompactEnabled": false,
   "autoUpdates": false,
   "feedbackSurveyState": {
