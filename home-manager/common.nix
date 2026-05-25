@@ -10,8 +10,11 @@
 
 let
   nodePkgs = pkgs.callPackage ../node2nix { inherit pkgs; };
+  dotfilesDir = "${config.home.homeDirectory}/dotfiles";
 in
 {
+  imports = [ inputs.agent-skills.homeManagerModules.default ];
+
   home.username = username;
   home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
 
@@ -123,21 +126,19 @@ in
 
   # Claude Code config (individual files, not the whole directory)
   home.file.".claude/CLAUDE.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/CLAUDE.md";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/claude/CLAUDE.md";
   home.file.".claude/settings.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/settings.json";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/claude/settings.json";
   home.file.".claude/statusline.sh".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/statusline.sh";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/claude/statusline.sh";
   home.file.".claude/agents".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/agents";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/claude/agents";
   home.file.".claude/commands".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/commands";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/claude/commands";
   home.file.".claude/rules".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/rules";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/claude/rules";
   home.file.".claude/scripts".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/scripts";
-  home.file.".claude/skills".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/skills";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/claude/scripts";
 
   # Misc app configs as symlinks
   xdg.configFile."zellij/config.kdl".source =
@@ -153,15 +154,21 @@ in
 
   # Codex config (subset only; config.toml と動的データは管理しない)
   home.file.".codex/AGENTS.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/codex/AGENTS.md";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/codex/AGENTS.md";
   home.file.".codex/hooks.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/codex/hooks.json";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/codex/hooks.json";
   home.file.".codex/keybindings.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/codex/keybindings.json";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/codex/keybindings.json";
   home.file.".codex/agents".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/codex/agents";
-  home.file.".codex/skills".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/codex/skills";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/codex/agents";
+
+  programs.agent-skills = {
+    enable = true;
+    sources.local.path = inputs.local-agent-skills;
+    skills.enableAll = true;
+    targets.claude.enable = true;
+    targets.codex.enable = true;
+  };
 
   # Gemini settings (auth情報は含めない)
   # home.file.".gemini/settings.json".source =

@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "agent-skills": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779692292,
+        "narHash": "sha256-1ttGc9LQxmlLz0GlSC629j7Avpp6FF6NqNXoxDZeYoA=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "db664effdb55aecfec2e761b66f459e8270c3520",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "type": "github"
+      }
+    },
     "arto": {
       "inputs": {
         "crane": "crane",
@@ -240,6 +261,27 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
+          "agent-skills",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779678629,
+        "narHash": "sha256-gHcIFg0mm+KFsg7iZQt67kni3+qR5U3PhEC9P7vKlZ4=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "612bbe3b405ad5f71d7bf9edecc04b678a061652",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_2": {
+      "inputs": {
+        "nixpkgs": [
           "nixpkgs"
         ]
       },
@@ -282,6 +324,18 @@
         "repo": "llm-agents.nix",
         "type": "github"
       }
+    },
+    "local-agent-skills": {
+      "flake": false,
+      "locked": {
+        "path": "./config/agents/skills",
+        "type": "path"
+      },
+      "original": {
+        "path": "./config/agents/skills",
+        "type": "path"
+      },
+      "parent": []
     },
     "lophius": {
       "locked": {
@@ -497,12 +551,14 @@
     },
     "root": {
       "inputs": {
+        "agent-skills": "agent-skills",
         "arto": "arto",
         "emacs-overlay": "emacs-overlay",
         "fisher": "fisher",
         "flake-parts": "flake-parts",
-        "home-manager": "home-manager",
+        "home-manager": "home-manager_2",
         "llm-agents": "llm-agents",
+        "local-agent-skills": "local-agent-skills",
         "lophius": "lophius",
         "mcp-servers-nix": "mcp-servers-nix",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
