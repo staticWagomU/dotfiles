@@ -144,9 +144,9 @@
         KeyRepeat = 2;
       };
 
-      # OmniWM requires "Displays have separate Spaces" to be disabled.
-      # In nix-darwin this is represented by spaces spanning displays.
-      spaces.spans-displays = true;
+      # Keep "Displays have separate Spaces" enabled so each connected
+      # display gets its own menu bar (spans-displays = false means NOT spanning).
+      spaces.spans-displays = false;
     };
   };
 
