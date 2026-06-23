@@ -1,6 +1,11 @@
 ---
 name: research-plan-todo
-description: Boris Tane's structured 3-phase workflow for non-trivial tasks: Research → Plan → Todo → Implement. Use when starting a new feature, refactoring, bug investigation, or any task where you want to plan deeply before coding. Creates research.md, plan.md, and todo.md as shared artifacts for iterative refinement. DO NOT write code until the plan is explicitly approved. Trigger when user says "研究して", "計画を立てて", "research and plan", "plan before coding", or starts a complex task that benefits from upfront analysis.
+description: |
+  Boris Tane's structured 3-phase workflow for non-trivial tasks: Research -> Plan -> Todo -> Implement.
+  Use when starting a new feature, refactoring, bug investigation, or any task that benefits from deep planning before coding.
+  Creates `research.md`, `plan.md`, and `todo.md` as shared artifacts for iterative refinement.
+  Do not write implementation code until the plan is explicitly approved.
+  Trigger on requests such as "研究して", "計画を立てて", "research and plan", or "plan before coding".
 ---
 
 <purpose>
