@@ -25,8 +25,7 @@
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
-      "Bash(serena)",
-      "mcp__pencil"
+      "Bash(serena)"
     ],
     "deny": [
       "Bash(rm -rf /*)",
@@ -53,6 +52,7 @@
       "Bash(rm -rf ~/.config*)"
     ]
   },
+  "model": "claude-opus-4-7",
   "enableAllProjectMcpServers": true,
   "hooks": {
     "Stop": [
@@ -153,6 +153,7 @@
   },
   "outputStyle": "Explanatory",
   "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
   "fastModePerSessionOptIn": true,
   "skipDangerousModePermissionPrompt": true,
   "theme": "light",
