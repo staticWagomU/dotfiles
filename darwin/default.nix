@@ -22,6 +22,16 @@
     # Minimal system-level tools only
   ];
 
+  # Cachix (declarative):
+  # nix.enable = false なので nix-darwin の nix 管理（nix.settings / declarative-cachix の
+  # cachix.pull）は nix.conf に反映されず効かない。installer 製の /etc/nix/nix.conf が
+  # `!include nix.custom.conf` するため、その include 先を environment.etc で管理して
+  # substituter と公開鍵を注入する。extra- 付きで既定キャッシュ(cache.nixos.org)に追記する。
+  environment.etc."nix/nix.custom.conf".text = ''
+    extra-substituters = https://staticwagomu.cachix.org
+    extra-trusted-public-keys = staticwagomu.cachix.org-1:3bJ8Pft2DJgsMUavtGUmjVsFFJ478isBcrrL+vg9+Yc=
+  '';
+
   # Tailscale service
   services.tailscale = {
     enable = true;
