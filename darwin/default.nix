@@ -125,6 +125,7 @@
       "visual-studio-code"
       "wezterm@nightly"
       # "zettlr"
+      "zed"
     ];
   };
 
