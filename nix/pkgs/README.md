@@ -199,6 +199,67 @@ nix run .#packages.aarch64-darwin.<name> -- --version
 
 ---
 
+## タグの無いパッケージを追加する手順（commit SHA ピン留め）
+
+上流に Git タグもリリースも無いリポジトリは、`versions.json` + `update-package.py` 方式が成立しない
+（スクリプトが GitHub API から取得する「最新タグ」が存在せず、CI が永久に空回りする）。
+この場合は commit SHA を `default.nix` に直接埋め込み、overlay も1行の素朴な形にする。
+
+### `nix/pkgs/<name>/default.nix`
+
+`version` は nixpkgs の慣例に従い `0-unstable-<コミット日 YYYY-MM-DD>` とする。
+
+```nix
+{ lib, buildGoModule, fetchFromGitHub }:
+
+buildGoModule {
+  pname = "<name>";
+  version = "0-unstable-2026-08-03";
+
+  src = fetchFromGitHub {
+    owner = "<owner>";
+    repo = "<repo>";
+    rev = "<40桁の commit SHA>";
+    hash = "sha256-...";
+  };
+
+  vendorHash = null;              # go.mod に require が無い場合。ある場合は後述
+  subPackages = [ "cmd/<name>" ]; # 実行バイナリだけをビルド対象にする
+  ldflags = [ "-s" "-w" ];
+}
+```
+
+### `nix/overlays/<name>-overlay.nix`
+
+複数バージョン共存が不要なので `mapAttrs'` は使わない。
+
+```nix
+final: prev: {
+  <name> = prev.callPackage ../pkgs/<name> { };
+}
+```
+
+### ハッシュの取得
+
+```bash
+# srcHash: SHA を指定して nurl（タグの代わりにコミット SHA を渡せる）
+nix run nixpkgs#nurl -- https://github.com/<owner>/<repo> <sha>
+
+# vendorHash: 依存がある場合は lib.fakeHash でビルド → エラーの "got:" 行をコピー
+```
+
+> **`vendorHash = null` と `lib.fakeHash` の使い分け**
+>
+> `null` は「vendor ステップ自体を実行しない」という指定で、`go.mod` が標準ライブラリのみの場合だけ有効。
+> 依存が1つでもあるなら `lib.fakeHash` を一度置いてビルドし、エラーに出る実ハッシュへ差し替える。
+
+### 更新方法
+
+CI の対象外なので手動更新になる。新しい commit を取り込むときは `rev` / `hash` / `version` の
+3箇所を差し替える（`nurl` の出力をそのまま貼れる）。
+
+---
+
 ## 自動更新の仕組み（CI）
 
 ### 週次スケジュール
@@ -243,7 +304,8 @@ GitHub Actions の「Run workflow」ボタンから `workflow_dispatch` で即�
 
 ## 既存パッケージ
 
-| パッケージ | GitHub | タグ形式 | Cargo.lock パス |
-|-----------|--------|---------|----------------|
-| codex | openai/codex | `rust-v*` | `codex-rs/Cargo.lock` |
-| octorus | ushironoko/octorus | `v*` | `Cargo.lock` |
+| パッケージ | GitHub | 言語 | 更新方式 | 備考 |
+|-----------|--------|------|---------|------|
+| codex | openai/codex | Rust | CI 自動（タグ `rust-v*`） | Cargo.lock は `codex-rs/Cargo.lock` |
+| octorus | ushironoko/octorus | Rust | CI 自動（タグ `v*`） | Cargo.lock は `Cargo.lock` |
+| meat | boldsoftware/meat | Go | 手動（commit SHA ピン留め） | 上流にタグ・リリースが無い。依存ゼロで `vendorHash = null` |

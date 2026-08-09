@@ -52,6 +52,7 @@ in
     devenv
     lftp
     octorus
+    meat
     inputs.nix-search-tv.packages.${system}.default
   ];
 

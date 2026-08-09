@@ -54,6 +54,12 @@
               overlays = [ (import ./nix/overlays/octorus-overlay.nix) ];
             }).octorus;
 
+          packages.meat =
+            (import inputs.nixpkgs {
+              inherit system;
+              overlays = [ (import ./nix/overlays/meat-overlay.nix) ];
+            }).meat;
+
           # apps.codex = {
           #   type = "app";
           #   program = "${pkgs.codex}/bin/codex";
@@ -70,6 +76,7 @@
             (import ./nix/overlays/neovim-overlay.nix)
             # (import ./nix/overlays/codex-overlay.nix)
             (import ./nix/overlays/octorus-overlay.nix)
+            (import ./nix/overlays/meat-overlay.nix)
             # (import ./nix/overlays/git-overlay.nix)
           ];
 
