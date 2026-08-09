@@ -52,7 +52,7 @@
       "Bash(rm -rf ~/.config*)"
     ]
   },
-  "model": "claude-opus-4-7",
+  "model": "fable",
   "enableAllProjectMcpServers": true,
   "hooks": {
     "Stop": [
@@ -153,7 +153,7 @@
   },
   "outputStyle": "Explanatory",
   "alwaysThinkingEnabled": true,
-  "effortLevel": "high",
+  "effortLevel": "xhigh",
   "fastModePerSessionOptIn": true,
   "skipDangerousModePermissionPrompt": true,
   "theme": "light",
