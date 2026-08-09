@@ -1,7 +1,7 @@
 # Tab completion for claude-mode
 
 # Subcommands (only when no subcommand given yet)
-set -l subcmds bedrock br zai z sub subscription api status s
+set -l subcmds bedrock br zai z qwen q sub subscription api status s
 
 complete -c claude-mode -f -n "not __fish_seen_subcommand_from $subcmds" \
     -a bedrock  -d 'Bedrock mode (private data)'
@@ -11,6 +11,10 @@ complete -c claude-mode -f -n "not __fish_seen_subcommand_from $subcmds" \
     -a zai      -d 'Z.AI mode (GLM models)'
 complete -c claude-mode -f -n "not __fish_seen_subcommand_from $subcmds" \
     -a z        -d 'Z.AI mode (short)'
+complete -c claude-mode -f -n "not __fish_seen_subcommand_from $subcmds" \
+    -a qwen     -d 'Qwen Cloud mode (Token Plan)'
+complete -c claude-mode -f -n "not __fish_seen_subcommand_from $subcmds" \
+    -a q        -d 'Qwen Cloud mode (short)'
 complete -c claude-mode -f -n "not __fish_seen_subcommand_from $subcmds" \
     -a sub      -d 'Subscription mode'
 complete -c claude-mode -f -n "not __fish_seen_subcommand_from $subcmds" \
