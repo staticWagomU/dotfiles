@@ -1,11 +1,24 @@
 function claude-mode -d "Switch Claude Code between Subscription, Bedrock, and Z.AI"
-    function __claude_mode_clear_zai
+    # Anthropic 互換プロバイダ用の変数をまとめて落とす。
+    # プロバイダごとに設定する変数の数が違うため、切り替え時は必ず全消ししてから設定する。
+    function __claude_mode_clear_provider
         set -e ANTHROPIC_AUTH_TOKEN
         set -e ANTHROPIC_BASE_URL
         set -e API_TIMEOUT_MS
         set -e ANTHROPIC_DEFAULT_HAIKU_MODEL
         set -e ANTHROPIC_DEFAULT_SONNET_MODEL
         set -e ANTHROPIC_DEFAULT_OPUS_MODEL
+    end
+
+    # API キーは dotfiles に置かず Keychain から取る
+    function __claude_mode_keychain -a service
+        set -l token (security find-generic-password -a "$USER" -s "$service" -w 2>/dev/null)
+        if test -z "$token"
+            echo "Error: API key not found in Keychain (service: $service)" >&2
+            echo "Run: security add-generic-password -a \"\$USER\" -s \"$service\" -w \"YOUR_API_KEY\"" >&2
+            return 1
+        end
+        echo $token
     end
 
     function __claude_mode_status
@@ -20,7 +33,7 @@ function claude-mode -d "Switch Claude Code between Subscription, Bedrock, and Z
 
     switch "$argv[1]"
         case bedrock br
-            __claude_mode_clear_zai
+            __claude_mode_clear_provider
             set -gx CLAUDE_CODE_USE_BEDROCK 1
             if test -n "$argv[2]"
                 set -gx AWS_PROFILE $argv[2]
@@ -31,13 +44,9 @@ function claude-mode -d "Switch Claude Code between Subscription, Bedrock, and Z
             __claude_mode_status
 
         case zai z
+            set -l token (__claude_mode_keychain zai-api-key); or return 1
             set -e CLAUDE_CODE_USE_BEDROCK
-            set -l token (security find-generic-password -a "$USER" -s "zai-api-key" -w 2>/dev/null)
-            if test -z "$token"
-                echo "Error: Z.AI API key not found in Keychain"
-                echo "Run: security add-generic-password -a \"\$USER\" -s \"zai-api-key\" -w \"YOUR_API_KEY\""
-                return 1
-            end
+            __claude_mode_clear_provider
             set -gx ANTHROPIC_AUTH_TOKEN $token
             set -gx ANTHROPIC_BASE_URL https://api.z.ai/api/anthropic
             set -gx API_TIMEOUT_MS 3000000
@@ -48,7 +57,7 @@ function claude-mode -d "Switch Claude Code between Subscription, Bedrock, and Z
 
         case sub subscription api
             set -e CLAUDE_CODE_USE_BEDROCK
-            __claude_mode_clear_zai
+            __claude_mode_clear_provider
             __claude_mode_status
 
         case status s ''
