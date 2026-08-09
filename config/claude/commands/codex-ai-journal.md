@@ -45,7 +45,7 @@ $ARGUMENTS
   <phase name="realtime-check">
     <objective>リアルタイムログの確認（オプション）</objective>
     <step>同日の `YYYY_MM_DD_codex-realtime-log.md` が存在する場合、その内容も参照可能。</step>
-    <step>このファイルは `codex-watch-and-save.sh` によってリアルタイムで生成される。</step>
+    <step>このファイルは `generate-realtime-logs.sh` によって日次で再生成される。</step>
   </phase>
 
   <phase name="existing-check">

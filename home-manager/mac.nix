@@ -59,7 +59,7 @@ in
   # launchd agents for journal automation
   launchd.agents = {
     claude-journal-watcher = {
-      enable = true;
+      enable = false;
       config = {
         Label = "com.user.claude-journal-watcher";
         ProgramArguments = [
@@ -80,7 +80,7 @@ in
     };
 
     codex-journal-watcher = {
-      enable = true;
+      enable = false;
       config = {
         Label = "com.user.codex-journal-watcher";
         ProgramArguments = [

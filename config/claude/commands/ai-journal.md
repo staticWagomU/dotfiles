@@ -24,7 +24,7 @@ $ARGUMENTS
 2. `~/.claude/projects/*/*.jsonl` - セッション会話（user/assistant）
   </datasource>
 
-  <output-path>`~/MyLife/pages/YYYY_MM_DD_ai-journal.md`</output-path>
+  <output-path>`~/MyLife/pages/YYYY_MM_DD_ai-journals.md`</output-path>
 </context>
 
 <workflow>
@@ -45,7 +45,7 @@ $ARGUMENTS
   <phase name="realtime-check">
     <objective>リアルタイムログの確認（オプション）</objective>
     <step>同日の `YYYY_MM_DD_realtime-log.md` が存在する場合、その内容も参照可能。</step>
-    <step>このファイルは `watch-and-save.sh` によってリアルタイムで生成される。</step>
+    <step>このファイルは `generate-realtime-logs.sh` によって日次で再生成される。</step>
   </phase>
 
   <phase name="existing-check">
@@ -149,16 +149,11 @@ total_conversations: 合計会話数
 
 <context>
   <realtime-monitoring>
-`watch-and-save.sh` を使用すると、セッション中の会話がリアルタイムで記録されます。
+`generate-realtime-logs.sh` を使用すると、指定日の raw log から会話ログをMarkdownに再生成できます。
 
-**セットアップ**:
+**実行**:
 ```bash
-~/.claude/scripts/setup-journal-watcher.sh install
-```
-
-**確認**:
-```bash
-~/.claude/scripts/setup-journal-watcher.sh status
+~/.claude/scripts/generate-realtime-logs.sh yesterday
 ```
   </realtime-monitoring>
 </context>

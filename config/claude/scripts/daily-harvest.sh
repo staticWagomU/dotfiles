@@ -4,11 +4,12 @@
 #
 # 実行内容:
 #   1. Retrace サマリー（スクリーン時間）
-#   2. Claude AI日誌
-#   3. Codex AI日誌
-#   4. Harvest（知識収穫）
-#   5. 機械日報（events-build: git/shell/retrace/calendar）
-#   6. レビュー（events-review: ToDo 対比 + codex 提案）
+#   2. リアルタイムログ再生成（Claude/Codex raw log → Markdown）
+#   3. Claude AI日誌
+#   4. Codex AI日誌
+#   5. Harvest（知識収穫）
+#   6. 機械日報（events-build: git/shell/retrace/calendar）
+#   7. レビュー（events-review: ToDo 対比 + codex 提案）
 #
 # トリガー: launchd StartCalendarInterval (00:05)
 # - Mac起動中 → 00:05に実行
@@ -24,7 +25,9 @@ LAST_RUN_FILE="$STATE_DIR/.last-harvest-date"
 LOG_FILE="$STATE_DIR/daily-harvest.log"
 CLAUDE="$HOME/.local/bin/claude"
 RETRACE_SCRIPT="$HOME/.claude/scripts/retrace-summary.sh"
+CLAUDE_EXTRACT="$HOME/.claude/scripts/extract-journal-data.sh"
 CODEX_EXTRACT="$HOME/.claude/scripts/extract-codex-journal-data.sh"
+REALTIME_BUILD="$HOME/.claude/scripts/generate-realtime-logs.sh"
 
 TODAY=$(date +%Y-%m-%d)
 YESTERDAY=$(date -v-1d +%Y-%m-%d)
@@ -91,25 +94,41 @@ else
   log "retrace-summary: script not found"
 fi
 
-# === 2. Claude AI日誌 ===
+# === 2. リアルタイムログ再生成 ===
+if [ -x "$REALTIME_BUILD" ]; then
+  log "Regenerating realtime logs for $YESTERDAY..."
+  if "$REALTIME_BUILD" "$YESTERDAY" "$VAULT/pages" >>"$LOG_FILE" 2>&1; then
+    log "realtime logs regenerated"
+  else
+    log "WARNING: realtime log regeneration failed (exit code: $?)"
+  fi
+else
+  log "realtime-log generation: script not found at $REALTIME_BUILD, skipping"
+fi
+
+# === 3. Claude AI日誌 ===
 if [ -x "$CLAUDE" ]; then
-  REALTIME_LOG="$VAULT/pages/${FILE_YESTERDAY}_realtime-log.md"
-  if [ -f "$REALTIME_LOG" ]; then
-    log "Running /ai-journal $YESTERDAY..."
-    cd "$VAULT"
-    if "$CLAUDE" -p "/ai-journal $YESTERDAY" \
-      --model sonnet \
-      --allowedTools "Bash,Read,Write,Edit" \
-      >>"$LOG_FILE" 2>&1; then
-      log "ai-journal completed"
+  CLAUDE_OUTPUT="$VAULT/pages/${FILE_YESTERDAY}_ai-journals.md"
+  if [ -x "$CLAUDE_EXTRACT" ] && [ ! -f "$CLAUDE_OUTPUT" ]; then
+    if "$CLAUDE_EXTRACT" "$YESTERDAY" >/dev/null 2>>"$LOG_FILE"; then
+      log "Running /ai-journal $YESTERDAY..."
+      cd "$VAULT"
+      if "$CLAUDE" -p "/ai-journal $YESTERDAY" \
+        --model sonnet \
+        --allowedTools "Bash,Read,Write,Edit" \
+        >>"$LOG_FILE" 2>&1; then
+        log "ai-journal completed"
+      else
+        log "WARNING: ai-journal failed (exit code: $?)"
+      fi
     else
-      log "WARNING: ai-journal failed (exit code: $?)"
+      log "ai-journal: no Claude sessions for $YESTERDAY"
     fi
   else
-    log "ai-journal: no realtime-log for $YESTERDAY, skipping"
+    log "ai-journal: skipped (already exists or extract script not found)"
   fi
 
-  # === 3. Codex AI日誌 ===
+  # === 4. Codex AI日誌 ===
   CODEX_OUTPUT="$VAULT/pages/${FILE_YESTERDAY}_codex-ai-journals.md"
   if [ -x "$CODEX_EXTRACT" ] && [ ! -f "$CODEX_OUTPUT" ]; then
     log "Running codex-journal for $YESTERDAY..."
@@ -192,7 +211,7 @@ $EXTRACT_OUTPUT"
     log "codex-journal: skipped (already exists or extract script not found)"
   fi
 
-  # === 4. Harvest ===
+  # === 5. Harvest ===
   REALTIME_LOG="$VAULT/pages/${FILE_YESTERDAY}_realtime-log.md"
   if [ -f "$REALTIME_LOG" ] || [ -f "$DAILY_NOTE" ]; then
     log "Running /harvest $YESTERDAY..."
@@ -213,7 +232,7 @@ else
   notify "claude CLI が見つかりません"
 fi
 
-# === 5. 機械日報 (events) → デイリーノートに追記 ===
+# === 6. 機械日報 (events) → デイリーノートに追記 ===
 # raw-first な観測ログ。git / shell / retrace / calendar を時系列でマージして
 # デイリーノートに `## 機械日報` セクションとして冪等追記する。既存の処理を壊さ
 # ないため、失敗しても完了フラグには進む。
@@ -229,7 +248,7 @@ else
   log "events-build: script not found at $EVENTS_BUILD, skipping"
 fi
 
-# === 6. レビュー (events-review) → デイリーノートに追記 ===
+# === 7. レビュー (events-review) → デイリーノートに追記 ===
 # ToDo あり/なしの対比 + codex による ToDo 候補抽出を `## レビュー` セクション
 # として `## 機械日報` の直前に冪等挿入する。events-build の後に動かす前提。
 # codex 呼び出しがあるので ~60-90s かかる。失敗しても完了フラグには進む。
