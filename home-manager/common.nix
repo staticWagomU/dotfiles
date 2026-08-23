@@ -106,6 +106,10 @@ in
   xdg.configFile."ghostty/config".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/ghostty/config";
 
+  # Herdr config only; session state, logs, and sockets remain unmanaged
+  xdg.configFile."herdr/config.toml".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/herdr/config.toml";
+
   xdg.configFile."nvim" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotvim/nvim";
   };
