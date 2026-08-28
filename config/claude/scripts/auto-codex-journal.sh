@@ -12,7 +12,7 @@ set -euo pipefail
 
 STATE_FILE="$HOME/.codex/watcher-state/last-journal-date"
 LOG_FILE="/tmp/auto-codex-journal.log"
-JOURNAL_DIR="$HOME/MyLife/pages"
+JOURNAL_DIR="$HOME/MyLife/ai/ai-journal"
 
 log() {
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"
@@ -45,8 +45,9 @@ EXTRACT_OUTPUT=$("$HOME/.claude/scripts/extract-codex-journal-data.sh" "$YESTERD
 }
 
 # 出力先の確認
-FILE_YESTERDAY=$(echo "$YESTERDAY" | tr '-' '_')
-OUTPUT_PATH="$JOURNAL_DIR/${FILE_YESTERDAY}_codex-ai-journals.md"
+JOURNAL_DATE=$(echo "$YESTERDAY" | tr '-' '_')
+OUTPUT_STEM=$(date -j -f "%Y-%m-%d" "$YESTERDAY" "+%Y%m%d000000")
+OUTPUT_PATH="$JOURNAL_DIR/${OUTPUT_STEM}-ai-journal.md"
 if [ -f "$OUTPUT_PATH" ]; then
   log "Journal already exists: $OUTPUT_PATH. Skipping generation."
   echo "$TODAY" >"$STATE_FILE"
@@ -64,7 +65,7 @@ PROMPT="以下のCodexログデータから、AI日誌を生成してくださ�
 ---
 type: ai-journal
 agent: codex
-date: $FILE_YESTERDAY
+date: $JOURNAL_DATE
 projects: []  # プロジェクト名を列挙
 total_sessions: 0
 total_conversations: 0
@@ -73,7 +74,7 @@ total_conversations: 0
 
 の後に以下のMarkdown構造で出力してください:
 
-# Codex AI日誌 - $FILE_YESTERDAY
+# Codex AI日誌 - $JOURNAL_DATE
 
 ## サマリー
 （全プロジェクト通じた1日の概要を2-3文で）

@@ -23,9 +23,9 @@ yesterday)
 esac
 
 # 出力先
-JOURNAL_DIR="$HOME/MyLife/pages"
-FILE_DATE=$(echo "$TARGET_DATE" | tr '-' '_')
-JOURNAL_PATH="$JOURNAL_DIR/${FILE_DATE}_codex-ai-journals.md"
+JOURNAL_DIR="$HOME/MyLife/ai/ai-journal"
+FILE_DATE=$(date -j -f "%Y-%m-%d" "$TARGET_DATE" "+%Y%m%d000000")
+JOURNAL_PATH="$JOURNAL_DIR/${FILE_DATE}-ai-journal.md"
 TEMP_DIR="/tmp/codex-journal-${TARGET_DATE}"
 SESSIONS_DIR="$HOME/.codex/sessions"
 STATE_DB="$HOME/.codex/state_5.sqlite"

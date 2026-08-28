@@ -24,7 +24,7 @@ $ARGUMENTS
 2. `~/.codex/sessions/**/rollout-*.jsonl` - セッション会話（user_message/agent_message）
   </datasource>
 
-  <output-path>`~/MyLife/pages/YYYY_MM_DD_codex-ai-journals.md`</output-path>
+  <output-path>`~/MyLife/ai/ai-journal/YYYYMMDD000000-ai-journal.md`</output-path>
 </context>
 
 <workflow>
@@ -69,7 +69,7 @@ $ARGUMENTS
   <phase name="save">
     <objective>ファイルの保存</objective>
     <step>```bash
-mkdir -p ~/MyLife/pages
+mkdir -p ~/MyLife/ai/ai-journal
 ```</step>
     <step>Write ツールを使用して `meta.journal_path` に保存。</step>
   </phase>

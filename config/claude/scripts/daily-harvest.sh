@@ -28,10 +28,12 @@ RETRACE_SCRIPT="$HOME/.claude/scripts/retrace-summary.sh"
 CLAUDE_EXTRACT="$HOME/.claude/scripts/extract-journal-data.sh"
 CODEX_EXTRACT="$HOME/.claude/scripts/extract-codex-journal-data.sh"
 REALTIME_BUILD="$HOME/.claude/scripts/generate-realtime-logs.sh"
+CODEX_JOURNAL_DIR="$VAULT/ai/ai-journal"
 
 TODAY=$(date +%Y-%m-%d)
 YESTERDAY=$(date -v-1d +%Y-%m-%d)
 FILE_YESTERDAY=$(echo "$YESTERDAY" | tr '-' '_')
+CODEX_FILE_YESTERDAY=$(date -j -f "%Y-%m-%d" "$YESTERDAY" "+%Y%m%d000000")
 
 # === ヘルパー ===
 log() {
@@ -129,7 +131,7 @@ if [ -x "$CLAUDE" ]; then
   fi
 
   # === 4. Codex AI日誌 ===
-  CODEX_OUTPUT="$VAULT/pages/${FILE_YESTERDAY}_codex-ai-journals.md"
+  CODEX_OUTPUT="$CODEX_JOURNAL_DIR/${CODEX_FILE_YESTERDAY}-ai-journal.md"
   if [ -x "$CODEX_EXTRACT" ] && [ ! -f "$CODEX_OUTPUT" ]; then
     log "Running codex-journal for $YESTERDAY..."
     EXTRACT_OUTPUT=$("$CODEX_EXTRACT" "$YESTERDAY" 2>/dev/null) || true
@@ -192,6 +194,7 @@ total_conversations: 0
 
 $EXTRACT_OUTPUT"
 
+      mkdir -p "$CODEX_JOURNAL_DIR"
       if "$CLAUDE" -p "$PROMPT" \
         --model sonnet \
         --no-session-persistence \

@@ -47,7 +47,7 @@ install() {
   log "Loaded LaunchAgent"
 
   mkdir -p "$HOME/.codex/watcher-state"
-  mkdir -p "$HOME/MyLife/pages"
+  mkdir -p "$HOME/MyLife/ai/ai-journal"
   log "Created required directories"
 
   log ""
@@ -139,7 +139,7 @@ test_run() {
 
   # stateを復元（テスト実行で上書きされるのでそのまま）
   log ""
-  log "Test complete. Check output in ~/MyLife/pages/"
+  log "Test complete. Check output in ~/MyLife/ai/ai-journal/"
 }
 
 usage() {

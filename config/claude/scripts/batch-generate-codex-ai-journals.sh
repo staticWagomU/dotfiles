@@ -3,7 +3,8 @@
 # codex-realtime-logが存在するがcodex-ai-journalが未作成の日付をすべて生成する
 set -uo pipefail
 
-JOURNAL_DIR="$HOME/MyLife/pages"
+PAGES_DIR="$HOME/MyLife/pages"
+JOURNAL_DIR="$HOME/MyLife/ai/ai-journal"
 LOG_FILE="/tmp/batch-codex-ai-journal.log"
 EXTRACT_SCRIPT="$HOME/.claude/scripts/extract-codex-journal-data.sh"
 
@@ -15,8 +16,8 @@ log "=== Batch Codex AI Journal Generation Started ==="
 
 # 未作成の日付を計算
 MISSING_DATES=$(comm -23 \
-  <(ls "$JOURNAL_DIR"/*_codex-realtime-log.md 2>/dev/null | xargs -I{} basename {} | sed 's/_codex-realtime-log\.md//' | sort) \
-  <(ls "$JOURNAL_DIR"/*_codex-ai-journal*.md 2>/dev/null | xargs -I{} basename {} | sed 's/_codex-ai-journal.*\.md//' | sort))
+  <(ls "$PAGES_DIR"/*_codex-realtime-log.md 2>/dev/null | xargs -I{} basename {} | sed 's/_codex-realtime-log\.md//' | sort) \
+  <(ls "$JOURNAL_DIR"/*-ai-journal.md 2>/dev/null | xargs -I{} basename {} | sed 's/^\([0-9]\{4\}\)\([0-9]\{2\}\)\([0-9]\{2\}\)[0-9]\{6\}-ai-journal\.md$/\1_\2_\3/' | sort))
 
 TOTAL=$(echo "$MISSING_DATES" | grep -c .)
 CURRENT=0
@@ -45,7 +46,8 @@ for DATE_UNDER in $MISSING_DATES; do
     continue
   fi
 
-  OUTPUT_PATH="$JOURNAL_DIR/${DATE_UNDER}_codex-ai-journals.md"
+  OUTPUT_STEM="$(echo "$DATE_UNDER" | tr -d '_')000000"
+  OUTPUT_PATH="$JOURNAL_DIR/${OUTPUT_STEM}-ai-journal.md"
   if [ -f "$OUTPUT_PATH" ]; then
     log "[$CURRENT/$TOTAL] SKIP: Already exists $OUTPUT_PATH"
     SKIP=$((SKIP + 1))
@@ -124,6 +126,7 @@ $EXTRACT_OUTPUT"
     continue
   }
 
+  mkdir -p "$JOURNAL_DIR"
   echo "$RESULT" >"$OUTPUT_PATH"
   log "[$CURRENT/$TOTAL] SUCCESS: Saved $OUTPUT_PATH"
   SUCCESS=$((SUCCESS + 1))
