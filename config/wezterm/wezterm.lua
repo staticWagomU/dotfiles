@@ -60,12 +60,23 @@ config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
 -- Helper Functions
 -- ============================================================
 
+-- 下のヘルパーは POSIX 系の -lc / -lic を前提にしている。
+-- WezTerm を nushell や PowerShell から起動すると $SHELL がそれらになり
+-- フラグが通らないため、その場合は zsh にフォールバックする。
+local function posix_shell()
+  local shell = os.getenv("SHELL")
+  if shell and not shell:match("/nu$") and not shell:match("/pwsh$") then
+    return shell
+  end
+  return "/bin/zsh"
+end
+
 -- Find wez-cc-viewer binary (handles mise/asdf path issues)
 local _bin_cache = nil
 local function find_wez_cc_viewer()
   if _bin_cache then return _bin_cache end
   local ok, stdout = wezterm.run_child_process({
-    os.getenv("SHELL") or "/bin/zsh", "-lic", "which wez-cc-viewer",
+    posix_shell(), "-lic", "which wez-cc-viewer",
   })
   if ok and stdout then
     local path = stdout:gsub("%s+$", "")
@@ -217,7 +228,7 @@ local function spawn_overlay_pane(command)
     local new_pane = pane:split({
       direction = "Bottom",
       size = 1.0,
-      args = { os.getenv("SHELL"), "-lc", command },
+      args = { posix_shell(), "-lc", command },
     })
     window:perform_action(act.TogglePaneZoomState, new_pane)
   end)

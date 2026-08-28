@@ -59,9 +59,14 @@ quick-terminal-size = 40%
 quick-terminal-animation-duration = 0.2
 quick-terminal-autohide = true
 
-# シェル統合（プロンプト検出、sudo ラッパー、タイトル設定）
-shell-integration = detect
-shell-integration-features = cursor,sudo,title
+# 既定シェル: PowerShell
+# ログインシェル (chsh) は fish のままにして、Ghostty が起動するコマンドだけ差し替える。
+# WezTerm 側は nushell を使う (config/wezterm/wezterm.lua の default_prog)。
+# 絶対パスなのは Ghostty が launchd の最小 PATH で起動されるため。
+command = /etc/profiles/per-user/wagomu/bin/pwsh -NoLogo
+
+# シェル統合は bash/zsh/fish/elvish のみ対応で PowerShell 用の実装がないため無効化する
+shell-integration = none
 
 # Option+クリックでプロンプト上のカーソルを移動
 cursor-click-to-move = true
