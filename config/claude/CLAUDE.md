@@ -5,3 +5,4 @@
 * Keep documentation up to date with code changes
 * Think in English and output in Japanese
 * Create plan files (plan.md) in the working repository, not in the ~/.claude directory
+* Store all research materials under the working project's `~/.ai/{{project}}/` directory
