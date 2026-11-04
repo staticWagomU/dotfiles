@@ -4,6 +4,25 @@
   nurPkgs,
 }:
 let
+  # Serena imports webview even with its dashboard disabled. The NUR package
+  # already replaces the Darwin Qt backend with Cocoa and adds its missing
+  # UniformTypeIdentifiers dependency; clear the inherited broken flag only
+  # for that patched dependency, rather than allowing all broken packages.
+  serena = nurPkgs.serena.overridePythonAttrs (old: {
+    dependencies = map (
+      dep:
+      # Serena still imports mcp.server.fastmcp, which was removed in SDK 2.
+      if (dep.pname or "") == "mcp" then
+        pkgs.python3Packages.mcp_1
+      else if pkgs.stdenv.hostPlatform.isDarwin && (dep.pname or "") == "pywebview" then
+        dep.overridePythonAttrs (webview: {
+          meta = webview.meta // { broken = false; };
+        })
+      else
+        dep
+    ) old.dependencies;
+  });
+
   providerTimeoutOpts = {
     timeout = 600000;
     chunkTimeout = 60000;
@@ -45,7 +64,7 @@ mcp-servers-nix.lib.mkConfig pkgs {
 
     servers.serena.type = "local";
     servers.serena.command = [
-      "${nurPkgs.serena}/bin/serena"
+      "${serena}/bin/serena"
       "start-mcp-server"
       "--context"
       "claude-code"
