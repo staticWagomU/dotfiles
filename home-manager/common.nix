@@ -13,7 +13,10 @@ let
   dotfilesDir = "${config.home.homeDirectory}/dotfiles";
 in
 {
-  imports = [ inputs.agent-skills.homeManagerModules.default ];
+  imports = [
+    inputs.agent-skills.homeManagerModules.default
+    ./config-files.nix
+  ];
 
   home.username = username;
   home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
@@ -77,38 +80,16 @@ in
         src = inputs.lophius;
       }
     ];
-    interactiveShellInit = builtins.readFile ../config/fish/config.fish;
+    # Keep interactive settings editable while Home Manager generates integrations.
+    interactiveShellInit = ''
+      source "${dotfilesDir}/config/fish/config.fish"
+    '';
   };
 
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
   };
-
-  # Fish functions as symlinks
-  home.file.".config/fish/functions" = {
-    source = ../config/fish/functions;
-    recursive = true;
-  };
-
-  # Fish completions as symlinks
-  home.file.".config/fish/completions" = {
-    source = ../config/fish/completions;
-    recursive = true;
-  };
-
-  # tmux config as symlink
-  # シンボリックリンクにすることで、dotfiles の変更が即座に反映される
-  xdg.configFile."tmux/tmux.conf".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/tmux/tmux.conf";
-
-  # Ghostty config as symlink
-  xdg.configFile."ghostty/config".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/ghostty/config";
-
-  # Herdr config only; session state, logs, and sockets remain unmanaged
-  xdg.configFile."herdr/config.toml".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/herdr/config.toml";
 
   xdg.configFile."nvim" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotvim/nvim";
@@ -144,18 +125,6 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/claude/rules";
   home.file.".claude/scripts".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/claude/scripts";
-
-  # Misc app configs as symlinks
-  xdg.configFile."zellij/config.kdl".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/zellij/config.kdl";
-  xdg.configFile."helix/config.toml".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/helix/config.toml";
-  xdg.configFile."lazygit/config.yml".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/lazygit/config.yml";
-  xdg.configFile."nix/nix.conf".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/nix/nix.conf";
-  xdg.configFile."yazi".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/yazi";
 
   # Codex config (subset only; config.toml と動的データは管理しない)
   home.file.".codex/AGENTS.md".source =
