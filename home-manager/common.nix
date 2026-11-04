@@ -169,7 +169,7 @@ in
 
   programs.agent-skills = {
     enable = true;
-    sources.local.path = inputs.local-agent-skills;
+    sources.local.path = ../config/agents/skills;
     skills.enableAll = true;
     targets.claude.enable = true;
     targets.codex.enable = true;

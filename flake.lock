@@ -325,18 +325,6 @@
         "type": "github"
       }
     },
-    "local-agent-skills": {
-      "flake": false,
-      "locked": {
-        "path": "./config/agents/skills",
-        "type": "path"
-      },
-      "original": {
-        "path": "./config/agents/skills",
-        "type": "path"
-      },
-      "parent": []
-    },
     "lophius": {
       "locked": {
         "lastModified": 1779704756,
@@ -558,7 +546,6 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager_2",
         "llm-agents": "llm-agents",
-        "local-agent-skills": "local-agent-skills",
         "lophius": "lophius",
         "mcp-servers-nix": "mcp-servers-nix",
         "neovim-nightly-overlay": "neovim-nightly-overlay",

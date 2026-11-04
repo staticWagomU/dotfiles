@@ -258,10 +258,6 @@
       url = "github:Kyure-A/agent-skills-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    local-agent-skills = {
-      url = "path:./config/agents/skills";
-      flake = false;
-    };
     vim-overlay = {
       url = "github:kawarimidoll/vim-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
