@@ -45,6 +45,13 @@ in
 
     # AI / ML
     ollama # Local LLM runner
+
+    # Containers (migrated from Homebrew)
+    colima # Container runtime
+    devcontainer # Dev Container CLI
+    docker # Docker CLI
+    docker-compose # Docker Compose
+    beads # Issue tracker for coding agents
   ];
 
   home.activation.karabiner = config.lib.dag.entryAfter [ "writeBoundary" ] ''

@@ -52,15 +52,19 @@
     enable = true;
     onActivation = {
       autoUpdate = false;
-      cleanup = "uninstall"; # Remove unlisted packages but keep cache
+      # Why not "uninstall": 宣言は PC 初期化時に欲しいものだけに絞り、
+      # 普段の brew install は宣言なしで共存させるため削除しない。
+      cleanup = "none";
     };
 
     taps = [
       "apple/apple"
       "atlassian/acli"
+      "abue-ammar/tinycast"
       "barutsrb/tap"
+      "calendrop-app/tap"
+      "gigooo-organization/dayglass"
       "pakerwreah/calendr"
-      "sst/tap"
       "steipete/tap"
       "yakitrak/yakitrak"
     ];
@@ -69,22 +73,22 @@
       # --- brew に残すもの（nixpkgs にない or brew が適切） ---
       "atlassian/acli/acli"
       # "ballerina"
-      "beads"
       "cloud-sql-proxy"
-      "colima"
       "curl" # システム curl との競合回避のため brew に残す
-      "devcontainer"
-      "docker"
-      "docker-compose"
       "ekphos"
+      "freerdp"
+      "gigooo-organization/dayglass/dayglass"
+      "hunk"
       "mysql"
-      "opencode"
       "postgresql@16"
+      "whisper.cpp"
+      "yap" # nixpkgs の yap は Prolog 処理系で別物
       # "volta" # mise と並走中のため一旦残す
       "yakitrak/yakitrak/obsidian-cli"
       # tailscale CLI is provided by nix-darwin services.tailscale
 
       # --- 以下は home-manager (mac.nix) に移行済み ---
+      # beads, colima, devcontainer, docker, docker-compose,
       # duckdb, eza, gcc, lilypond, lnav, murex, ollama, openjdk@21,
       # portaudio, swiftformat, tbls, terminal-notifier, tmux, tree, zellij
     ];
@@ -94,6 +98,7 @@
       "aqua-voice"
       # "azookey"
       "bitwarden"
+      "calendrop-app/tap/calendrop"
       "pakerwreah/calendr/calendr"
       "cleanshot"
       "cmux"
@@ -113,13 +118,17 @@
       "obsidian"
       "ogdesign-eagle"
       "ollama-app"
-      # "barutsrb/tap/omniwm"
+      "omniwm"
       "orbstack"
+      "qlmarkdown"
+      "qmk-toolbox"
       "raycast"
       # "steipete/tap/repobar"
       "slack"
       "slack-cli"
       "smoothcsv"
+      "t3-code"
+      "abue-ammar/tinycast/tinycast"
       # "thaw" # cask 化されたので brews から移動
       # tailscale-app removed: using nix-darwin services.tailscale instead
       "visual-studio-code"
