@@ -37,6 +37,9 @@ fish_add_path ~/.local/bin
 
 fish_add_path ~/dotfiles/scripts
 
+# Adroit CLI (built from source with `just install-macos`)
+fish_add_path /Applications/Adroit.app/Contents/MacOS
+
 if test (uname -s) = "Darwin"
   set -l paths \
     /opt/homebrew/bin \
