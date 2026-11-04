@@ -1,6 +1,10 @@
 [
   {
     "command": "hotkeyWindow",
-    "key": "Ctrl+Shift+1"
+    "key": null
+  },
+  {
+    "command": "openAvatarOverlay",
+    "key": null
   }
 ]
