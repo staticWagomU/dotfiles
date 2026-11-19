@@ -307,5 +307,4 @@ GitHub Actions の「Run workflow」ボタンから `workflow_dispatch` で即�
 | パッケージ | GitHub | 言語 | 更新方式 | 備考 |
 |-----------|--------|------|---------|------|
 | codex | openai/codex | Rust | CI 自動（タグ `rust-v*`） | Cargo.lock は `codex-rs/Cargo.lock` |
-| octorus | ushironoko/octorus | Rust | CI 自動（タグ `v*`） | Cargo.lock は `Cargo.lock` |
 | meat | boldsoftware/meat | Go | 手動（commit SHA ピン留め） | 上流にタグ・リリースが無い。依存ゼロで `vendorHash = null` |

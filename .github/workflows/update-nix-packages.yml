@@ -19,11 +19,6 @@ jobs:
             repo: codex
             tag_prefix: rust-v
             cargo_lock_subpath: codex-rs/Cargo.lock
-          - name: octorus
-            owner: ushironoko
-            repo: octorus
-            tag_prefix: v
-            cargo_lock_subpath: Cargo.lock
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@v14

@@ -48,12 +48,6 @@
           #     overlays = [ (import ./nix/overlays/codex-overlay.nix) ];
           #   }).codex;
 
-          packages.octorus =
-            (import inputs.nixpkgs {
-              inherit system;
-              overlays = [ (import ./nix/overlays/octorus-overlay.nix) ];
-            }).octorus;
-
           packages.meat =
             (import inputs.nixpkgs {
               inherit system;
@@ -75,7 +69,6 @@
             inputs.neovim-nightly-overlay.overlays.default
             (import ./nix/overlays/neovim-overlay.nix)
             # (import ./nix/overlays/codex-overlay.nix)
-            (import ./nix/overlays/octorus-overlay.nix)
             (import ./nix/overlays/meat-overlay.nix)
             # (import ./nix/overlays/git-overlay.nix)
           ];
